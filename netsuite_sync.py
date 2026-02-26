@@ -604,7 +604,27 @@ def _make_legacy_ext_id(school_name, email, role):
     return f"{school_slug}__{role_slug}__{email_clean}"[:150]
 
 def _find_contact_for_customer(customer_id, email):
-    """Search for a contact under a customer by email using the contacts sublist."""
+    """Search for a contact under a customer by email.
+
+    Uses SuiteQL first (fast, single call), then falls back to REST expand.
+    """
+    # Fast path: SuiteQL query for contact by email + company
+    safe_email = email.replace("'", "''")
+    rows = ns_suiteql(
+        f"SELECT id, isinactive FROM Contact "
+        f"WHERE email = '{safe_email}' AND company = {customer_id}"
+    )
+    if rows:
+        return rows[0].get("id")
+
+    # Broader: search by email only (contact might be linked differently)
+    rows = ns_suiteql(
+        f"SELECT id, isinactive FROM Contact WHERE email = '{safe_email}'"
+    )
+    if rows:
+        return rows[0].get("id")
+
+    # Fallback: REST expand (slower)
     resp = ns_get(f"customer/{customer_id}?expand=contactList")
     if resp.status_code != 200:
         return None
@@ -636,6 +656,16 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
     if not contact_id and role:
         legacy_id = _make_legacy_ext_id(school_name, email, role)
         contact_id, is_inactive = get_contact_by_external_id(legacy_id)
+
+    # Fallback: SuiteQL search by email (finds pre-existing contacts without ext IDs)
+    if not contact_id and email:
+        safe_email = email.replace("'", "''")
+        rows = ns_suiteql(
+            f"SELECT id, isinactive FROM Contact WHERE email = '{safe_email}'"
+        )
+        if rows:
+            contact_id = str(rows[0].get("id", ""))
+            is_inactive = rows[0].get("isinactive") in (True, "T", "t")
 
     body = {
         "externalId": ext_id,
