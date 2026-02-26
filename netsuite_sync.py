@@ -51,6 +51,11 @@ CF_ENROLLMENT = "custentity_school_enrollment"
 CF_STATE      = "custentity_school_state"
 CF_CLASS      = "custentity_school_class"  # internal ID: 4776
 
+# Sales rep name -> NetSuite employee internal ID mapping
+SALES_REP_MAP = {
+    "Andrew Murray": "3",
+}
+
 # WIAA nav h5s to skip when parsing
 NAV_H5S = {
     "Schools", "Contests", "General", "Tournaments", "Conferences",
@@ -351,7 +356,7 @@ def build_address_items(school_info, contacts):
 
     return items
 
-def build_customer_body(school_name, state, school_info, contacts=None):
+def build_customer_body(school_name, state, school_info, contacts=None, sales_rep=None):
     """Build the full Customer record body."""
     level     = school_info.get("level", "")
     # Only append level if it's not already present in the school name
@@ -382,6 +387,19 @@ def build_customer_body(school_name, state, school_info, contacts=None):
     if school_info.get("enrollment"):
         body[CF_ENROLLMENT] = school_info["enrollment"]
 
+    # Sales rep (via salesTeam sublist — the salesRep field is ignored on this form)
+    if sales_rep:
+        emp_id = SALES_REP_MAP.get(sales_rep)
+        if emp_id:
+            body["salesTeam"] = {
+                "items": [{
+                    "employee": {"id": emp_id},
+                    "salesRole": {"id": "-2"},  # -2 = "Sales Rep" role
+                    "contribution": 100.0,
+                    "isPrimary": True,
+                }]
+            }
+
     # Build addressbook with school addresses + per-contact Ship-Tos
     addr_items = build_address_items(school_info, contacts or [])
     if addr_items:
@@ -389,7 +407,8 @@ def build_customer_body(school_name, state, school_info, contacts=None):
 
     return body
 
-def sync_customer(school_name, state, school_info, contacts=None, ns_customer_id=None):
+def sync_customer(school_name, state, school_info, contacts=None, ns_customer_id=None,
+                  sales_rep=None):
     """
     Update or create a Customer record.
 
@@ -403,7 +422,7 @@ def sync_customer(school_name, state, school_info, contacts=None, ns_customer_id
 
     Returns (ns_id, created_bool).
     """
-    body = build_customer_body(school_name, state, school_info, contacts)
+    body = build_customer_body(school_name, state, school_info, contacts, sales_rep=sales_rep)
 
     if ns_customer_id:
         # ── Direct PATCH — bypass all name/externalId matching ──────────────
@@ -580,7 +599,8 @@ def sync_school(school_name, school_url, state, sync_contacts, sales_rep=None,
 
     # Sync Customer — pass through the known ID (or None to trigger creation)
     ns_id, created = sync_customer(school_name, state, school_info,
-                                   contacts_to_sync, ns_customer_id=ns_customer_id)
+                                   contacts_to_sync, ns_customer_id=ns_customer_id,
+                                   sales_rep=sales_rep)
     if not ns_id:
         return None, school_info, scraped_admins + scraped_coaches, False
 
