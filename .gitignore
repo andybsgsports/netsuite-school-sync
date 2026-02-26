@@ -1,0 +1,31 @@
+# Credentials (never commit)
+credentials.json
+.env
+
+# Data files (live in Google Sheets now)
+*.xlsx
+*.csv
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs
+sync_log.txt
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Claude Code
+.claude/
+
+# Empty placeholder files
+InternalID
+python
