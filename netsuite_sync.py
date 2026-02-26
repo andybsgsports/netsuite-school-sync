@@ -127,6 +127,20 @@ def ns_patch(path, body):
         "Authorization": make_auth("PATCH", url),
         "Content-Type": "application/json"}, json=body)
 
+SUITEQL_URL = f"https://{NS_ACCOUNT}.suitetalk.api.netsuite.com/services/rest/query/v1/suiteql"
+
+def ns_suiteql(query, limit=1000):
+    """Run a SuiteQL query and return the list of result rows."""
+    url = f"{SUITEQL_URL}?limit={limit}"
+    r = requests.post(url, headers={
+        "Authorization": make_auth("POST", url),
+        "Content-Type": "application/json",
+        "Prefer": "transient",
+    }, json={"q": query})
+    if r.status_code == 200:
+        return r.json().get("items", [])
+    return []
+
 # ============================================================
 # HELPERS
 # ============================================================
@@ -385,29 +399,26 @@ def sync_address_book(customer_id, school_info, contacts, school_name=""):
     if not contact_names:
         return
 
-    # Get existing address labels in ONE API call (to avoid duplicates).
-    # With correct addressBook casing, expand returns items with labels.
+    # Get existing address labels in ONE API call via SuiteQL.
+    # This replaces N+1 REST calls with a single query.
     existing_labels = set()
-    r = ns_get(f"customer/{customer_id}?expand=addressBook")
-    if r.status_code == 200:
-        items = r.json().get("addressBook", {}).get("items", [])
-        # Fast path: try reading labels directly from expanded items
-        for item in items:
-            label = item.get("label", "").strip()
-            if label:
-                existing_labels.add(label.lower())
-        # Fallback: if expand didn't include labels, fetch individually
-        if not existing_labels and items:
-            print(f"  [NS] Fetching {len(items)} address labels individually...")
+    rows = ns_suiteql(
+        f"SELECT label FROM CustomerAddressbook WHERE entity = {customer_id}"
+    )
+    for row in rows:
+        lbl = (row.get("label") or "").strip()
+        if lbl:
+            existing_labels.add(lbl.lower())
+
+    # Fallback: if SuiteQL returned nothing, try REST expand
+    if not existing_labels:
+        r = ns_get(f"customer/{customer_id}?expand=addressBook")
+        if r.status_code == 200:
+            items = r.json().get("addressBook", {}).get("items", [])
             for item in items:
-                href = item.get("links", [{}])[0].get("href", "")
-                line_id = href.rstrip("/").split("/")[-1] if href else None
-                if line_id:
-                    r2 = ns_get(f"customer/{customer_id}/addressBook/{line_id}")
-                    if r2.status_code == 200:
-                        lbl = r2.json().get("label", "").strip()
-                        if lbl:
-                            existing_labels.add(lbl.lower())
+                label = item.get("label", "").strip()
+                if label:
+                    existing_labels.add(label.lower())
 
     # Build items only for contacts that don't already have an address
     new_items = []
@@ -686,20 +697,40 @@ def remove_contact_ship_to(customer_id, contact_name):
     Remove a specific contact's Ship-To address from the Customer addressbook.
 
     NetSuite REST API PATCH always ADDS to addressBook — it cannot delete entries.
-    So we find the matching address line and PATCH it individually to mark it as
-    removed (changing the label so it won't match future contacts).
+    So we find the matching address line via SuiteQL and PATCH it individually to
+    mark it as removed (changing the label so it won't match future contacts).
     """
     target = contact_name.strip().lower()
+
+    # Use SuiteQL to find the address line ID by label (1 API call)
+    rows = ns_suiteql(
+        f"SELECT addressbookaddress_key, label FROM CustomerAddressbook "
+        f"WHERE entity = {customer_id}"
+    )
+    for row in rows:
+        lbl = (row.get("label") or "").strip()
+        line_key = row.get("addressbookaddress_key")
+        if lbl.lower() == target and line_key:
+            r2 = ns_patch(f"customer/{customer_id}/addressBook/{line_key}", {
+                "label": f"(Removed) {contact_name}",
+                "defaultShipping": False,
+                "defaultBilling": False,
+            })
+            if r2.status_code == 204:
+                print(f"  [NS] Cleared Ship-To for: {contact_name}")
+            else:
+                print(f"  [NS] WARN: could not clear Ship-To for "
+                      f"{contact_name}: {r2.status_code}")
+            return
+
+    # Fallback: try REST expand if SuiteQL didn't find it
     r = ns_get(f"customer/{customer_id}?expand=addressBook")
     if r.status_code != 200:
         return
-
     items = r.json().get("addressBook", {}).get("items", [])
-
     for item in items:
         label = item.get("label", "").strip()
         if label.lower() == target:
-            # Found it — get the line's API path from its link
             href = item.get("links", [{}])[0].get("href", "")
             if "/v1/" in href:
                 path = href.split("/v1/")[1]
@@ -710,28 +741,7 @@ def remove_contact_ship_to(customer_id, contact_name):
                 })
                 if r2.status_code == 204:
                     print(f"  [NS] Cleared Ship-To for: {contact_name}")
-                else:
-                    print(f"  [NS] WARN: could not clear Ship-To for "
-                          f"{contact_name}: {r2.status_code}")
             return
-
-    # Fallback: if label wasn't in expand, check individual lines
-    for item in items:
-        href = item.get("links", [{}])[0].get("href", "")
-        line_id = href.rstrip("/").split("/")[-1] if href else None
-        if line_id:
-            r2 = ns_get(f"customer/{customer_id}/addressBook/{line_id}")
-            if r2.status_code == 200:
-                lbl = r2.json().get("label", "").strip()
-                if lbl.lower() == target:
-                    r3 = ns_patch(f"customer/{customer_id}/addressBook/{line_id}", {
-                        "label": f"(Removed) {contact_name}",
-                        "defaultShipping": False,
-                        "defaultBilling": False,
-                    })
-                    if r3.status_code == 204:
-                        print(f"  [NS] Cleared Ship-To for: {contact_name}")
-                    return
 
 # ============================================================
 # MAIN SYNC FUNCTION
