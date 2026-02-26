@@ -27,6 +27,7 @@ from netsuite_sync import (
     sync_contact,
     inactivate_contact,
     remove_contact_ship_to,
+    sync_address_book,
 )
 
 # -- Config -------------------------------------------------------------------
@@ -315,6 +316,25 @@ def main():
                 c[C_NS_CID] = ""
 
             time.sleep(0.2)
+
+        # -- 6b. Sync Ship-To addresses for all active contacts ----------
+        # Uses additive approach: only adds addresses for contacts that
+        # don't already have one (PATCH always adds to addressBook).
+        active_contacts = [
+            {
+                "first": str(c.get(C_FIRST, "")).strip(),
+                "last":  str(c.get(C_LAST, "")).strip(),
+                "email": str(c.get(C_EMAIL, "")).strip(),
+                "role":  str(c.get(C_ROLE, "")).strip(),
+            }
+            for c in contacts_data
+            if c.get(C_SCHOOL, "").strip() == school_name
+            and str(c.get(C_SYNC, "N")).strip().upper() == "Y"
+            and str(c.get(C_NS_CID, "")).strip() not in ("", "nan", "None")
+        ]
+        if active_contacts and school_info_out:
+            sync_address_book(result_id, school_info_out, active_contacts,
+                              school_name=display_name)
 
         time.sleep(DELAY)
 

@@ -344,7 +344,7 @@ def build_address_items(school_info, contacts, school_name=""):
                 "defaultShipping": False,
                 "defaultBilling":  False,
                 "label":           full_name,
-                "addressbookAddress": {
+                "addressBookAddress": {
                     "addressee": school_name or "",
                     "attention": full_name,
                     "addr1":     addr1,
@@ -356,6 +356,87 @@ def build_address_items(school_info, contacts, school_name=""):
             })
 
     return items
+
+def sync_address_book(customer_id, school_info, contacts, school_name=""):
+    """
+    Sync Ship-To addresses for active contacts. Adds one Ship-To per
+    contact that doesn't already have one (matched by label = contact name).
+
+    NetSuite REST API PATCH always adds to addressBook — it cannot
+    replace or clear. So we only add missing entries.
+    Removals are handled by remove_contact_ship_to() when contacts depart.
+    """
+    addr1 = school_info.get("address1", "")
+    city  = school_info.get("city", "")
+    st    = school_info.get("state", "")
+    zp    = school_info.get("zip", "")
+    if not addr1 or not city:
+        return
+
+    # Deduplicated contact names
+    seen = set()
+    contact_names = []
+    for c in contacts:
+        name = f"{c.get('first','')} {c.get('last','')}".strip()
+        if name and name not in seen:
+            seen.add(name)
+            contact_names.append(name)
+
+    if not contact_names:
+        return
+
+    # Get existing address labels in ONE API call (to avoid duplicates).
+    # With correct addressBook casing, expand returns items with labels.
+    existing_labels = set()
+    r = ns_get(f"customer/{customer_id}?expand=addressBook")
+    if r.status_code == 200:
+        items = r.json().get("addressBook", {}).get("items", [])
+        # Fast path: try reading labels directly from expanded items
+        for item in items:
+            label = item.get("label", "").strip()
+            if label:
+                existing_labels.add(label.lower())
+        # Fallback: if expand didn't include labels, fetch individually
+        if not existing_labels and items:
+            print(f"  [NS] Fetching {len(items)} address labels individually...")
+            for item in items:
+                href = item.get("links", [{}])[0].get("href", "")
+                line_id = href.rstrip("/").split("/")[-1] if href else None
+                if line_id:
+                    r2 = ns_get(f"customer/{customer_id}/addressBook/{line_id}")
+                    if r2.status_code == 200:
+                        lbl = r2.json().get("label", "").strip()
+                        if lbl:
+                            existing_labels.add(lbl.lower())
+
+    # Build items only for contacts that don't already have an address
+    new_items = []
+    for name in contact_names:
+        if name.strip().lower() not in existing_labels:
+            new_items.append({
+                "defaultShipping": False,
+                "defaultBilling":  False,
+                "label":           name,
+                "addressBookAddress": {
+                    "addressee": school_name or "",
+                    "attention": name,
+                    "addr1":     addr1,
+                    "city":      city,
+                    "state":     st,
+                    "zip":       zp,
+                    "country":   {"id": "US"},
+                }
+            })
+
+    if new_items:
+        r = ns_patch(f"customer/{customer_id}",
+                     {"addressBook": {"items": new_items}})
+        if r.status_code == 204:
+            print(f"  [NS] Added {len(new_items)} new Ship-To addresses")
+        else:
+            print(f"  [NS] WARN: address add failed: {r.status_code} {r.text[:150]}")
+    else:
+        print(f"  [NS] Ship-To addresses up to date ({len(contact_names)} contacts)")
 
 def _set_sales_team(customer_id, team_item):
     """
@@ -440,7 +521,7 @@ def build_customer_body(school_name, state, school_info, contacts=None, sales_re
     # Build addressbook with school addresses + per-contact Ship-Tos
     addr_items = build_address_items(school_info, contacts or [], school_name=full_name)
     if addr_items:
-        body["addressbook"] = {"items": addr_items}
+        body["addressBook"] = {"items": addr_items}
 
     return body
 
@@ -466,7 +547,6 @@ def sync_customer(school_name, state, school_info, contacts=None, ns_customer_id
         # Handle salesTeam separately (can't add if one already exists)
         sales_team_data = body.pop("salesTeam", None)
 
-        ns_patch(f"customer/{ns_customer_id}", {"addressbook": {"items": []}})
         r = ns_patch(f"customer/{ns_customer_id}", body)
         if r.status_code == 204:
             print(f"  [NS] Updated Customer: {body['companyName']} (ID: {ns_customer_id})")
@@ -604,18 +684,54 @@ def inactivate_contact(contact_id, name):
 def remove_contact_ship_to(customer_id, contact_name):
     """
     Remove a specific contact's Ship-To address from the Customer addressbook.
-    Fetches current addressbook, removes the matching label, patches back.
+
+    NetSuite REST API PATCH always ADDS to addressBook — it cannot delete entries.
+    So we find the matching address line and PATCH it individually to mark it as
+    removed (changing the label so it won't match future contacts).
     """
-    r = ns_get(f"customer/{customer_id}?fields=addressbook")
+    target = contact_name.strip().lower()
+    r = ns_get(f"customer/{customer_id}?expand=addressBook")
     if r.status_code != 200:
         return
-    data  = r.json()
-    items = data.get("addressbook", {}).get("items", [])
-    new_items = [item for item in items
-                 if item.get("label", "").strip().lower() != contact_name.strip().lower()]
-    if len(new_items) < len(items):
-        ns_patch(f"customer/{customer_id}", {"addressbook": {"items": new_items}})
-        print(f"  [NS] Removed Ship-To for: {contact_name}")
+
+    items = r.json().get("addressBook", {}).get("items", [])
+
+    for item in items:
+        label = item.get("label", "").strip()
+        if label.lower() == target:
+            # Found it — get the line's API path from its link
+            href = item.get("links", [{}])[0].get("href", "")
+            if "/v1/" in href:
+                path = href.split("/v1/")[1]
+                r2 = ns_patch(path, {
+                    "label": f"(Removed) {contact_name}",
+                    "defaultShipping": False,
+                    "defaultBilling": False,
+                })
+                if r2.status_code == 204:
+                    print(f"  [NS] Cleared Ship-To for: {contact_name}")
+                else:
+                    print(f"  [NS] WARN: could not clear Ship-To for "
+                          f"{contact_name}: {r2.status_code}")
+            return
+
+    # Fallback: if label wasn't in expand, check individual lines
+    for item in items:
+        href = item.get("links", [{}])[0].get("href", "")
+        line_id = href.rstrip("/").split("/")[-1] if href else None
+        if line_id:
+            r2 = ns_get(f"customer/{customer_id}/addressBook/{line_id}")
+            if r2.status_code == 200:
+                lbl = r2.json().get("label", "").strip()
+                if lbl.lower() == target:
+                    r3 = ns_patch(f"customer/{customer_id}/addressBook/{line_id}", {
+                        "label": f"(Removed) {contact_name}",
+                        "defaultShipping": False,
+                        "defaultBilling": False,
+                    })
+                    if r3.status_code == 204:
+                        print(f"  [NS] Cleared Ship-To for: {contact_name}")
+                    return
 
 # ============================================================
 # MAIN SYNC FUNCTION
@@ -672,8 +788,7 @@ def sync_parent_record(parent_id, school_info, contacts_to_sync, school_name="")
 
     addr_items = build_address_items(school_info, contacts_to_sync, school_name=school_name)
     if addr_items:
-        ns_patch(f"customer/{parent_id}", {"addressbook": {"items": []}})
-        r = ns_patch(f"customer/{parent_id}", {"addressbook": {"items": addr_items}})
+        r = ns_patch(f"customer/{parent_id}", {"addressBook": {"items": addr_items}})
         if r.status_code == 204:
             print(f"  [PARENT] Updated addresses on parent (ID: {parent_id})")
         else:
