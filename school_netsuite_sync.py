@@ -205,12 +205,14 @@ def main():
         ]
 
         # -- 3. Sync Customer to NetSuite --------------------------------
+        # Pass empty contacts to sync_school so it only syncs the Customer
+        # record (with address items). Contact creation is handled in step 6.
         try:
             result_id, school_info_out, all_found, created = sync_school(
                 school_name=display_name,
                 school_url=url,
                 state=state,
-                sync_contacts=contacts_for_sync,
+                sync_contacts=[],
                 sales_rep=sales_rep or None,
                 ns_customer_id=ns_id or None,
             )

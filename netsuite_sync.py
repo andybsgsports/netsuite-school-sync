@@ -310,7 +310,7 @@ def scrape_wiaa_school_detail(wiaa_url):
 # CUSTOMER (SCHOOL) FUNCTIONS
 # ============================================================
 def get_customer_by_external_id(external_id):
-    resp = ns_get(f"customer/{external_id}?idtype=EXTERNAL_ID")
+    resp = ns_get(f"customer/eid:{external_id}")
     if resp.status_code == 200:
         return resp.json().get("id")
     return None
@@ -429,17 +429,38 @@ def sync_customer(school_name, state, school_info, contacts=None, ns_customer_id
 # CONTACT FUNCTIONS
 # ============================================================
 def get_contact_by_external_id(external_id):
-    resp = ns_get(f"contact/{external_id}?idtype=EXTERNAL_ID")
+    resp = ns_get(f"contact/eid:{external_id}")
     if resp.status_code == 200:
         data = resp.json()
         return data.get("id"), data.get("isInactive", False)
     return None, None
 
-def make_contact_external_id(school_name, email, role):
+def make_contact_external_id(school_name, email, role=None):
+    """Build external ID from school + email. Role is ignored (kept for compat)."""
+    school_slug = slugify(school_name)
+    email_clean = re.sub(r"[^a-z0-9@._-]", "", email.lower())[:50]
+    return f"{school_slug}__{email_clean}"[:150]
+
+def _make_legacy_ext_id(school_name, email, role):
+    """Old format that included role — used for fallback lookups."""
     school_slug = slugify(school_name)
     role_slug   = re.sub(r"[^A-Z0-9]+", "-", role.upper().strip())[:30]
     email_clean = re.sub(r"[^a-z0-9@._-]", "", email.lower())[:50]
     return f"{school_slug}__{role_slug}__{email_clean}"[:150]
+
+def _find_contact_for_customer(customer_id, email):
+    """Search for a contact under a customer by email using the contacts sublist."""
+    resp = ns_get(f"customer/{customer_id}?expand=contactList")
+    if resp.status_code != 200:
+        return None
+    data = resp.json()
+    contact_list = data.get("contactList", {}).get("items", [])
+    for item in contact_list:
+        c = item.get("fields", item)
+        c_email = c.get("email", "")
+        if c_email and c_email.lower() == email.lower():
+            return c.get("contact", {}).get("id") or c.get("id")
+    return None
 
 def sync_contact(customer_id, school_name, contact_row, school_info):
     """
@@ -453,8 +474,13 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
     role  = contact_row.get("role", "")
     state = school_info.get("state", "")
 
-    ext_id = make_contact_external_id(school_name, email, role)
+    ext_id = make_contact_external_id(school_name, email)
     contact_id, is_inactive = get_contact_by_external_id(ext_id)
+
+    # Fallback: try legacy external ID format (included role)
+    if not contact_id and role:
+        legacy_id = _make_legacy_ext_id(school_name, email, role)
+        contact_id, is_inactive = get_contact_by_external_id(legacy_id)
 
     body = {
         "externalId": ext_id,
@@ -475,7 +501,7 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
         return contact_id
 
     elif contact_id:
-        # Update
+        # Update (also migrates external ID to new format)
         r = ns_patch(f"contact/{contact_id}", body)
         if r.status_code == 204:
             print(f"  [NS] Updated Contact: {first} {last} (ID: {contact_id})")
@@ -488,6 +514,16 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
             new_id = extract_id_from_location(r)
             print(f"  [NS] Created Contact: {first} {last} - {role} (ID: {new_id})")
             return new_id
+        elif r.status_code == 400 and "already exists" in r.text:
+            # Contact exists but external ID mismatch — find by customer contact list
+            found_id = _find_contact_for_customer(customer_id, email)
+            if found_id:
+                r2 = ns_patch(f"contact/{found_id}", body)
+                if r2.status_code == 204:
+                    print(f"  [NS] Updated Contact (recovered): {first} {last} (ID: {found_id})")
+                return found_id
+            print(f"  [NS] WARN: contact {first} {last} exists but could not find ID")
+            return None
         else:
             print(f"  [NS] ERROR creating contact {first} {last}: "
                   f"{r.status_code} {r.text[:200]}")
