@@ -108,6 +108,26 @@ def load_sheet(gc):
             elif old_key in row and new_key in row:
                 del row[old_key]
 
+    # Drop ghost rows with no School Name (orphaned from earlier bugs)
+    contacts_data = [r for r in contacts_data if str(r.get(C_SCHOOL, "")).strip()]
+
+    # Deduplicate: keep first occurrence per (school, email, role)
+    # Same email under same school with different roles is legitimate
+    # (e.g., a coach who coaches multiple sports)
+    seen = set()
+    deduped = []
+    for row in contacts_data:
+        key = (str(row.get(C_SCHOOL, "")).strip().lower(),
+               str(row.get(C_EMAIL, "")).strip().lower(),
+               str(row.get(C_ROLE, "")).strip().lower())
+        if key[1] and key in seen:
+            continue
+        seen.add(key)
+        deduped.append(row)
+    if len(deduped) < len(contacts_data):
+        print(f"  [SHEETS] Deduped {len(contacts_data) - len(deduped)} duplicate contacts")
+    contacts_data = deduped
+
     return schools_data, contacts_data, schools_ws, contacts_ws
 
 
@@ -126,13 +146,17 @@ def save_contacts_tab(ws, contacts_data):
     """Overwrite the Contacts tab with updated data."""
     if not contacts_data:
         return
+    # Filter out ghost rows that have no School Name
+    clean = [r for r in contacts_data if str(r.get(C_SCHOOL, "")).strip()]
+    if len(clean) < len(contacts_data):
+        print(f"  [SHEETS] Removed {len(contacts_data) - len(clean)} rows with empty School Name")
     headers = CONTACTS_COLUMNS
     rows = [headers]
-    for row in contacts_data:
+    for row in clean:
         rows.append([str(row.get(h, "") or "") for h in headers])
     ws.clear()
     ws.update(range_name="A1", values=rows)
-    print(f"  [SHEETS] Contacts tab saved ({len(contacts_data)} rows)")
+    print(f"  [SHEETS] Contacts tab saved ({len(clean)} rows)")
 
 
 # -- Main sync ---------------------------------------------------------------
@@ -244,15 +268,17 @@ def main():
         }
 
         # -- 5. Add NEW contacts from WIAA (auto-sync = Y) --------------
-        existing_emails = {
-            c.get(C_EMAIL, "").strip().lower()
+        # Key by (email, role) so same person coaching multiple sports is kept
+        existing_keys = {
+            (c.get(C_EMAIL, "").strip().lower(), c.get(C_ROLE, "").strip().lower())
             for c in school_contacts
             if c.get(C_EMAIL, "").strip()
         }
 
         for person in all_site_contacts:
             em = person.get("email", "").strip().lower()
-            if not em or em in existing_emails:
+            role_key = person.get("role", "").strip().lower()
+            if not em or (em, role_key) in existing_keys:
                 continue
             new_row = {
                 C_SCHOOL: school_name,
@@ -267,7 +293,7 @@ def main():
                 C_SYNCED: "",
             }
             contacts_data.append(new_row)
-            existing_emails.add(em)
+            existing_keys.add((em, role_key))
             print(f"  + New: {person.get('first','')} {person.get('last','')} "
                   f"-- {person.get('role','')} [{person.get('type','')}]")
 
@@ -291,6 +317,10 @@ def main():
             departed = email_lower not in site_emails
 
             if sync_flag == "Y" and not departed:
+                # Skip contacts marked UNLINKED (exist in NS but can't be
+                # found via API -- no point retrying every run)
+                if contact_ns == "UNLINKED":
+                    continue
                 # Active contact still on site -- create or update
                 contact_row = {
                     "first": first, "last": last,
@@ -301,8 +331,11 @@ def main():
                 if new_id:
                     c[C_NS_CID] = str(new_id)
                     c[C_SYNCED] = datetime.now().strftime("%Y-%m-%d %H:%M")
+                elif new_id is None and not contact_ns:
+                    # Contact exists in NS but we can't find ID — mark UNLINKED
+                    c[C_NS_CID] = "UNLINKED"
 
-            elif departed and contact_ns not in ("", "nan", "None") and all_site_contacts:
+            elif departed and contact_ns not in ("", "nan", "None", "UNLINKED") and all_site_contacts:
                 # Contact gone from WIAA -- inactivate (only if scrape succeeded)
                 inactivate_contact(contact_ns, f"{first} {last}")
                 remove_contact_ship_to(result_id, f"{first} {last}")
@@ -310,7 +343,7 @@ def main():
                 c[C_NS_CID] = ""
                 print(f"  - Departed: {first} {last} -- inactivated")
 
-            elif sync_flag == "N" and contact_ns not in ("", "nan", "None"):
+            elif sync_flag == "N" and contact_ns not in ("", "nan", "None", "UNLINKED"):
                 # Manually turned off -- inactivate
                 inactivate_contact(contact_ns, f"{first} {last}")
                 c[C_NS_CID] = ""
