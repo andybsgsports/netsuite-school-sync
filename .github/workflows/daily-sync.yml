@@ -1,0 +1,35 @@
+name: Daily School Sync
+
+on:
+  schedule:
+    # 10:00 UTC = ~5:00 AM Central (4:00 AM CDT / 5:00 AM CST)
+    - cron: '0 10 * * *'
+  workflow_dispatch: {}  # Manual trigger from GitHub UI
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+
+      - name: Run school sync
+        run: python school_netsuite_sync.py
+        env:
+          NS_ACCOUNT: ${{ secrets.NS_ACCOUNT }}
+          NS_CONSUMER_KEY: ${{ secrets.NS_CONSUMER_KEY }}
+          NS_CONSUMER_SEC: ${{ secrets.NS_CONSUMER_SEC }}
+          NS_TOKEN_KEY: ${{ secrets.NS_TOKEN_KEY }}
+          NS_TOKEN_SEC: ${{ secrets.NS_TOKEN_SEC }}
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
