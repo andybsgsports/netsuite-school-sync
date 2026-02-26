@@ -320,12 +320,12 @@ def get_customer_by_external_id(external_id):
         return resp.json().get("id")
     return None
 
-def build_address_items(school_info, contacts):
+def build_address_items(school_info, contacts, school_name=""):
     """
     Build addressbook items list.
     Only creates one Ship-To per contact (Attn: First Last).
-    The school's main address is stored on the Customer record itself
-    and does NOT need a duplicate Ship-To / Bill-To entry here.
+    Sets addressee explicitly to school_name so NetSuite doesn't
+    prepend the customer number (e.g. "1669 Mount Horeb High School").
     """
     addr1 = school_info.get("address1", "")
     city  = school_info.get("city", "")
@@ -345,6 +345,7 @@ def build_address_items(school_info, contacts):
                 "defaultBilling":  False,
                 "label":           full_name,
                 "addressbookAddress": {
+                    "addressee": school_name or "",
                     "attention": full_name,
                     "addr1":     addr1,
                     "city":      city,
@@ -355,6 +356,42 @@ def build_address_items(school_info, contacts):
             })
 
     return items
+
+def _set_sales_team(customer_id, team_item):
+    """
+    Set the sales team on an existing customer.
+    If a salesTeam line already exists, PATCH it in-place (changing employee).
+    If no salesTeam exists, add via customer-level PATCH.
+    """
+    emp_name = team_item.get("employee", {}).get("id", "?")
+
+    # Check for existing salesTeam items
+    r = ns_get(f"customer/{customer_id}?expand=salesTeam")
+    if r.status_code != 200:
+        print(f"  [NS] WARN: could not read salesTeam for customer {customer_id}")
+        return
+
+    existing = r.json().get("salesTeam", {}).get("items", [])
+
+    if existing:
+        # PATCH the first existing line item in-place
+        href = existing[0].get("links", [{}])[0].get("href", "")
+        if "/v1/" in href:
+            path = href.split("/v1/")[1]
+            r2 = ns_patch(path, team_item)
+            if r2.status_code == 204:
+                print(f"  [NS] Updated Sales Team on customer {customer_id}")
+            else:
+                print(f"  [NS] WARN: salesTeam patch failed: {r2.status_code} {r2.text[:150]}")
+    else:
+        # No existing team — add via customer body
+        r2 = ns_patch(f"customer/{customer_id}", {
+            "salesTeam": {"items": [team_item]}
+        })
+        if r2.status_code == 204:
+            print(f"  [NS] Added Sales Team on customer {customer_id}")
+        else:
+            print(f"  [NS] WARN: salesTeam add failed: {r2.status_code} {r2.text[:150]}")
 
 def build_customer_body(school_name, state, school_info, contacts=None, sales_rep=None):
     """Build the full Customer record body."""
@@ -401,7 +438,7 @@ def build_customer_body(school_name, state, school_info, contacts=None, sales_re
             }
 
     # Build addressbook with school addresses + per-contact Ship-Tos
-    addr_items = build_address_items(school_info, contacts or [])
+    addr_items = build_address_items(school_info, contacts or [], school_name=full_name)
     if addr_items:
         body["addressbook"] = {"items": addr_items}
 
@@ -426,12 +463,20 @@ def sync_customer(school_name, state, school_info, contacts=None, ns_customer_id
 
     if ns_customer_id:
         # ── Direct PATCH — bypass all name/externalId matching ──────────────
+        # Handle salesTeam separately (can't add if one already exists)
+        sales_team_data = body.pop("salesTeam", None)
+
         ns_patch(f"customer/{ns_customer_id}", {"addressbook": {"items": []}})
         r = ns_patch(f"customer/{ns_customer_id}", body)
         if r.status_code == 204:
             print(f"  [NS] Updated Customer: {body['companyName']} (ID: {ns_customer_id})")
         else:
             print(f"  [NS] ERROR updating customer: {r.status_code} {r.text[:200]}")
+
+        # Set sales team: PATCH existing line or add new one
+        if sales_team_data:
+            _set_sales_team(ns_customer_id, sales_team_data["items"][0])
+
         return ns_customer_id, False
     else:
         # ── No ID yet — create new Customer ─────────────────────────────────
@@ -616,7 +661,7 @@ def sync_school(school_name, school_url, state, sync_contacts, sales_rep=None,
 # ============================================================
 # PARENT RECORD SYNC
 # ============================================================
-def sync_parent_record(parent_id, school_info, contacts_to_sync):
+def sync_parent_record(parent_id, school_info, contacts_to_sync, school_name=""):
     """
     Update a Parent (District) customer record:
     - ONLY updates the addressbook (per-contact Ship-Tos)
@@ -625,7 +670,7 @@ def sync_parent_record(parent_id, school_info, contacts_to_sync):
     """
     print(f"  [PARENT] Updating parent record (ID: {parent_id}) - contacts & addresses only")
 
-    addr_items = build_address_items(school_info, contacts_to_sync)
+    addr_items = build_address_items(school_info, contacts_to_sync, school_name=school_name)
     if addr_items:
         ns_patch(f"customer/{parent_id}", {"addressbook": {"items": []}})
         r = ns_patch(f"customer/{parent_id}", {"addressbook": {"items": addr_items}})
