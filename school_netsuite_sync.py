@@ -320,6 +320,8 @@ def main():
         # -- 6b. Sync Ship-To addresses for all active contacts ----------
         # Uses additive approach: only adds addresses for contacts that
         # don't already have one (PATCH always adds to addressBook).
+        # Note: Ship-To only needs the contact name + school address,
+        # NOT the NS Contact ID (many pre-existing contacts lack IDs).
         active_contacts = [
             {
                 "first": str(c.get(C_FIRST, "")).strip(),
@@ -330,7 +332,6 @@ def main():
             for c in contacts_data
             if c.get(C_SCHOOL, "").strip() == school_name
             and str(c.get(C_SYNC, "N")).strip().upper() == "Y"
-            and str(c.get(C_NS_CID, "")).strip() not in ("", "nan", "None")
         ]
         if active_contacts and school_info_out:
             sync_address_book(result_id, school_info_out, active_contacts,
