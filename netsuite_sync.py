@@ -399,26 +399,36 @@ def sync_address_book(customer_id, school_info, contacts, school_name=""):
     if not contact_names:
         return
 
-    # Get existing address labels in ONE API call via SuiteQL.
-    # This replaces N+1 REST calls with a single query.
+    # Get existing address labels to avoid creating duplicates.
+    # The expand only returns links (not labels), so we sample ONE item
+    # to check if it has a label matching a known contact. If it does,
+    # all addresses are likely already created and we skip the full check.
     existing_labels = set()
-    rows = ns_suiteql(
-        f"SELECT label FROM CustomerAddressbook WHERE entity = {customer_id}"
-    )
-    for row in rows:
-        lbl = (row.get("label") or "").strip()
-        if lbl:
-            existing_labels.add(lbl.lower())
-
-    # Fallback: if SuiteQL returned nothing, try REST expand
-    if not existing_labels:
-        r = ns_get(f"customer/{customer_id}?expand=addressBook")
-        if r.status_code == 200:
-            items = r.json().get("addressBook", {}).get("items", [])
+    r = ns_get(f"customer/{customer_id}?expand=addressBook")
+    if r.status_code == 200:
+        items = r.json().get("addressBook", {}).get("items", [])
+        if items:
+            # Sample the last item (most recently added) to check for a label match
+            sample_href = items[-1].get("links", [{}])[0].get("href", "")
+            sample_id = sample_href.rstrip("/").split("/")[-1] if sample_href else None
+            if sample_id:
+                r2 = ns_get(f"customer/{customer_id}/addressBook/{sample_id}")
+                if r2.status_code == 200:
+                    sample_label = r2.json().get("label", "").strip()
+                    if sample_label and sample_label.lower() in {n.lower() for n in contact_names}:
+                        # Sample matches a contact — addresses likely all created
+                        print(f"  [NS] Ship-To addresses already exist ({len(contact_names)} contacts)")
+                        return
+            # Sample didn't match — need full check for all labels
             for item in items:
-                label = item.get("label", "").strip()
-                if label:
-                    existing_labels.add(label.lower())
+                href = item.get("links", [{}])[0].get("href", "")
+                line_id = href.rstrip("/").split("/")[-1] if href else None
+                if line_id:
+                    r2 = ns_get(f"customer/{customer_id}/addressBook/{line_id}")
+                    if r2.status_code == 200:
+                        lbl = r2.json().get("label", "").strip()
+                        if lbl:
+                            existing_labels.add(lbl.lower())
 
     # Build items only for contacts that don't already have an address
     new_items = []
@@ -604,27 +614,13 @@ def _make_legacy_ext_id(school_name, email, role):
     return f"{school_slug}__{role_slug}__{email_clean}"[:150]
 
 def _find_contact_for_customer(customer_id, email):
-    """Search for a contact under a customer by email.
+    """Search for a contact under a customer by email using the contacts sublist.
 
-    Uses SuiteQL first (fast, single call), then falls back to REST expand.
+    Note: SuiteQL and REST search are both blocked by the current role's
+    permissions, so this falls back to the contactList expand. Many schools
+    have empty contactList (contacts linked via company field but not the
+    sublist), so this often returns None.
     """
-    # Fast path: SuiteQL query for contact by email + company
-    safe_email = email.replace("'", "''")
-    rows = ns_suiteql(
-        f"SELECT id, isinactive FROM Contact "
-        f"WHERE email = '{safe_email}' AND company = {customer_id}"
-    )
-    if rows:
-        return rows[0].get("id")
-
-    # Broader: search by email only (contact might be linked differently)
-    rows = ns_suiteql(
-        f"SELECT id, isinactive FROM Contact WHERE email = '{safe_email}'"
-    )
-    if rows:
-        return rows[0].get("id")
-
-    # Fallback: REST expand (slower)
     resp = ns_get(f"customer/{customer_id}?expand=contactList")
     if resp.status_code != 200:
         return None
@@ -656,16 +652,6 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
     if not contact_id and role:
         legacy_id = _make_legacy_ext_id(school_name, email, role)
         contact_id, is_inactive = get_contact_by_external_id(legacy_id)
-
-    # Fallback: SuiteQL search by email (finds pre-existing contacts without ext IDs)
-    if not contact_id and email:
-        safe_email = email.replace("'", "''")
-        rows = ns_suiteql(
-            f"SELECT id, isinactive FROM Contact WHERE email = '{safe_email}'"
-        )
-        if rows:
-            contact_id = str(rows[0].get("id", ""))
-            is_inactive = rows[0].get("isinactive") in (True, "T", "t")
 
     body = {
         "externalId": ext_id,
@@ -727,51 +713,31 @@ def remove_contact_ship_to(customer_id, contact_name):
     Remove a specific contact's Ship-To address from the Customer addressbook.
 
     NetSuite REST API PATCH always ADDS to addressBook — it cannot delete entries.
-    So we find the matching address line via SuiteQL and PATCH it individually to
-    mark it as removed (changing the label so it won't match future contacts).
+    So we find the matching address line and PATCH it individually to mark it as
+    removed (changing the label so it won't match future contacts).
     """
     target = contact_name.strip().lower()
-
-    # Use SuiteQL to find the address line ID by label (1 API call)
-    rows = ns_suiteql(
-        f"SELECT addressbookaddress_key, label FROM CustomerAddressbook "
-        f"WHERE entity = {customer_id}"
-    )
-    for row in rows:
-        lbl = (row.get("label") or "").strip()
-        line_key = row.get("addressbookaddress_key")
-        if lbl.lower() == target and line_key:
-            r2 = ns_patch(f"customer/{customer_id}/addressBook/{line_key}", {
-                "label": f"(Removed) {contact_name}",
-                "defaultShipping": False,
-                "defaultBilling": False,
-            })
-            if r2.status_code == 204:
-                print(f"  [NS] Cleared Ship-To for: {contact_name}")
-            else:
-                print(f"  [NS] WARN: could not clear Ship-To for "
-                      f"{contact_name}: {r2.status_code}")
-            return
-
-    # Fallback: try REST expand if SuiteQL didn't find it
     r = ns_get(f"customer/{customer_id}?expand=addressBook")
     if r.status_code != 200:
         return
+
     items = r.json().get("addressBook", {}).get("items", [])
     for item in items:
-        label = item.get("label", "").strip()
-        if label.lower() == target:
-            href = item.get("links", [{}])[0].get("href", "")
-            if "/v1/" in href:
-                path = href.split("/v1/")[1]
-                r2 = ns_patch(path, {
-                    "label": f"(Removed) {contact_name}",
-                    "defaultShipping": False,
-                    "defaultBilling": False,
-                })
-                if r2.status_code == 204:
-                    print(f"  [NS] Cleared Ship-To for: {contact_name}")
-            return
+        href = item.get("links", [{}])[0].get("href", "")
+        line_id = href.rstrip("/").split("/")[-1] if href else None
+        if line_id:
+            r2 = ns_get(f"customer/{customer_id}/addressBook/{line_id}")
+            if r2.status_code == 200:
+                lbl = r2.json().get("label", "").strip()
+                if lbl.lower() == target:
+                    r3 = ns_patch(f"customer/{customer_id}/addressBook/{line_id}", {
+                        "label": f"(Removed) {contact_name}",
+                        "defaultShipping": False,
+                        "defaultBilling": False,
+                    })
+                    if r3.status_code == 204:
+                        print(f"  [NS] Cleared Ship-To for: {contact_name}")
+                    return
 
 # ============================================================
 # MAIN SYNC FUNCTION
