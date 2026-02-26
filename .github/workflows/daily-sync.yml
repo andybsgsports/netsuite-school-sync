@@ -4,7 +4,7 @@ on:
   schedule:
     # 10:00 UTC = ~5:00 AM Central (4:00 AM CDT / 5:00 AM CST)
     - cron: '0 10 * * *'
-  workflow_dispatch: {}  # Manual trigger from GitHub UI
+  workflow_dispatch:  # Manual trigger from GitHub UI
 
 jobs:
   sync:
