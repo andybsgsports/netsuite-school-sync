@@ -1,11 +1,11 @@
 """
 create_missing_ns_customers.py
 ------------------------------
-One-off: for rows on Schools_Master where Match Confidence == "none"
+One-off: for rows on Schools where Match Confidence == "none"
 (no NS customer exists for the school at all), scrape the source
 (WIAA for WI, IHSA API for IL), and CREATE a NetSuite customer record
 using that info. Writes the newly-created NS Customer ID back to the
-Schools_Master tab.
+Schools tab.
 
 Only touches rows with:
   - NS Customer ID blank
@@ -47,7 +47,7 @@ GOOGLE_SCOPES = [
 SHEET_ID = os.environ.get(
     "GOOGLE_SHEET_ID", "1iWhtasin-gmk3jllDvls7G1eI_pgzMm4yfQUP_qZHEM"
 )
-MASTER_TAB = "Schools_Master"
+MASTER_TAB = "Schools"
 
 IHSA_API = "https://api.ihsa.org/v1"
 IHSA_HEADERS = {
@@ -190,7 +190,7 @@ def main():
     for row_idx, r in targets:
         name  = str(r["School Name"]).strip()
         state = str(r["State"]).strip() or "WI"
-        url   = str(r["Scraper URL"]).strip()
+        url   = str(r["School URL"]).strip()
         rep   = str(r.get("Sales Rep", "")).strip() or None
 
         print(f"\n[CREATE] {name}  ({state})")

@@ -56,12 +56,12 @@ IHSA_API = "https://api.ihsa.org/v1"
 
 SCHOOL_FILTER = os.environ.get("SCHOOL_FILTER", "").strip()
 
-# Schools_Master columns
-MASTER_TAB   = "Schools_Master"
+# Schools tab columns
+MASTER_TAB   = "Schools"
 STATE_FILTER = "IL"
 M_NAME       = "School Name"
 M_STATE      = "State"
-M_URL        = "Scraper URL"
+M_URL        = "School URL"
 M_SALES      = "Sales Rep"
 M_NS_ID      = "NS Customer ID"
 M_LOCKED     = "Locked"
