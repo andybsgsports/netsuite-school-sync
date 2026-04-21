@@ -147,10 +147,21 @@ def parse_role_type(job_title):
 def scrape_il_school(driver, url, school_name, state, domain_rules, exceptions):
     """Returns list of contact dicts matching Contacts-tab shape."""
     driver.get(ihsa_url_from_id_or_url(url))
+    # IHSA is a React SPA — body tag shows up long before content renders.
+    # Wait for either a mailto link or the word "Coach"/"Director" in the page.
     try:
-        WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
+        WebDriverWait(driver, 30).until(
+            lambda d: (
+                len(d.find_elements(By.XPATH,
+                    "//a[starts-with(translate(@href,'MAILTO','mailto'),'mailto:')]")) > 0
+                or "@" in d.find_element(By.TAG_NAME, "body").text
+            )
+        )
     except Exception:
-        pass
+        # Give it a bit more in case of slow render, then proceed anyway
+        time.sleep(5)
+    # Small extra settle
+    time.sleep(1.5)
     try:
         people = extract_people(driver)
     except Exception as exc:
