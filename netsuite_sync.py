@@ -597,18 +597,55 @@ def get_contact_by_external_id(external_id):
         return data.get("id"), data.get("isInactive", False)
     return None, None
 
-def make_contact_external_id(school_name, email, role=None):
-    """Build external ID from school + email. Role is ignored (kept for compat)."""
+def make_contact_external_id(email, *_ignored):
+    """
+    One NetSuite contact per person, keyed by email only.
+
+    Previously we keyed contacts by (school, email), which created duplicates
+    for co-op coaches who serve multiple schools (e.g. Adam McDonald coaching
+    Girls Golf at Waukesha North + South + West, or the Barneveld + Mt Horeb
+    football co-op).  The *_ignored signature keeps old callers working if
+    they still pass (school_name, email, role).
+    """
+    email_clean = re.sub(r"[^a-z0-9@._-]", "", (email or "").lower())[:80]
+    return f"EM_{email_clean}"[:150]
+
+
+def _make_legacy_school_ext_id(school_name, email):
+    """Prior format: SCHOOL__email (per-school dedup). Used for fallback lookup."""
     school_slug = slugify(school_name)
-    email_clean = re.sub(r"[^a-z0-9@._-]", "", email.lower())[:50]
+    email_clean = re.sub(r"[^a-z0-9@._-]", "", (email or "").lower())[:50]
     return f"{school_slug}__{email_clean}"[:150]
 
+
 def _make_legacy_ext_id(school_name, email, role):
-    """Old format that included role — used for fallback lookups."""
+    """Oldest format: SCHOOL__ROLE__email. Used for fallback lookup."""
     school_slug = slugify(school_name)
-    role_slug   = re.sub(r"[^A-Z0-9]+", "-", role.upper().strip())[:30]
-    email_clean = re.sub(r"[^a-z0-9@._-]", "", email.lower())[:50]
+    role_slug   = re.sub(r"[^A-Z0-9]+", "-", (role or "").upper().strip())[:30]
+    email_clean = re.sub(r"[^a-z0-9@._-]", "", (email or "").lower())[:50]
     return f"{school_slug}__{role_slug}__{email_clean}"[:150]
+
+
+def find_contact_any_format(school_name, email, role=""):
+    """
+    Locate an existing NS contact by trying each external-ID format in order:
+      1. new:     EM_{email}         (email-only, the current scheme)
+      2. legacy:  {SCHOOL}__{email}  (per-school dedup era)
+      3. oldest:  {SCHOOL}__{ROLE}__{email}
+    Returns (contact_id, is_inactive, found_via) with found_via describing
+    which format hit. None values if nothing found.
+    """
+    cid, inactive = get_contact_by_external_id(make_contact_external_id(email))
+    if cid:
+        return cid, inactive, "email"
+    cid, inactive = get_contact_by_external_id(_make_legacy_school_ext_id(school_name, email))
+    if cid:
+        return cid, inactive, "legacy_school"
+    if role:
+        cid, inactive = get_contact_by_external_id(_make_legacy_ext_id(school_name, email, role))
+        if cid:
+            return cid, inactive, "legacy_school_role"
+    return None, None, None
 
 def _find_contact_for_customer(customer_id, email):
     """Search for a contact under a customer by email using the contacts sublist.
@@ -642,15 +679,15 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
     role  = contact_row.get("role", "")
     state = school_info.get("state", "")
 
-    ext_id = make_contact_external_id(school_name, email)
-    contact_id, is_inactive = get_contact_by_external_id(ext_id)
+    # One NS contact per email (person). Lookup tries new format first,
+    # then falls back through the two legacy formats.
+    ext_id = make_contact_external_id(email)
+    contact_id, is_inactive, found_via = find_contact_any_format(school_name, email, role)
 
-    # Fallback: try legacy external ID format (included role)
-    if not contact_id and role:
-        legacy_id = _make_legacy_ext_id(school_name, email, role)
-        contact_id, is_inactive = get_contact_by_external_id(legacy_id)
-
-    body = {
+    # Base body for CREATE. For UPDATE we strip `company` below so we never
+    # stomp on the primary-customer link of a contact already owned by
+    # another school in a co-op situation.
+    body_create = {
         "externalId": ext_id,
         "firstName":  first,
         "lastName":   last,
@@ -661,23 +698,32 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
     }
 
     if contact_id and is_inactive:
-        # Reactivate
-        body["isInactive"] = False
-        r = ns_patch(f"contact/{contact_id}", body)
+        body_update = {k: v for k, v in body_create.items() if k != "company"}
+        body_update["isInactive"] = False
+        body_update["externalId"] = ext_id  # migrate to new format
+        r = ns_patch(f"contact/{contact_id}", body_update)
         if r.status_code == 204:
             print(f"  [NS] Reactivated Contact: {first} {last} (ID: {contact_id})")
         return contact_id
 
     elif contact_id:
-        # Update (also migrates external ID to new format)
-        r = ns_patch(f"contact/{contact_id}", body)
+        # Existing contact — update descriptive fields only. Leaving `company`
+        # out preserves whichever school was first-synced as the primary.
+        # Also migrates the external ID to the new email-based format.
+        body_update = {k: v for k, v in body_create.items() if k != "company"}
+        body_update["externalId"] = ext_id
+        r = ns_patch(f"contact/{contact_id}", body_update)
         if r.status_code == 204:
-            print(f"  [NS] Updated Contact: {first} {last} (ID: {contact_id})")
+            if found_via == "email":
+                print(f"  [NS] Updated Contact: {first} {last} (ID: {contact_id})")
+            else:
+                print(f"  [NS] Updated Contact (migrated from {found_via}): {first} {last} (ID: {contact_id})")
         return contact_id
 
     else:
-        # Create
-        r = ns_post("contact", body)
+        # Create fresh — include company as the primary link.
+        r = ns_post("contact", body_create)
+        body = body_create  # kept for the error-path recovery block below
         if r.status_code == 204:
             new_id = extract_id_from_location(r)
             print(f"  [NS] Created Contact: {first} {last} - {role} (ID: {new_id})")
@@ -857,8 +903,7 @@ def sync_changes_to_netsuite(added_rows, removed_rows, columns):
         if not customer_id:
             continue
 
-        contact_ext = make_contact_external_id(school, email, role)
-        contact_id, is_inactive = get_contact_by_external_id(contact_ext)
+        contact_id, is_inactive, _ = find_contact_any_format(school, email, role)
         if contact_id and not is_inactive:
             inactivate_contact(contact_id, f"{first} {last}")
             remove_contact_ship_to(customer_id, f"{first} {last}")
