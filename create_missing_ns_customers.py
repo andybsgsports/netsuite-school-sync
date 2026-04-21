@@ -72,6 +72,16 @@ def get_gspread_client():
     return gspread.authorize(creds)
 
 
+def _normalize_url(u):
+    """NetSuite rejects bare domains on the url field — require http(s)://."""
+    u = (u or "").strip()
+    if not u:
+        return ""
+    if not u.lower().startswith(("http://", "https://")):
+        u = "https://" + u
+    return u
+
+
 def fetch_ihsa_school_info(url):
     """Return a school_info dict compatible with sync_customer()."""
     m = re.search(r"/details/(\d+)", url or "")
@@ -87,7 +97,7 @@ def fetch_ihsa_school_info(url):
         "school_class":  d.get("PublicPrivate") or "",
         "nickname":      (d.get("NicknameBoys") or d.get("NicknameGirls") or "").strip(),
         "colors":        d.get("Colors") or "",
-        "conference":    "",       # IHSA has Conferences as list; leave blank for now
+        "conference":    "",
         "wiaa_district": "",
         "school_size":   "",
         "state":         "IL",
@@ -97,7 +107,7 @@ def fetch_ihsa_school_info(url):
         "city":          d.get("City") or "",
         "zip":           d.get("Zip") or "",
         "phone":         d.get("Phone") or "",
-        "website":       d.get("URL") or "",
+        "website":       _normalize_url(d.get("URL") or ""),
     }
 
 
