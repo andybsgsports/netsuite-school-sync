@@ -148,19 +148,19 @@ def scrape_rep(rep_name, schools):
             continue
         for a in scraped_admins:
             admins.append({
-                "School":     school.title(),
+                "School":     smart_title(school),
                 "Role":       canonical_admin_role(a.get("role", "")),
-                "First Name": (a.get("first") or "").title(),
-                "Last Name":  (a.get("last") or "").title(),
+                "First Name": smart_title(a.get("first") or ""),
+                "Last Name":  smart_title(a.get("last") or ""),
                 "Email":      a.get("email", ""),
                 "State":      "WI",
             })
         for c in scraped_coaches:
             coaches.append({
-                "School":     school.title(),
+                "School":     smart_title(school),
                 "Sport":      c.get("role", ""),  # netsuite_sync returns sport in role
-                "First Name": (c.get("first") or "").title(),
-                "Last Name":  (c.get("last") or "").title(),
+                "First Name": smart_title(c.get("first") or ""),
+                "Last Name":  smart_title(c.get("last") or ""),
                 "Role":       c.get("type", ""),  # Head Coach / Assistant Coach / Coach
                 "Email":      c.get("email", ""),
                 "State":      "WI",
@@ -211,14 +211,14 @@ def scrape_il_schools(il_schools):
                 # IHSA sometimes returns DefaultTitle=null placeholder rows for
                 # a coach who has other real entries in the same section — skip.
                 continue
-            first = (p.get("first") or "").title()
-            last = (p.get("last") or "").title()
+            first = smart_title(p.get("first") or "")
+            last = smart_title(p.get("last") or "")
             is_admin = role_id.startswith(IL_ADMIN_PREFIXES) or \
                        p.get("type") in ("Admin", "Medical")
             if is_admin:
                 admins.append({
-                    "School":     school.title(),
-                    "Role":       canonical_admin_role(role_name) if role_id in IL_ATHLETIC_AD_ROLE_IDS else role_name.title(),
+                    "School":     smart_title(school),
+                    "Role":       canonical_admin_role(role_name) if role_id in IL_ATHLETIC_AD_ROLE_IDS else smart_title(role_name),
                     "First Name": first,
                     "Last Name":  last,
                     "Email":      p["email"],
@@ -233,7 +233,7 @@ def scrape_il_schools(il_schools):
                              "Coach"
                 sport = re.sub(r"\s*(Head\s+)?Coach\s*$", "", rn).strip() or rn
                 coaches.append({
-                    "School":     school.title(),
+                    "School":     smart_title(school),
                     "Sport":      sport,
                     "First Name": first,
                     "Last Name":  last,
@@ -249,6 +249,23 @@ def _norm(s):
     return re.sub(r"\s+", " ", ("" if s is None else str(s)).strip())
 
 
+def smart_title(s):
+    """
+    Like str.title() but:
+      - doesn't capitalize after apostrophes ("Principal's", not "Principal'S")
+      - leaves already-mixed-case input alone ("McDonald" stays "McDonald")
+    """
+    t = str(s or "")
+    if not t:
+        return t
+    # If the string has any mixed case (e.g. "McDonald", "D'Andrea"), preserve it.
+    if t != t.lower() and t != t.upper():
+        return t
+    return re.sub(r"\b[a-zA-Z]+(?:'[a-zA-Z]+)?",
+                  lambda m: m.group(0)[0].upper() + m.group(0)[1:].lower(),
+                  t)
+
+
 def canonical_admin_role(role):
     r = _norm(role)
     low = r.lower()
@@ -259,14 +276,14 @@ def canonical_admin_role(role):
     if "activities director" in low:
         return "Activities Director"
     if "supervisor" in low:
-        return r.title()
+        return smart_title(r)
     if "athletic director" in low and "assistant" not in low:
         if "boys" in low:
             return "Boys Athletic Director"
         if "girls" in low:
             return "Girls Athletic Director"
         return "Athletic Director"
-    return r.title()
+    return smart_title(r)
 
 
 def dedup_admins(admins):
@@ -291,7 +308,7 @@ def sport_group_of(sport):
     s = re.sub(r"\b(Boys|Girls)\b", "", str(sport), flags=re.IGNORECASE)
     s = re.sub(r"[-_&]", " ", s)
     s = re.sub(r"\s+", " ", s).strip()
-    return s.title()
+    return smart_title(s)
 
 
 def dedup_coaches(coaches):
