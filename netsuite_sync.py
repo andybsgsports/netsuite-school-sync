@@ -127,6 +127,12 @@ def ns_patch(path, body):
         "Authorization": make_auth("PATCH", url),
         "Content-Type": "application/json"}, json=body)
 
+def ns_delete(path):
+    url = f"{BASE_URL}/{path}"
+    return requests.delete(url, headers={
+        "Authorization": make_auth("DELETE", url),
+        "Content-Type": "application/json"})
+
 SUITEQL_URL = f"https://{NS_ACCOUNT}.suitetalk.api.netsuite.com/services/rest/query/v1/suiteql"
 
 def ns_suiteql(query, limit=1000):
@@ -399,41 +405,30 @@ def sync_address_book(customer_id, school_info, contacts, school_name=""):
     if not contact_names:
         return
 
-    # Get existing address labels to avoid creating duplicates.
-    # The expand only returns links (not labels), so we sample ONE item
-    # to check if it has a label matching a known contact. If it does,
-    # all addresses are likely already created and we skip the full check.
+    # Build the set of existing labels by reading each addressBook line.
+    # expand=addressBook returns only links, not labels, so every line must
+    # be fetched individually. We do NOT short-circuit on a sampled entry —
+    # that was unreliable when the sample happened to be a Bill-To or a
+    # pre-existing Ship-To, and it caused the same contacts to be re-added
+    # on every run (80+ duplicate Ship-Tos on Barneveld as of Apr 2026).
     existing_labels = set()
     r = ns_get(f"customer/{customer_id}?expand=addressBook")
     if r.status_code == 200:
         items = r.json().get("addressBook", {}).get("items", [])
-        if items:
-            # Sample the last item (most recently added) to check for a label match
-            sample_href = items[-1].get("links", [{}])[0].get("href", "")
-            sample_id = sample_href.rstrip("/").split("/")[-1] if sample_href else None
-            if sample_id:
-                r2 = ns_get(f"customer/{customer_id}/addressBook/{sample_id}")
-                if r2.status_code == 200:
-                    sample_label = r2.json().get("label", "").strip()
-                    if sample_label and sample_label.lower() in {n.lower() for n in contact_names}:
-                        # Sample matches a contact — addresses likely all created
-                        print(f"  [NS] Ship-To addresses already exist ({len(contact_names)} contacts)")
-                        return
-            # Sample didn't match — need full check for all labels
-            for item in items:
-                href = item.get("links", [{}])[0].get("href", "")
-                line_id = href.rstrip("/").split("/")[-1] if href else None
-                if line_id:
-                    r2 = ns_get(f"customer/{customer_id}/addressBook/{line_id}")
-                    if r2.status_code == 200:
-                        lbl = r2.json().get("label", "").strip()
-                        if lbl:
-                            existing_labels.add(lbl.lower())
+        for item in items:
+            href = item.get("links", [{}])[0].get("href", "")
+            line_id = href.rstrip("/").split("/")[-1] if href else None
+            if not line_id:
+                continue
+            r2 = ns_get(f"customer/{customer_id}/addressBook/{line_id}")
+            if r2.status_code == 200:
+                lbl = (r2.json().get("label") or "").strip()
+                if lbl:
+                    existing_labels.add(lbl.lower())
 
-    # Build items only for contacts that don't already have an address
     new_items = []
     for name in contact_names:
-        if name.strip().lower() not in existing_labels:
+        if name.lower() not in existing_labels:
             new_items.append({
                 "defaultShipping": False,
                 "defaultBilling":  False,
@@ -453,11 +448,13 @@ def sync_address_book(customer_id, school_info, contacts, school_name=""):
         r = ns_patch(f"customer/{customer_id}",
                      {"addressBook": {"items": new_items}})
         if r.status_code == 204:
-            print(f"  [NS] Added {len(new_items)} new Ship-To addresses")
+            print(f"  [NS] Added {len(new_items)} new Ship-To address(es) "
+                  f"({len(existing_labels)} already on record)")
         else:
             print(f"  [NS] WARN: address add failed: {r.status_code} {r.text[:150]}")
     else:
-        print(f"  [NS] Ship-To addresses up to date ({len(contact_names)} contacts)")
+        print(f"  [NS] Ship-To addresses up to date "
+              f"({len(contact_names)} contacts, {len(existing_labels)} on record)")
 
 def _set_sales_team(customer_id, team_item):
     """
