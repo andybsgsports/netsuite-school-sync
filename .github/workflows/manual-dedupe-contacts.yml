@@ -1,0 +1,50 @@
+name: Manual Cleanup - Duplicate Contacts
+
+on:
+  workflow_dispatch:
+    inputs:
+      email:
+        description: 'Optional: limit to a single email address (smoke test).'
+        required: false
+        default: ''
+      live:
+        description: 'Actually inactivate dupes and rewrite the sheet? (unchecked = dry-run)'
+        required: true
+        default: false
+        type: boolean
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+
+      - name: Run contact dedupe (${{ inputs.live && 'LIVE' || 'DRY-RUN' }})
+        run: |
+          ARGS=""
+          if [ -n "${{ inputs.email }}" ]; then
+            ARGS="--email ${{ inputs.email }}"
+          fi
+          if [ "${{ inputs.live }}" = "true" ]; then
+            ARGS="$ARGS --live"
+          fi
+          python cleanup_duplicate_contacts.py $ARGS
+        env:
+          NS_ACCOUNT:              ${{ secrets.NS_ACCOUNT }}
+          NS_CONSUMER_KEY:         ${{ secrets.NS_CONSUMER_KEY }}
+          NS_CONSUMER_SEC:         ${{ secrets.NS_CONSUMER_SEC }}
+          NS_TOKEN_KEY:            ${{ secrets.NS_TOKEN_KEY }}
+          NS_TOKEN_SEC:            ${{ secrets.NS_TOKEN_SEC }}
+          GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
