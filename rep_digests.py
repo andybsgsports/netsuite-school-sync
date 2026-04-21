@@ -42,6 +42,7 @@ from openpyxl.worksheet.table import Table, TableStyleInfo
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from netsuite_sync import scrape_wiaa_school_detail
+from ihsa_sync import fetch_school_staff, fetch_email, extract_school_id
 
 # -- Config -------------------------------------------------------------------
 GOOGLE_SHEET_ID_REPS = os.environ.get(
@@ -71,7 +72,8 @@ ATHLETIC_AD_ROLES = {
 # derived from the old per-rep scripts where available and my best guess
 # otherwise. Update before flipping DRY_RUN off.
 REPS = [
-    {"name": "Andrew Murray", "email": "andy@bsgsports.com",   "cc": None},
+    # Andy also gets IL schools (IHSA API) in his digest — only rep with IL.
+    {"name": "Andrew Murray", "email": "andy@bsgsports.com",   "cc": None, "include_il": True},
     {"name": "Jeff Howard",   "email": "howie@bsgsports.com",  "cc": None},
     {"name": "Tyler Fuhrman", "email": "tyler@bsgsports.com",  "cc": None},
     {"name": "Kyle Loughrin", "email": "kylel@bsgsports.com",  "cc": None},
@@ -79,6 +81,8 @@ REPS = [
     {"name": "John Viles",    "email": "johnv@bsgsports.com",  "cc": None},
     {"name": "Jeff Wedvick",  "email": "wedge@bsgsports.com",  "cc": None},
 ]
+
+GOOGLE_SHEET_ID_MAIN = os.environ.get("GOOGLE_SHEET_ID", "")  # for IL_Schools tab
 
 DRY_RUN = os.environ.get("DRY_RUN", "") == "1"
 REP_FILTER = os.environ.get("REP_FILTER", "").strip()
@@ -113,6 +117,24 @@ def load_rep_schools(gc):
     return by_rep
 
 
+def load_il_schools(gc):
+    """Returns [(school_name, school_website), ...] from IL_Schools tab."""
+    if not GOOGLE_SHEET_ID_MAIN:
+        return []
+    wb = gc.open_by_key(GOOGLE_SHEET_ID_MAIN)
+    try:
+        ws = wb.worksheet("IL_Schools")
+    except Exception:
+        return []
+    out = []
+    for row in ws.get_all_records():
+        school = str(row.get("Schools", "")).strip()
+        url = str(row.get("School Website", "")).strip()
+        if school and url:
+            out.append((school, url))
+    return out
+
+
 # -- Scraping helpers --------------------------------------------------------
 def scrape_rep(rep_name, schools):
     """Scrape every school assigned to `rep_name`. Returns (admins, coaches)."""
@@ -144,6 +166,78 @@ def scrape_rep(rep_name, schools):
                 "State":      "WI",
             })
         time.sleep(DELAY_BETWEEN_SCHOOLS)
+    return dedup_admins(admins), dedup_coaches(coaches)
+
+
+# IHSA role IDs that belong on the Administrators-style sheets rather than a
+# sport-coach sheet. Prefix meanings: A* / B* = Admin, G* = Medical, everything
+# else is a coach / activity head.
+IL_ADMIN_PREFIXES = ("A", "B", "G")
+# Admin role-IDs that specifically belong on the Athletic Admins sheet
+IL_ATHLETIC_AD_ROLE_IDS = {"B2-AthDir", "C1-BoysAD", "C1-GirlsAD"}
+
+
+def scrape_il_schools(il_schools):
+    """
+    Scrape IL via IHSA API. Returns (admins, coaches) in the same row shape
+    as scrape_rep() so they can be merged into Andy's combined xlsx.
+    """
+    admins, coaches = [], []
+    for i, (school, url) in enumerate(il_schools, 1):
+        school_id = extract_school_id(url)
+        if not school_id:
+            print(f"  [IL {i}/{len(il_schools)}] {school}  -- can't parse id, skip")
+            continue
+        print(f"  [IL {i}/{len(il_schools)}] {school} (id {school_id})")
+        try:
+            people = fetch_school_staff(school_id)
+        except Exception as exc:
+            print(f"    ERROR staff2: {exc}")
+            continue
+        # Resolve emails
+        for p in people:
+            if p.get("has_email") and p.get("person_id"):
+                try:
+                    p["email"] = fetch_email(school_id, p["person_id"])
+                except Exception:
+                    p["email"] = ""
+                time.sleep(0.15)
+        for p in people:
+            if not p.get("email"):
+                continue
+            role_id = p.get("role_id", "")
+            role_name = p.get("role", "")
+            first = (p.get("first") or "").title()
+            last = (p.get("last") or "").title()
+            is_admin = role_id.startswith(IL_ADMIN_PREFIXES) or \
+                       p.get("type") in ("Admin", "Medical")
+            if is_admin:
+                admins.append({
+                    "School":     school.title(),
+                    "Role":       canonical_admin_role(role_name) if role_id in IL_ATHLETIC_AD_ROLE_IDS else role_name.title(),
+                    "First Name": first,
+                    "Last Name":  last,
+                    "Email":      p["email"],
+                    "State":      "IL",
+                })
+            else:
+                # Coach or activity head. DefaultTitle is like "Boys Baseball Head Coach"
+                # or "Bass Fishing Coach". Strip the trailing " Coach" to get sport.
+                rn = role_name.strip()
+                role_clean = "Head Coach" if "Head Coach" in rn else \
+                             "Assistant Coach" if "Assistant Coach" in rn else \
+                             "Coach"
+                sport = re.sub(r"\s*(Head\s+)?Coach\s*$", "", rn).strip() or rn
+                coaches.append({
+                    "School":     school.title(),
+                    "Sport":      sport,
+                    "First Name": first,
+                    "Last Name":  last,
+                    "Role":       role_clean,
+                    "Email":      p["email"],
+                    "State":      "IL",
+                })
+        time.sleep(0.5)
     return dedup_admins(admins), dedup_coaches(coaches)
 
 
@@ -425,6 +519,12 @@ def main():
     by_rep = load_rep_schools(gc)
     print(f"\nReps in sheet: {sorted(by_rep.keys())}")
 
+    # Pre-load IL schools once (used by any rep with include_il=True)
+    il_schools = []
+    if any(r.get("include_il") for r in REPS):
+        il_schools = load_il_schools(gc)
+        print(f"IL schools available: {len(il_schools)}")
+
     rep_name_to_config = {r["name"]: r for r in REPS}
     results = []
 
@@ -441,14 +541,25 @@ def main():
         print("-" * 60)
 
         admins, coaches = scrape_rep(rep["name"], schools)
+
+        # Merge IL schools into this rep's digest if configured (Andy only)
+        il_count = 0
+        if rep.get("include_il") and il_schools:
+            print(f"  Pulling {len(il_schools)} IL schools via IHSA API...")
+            il_admins, il_coaches = scrape_il_schools(il_schools)
+            admins = admins + il_admins
+            coaches = coaches + il_coaches
+            il_count = len(il_schools)
+
         current_keys = contacts_to_keyset(admins, coaches)
         previous_keys = load_snapshot(rep["name"])
         added, removed, first_run = diff_keys(previous_keys, current_keys)
 
         xlsx_bytes, sheet_summary = build_xlsx(admins, coaches, rep["name"])
-        xlsx_name = f"{rep['name'].replace(' ', '_')}-WI_School_Admins_Coaches.xlsx"
+        digest_label = "WI+IL" if rep.get("include_il") else "WI"
+        xlsx_name = f"{rep['name'].replace(' ', '_')}-{digest_label}_School_Admins_Coaches.xlsx"
 
-        body_lines = [f"WI school contact digest for {rep['name']}", ""]
+        body_lines = [f"{digest_label} school contact digest for {rep['name']}", ""]
         if first_run:
             body_lines.append("Initial snapshot — no previous version to diff against.")
         else:
@@ -466,7 +577,7 @@ def main():
 
         should_send = first_run or added or removed
         if should_send:
-            subject = f"{rep['name']} - Updated WI School Admins and Coaches"
+            subject = f"{rep['name']} - Updated {digest_label} School Admins and Coaches"
             sent = send_email(rep, subject, body, xlsx_bytes, xlsx_name)
         else:
             print(f"  No changes — no email sent.")
