@@ -171,16 +171,17 @@ def fetch_school_staff(school_id):
         for m in members:
             pid = m.get("PersonID")
             has_email = bool(m.get("HasEmail"))
-            first, last = split_first_last(m.get("Name", ""), fallback_last=m.get("LastName", ""))
+            # API sometimes returns explicit null for these — use `or ""` not default.
+            first, last = split_first_last(m.get("Name") or "", fallback_last=m.get("LastName") or "")
             people.append({
                 "person_id": pid,
                 "first": first,
                 "last": last,
-                "role": m.get("DefaultTitle", ""),
+                "role": m.get("DefaultTitle") or "",
                 "type": ctype,
-                "role_id": m.get("RoleID", ""),
+                "role_id": m.get("RoleID") or "",
                 "has_email": has_email,
-                "phone": m.get("Phone", ""),
+                "phone": m.get("Phone") or "",
                 "email": "",  # filled later
             })
     return people
