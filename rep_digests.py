@@ -205,8 +205,12 @@ def scrape_il_schools(il_schools):
         for p in people:
             if not p.get("email"):
                 continue
-            role_id = p.get("role_id", "")
-            role_name = p.get("role", "")
+            role_id = p.get("role_id", "") or ""
+            role_name = (p.get("role") or "").strip()
+            if not role_name:
+                # IHSA sometimes returns DefaultTitle=null placeholder rows for
+                # a coach who has other real entries in the same section — skip.
+                continue
             first = (p.get("first") or "").title()
             last = (p.get("last") or "").title()
             is_admin = role_id.startswith(IL_ADMIN_PREFIXES) or \
