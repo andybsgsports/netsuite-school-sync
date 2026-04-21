@@ -626,6 +626,41 @@ def _make_legacy_ext_id(school_name, email, role):
     return f"{school_slug}__{role_slug}__{email_clean}"[:150]
 
 
+FREE_EMAIL_DOMAINS = {
+    "gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "msn.com",
+    "aol.com", "icloud.com", "att.net", "comcast.net", "sbcglobal.net",
+    "verizon.net", "mail.com", "live.com", "me.com", "ymail.com",
+    "cox.net", "charter.net", "bellsouth.net", "earthlink.net",
+    "protonmail.com", "pm.me", "proton.me", "duck.com", "fastmail.com",
+}
+
+
+def extract_email_domain(email):
+    """'john@barneveld.k12.wi.us' -> 'barneveld.k12.wi.us'. Empty string if no @."""
+    s = (email or "").strip().lower()
+    if "@" not in s:
+        return ""
+    return s.split("@", 1)[1]
+
+
+def compute_school_domain(contacts):
+    """
+    Given the contacts for one school, return that school's institutional
+    email domain (the most common non-free domain), or "" if none clear.
+    Used to decide whether a contact's email identifies *this* school as
+    the person's home school (primary company link).
+    """
+    counts = {}
+    for c in contacts or []:
+        dom = extract_email_domain(c.get("email", ""))
+        if not dom or dom in FREE_EMAIL_DOMAINS:
+            continue
+        counts[dom] = counts.get(dom, 0) + 1
+    if not counts:
+        return ""
+    return max(counts.items(), key=lambda kv: kv[1])[0]
+
+
 def find_contact_any_format(school_name, email, role=""):
     """
     Locate an existing NS contact by trying each external-ID format in order:
@@ -684,6 +719,15 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
     ext_id = make_contact_external_id(email)
     contact_id, is_inactive, found_via = find_contact_any_format(school_name, email, role)
 
+    # Is THIS school the contact's "home" based on email domain matching?
+    # school_info["domain"] is expected to be set by the caller (school_netsuite_sync
+    # or ihsa_sync) using compute_school_domain(). If available and the contact's
+    # email domain matches, we claim them as primary. Otherwise on UPDATE we
+    # leave company alone so we don't stomp on whichever school owns the primary.
+    school_domain = (school_info.get("domain") or "").lower()
+    email_domain  = extract_email_domain(email)
+    is_home_school = bool(school_domain and school_domain == email_domain)
+
     # Base body for CREATE. For UPDATE we strip `company` below so we never
     # stomp on the primary-customer link of a contact already owned by
     # another school in a co-op situation.
@@ -701,23 +745,29 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
         body_update = {k: v for k, v in body_create.items() if k != "company"}
         body_update["isInactive"] = False
         body_update["externalId"] = ext_id  # migrate to new format
+        if is_home_school:
+            body_update["company"] = {"id": customer_id}
         r = ns_patch(f"contact/{contact_id}", body_update)
         if r.status_code == 204:
             print(f"  [NS] Reactivated Contact: {first} {last} (ID: {contact_id})")
         return contact_id
 
     elif contact_id:
-        # Existing contact — update descriptive fields only. Leaving `company`
-        # out preserves whichever school was first-synced as the primary.
+        # Existing contact — update descriptive fields. Company link:
+        #   - is_home_school: email domain matches this school -> claim primary.
+        #   - else: leave company unchanged (preserves whichever school has it).
         # Also migrates the external ID to the new email-based format.
         body_update = {k: v for k, v in body_create.items() if k != "company"}
         body_update["externalId"] = ext_id
+        if is_home_school:
+            body_update["company"] = {"id": customer_id}
         r = ns_patch(f"contact/{contact_id}", body_update)
         if r.status_code == 204:
+            label = "home" if is_home_school else "shared"
             if found_via == "email":
-                print(f"  [NS] Updated Contact: {first} {last} (ID: {contact_id})")
+                print(f"  [NS] Updated Contact ({label}): {first} {last} (ID: {contact_id})")
             else:
-                print(f"  [NS] Updated Contact (migrated from {found_via}): {first} {last} (ID: {contact_id})")
+                print(f"  [NS] Updated Contact (migrated from {found_via}, {label}): {first} {last} (ID: {contact_id})")
         return contact_id
 
     else:

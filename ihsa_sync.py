@@ -30,7 +30,7 @@ import requests
 from google.oauth2.service_account import Credentials
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from netsuite_sync import sync_contact, inactivate_contact
+from netsuite_sync import sync_contact, inactivate_contact, compute_school_domain
 
 # -- Config ------------------------------------------------------------------
 GOOGLE_SHEET_ID = os.environ.get("GOOGLE_SHEET_ID", "")
@@ -299,7 +299,14 @@ def main():
             print(f"  + New: {sc['first']} {sc['last']} — {sc['role']} [{sc['type']}]")
             contact_creates += 1
 
-        school_info = {"state": state}
+        # Pass the school's institutional email domain so sync_contact can
+        # claim home-school primary for matching contacts.
+        school_info = {
+            "state":  state,
+            "domain": compute_school_domain([{"email": sc["email"]} for sc in site_contacts]),
+        }
+        if school_info["domain"]:
+            print(f"  School domain: {school_info['domain']}")
         for c in contacts:
             if c.get(C_SCHOOL, "").strip() != school_name:
                 continue

@@ -28,6 +28,7 @@ from netsuite_sync import (
     inactivate_contact,
     remove_contact_ship_to,
     sync_address_book,
+    compute_school_domain,
 )
 
 # -- Config -------------------------------------------------------------------
@@ -298,6 +299,20 @@ def main():
                   f"-- {person.get('role','')} [{person.get('type','')}]")
 
         # -- 6. Sync/inactivate contacts in NetSuite --------------------
+        # Compute the school's institutional email domain from its sync=Y
+        # contacts so sync_contact can claim home-school primary when a
+        # contact's email domain matches.
+        _school_sync_y = [
+            {"email": str(c.get(C_EMAIL, "")).strip()}
+            for c in contacts_data
+            if c.get(C_SCHOOL, "").strip() == school_name
+            and str(c.get(C_SYNC, "N")).strip().upper() == "Y"
+            and str(c.get(C_EMAIL, "")).strip()
+        ]
+        school_info_out["domain"] = compute_school_domain(_school_sync_y)
+        if school_info_out["domain"]:
+            print(f"  School domain: {school_info_out['domain']}")
+
         for c in contacts_data:
             if c.get(C_SCHOOL, "").strip() != school_name:
                 continue
