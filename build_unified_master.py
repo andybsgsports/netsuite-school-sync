@@ -67,7 +67,8 @@ DROP_WORDS = [
     "consolidated school district", "union school district",
     "unit district", "area school district", "area schools",
     "public school", "public schools",
-    "h.s.", "hs", "district", "distr", "dist",
+    "h.s.", "hs", "high",   # bare 'High' (NS 'Madison Lafollette High')
+    "district", "distr", "dist",
     "the ",
 ]
 # NOTE: "academy" and "area" are INTENTIONALLY NOT stripped — meaningful
@@ -111,6 +112,12 @@ ABBREV_EXPANSIONS = [
     (r"-\s*district\s+\d+\b", ""),         # '- District 156'
     (r"\btownship\b",        ""),
     (r"\bpublic\s+school\s+district\b", "school district"),
+    # City-name spelling aliases (NS uses no space, source sheet uses a space).
+    (r"\bde\s+pere\b",      "depere"),
+    (r"\bla\s+crosse\b",    "lacrosse"),
+    (r"\bfond\s+du\s+lac\b", "fonddulac"),
+    (r"\beau\s+claire\b",   "eauclaire"),
+    (r"\bst\.?\s+francis\b", "saintfrancis"),
 ]
 
 
@@ -186,9 +193,18 @@ def load_il_schools(gc):
     return out
 
 
+OMG_PATTERN = re.compile(r"(?i)\bomg\b")
+
+
 def load_ns_customers(csv_path):
-    """Returns list of {id, company_name, sales_rep, state, norm_name}."""
+    """Returns list of {id, company_name, sales_rep, state, norm_name}.
+
+    NS records containing 'OMG' in their name are filtered out entirely —
+    those are internal BSG grouping records (team/club variants), not the
+    primary school customer, and they should never be linked as a match.
+    """
     out = []
+    skipped_omg = 0
     with open(csv_path, encoding="utf-8-sig", newline="") as f:
         for row in csv.DictReader(f):
             nid = (row.get("Internal ID") or "").strip()
@@ -196,6 +212,9 @@ def load_ns_customers(csv_path):
                 continue
             name = (row.get("Name") or row.get("Company Name") or "").strip()
             if not name:
+                continue
+            if OMG_PATTERN.search(name):
+                skipped_omg += 1
                 continue
             out.append({
                 "id": nid,
@@ -205,6 +224,8 @@ def load_ns_customers(csv_path):
                 "city":  (row.get("Billing City") or "").strip(),
                 "norm":  norm_name(name),
             })
+    if skipped_omg:
+        print(f"  (skipped {skipped_omg} OMG-flagged NS records)")
     return out
 
 
@@ -230,21 +251,52 @@ def name_variants(raw):
     return {v for v in out if v}
 
 
+# Multi-school districts whose individual high schools are stored in NS
+# WITHOUT the city prefix. e.g. NS has "Edgewood High School" and
+# "Lafollette High School" under billing city = Madison. Our source sheet
+# lists them as "Madison Edgewood" / "Madison Lafollette", so we need to
+# also try the suffix alone.
+SPLIT_PREFIX_CITIES = {
+    "madison", "milwaukee", "kenosha", "green bay", "la crosse", "lacrosse",
+    "appleton", "racine", "beloit", "wausau", "janesville", "sheboygan",
+    "oshkosh", "waukesha", "sun prairie", "west bend", "brookfield",
+    "eau claire", "fond du lac", "stevens point", "rockford",
+    "crystal lake", "grayslake", "lake villa", "cary", "fox lake",
+    "gurnee", "belvidere",
+}
+
+
 def base_name_variants(raw):
-    """Non-normalized base names to try. IL parens expand to several."""
+    """Non-normalized base names to try. Handles IL parens and city-prefix
+    patterns where the school is stored in NS without the city."""
     raw = raw.strip()
+    out = [raw]
     m = re.match(r"^([^()]+?)\s*\(([^)]+)\)\s*$", raw)
     if m:
         before = m.group(1).strip()
         inner  = m.group(2).strip()
-        # e.g. "Cary (C.-Grove)" -> ["Cary-Grove", "Cary C-Grove", "Cary", "C-Grove"]
-        return [
+        # e.g. "Cary (C.-Grove)" -> "Cary-Grove", "Cary C-Grove", "Cary", "C-Grove"
+        out = [
             f"{before}-{inner.replace('.', '')}",
             f"{before} {inner.replace('.', '')}",
             before,
             inner.replace(".", "").strip(),
         ]
-    return [raw]
+        # And also try the suffix alone if the before-part is a known city.
+        if norm_name(before) in SPLIT_PREFIX_CITIES:
+            out.append(inner.replace(".", "").strip())
+        return out
+    # Non-parens: if the name starts with a known city and has >1 token,
+    # also try the suffix alone ("Madison Edgewood" -> "Edgewood").
+    tokens = raw.split()
+    for n_prefix in (3, 2, 1):
+        if len(tokens) <= n_prefix:
+            continue
+        prefix = " ".join(tokens[:n_prefix])
+        if norm_name(prefix) in SPLIT_PREFIX_CITIES:
+            out.append(" ".join(tokens[n_prefix:]))
+            break
+    return out
 
 
 # Each tier: (label, name-builder, regex the NS customer's ORIGINAL name must contain)
