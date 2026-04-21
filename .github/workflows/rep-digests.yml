@@ -12,9 +12,9 @@ on:
         required: false
         default: ''
       dry_run:
-        description: 'Dry run — send all emails to GMAIL_USER instead of the rep'
+        description: 'Dry run — prefix body with [DRY RUN] and force send to GMAIL_USER'
         required: true
-        default: true
+        default: false
         type: boolean
 
 jobs:
@@ -43,8 +43,12 @@ jobs:
           GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
           GMAIL_USER:              ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD:      ${{ secrets.GMAIL_APP_PASSWORD }}
+          DIGESTS_OVERRIDE_TO:     ${{ secrets.DIGESTS_OVERRIDE_TO }}
           REP_FILTER:              ${{ inputs.rep_filter }}
-          DRY_RUN:                 ${{ (inputs.dry_run == false && github.event_name == 'workflow_dispatch') && '0' || '1' }}
+          # Scheduled runs are live (DRY_RUN=0). Safety while validating comes
+          # from DIGESTS_OVERRIDE_TO redirecting every email to one inbox.
+          # Manual dispatch still honors the dry_run input.
+          DRY_RUN:                 ${{ inputs.dry_run && '1' || '0' }}
 
       - name: Commit updated snapshots
         run: |

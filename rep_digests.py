@@ -349,14 +349,40 @@ def diff_keys(previous, current):
 
 # -- Email -------------------------------------------------------------------
 def send_email(rep, subject, body, xlsx_bytes, xlsx_name):
+    """
+    Recipient logic:
+      DIGESTS_OVERRIDE_TO set  -> all emails go there, subject gets [NEW SYS] tag
+                                  (shadow mode for parallel validation)
+      DRY_RUN=1                -> all emails go to GMAIL_USER, labeled [DRY RUN]
+      otherwise (true live)    -> rep's actual email + CC
+    """
     gmail_user = os.environ.get("GMAIL_USER", "")
     gmail_pw = os.environ.get("GMAIL_APP_PASSWORD", "")
+    override_to = os.environ.get("DIGESTS_OVERRIDE_TO", "").strip()
     if not (gmail_user and gmail_pw):
         print("  WARNING: GMAIL_USER / GMAIL_APP_PASSWORD not set -- skipping send")
         return False
 
-    to_addr = gmail_user if DRY_RUN else rep["email"]
-    cc_addr = None if DRY_RUN else rep.get("cc")
+    if override_to:
+        to_addr = override_to
+        cc_addr = None
+        subject = f"[NEW SYS] {subject}"
+        body = (
+            f"(Shadow-mode email from GitHub Actions; would have gone to {rep['email']}"
+            + (f", CC {rep['cc']}" if rep.get("cc") else "")
+            + ".)\n\n" + body
+        )
+    elif DRY_RUN:
+        to_addr = gmail_user
+        cc_addr = None
+        body = (
+            f"[DRY RUN — would send to {rep['email']}"
+            + (f", CC {rep['cc']}" if rep.get("cc") else "")
+            + "]\n\n" + body
+        )
+    else:
+        to_addr = rep["email"]
+        cc_addr = rep.get("cc")
     bcc_addr = gmail_user
 
     msg = EmailMessage()
@@ -365,8 +391,6 @@ def send_email(rep, subject, body, xlsx_bytes, xlsx_name):
     if cc_addr:
         msg["Cc"] = cc_addr
     msg["Subject"] = subject
-    if DRY_RUN:
-        body = f"[DRY RUN — would send to {rep['email']}" + (f", CC {rep['cc']}" if rep.get("cc") else "") + "]\n\n" + body
     msg.set_content(body)
     msg.add_attachment(
         xlsx_bytes,
