@@ -417,36 +417,59 @@ def snapshot_path(rep_name):
     return SNAPSHOT_DIR / f"{safe}.json"
 
 
-def contacts_to_keyset(admins, coaches):
-    """A contact identity = (school, email, role, sport). Used for diffing."""
-    keys = set()
+def contacts_to_records(admins, coaches):
+    """
+    Returns {(school, email, role, sport): {"first":..., "last":...}}.
+    Key is the stable identity used for diffing; value holds display fields
+    like First/Last name so we can show them in added/removed email lines
+    without making them part of the diff key (which would cause noise when
+    a name gets re-cased on some future run).
+    """
+    recs = {}
     for a in admins:
-        keys.add((a["School"], a["Email"], a["Role"], ""))
+        key = (a["School"], a["Email"], a["Role"], "")
+        recs[key] = {"first": a.get("First Name", ""), "last": a.get("Last Name", "")}
     for c in coaches:
-        keys.add((c["School"], c["Email"], c["Role"], c.get("Sport", "")))
-    return keys
+        key = (c["School"], c["Email"], c["Role"], c.get("Sport", ""))
+        recs[key] = {"first": c.get("First Name", ""), "last": c.get("Last Name", "")}
+    return recs
 
 
 def load_snapshot(rep_name):
+    """Returns (keyset, records_dict) or (None, {})."""
     p = snapshot_path(rep_name)
     if not p.exists():
-        return None
+        return None, {}
     try:
         data = json.loads(p.read_text(encoding="utf-8"))
-        return {tuple(k) for k in data.get("keys", [])}
+        # New format: records is a list of {school, email, role, sport, first, last}
+        if "records" in data:
+            recs = {}
+            for r in data["records"]:
+                key = (r.get("school", ""), r.get("email", ""),
+                       r.get("role", ""), r.get("sport", ""))
+                recs[key] = {"first": r.get("first", ""), "last": r.get("last", "")}
+            return set(recs.keys()), recs
+        # Legacy format: keys-only list of tuples, no name info
+        return {tuple(k) for k in data.get("keys", [])}, {}
     except Exception:
-        return None
+        return None, {}
 
 
-def save_snapshot(rep_name, keys):
+def save_snapshot(rep_name, records):
     SNAPSHOT_DIR.mkdir(parents=True, exist_ok=True)
     p = snapshot_path(rep_name)
+    serializable = [
+        {"school": k[0], "email": k[1], "role": k[2], "sport": k[3],
+         "first": v.get("first", ""), "last": v.get("last", "")}
+        for k, v in sorted(records.items())
+    ]
     p.write_text(
         json.dumps(
             {
                 "rep": rep_name,
                 "updated": datetime.utcnow().isoformat() + "Z",
-                "keys": sorted(list(keys)),
+                "records": serializable,
             },
             indent=2,
         ),
@@ -572,13 +595,22 @@ def main():
             coaches = coaches + il_coaches
             il_count = len(il_schools)
 
-        current_keys = contacts_to_keyset(admins, coaches)
-        previous_keys = load_snapshot(rep["name"])
+        current_records = contacts_to_records(admins, coaches)
+        current_keys = set(current_records.keys())
+        previous_keys, previous_records = load_snapshot(rep["name"])
         added, removed, first_run = diff_keys(previous_keys, current_keys)
 
         xlsx_bytes, sheet_summary = build_xlsx(admins, coaches, rep["name"])
         digest_label = "WI+IL" if rep.get("include_il") else "WI"
         xlsx_name = f"{rep['name'].replace(' ', '_')}-{digest_label}_School_Admins_Coaches.xlsx"
+
+        def render(prefix, key, records):
+            # key = (school, email, role, sport)
+            rec = records.get(key, {})
+            name = (f"{rec.get('first','')} {rec.get('last','')}").strip() or "(name unknown)"
+            school, email, role, sport = key
+            tail = f"  [{sport}]" if sport else ""
+            return f"  {prefix} {name}  {email}  {role}  ({school}){tail}"
 
         body_lines = [f"{digest_label} school contact digest for {rep['name']}", ""]
         if first_run:
@@ -588,11 +620,11 @@ def main():
             if added:
                 body_lines.append("\nAdded:")
                 for k in sorted(added):
-                    body_lines.append(f"  + {k[1]}  {k[2]}  ({k[0]})" + (f"  [{k[3]}]" if k[3] else ""))
+                    body_lines.append(render("+", k, current_records))
             if removed:
                 body_lines.append("\nRemoved:")
                 for k in sorted(removed):
-                    body_lines.append(f"  - {k[1]}  {k[2]}  ({k[0]})" + (f"  [{k[3]}]" if k[3] else ""))
+                    body_lines.append(render("-", k, previous_records))
         body_lines += ["", "Sheet counts:"] + [f"  {k}: {v}" for k, v in sorted(sheet_summary.items())]
         body = "\n".join(body_lines)
 
@@ -604,7 +636,7 @@ def main():
             print(f"  No changes — no email sent.")
             sent = False
 
-        save_snapshot(rep["name"], current_keys)
+        save_snapshot(rep["name"], current_records)
         results.append({
             "rep": rep["name"],
             "schools": len(schools),
