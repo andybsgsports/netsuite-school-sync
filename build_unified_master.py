@@ -75,13 +75,31 @@ DROP_WORDS = [
 # Schools"). Stripping them collapsed different schools to the same string.
 
 
+ABBREV_EXPANSIONS = [
+    # Expand NS-style abbreviations BEFORE dropping noise words. Order matters —
+    # longer patterns first.
+    (r"\bschl\.?\b",    "school"),
+    (r"\bdistr?\.?\b",  "district"),
+    (r"\bcomm?\.?\b",   "community"),
+    (r"\bco-?op\.?\b",  "cooperative"),
+    (r"\bsr\.?\s+high\b", "senior high"),
+    (r"\bjr\.?\s+high\b", "junior high"),
+]
+
+
 def norm_name(s):
     """Canonicalize a name for matching: lowercase, strip punctuation, collapse whitespace,
     remove common school noise words, and alias St./Mt./&."""
     s = (s or "").lower().strip()
     s = s.replace("&", "and").replace("'s", "").replace("'", "")
-    s = s.replace("st.", "saint").replace("mt.", "mount").replace("ft.", "fort")
+    # Word-boundary-anchored so 'dist.' doesn't get 'st.' turned into 'saint'.
+    s = re.sub(r"\bst\.", "saint", s)
+    s = re.sub(r"\bmt\.", "mount", s)
+    s = re.sub(r"\bft\.", "fort", s)
     s = re.sub(r"\([^)]*\)", "", s)
+    # Expand abbreviations (handles NS's "Com. Schl. Dist." and similar).
+    for pattern, repl in ABBREV_EXPANSIONS:
+        s = re.sub(pattern, repl, s)
     s = re.sub(r"[^a-z0-9\s]", " ", s)
     s = re.sub(r"\s+", " ", s).strip()
     for w in DROP_WORDS:
