@@ -207,15 +207,12 @@ def scrape_il_schools(il_schools):
                 continue
             role_id = p.get("role_id", "") or ""
             role_name = (p.get("role") or "").strip()
+            coach_type = p.get("type", "")
             if not role_name:
-                # IHSA sometimes returns DefaultTitle=null placeholder rows for
-                # a coach who has other real entries in the same section — skip.
                 continue
             first = smart_title(p.get("first") or "")
-            last = smart_title(p.get("last") or "")
-            is_admin = role_id.startswith(IL_ADMIN_PREFIXES) or \
-                       p.get("type") in ("Admin", "Medical")
-            if is_admin:
+            last  = smart_title(p.get("last") or "")
+            if coach_type == "Admin":
                 admins.append({
                     "School":     smart_title(school),
                     "Role":       canonical_admin_role(role_name) if role_id in IL_ATHLETIC_AD_ROLE_IDS else smart_title(role_name),
@@ -225,19 +222,13 @@ def scrape_il_schools(il_schools):
                     "State":      "IL",
                 })
             else:
-                # Coach or activity head. DefaultTitle is like "Boys Baseball Head Coach"
-                # or "Bass Fishing Coach". Strip the trailing " Coach" to get sport.
-                rn = role_name.strip()
-                role_clean = "Head Coach" if "Head Coach" in rn else \
-                             "Assistant Coach" if "Assistant Coach" in rn else \
-                             "Coach"
-                sport = re.sub(r"\s*(Head\s+)?Coach\s*$", "", rn).strip() or rn
+                # role_name is the sport already (e.g. "Boys Baseball")
                 coaches.append({
                     "School":     smart_title(school),
-                    "Sport":      sport,
+                    "Sport":      smart_title(role_name),
                     "First Name": first,
                     "Last Name":  last,
-                    "Role":       role_clean,
+                    "Role":       coach_type,   # "Head Coach" / "Assistant Coach" / "Coach"
                     "Email":      p["email"],
                     "State":      "IL",
                 })

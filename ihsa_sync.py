@@ -77,15 +77,39 @@ C_NS_CID = "NS Contact ID"
 C_NS_CUS = "NS Customer ID"
 C_SYNCED = "Last Synced"
 
-# Map IHSA staff2 sections to NetSuite Type values
-SECTION_TO_TYPE = {
-    "Administration":                                             "Admin",
-    "Boys Athletics - Head Coaches":                              "Coach",
-    "Girls Athletics - Head Coaches":                             "Coach",
-    "Athletic Medical Staff":                                     "Medical",
-    "Activities - Head Coaches, Advisers, and Directors":         "Activity",
-    "Non-Competitive Activities - Head Coaches, Advisers, and Directors": "Activity",
+# IHSA sections that are administrative (non-sport). Everything else is a
+# coach/activity entry where DefaultTitle ends in "... Head Coach" / "Coach".
+ADMIN_SECTIONS = {
+    "Administration",
+    "Athletic Medical Staff",
 }
+
+
+def parse_title_for_sheet(default_title, role_id, section):
+    """
+    Map an IHSA staff entry onto the WI Contacts-tab shape:
+      Coaches: role = sport ("Boys Baseball"), type = "Head Coach" / "Coach"
+      Admins:  role = full title,              type = "Admin"
+    """
+    title = (default_title or "").strip()
+    low = title.lower()
+
+    if section in ADMIN_SECTIONS:
+        return title, "Admin"
+
+    # Coach variants — strip the coach suffix to isolate the sport.
+    if "head coach" in low:
+        sport = re.sub(r"(?i)\s*head\s*coach\s*$", "", title).strip()
+        return sport or title, "Head Coach"
+    if "assistant coach" in low:
+        sport = re.sub(r"(?i)\s*assistant\s*coach\s*$", "", title).strip()
+        return sport or title, "Assistant Coach"
+    if re.search(r"(?i)\bcoach\b", title):
+        sport = re.sub(r"(?i)\s*coach\s*$", "", title).strip()
+        return sport or title, "Coach"
+
+    # Adviser / Director / Band Director etc. — not a sport coach, treat as Admin
+    return title, "Admin"
 
 
 # -- Google Sheets -----------------------------------------------------------
@@ -149,7 +173,22 @@ def strip_honorific(name):
 
 
 def split_first_last(name, fallback_last=""):
+    """
+    Split 'First Last' into (first, last). Handles IHSA's preferred-name
+    convention where the name they go by is in parentheses:
+      'Trey (Michael) Hickey' -> ('Michael', 'Hickey')
+      'Mr. Adam McDonald'     -> ('Adam', 'McDonald')
+    """
     clean = strip_honorific(name)
+    # Preferred name in parens: take the bracketed name, drop the casual one.
+    m = re.match(r"^(\S+)\s+\(([^)]+)\)\s+(.+)$", clean)
+    if m:
+        preferred = m.group(2).strip()
+        rest = m.group(3).strip()
+        return preferred, rest
+    # Strip any stray parens that might still be in the string.
+    clean = re.sub(r"\([^)]*\)", "", clean).strip()
+    clean = re.sub(r"\s+", " ", clean)
     parts = clean.split()
     if len(parts) >= 2:
         return parts[0], " ".join(parts[1:])
@@ -167,19 +206,26 @@ def fetch_school_staff(school_id):
     data = r.json().get("data", {})
     people = []
     for section, members in data.items():
-        ctype = SECTION_TO_TYPE.get(section, "Other")
         for m in members:
             pid = m.get("PersonID")
             has_email = bool(m.get("HasEmail"))
+            default_title = m.get("DefaultTitle") or ""
+            role_id = m.get("RoleID") or ""
+            if not default_title:
+                # IHSA placeholder row with no title — skip (they appear alongside
+                # real entries for the same coach).
+                continue
             # API sometimes returns explicit null for these — use `or ""` not default.
             first, last = split_first_last(m.get("Name") or "", fallback_last=m.get("LastName") or "")
+            sheet_role, sheet_type = parse_title_for_sheet(default_title, role_id, section)
             people.append({
                 "person_id": pid,
                 "first": first,
                 "last": last,
-                "role": m.get("DefaultTitle") or "",
-                "type": ctype,
-                "role_id": m.get("RoleID") or "",
+                "role": sheet_role,    # sport name for coaches, title for admins
+                "type": sheet_type,    # "Head Coach" / "Coach" / "Admin"
+                "default_title": default_title,  # original IHSA title kept for digest xlsx
+                "role_id": role_id,
                 "has_email": has_email,
                 "phone": m.get("Phone") or "",
                 "email": "",  # filled later
