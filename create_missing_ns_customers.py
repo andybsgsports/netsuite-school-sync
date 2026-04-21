@@ -130,7 +130,9 @@ def main():
                         help="Actually create the NS customers and write IDs back. "
                              "Default is dry-run.")
     parser.add_argument("--school",
-                        help="Only process this one school name (exact match).")
+                        help="Additional school names (comma-separated, exact match) "
+                             "to force-include. These are ADDED to the default set of "
+                             "rows with Match Confidence == 'none'.")
     args = parser.parse_args()
 
     print(f"{'=' * 60}")
@@ -141,20 +143,25 @@ def main():
     wb, ws, rows = load_master(gc)
     print(f"Loaded {len(rows)} rows from {MASTER_TAB}\n")
 
+    # --school is ADDITIVE: the named schools are force-included regardless
+    # of confidence. Without --school, only "none" rows are processed.
+    # This lets you pick off an ambiguous/low row (e.g. "Brookwood", which
+    # was matched to the middle school) while still creating everything in
+    # the default none-set in one run.
+    extra_names = {n.strip() for n in (args.school or "").split(",") if n.strip()}
+
     targets = []
     for idx, r in enumerate(rows):
         if str(r.get("NS Customer ID", "")).strip():
             continue
         if str(r.get("Locked", "")).strip().upper() == "Y":
             continue
-        if str(r.get("Match Confidence", "")).strip().lower() != "none":
-            continue  # skip ambiguous/low — those have guesses to review
         name = str(r.get("School Name", "")).strip()
-        if args.school and name != args.school:
-            continue
         if not name:
             continue
-        targets.append((idx, r))
+        conf = str(r.get("Match Confidence", "")).strip().lower()
+        if conf == "none" or name in extra_names:
+            targets.append((idx, r))
 
     if not targets:
         print("Nothing to do — no rows with Match Confidence == 'none'.")
