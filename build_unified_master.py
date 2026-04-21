@@ -77,13 +77,40 @@ DROP_WORDS = [
 
 ABBREV_EXPANSIONS = [
     # Expand NS-style abbreviations BEFORE dropping noise words. Order matters —
-    # longer patterns first.
-    (r"\bschl\.?\b",    "school"),
-    (r"\bdistr?\.?\b",  "district"),
-    (r"\bcomm?\.?\b",   "community"),
-    (r"\bco-?op\.?\b",  "cooperative"),
-    (r"\bsr\.?\s+high\b", "senior high"),
-    (r"\bjr\.?\s+high\b", "junior high"),
+    # longer patterns first. All patterns use \b to avoid eating substrings.
+    (r"\bsch\.l\b",        "school"),
+    (r"\bschls?\.?\b",     "schools"),
+    (r"\bschl\.?\b",       "school"),
+    (r"\bsch\.\b",         "school"),
+    (r"\bdist\.\b",        "district"),
+    (r"\bdistr?\.?\b",     "district"),
+    (r"\bdis\b",           "district"),    # 'Kickapoo Area School Dis'
+    (r"\bdst\.?\b",        "district"),
+    (r"\bs\.?d\.?\b",      "school district"),
+    (r"\bh\.?s\.?\b",      "high school"),
+    (r"\bcomm?\.?\b",      "community"),
+    (r"\bco-?op\.?\b",     "cooperative"),
+    (r"\bsr\.?\s+high\b",  "senior high"),
+    (r"\bjr\.?\s+high\b",  "junior high"),
+    (r"\byth\.?\b",        "youth"),
+    (r"\belem\.?\b",       "elementary"),
+    (r"\bassn\.?\b",       "association"),
+    (r"\bassoc\.?\b",      "association"),
+    (r"\bdept\.?\b",       "department"),
+    (r"\brec\.?\b",        "recreation"),
+    # Drop patterns that don't carry identity for school matching. Order: these
+    # turn "McHenry Community High School - District 156" / "Pearl City School
+    # Cusd #200" / "Warren Township High School" into forms that collapse to
+    # just the town/name.
+    (r"\bcusd\s*#?\s*\d+\b", ""),
+    (r"\busd\s*#?\s*\d+\b",  ""),          # 'Usd #215' (unit school district)
+    (r"\bcud\s*#?\s*\d+\b",  ""),
+    (r"\bccsd\s*#?\s*\d+\b", ""),
+    (r"\bdistrict\s+\d+\b",  ""),          # 'District 156'
+    (r"\bd\s*#\s*\d+\b",     ""),          # 'D #156'
+    (r"-\s*district\s+\d+\b", ""),         # '- District 156'
+    (r"\btownship\b",        ""),
+    (r"\bpublic\s+school\s+district\b", "school district"),
 ]
 
 
