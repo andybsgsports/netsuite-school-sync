@@ -4,3 +4,5 @@ gspread>=6.0
 google-auth>=2.25
 openpyxl>=3.1
 pandas>=2.0
+selenium>=4.20
+xlsxwriter>=3.2

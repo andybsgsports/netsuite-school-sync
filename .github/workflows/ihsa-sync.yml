@@ -1,0 +1,47 @@
+name: IL (IHSA) Sync
+
+on:
+  schedule:
+    # 10:30 UTC = ~5:30 AM Central, 30 min after the WI daily-sync starts so
+    # the two don't compete for NetSuite API bandwidth.
+    - cron: '30 10 * * *'
+  workflow_dispatch:
+    inputs:
+      school_filter:
+        description: 'Run only this school (leave blank for all).'
+        required: false
+        default: ''
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Chrome + chromedriver
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run IL sync
+        run: python ihsa_sync.py
+        env:
+          NS_ACCOUNT:              ${{ secrets.NS_ACCOUNT }}
+          NS_CONSUMER_KEY:         ${{ secrets.NS_CONSUMER_KEY }}
+          NS_CONSUMER_SEC:         ${{ secrets.NS_CONSUMER_SEC }}
+          NS_TOKEN_KEY:            ${{ secrets.NS_TOKEN_KEY }}
+          NS_TOKEN_SEC:            ${{ secrets.NS_TOKEN_SEC }}
+          GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+          SCHOOL_FILTER:           ${{ inputs.school_filter }}
