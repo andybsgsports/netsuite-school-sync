@@ -27,7 +27,8 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install requests gspread google-auth
+        # netsuite_sync.py imports bs4 at module load, so we need it here too
+        run: pip install requests beautifulsoup4 gspread google-auth
 
       - name: Run IL sync
         run: python ihsa_sync.py
