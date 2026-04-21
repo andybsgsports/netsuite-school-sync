@@ -3,26 +3,25 @@ cleanup_duplicate_addresses.py
 -------------------------------
 Remove duplicate addressBook entries from NetSuite Customer records.
 
-Each line in a Customer's addressBook has a "label". The daily sync uses
-the contact's full name as the label, so duplicate contacts show up as
-multiple lines with the same label. This script keeps the oldest line
-(lowest line_id) per label and removes the rest.
+Uses PATCH /customer/{id}?replace=addressBook with the full list of lines
+to keep. NetSuite deletes any addressBook lines not included in the body —
+a true replace. Lines already labeled "(Duplicate) ..." or "(Removed) ..."
+from earlier cleanup attempts are dropped entirely.
 
-By default runs as dry-run — shows what it would remove without touching
-anything. Pass --live to actually remove.
+By default runs as dry-run — prints what it would remove without touching
+anything. Pass --live to actually apply.
 
 Usage:
   python cleanup_duplicate_addresses.py                   # dry-run, all schools in sheet
-  python cleanup_duplicate_addresses.py --live            # remove, all schools
-  python cleanup_duplicate_addresses.py 1669              # dry-run, single customer
-  python cleanup_duplicate_addresses.py 1669 1670 --live  # remove, specific customers
+  python cleanup_duplicate_addresses.py --live            # apply, all schools
+  python cleanup_duplicate_addresses.py 994               # dry-run, single customer
+  python cleanup_duplicate_addresses.py 994 1029 --live   # apply, specific customers
 
-Removal strategy:
-  1. Try HTTP DELETE on the address line. This is the clean path if the
-     NetSuite role has permission.
-  2. If DELETE fails, fall back to PATCHing the line to relabel it
-     "(Duplicate) <original>" and clear default flags, so the sync code
-     won't match it on future runs.
+Decision rules:
+  - Lines with a label starting "(Duplicate)" or "(Removed)" → always removed
+  - Lines whose label is shared with others (duplicates) → keep the oldest
+    (lowest line_id), drop the rest
+  - Everything else → kept as-is
 """
 
 import argparse
@@ -30,104 +29,147 @@ import os
 import sys
 import time
 
-from netsuite_sync import ns_get, ns_patch, ns_delete
+from netsuite_sync import ns_get, ns_patch
 
 
-def fetch_address_lines(customer_id):
-    """Return [{line_id, label, defaultShipping, defaultBilling}, ...] for a customer."""
+CRUFT_PREFIXES = ("(duplicate)", "(removed)")
+
+
+def fetch_address_line_ids(customer_id):
+    """Return list of line IDs on the customer's addressBook (in NS order)."""
     r = ns_get(f"customer/{customer_id}?expand=addressBook")
     if r.status_code != 200:
         print(f"  [ERROR] fetch customer {customer_id}: {r.status_code} {r.text[:120]}")
         return []
-
     items = r.json().get("addressBook", {}).get("items", [])
-    lines = []
+    ids = []
     for item in items:
         href = item.get("links", [{}])[0].get("href", "")
         line_id = href.rstrip("/").split("/")[-1] if href else None
-        if not line_id:
-            continue
-        r2 = ns_get(f"customer/{customer_id}/addressBook/{line_id}")
-        if r2.status_code != 200:
-            continue
-        data = r2.json()
-        lines.append({
-            "line_id":         line_id,
-            "label":           (data.get("label") or "").strip(),
-            "defaultShipping": data.get("defaultShipping", False),
-            "defaultBilling":  data.get("defaultBilling", False),
-        })
-    return lines
+        if line_id:
+            ids.append(line_id)
+    return ids
 
 
-def find_duplicate_groups(lines):
-    """Group lines by lowercase label. Return dict of label -> [lines], only groups with >1."""
+def fetch_line_full(customer_id, line_id):
+    """Fetch one addressBook line's full body, stripped to what a replace PATCH accepts."""
+    r = ns_get(f"customer/{customer_id}/addressBook/{line_id}")
+    if r.status_code != 200:
+        return None
+    data = r.json()
+    data.pop("links", None)
+    addr = data.get("addressBookAddress")
+    if isinstance(addr, dict):
+        addr.pop("links", None)
+        country = addr.get("country")
+        if isinstance(country, dict) and "id" in country:
+            addr["country"] = {"id": country["id"]}
+    return data
+
+
+def classify_lines(customer_id, line_ids):
+    """
+    Fetch each line, return:
+      keep_ids: set of line IDs to preserve
+      remove_info: list of (line_id, label, reason) for reporting
+      full_by_id: dict line_id -> full line body (for replace)
+    """
+    # First pull every line fully
+    full_by_id = {}
+    labels_by_id = {}
+    for lid in line_ids:
+        full = fetch_line_full(customer_id, lid)
+        if full is None:
+            continue
+        full_by_id[lid] = full
+        labels_by_id[lid] = (full.get("label") or "").strip()
+
+    # Cruft (previously flagged duplicates / removed)
+    cruft_ids = {
+        lid for lid, lbl in labels_by_id.items()
+        if lbl.lower().startswith(CRUFT_PREFIXES)
+    }
+
+    # Among remaining lines, group by lowercase label
     groups = {}
-    for line in lines:
-        key = line["label"].lower()
-        if not key:
+    for lid, lbl in labels_by_id.items():
+        if lid in cruft_ids:
             continue
-        groups.setdefault(key, []).append(line)
-    return {k: v for k, v in groups.items() if len(v) > 1}
+        key = lbl.lower()
+        groups.setdefault(key, []).append(lid)
 
+    keep_ids = set()
+    dupe_remove_ids = set()
+    for key, ids in groups.items():
+        # Sort numerically by line id, keep the lowest (oldest)
+        ids_sorted = sorted(ids, key=int)
+        keep_ids.add(ids_sorted[0])
+        for lid in ids_sorted[1:]:
+            dupe_remove_ids.add(lid)
 
-def remove_line(customer_id, line):
-    """Try DELETE; fall back to PATCH-relabel. Returns (ok, detail)."""
-    r = ns_delete(f"customer/{customer_id}/addressBook/{line['line_id']}")
-    if r.status_code in (200, 204):
-        return True, "deleted"
+    remove_info = []
+    for lid in sorted(cruft_ids, key=int):
+        remove_info.append((lid, labels_by_id[lid], "cruft"))
+    for lid in sorted(dupe_remove_ids, key=int):
+        remove_info.append((lid, labels_by_id[lid], "duplicate"))
 
-    original = line["label"] or line["line_id"]
-    r2 = ns_patch(f"customer/{customer_id}/addressBook/{line['line_id']}", {
-        "label":           f"(Duplicate) {original}",
-        "defaultShipping": False,
-        "defaultBilling":  False,
-    })
-    if r2.status_code == 204:
-        return True, f"relabeled (DELETE {r.status_code})"
-    return False, f"DELETE {r.status_code}, PATCH {r2.status_code}"
+    return keep_ids, remove_info, full_by_id, labels_by_id
 
 
 def cleanup_customer(customer_id, live=False):
     print(f"\n[CUSTOMER {customer_id}]")
-    lines = fetch_address_lines(customer_id)
-    if not lines:
+    line_ids = fetch_address_line_ids(customer_id)
+    if not line_ids:
         print(f"  No address lines found")
         return 0
-    print(f"  Total address lines: {len(lines)}")
+    print(f"  Total address lines: {len(line_ids)}")
 
-    dupes = find_duplicate_groups(lines)
-    if not dupes:
+    keep_ids, remove_info, full_by_id, labels_by_id = classify_lines(customer_id, line_ids)
+
+    if not remove_info:
         print(f"  No duplicates")
         return 0
 
-    total_removed = 0
-    for label, group in sorted(dupes.items()):
-        # Keep the numerically-lowest line_id (oldest)
-        group_sorted = sorted(group, key=lambda x: int(x["line_id"]))
-        keep = group_sorted[0]
-        remove = group_sorted[1:]
-        remove_ids = [x["line_id"] for x in remove]
-        print(f"  [{keep['label']}] keep {keep['line_id']}, "
-              f"remove {len(remove)}: {remove_ids}")
+    # Summarize by label
+    print(f"  Keep {len(keep_ids)} line(s), remove {len(remove_info)}:")
+    by_label = {}
+    for lid, lbl, reason in remove_info:
+        by_label.setdefault(lbl or "(blank)", []).append((lid, reason))
+    for lbl in sorted(by_label.keys(), key=lambda s: s.lower()):
+        rows = by_label[lbl]
+        ids_str = ", ".join(lid for lid, _ in rows)
+        reason_set = {r for _, r in rows}
+        reason_str = "/".join(sorted(reason_set))
+        print(f"    [{lbl}] remove {len(rows)} ({reason_str}): {ids_str}")
 
-        if live:
-            for line in remove:
-                ok, detail = remove_line(customer_id, line)
-                status = "OK" if ok else "FAIL"
-                print(f"    {line['line_id']:>6}  {status}  {detail}")
-                if ok:
-                    total_removed += 1
-                time.sleep(0.2)
+    if not live:
+        print(f"  DRY RUN: would remove {len(remove_info)} line(s). Pass --live to apply.")
+        return len(remove_info)
+
+    # Build replace body from the kept lines' full data, in stable order
+    keep_items = [full_by_id[lid] for lid in sorted(keep_ids, key=int) if lid in full_by_id]
+    print(f"  PATCH ?replace=addressBook with {len(keep_items)} item(s)...")
+
+    r = ns_patch(f"customer/{customer_id}?replace=addressBook",
+                 {"addressBook": {"items": keep_items}})
+
+    if r.status_code == 204:
+        # Verify the result — make sure we didn't accidentally wipe more than intended
+        time.sleep(1.0)
+        after = fetch_address_line_ids(customer_id)
+        if len(after) == len(keep_items):
+            print(f"  OK: addressBook now has {len(after)} line(s) — "
+                  f"removed {len(remove_info)} duplicate/cruft line(s)")
+            return len(remove_info)
         else:
-            total_removed += len(remove)
-
-    if live:
-        print(f"  Removed {total_removed} duplicate line(s)")
+            print(f"  WARN: replace returned 204 but now has {len(after)} lines "
+                  f"(expected {len(keep_items)}) — MANUAL REVIEW needed")
+            return 0
     else:
-        print(f"  DRY RUN: would remove {total_removed} line(s). "
-              f"Pass --live to apply.")
-    return total_removed
+        print(f"  FAIL: replace returned {r.status_code}: {r.text[:300]}")
+        print(f"  No changes applied. Falling back is not automatic — "
+              f"investigate the error above.")
+        return 0
 
 
 def load_customer_ids_from_sheet():
@@ -177,7 +219,7 @@ def main():
     parser.add_argument("customer_ids", nargs="*", type=int,
                         help="NS Customer IDs. If omitted, reads from Google Sheet.")
     parser.add_argument("--live", action="store_true",
-                        help="Actually remove duplicates. Default is dry-run.")
+                        help="Actually apply the replace. Default is dry-run.")
     args = parser.parse_args()
 
     customer_ids = args.customer_ids or load_customer_ids_from_sheet()
@@ -198,7 +240,7 @@ def main():
 
     verb = "Removed" if args.live else "Would remove"
     print(f"\n{'='*60}")
-    print(f"  {verb} {total} duplicate address line(s) across {len(customer_ids)} customer(s)")
+    print(f"  {verb} {total} duplicate/cruft line(s) across {len(customer_ids)} customer(s)")
     print(f"{'='*60}")
 
 
