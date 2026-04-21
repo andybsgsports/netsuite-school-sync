@@ -162,6 +162,16 @@ def scrape_il_school(driver, url, school_name, state, domain_rules, exceptions):
         time.sleep(5)
     # Small extra settle
     time.sleep(1.5)
+    # Debug: log page size + first 400 chars of visible text
+    try:
+        body_text = driver.find_element(By.TAG_NAME, "body").text
+        mailto_count = len(driver.find_elements(By.XPATH,
+            "//a[starts-with(translate(@href,'MAILTO','mailto'),'mailto:')]"))
+        print(f"    [DEBUG] body={len(body_text)} chars  mailto_anchors={mailto_count}")
+        if mailto_count == 0 and "@" not in body_text:
+            print(f"    [DEBUG] first 400 chars: {body_text[:400]!r}")
+    except Exception as exc:
+        print(f"    [DEBUG] body-read failed: {exc}")
     try:
         people = extract_people(driver)
     except Exception as exc:
