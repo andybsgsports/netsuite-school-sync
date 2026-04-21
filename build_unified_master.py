@@ -1,13 +1,13 @@
 """
 build_unified_master.py
 -----------------------
-One-time script. Builds the Schools_Master tab on the School Sync Master
+One-time script. Builds the Schools tab on the School Sync Master
 Google Sheet by:
   1. Reading the WI School List- Master sheet (all reps' WI schools)
   2. Reading the IL_Schools tab (IHSA schools)
   3. Reading a NetSuite customer export CSV (CustomersProjects827.csv)
   4. Smart-matching each school to a NetSuite Customer by name
-  5. Writing the unified Schools_Master tab with a match-confidence column
+  5. Writing the unified Schools tab with a match-confidence column
 
 After this runs, review "Match Confidence" column values:
   - exact     : normalized name matched a single NS customer
@@ -44,11 +44,11 @@ GOOGLE_SCOPES = [
 SHEET_MAIN = os.environ.get("GOOGLE_SHEET_ID", "1iWhtasin-gmk3jllDvls7G1eI_pgzMm4yfQUP_qZHEM")
 SHEET_REPS = os.environ.get("GOOGLE_SHEET_ID_REPS", "1SlZHbGRvPiO8Qtq7kY2aI0Y9oUsKZ2CxXNXcuw211N0")
 
-MASTER_TAB = "Schools_Master"
+MASTER_TAB = "Schools"
 MASTER_COLUMNS = [
     "School Name",
     "State",
-    "Scraper URL",
+    "School URL",
     "Sales Rep",
     "NS Customer ID",
     "NS Customer Name",
@@ -483,7 +483,7 @@ def build_master_rows(wi_schools, il_schools, ns_customers):
         if ns_hint:
             rows.append({
                 "School Name": sch["name"], "State": sch["state"],
-                "Scraper URL": sch["url"], "Sales Rep": sch["rep"],
+                "School URL": sch["url"], "Sales Rep": sch["rep"],
                 "NS Customer ID": ns_hint, "NS Customer Name": "",
                 "Match Confidence": "manual", "Locked": "",
                 "Notes": sch.get("notes", ""), "Last Synced": "",
@@ -504,7 +504,7 @@ def build_master_rows(wi_schools, il_schools, ns_customers):
             note = f"[{conf}] guess: {ns_id} {ns_name}".strip() if ns_id else f"[{conf}] no candidate"
         rows.append({
             "School Name": sch["name"], "State": sch["state"],
-            "Scraper URL": sch["url"], "Sales Rep": sch["rep"],
+            "School URL": sch["url"], "Sales Rep": sch["rep"],
             "NS Customer ID": fill_id, "NS Customer Name": fill_name,
             "Match Confidence": conf, "Locked": "",
             "Notes": note, "Last Synced": "",
@@ -546,10 +546,10 @@ def merge_with_existing(new_rows, existing):
             prior_id = str(prior.get("NS Customer ID", "")).strip()
             prior_lock = str(prior.get("Locked", "")).strip().upper() == "Y"
             if prior_id or prior_lock:
-                # Trust the prior row. Only refresh the Scraper URL + Sales Rep
+                # Trust the prior row. Only refresh the School URL + Sales Rep
                 # (these are structural, not the user's match work).
                 merged_row = dict(prior)
-                merged_row["Scraper URL"] = r["Scraper URL"]
+                merged_row["School URL"] = r["School URL"]
                 if not prior_lock:
                     merged_row["Sales Rep"] = r["Sales Rep"]
                 merged.append(merged_row)
@@ -588,7 +588,7 @@ def main():
         sys.exit(1)
 
     print("=" * 60)
-    print(f"  Build Schools_Master  |  {'DRY RUN' if args.dry_run else 'LIVE'}")
+    print(f"  Build Schools  |  {'DRY RUN' if args.dry_run else 'LIVE'}")
     print("=" * 60)
 
     gc = get_gspread_client()

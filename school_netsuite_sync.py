@@ -1,13 +1,13 @@
 """
 school_netsuite_sync.py
 -----------------------
-Daily WI sync. Reads the `Schools_Master` tab (filtered to state == 'WI'),
+Daily WI sync. Reads the `Schools` tab (filtered to state == 'WI'),
 scrapes each school's WIAA page, and syncs Customer + Contact records to
 NetSuite.
 
 The master tab is the single source of truth and is essentially read-only
 from this script's perspective:
-  - Reads: School Name, State, Scraper URL, Sales Rep, NS Customer ID, Locked
+  - Reads: School Name, State, School URL, Sales Rep, NS Customer ID, Locked
   - Writes: only `Last Synced` on rows we actually processed
   - NEVER touches NS Customer ID, Sales Rep, School Name, Notes, or any other
     cell. Manual edits on the sheet are sticky.
@@ -16,7 +16,7 @@ Rows are skipped (not errored) when:
   - state != 'WI'
   - NS Customer ID is blank      -> use create_missing_ns_customers.py to link
   - Locked == 'Y'
-  - Scraper URL is blank
+  - School URL is blank
 
 The Contacts tab is still populated with new scraped contacts and trimmed
 as contacts depart.
@@ -55,14 +55,14 @@ GOOGLE_SCOPES = [
 ]
 DELAY = 1.5
 SCHOOL_FILTER = os.environ.get("SCHOOL_FILTER", "").strip()
-MASTER_TAB = "Schools_Master"
+MASTER_TAB = "Schools"
 CONTACTS_TAB = "Contacts"
 STATE_FILTER = "WI"
 
-# -- Master tab columns (Schools_Master) -------------------------------------
+# -- Schools tab columns -----------------------------------------------------
 M_NAME   = "School Name"
 M_STATE  = "State"
-M_URL    = "Scraper URL"
+M_URL    = "School URL"
 M_SALES  = "Sales Rep"
 M_NS_ID  = "NS Customer ID"
 M_LOCKED = "Locked"
