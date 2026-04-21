@@ -188,14 +188,28 @@ def dedup_admins(admins):
     return out
 
 
+def sport_group_of(sport):
+    """Canonical sport group: strip Boys/Girls, separators, collapse whitespace."""
+    s = re.sub(r"\b(Boys|Girls)\b", "", str(sport), flags=re.IGNORECASE)
+    s = re.sub(r"[-_&]", " ", s)
+    s = re.sub(r"\s+", " ", s).strip()
+    return s.title()
+
+
 def dedup_coaches(coaches):
-    """Collapse per (School, Email). Keep highest role. Combine Boys/Girls sport."""
+    """
+    Dedup per (School, Email, SportGroup) so one coach covering Boys+Girls
+    of the same sport becomes a single row, but a coach covering different
+    sports (e.g. Basketball + Golf) stays as separate rows — one per sheet.
+    """
     if not coaches:
         return []
     df = pd.DataFrame(coaches)
+    df["SportGroup"] = df["Sport"].map(sport_group_of)
     out = []
-    for (_school, _email), group in df.groupby(["School", "Email"]):
+    for (_school, _email, sg), group in df.groupby(["School", "Email", "SportGroup"]):
         row = group.iloc[0].to_dict()
+        row["SportGroup"] = sg
         roles = {str(r) for r in group["Role"].tolist()}
         sports = list(dict.fromkeys(group["Sport"].tolist()))
         if "Head Coach" in roles:
@@ -206,11 +220,13 @@ def dedup_coaches(coaches):
             row["Role"] = "Coach"
         has_boys = any("boys" in s.lower() for s in sports)
         has_girls = any("girls" in s.lower() for s in sports)
-        if has_boys and has_girls and len(sports) == 2:
-            base = re.sub(r"\b(Boys|Girls)\b", "", sports[0], flags=re.IGNORECASE).strip()
-            row["Sport"] = f"Boys & Girls {base}"
-        elif len(sports) > 1:
-            row["Sport"] = " & ".join(sports)
+        if has_boys and has_girls:
+            row["Sport"] = f"Boys & Girls {sg}".strip()
+        elif len(sports) == 1:
+            row["Sport"] = sports[0]
+        else:
+            # Same SportGroup, multiple variants (rare) — pick the cleanest.
+            row["Sport"] = sports[0]
         out.append(row)
     return out
 
@@ -239,16 +255,11 @@ def build_xlsx(admins, coaches, rep_name):
 
         if not df_coaches.empty:
             df_coaches = df_coaches.copy()
-            df_coaches["Sport Group"] = (
-                df_coaches["Sport"]
-                .astype(str)
-                .str.replace(r"\b(Boys|Girls)\b", "", regex=True)
-                .str.replace(r"[-_]", " ", regex=True)
-                .str.strip()
-            )
+            if "SportGroup" not in df_coaches.columns:
+                df_coaches["SportGroup"] = df_coaches["Sport"].map(sport_group_of)
             cols = ["School", "Sport", "First Name", "Last Name", "Role", "Email", "State"]
-            for sport_group, group in df_coaches.groupby("Sport Group", dropna=False):
-                sheet = re.sub(r"[\\/*?:[\]]", "", sport_group or "Unknown").strip().title()[:31] or "Unknown"
+            for sport_group, group in df_coaches.groupby("SportGroup", dropna=False):
+                sheet = re.sub(r"[\\/*?:[\]]", "", sport_group or "Unknown").strip()[:31] or "Unknown"
                 df_group = group.reindex(columns=cols).sort_values(["State", "School"])
                 df_group.to_excel(w, sheet_name=sheet, index=False)
                 summary[sheet] = len(df_group)
