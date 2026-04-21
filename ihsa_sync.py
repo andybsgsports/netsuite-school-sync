@@ -30,7 +30,7 @@ import requests
 from google.oauth2.service_account import Credentials
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from netsuite_sync import sync_contact, inactivate_contact, compute_school_domain
+from netsuite_sync import sync_contact, inactivate_contact, compute_school_domain, smart_title
 
 # -- Config ------------------------------------------------------------------
 GOOGLE_SHEET_ID = os.environ.get("GOOGLE_SHEET_ID", "")
@@ -220,8 +220,8 @@ def fetch_school_staff(school_id):
             sheet_role, sheet_type = parse_title_for_sheet(default_title, role_id, section)
             people.append({
                 "person_id": pid,
-                "first": first,
-                "last": last,
+                "first": smart_title(first),
+                "last":  smart_title(last),
                 "role": sheet_role,    # sport name for coaches, title for admins
                 "type": sheet_type,    # "Head Coach" / "Coach" / "Admin"
                 "default_title": default_title,  # original IHSA title kept for digest xlsx
