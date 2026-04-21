@@ -162,14 +162,27 @@ def scrape_il_school(driver, url, school_name, state, domain_rules, exceptions):
         time.sleep(5)
     # Small extra settle
     time.sleep(1.5)
-    # Debug: log page size + first 400 chars of visible text
+    # Debug: log page structure to diagnose extractor
     try:
         body_text = driver.find_element(By.TAG_NAME, "body").text
-        mailto_count = len(driver.find_elements(By.XPATH,
-            "//a[starts-with(translate(@href,'MAILTO','mailto'),'mailto:')]"))
-        print(f"    [DEBUG] body={len(body_text)} chars  mailto_anchors={mailto_count}")
-        if mailto_count == 0 and "@" not in body_text:
-            print(f"    [DEBUG] first 400 chars: {body_text[:400]!r}")
+        mailtos = driver.find_elements(By.XPATH,
+            "//a[starts-with(translate(@href,'MAILTO','mailto'),'mailto:')]")
+        print(f"    [DEBUG] body={len(body_text)} chars  mailto_anchors={len(mailtos)}")
+        for i, a in enumerate(mailtos):
+            try:
+                parent = a.find_element(By.XPATH, "ancestor::li[1]") if a else None
+            except Exception:
+                try:
+                    parent = a.find_element(By.XPATH, "ancestor::div[1]")
+                except Exception:
+                    parent = None
+            href = a.get_attribute("href") or ""
+            parent_text = (parent.text[:200] if parent else "")
+            print(f"    [DEBUG] mailto[{i}] href={href!r}  parent_text={parent_text!r}")
+        # Dump all @-containing text nodes
+        import re as _re
+        emails = _re.findall(r"[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}", body_text)
+        print(f"    [DEBUG] plaintext emails on page: {len(emails)}  sample={emails[:5]}")
     except Exception as exc:
         print(f"    [DEBUG] body-read failed: {exc}")
     try:
