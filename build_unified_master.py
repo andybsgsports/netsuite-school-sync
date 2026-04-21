@@ -247,63 +247,69 @@ def base_name_variants(raw):
     return [raw]
 
 
-def search_order(raw):
-    """
-    Ordered list of NS customer names to look for, highest-priority first.
-    Matches user rule: try '{Name} High School' first, then
-    '{Name} School District', then the bare name, then other common suffixes.
-    """
-    order = []
-    bases = base_name_variants(raw)
-    # Tier 1: High School forms
-    for b in bases:
-        order.append(f"{b} High School")
-    # Tier 2: School District forms
-    for b in bases:
-        order.append(f"{b} School District")
-    for b in bases:
-        order.append(f"{b} Area School District")
-    for b in bases:
-        order.append(f"{b} Community School District")
-    # Tier 3: bare name
-    for b in bases:
-        order.append(b)
-    # Dedupe while preserving order
-    seen = set()
-    out = []
-    for x in order:
-        nn = norm_name(x)
-        if nn and nn not in seen:
-            seen.add(nn)
-            out.append(nn)
-    return out
+# Each tier: (label, name-builder, regex the NS customer's ORIGINAL name must contain)
+# Anchoring by original-name regex stops a 'High School' query from matching
+# a 'School District' record that happens to share the same normalized form.
+TIER_RULES = [
+    ("hs", lambda b: f"{b} High School",
+     re.compile(r"(?i)\b(high\s+school|h\.?s\.?|senior\s+high)\b")),
+    ("sd", lambda b: f"{b} School District",
+     re.compile(r"(?i)\b(school\s+(dist|distr|district|dst)|"
+                r"sch\.?\s*(dist|distr|district|dst)|"
+                r"schl\.?\s*(dist|distr|district|dst)|"
+                r"s\.?\s*d\.?|cusd|usd|ccsd|district\s+\d+)\b")),
+    ("area_sd", lambda b: f"{b} Area School District",
+     re.compile(r"(?i)\barea\b")),
+    ("comm_sd", lambda b: f"{b} Community School District",
+     re.compile(r"(?i)\bcomm(unity)?\b")),
+    ("bare", lambda b: b, None),  # last resort — no tier filter
+]
 
 
 def exact_match_tiered(school, ns_customers, claimed):
     """
-    Try every candidate form in search_order. Within each form, prefer:
-      1. same-state customer
-      2. empty-state customer  (many NS school records have no state set)
-    Skips customers whose IDs are already claimed. Returns (id, name, conf)
-    or (None, None, None) if no tier produced a match.
+    Try each tier (HS first, then SD-like variants, then bare) against the
+    school's base-name variants. Within a tier, a candidate only counts if
+    its NORMALIZED name equals our wanted form AND its ORIGINAL name matches
+    that tier's keyword regex (e.g. contains 'High School' for the HS tier).
+
+    Within a tier, prefers same-state customers, falling back to empty-state.
     """
     state = school["state"]
-    for wanted in search_order(school["name"]):
-        same_state = []
-        empty_state = []
-        for c in ns_customers:
-            if c["id"] in claimed or c["norm"] != wanted:
+    bases = base_name_variants(school["name"])
+    for tier_label, builder, tier_regex in TIER_RULES:
+        for base in bases:
+            wanted = norm_name(builder(base))
+            if not wanted:
                 continue
-            if c["state"] == state:
-                same_state.append(c)
-            elif not c["state"]:
-                empty_state.append(c)
-        for bucket in (same_state, empty_state):
-            if len(bucket) == 1:
-                return bucket[0]["id"], bucket[0]["company_name"], "exact"
-            if len(bucket) > 1:
-                best = min(bucket, key=lambda c: int(c["id"]) if c["id"].isdigit() else 10**9)
-                return best["id"], best["company_name"], "ambiguous"
+            candidates = [
+                c for c in ns_customers
+                if c["id"] not in claimed and c["norm"] == wanted
+            ]
+            if tier_regex is not None:
+                candidates = [c for c in candidates if tier_regex.search(c["company_name"])]
+            if not candidates:
+                continue
+            same_state = [c for c in candidates if c["state"] == state]
+            empty_state = [c for c in candidates if not c["state"]]
+            for bucket in (same_state, empty_state):
+                if len(bucket) == 1:
+                    return bucket[0]["id"], bucket[0]["company_name"], "exact"
+                if len(bucket) > 1:
+                    # City tiebreak: if the school name carries a city hint
+                    # (the 'before' part of an IL parens name, or the bare
+                    # name itself) and one candidate's Billing City matches,
+                    # prefer that one over the oldest-ID fallback.
+                    city_hint = (base_name_variants(school["name"])[0] or "").lower().strip()
+                    city_match = [c for c in bucket
+                                  if c.get("city", "").lower().strip() == city_hint
+                                  or (c.get("city", "").lower().strip()
+                                      and c.get("city", "").lower().strip() in city_hint)]
+                    if len(city_match) == 1:
+                        return city_match[0]["id"], city_match[0]["company_name"], "exact"
+                    pool = city_match if city_match else bucket
+                    best = min(pool, key=lambda c: int(c["id"]) if c["id"].isdigit() else 10**9)
+                    return best["id"], best["company_name"], "ambiguous"
     return None, None, None
 
 
@@ -455,6 +461,52 @@ def build_master_rows(wi_schools, il_schools, ns_customers):
     return rows, stats
 
 
+def load_existing_master(gc):
+    """Return {(school_name, state): row_dict} from the current tab, empty if absent."""
+    wb = gc.open_by_key(SHEET_MAIN)
+    try:
+        ws = wb.worksheet(MASTER_TAB)
+    except Exception:
+        return {}
+    out = {}
+    for r in ws.get_all_records():
+        key = (str(r.get("School Name", "")).strip(), str(r.get("State", "")).strip())
+        if key[0]:
+            out[key] = r
+    return out
+
+
+def merge_with_existing(new_rows, existing):
+    """
+    Preserve existing manual work:
+      - If a row in the sheet already has a non-blank NS Customer ID, keep
+        its entire row (honors user's manual edits + any ID already chosen).
+      - If Locked = Y, keep the row even if NS Customer ID is blank.
+      - Otherwise write the freshly-computed row.
+    Returns (merged_rows, preserved_count).
+    """
+    preserved = 0
+    merged = []
+    for r in new_rows:
+        key = (r["School Name"], r["State"])
+        prior = existing.get(key)
+        if prior:
+            prior_id = str(prior.get("NS Customer ID", "")).strip()
+            prior_lock = str(prior.get("Locked", "")).strip().upper() == "Y"
+            if prior_id or prior_lock:
+                # Trust the prior row. Only refresh the Scraper URL + Sales Rep
+                # (these are structural, not the user's match work).
+                merged_row = dict(prior)
+                merged_row["Scraper URL"] = r["Scraper URL"]
+                if not prior_lock:
+                    merged_row["Sales Rep"] = r["Sales Rep"]
+                merged.append(merged_row)
+                preserved += 1
+                continue
+        merged.append(r)
+    return merged, preserved
+
+
 # -- Write to Sheet --------------------------------------------------------
 def write_master_tab(gc, rows):
     wb = gc.open_by_key(SHEET_MAIN)
@@ -528,6 +580,12 @@ def main():
             print(f"  {r['State']}  {r['School Name']}")
         if len(nones) > 25:
             print(f"  ... and {len(nones) - 25} more")
+
+    # Preserve anything the user has already filled in or locked on the sheet.
+    existing = load_existing_master(gc)
+    if existing:
+        rows, preserved = merge_with_existing(rows, existing)
+        print(f"\nPreserved {preserved} existing rows (had NS ID set or Locked=Y)")
 
     if args.dry_run:
         print(f"\nDRY RUN — no changes written. Remove --dry-run to write the tab.")
