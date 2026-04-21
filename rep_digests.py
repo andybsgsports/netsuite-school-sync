@@ -366,6 +366,7 @@ def send_email(rep, subject, body, xlsx_bytes, xlsx_name):
     if override_to:
         to_addr = override_to
         cc_addr = None
+        bcc_addr = None  # primary recipient is already the user — skip BCC
         subject = f"[NEW SYS] {subject}"
         body = (
             f"(Shadow-mode email from GitHub Actions; would have gone to {rep['email']}"
@@ -375,6 +376,7 @@ def send_email(rep, subject, body, xlsx_bytes, xlsx_name):
     elif DRY_RUN:
         to_addr = gmail_user
         cc_addr = None
+        bcc_addr = None  # TO is already GMAIL_USER — skip BCC
         body = (
             f"[DRY RUN — would send to {rep['email']}"
             + (f", CC {rep['cc']}" if rep.get("cc") else "")
@@ -383,7 +385,7 @@ def send_email(rep, subject, body, xlsx_bytes, xlsx_name):
     else:
         to_addr = rep["email"]
         cc_addr = rep.get("cc")
-    bcc_addr = gmail_user
+        bcc_addr = gmail_user  # true live: BCC andy so he sees each rep's email
 
     msg = EmailMessage()
     msg["From"] = gmail_user
