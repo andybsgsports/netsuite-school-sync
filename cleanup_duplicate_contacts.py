@@ -101,20 +101,65 @@ def fetch_contact_details(contact_id):
     }
 
 
-def pick_canonical(detail_by_id):
+def _ext_id_school_slug(ext_id):
+    """Parse the school-slug portion of a legacy SCHOOL__email or SCHOOL__ROLE__email ext_id."""
+    if not ext_id or ext_id.startswith("EM_"):
+        return ""
+    parts = (ext_id or "").split("__")
+    return parts[0] if parts else ""
+
+
+def _slug_matches_email_domain(school_slug, email):
     """
-    Given {contact_id: details}, pick the canonical contact ID.
+    Rough signal: does the school slug contain the email domain's primary token?
+    e.g. slug 'MOUNT-HOREB-HIGH-SCHOOL' vs email domain 'mhasd.k12.wi.us' — weak.
+    So we invert: check if the email domain appears in NO candidate's school.
+    Returns True when slug likely matches the email's domain / primary word.
+    """
+    if not school_slug or not email:
+        return False
+    slug = school_slug.upper().replace("-", " ")
+    local, _, domain = email.partition("@")
+    if not domain:
+        return False
+    # Pull the "primary" word of the domain (first segment before .k12/.edu/etc)
+    primary = domain.split(".")[0].upper()
+    # Match if the domain primary appears as a word/prefix in the slug.
+    # e.g. primary 'MHASD' vs slug 'MOUNT HOREB...' — doesn't match; this heuristic
+    # works best when primary is something like 'WAUKESHA' matching 'WAUKESHA WEST'.
+    return primary in slug
+
+
+def pick_canonical(detail_by_id, email=""):
+    """
+    Pick the canonical contact ID from a set of duplicates for one email.
     Only active contacts are eligible. Returns None if all are inactive.
+
+    Priority (highest first):
+      1. Already migrated to EM_ external-ID format.
+      2. Contact whose legacy school-slug matches the email's institutional
+         domain — the "home school" contact. e.g. prefer the Mount Horeb
+         contact for an @mhasd.k12.wi.us email over the Barneveld co-op copy.
+      3. Lowest (oldest) active ID.
     """
     active = {cid: d for cid, d in detail_by_id.items() if not d.get("isInactive")}
     if not active:
         return None
-    # Prefer any contact already migrated to the new EM_ external-ID format.
+
     migrated = [cid for cid, d in active.items()
                 if (d.get("externalId") or "").startswith("EM_")]
     if migrated:
         return sorted(migrated, key=lambda x: int(x))[0]
-    # Otherwise lowest (oldest) active ID.
+
+    # Prefer the contact whose school slug matches the email's domain.
+    if email:
+        domain_matched = [
+            cid for cid, d in active.items()
+            if _slug_matches_email_domain(_ext_id_school_slug(d.get("externalId", "")), email)
+        ]
+        if domain_matched:
+            return sorted(domain_matched, key=lambda x: int(x))[0]
+
     return sorted(active.keys(), key=lambda x: int(x))[0]
 
 
@@ -137,7 +182,7 @@ def merge_dupes_for_email(email, ns_ids, live, verbose=True):
     if not details:
         return None, []
 
-    canonical = pick_canonical(details)
+    canonical = pick_canonical(details, email=email)
     if canonical is None:
         if verbose:
             print(f"  All {len(ns_ids)} contacts for {email} are already inactive. Nothing to do.")
