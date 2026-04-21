@@ -4,7 +4,12 @@ on:
   schedule:
     # 10:00 UTC = ~5:00 AM Central (4:00 AM CDT / 5:00 AM CST)
     - cron: '0 10 * * *'
-  workflow_dispatch:  # Manual trigger from GitHub UI
+  workflow_dispatch:
+    inputs:
+      school_filter:
+        description: 'Optional: single school to sync (exact match)'
+        required: false
+        default: ''
 
 jobs:
   sync:
@@ -33,3 +38,4 @@ jobs:
           NS_TOKEN_SEC: ${{ secrets.NS_TOKEN_SEC }}
           GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
           GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+          SCHOOL_FILTER: ${{ inputs.school_filter }}
