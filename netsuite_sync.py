@@ -150,6 +150,29 @@ def ns_suiteql(query, limit=1000):
 # ============================================================
 # HELPERS
 # ============================================================
+def smart_title(s):
+    """
+    Proper-case a name without the bugs of str.title():
+      - doesn't capitalize the letter after an apostrophe
+        ('d'andrea' -> 'D'Andrea', not 'D'Andrea')  -- wait actually we want D'Andrea
+        Actually: "o'brien" -> "O'Brien"  (cap after apostrophe IS wanted for names)
+      - leaves already-mixed-case input alone ('McDonald' stays 'McDonald')
+      - fixes all-caps ('JAMES HOVORKA' -> 'James Hovorka')
+      - fixes all-lowercase ('james hovorka' -> 'James Hovorka')
+    """
+    t = str(s or "")
+    if not t:
+        return t
+    if t != t.lower() and t != t.upper():
+        return t  # mixed case already — trust it
+    # Capitalize each word AND the letter after each apostrophe.
+    return re.sub(
+        r"[a-zA-Z]+",
+        lambda m: m.group(0)[0].upper() + m.group(0)[1:].lower(),
+        t,
+    )
+
+
 def slugify(name):
     s = name.upper().strip()
     s = re.sub(r"[^A-Z0-9]+", "-", s)
@@ -708,8 +731,10 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
     contact_row: dict with first, last, email, role, type
     Returns contact NS internal ID.
     """
-    first = contact_row.get("first", "")
-    last  = contact_row.get("last", "")
+    # Normalize casing so ALL-CAPS rows from WIAA/IHSA get fixed in NS on
+    # every sync ("JAMES HOVORKA" -> "James Hovorka").
+    first = smart_title(contact_row.get("first", ""))
+    last  = smart_title(contact_row.get("last", ""))
     email = contact_row.get("email", "")
     role  = contact_row.get("role", "")
     state = school_info.get("state", "")

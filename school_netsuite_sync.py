@@ -29,6 +29,7 @@ from netsuite_sync import (
     remove_contact_ship_to,
     sync_address_book,
     compute_school_domain,
+    smart_title,
 )
 
 # -- Config -------------------------------------------------------------------
@@ -283,8 +284,8 @@ def main():
                 continue
             new_row = {
                 C_SCHOOL: school_name,
-                C_FIRST:  person.get("first", ""),
-                C_LAST:   person.get("last", ""),
+                C_FIRST:  smart_title(person.get("first", "")),
+                C_LAST:   smart_title(person.get("last", "")),
                 C_EMAIL:  person.get("email", ""),
                 C_ROLE:   person.get("role", ""),
                 C_TYPE:   person.get("type", ""),
