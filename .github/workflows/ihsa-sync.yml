@@ -26,13 +26,8 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install Chrome + chromedriver
-        uses: browser-actions/setup-chrome@v1
-        with:
-          chrome-version: stable
-
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install requests gspread google-auth
 
       - name: Run IL sync
         run: python ihsa_sync.py

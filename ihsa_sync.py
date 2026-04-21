@@ -1,20 +1,21 @@
 """
 ihsa_sync.py
 ------------
-Daily Illinois sync: scrapes each IL school's IHSA detail page with Selenium,
-adds discovered admins/coaches to the Contacts tab, and pushes Sync=Y contacts
-to NetSuite. Mirrors school_netsuite_sync.py for the WI side.
+Daily Illinois sync. Uses IHSA's public REST API directly (no Selenium, no
+Chrome). For each school on the IL_Schools tab:
+  1. GET /v1/schools/{id}/staff2 -> full roster (admins + coaches + medical
+     + activities) with PersonID, Name, DefaultTitle, RoleID, HasEmail
+  2. For each person with HasEmail=true:
+     GET /v1/schools/{id}/staff/{PersonID}/email -> {"email": "..."}
+  3. Add to Contacts tab (auto-sync = Y), push Sync=Y contacts to NetSuite,
+     inactivate departed contacts.
 
-Unlike the WI path, this does NOT touch the Customer record because IHSA
-does not expose the richer WIAA-style fields (level, conference, enrollment,
-etc.) and overwriting existing good data would be lossy.
-
-Reads:
-  - IL_Schools tab  (Schools | School Website | State | NS Customer ID | Sales Rep | ...)
-  - Contacts tab    (shared with WI sync)
+Does NOT touch the NetSuite Customer record — IHSA does not expose the rich
+fields we populate for WI schools, and blanking them would be lossy.
 
 Env:
   GOOGLE_SHEET_ID, GOOGLE_CREDENTIALS_JSON, NS_*
+  SCHOOL_FILTER (optional) — only sync this school name
 """
 
 import json
@@ -25,30 +26,11 @@ import time
 from datetime import datetime
 
 import gspread
+import requests
 from google.oauth2.service_account import Credentials
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from netsuite_sync import (
-    sync_contact,
-    inactivate_contact,
-)
-from ihsa_batch_runner import (
-    load_domain_rules,
-    load_exceptions,
-    make_driver,
-    extract_people,
-    ihsa_url_from_id_or_url,
-    split_first_space,
-    infer_from_email,
-    is_valid_email,
-    clean_role,
-    norm,
-    BUILTIN_DOMAIN_RULES,
-)
-
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from netsuite_sync import sync_contact, inactivate_contact
 
 # -- Config ------------------------------------------------------------------
 GOOGLE_SHEET_ID = os.environ.get("GOOGLE_SHEET_ID", "")
@@ -57,6 +39,20 @@ GOOGLE_SCOPES = [
     "https://www.googleapis.com/auth/drive",
 ]
 DELAY_BETWEEN_SCHOOLS = 1.0
+DELAY_BETWEEN_EMAILS = 0.2  # between email-reveal calls
+
+# IHSA API headers — minimum set the public site uses.
+IHSA_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                  "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Accept": "application/json, text/plain, */*",
+    "Sec-Fetch-Site": "same-site",
+    "Sec-Fetch-Mode": "cors",
+    "Sec-Fetch-Dest": "empty",
+    "Referer": "https://www.ihsa.org/",
+    "Origin": "https://www.ihsa.org",
+}
+IHSA_API = "https://api.ihsa.org/v1"
 
 SCHOOL_FILTER = os.environ.get("SCHOOL_FILTER", "").strip()
 
@@ -69,7 +65,7 @@ S_SALES  = "Sales Rep"
 S_SYNCED = "Last Synced"
 S_NOTES  = "Notes"
 
-# Shared Contacts tab columns (same as WI)
+# Contacts tab columns (shared with WI)
 C_SCHOOL = "School Name"
 C_FIRST  = "First"
 C_LAST   = "Last"
@@ -81,8 +77,18 @@ C_NS_CID = "NS Contact ID"
 C_NS_CUS = "NS Customer ID"
 C_SYNCED = "Last Synced"
 
+# Map IHSA staff2 sections to NetSuite Type values
+SECTION_TO_TYPE = {
+    "Administration":                                             "Admin",
+    "Boys Athletics - Head Coaches":                              "Coach",
+    "Girls Athletics - Head Coaches":                             "Coach",
+    "Athletic Medical Staff":                                     "Medical",
+    "Activities - Head Coaches, Advisers, and Directors":         "Activity",
+    "Non-Competitive Activities - Head Coaches, Advisers, and Directors": "Activity",
+}
 
-# -- Google Sheets ------------------------------------------------------------
+
+# -- Google Sheets -----------------------------------------------------------
 def get_gspread_client():
     creds_json = os.environ.get("GOOGLE_CREDENTIALS_JSON", "")
     if creds_json:
@@ -99,10 +105,8 @@ def get_gspread_client():
 def load_sheet(gc):
     wb = gc.open_by_key(GOOGLE_SHEET_ID)
     il_ws = wb.worksheet("IL_Schools")
-    il_schools = il_ws.get_all_records()
     contacts_ws = wb.worksheet("Contacts")
-    contacts = contacts_ws.get_all_records()
-    return il_schools, contacts, il_ws, contacts_ws
+    return il_ws.get_all_records(), contacts_ws.get_all_records(), il_ws, contacts_ws
 
 
 def save_il_schools(ws, rows):
@@ -127,97 +131,90 @@ def save_contacts(ws, rows):
     print(f"  [SHEETS] Contacts saved ({len(clean)} rows)")
 
 
-# -- IHSA scrape → contact rows ----------------------------------------------
-def parse_role_type(job_title):
-    """Classify an IHSA Job Title into (Role, Type). Type = Coach | Admin."""
-    jt = norm(job_title)
-    lower = jt.lower()
-    if any(k in lower for k in ("athletic director", "athletic supervisor",
-                                "principal", "superintendent", "activities director",
-                                "dean of students", "athletic trainer")):
-        return (jt.title(), "Admin")
-    if "head coach" in lower or "coach" in lower:
-        # Keep the job title as-is so it retains the sport (e.g. "Boys Basketball Head Coach")
-        return (jt.title(), "Coach")
-    if any(k in lower for k in ("advisor", "adviser", "director")):
-        return (jt.title(), "Admin")
-    return (jt.title(), "Admin")
+# -- IHSA API ----------------------------------------------------------------
+def extract_school_id(url_or_id):
+    """Accept either the full URL or bare ID; return zero-padded ID string."""
+    s = str(url_or_id).strip()
+    m = re.search(r"/details/(\d+)", s)
+    if m:
+        return m.group(1).zfill(4)
+    if s.isdigit():
+        return s.zfill(4)
+    return None
 
 
-def scrape_il_school(driver, url, school_name, state, domain_rules, exceptions):
-    """Returns list of contact dicts matching Contacts-tab shape."""
-    driver.get(ihsa_url_from_id_or_url(url))
-    # IHSA is a React SPA — body tag shows up long before content renders.
-    # Wait for either a mailto link or the word "Coach"/"Director" in the page.
-    try:
-        WebDriverWait(driver, 30).until(
-            lambda d: (
-                len(d.find_elements(By.XPATH,
-                    "//a[starts-with(translate(@href,'MAILTO','mailto'),'mailto:')]")) > 0
-                or "@" in d.find_element(By.TAG_NAME, "body").text
-            )
-        )
-    except Exception:
-        # Give it a bit more in case of slow render, then proceed anyway
-        time.sleep(5)
-    # Small extra settle
-    time.sleep(1.5)
-    # Debug: log page structure to diagnose extractor
-    try:
-        body_text = driver.find_element(By.TAG_NAME, "body").text
-        mailtos = driver.find_elements(By.XPATH,
-            "//a[starts-with(translate(@href,'MAILTO','mailto'),'mailto:')]")
-        print(f"    [DEBUG] body={len(body_text)} chars  mailto_anchors={len(mailtos)}")
-        for i, a in enumerate(mailtos):
-            try:
-                parent = a.find_element(By.XPATH, "ancestor::li[1]") if a else None
-            except Exception:
-                try:
-                    parent = a.find_element(By.XPATH, "ancestor::div[1]")
-                except Exception:
-                    parent = None
-            href = a.get_attribute("href") or ""
-            parent_text = (parent.text[:200] if parent else "")
-            print(f"    [DEBUG] mailto[{i}] href={href!r}  parent_text={parent_text!r}")
-        # Dump all @-containing text nodes
-        import re as _re
-        emails = _re.findall(r"[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}", body_text)
-        print(f"    [DEBUG] plaintext emails on page: {len(emails)}  sample={emails[:5]}")
-    except Exception as exc:
-        print(f"    [DEBUG] body-read failed: {exc}")
-    try:
-        people = extract_people(driver)
-    except Exception as exc:
-        print(f"    ERROR extracting: {exc}")
+def strip_honorific(name):
+    """'Mr. John Smith' -> 'John Smith'."""
+    return re.sub(r"^(Mr\.?|Mrs\.?|Ms\.?|Dr\.?|Coach)\s+", "", name or "", flags=re.IGNORECASE).strip()
+
+
+def split_first_last(name, fallback_last=""):
+    clean = strip_honorific(name)
+    parts = clean.split()
+    if len(parts) >= 2:
+        return parts[0], " ".join(parts[1:])
+    if parts:
+        return parts[0], fallback_last or ""
+    return "", fallback_last or ""
+
+
+def fetch_school_staff(school_id):
+    """Fetch full roster from IHSA. Returns list of normalized contact dicts."""
+    r = requests.get(f"{IHSA_API}/schools/{school_id}/staff2", headers=IHSA_HEADERS, timeout=15)
+    if r.status_code != 200:
+        print(f"    [IHSA] staff2 failed: {r.status_code}")
         return []
+    data = r.json().get("data", {})
+    people = []
+    for section, members in data.items():
+        ctype = SECTION_TO_TYPE.get(section, "Other")
+        for m in members:
+            pid = m.get("PersonID")
+            has_email = bool(m.get("HasEmail"))
+            first, last = split_first_last(m.get("Name", ""), fallback_last=m.get("LastName", ""))
+            people.append({
+                "person_id": pid,
+                "first": first,
+                "last": last,
+                "role": m.get("DefaultTitle", ""),
+                "type": ctype,
+                "role_id": m.get("RoleID", ""),
+                "has_email": has_email,
+                "phone": m.get("Phone", ""),
+                "email": "",  # filled later
+            })
+    return people
 
-    out = []
+
+def fetch_email(school_id, person_id):
+    """Resolve an email via the gated reveal endpoint."""
+    r = requests.get(
+        f"{IHSA_API}/schools/{school_id}/staff/{person_id}/email",
+        headers=IHSA_HEADERS, timeout=15,
+    )
+    if r.status_code != 200:
+        return ""
+    try:
+        return str(r.json().get("email", "")).strip()
+    except ValueError:
+        return ""
+
+
+def scrape_school(school_id):
+    """Scrape one school: roster + emails. Returns list of contact dicts."""
+    people = fetch_school_staff(school_id)
     for p in people:
-        email = norm(p.get("Email", ""))
-        if not is_valid_email(email):
-            continue
-        name = norm(p.get("Name", ""))
-        role_raw = clean_role(p.get("Role", ""))
-        fn, ln = split_first_space(name) if name else ("", "")
-        if not (fn and ln):
-            efn, eln = infer_from_email(email, domain_rules, exceptions)
-            fn = fn or efn
-            ln = ln or eln
-        role, ctype = parse_role_type(role_raw)
-        out.append({
-            "first": fn.title() if fn else "",
-            "last":  ln.title() if ln else "",
-            "email": email,
-            "role":  role,
-            "type":  ctype,
-        })
-    return out
+        if p["has_email"] and p["person_id"]:
+            p["email"] = fetch_email(school_id, p["person_id"])
+            time.sleep(DELAY_BETWEEN_EMAILS)
+    # Drop anyone we couldn't get an email for — the sheet's key is (school, email, role)
+    return [p for p in people if p["email"]]
 
 
 # -- Main --------------------------------------------------------------------
 def main():
     print(f"{'='*60}")
-    print(f"  IL Sync  |  {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+    print(f"  IL Sync (API-based)  |  {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     print(f"{'='*60}\n")
 
     if not GOOGLE_SHEET_ID:
@@ -229,76 +226,46 @@ def main():
 
     if SCHOOL_FILTER:
         schools_to_sync = [s for s in il_schools if s.get(S_NAME, "").strip() == SCHOOL_FILTER]
-        print(f"  TEST MODE: Only '{SCHOOL_FILTER}'")
+        print(f"  TEST MODE: only '{SCHOOL_FILTER}'")
     else:
         schools_to_sync = il_schools
 
     print(f"  IL schools: {len(schools_to_sync)}  |  Existing contacts: {len(contacts)}\n")
 
-    exceptions = load_exceptions  # it's a callable on path; see ihsa_batch_runner
-    # The loader helpers expect Path inputs; we just use empty dicts in CI.
-    from pathlib import Path
-    exc_csv = Path("name_exceptions.csv")
-    dom_csv = Path("domain_rules.csv")
-    exceptions = load_exceptions(exc_csv) if exc_csv.exists() else {}
-    domain_rules = load_domain_rules(dom_csv) if dom_csv.exists() else dict(BUILTIN_DOMAIN_RULES)
-
-    driver = make_driver()
     synced = 0
     skipped_no_ns_id = 0
     contact_creates = 0
     contact_updates = 0
     contact_inactivates = 0
 
-    try:
-        for school_row in schools_to_sync:
-            school_name = str(school_row.get(S_NAME, "")).strip()
-            url         = str(school_row.get(S_URL, "")).strip()
-            ns_id       = str(school_row.get(S_NS_ID, "")).strip()
-            state       = str(school_row.get(S_STATE, "IL")).strip() or "IL"
+    for school_row in schools_to_sync:
+        school_name = str(school_row.get(S_NAME, "")).strip()
+        url         = str(school_row.get(S_URL, "")).strip()
+        ns_id       = str(school_row.get(S_NS_ID, "")).strip()
+        state       = str(school_row.get(S_STATE, "IL")).strip() or "IL"
 
-            if not (school_name and url):
-                continue
+        if not (school_name and url):
+            continue
+        school_id = extract_school_id(url)
+        if not school_id:
+            print(f"\n[IL] {school_name} — can't parse IHSA ID from {url!r}, skipping")
+            continue
 
-            print(f"\n{'-'*60}\n[IL] {school_name}")
+        print(f"\n{'-'*60}\n[IL] {school_name}  (ihsa id {school_id})")
 
-            # Scrape site
-            site_contacts = scrape_il_school(driver, url, school_name, state,
-                                             domain_rules, exceptions)
-            print(f"  Scraped: {len(site_contacts)} contacts")
+        site_contacts = scrape_school(school_id)
+        print(f"  Scraped: {len(site_contacts)} contacts (with email)")
 
-            if ns_id in ("", "nan", "None", "0"):
-                # No NetSuite customer linked — can't sync contacts; just
-                # record the scraped contacts for manual linkage later.
-                school_row[S_NOTES] = (school_row.get(S_NOTES, "") + " [needs NS Customer ID]").strip()
-                skipped_no_ns_id += 1
-                print(f"  SKIP — no NS Customer ID in sheet")
-                # Still add discovered contacts so Andy can see them (Sync=N)
-                existing_emails = {
-                    (c.get(C_EMAIL, "").strip().lower(), c.get(C_ROLE, "").strip().lower())
-                    for c in contacts
-                    if c.get(C_SCHOOL, "").strip() == school_name
-                }
-                for sc in site_contacts:
-                    key = (sc["email"].lower(), sc["role"].lower())
-                    if key in existing_emails:
-                        continue
-                    contacts.append({
-                        C_SCHOOL: school_name, C_FIRST: sc["first"], C_LAST: sc["last"],
-                        C_EMAIL:  sc["email"], C_ROLE:  sc["role"], C_TYPE:  sc["type"],
-                        C_SYNC:   "N", C_NS_CID: "", C_NS_CUS: "", C_SYNCED: "",
-                    })
-                    existing_emails.add(key)
-                continue
-
-            # Add new contacts (auto-sync = Y for IL, matching WI behavior)
+        if ns_id in ("", "nan", "None", "0"):
+            # Record found contacts as Sync=N so Andy sees them; skip NS sync.
+            school_row[S_NOTES] = (str(school_row.get(S_NOTES, "")) + " [needs NS Customer ID]").strip()
+            skipped_no_ns_id += 1
+            print(f"  SKIP NS sync — no NS Customer ID")
             existing_keys = {
                 (c.get(C_EMAIL, "").strip().lower(), c.get(C_ROLE, "").strip().lower())
                 for c in contacts
                 if c.get(C_SCHOOL, "").strip() == school_name
             }
-            site_emails = {sc["email"].lower() for sc in site_contacts}
-
             for sc in site_contacts:
                 key = (sc["email"].lower(), sc["role"].lower())
                 if key in existing_keys:
@@ -306,62 +273,73 @@ def main():
                 contacts.append({
                     C_SCHOOL: school_name, C_FIRST: sc["first"], C_LAST: sc["last"],
                     C_EMAIL:  sc["email"], C_ROLE:  sc["role"], C_TYPE:  sc["type"],
-                    C_SYNC:   "Y", C_NS_CID: "", C_NS_CUS: ns_id, C_SYNCED: "",
+                    C_SYNC:   "N", C_NS_CID: "", C_NS_CUS: "", C_SYNCED: "",
                 })
                 existing_keys.add(key)
-                print(f"  + New: {sc['first']} {sc['last']} — {sc['role']} [{sc['type']}]")
-                contact_creates += 1
+            continue
 
-            # Sync contacts + inactivate departed
-            school_info = {"state": state}  # minimal; sync_contact needs only state
-            for c in contacts:
-                if c.get(C_SCHOOL, "").strip() != school_name:
+        existing_keys = {
+            (c.get(C_EMAIL, "").strip().lower(), c.get(C_ROLE, "").strip().lower())
+            for c in contacts
+            if c.get(C_SCHOOL, "").strip() == school_name
+        }
+        site_emails = {sc["email"].lower() for sc in site_contacts}
+
+        for sc in site_contacts:
+            key = (sc["email"].lower(), sc["role"].lower())
+            if key in existing_keys:
+                continue
+            contacts.append({
+                C_SCHOOL: school_name, C_FIRST: sc["first"], C_LAST: sc["last"],
+                C_EMAIL:  sc["email"], C_ROLE:  sc["role"], C_TYPE:  sc["type"],
+                C_SYNC:   "Y", C_NS_CID: "", C_NS_CUS: ns_id, C_SYNCED: "",
+            })
+            existing_keys.add(key)
+            print(f"  + New: {sc['first']} {sc['last']} — {sc['role']} [{sc['type']}]")
+            contact_creates += 1
+
+        school_info = {"state": state}
+        for c in contacts:
+            if c.get(C_SCHOOL, "").strip() != school_name:
+                continue
+            sync_flag  = str(c.get(C_SYNC, "N")).strip().upper()
+            email      = str(c.get(C_EMAIL, "")).strip()
+            first      = str(c.get(C_FIRST, "")).strip()
+            last       = str(c.get(C_LAST, "")).strip()
+            role       = str(c.get(C_ROLE, "")).strip()
+            contact_ns = str(c.get(C_NS_CID, "")).strip()
+            if not email:
+                continue
+            c[C_NS_CUS] = ns_id
+            departed = site_contacts and (email.lower() not in site_emails)
+
+            if sync_flag == "Y" and not departed:
+                if contact_ns == "UNLINKED":
                     continue
-                sync_flag  = str(c.get(C_SYNC, "N")).strip().upper()
-                email      = str(c.get(C_EMAIL, "")).strip()
-                first      = str(c.get(C_FIRST, "")).strip()
-                last       = str(c.get(C_LAST, "")).strip()
-                role       = str(c.get(C_ROLE, "")).strip()
-                contact_ns = str(c.get(C_NS_CID, "")).strip()
-                if not email:
-                    continue
-                c[C_NS_CUS] = ns_id
-                email_lower = email.lower()
-                departed = site_contacts and (email_lower not in site_emails)
+                new_id = sync_contact(ns_id, school_name, {
+                    "first": first, "last": last,
+                    "email": email, "role": role,
+                    "ns_id": contact_ns if contact_ns not in ("", "nan", "None") else "",
+                }, school_info)
+                if new_id:
+                    c[C_NS_CID] = str(new_id)
+                    c[C_SYNCED] = datetime.now().strftime("%Y-%m-%d %H:%M")
+                    contact_updates += 1
+            elif departed and contact_ns not in ("", "nan", "None", "UNLINKED") and site_contacts:
+                inactivate_contact(contact_ns, f"{first} {last}")
+                c[C_SYNC] = "N"
+                c[C_NS_CID] = ""
+                contact_inactivates += 1
+                print(f"  - Departed: {first} {last}")
+            elif sync_flag == "N" and contact_ns not in ("", "nan", "None", "UNLINKED"):
+                inactivate_contact(contact_ns, f"{first} {last}")
+                c[C_NS_CID] = ""
+                contact_inactivates += 1
+            time.sleep(0.15)
 
-                if sync_flag == "Y" and not departed:
-                    if contact_ns == "UNLINKED":
-                        continue
-                    contact_row = {
-                        "first": first, "last": last,
-                        "email": email, "role": role,
-                        "ns_id": contact_ns if contact_ns not in ("", "nan", "None") else "",
-                    }
-                    new_id = sync_contact(ns_id, school_name, contact_row, school_info)
-                    if new_id:
-                        c[C_NS_CID] = str(new_id)
-                        c[C_SYNCED] = datetime.now().strftime("%Y-%m-%d %H:%M")
-                        contact_updates += 1
-                elif departed and contact_ns not in ("", "nan", "None", "UNLINKED") and site_contacts:
-                    inactivate_contact(contact_ns, f"{first} {last}")
-                    c[C_SYNC] = "N"
-                    c[C_NS_CID] = ""
-                    contact_inactivates += 1
-                    print(f"  - Departed: {first} {last}")
-                elif sync_flag == "N" and contact_ns not in ("", "nan", "None", "UNLINKED"):
-                    inactivate_contact(contact_ns, f"{first} {last}")
-                    c[C_NS_CID] = ""
-                    contact_inactivates += 1
-                time.sleep(0.2)
-
-            school_row[S_SYNCED] = datetime.now().strftime("%Y-%m-%d %H:%M")
-            synced += 1
-            time.sleep(DELAY_BETWEEN_SCHOOLS)
-    finally:
-        try:
-            driver.quit()
-        except Exception:
-            pass
+        school_row[S_SYNCED] = datetime.now().strftime("%Y-%m-%d %H:%M")
+        synced += 1
+        time.sleep(DELAY_BETWEEN_SCHOOLS)
 
     print(f"\n{'='*60}\n  Saving to Google Sheets...")
     save_il_schools(il_ws, il_schools)
