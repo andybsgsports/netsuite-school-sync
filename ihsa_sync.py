@@ -56,14 +56,16 @@ IHSA_API = "https://api.ihsa.org/v1"
 
 SCHOOL_FILTER = os.environ.get("SCHOOL_FILTER", "").strip()
 
-# IL_Schools columns
-S_NAME   = "Schools"
-S_URL    = "School Website"
-S_STATE  = "State"
-S_NS_ID  = "NS Customer ID"
-S_SALES  = "Sales Rep"
-S_SYNCED = "Last Synced"
-S_NOTES  = "Notes"
+# Schools_Master columns
+MASTER_TAB   = "Schools_Master"
+STATE_FILTER = "IL"
+M_NAME       = "School Name"
+M_STATE      = "State"
+M_URL        = "Scraper URL"
+M_SALES      = "Sales Rep"
+M_NS_ID      = "NS Customer ID"
+M_LOCKED     = "Locked"
+M_SYNCED     = "Last Synced"
 
 # Contacts tab columns (shared with WI)
 C_SCHOOL = "School Name"
@@ -126,21 +128,37 @@ def get_gspread_client():
     return gspread.authorize(creds)
 
 
-def load_sheet(gc):
+def load_master_il(gc):
+    """
+    Returns (rows, worksheet, last_synced_col_1based).
+    rows is [(sheet_row_1based, record_dict)] for state==IL only.
+    """
     wb = gc.open_by_key(GOOGLE_SHEET_ID)
-    il_ws = wb.worksheet("IL_Schools")
-    contacts_ws = wb.worksheet("Contacts")
-    return il_ws.get_all_records(), contacts_ws.get_all_records(), il_ws, contacts_ws
+    ws = wb.worksheet(MASTER_TAB)
+    values = ws.get_all_values()
+    if not values:
+        return [], ws, None
+    headers = values[0]
+    last_synced_col = headers.index(M_SYNCED) + 1 if M_SYNCED in headers else None
+    out = []
+    for i, raw in enumerate(values[1:], start=2):
+        rec = dict(zip(headers, raw))
+        if str(rec.get(M_STATE, "")).strip().upper() != STATE_FILTER:
+            continue
+        out.append((i, rec))
+    return out, ws, last_synced_col
 
 
-def save_il_schools(ws, rows):
-    if not rows:
+def write_last_synced(ws, col_1based, updates):
+    """Batch-write the Last Synced column for just the rows we touched."""
+    if not ws or not col_1based or not updates:
         return
-    headers = list(rows[0].keys())
-    vals = [headers] + [[str(r.get(h, "") or "") for h in headers] for r in rows]
-    ws.clear()
-    ws.update(range_name="A1", values=vals)
-    print(f"  [SHEETS] IL_Schools saved ({len(rows)} rows)")
+    batch = [{
+        "range": gspread.utils.rowcol_to_a1(row, col_1based),
+        "values": [[ts]],
+    } for row, ts in updates]
+    ws.batch_update(batch)
+    print(f"  [SHEETS] Wrote Last Synced on {len(updates)} row(s) of {MASTER_TAB}")
 
 
 def save_contacts(ws, rows):
@@ -269,28 +287,37 @@ def main():
         sys.exit(1)
 
     gc = get_gspread_client()
-    il_schools, contacts, il_ws, contacts_ws = load_sheet(gc)
+    rows, master_ws, last_synced_col = load_master_il(gc)
+    # Contacts tab uses the shared loader (same schema as WI sync)
+    wb = gc.open_by_key(GOOGLE_SHEET_ID)
+    contacts_ws = wb.worksheet("Contacts")
+    contacts = contacts_ws.get_all_records()
 
     if SCHOOL_FILTER:
-        schools_to_sync = [s for s in il_schools if s.get(S_NAME, "").strip() == SCHOOL_FILTER]
+        rows = [(i, r) for i, r in rows if str(r.get(M_NAME, "")).strip() == SCHOOL_FILTER]
         print(f"  TEST MODE: only '{SCHOOL_FILTER}'")
-    else:
-        schools_to_sync = il_schools
 
-    print(f"  IL schools: {len(schools_to_sync)}  |  Existing contacts: {len(contacts)}\n")
+    print(f"  IL rows: {len(rows)}  |  Existing contacts: {len(contacts)}\n")
 
     synced = 0
     skipped_no_ns_id = 0
+    skipped_locked = 0
     contact_creates = 0
     contact_updates = 0
     contact_inactivates = 0
+    last_synced_updates = []  # (sheet_row, timestamp)
 
-    for school_row in schools_to_sync:
-        school_name = str(school_row.get(S_NAME, "")).strip()
-        url         = str(school_row.get(S_URL, "")).strip()
-        ns_id       = str(school_row.get(S_NS_ID, "")).strip()
-        state       = str(school_row.get(S_STATE, "IL")).strip() or "IL"
+    for sheet_row, school_row in rows:
+        school_name = str(school_row.get(M_NAME, "")).strip()
+        url         = str(school_row.get(M_URL, "")).strip()
+        ns_id       = str(school_row.get(M_NS_ID, "")).strip()
+        state       = "IL"
+        locked      = str(school_row.get(M_LOCKED, "")).strip().upper() == "Y"
 
+        if locked:
+            print(f"  [SKIP locked] {school_name}")
+            skipped_locked += 1
+            continue
         if not (school_name and url):
             continue
         school_id = extract_school_id(url)
@@ -304,10 +331,10 @@ def main():
         print(f"  Scraped: {len(site_contacts)} contacts (with email)")
 
         if ns_id in ("", "nan", "None", "0"):
-            # Record found contacts as Sync=N so Andy sees them; skip NS sync.
-            school_row[S_NOTES] = (str(school_row.get(S_NOTES, "")) + " [needs NS Customer ID]").strip()
+            # No NS link — still record found contacts as Sync=N so Andy sees them.
+            # Does NOT auto-create the NS customer; use create_missing_ns_customers.
             skipped_no_ns_id += 1
-            print(f"  SKIP NS sync — no NS Customer ID")
+            print(f"  SKIP NS sync — no NS Customer ID (run create_missing_ns_customers to link)")
             existing_keys = {
                 (c.get(C_EMAIL, "").strip().lower(), c.get(C_ROLE, "").strip().lower())
                 for c in contacts
@@ -391,18 +418,19 @@ def main():
                 contact_inactivates += 1
             time.sleep(0.15)
 
-        school_row[S_SYNCED] = datetime.now().strftime("%Y-%m-%d %H:%M")
+        last_synced_updates.append((sheet_row, datetime.now().strftime("%Y-%m-%d %H:%M")))
         synced += 1
         time.sleep(DELAY_BETWEEN_SCHOOLS)
 
-    print(f"\n{'='*60}\n  Saving to Google Sheets...")
-    save_il_schools(il_ws, il_schools)
+    print(f"\n{'='*60}\n  Saving...")
+    write_last_synced(master_ws, last_synced_col, last_synced_updates)
     save_contacts(contacts_ws, contacts)
 
     print(f"\n{'='*60}")
     print(f"  IL SYNC COMPLETE")
     print(f"  Schools synced:       {synced}")
-    print(f"  Missing NS ID:        {skipped_no_ns_id}")
+    print(f"  Skipped (no NS ID):   {skipped_no_ns_id}")
+    print(f"  Skipped (locked):     {skipped_locked}")
     print(f"  Contacts created:     {contact_creates}")
     print(f"  Contacts updated:     {contact_updates}")
     print(f"  Contacts inactivated: {contact_inactivates}")
