@@ -60,11 +60,19 @@ MASTER_COLUMNS = [
 
 # -- Normalization ----------------------------------------------------------
 DROP_WORDS = [
-    "high school", "high schools", "school district", "school district's",
-    "schools", "school", "area school", "community unit school district",
-    "consolidated school district", "union school district", "unit district",
-    "h.s.", "hs", "district", "academy", "area", "the ",
+    "high school", "high schools", "high sch", "senior high",
+    "school district", "school district's", "school dist", "school distr",
+    "schools", "school", "sch",
+    "community unit school district", "community school district",
+    "consolidated school district", "union school district",
+    "unit district", "area school district", "area schools",
+    "public school", "public schools",
+    "h.s.", "hs", "district", "distr", "dist",
+    "the ",
 ]
+# NOTE: "academy" and "area" are INTENTIONALLY NOT stripped — meaningful
+# parts of distinct school names ("Brookfield Academy", "Sauk Prairie Area
+# Schools"). Stripping them collapsed different schools to the same string.
 
 
 def norm_name(s):
@@ -177,10 +185,121 @@ def name_variants(raw):
     return {v for v in out if v}
 
 
+def base_name_variants(raw):
+    """Non-normalized base names to try. IL parens expand to several."""
+    raw = raw.strip()
+    m = re.match(r"^([^()]+?)\s*\(([^)]+)\)\s*$", raw)
+    if m:
+        before = m.group(1).strip()
+        inner  = m.group(2).strip()
+        # e.g. "Cary (C.-Grove)" -> ["Cary-Grove", "Cary C-Grove", "Cary", "C-Grove"]
+        return [
+            f"{before}-{inner.replace('.', '')}",
+            f"{before} {inner.replace('.', '')}",
+            before,
+            inner.replace(".", "").strip(),
+        ]
+    return [raw]
+
+
+def search_order(raw):
+    """
+    Ordered list of NS customer names to look for, highest-priority first.
+    Matches user rule: try '{Name} High School' first, then
+    '{Name} School District', then the bare name, then other common suffixes.
+    """
+    order = []
+    bases = base_name_variants(raw)
+    # Tier 1: High School forms
+    for b in bases:
+        order.append(f"{b} High School")
+    # Tier 2: School District forms
+    for b in bases:
+        order.append(f"{b} School District")
+    for b in bases:
+        order.append(f"{b} Area School District")
+    for b in bases:
+        order.append(f"{b} Community School District")
+    # Tier 3: bare name
+    for b in bases:
+        order.append(b)
+    # Dedupe while preserving order
+    seen = set()
+    out = []
+    for x in order:
+        nn = norm_name(x)
+        if nn and nn not in seen:
+            seen.add(nn)
+            out.append(nn)
+    return out
+
+
+def exact_match_tiered(school, ns_customers, claimed):
+    """
+    Try every candidate form in search_order. Within each form, prefer:
+      1. same-state customer
+      2. empty-state customer  (many NS school records have no state set)
+    Skips customers whose IDs are already claimed. Returns (id, name, conf)
+    or (None, None, None) if no tier produced a match.
+    """
+    state = school["state"]
+    for wanted in search_order(school["name"]):
+        same_state = []
+        empty_state = []
+        for c in ns_customers:
+            if c["id"] in claimed or c["norm"] != wanted:
+                continue
+            if c["state"] == state:
+                same_state.append(c)
+            elif not c["state"]:
+                empty_state.append(c)
+        for bucket in (same_state, empty_state):
+            if len(bucket) == 1:
+                return bucket[0]["id"], bucket[0]["company_name"], "exact"
+            if len(bucket) > 1:
+                best = min(bucket, key=lambda c: int(c["id"]) if c["id"].isdigit() else 10**9)
+                return best["id"], best["company_name"], "ambiguous"
+    return None, None, None
+
+
+def match_fuzzy(school, available_customers):
+    """
+    Fuzzy-match one school against a pool of (un-claimed) NS customers.
+    Called only after exact matches have been resolved and their IDs removed
+    from the pool.
+    """
+    targets = name_variants(school["name"])
+    state   = school["state"]
+    state_candidates = [c for c in available_customers if c["state"] == state]
+
+    scored = []
+    for c in state_candidates:
+        if not c["norm"]:
+            continue
+        r = max(similarity(t, c["norm"]) for t in targets)
+        if r >= 0.70:
+            scored.append((r, c))
+    scored.sort(key=lambda x: -x[0])
+
+    if not scored:
+        return "", "", "none"
+    top_score, top_c = scored[0]
+    second_close = len(scored) > 1 and scored[1][0] >= top_score - 0.03
+    if top_score >= 0.90:
+        if second_close:
+            return top_c["id"], top_c["company_name"], "ambiguous"
+        return top_c["id"], top_c["company_name"], "high"
+    if top_score >= 0.70:
+        if second_close:
+            return top_c["id"], top_c["company_name"], "ambiguous"
+        return top_c["id"], top_c["company_name"], "low"
+    return "", "", "none"
+
+
 def match_school_to_customer(school, ns_customers):
     """
-    Return (ns_id, ns_name, confidence) where confidence is one of:
-      'exact', 'high', 'low', 'ambiguous', 'none'.
+    Legacy single-pass matcher. Kept for anything that calls it directly;
+    build_master_rows uses the two-pass approach instead.
     """
     targets = name_variants(school["name"])
     target  = norm_name(school["name"])
@@ -222,9 +341,41 @@ def match_school_to_customer(school, ns_customers):
 
 # -- Build the rows --------------------------------------------------------
 def build_master_rows(wi_schools, il_schools, ns_customers):
+    """
+    Two-pass match:
+      Pass 1: find every EXACT (normalized-name) match in each state and
+              claim those NS IDs so they can't be re-used.
+      Pass 2: for everything that didn't exact-match, fall back to fuzzy
+              against the UN-claimed pool only.
+    This is what stops things like 'Brookfield Academy' from being offered
+    1037 (Brookfield East, already claimed by the exact match).
+    """
+    all_schools = wi_schools + il_schools
+    claimed = set()   # NS IDs already taken
+    per_school_result = {}  # id(sch) -> (ns_id, ns_name, conf)
+
+    # Pass 1 — tiered exact match. Tries 'X High School' first, then
+    # 'X School District', then 'X Area School District', then bare 'X'.
+    # Within each tier, prefers same-state customers but falls back to
+    # empty-state (common for older NS school records).
+    for sch in all_schools:
+        if sch.get("ns_id_hint"):
+            continue
+        ns_id, ns_name, conf = exact_match_tiered(sch, ns_customers, claimed)
+        if ns_id:
+            per_school_result[id(sch)] = (ns_id, ns_name, conf)
+            claimed.add(ns_id)
+
+    # Pass 2 — fuzzy, against unclaimed only
+    available = [c for c in ns_customers if c["id"] not in claimed]
+    for sch in all_schools:
+        if sch.get("ns_id_hint") or id(sch) in per_school_result:
+            continue
+        per_school_result[id(sch)] = match_fuzzy(sch, available)
+
     rows = []
     stats = defaultdict(int)
-    for sch in wi_schools + il_schools:
+    for sch in all_schools:
         ns_hint = sch.get("ns_id_hint") or ""
         if ns_hint:
             rows.append({
@@ -236,7 +387,7 @@ def build_master_rows(wi_schools, il_schools, ns_customers):
             })
             stats["manual"] += 1
             continue
-        ns_id, ns_name, conf = match_school_to_customer(sch, ns_customers)
+        ns_id, ns_name, conf = per_school_result.get(id(sch), ("", "", "none"))
         # Only auto-fill NS Customer ID for HIGH-confidence matches. For the
         # others put the best-guess in Notes so the user can review and copy
         # across intentionally — prevents silent bad matches from syncing.
