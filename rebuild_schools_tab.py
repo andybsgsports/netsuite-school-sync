@@ -44,7 +44,7 @@ TARGET_TAB = "Schools"
 COLUMNS = [
     "School Name", "Full Name", "State", "School URL", "NS Ext ID",
     "Sales Rep", "Class", "Level", "Nickname", "Colors", "Conference",
-    "WIAA District", "Enrollment", "Size", "Phone",
+    "District", "Enrollment", "Size", "Phone",
     "Address1", "Address2", "City", "Zip", "Website",
     "NS Customer ID", "Locked", "Last Synced", "Notes",
 ]
@@ -80,14 +80,28 @@ def fetch_ihsa(url):
     if r.status_code != 200:
         return {}
     d = r.json().get("data", {}) or {}
+    conferences = d.get("Conferences") or []
+    conf_name = ""
+    if conferences and isinstance(conferences, list):
+        conf_name = (conferences[0].get("ConferenceName") or "").strip()
+    division = d.get("Division")
+    district = d.get("District")
+    if division is not None and district is not None:
+        district_str = f"Division {division}, Legislative District {district}"
+    elif division is not None:
+        district_str = f"Division {division}"
+    elif district is not None:
+        district_str = f"Legislative District {district}"
+    else:
+        district_str = ""
     return {
         "Full Name":     d.get("NameFormal") or d.get("NameIHSA") or "",
         "Class":         d.get("PublicPrivate") or "",
         "Level":         "High School",
         "Nickname":      (d.get("NicknameBoys") or d.get("NicknameGirls") or "").strip(),
         "Colors":        d.get("Colors") or "",
-        "Conference":    "",
-        "WIAA District": "",
+        "Conference":    conf_name,
+        "District":      district_str,
         "Enrollment":    _int_str(d.get("EnrollmentString") or d.get("Enrollment")),
         "Size":          "",
         "Phone":         d.get("Phone") or "",
@@ -116,7 +130,7 @@ def fetch_wiaa(url):
         "Nickname":      info.get("nickname") or "",
         "Colors":        info.get("colors") or "",
         "Conference":    info.get("conference") or "",
-        "WIAA District": info.get("wiaa_district") or "",
+        "District":      info.get("wiaa_district") or "",
         "Enrollment":    _int_str(info.get("enrollment")),
         "Size":          info.get("school_size") or "",
         "Phone":         info.get("phone") or "",
@@ -183,7 +197,7 @@ def main():
             "Nickname":       meta.get("Nickname", ""),
             "Colors":         meta.get("Colors", ""),
             "Conference":     meta.get("Conference", ""),
-            "WIAA District":  meta.get("WIAA District", ""),
+            "District":       meta.get("District", ""),
             "Enrollment":     meta.get("Enrollment", ""),
             "Size":           meta.get("Size", ""),
             "Phone":          meta.get("Phone", ""),
