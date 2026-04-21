@@ -1,0 +1,59 @@
+name: Rep Digests
+
+on:
+  schedule:
+    # 11:00 UTC = ~6:00 AM Central. Runs 1 hour after daily-sync to avoid
+    # overlap and give NetSuite a breather between batches.
+    - cron: '0 11 * * *'
+  workflow_dispatch:
+    inputs:
+      rep_filter:
+        description: 'Run only this rep (leave blank for all). Name must match sheet.'
+        required: false
+        default: ''
+      dry_run:
+        description: 'Dry run — send all emails to GMAIL_USER instead of the rep'
+        required: true
+        default: true
+        type: boolean
+
+jobs:
+  digests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write  # needed to commit updated snapshots
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth openpyxl pandas
+
+      - name: Run rep digests
+        run: python rep_digests.py
+        env:
+          GOOGLE_SHEET_ID_REPS:    ${{ secrets.GOOGLE_SHEET_ID_REPS }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+          GMAIL_USER:              ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD:      ${{ secrets.GMAIL_APP_PASSWORD }}
+          REP_FILTER:              ${{ inputs.rep_filter }}
+          DRY_RUN:                 ${{ (inputs.dry_run == false && github.event_name == 'workflow_dispatch') && '0' || '1' }}
+
+      - name: Commit updated snapshots
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add snapshots/
+          if git diff --cached --quiet; then
+            echo "No snapshot changes to commit."
+          else
+            git commit -m "chore: update rep digest snapshots [skip ci]"
+            git push
+          fi
