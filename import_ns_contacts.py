@@ -176,7 +176,7 @@ def fetch_all_customers():
     out = []
     offset = 0
     while True:
-        r = ns_get(f"customer?limit=1000&offset={offset}&fields=id,companyName,entityId")
+        r = ns_get(f"customer?limit=1000&offset={offset}")
         if r.status_code != 200:
             print(f"  [NS] list customers failed at offset {offset}: "
                   f"{r.status_code} {r.text[:120]}")
