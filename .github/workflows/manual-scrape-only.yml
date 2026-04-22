@@ -1,0 +1,38 @@
+name: Manual - Scrape Only (no NetSuite)
+
+on:
+  workflow_dispatch:
+    inputs:
+      state_filter:
+        description: 'Limit to state: WI, IL, or empty for all'
+        required: false
+        default: ''
+      school_filter:
+        description: 'Optional: single school name (exact match)'
+        required: false
+        default: ''
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+
+      - name: Run scrape
+        run: python scrape_only.py
+        env:
+          STATE_FILTER:            ${{ inputs.state_filter }}
+          SCHOOL_FILTER:           ${{ inputs.school_filter }}
+          GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
