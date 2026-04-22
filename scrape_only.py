@@ -39,9 +39,29 @@ STATE_FILTER  = os.environ.get("STATE_FILTER", "").strip().upper()
 CONCURRENCY   = int(os.environ.get("CONCURRENCY", "10"))  # parallel WIAA/IHSA fetches
 
 
+def sort_schools_tab(ws):
+    """Reorder the Schools tab alphabetically by School Name (keeps header)."""
+    values = ws.get_all_values()
+    if len(values) < 2:
+        return
+    headers = values[0]
+    if M_NAME not in headers:
+        return
+    name_idx = headers.index(M_NAME)
+    body = values[1:]
+    sorted_body = sorted(body, key=lambda r: (r[name_idx].strip().lower()
+                                              if len(r) > name_idx else ""))
+    if sorted_body == body:
+        return  # already sorted, no write needed
+    ws.clear()
+    ws.update(range_name="A1", values=[headers] + sorted_body)
+    print(f"  [SHEETS] Schools tab re-sorted alphabetically ({len(sorted_body)} rows)")
+
+
 def load_all_schools(gc):
     wb = gc.open_by_key(GOOGLE_SHEET_ID)
     ws = wb.worksheet(MASTER_TAB)
+    sort_schools_tab(ws)
     values = ws.get_all_values()
     if not values:
         return [], ws, None

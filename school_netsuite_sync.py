@@ -162,10 +162,17 @@ def save_contacts(ws, rows):
     clean = [r for r in rows if str(r.get(C_SCHOOL, "")).strip()]
     if len(clean) < len(rows):
         print(f"  [SHEETS] Removed {len(rows) - len(clean)} rows with empty School Name")
+    # Sort: School Name (alphabetical), then Role/Sport, then Last name
+    clean.sort(key=lambda r: (
+        str(r.get(C_SCHOOL, "")).strip().lower(),
+        str(r.get(C_ROLE, "")).strip().lower(),
+        str(r.get(C_LAST, "")).strip().lower(),
+        str(r.get(C_FIRST, "")).strip().lower(),
+    ))
     vals = [headers] + [[str(r.get(h, "") or "") for h in headers] for r in clean]
     ws.clear()
     ws.update(range_name="A1", values=vals)
-    print(f"  [SHEETS] Contacts tab saved ({len(clean)} rows)")
+    print(f"  [SHEETS] Contacts tab saved ({len(clean)} rows, sorted by School + Role)")
 
 
 # -- Main sync ---------------------------------------------------------------
