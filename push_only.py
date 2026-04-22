@@ -123,25 +123,32 @@ def main():
             print(f"  (no rows on Contacts tab)")
             continue
 
-        # Update Customer (name/domain/sales team)
-        try:
-            result_id, school_info_out, _, _ = sync_school(
-                school_name=school_name,
-                school_url=sch["url"],
-                state=state or "WI",
-                sync_contacts=[],
-                sales_rep=rep or None,
-                ns_customer_id=ns_id,
-            )
-        except Exception as e:
-            print(f"  ERROR syncing customer: {e}")
-            errors += 1
-            time.sleep(DELAY)
-            continue
-        if not result_id:
-            print(f"  Could not sync Customer — skipping contacts")
-            errors += 1
-            continue
+        # Update Customer. WI: sync_school scrapes WIAA + updates custom
+        # fields, address book, etc. IL: IHSA doesn't expose address or
+        # school-attribute data, so we skip sync_school and only sync
+        # contacts for IL rows.
+        if state == "IL":
+            result_id = ns_id
+            school_info_out = {"state": "IL"}
+        else:
+            try:
+                result_id, school_info_out, _, _ = sync_school(
+                    school_name=school_name,
+                    school_url=sch["url"],
+                    state=state or "WI",
+                    sync_contacts=[],
+                    sales_rep=rep or None,
+                    ns_customer_id=ns_id,
+                )
+            except Exception as e:
+                print(f"  ERROR syncing customer: {e}")
+                errors += 1
+                time.sleep(DELAY)
+                continue
+            if not result_id:
+                print(f"  Could not sync Customer — skipping contacts")
+                errors += 1
+                continue
 
         synced_schools += 1
         synced_updates.append((sch["row"], datetime.now().strftime("%Y-%m-%d %H:%M")))
@@ -213,18 +220,19 @@ def main():
                 c[C_NS_CID] = ""
                 time.sleep(0.15)
 
-        # Ship-To addresses for active contacts at this school
-        active_contacts = [
-            {"first": str(c.get(C_FIRST, "")).strip(),
-             "last":  str(c.get(C_LAST, "")).strip(),
-             "email": str(c.get(C_EMAIL, "")).strip(),
-             "role":  str(c.get(C_ROLE, "")).strip()}
-            for c in school_contacts
-            if str(c.get(C_SYNC, "N")).strip().upper() == "Y"
-        ]
-        if active_contacts and school_info_out:
-            sync_address_book(result_id, school_info_out, active_contacts,
-                              school_name=school_name)
+        # Ship-To addresses — only meaningful for WI (IHSA has no address)
+        if state != "IL":
+            active_contacts = [
+                {"first": str(c.get(C_FIRST, "")).strip(),
+                 "last":  str(c.get(C_LAST, "")).strip(),
+                 "email": str(c.get(C_EMAIL, "")).strip(),
+                 "role":  str(c.get(C_ROLE, "")).strip()}
+                for c in school_contacts
+                if str(c.get(C_SYNC, "N")).strip().upper() == "Y"
+            ]
+            if active_contacts and school_info_out:
+                sync_address_book(result_id, school_info_out, active_contacts,
+                                  school_name=school_name)
 
         time.sleep(DELAY)
 
