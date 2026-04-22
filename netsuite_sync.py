@@ -479,6 +479,59 @@ def sync_address_book(customer_id, school_info, contacts, school_name=""):
         print(f"  [NS] Ship-To addresses up to date "
               f"({len(contact_names)} contacts, {len(existing_labels)} on record)")
 
+def ensure_contact_role(customer_id, contact_id):
+    """
+    Add a contactRoles entry on a Customer so a co-op contact shows up in
+    that school's Contacts tab, even when the contact's primary company
+    points at a different (home) school.
+
+    Idempotent: if the contact is already listed on the customer's
+    contactRoles (or is already the primary company), no-op.
+
+    Returns True if a new link was added, False if already present, None on error.
+    """
+    # Fast path: if the contact's `company` field already points at this
+    # customer we don't need contactRoles — it shows up via the primary link.
+    r = ns_get(f"contact/{contact_id}?fields=company")
+    if r.status_code == 200:
+        company = r.json().get("company") or {}
+        if str(company.get("id", "")) == str(customer_id):
+            return False
+
+    # Check existing contactRoles on the customer
+    r = ns_get(f"customer/{customer_id}?expand=contactRoles")
+    if r.status_code != 200:
+        print(f"  [NS] WARN contactRoles read {customer_id}: {r.status_code}")
+        return None
+    items = r.json().get("contactRoles", {}).get("items", [])
+    for item in items:
+        href = item.get("links", [{}])[0].get("href", "")
+        line_id = href.rstrip("/").split("/")[-1] if href else None
+        if not line_id:
+            continue
+        r2 = ns_get(f"customer/{customer_id}/contactRoles/{line_id}")
+        if r2.status_code == 200:
+            c = r2.json().get("contact", {})
+            if str(c.get("id", "")) == str(contact_id):
+                return False  # already linked
+
+    # Not linked — add via customer PATCH (additive)
+    body = {
+        "contactRoles": {
+            "items": [{
+                "contact":    {"id": str(contact_id)},
+                "giveAccess": False,
+            }]
+        }
+    }
+    r = ns_patch(f"customer/{customer_id}", body)
+    if r.status_code == 204:
+        print(f"  [NS] Linked contact {contact_id} to customer {customer_id} (co-op)")
+        return True
+    print(f"  [NS] WARN contactRoles add {customer_id}<-{contact_id}: {r.status_code} {r.text[:160]}")
+    return None
+
+
 def _set_sales_team(customer_id, team_item):
     """
     Set the sales team on an existing customer.
