@@ -62,20 +62,16 @@ def load_all_schools(gc):
     return out
 
 
-def fetch_contacts_for_customer(customer_id):
-    """All active contacts linked to this customer via the contactRoles sublist.
-    Returns a list of {id, first, last, email, role, externalId} dicts."""
+def _collect_contact_ids_via_contact_roles(customer_id):
+    ids = []
     r = ns_get(f"customer/{customer_id}?expand=contactRoles")
     if r.status_code != 200:
-        print(f"    [NS] WARN expand contactRoles {customer_id}: {r.status_code} {r.text[:120]}")
-        return []
+        return ids
     items = r.json().get("contactRoles", {}).get("items", [])
-
-    contact_ids = []
     for item in items:
         cid = (item.get("contact") or {}).get("id")
         if cid:
-            contact_ids.append(str(cid))
+            ids.append(str(cid))
             continue
         href = (item.get("links") or [{}])[0].get("href", "")
         line_id = href.rstrip("/").split("/")[-1] if href else None
@@ -85,14 +81,74 @@ def fetch_contacts_for_customer(customer_id):
         if r2.status_code == 200:
             cid = (r2.json().get("contact") or {}).get("id")
             if cid:
-                contact_ids.append(str(cid))
+                ids.append(str(cid))
+    return ids
+
+
+def _collect_contact_ids_via_contact_list(customer_id):
+    """Contacts whose primary `company` = this customer. Many schools have
+    contacts only reachable via this path (not contactRoles)."""
+    ids = []
+    r = ns_get(f"customer/{customer_id}?expand=contactList")
+    if r.status_code != 200:
+        return ids
+    items = r.json().get("contactList", {}).get("items", [])
+    for item in items:
+        fields = item.get("fields", item)
+        cid = (fields.get("contact") or {}).get("id") or fields.get("id")
+        if cid:
+            ids.append(str(cid))
+            continue
+        href = (item.get("links") or [{}])[0].get("href", "")
+        line_id = href.rstrip("/").split("/")[-1] if href else None
+        if line_id:
+            ids.append(str(line_id))
+    return ids
+
+
+def _collect_contact_ids_via_search(customer_id):
+    """REST contact search: /contact?q=company EQ <id>. May be blocked by
+    role permissions — returns [] silently on failure."""
+    ids = []
+    offset = 0
+    while True:
+        r = ns_get(f"contact?q=company EQ {customer_id}&limit=100&offset={offset}")
+        if r.status_code != 200:
+            return ids
+        body = r.json()
+        items = body.get("items", [])
+        for item in items:
+            cid = item.get("id")
+            href = (item.get("links") or [{}])[0].get("href", "")
+            if not cid and href:
+                cid = href.rstrip("/").split("/")[-1]
+            if cid:
+                ids.append(str(cid))
+        if not body.get("hasMore"):
+            break
+        offset += 100
+    return ids
+
+
+def fetch_contacts_for_customer(customer_id):
+    """Union of three enumeration paths so we don't miss contacts that are
+    linked only via primary company field or only via the sublist."""
+    seen = set()
+    sources = []
+    for fn, label in (
+        (_collect_contact_ids_via_contact_roles, "contactRoles"),
+        (_collect_contact_ids_via_contact_list,  "contactList"),
+        (_collect_contact_ids_via_search,        "search"),
+    ):
+        ids = fn(customer_id)
+        new = [i for i in ids if i not in seen]
+        seen.update(new)
+        sources.append(f"{label}={len(ids)}")
+    if sources:
+        print(f"    sources: {', '.join(sources)}")
 
     out = []
-    seen = set()
-    for cid in contact_ids:
-        if cid in seen:
-            continue
-        seen.add(cid)
+    for cid in seen:
         r3 = ns_get(
             f"contact/{cid}?fields=firstName,lastName,email,title,isInactive,externalId"
         )
