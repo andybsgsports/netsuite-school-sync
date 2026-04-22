@@ -1,9 +1,8 @@
-name: Daily School Sync
+name: WI Sync to NetSuite (manual)
 
 on:
-  schedule:
-    # 10:00 UTC = ~5:00 AM Central (4:00 AM CDT / 5:00 AM CST)
-    - cron: '0 10 * * *'
+  # Schedule disabled — daily refresh is now "Daily Scrape (no NetSuite)".
+  # Run this workflow when you want to push sheet changes to NS.
   workflow_dispatch:
     inputs:
       school_filter:
