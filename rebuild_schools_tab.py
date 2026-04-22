@@ -26,11 +26,25 @@ import time
 from pathlib import Path
 
 import gspread
+import pgeocode
 import requests
 from google.oauth2.service_account import Credentials
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from netsuite_sync import scrape_wiaa_school_detail, slugify
+
+_nomi = None
+def county_from_zip(zip_code):
+    """Look up US county from a 5-digit zip. Handles zip+4 and blanks."""
+    global _nomi
+    z = (zip_code or "").strip().split("-")[0].strip()[:5]
+    if not z or len(z) != 5:
+        return ""
+    if _nomi is None:
+        _nomi = pgeocode.Nominatim("us")
+    r = _nomi.query_postal_code(z)
+    name = str(r.county_name) if r.county_name is not None else ""
+    return "" if name.lower() in ("nan", "none") else name
 
 SHEET_ID = os.environ.get("GOOGLE_SHEET_ID",
                           "1iWhtasin-gmk3jllDvls7G1eI_pgzMm4yfQUP_qZHEM")
@@ -45,7 +59,7 @@ COLUMNS = [
     "School Name", "Full Name", "State", "School URL", "NS Ext ID",
     "Sales Rep", "Class", "Level", "Nickname", "Colors", "Conference",
     "District", "Enrollment", "Size", "Phone",
-    "Address1", "Address2", "City", "Zip", "Website",
+    "Address1", "Address2", "City", "County", "Zip", "Website",
     "NS Customer ID", "Locked", "Last Synced", "Notes",
 ]
 
@@ -108,6 +122,7 @@ def fetch_ihsa(url):
         "Address1":      d.get("Address") or "",
         "Address2":      (f"PO BOX {d.get('POBox')}" if d.get("POBox") else ""),
         "City":          d.get("City") or "",
+        "County":        (d.get("County") or "") or county_from_zip(d.get("Zip") or ""),
         "Zip":           d.get("Zip") or "",
         "Website":       _normalize_url(d.get("URL") or ""),
     }
@@ -137,6 +152,7 @@ def fetch_wiaa(url):
         "Address1":      info.get("address1") or "",
         "Address2":      info.get("address2") or "",
         "City":          info.get("city") or "",
+        "County":        county_from_zip(info.get("zip") or ""),
         "Zip":           info.get("zip") or "",
         "Website":       _normalize_url(info.get("website") or ""),
     }
@@ -204,6 +220,7 @@ def main():
             "Address1":       meta.get("Address1", ""),
             "Address2":       meta.get("Address2", ""),
             "City":           meta.get("City", ""),
+            "County":         meta.get("County", ""),
             "Zip":            meta.get("Zip", ""),
             "Website":        meta.get("Website", ""),
             "NS Customer ID": str(src.get("NS Customer ID", "")).strip(),
