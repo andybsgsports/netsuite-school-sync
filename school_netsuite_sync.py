@@ -44,7 +44,6 @@ from netsuite_sync import (
     remove_contact_ship_to,
     sync_address_book,
     compute_school_domain,
-    ensure_contact_role,
     smart_title,
 )
 
@@ -187,20 +186,6 @@ def main():
         rows = [(i, r) for i, r in rows if str(r.get(M_NAME, "")).strip() == SCHOOL_FILTER]
         print(f"  TEST MODE: '{SCHOOL_FILTER}' ({len(rows)} matching row(s))")
 
-    # Co-op detection: emails that appear at 2+ different schools in the
-    # Contacts tab are co-op coaches. We link them to every school they
-    # serve at via the customer's contactRoles sublist (so they show up
-    # in all those schools' Contacts tabs in NetSuite, not just primary).
-    _email_schools = {}
-    for c in contacts_data:
-        em = str(c.get(C_EMAIL, "")).strip().lower()
-        sc = str(c.get(C_SCHOOL, "")).strip()
-        if em and sc:
-            _email_schools.setdefault(em, set()).add(sc)
-    co_op_emails = {e for e, schools in _email_schools.items() if len(schools) >= 2}
-    if co_op_emails:
-        print(f"  Co-op emails detected: {len(co_op_emails)}")
-
     print(f"  WI rows: {len(rows)}  |  Contacts: {len(contacts_data)}\n")
 
     synced = 0
@@ -335,12 +320,6 @@ def main():
                 if new_id:
                     c[C_NS_CID] = str(new_id)
                     c[C_SYNCED] = datetime.now().strftime("%Y-%m-%d %H:%M")
-                    # Co-op link: ensure this contact also appears on this
-                    # school's Contacts tab in NS (via contactRoles) even if
-                    # it's not their home school. No-op when contact.company
-                    # already points at this customer.
-                    if email.lower() in co_op_emails:
-                        ensure_contact_role(result_id, new_id)
                 elif new_id is None and not contact_ns:
                     c[C_NS_CID] = "UNLINKED"
             elif departed and contact_ns not in ("", "nan", "None", "UNLINKED") and all_site_contacts:

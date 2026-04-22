@@ -479,71 +479,6 @@ def sync_address_book(customer_id, school_info, contacts, school_name=""):
         print(f"  [NS] Ship-To addresses up to date "
               f"({len(contact_names)} contacts, {len(existing_labels)} on record)")
 
-_contact_roles_cache = {}  # customer_id -> set(contact_id)
-
-
-def _load_contact_roles(customer_id):
-    """Return the set of contact IDs already on this customer's contactRoles
-    sublist. Cached per customer for the life of the process."""
-    key = str(customer_id)
-    if key in _contact_roles_cache:
-        return _contact_roles_cache[key]
-    ids = set()
-    r = ns_get(f"customer/{customer_id}/contactRoles")
-    if r.status_code != 200:
-        print(f"  [NS] WARN contactRoles read {customer_id}: {r.status_code} {r.text[:120]}")
-        _contact_roles_cache[key] = ids
-        return ids
-    items = r.json().get("items", [])
-    pending_line_ids = []
-    for item in items:
-        cid_inline = (item.get("contact") or {}).get("id")
-        if cid_inline:
-            ids.add(str(cid_inline))
-            continue
-        href = (item.get("links") or [{}])[0].get("href", "")
-        line_id = href.rstrip("/").split("/")[-1] if href else None
-        if line_id:
-            pending_line_ids.append(line_id)
-    for line_id in pending_line_ids:
-        r2 = ns_get(f"customer/{customer_id}/contactRoles/{line_id}")
-        if r2.status_code == 200:
-            cid2 = (r2.json().get("contact") or {}).get("id")
-            if cid2:
-                ids.add(str(cid2))
-    _contact_roles_cache[key] = ids
-    return ids
-
-
-def ensure_contact_role(customer_id, contact_id):
-    """
-    Add a contactRoles entry on a Customer so a co-op contact shows up in
-    that school's Contacts tab, even when the contact's primary company
-    points at a different (home) school.
-
-    Idempotent and cached — safe to call per-school-per-contact.
-    Returns True if a new link was added, False if already present, None on error.
-    """
-    cust = str(customer_id)
-    cid  = str(contact_id)
-
-    roles = _load_contact_roles(cust)
-    if cid in roles:
-        return False
-
-    # POST to the sublist subresource (NS REST canonical additive write).
-    body = {"contact": {"id": cid}, "giveAccess": False}
-    r = ns_post(f"customer/{cust}/contactRoles", body)
-    if r.status_code in (200, 201, 204):
-        roles.add(cid)
-        print(f"  [NS] Linked contact {cid} to customer {cust} (co-op)")
-        return True
-
-    print(f"  [NS] WARN contactRoles add {cust}<-{cid}: "
-          f"{r.status_code} {r.text[:140]}")
-    return None
-
-
 def _set_sales_team(customer_id, team_item):
     """
     Set the sales team on an existing customer.
@@ -685,17 +620,22 @@ def get_contact_by_external_id(external_id):
         return data.get("id"), data.get("isInactive", False)
     return None, None
 
-def make_contact_external_id(email, *_ignored):
+def make_contact_external_id(email, school_name=None, *_ignored):
     """
-    One NetSuite contact per person, keyed by email only.
+    Contact external ID.
 
-    Previously we keyed contacts by (school, email), which created duplicates
-    for co-op coaches who serve multiple schools (e.g. Adam McDonald coaching
-    Girls Golf at Waukesha North + South + West, or the Barneveld + Mt Horeb
-    football co-op).  The *_ignored signature keeps old callers working if
-    they still pass (school_name, email, role).
+    Per-school keying when a school is supplied: `{school_slug}__{email}`. This
+    gives co-op coaches (same email, multiple schools) their own NS contact
+    record per school, so each school's Contacts tab shows them. NetSuite's
+    REST API doesn't allow sharing one contact across customers via
+    contactRoles — per-school records are the working alternative.
+
+    When called without a school (e.g. cleanup tooling that dedupes by
+    email), falls back to the email-only format `EM_{email}`.
     """
     email_clean = re.sub(r"[^a-z0-9@._-]", "", (email or "").lower())[:80]
+    if school_name:
+        return f"{slugify(school_name)}__{email_clean}"[:150]
     return f"EM_{email_clean}"[:150]
 
 
@@ -749,21 +689,30 @@ def compute_school_domain(contacts):
     return max(counts.items(), key=lambda kv: kv[1])[0]
 
 
-def find_contact_any_format(school_name, email, role=""):
+def find_contact_any_format(school_name, email, role="", customer_id=None):
     """
     Locate an existing NS contact by trying each external-ID format in order:
-      1. new:     EM_{email}         (email-only, the current scheme)
-      2. legacy:  {SCHOOL}__{email}  (per-school dedup era)
-      3. oldest:  {SCHOOL}__{ROLE}__{email}
-    Returns (contact_id, is_inactive, found_via) with found_via describing
-    which format hit. None values if nothing found.
+      1. canonical: {SCHOOL}__{email}          (per-school — current scheme)
+      2. legacy:    EM_{email}                 (email-only era)  *claimed only
+         if that contact's `company` already points at customer_id, so we
+         don't steal a co-op coach's home-school record for a second school
+      3. oldest:    {SCHOOL}__{ROLE}__{email}
+    Returns (contact_id, is_inactive, found_via). None values if nothing found.
     """
-    cid, inactive = get_contact_by_external_id(make_contact_external_id(email))
+    cid, inactive = get_contact_by_external_id(make_contact_external_id(email, school_name))
     if cid:
-        return cid, inactive, "email"
-    cid, inactive = get_contact_by_external_id(_make_legacy_school_ext_id(school_name, email))
+        return cid, inactive, "school_email"
+
+    cid, inactive = get_contact_by_external_id(make_contact_external_id(email))  # EM_ legacy
     if cid:
-        return cid, inactive, "legacy_school"
+        if customer_id is None:
+            return cid, inactive, "email"
+        r = ns_get(f"contact/{cid}?fields=company")
+        if r.status_code == 200:
+            company = (r.json().get("company") or {}).get("id", "")
+            if str(company) == str(customer_id):
+                return cid, inactive, "email"
+
     if role:
         cid, inactive = get_contact_by_external_id(_make_legacy_ext_id(school_name, email, role))
         if cid:
@@ -804,23 +753,13 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
     role  = contact_row.get("role", "")
     state = school_info.get("state", "")
 
-    # One NS contact per email (person). Lookup tries new format first,
-    # then falls back through the two legacy formats.
-    ext_id = make_contact_external_id(email)
-    contact_id, is_inactive, found_via = find_contact_any_format(school_name, email, role)
+    # One NS contact per (school, email). Co-op coaches get a distinct
+    # contact record at each school they serve, so every school's Contacts
+    # tab shows them (NS REST doesn't allow sharing via contactRoles).
+    ext_id = make_contact_external_id(email, school_name)
+    contact_id, is_inactive, found_via = find_contact_any_format(
+        school_name, email, role, customer_id=customer_id)
 
-    # Is THIS school the contact's "home" based on email domain matching?
-    # school_info["domain"] is expected to be set by the caller (school_netsuite_sync
-    # or ihsa_sync) using compute_school_domain(). If available and the contact's
-    # email domain matches, we claim them as primary. Otherwise on UPDATE we
-    # leave company alone so we don't stomp on whichever school owns the primary.
-    school_domain = (school_info.get("domain") or "").lower()
-    email_domain  = extract_email_domain(email)
-    is_home_school = bool(school_domain and school_domain == email_domain)
-
-    # Base body for CREATE. For UPDATE we strip `company` below so we never
-    # stomp on the primary-customer link of a contact already owned by
-    # another school in a co-op situation.
     body_create = {
         "externalId": ext_id,
         "firstName":  first,
@@ -832,32 +771,22 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
     }
 
     if contact_id and is_inactive:
-        body_update = {k: v for k, v in body_create.items() if k != "company"}
+        body_update = dict(body_create)
         body_update["isInactive"] = False
-        body_update["externalId"] = ext_id  # migrate to new format
-        if is_home_school:
-            body_update["company"] = {"id": customer_id}
         r = ns_patch(f"contact/{contact_id}", body_update)
         if r.status_code == 204:
             print(f"  [NS] Reactivated Contact: {first} {last} (ID: {contact_id})")
         return contact_id
 
     elif contact_id:
-        # Existing contact — update descriptive fields. Company link:
-        #   - is_home_school: email domain matches this school -> claim primary.
-        #   - else: leave company unchanged (preserves whichever school has it).
-        # Also migrates the external ID to the new email-based format.
-        body_update = {k: v for k, v in body_create.items() if k != "company"}
-        body_update["externalId"] = ext_id
-        if is_home_school:
-            body_update["company"] = {"id": customer_id}
+        # Per-school contact record: always set company to this school's customer.
+        body_update = dict(body_create)
         r = ns_patch(f"contact/{contact_id}", body_update)
         if r.status_code == 204:
-            label = "home" if is_home_school else "shared"
-            if found_via == "email":
-                print(f"  [NS] Updated Contact ({label}): {first} {last} (ID: {contact_id})")
+            if found_via == "school_email":
+                print(f"  [NS] Updated Contact: {first} {last} (ID: {contact_id})")
             else:
-                print(f"  [NS] Updated Contact (migrated from {found_via}, {label}): {first} {last} (ID: {contact_id})")
+                print(f"  [NS] Updated Contact (migrated from {found_via}): {first} {last} (ID: {contact_id})")
         return contact_id
 
     else:
