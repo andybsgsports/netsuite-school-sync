@@ -1,10 +1,8 @@
-name: IL (IHSA) Sync
+name: IL Sync to NetSuite (manual)
 
 on:
-  schedule:
-    # 10:30 UTC = ~5:30 AM Central, 30 min after the WI daily-sync starts so
-    # the two don't compete for NetSuite API bandwidth.
-    - cron: '30 10 * * *'
+  # Schedule disabled — daily refresh is now "Daily Scrape (no NetSuite)".
+  # Run this workflow when you want to push IL sheet changes to NS.
   workflow_dispatch:
     inputs:
       school_filter:
