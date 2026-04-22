@@ -34,7 +34,7 @@ jobs:
     timeout-minutes: 60
     strategy:
       fail-fast: false
-      max-parallel: 7
+      max-parallel: 1   # serial per-rep — NS concurrent request limit is low
       matrix:
         rep:
           - Andrew Murray
