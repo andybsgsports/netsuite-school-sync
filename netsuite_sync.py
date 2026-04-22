@@ -479,56 +479,68 @@ def sync_address_book(customer_id, school_info, contacts, school_name=""):
         print(f"  [NS] Ship-To addresses up to date "
               f"({len(contact_names)} contacts, {len(existing_labels)} on record)")
 
+_contact_roles_cache = {}  # customer_id -> set(contact_id)
+
+
+def _load_contact_roles(customer_id):
+    """Return the set of contact IDs already on this customer's contactRoles
+    sublist. Cached per customer for the life of the process."""
+    key = str(customer_id)
+    if key in _contact_roles_cache:
+        return _contact_roles_cache[key]
+    ids = set()
+    r = ns_get(f"customer/{customer_id}/contactRoles")
+    if r.status_code != 200:
+        print(f"  [NS] WARN contactRoles read {customer_id}: {r.status_code} {r.text[:120]}")
+        _contact_roles_cache[key] = ids
+        return ids
+    items = r.json().get("items", [])
+    pending_line_ids = []
+    for item in items:
+        cid_inline = (item.get("contact") or {}).get("id")
+        if cid_inline:
+            ids.add(str(cid_inline))
+            continue
+        href = (item.get("links") or [{}])[0].get("href", "")
+        line_id = href.rstrip("/").split("/")[-1] if href else None
+        if line_id:
+            pending_line_ids.append(line_id)
+    for line_id in pending_line_ids:
+        r2 = ns_get(f"customer/{customer_id}/contactRoles/{line_id}")
+        if r2.status_code == 200:
+            cid2 = (r2.json().get("contact") or {}).get("id")
+            if cid2:
+                ids.add(str(cid2))
+    _contact_roles_cache[key] = ids
+    return ids
+
+
 def ensure_contact_role(customer_id, contact_id):
     """
     Add a contactRoles entry on a Customer so a co-op contact shows up in
     that school's Contacts tab, even when the contact's primary company
     points at a different (home) school.
 
-    Idempotent: if the contact is already listed on the customer's
-    contactRoles (or is already the primary company), no-op.
-
+    Idempotent and cached — safe to call per-school-per-contact.
     Returns True if a new link was added, False if already present, None on error.
     """
-    # Fast path: if the contact's `company` field already points at this
-    # customer we don't need contactRoles — it shows up via the primary link.
-    r = ns_get(f"contact/{contact_id}?fields=company")
-    if r.status_code == 200:
-        company = r.json().get("company") or {}
-        if str(company.get("id", "")) == str(customer_id):
-            return False
+    cust = str(customer_id)
+    cid  = str(contact_id)
 
-    # Check existing contactRoles on the customer
-    r = ns_get(f"customer/{customer_id}?expand=contactRoles")
-    if r.status_code != 200:
-        print(f"  [NS] WARN contactRoles read {customer_id}: {r.status_code}")
-        return None
-    items = r.json().get("contactRoles", {}).get("items", [])
-    for item in items:
-        href = item.get("links", [{}])[0].get("href", "")
-        line_id = href.rstrip("/").split("/")[-1] if href else None
-        if not line_id:
-            continue
-        r2 = ns_get(f"customer/{customer_id}/contactRoles/{line_id}")
-        if r2.status_code == 200:
-            c = r2.json().get("contact", {})
-            if str(c.get("id", "")) == str(contact_id):
-                return False  # already linked
+    roles = _load_contact_roles(cust)
+    if cid in roles:
+        return False
 
-    # Not linked — add via customer PATCH (additive)
-    body = {
-        "contactRoles": {
-            "items": [{
-                "contact":    {"id": str(contact_id)},
-                "giveAccess": False,
-            }]
-        }
-    }
-    r = ns_patch(f"customer/{customer_id}", body)
-    if r.status_code == 204:
-        print(f"  [NS] Linked contact {contact_id} to customer {customer_id} (co-op)")
+    # POST to the sublist subresource (NS REST canonical additive write).
+    body = {"contact": {"id": cid}, "giveAccess": False}
+    r = ns_post(f"customer/{cust}/contactRoles", body)
+    if r.status_code in (200, 201, 204):
+        roles.add(cid)
+        print(f"  [NS] Linked contact {cid} to customer {cust} (co-op)")
         return True
-    print(f"  [NS] WARN contactRoles add {customer_id}<-{contact_id}: {r.status_code} {r.text[:160]}")
+
+    print(f"  [NS] WARN contactRoles add {cust}<-{cid}: "
+          f"{r.status_code} {r.text[:140]}")
     return None
 
 
