@@ -1,0 +1,43 @@
+name: Manual - Import NS Contacts to Sheet
+
+on:
+  workflow_dispatch:
+    inputs:
+      state_filter:
+        description: 'Limit to state: WI, IL, or empty for all'
+        required: false
+        default: ''
+      school_filter:
+        description: 'Optional: limit to one school name (exact match)'
+        required: false
+        default: ''
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+
+      - name: Run import
+        run: python import_ns_contacts.py
+        env:
+          STATE_FILTER:            ${{ inputs.state_filter }}
+          SCHOOL_FILTER:           ${{ inputs.school_filter }}
+          NS_ACCOUNT:              ${{ secrets.NS_ACCOUNT }}
+          NS_CONSUMER_KEY:         ${{ secrets.NS_CONSUMER_KEY }}
+          NS_CONSUMER_SEC:         ${{ secrets.NS_CONSUMER_SEC }}
+          NS_TOKEN_KEY:            ${{ secrets.NS_TOKEN_KEY }}
+          NS_TOKEN_SEC:            ${{ secrets.NS_TOKEN_SEC }}
+          GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
