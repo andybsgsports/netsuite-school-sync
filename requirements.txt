@@ -4,3 +4,4 @@ gspread>=6.0
 google-auth>=2.25
 openpyxl>=3.1
 pandas>=2.0
+pgeocode>=0.5   # zip -> county lookup for the Schools tab (both WI and IL)
