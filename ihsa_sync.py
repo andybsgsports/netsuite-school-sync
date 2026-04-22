@@ -34,7 +34,6 @@ from netsuite_sync import (
     sync_contact,
     inactivate_contact,
     compute_school_domain,
-    ensure_contact_role,
     smart_title,
 )
 
@@ -303,17 +302,6 @@ def main():
         rows = [(i, r) for i, r in rows if str(r.get(M_NAME, "")).strip() == SCHOOL_FILTER]
         print(f"  TEST MODE: only '{SCHOOL_FILTER}'")
 
-    # Detect co-op coaches (emails appearing at 2+ schools in Contacts tab).
-    _email_schools = {}
-    for c in contacts:
-        em = str(c.get(C_EMAIL, "")).strip().lower()
-        sc = str(c.get(C_SCHOOL, "")).strip()
-        if em and sc:
-            _email_schools.setdefault(em, set()).add(sc)
-    co_op_emails = {e for e, schools in _email_schools.items() if len(schools) >= 2}
-    if co_op_emails:
-        print(f"  Co-op emails detected: {len(co_op_emails)}")
-
     print(f"  IL rows: {len(rows)}  |  Existing contacts: {len(contacts)}\n")
 
     synced = 0
@@ -423,8 +411,6 @@ def main():
                     c[C_NS_CID] = str(new_id)
                     c[C_SYNCED] = datetime.now().strftime("%Y-%m-%d %H:%M")
                     contact_updates += 1
-                    if email.lower() in co_op_emails:
-                        ensure_contact_role(ns_id, new_id)
             elif departed and contact_ns not in ("", "nan", "None", "UNLINKED") and site_contacts:
                 inactivate_contact(contact_ns, f"{first} {last}")
                 c[C_SYNC] = "N"
