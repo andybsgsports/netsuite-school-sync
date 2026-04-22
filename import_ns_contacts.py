@@ -36,6 +36,7 @@ from school_netsuite_sync import (
 
 SCHOOL_FILTER = os.environ.get("SCHOOL_FILTER", "").strip()
 STATE_FILTER  = os.environ.get("STATE_FILTER", "").strip().upper()  # "WI", "IL", or "" for all
+ALL_CUSTOMERS = os.environ.get("ALL_CUSTOMERS", "").strip().lower() in ("1", "true", "yes", "y")
 
 
 def load_all_schools(gc):
@@ -168,15 +169,58 @@ def fetch_contacts_for_customer(customer_id):
     return out
 
 
+def fetch_all_customers():
+    """Paginate every customer in NS, returning [{id, name}]. Used by
+    ALL_CUSTOMERS mode to reach schools that aren't in the Schools tab
+    (e.g. other salesmen's accounts)."""
+    out = []
+    offset = 0
+    while True:
+        r = ns_get(f"customer?limit=1000&offset={offset}&fields=id,companyName,entityId")
+        if r.status_code != 200:
+            print(f"  [NS] list customers failed at offset {offset}: "
+                  f"{r.status_code} {r.text[:120]}")
+            break
+        body = r.json()
+        items = body.get("items", [])
+        for item in items:
+            cid = item.get("id")
+            href = (item.get("links") or [{}])[0].get("href", "")
+            if not cid and href:
+                cid = href.rstrip("/").split("/")[-1]
+            if not cid:
+                continue
+            name = item.get("companyName") or item.get("entityId") or ""
+            # Inline name may be absent — fetch per-customer if missing
+            if not name:
+                r2 = ns_get(f"customer/{cid}?fields=companyName,entityId")
+                if r2.status_code == 200:
+                    data = r2.json()
+                    name = data.get("companyName") or data.get("entityId") or f"Customer {cid}"
+                else:
+                    name = f"Customer {cid}"
+            out.append({"id": str(cid), "name": str(name).strip()})
+        if not body.get("hasMore"):
+            break
+        offset += 1000
+        print(f"  ...paged {len(out)} customers so far")
+    return out
+
+
 def main():
     print(f"{'=' * 60}")
     print(f"  IMPORT NS CONTACTS -> CONTACTS TAB")
+    if ALL_CUSTOMERS: print(f"  ALL_CUSTOMERS mode: every NS customer (ignores Schools tab)")
     if STATE_FILTER:  print(f"  STATE_FILTER: {STATE_FILTER}")
     if SCHOOL_FILTER: print(f"  SCHOOL_FILTER: {SCHOOL_FILTER}")
     print(f"{'=' * 60}\n")
 
     gc = get_gspread_client()
-    schools = load_all_schools(gc)
+    if ALL_CUSTOMERS:
+        customers = fetch_all_customers()
+        schools = [{"name": c["name"], "ns_id": c["id"], "state": ""} for c in customers]
+    else:
+        schools = load_all_schools(gc)
     contacts_data, contacts_ws = load_contacts(gc)
 
     existing_ns_ids = {
