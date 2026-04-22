@@ -1,0 +1,66 @@
+name: Nightly — Scrape + Per-Rep NS Push
+
+# Runs every morning. Step 1 scrapes WIAA/IHSA into the master sheet.
+# Step 2 fans out to one parallel NS-push job per Sales Rep, so one
+# rep's failure does not block the others.
+on:
+  schedule:
+    # 09:30 UTC = ~4:30 AM Central
+    - cron: '30 9 * * *'
+  workflow_dispatch:
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+      - name: Scrape WIAA + IHSA into Google Sheet
+        run: python scrape_only.py
+        env:
+          GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+
+  push:
+    needs: scrape
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      max-parallel: 7
+      matrix:
+        rep:
+          - Andrew Murray
+          - Jeff Howard
+          - Tyler Fuhrman
+          - Kyle Loughrin
+          - Paul Speth
+          - John Viles
+          - Jeff Wedvick
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+      - name: Push ${{ matrix.rep }} to NetSuite
+        run: python push_only.py
+        env:
+          SALES_REP_FILTER:        ${{ matrix.rep }}
+          NS_ACCOUNT:              ${{ secrets.NS_ACCOUNT }}
+          NS_CONSUMER_KEY:         ${{ secrets.NS_CONSUMER_KEY }}
+          NS_CONSUMER_SEC:         ${{ secrets.NS_CONSUMER_SEC }}
+          NS_TOKEN_KEY:            ${{ secrets.NS_TOKEN_KEY }}
+          NS_TOKEN_SEC:            ${{ secrets.NS_TOKEN_SEC }}
+          GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}

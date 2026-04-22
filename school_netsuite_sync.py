@@ -80,8 +80,9 @@ C_SYNC   = "Sync"
 C_NS_CID = "NS Contact ID"
 C_NS_CUS = "NS Customer ID"
 C_SYNCED = "Last Synced"
+C_HASH   = "Content Hash"  # sha1 of (first,last,email,role) — used by push_only to skip unchanged rows
 CONTACTS_COLUMNS = [C_SCHOOL, C_FIRST, C_LAST, C_EMAIL, C_ROLE, C_TYPE,
-                    C_SYNC, C_NS_CID, C_NS_CUS, C_SYNCED]
+                    C_SYNC, C_NS_CID, C_NS_CUS, C_SYNCED, C_HASH]
 
 
 # -- Sheets helpers ----------------------------------------------------------
