@@ -234,9 +234,14 @@ def main():
                 sync_address_book(result_id, school_info_out, active_contacts,
                                   school_name=school_name)
 
+        # Save every 10 schools so a timeout doesn't lose all hash progress.
+        # sync_y_N is modulo — cheap sheet write vs. hours of re-push on re-run.
+        if synced_schools % 10 == 0:
+            save_contacts(contacts_ws, contacts_data)
+
         time.sleep(DELAY)
 
-    # Save back to sheet
+    # Final save catches anything after the last modulo checkpoint
     save_contacts(contacts_ws, contacts_data)
     if synced_col and synced_updates:
         batch = [{
