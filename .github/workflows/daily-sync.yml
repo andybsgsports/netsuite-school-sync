@@ -5,6 +5,20 @@ on:
   # Run this workflow when you want to push sheet changes to NS.
   workflow_dispatch:
     inputs:
+      sales_rep:
+        description: 'Only sync schools for this Sales Rep (blank = all)'
+        required: false
+        default: ''
+        type: choice
+        options:
+          - ''
+          - 'Andrew Murray'
+          - 'Jeff Howard'
+          - 'Tyler Fuhrman'
+          - 'Kyle Loughrin'
+          - 'Paul Speth'
+          - 'John Viles'
+          - 'Jeff Wedvick'
       school_filter:
         description: 'Optional: single school to sync (exact match)'
         required: false
@@ -38,3 +52,4 @@ jobs:
           GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
           GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
           SCHOOL_FILTER: ${{ inputs.school_filter }}
+          SALES_REP_FILTER: ${{ inputs.sales_rep }}

@@ -55,6 +55,7 @@ GOOGLE_SCOPES = [
 ]
 DELAY = 1.5
 SCHOOL_FILTER = os.environ.get("SCHOOL_FILTER", "").strip()
+SALES_REP_FILTER = os.environ.get("SALES_REP_FILTER", "").strip()
 MASTER_TAB = "Schools"
 CONTACTS_TAB = "Contacts"
 STATE_FILTER = "WI"
@@ -192,6 +193,11 @@ def main():
     if SCHOOL_FILTER:
         rows = [(i, r) for i, r in rows if str(r.get(M_NAME, "")).strip() == SCHOOL_FILTER]
         print(f"  TEST MODE: '{SCHOOL_FILTER}' ({len(rows)} matching row(s))")
+
+    if SALES_REP_FILTER:
+        rows = [(i, r) for i, r in rows
+                if str(r.get(M_SALES, "")).strip().lower() == SALES_REP_FILTER.lower()]
+        print(f"  REP FILTER: '{SALES_REP_FILTER}' ({len(rows)} school(s))")
 
     print(f"  WI rows: {len(rows)}  |  Contacts: {len(contacts_data)}\n")
 
