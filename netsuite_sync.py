@@ -109,29 +109,41 @@ def make_auth(method, full_url):
             f'oauth_timestamp="{ts}",oauth_nonce="{nonce}",oauth_version="1.0",'
             f'oauth_signature="{quote(sig,safe="")}"')
 
-def ns_get(path):
+def _ns_call(method, path, body=None, max_retries=5):
+    """Single NS REST call with exponential backoff on 429 (concurrent
+    request limit). NS returns HTTP 429 when too many concurrent requests
+    land on the same account — common when running parallel per-rep
+    jobs. Sleep 2s, 4s, 8s, 16s, 32s and retry up to 5 times."""
     url = f"{BASE_URL}/{path}"
-    return requests.get(url, headers={
-        "Authorization": make_auth("GET", url),
-        "Content-Type": "application/json"})
+    delay = 2.0
+    for attempt in range(max_retries + 1):
+        headers = {
+            "Authorization": make_auth(method, url),
+            "Content-Type":  "application/json",
+        }
+        if body is not None:
+            r = requests.request(method, url, headers=headers, json=body)
+        else:
+            r = requests.request(method, url, headers=headers)
+        if r.status_code != 429 or attempt == max_retries:
+            return r
+        import time as _t
+        _t.sleep(delay)
+        delay *= 2
+    return r  # unreachable but keeps linter happy
+
+
+def ns_get(path):
+    return _ns_call("GET", path)
 
 def ns_post(path, body):
-    url = f"{BASE_URL}/{path}"
-    return requests.post(url, headers={
-        "Authorization": make_auth("POST", url),
-        "Content-Type": "application/json"}, json=body)
+    return _ns_call("POST", path, body)
 
 def ns_patch(path, body):
-    url = f"{BASE_URL}/{path}"
-    return requests.patch(url, headers={
-        "Authorization": make_auth("PATCH", url),
-        "Content-Type": "application/json"}, json=body)
+    return _ns_call("PATCH", path, body)
 
 def ns_delete(path):
-    url = f"{BASE_URL}/{path}"
-    return requests.delete(url, headers={
-        "Authorization": make_auth("DELETE", url),
-        "Content-Type": "application/json"})
+    return _ns_call("DELETE", path)
 
 SUITEQL_URL = f"https://{NS_ACCOUNT}.suitetalk.api.netsuite.com/services/rest/query/v1/suiteql"
 
