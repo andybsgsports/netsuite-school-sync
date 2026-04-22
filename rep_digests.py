@@ -408,21 +408,35 @@ def snapshot_path(rep_name):
     return SNAPSHOT_DIR / f"{safe}.json"
 
 
+def _diff_key(school, email, role, sport):
+    """Case-fold identity parts that aren't guaranteed stable across runs.
+    Prevents phantom add/remove churn when the scraper re-cases a role
+    ('Ad Admin Assistant' -> 'AD Admin Assistant') or sport ('Track And
+    Field' -> 'Track and Field'). School is stable from the Schools tab."""
+    return (
+        (school or "").strip(),
+        (email or "").strip().lower(),
+        (role or "").strip().lower(),
+        (sport or "").strip().lower(),
+    )
+
+
 def contacts_to_records(admins, coaches):
     """
-    Returns {(school, email, role, sport): {"first":..., "last":...}}.
-    Key is the stable identity used for diffing; value holds display fields
-    like First/Last name so we can show them in added/removed email lines
-    without making them part of the diff key (which would cause noise when
-    a name gets re-cased on some future run).
+    Returns {case-folded key: {"first":, "last":, "email":, "role":, "sport":}}.
+    Key is the stable identity used for diffing; value holds display-cased
+    fields for the email lines (so a re-case doesn't cause phantom churn).
     """
     recs = {}
     for a in admins:
-        key = (a["School"], a["Email"], a["Role"], "")
-        recs[key] = {"first": a.get("First Name", ""), "last": a.get("Last Name", "")}
+        key = _diff_key(a["School"], a["Email"], a["Role"], "")
+        recs[key] = {"first": a.get("First Name", ""), "last": a.get("Last Name", ""),
+                     "email": a.get("Email", ""), "role": a.get("Role", ""), "sport": ""}
     for c in coaches:
-        key = (c["School"], c["Email"], c["Role"], c.get("Sport", ""))
-        recs[key] = {"first": c.get("First Name", ""), "last": c.get("Last Name", "")}
+        key = _diff_key(c["School"], c["Email"], c["Role"], c.get("Sport", ""))
+        recs[key] = {"first": c.get("First Name", ""), "last": c.get("Last Name", ""),
+                     "email": c.get("Email", ""), "role": c.get("Role", ""),
+                     "sport": c.get("Sport", "")}
     return recs
 
 
@@ -437,12 +451,14 @@ def load_snapshot(rep_name):
         if "records" in data:
             recs = {}
             for r in data["records"]:
-                key = (r.get("school", ""), r.get("email", ""),
-                       r.get("role", ""), r.get("sport", ""))
-                recs[key] = {"first": r.get("first", ""), "last": r.get("last", "")}
+                key = _diff_key(r.get("school", ""), r.get("email", ""),
+                                r.get("role", ""), r.get("sport", ""))
+                recs[key] = {"first": r.get("first", ""), "last": r.get("last", ""),
+                             "email": r.get("email", ""), "role": r.get("role", ""),
+                             "sport": r.get("sport", "")}
             return set(recs.keys()), recs
         # Legacy format: keys-only list of tuples, no name info
-        return {tuple(k) for k in data.get("keys", [])}, {}
+        return {_diff_key(*k) for k in data.get("keys", []) if len(k) == 4}, {}
     except Exception:
         return None, {}
 
@@ -450,9 +466,15 @@ def load_snapshot(rep_name):
 def save_snapshot(rep_name, records):
     SNAPSHOT_DIR.mkdir(parents=True, exist_ok=True)
     p = snapshot_path(rep_name)
+    # Store display-cased values; _diff_key re-normalizes on read so case
+    # in the JSON doesn't affect matching.
     serializable = [
-        {"school": k[0], "email": k[1], "role": k[2], "sport": k[3],
-         "first": v.get("first", ""), "last": v.get("last", "")}
+        {"school": k[0],
+         "email":  v.get("email", k[1]),
+         "role":   v.get("role", k[2]),
+         "sport":  v.get("sport", k[3]),
+         "first":  v.get("first", ""),
+         "last":   v.get("last", "")}
         for k, v in sorted(records.items())
     ]
     p.write_text(
