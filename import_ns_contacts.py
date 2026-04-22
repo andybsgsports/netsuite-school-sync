@@ -175,11 +175,12 @@ def fetch_all_customers():
     (e.g. other salesmen's accounts)."""
     out = []
     offset = 0
+    PAGE = 100
     while True:
-        r = ns_get(f"customer?limit=1000&offset={offset}")
+        r = ns_get(f"customer?limit={PAGE}&offset={offset}")
         if r.status_code != 200:
             print(f"  [NS] list customers failed at offset {offset}: "
-                  f"{r.status_code} {r.text[:120]}")
+                  f"{r.status_code} {r.text[:500]}")
             break
         body = r.json()
         items = body.get("items", [])
@@ -202,8 +203,9 @@ def fetch_all_customers():
             out.append({"id": str(cid), "name": str(name).strip()})
         if not body.get("hasMore"):
             break
-        offset += 1000
-        print(f"  ...paged {len(out)} customers so far")
+        offset += PAGE
+        if offset % 500 == 0:
+            print(f"  ...paged {len(out)} customers so far")
     return out
 
 
