@@ -18,6 +18,7 @@ from __future__ import annotations
 import os
 import sys
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 
 import gspread
@@ -35,6 +36,7 @@ from school_netsuite_sync import (
 
 SCHOOL_FILTER = os.environ.get("SCHOOL_FILTER", "").strip()
 STATE_FILTER  = os.environ.get("STATE_FILTER", "").strip().upper()
+CONCURRENCY   = int(os.environ.get("CONCURRENCY", "10"))  # parallel WIAA/IHSA fetches
 
 
 def load_all_schools(gc):
@@ -133,20 +135,29 @@ def main():
     print(f"  Existing contacts in sheet: {len(contacts_data)}\n")
 
     added = 0
-    scanned = 0
     errors = 0
     synced_updates = []
 
-    for sch in schools:
-        scanned += 1
+    def scrape_one(sch):
+        """Returns (sch, people_list). Runs in a worker thread."""
         state = sch["state"]
-        print(f"[{scanned}/{len(schools)}] {sch['name']} ({state})")
         people = scrape_wi(sch["url"]) if state == "WI" else scrape_il(sch["url"])
-        if not people:
-            print(f"    (0 contacts)")
-            continue
-        print(f"    Scraped {len(people)} contacts")
+        return sch, people
 
+    print(f"  Scraping with {CONCURRENCY} parallel workers\n")
+    results = []
+    done = 0
+    with ThreadPoolExecutor(max_workers=CONCURRENCY) as pool:
+        futures = {pool.submit(scrape_one, s): s for s in schools}
+        for fut in as_completed(futures):
+            done += 1
+            sch, people = fut.result()
+            print(f"[{done}/{len(schools)}] {sch['name']} ({sch['state']}) — {len(people)} contacts")
+            results.append((sch, people))
+
+    # Merge scraped results into contacts_data on the main thread (avoids
+    # thread-safety issues with the shared list + existing_keys set).
+    for sch, people in results:
         new_for_school = 0
         for p in people:
             em = (p["email"] or "").strip().lower()
@@ -171,9 +182,9 @@ def main():
             new_for_school += 1
             added += 1
         if new_for_school:
-            print(f"    + {new_for_school} new row(s) for Contacts tab")
+            print(f"  + {sch['name']}: {new_for_school} new row(s)")
         synced_updates.append((sch["row"], datetime.now().strftime("%Y-%m-%d %H:%M")))
-        time.sleep(0.2)
+    scanned = len(schools)
 
     # Save once at end (much faster than per-school)
     save_contacts(contacts_ws, contacts_data)

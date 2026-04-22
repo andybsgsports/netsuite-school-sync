@@ -1,6 +1,9 @@
-name: Manual - Scrape Only (no NetSuite)
+name: Daily Scrape (no NetSuite)
 
 on:
+  schedule:
+    # 09:30 UTC = ~4:30 AM Central. Runs before rep-digests (11:30 UTC).
+    - cron: '30 9 * * *'
   workflow_dispatch:
     inputs:
       state_filter:
