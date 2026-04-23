@@ -118,19 +118,26 @@ def load_rep_schools(gc):
 
 
 def load_il_schools(gc):
-    """Returns [(school_name, school_website), ...] from IL_Schools tab."""
+    """Returns [(school_name, school_website), ...] — IL rows from the
+    unified Schools tab on the main master sheet (State == 'IL').
+    Previously read from a separate IL_Schools tab; that tab was retired
+    when WI + IL consolidated into one Schools tab."""
     if not GOOGLE_SHEET_ID_MAIN:
         return []
     wb = gc.open_by_key(GOOGLE_SHEET_ID_MAIN)
     try:
-        ws = wb.worksheet("IL_Schools")
+        ws = wb.worksheet("Schools")
     except Exception:
         return []
     out = []
     for row in ws.get_all_records():
-        school = str(row.get("Schools", "")).strip()
-        url = str(row.get("School Website", "")).strip()
-        if school and url:
+        state = str(row.get("State", "")).strip().upper()
+        if state != "IL":
+            continue
+        school = str(row.get("School Name", "")).strip()
+        url    = str(row.get("School URL", "")).strip()
+        locked = str(row.get("Locked", "")).strip().upper() == "Y"
+        if school and url and not locked:
             out.append((school, url))
     return out
 
