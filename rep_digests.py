@@ -567,6 +567,75 @@ def send_email(rep, subject, body, xlsx_bytes, xlsx_name):
 
 
 # -- Main --------------------------------------------------------------------
+def merge_scraped_into_master_sheet(gc, scraped):
+    """Merge today's scraped admins+coaches into the main master sheet's
+    Contacts tab. Dedupes on (School, Email, Role) so re-runs don't create
+    duplicate rows. Does NOT touch NS; a later workflow reads this sheet
+    and pushes changes to NetSuite."""
+    if not scraped:
+        return
+    main_sheet_id = os.environ.get("GOOGLE_SHEET_ID", "")
+    if not main_sheet_id:
+        print("\n[merge] GOOGLE_SHEET_ID not set — skipping master sheet update")
+        return
+
+    # Import sheet helpers lazily (avoid circular imports at module load)
+    from school_netsuite_sync import (
+        load_contacts, save_contacts,
+        C_SCHOOL, C_FIRST, C_LAST, C_EMAIL, C_ROLE, C_TYPE,
+        C_SYNC, C_NS_CID, C_NS_CUS, C_SYNCED,
+    )
+    wb = gc.open_by_key(main_sheet_id)
+    contacts_ws = wb.worksheet("Contacts")
+    contacts_data = contacts_ws.get_all_records()
+
+    existing_keys = {
+        (str(c.get(C_SCHOOL, "")).strip(),
+         str(c.get(C_EMAIL, "")).strip().lower(),
+         str(c.get(C_ROLE, "")).strip().lower())
+        for c in contacts_data
+        if str(c.get(C_EMAIL, "")).strip()
+    }
+
+    added = 0
+    for state, rec in scraped:
+        school = str(rec.get("School", "")).strip()
+        email  = str(rec.get("Email", "")).strip()
+        # Admins store role in 'Role'; coaches store sport in 'Sport' and
+        # "Head Coach"/"Coach" in 'Role'. Normalize to the Contacts-tab
+        # convention: C_ROLE holds the sport for coaches, admin title for
+        # admins; C_TYPE holds "Head Coach"/"Coach"/"Admin".
+        sport = str(rec.get("Sport", "")).strip()
+        if sport:
+            role_col = sport
+            type_col = str(rec.get("Role", "")).strip() or "Coach"
+        else:
+            role_col = str(rec.get("Role", "")).strip()
+            type_col = "Admin"
+        if not (school and email and role_col):
+            continue
+        key = (school, email.lower(), role_col.lower())
+        if key in existing_keys:
+            continue
+        contacts_data.append({
+            C_SCHOOL: school,
+            C_FIRST:  str(rec.get("First Name", "")).strip(),
+            C_LAST:   str(rec.get("Last Name", "")).strip(),
+            C_EMAIL:  email,
+            C_ROLE:   role_col,
+            C_TYPE:   type_col,
+            C_SYNC:   "Y",
+            C_NS_CID: "",
+            C_NS_CUS: "",
+            C_SYNCED: "",
+        })
+        existing_keys.add(key)
+        added += 1
+
+    save_contacts(contacts_ws, contacts_data)
+    print(f"\n[merge] {added} new row(s) added to master sheet Contacts tab")
+
+
 def main():
     print("=" * 60)
     print(f"  Rep Digests  |  {datetime.now().strftime('%Y-%m-%d %H:%M')}  |  DRY_RUN={DRY_RUN}")
@@ -584,6 +653,7 @@ def main():
 
     rep_name_to_config = {r["name"]: r for r in REPS}
     results = []
+    all_scraped = []  # accumulate across reps for one sheet write at the end
 
     for rep in REPS:
         if REP_FILTER and rep["name"] != REP_FILTER:
@@ -598,6 +668,8 @@ def main():
         print("-" * 60)
 
         admins, coaches = scrape_rep(rep["name"], schools)
+        all_scraped.extend(("WI", a) for a in admins)
+        all_scraped.extend(("WI", c) for c in coaches)
 
         # Merge IL schools into this rep's digest if configured (Andy only)
         il_count = 0
@@ -607,6 +679,8 @@ def main():
             admins = admins + il_admins
             coaches = coaches + il_coaches
             il_count = len(il_schools)
+            all_scraped.extend(("IL", a) for a in il_admins)
+            all_scraped.extend(("IL", c) for c in il_coaches)
 
         current_records = contacts_to_records(admins, coaches)
         current_keys = set(current_records.keys())
@@ -657,6 +731,12 @@ def main():
             "removed": len(removed),
             "sent": sent,
         })
+
+    # Write the unified scrape to the master sheet's Contacts tab. Doing
+    # this once at the end (after all reps) means a single Google Sheets
+    # write instead of one per rep, and every scraped contact lands on
+    # the sheet before the 6:30 AM NS push workflow reads it.
+    merge_scraped_into_master_sheet(gc, all_scraped)
 
     print("\n" + "=" * 60)
     print("Summary:")

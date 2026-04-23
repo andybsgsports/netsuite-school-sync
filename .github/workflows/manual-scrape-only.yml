@@ -1,9 +1,8 @@
-name: Daily Scrape (no NetSuite)
+name: Manual - Scrape Only (no NetSuite)
 
 on:
-  schedule:
-    # 09:30 UTC = ~4:30 AM Central. Runs before rep-digests (11:30 UTC).
-    - cron: '30 9 * * *'
+  # Daily scrape is now handled by rep-digests.yml (which also emails + writes
+  # the master sheet). This workflow is kept for manual ad-hoc scrapes.
   workflow_dispatch:
     inputs:
       state_filter:

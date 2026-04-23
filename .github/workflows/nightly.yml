@@ -1,37 +1,18 @@
-name: Nightly — Scrape + Per-Rep NS Push
+name: Daily NS Push (sheet -> NetSuite, per rep)
 
-# Runs every morning. Step 1 scrapes WIAA/IHSA into the master sheet.
-# Step 2 fans out to one parallel NS-push job per Sales Rep, so one
-# rep's failure does not block the others.
+# Reads the master sheet (populated earlier by Rep Digests at 4:30 AM)
+# and pushes each rep's contacts to NetSuite — one rep at a time so
+# one rep's failure doesn't block the others.
 on:
   schedule:
-    # 09:30 UTC = ~4:30 AM Central
-    - cron: '30 9 * * *'
+    # 11:30 UTC = ~6:30 AM Central. Rep Digests finishes ~4:30-5:30 AM.
+    - cron: '30 11 * * *'
   workflow_dispatch:
 
 jobs:
-  scrape:
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Install dependencies
-        run: pip install requests beautifulsoup4 gspread google-auth
-      - name: Scrape WIAA + IHSA into Google Sheet
-        run: python scrape_only.py
-        env:
-          GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
-          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
-
   push:
-    needs: scrape
     runs-on: ubuntu-latest
-    timeout-minutes: 240   # first-seed runs can take 60-90m per rep
+    timeout-minutes: 240
     strategy:
       fail-fast: false
       max-parallel: 1   # serial per-rep — NS concurrent request limit is low
