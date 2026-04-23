@@ -35,7 +35,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install requests beautifulsoup4 gspread google-auth openpyxl pandas
+        run: pip install requests beautifulsoup4 gspread google-auth google-api-python-client openpyxl pandas
 
       - name: Run rep digests
         run: python rep_digests.py
