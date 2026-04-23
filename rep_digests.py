@@ -84,6 +84,14 @@ REPS = [
 
 GOOGLE_SHEET_ID_MAIN = os.environ.get("GOOGLE_SHEET_ID", "")  # for IL_Schools tab
 
+# Shared Drive folder where each rep's XLSX is archived after emailing.
+# Default = Andy's "School/Contact Sync - WIAA/IHSA Scrape - BSG to Netsuite"
+# folder. Override with GOOGLE_DRIVE_DIGEST_FOLDER_ID env var.
+DRIVE_DIGEST_FOLDER_ID = os.environ.get(
+    "GOOGLE_DRIVE_DIGEST_FOLDER_ID",
+    "1ZcchdQmDngJc_sro-LyK8yAYofdwkLTK",
+).strip()
+
 DRY_RUN = os.environ.get("DRY_RUN", "") == "1"
 REP_FILTER = os.environ.get("REP_FILTER", "").strip()
 
@@ -506,6 +514,70 @@ def diff_keys(previous, current):
 
 
 # -- Email -------------------------------------------------------------------
+def _drive_service():
+    """Service-account-authenticated Google Drive v3 client."""
+    from googleapiclient.discovery import build
+    creds_json = os.environ.get("GOOGLE_CREDENTIALS_JSON", "")
+    if creds_json:
+        creds = Credentials.from_service_account_info(
+            json.loads(creds_json), scopes=GOOGLE_SCOPES)
+    else:
+        creds = Credentials.from_service_account_file(
+            str(Path(__file__).parent / "credentials.json"),
+            scopes=GOOGLE_SCOPES)
+    return build("drive", "v3", credentials=creds, cache_discovery=False)
+
+
+def _find_or_create_subfolder(drive, name, parent_id):
+    """Get id of `name` folder inside `parent_id`, creating it if absent."""
+    safe = name.replace("'", "\\'")
+    q = (f"'{parent_id}' in parents and "
+         f"mimeType='application/vnd.google-apps.folder' "
+         f"and name='{safe}' and trashed=false")
+    res = drive.files().list(
+        q=q, fields="files(id)", supportsAllDrives=True,
+        includeItemsFromAllDrives=True,
+    ).execute()
+    if res.get("files"):
+        return res["files"][0]["id"]
+    meta = {
+        "name": name,
+        "mimeType": "application/vnd.google-apps.folder",
+        "parents": [parent_id],
+    }
+    out = drive.files().create(body=meta, fields="id",
+                               supportsAllDrives=True).execute()
+    return out["id"]
+
+
+def upload_digest_to_drive(rep_name, xlsx_bytes, xlsx_name):
+    """Archive the rep's XLSX in a per-rep subfolder of the shared Drive
+    folder. No-op if DRIVE_DIGEST_FOLDER_ID isn't set or the folder isn't
+    shared with the service account."""
+    from googleapiclient.http import MediaIoBaseUpload
+    if not DRIVE_DIGEST_FOLDER_ID:
+        return
+    try:
+        drive = _drive_service()
+        rep_folder = _find_or_create_subfolder(drive, rep_name, DRIVE_DIGEST_FOLDER_ID)
+        dated_name = f"{datetime.now().strftime('%Y-%m-%d')}__{xlsx_name}"
+        media = MediaIoBaseUpload(
+            io.BytesIO(xlsx_bytes),
+            mimetype=("application/vnd.openxmlformats-officedocument."
+                      "spreadsheetml.sheet"),
+            resumable=False,
+        )
+        drive.files().create(
+            body={"name": dated_name, "parents": [rep_folder]},
+            media_body=media,
+            fields="id",
+            supportsAllDrives=True,
+        ).execute()
+        print(f"  [Drive] Archived {dated_name} -> {rep_name}/")
+    except Exception as e:
+        print(f"  [Drive] WARN upload failed for {rep_name}: {e}")
+
+
 def send_email(rep, subject, body, xlsx_bytes, xlsx_name):
     """
     Recipient logic:
@@ -729,6 +801,10 @@ def main():
         else:
             print(f"  No changes — no email sent.")
             sent = False
+
+        # Archive every run's XLSX to the shared Drive folder, regardless
+        # of whether an email went out. Useful for auditing back in time.
+        upload_digest_to_drive(rep["name"], xlsx_bytes, xlsx_name)
 
         save_snapshot(rep["name"], current_records)
         results.append({
