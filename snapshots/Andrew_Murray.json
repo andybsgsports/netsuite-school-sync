@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-04-22T11:57:41.002319Z",
+  "updated": "2026-04-23T13:24:26.891583Z",
   "records": [
     {
       "school": "Barneveld",
@@ -444,22 +444,6 @@
     },
     {
       "school": "Big Foot",
-      "email": "Steele@gordysboats.com",
-      "role": "Head Coach",
-      "sport": "Boys Swimming & Diving",
-      "first": "Steele",
-      "last": "Whowell"
-    },
-    {
-      "school": "Big Foot",
-      "email": "TROY.HUMMEL@walworth.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Troy",
-      "last": "Hummel"
-    },
-    {
-      "school": "Big Foot",
       "email": "alison.whowell@gordysboats.com",
       "role": "Head Coach",
       "sport": "Girls Swimming & Diving",
@@ -620,11 +604,27 @@
     },
     {
       "school": "Big Foot",
+      "email": "Steele@gordysboats.com",
+      "role": "Head Coach",
+      "sport": "Boys Swimming & Diving",
+      "first": "Steele",
+      "last": "Whowell"
+    },
+    {
+      "school": "Big Foot",
       "email": "tmheck@bigfoot.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Wrestling",
       "first": "Tyler",
       "last": "Heck"
+    },
+    {
+      "school": "Big Foot",
+      "email": "TROY.HUMMEL@walworth.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Troy",
+      "last": "Hummel"
     },
     {
       "school": "Brookfield Academy",
@@ -761,14 +761,6 @@
       "sport": "Boys Golf",
       "first": "Steve",
       "last": "Hinkens"
-    },
-    {
-      "school": "Brookfield Central",
-      "email": "Wandreyd@elmbrookschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Dan",
-      "last": "Wandrey"
     },
     {
       "school": "Brookfield Central",
@@ -953,6 +945,14 @@
       "sport": "Boys & Girls Tennis",
       "first": "Jon",
       "last": "Vogt"
+    },
+    {
+      "school": "Brookfield Central",
+      "email": "Wandreyd@elmbrookschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Dan",
+      "last": "Wandrey"
     },
     {
       "school": "Brookfield Central",
@@ -1676,14 +1676,6 @@
     },
     {
       "school": "Clinton",
-      "email": "William.Uffenbeck@cuw.edu",
-      "role": "Head Coach",
-      "sport": "Boys Cross Country",
-      "first": "William",
-      "last": "Uffenbeck"
-    },
-    {
-      "school": "Clinton",
       "email": "chjaecks@clintonwis.com",
       "role": "Athletic Director",
       "sport": "",
@@ -1817,6 +1809,14 @@
       "sport": "Girls Track and Field",
       "first": "Stacy",
       "last": "Beals"
+    },
+    {
+      "school": "Clinton",
+      "email": "William.Uffenbeck@cuw.edu",
+      "role": "Head Coach",
+      "sport": "Boys Cross Country",
+      "first": "William",
+      "last": "Uffenbeck"
     },
     {
       "school": "Delavan-Darien",
@@ -2508,19 +2508,19 @@
     },
     {
       "school": "Greenfield",
-      "email": "Abergemann@greenfield.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Aiden",
-      "last": "Bergemann"
-    },
-    {
-      "school": "Greenfield",
       "email": "abbyzysk14@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Wrestling",
       "first": "Abby",
       "last": "Zysk"
+    },
+    {
+      "school": "Greenfield",
+      "email": "Abergemann@greenfield.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Aiden",
+      "last": "Bergemann"
     },
     {
       "school": "Greenfield",
@@ -2732,14 +2732,6 @@
     },
     {
       "school": "Hamilton",
-      "email": "Matthewblackwell89@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Wrestling",
-      "first": "Matt",
-      "last": "Blackwell"
-    },
-    {
-      "school": "Hamilton",
       "email": "bauedo@hamilton.k12.wi.us",
       "role": "Principal",
       "sport": "",
@@ -2865,6 +2857,14 @@
       "sport": "Girls Soccer",
       "first": "Mark",
       "last": "Perugini"
+    },
+    {
+      "school": "Hamilton",
+      "email": "Matthewblackwell89@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Matt",
+      "last": "Blackwell"
     },
     {
       "school": "Hamilton",
@@ -3140,14 +3140,6 @@
     },
     {
       "school": "Janesville Parker",
-      "email": "Madietimm@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Tennis",
-      "first": "Madeline",
-      "last": "Timm"
-    },
-    {
-      "school": "Janesville Parker",
       "email": "andy.nouansacksy@janesville.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Soccer",
@@ -3249,6 +3241,14 @@
       "sport": "Girls Hockey",
       "first": "Kurt",
       "last": "Buchs"
+    },
+    {
+      "school": "Janesville Parker",
+      "email": "Madietimm@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Tennis",
+      "first": "Madeline",
+      "last": "Timm"
     },
     {
       "school": "Janesville Parker",
@@ -3580,14 +3580,6 @@
     },
     {
       "school": "Kenosha St. Joseph Catholic",
-      "email": "Jgarcia@sjcawi.org",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Jose",
-      "last": "Garcia"
-    },
-    {
-      "school": "Kenosha St. Joseph Catholic",
       "email": "bbartholomew@sjcawi.org",
       "role": "Principal",
       "sport": "",
@@ -3641,6 +3633,14 @@
       "sport": "Boys & Girls Track and Field",
       "first": "Jon",
       "last": "Furreness"
+    },
+    {
+      "school": "Kenosha St. Joseph Catholic",
+      "email": "Jgarcia@sjcawi.org",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Jose",
+      "last": "Garcia"
     },
     {
       "school": "Kenosha St. Joseph Catholic",
@@ -3932,14 +3932,6 @@
     },
     {
       "school": "Menomonee Falls",
-      "email": "SedlAnd@sdmfschools.org",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Andrew",
-      "last": "Sedlmeier"
-    },
-    {
-      "school": "Menomonee Falls",
       "email": "andrmat@sdmfschools.org",
       "role": "Head Coach",
       "sport": "Boys Tennis",
@@ -4129,6 +4121,14 @@
       "sport": "Boys & Girls Soccer",
       "first": "Scott",
       "last": "Stein"
+    },
+    {
+      "school": "Menomonee Falls",
+      "email": "SedlAnd@sdmfschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Andrew",
+      "last": "Sedlmeier"
     },
     {
       "school": "Menomonee Falls",
@@ -4340,14 +4340,6 @@
     },
     {
       "school": "Mukwonago",
-      "email": "Gnewumi@masd.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Mike",
-      "last": "Gnewuch"
-    },
-    {
-      "school": "Mukwonago",
       "email": "bartler@masd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Golf",
@@ -4401,6 +4393,14 @@
       "sport": "Girls Wrestling",
       "first": "Jeremiah",
       "last": "Chitwood"
+    },
+    {
+      "school": "Mukwonago",
+      "email": "Gnewumi@masd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Mike",
+      "last": "Gnewuch"
     },
     {
       "school": "Mukwonago",
@@ -4932,14 +4932,6 @@
     },
     {
       "school": "Racine Lutheran",
-      "email": "Glorycoachgreg@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Greg",
-      "last": "Harris"
-    },
-    {
-      "school": "Racine Lutheran",
       "email": "abarrington@racinelutheran.org",
       "role": "Head Coach",
       "sport": "Girls Soccer",
@@ -4977,6 +4969,14 @@
       "sport": "Girls Golf",
       "first": "Mike",
       "last": "Hyduke"
+    },
+    {
+      "school": "Racine Lutheran",
+      "email": "Glorycoachgreg@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Greg",
+      "last": "Harris"
     },
     {
       "school": "Racine Lutheran",
@@ -5236,14 +5236,6 @@
     },
     {
       "school": "Union Grove",
-      "email": "Andrew.weis@wcspk8.org",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
-      "first": "Andy",
-      "last": "Weis"
-    },
-    {
-      "school": "Union Grove",
       "email": "ambrnic@ug.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Track and Field",
@@ -5257,6 +5249,14 @@
       "sport": "Girls Gymnastics",
       "first": "Andrea",
       "last": "Chart"
+    },
+    {
+      "school": "Union Grove",
+      "email": "Andrew.weis@wcspk8.org",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Wrestling",
+      "first": "Andy",
+      "last": "Weis"
     },
     {
       "school": "Union Grove",
@@ -5876,22 +5876,6 @@
     },
     {
       "school": "Waukesha North",
-      "email": "Lkuhtz@waukesha.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Laura",
-      "last": "Kuhtz"
-    },
-    {
-      "school": "Waukesha North",
-      "email": "Tschalmo@waukesha.k12.wi.us",
-      "role": "Principal",
-      "sport": "",
-      "first": "Tom",
-      "last": "Schalmo"
-    },
-    {
-      "school": "Waukesha North",
       "email": "abouchard@waukesha.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Volleyball",
@@ -6036,6 +6020,14 @@
     },
     {
       "school": "Waukesha North",
+      "email": "Lkuhtz@waukesha.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Laura",
+      "last": "Kuhtz"
+    },
+    {
+      "school": "Waukesha North",
       "email": "mhenes@waukesha.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -6073,6 +6065,14 @@
       "sport": "Boys Soccer",
       "first": "Tj",
       "last": "Krause"
+    },
+    {
+      "school": "Waukesha North",
+      "email": "Tschalmo@waukesha.k12.wi.us",
+      "role": "Principal",
+      "sport": "",
+      "first": "Tom",
+      "last": "Schalmo"
     },
     {
       "school": "Waukesha North",
@@ -6292,14 +6292,6 @@
     },
     {
       "school": "Waukesha West",
-      "email": "Derek.marie174@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Derek",
-      "last": "Marie"
-    },
-    {
-      "school": "Waukesha West",
       "email": "a.sokol@ocfsd.org",
       "role": "Head Coach",
       "sport": "Boys Cross Country",
@@ -6345,6 +6337,14 @@
       "sport": "Boys & Girls Wrestling",
       "first": "Derrick",
       "last": "Amrhein"
+    },
+    {
+      "school": "Waukesha West",
+      "email": "Derek.marie174@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Derek",
+      "last": "Marie"
     },
     {
       "school": "Waukesha West",
@@ -6508,22 +6508,6 @@
     },
     {
       "school": "Wauwatosa West",
-      "email": "Gollaco@wauwatosa.k12.wi.us",
-      "role": "Principal",
-      "sport": "",
-      "first": "Corey",
-      "last": "Golla"
-    },
-    {
-      "school": "Wauwatosa West",
-      "email": "Laerte2350@yahoo.com",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Lorry",
-      "last": "Venturi"
-    },
-    {
-      "school": "Wauwatosa West",
       "email": "brookfieldstarshockey@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Hockey",
@@ -6545,6 +6529,14 @@
       "sport": "Girls Volleyball",
       "first": "Kelly",
       "last": "Dwyer"
+    },
+    {
+      "school": "Wauwatosa West",
+      "email": "Gollaco@wauwatosa.k12.wi.us",
+      "role": "Principal",
+      "sport": "",
+      "first": "Corey",
+      "last": "Golla"
     },
     {
       "school": "Wauwatosa West",
@@ -6577,6 +6569,14 @@
       "sport": "Girls Tennis",
       "first": "Billy",
       "last": "Heu"
+    },
+    {
+      "school": "Wauwatosa West",
+      "email": "Laerte2350@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Lorry",
+      "last": "Venturi"
     },
     {
       "school": "Wauwatosa West",
@@ -6716,30 +6716,6 @@
     },
     {
       "school": "West Bend East",
-      "email": "Bconnolly@wbsd-schools.org",
-      "role": "Head Coach",
-      "sport": "Boys Lacrosse-Boys",
-      "first": "Brendon",
-      "last": "Connolly"
-    },
-    {
-      "school": "West Bend East",
-      "email": "JOE.HENNEN@WLC.EDU",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Joe",
-      "last": "Hennen"
-    },
-    {
-      "school": "West Bend East",
-      "email": "Jwimmer@wbsd-schools.org",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Jennifer",
-      "last": "Wimmer"
-    },
-    {
-      "school": "West Bend East",
       "email": "adechant@wbsd-schools.org",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -6769,6 +6745,14 @@
       "sport": "Boys Football",
       "first": "Asa",
       "last": "Spindler"
+    },
+    {
+      "school": "West Bend East",
+      "email": "Bconnolly@wbsd-schools.org",
+      "role": "Head Coach",
+      "sport": "Boys Lacrosse-Boys",
+      "first": "Brendon",
+      "last": "Connolly"
     },
     {
       "school": "West Bend East",
@@ -6844,6 +6828,14 @@
     },
     {
       "school": "West Bend East",
+      "email": "JOE.HENNEN@WLC.EDU",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Joe",
+      "last": "Hennen"
+    },
+    {
+      "school": "West Bend East",
       "email": "jpotter@wbsd-schools.org",
       "role": "Principal",
       "sport": "",
@@ -6857,6 +6849,14 @@
       "sport": "",
       "first": "Jen",
       "last": "Rausch"
+    },
+    {
+      "school": "West Bend East",
+      "email": "Jwimmer@wbsd-schools.org",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Jennifer",
+      "last": "Wimmer"
     },
     {
       "school": "West Bend East",
@@ -6948,22 +6948,6 @@
     },
     {
       "school": "West Bend West",
-      "email": "Bconnolly@wbsd-schools.org",
-      "role": "Head Coach",
-      "sport": "Boys Lacrosse-Boys",
-      "first": "Brendon",
-      "last": "Connolly"
-    },
-    {
-      "school": "West Bend West",
-      "email": "Jwimmer@wbsd-schools.org",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Jennifer",
-      "last": "Wimmer"
-    },
-    {
-      "school": "West Bend West",
       "email": "ahunt@wbsd-schools.org",
       "role": "Head Coach",
       "sport": "Girls Cross Country",
@@ -6993,6 +6977,14 @@
       "sport": "Boys Wrestling",
       "first": "Aaron",
       "last": "Spaeth"
+    },
+    {
+      "school": "West Bend West",
+      "email": "Bconnolly@wbsd-schools.org",
+      "role": "Head Coach",
+      "sport": "Boys Lacrosse-Boys",
+      "first": "Brendon",
+      "last": "Connolly"
     },
     {
       "school": "West Bend West",
@@ -7073,6 +7065,14 @@
       "sport": "",
       "first": "Jennifer",
       "last": "Potter"
+    },
+    {
+      "school": "West Bend West",
+      "email": "Jwimmer@wbsd-schools.org",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Jennifer",
+      "last": "Wimmer"
     },
     {
       "school": "West Bend West",
@@ -7161,22 +7161,6 @@
       "sport": "Boys Football",
       "first": "Taylor",
       "last": "Ripplinger"
-    },
-    {
-      "school": "Westosha Central",
-      "email": "MormanJ@westosha.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Jacob",
-      "last": "Morman"
-    },
-    {
-      "school": "Westosha Central",
-      "email": "Steele@gordysboats.com",
-      "role": "Head Coach",
-      "sport": "Boys Swimming & Diving",
-      "first": "Steele",
-      "last": "Whowell"
     },
     {
       "school": "Westosha Central",
@@ -7340,6 +7324,14 @@
     },
     {
       "school": "Westosha Central",
+      "email": "MormanJ@westosha.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Jacob",
+      "last": "Morman"
+    },
+    {
+      "school": "Westosha Central",
       "email": "nuttings@westosha.k12.wi.us",
       "role": "AD Admin Assistant",
       "sport": "",
@@ -7353,6 +7345,14 @@
       "sport": "Girls Gymnastics",
       "first": "Shania",
       "last": "Bransley"
+    },
+    {
+      "school": "Westosha Central",
+      "email": "Steele@gordysboats.com",
+      "role": "Head Coach",
+      "sport": "Boys Swimming & Diving",
+      "first": "Steele",
+      "last": "Whowell"
     },
     {
       "school": "Westosha Central",
@@ -7524,14 +7524,6 @@
     },
     {
       "school": "Williams Bay",
-      "email": "Steele@gordysboats.com",
-      "role": "Head Coach",
-      "sport": "Boys Swimming & Diving",
-      "first": "Steele",
-      "last": "Whowell"
-    },
-    {
-      "school": "Williams Bay",
       "email": "alison.whowell@gordysboats.com",
       "role": "Head Coach",
       "sport": "Girls Swimming & Diving",
@@ -7684,6 +7676,14 @@
     },
     {
       "school": "Williams Bay",
+      "email": "Steele@gordysboats.com",
+      "role": "Head Coach",
+      "sport": "Boys Swimming & Diving",
+      "first": "Steele",
+      "last": "Whowell"
+    },
+    {
+      "school": "Williams Bay",
       "email": "tmheck@bigfoot.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Wrestling",
@@ -7697,22 +7697,6 @@
       "sport": "",
       "first": "William",
       "last": "White"
-    },
-    {
-      "school": "Wilmot Union",
-      "email": "Richterk@wilmoths.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Karl",
-      "last": "Richter"
-    },
-    {
-      "school": "Wilmot Union",
-      "email": "Steele@gordysboats.com",
-      "role": "Head Coach",
-      "sport": "Boys Swimming & Diving",
-      "first": "Steele",
-      "last": "Whowell"
     },
     {
       "school": "Wilmot Union",
@@ -7844,6 +7828,14 @@
     },
     {
       "school": "Wilmot Union",
+      "email": "Richterk@wilmoths.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Karl",
+      "last": "Richter"
+    },
+    {
+      "school": "Wilmot Union",
       "email": "smithta@wilmoths.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -7865,6 +7857,14 @@
       "sport": "Boys & Girls Track and Field",
       "first": "Keiya",
       "last": "Square"
+    },
+    {
+      "school": "Wilmot Union",
+      "email": "Steele@gordysboats.com",
+      "role": "Head Coach",
+      "sport": "Boys Swimming & Diving",
+      "first": "Steele",
+      "last": "Whowell"
     },
     {
       "school": "Wilmot Union",

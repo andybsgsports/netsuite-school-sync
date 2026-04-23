@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-04-22T12:01:58.531580Z",
+  "updated": "2026-04-23T13:28:44.661986Z",
   "records": [
     {
       "school": "Adams Friendship",
@@ -148,14 +148,6 @@
     },
     {
       "school": "Almond-Bancroft",
-      "email": "Dmartin@abschools.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Wrestling",
-      "first": "Dillon",
-      "last": "Martin"
-    },
-    {
-      "school": "Almond-Bancroft",
       "email": "abradley@abschools.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
@@ -177,6 +169,14 @@
       "sport": "Girls Basketball",
       "first": "Chad",
       "last": "Newby"
+    },
+    {
+      "school": "Almond-Bancroft",
+      "email": "Dmartin@abschools.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Dillon",
+      "last": "Martin"
     },
     {
       "school": "Almond-Bancroft",
@@ -604,14 +604,6 @@
     },
     {
       "school": "Mauston",
-      "email": "Nwhalen@maustonschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Nick",
-      "last": "Whalen"
-    },
-    {
-      "school": "Mauston",
       "email": "bdvoe@maustonschools.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -724,6 +716,14 @@
     },
     {
       "school": "Mauston",
+      "email": "Nwhalen@maustonschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Nick",
+      "last": "Whalen"
+    },
+    {
+      "school": "Mauston",
       "email": "only1marschall@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Basketball",
@@ -796,38 +796,6 @@
     },
     {
       "school": "McFarland",
-      "email": "DiprizT@mcfsd.org",
-      "role": "Head Coach",
-      "sport": "Girls Soccer",
-      "first": "Tj",
-      "last": "DiPrizio"
-    },
-    {
-      "school": "McFarland",
-      "email": "FeldneJ@mcfsd.org",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "John",
-      "last": "Feldner"
-    },
-    {
-      "school": "McFarland",
-      "email": "Kvoeck@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
-      "first": "Karl",
-      "last": "Voeck"
-    },
-    {
-      "school": "McFarland",
-      "email": "TarnutA@mcfsd.org",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Aaron",
-      "last": "Tarnutzer"
-    },
-    {
-      "school": "McFarland",
       "email": "ackleyp@mcfsd.org",
       "role": "Athletic Director",
       "sport": "",
@@ -860,6 +828,14 @@
     },
     {
       "school": "McFarland",
+      "email": "DiprizT@mcfsd.org",
+      "role": "Head Coach",
+      "sport": "Girls Soccer",
+      "first": "Tj",
+      "last": "DiPrizio"
+    },
+    {
+      "school": "McFarland",
       "email": "duerkC1@mcfsd.org",
       "role": "Head Coach",
       "sport": "Girls Golf",
@@ -876,19 +852,19 @@
     },
     {
       "school": "McFarland",
+      "email": "FeldneJ@mcfsd.org",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "John",
+      "last": "Feldner"
+    },
+    {
+      "school": "McFarland",
       "email": "fisches@mcfsd.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
       "first": "Scott",
       "last": "Fischer"
-    },
-    {
-      "school": "McFarland",
-      "email": "garveyJ@mcfsd.org",
-      "role": "Head Coach",
-      "sport": "Girls Swimming & Diving",
-      "first": "Jessica",
-      "last": "Garvey"
     },
     {
       "school": "McFarland",
@@ -904,6 +880,14 @@
       "role": "Head Coach",
       "sport": "Boys & Girls Track and Field",
       "first": "Andrew",
+      "last": "Garvey"
+    },
+    {
+      "school": "McFarland",
+      "email": "garveyJ@mcfsd.org",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Jessica",
       "last": "Garvey"
     },
     {
@@ -937,6 +921,14 @@
       "sport": "Boys Golf",
       "first": "Martin",
       "last": "Kvalheim"
+    },
+    {
+      "school": "McFarland",
+      "email": "Kvoeck@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Wrestling",
+      "first": "Karl",
+      "last": "Voeck"
     },
     {
       "school": "McFarland",
@@ -988,6 +980,14 @@
     },
     {
       "school": "McFarland",
+      "email": "TarnutA@mcfsd.org",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Aaron",
+      "last": "Tarnutzer"
+    },
+    {
+      "school": "McFarland",
       "email": "unsera@mcfsd.org",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -1001,14 +1001,6 @@
       "sport": "Boys Soccer",
       "first": "Aaron",
       "last": "Ziegler"
-    },
-    {
-      "school": "Monona Grove",
-      "email": "Kvoeck@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
-      "first": "Karl",
-      "last": "Voeck"
     },
     {
       "school": "Monona Grove",
@@ -1153,6 +1145,14 @@
       "sport": "",
       "first": "Kristin",
       "last": "Sobocinski"
+    },
+    {
+      "school": "Monona Grove",
+      "email": "Kvoeck@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Wrestling",
+      "first": "Karl",
+      "last": "Voeck"
     },
     {
       "school": "Monona Grove",
@@ -1524,14 +1524,6 @@
     },
     {
       "school": "New Lisbon",
-      "email": "Baileyk34@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Natasha",
-      "last": "Ragan"
-    },
-    {
-      "school": "New Lisbon",
       "email": "abigalke@mwt.net",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -1545,6 +1537,14 @@
       "sport": "Boys & Girls Track and Field",
       "first": "Aaron",
       "last": "Bigalke"
+    },
+    {
+      "school": "New Lisbon",
+      "email": "Baileyk34@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Natasha",
+      "last": "Ragan"
     },
     {
       "school": "New Lisbon",
@@ -1620,30 +1620,6 @@
     },
     {
       "school": "Pardeeville",
-      "email": "Beckmi@pasdwi.org",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "Mitch",
-      "last": "Beckett"
-    },
-    {
-      "school": "Pardeeville",
-      "email": "Denuam@pasdwi.org",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Amber",
-      "last": "Denure"
-    },
-    {
-      "school": "Pardeeville",
-      "email": "Lindch@pasdwi.org",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Chris",
-      "last": "Lindert"
-    },
-    {
-      "school": "Pardeeville",
       "email": "andehe@pasdwi.org",
       "role": "AD Admin Assistant",
       "sport": "",
@@ -1668,11 +1644,27 @@
     },
     {
       "school": "Pardeeville",
+      "email": "Beckmi@pasdwi.org",
+      "role": "Head Coach",
+      "sport": "Boys Golf",
+      "first": "Mitch",
+      "last": "Beckett"
+    },
+    {
+      "school": "Pardeeville",
       "email": "bellda@pasdwi.org",
       "role": "Athletic Director",
       "sport": "",
       "first": "David",
       "last": "Bell"
+    },
+    {
+      "school": "Pardeeville",
+      "email": "Denuam@pasdwi.org",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Amber",
+      "last": "Denure"
     },
     {
       "school": "Pardeeville",
@@ -1724,6 +1716,14 @@
     },
     {
       "school": "Pardeeville",
+      "email": "Lindch@pasdwi.org",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Chris",
+      "last": "Lindert"
+    },
+    {
+      "school": "Pardeeville",
       "email": "neebch@pasdwi.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Track and Field",
@@ -1737,14 +1737,6 @@
       "sport": "Boys Baseball",
       "first": "Elliott",
       "last": "Snow"
-    },
-    {
-      "school": "Port Edwards",
-      "email": "Brian.strnad.13@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Brian",
-      "last": "Strnad"
     },
     {
       "school": "Port Edwards",
@@ -1769,6 +1761,14 @@
       "sport": "",
       "first": "James",
       "last": "Bena"
+    },
+    {
+      "school": "Port Edwards",
+      "email": "Brian.strnad.13@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Brian",
+      "last": "Strnad"
     },
     {
       "school": "Port Edwards",
@@ -1852,27 +1852,19 @@
     },
     {
       "school": "Portage",
-      "email": "Beckmi@pasdwi.org",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Mitch",
-      "last": "Beckett"
-    },
-    {
-      "school": "Portage",
-      "email": "MITCHBECKETT@YAHOO.COM",
-      "role": "Head Coach",
-      "sport": "Boys Wrestling",
-      "first": "Mitch",
-      "last": "Beckett"
-    },
-    {
-      "school": "Portage",
       "email": "astanton@barabooschools.net",
       "role": "Head Coach",
       "sport": "Boys Hockey",
       "first": "Adam",
       "last": "Stanton"
+    },
+    {
+      "school": "Portage",
+      "email": "Beckmi@pasdwi.org",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Mitch",
+      "last": "Beckett"
     },
     {
       "school": "Portage",
@@ -1953,6 +1945,14 @@
       "sport": "Girls Golf",
       "first": "Maddison",
       "last": "Williams"
+    },
+    {
+      "school": "Portage",
+      "email": "MITCHBECKETT@YAHOO.COM",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Mitch",
+      "last": "Beckett"
     },
     {
       "school": "Portage",
@@ -2460,14 +2460,6 @@
     },
     {
       "school": "Tri-County",
-      "email": "Victorcastillo0212@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Victor",
-      "last": "Castillo"
-    },
-    {
-      "school": "Tri-County",
       "email": "athleticdirector@tcpenguin.net",
       "role": "Athletic Director",
       "sport": "",
@@ -2571,12 +2563,12 @@
       "last": "Marti"
     },
     {
-      "school": "Wautoma",
-      "email": "SOCCERSTAR5STER@GMAIL.COM",
+      "school": "Tri-County",
+      "email": "Victorcastillo0212@gmail.com",
       "role": "Head Coach",
-      "sport": "Girls Soccer",
-      "first": "Stephanie",
-      "last": "Coppens"
+      "sport": "Boys Soccer",
+      "first": "Victor",
+      "last": "Castillo"
     },
     {
       "school": "Wautoma",
@@ -2684,6 +2676,14 @@
     },
     {
       "school": "Wautoma",
+      "email": "SOCCERSTAR5STER@GMAIL.COM",
+      "role": "Head Coach",
+      "sport": "Girls Soccer",
+      "first": "Stephanie",
+      "last": "Coppens"
+    },
+    {
+      "school": "Wautoma",
       "email": "thompsonk@wautoma.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -2705,22 +2705,6 @@
       "sport": "Girls Wrestling",
       "first": "Adam",
       "last": "Vaughan"
-    },
-    {
-      "school": "Westfield",
-      "email": "LUKE@ALLCOUNTYSIGNS.COM",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Luke",
-      "last": "Showen"
-    },
-    {
-      "school": "Westfield",
-      "email": "NBrakebush@brakebush.com",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Nick",
-      "last": "Brakebush"
     },
     {
       "school": "Westfield",
@@ -2796,6 +2780,14 @@
     },
     {
       "school": "Westfield",
+      "email": "LUKE@ALLCOUNTYSIGNS.COM",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Luke",
+      "last": "Showen"
+    },
+    {
+      "school": "Westfield",
       "email": "lwood@montelloschools.org",
       "role": "Head Coach",
       "sport": "Girls Track and Field",
@@ -2828,6 +2820,14 @@
     },
     {
       "school": "Westfield",
+      "email": "NBrakebush@brakebush.com",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Nick",
+      "last": "Brakebush"
+    },
+    {
+      "school": "Westfield",
       "email": "nick.ramcheck@westfieldpioneers.org",
       "role": "Principal",
       "sport": "",
@@ -2849,14 +2849,6 @@
       "sport": "Girls Volleyball",
       "first": "Chris",
       "last": "Bahr"
-    },
-    {
-      "school": "Wild Rose",
-      "email": "SOCCERSTAR5STER@GMAIL.COM",
-      "role": "Head Coach",
-      "sport": "Girls Soccer",
-      "first": "Stephanie",
-      "last": "Coppens"
     },
     {
       "school": "Wild Rose",
@@ -2956,6 +2948,14 @@
     },
     {
       "school": "Wild Rose",
+      "email": "SOCCERSTAR5STER@GMAIL.COM",
+      "role": "Head Coach",
+      "sport": "Girls Soccer",
+      "first": "Stephanie",
+      "last": "Coppens"
+    },
+    {
+      "school": "Wild Rose",
       "email": "vaughana@wautoma.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Wrestling",
@@ -2969,14 +2969,6 @@
       "sport": "",
       "first": "Steve",
       "last": "Yeska"
-    },
-    {
-      "school": "Wisconsin Dells",
-      "email": "Swc2529@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Track and Field",
-      "first": "Scott",
-      "last": "Crothers"
     },
     {
       "school": "Wisconsin Dells",
@@ -3073,6 +3065,14 @@
       "sport": "Girls Hockey",
       "first": "Nate",
       "last": "Breunig"
+    },
+    {
+      "school": "Wisconsin Dells",
+      "email": "Swc2529@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Track and Field",
+      "first": "Scott",
+      "last": "Crothers"
     },
     {
       "school": "Wisconsin Dells",

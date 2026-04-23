@@ -1,15 +1,7 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-04-22T11:59:42.134691Z",
+  "updated": "2026-04-23T13:26:29.845538Z",
   "records": [
-    {
-      "school": "Abundant Life Christian School",
-      "email": "Thomas.Handziak@JTLC.org",
-      "role": "Head Coach",
-      "sport": "Boys Football 8-Player",
-      "first": "Thomas",
-      "last": "Handziak"
-    },
     {
       "school": "Abundant Life Christian School",
       "email": "amypdkj@gmail.com",
@@ -121,6 +113,14 @@
       "sport": "Boys Golf",
       "first": "Steve",
       "last": "Bohlman"
+    },
+    {
+      "school": "Abundant Life Christian School",
+      "email": "Thomas.Handziak@JTLC.org",
+      "role": "Head Coach",
+      "sport": "Boys Football 8-Player",
+      "first": "Thomas",
+      "last": "Handziak"
     },
     {
       "school": "Arcadia",
@@ -260,27 +260,19 @@
     },
     {
       "school": "Bangor",
-      "email": "Brewer.Josh@wsalem.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
-      "first": "Josh",
-      "last": "Brewer"
-    },
-    {
-      "school": "Bangor",
-      "email": "Merlinj307@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Merlin",
-      "last": "Jones"
-    },
-    {
-      "school": "Bangor",
       "email": "aolson@bangorsd.net",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
       "first": "Amy",
       "last": "Olson"
+    },
+    {
+      "school": "Bangor",
+      "email": "Brewer.Josh@wsalem.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Wrestling",
+      "first": "Josh",
+      "last": "Brewer"
     },
     {
       "school": "Bangor",
@@ -321,6 +313,14 @@
       "sport": "Girls Wrestling",
       "first": "Warren",
       "last": "Frank"
+    },
+    {
+      "school": "Bangor",
+      "email": "Merlinj307@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Merlin",
+      "last": "Jones"
     },
     {
       "school": "Bangor",
@@ -385,14 +385,6 @@
       "sport": "Girls Gymnastics",
       "first": "Carrie",
       "last": "O'Hearn"
-    },
-    {
-      "school": "Black River Falls",
-      "email": "MARY.DANIELSON@BRF.ORG",
-      "role": "Head Coach",
-      "sport": "Girls Golf",
-      "first": "Mary",
-      "last": "Danielson"
     },
     {
       "school": "Black River Falls",
@@ -513,6 +505,14 @@
       "sport": "Boys & Girls Tennis",
       "first": "Marc",
       "last": "Rukavina"
+    },
+    {
+      "school": "Black River Falls",
+      "email": "MARY.DANIELSON@BRF.ORG",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "Mary",
+      "last": "Danielson"
     },
     {
       "school": "Black River Falls",
@@ -676,14 +676,6 @@
     },
     {
       "school": "Brookwood",
-      "email": "Reamo838@icloud.com",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
-      "first": "Zac",
-      "last": "Reams"
-    },
-    {
-      "school": "Brookwood",
       "email": "dwaraxa@thekeytocomfort.com",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -764,6 +756,14 @@
     },
     {
       "school": "Brookwood",
+      "email": "Reamo838@icloud.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Wrestling",
+      "first": "Zac",
+      "last": "Reams"
+    },
+    {
+      "school": "Brookwood",
       "email": "tanderso@now.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Basketball",
@@ -780,35 +780,11 @@
     },
     {
       "school": "Cashton",
-      "email": "JUSTIN@BADAXELOGHOMES.COM",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Justin",
-      "last": "Halverson"
-    },
-    {
-      "school": "Cashton",
-      "email": "MLSNAERIC@HOTMAIL.COM",
-      "role": "Head Coach",
-      "sport": "Boys Wrestling",
-      "first": "Eric",
-      "last": "Mlsna"
-    },
-    {
-      "school": "Cashton",
       "email": "aldersonr@cashton.k12.wi.us",
       "role": "Superintendent",
       "sport": "",
       "first": "Ryan",
       "last": "Alderson"
-    },
-    {
-      "school": "Cashton",
-      "email": "brownr@cashton.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Ryan",
-      "last": "Brown"
     },
     {
       "school": "Cashton",
@@ -857,6 +833,22 @@
       "sport": "Girls Track and Field",
       "first": "Ashley",
       "last": "Hemmersbach"
+    },
+    {
+      "school": "Cashton",
+      "email": "JUSTIN@BADAXELOGHOMES.COM",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Justin",
+      "last": "Halverson"
+    },
+    {
+      "school": "Cashton",
+      "email": "MLSNAERIC@HOTMAIL.COM",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Eric",
+      "last": "Mlsna"
     },
     {
       "school": "Cashton",
@@ -1012,22 +1004,6 @@
     },
     {
       "school": "Durand-Arkansaw",
-      "email": "Rpudenz1337@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
-      "first": "Ross",
-      "last": "Pudenz"
-    },
-    {
-      "school": "Durand-Arkansaw",
-      "email": "Strudeau@durand.k12.wi.us",
-      "role": "Principal",
-      "sport": "",
-      "first": "Stephen",
-      "last": "Trudeau"
-    },
-    {
-      "school": "Durand-Arkansaw",
       "email": "asherbinow@durand.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
@@ -1084,6 +1060,14 @@
     },
     {
       "school": "Durand-Arkansaw",
+      "email": "Rpudenz1337@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Wrestling",
+      "first": "Ross",
+      "last": "Pudenz"
+    },
+    {
+      "school": "Durand-Arkansaw",
       "email": "rrosemeyer@durand.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Football",
@@ -1100,6 +1084,14 @@
     },
     {
       "school": "Durand-Arkansaw",
+      "email": "Strudeau@durand.k12.wi.us",
+      "role": "Principal",
+      "sport": "",
+      "first": "Stephen",
+      "last": "Trudeau"
+    },
+    {
+      "school": "Durand-Arkansaw",
       "email": "thansen@durand.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -1113,14 +1105,6 @@
       "sport": "Girls Softball",
       "first": "Wade",
       "last": "Hendricks"
-    },
-    {
-      "school": "Highland",
-      "email": "Terry.Cool@mp.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Terry",
-      "last": "Cool"
     },
     {
       "school": "Highland",
@@ -1204,6 +1188,14 @@
     },
     {
       "school": "Highland",
+      "email": "Terry.Cool@mp.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Terry",
+      "last": "Cool"
+    },
+    {
+      "school": "Highland",
       "email": "timkosharek64@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -1217,14 +1209,6 @@
       "sport": "Girls Volleyball",
       "first": "Mark",
       "last": "Sullivan"
-    },
-    {
-      "school": "Hillsboro",
-      "email": "Kathy.burmaster@hillsboroschools.org",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Catherine",
-      "last": "Burmaster"
     },
     {
       "school": "Hillsboro",
@@ -1276,6 +1260,14 @@
     },
     {
       "school": "Hillsboro",
+      "email": "Kathy.burmaster@hillsboroschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Catherine",
+      "last": "Burmaster"
+    },
+    {
+      "school": "Hillsboro",
       "email": "larson.jayt@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Football",
@@ -1305,14 +1297,6 @@
       "sport": "Boys Baseball",
       "first": "Dan",
       "last": "Sagert"
-    },
-    {
-      "school": "Holmen",
-      "email": "Charles_12_10@hotmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Charlie",
-      "last": "Marshall"
     },
     {
       "school": "Holmen",
@@ -1361,6 +1345,14 @@
       "sport": "Boys Track and Field",
       "first": "Cameron",
       "last": "Carey"
+    },
+    {
+      "school": "Holmen",
+      "email": "Charles_12_10@hotmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Charlie",
+      "last": "Marshall"
     },
     {
       "school": "Holmen",
@@ -1548,14 +1540,6 @@
     },
     {
       "school": "Ithaca",
-      "email": "McCauley@weston.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Wrestling",
-      "first": "Marcus",
-      "last": "McCauley"
-    },
-    {
-      "school": "Ithaca",
       "email": "aaron.huebsch@ithaca.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -1625,6 +1609,14 @@
       "sport": "Girls Softball",
       "first": "Brad",
       "last": "Louis"
+    },
+    {
+      "school": "Ithaca",
+      "email": "McCauley@weston.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Marcus",
+      "last": "McCauley"
     },
     {
       "school": "Ithaca",
@@ -1780,27 +1772,19 @@
     },
     {
       "school": "LaFarge",
-      "email": "CAMLEKT@LAFARGE.K12.WI.US",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Todd",
-      "last": "Camlek"
-    },
-    {
-      "school": "LaFarge",
-      "email": "JUSTIN@BADAXELOGHOMES.COM",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Justin",
-      "last": "Halverson"
-    },
-    {
-      "school": "LaFarge",
       "email": "bensona@lafarge.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
       "first": "Alison",
       "last": "Benson"
+    },
+    {
+      "school": "LaFarge",
+      "email": "CAMLEKT@LAFARGE.K12.WI.US",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Todd",
+      "last": "Camlek"
     },
     {
       "school": "LaFarge",
@@ -1841,6 +1825,14 @@
       "sport": "Boys Track and Field",
       "first": "Jeremy",
       "last": "Lee"
+    },
+    {
+      "school": "LaFarge",
+      "email": "JUSTIN@BADAXELOGHOMES.COM",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Justin",
+      "last": "Halverson"
     },
     {
       "school": "LaFarge",
@@ -1892,30 +1884,6 @@
     },
     {
       "school": "Lacrosse Aquinas",
-      "email": "Charles_12_10@hotmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Charlie",
-      "last": "Marshall"
-    },
-    {
-      "school": "Lacrosse Aquinas",
-      "email": "Connor.Lonning@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Cross Country",
-      "first": "Connor",
-      "last": "Lonning"
-    },
-    {
-      "school": "Lacrosse Aquinas",
-      "email": "DBSPORTSREF@YAHOO.COM",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "Dave",
-      "last": "Baldwin"
-    },
-    {
-      "school": "Lacrosse Aquinas",
       "email": "adam.poellinger@aquinasschools.org",
       "role": "Principal",
       "sport": "",
@@ -1956,6 +1924,22 @@
     },
     {
       "school": "Lacrosse Aquinas",
+      "email": "Charles_12_10@hotmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Charlie",
+      "last": "Marshall"
+    },
+    {
+      "school": "Lacrosse Aquinas",
+      "email": "Connor.Lonning@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Cross Country",
+      "first": "Connor",
+      "last": "Lonning"
+    },
+    {
+      "school": "Lacrosse Aquinas",
       "email": "danimado4@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -1969,6 +1953,14 @@
       "sport": "Girls Basketball",
       "first": "Dave",
       "last": "Donarski"
+    },
+    {
+      "school": "Lacrosse Aquinas",
+      "email": "DBSPORTSREF@YAHOO.COM",
+      "role": "Head Coach",
+      "sport": "Boys Golf",
+      "first": "Dave",
+      "last": "Baldwin"
     },
     {
       "school": "Lacrosse Aquinas",
@@ -2124,14 +2116,6 @@
     },
     {
       "school": "Lacrosse Central",
-      "email": "Coach.turner36@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Nat",
-      "last": "Turner"
-    },
-    {
-      "school": "Lacrosse Central",
       "email": "aengel@lacrossesd.org",
       "role": "Superintendent",
       "sport": "",
@@ -2161,6 +2145,14 @@
       "sport": "Boys Golf",
       "first": "Chad",
       "last": "Wynos"
+    },
+    {
+      "school": "Lacrosse Central",
+      "email": "Coach.turner36@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Nat",
+      "last": "Turner"
     },
     {
       "school": "Lacrosse Central",
@@ -2337,14 +2329,6 @@
       "sport": "Girls Track and Field",
       "first": "Zach",
       "last": "Siegmeier"
-    },
-    {
-      "school": "Lacrosse Logan",
-      "email": "WIEDMANAB@GMAIL.COM",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Abby",
-      "last": "Warren"
     },
     {
       "school": "Lacrosse Logan",
@@ -2571,6 +2555,14 @@
       "last": "Servais"
     },
     {
+      "school": "Lacrosse Logan",
+      "email": "WIEDMANAB@GMAIL.COM",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Abby",
+      "last": "Warren"
+    },
+    {
       "school": "Madison Country Day School",
       "email": "agravel@madisoncountryday.org",
       "role": "Athletic Director",
@@ -2673,14 +2665,6 @@
       "sport": "Boys Golf",
       "first": "Steve",
       "last": "Bohlman"
-    },
-    {
-      "school": "Madison East",
-      "email": "LWaller25@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Track and Field",
-      "first": "Lauren",
-      "last": "Waller"
     },
     {
       "school": "Madison East",
@@ -2820,6 +2804,14 @@
     },
     {
       "school": "Madison East",
+      "email": "LWaller25@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Track and Field",
+      "first": "Lauren",
+      "last": "Waller"
+    },
+    {
+      "school": "Madison East",
       "email": "mfilteau@madison.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Volleyball",
@@ -2889,22 +2881,6 @@
       "sport": "Girls Volleyball",
       "first": "Franco",
       "last": "Marcos"
-    },
-    {
-      "school": "Madison Edgewood",
-      "email": "Kevin.rea@edgewoodhs.org",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Kevin",
-      "last": "Rhea"
-    },
-    {
-      "school": "Madison Edgewood",
-      "email": "RHBoll@live.com",
-      "role": "Head Coach",
-      "sport": "Girls Tennis",
-      "first": "Rory",
-      "last": "Hemp Boll"
     },
     {
       "school": "Madison Edgewood",
@@ -3012,6 +2988,14 @@
     },
     {
       "school": "Madison Edgewood",
+      "email": "Kevin.rea@edgewoodhs.org",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Kevin",
+      "last": "Rhea"
+    },
+    {
+      "school": "Madison Edgewood",
       "email": "lora.staveness@edgewoodhs.org",
       "role": "Head Coach",
       "sport": "Girls Basketball",
@@ -3049,6 +3033,14 @@
       "sport": "Girls Gymnastics",
       "first": "Rachael",
       "last": "Hauser"
+    },
+    {
+      "school": "Madison Edgewood",
+      "email": "RHBoll@live.com",
+      "role": "Head Coach",
+      "sport": "Girls Tennis",
+      "first": "Rory",
+      "last": "Hemp Boll"
     },
     {
       "school": "Madison Edgewood",
@@ -3097,22 +3089,6 @@
       "sport": "Girls Volleyball",
       "first": "Eliza",
       "last": "Johnson"
-    },
-    {
-      "school": "Madison Lafollette",
-      "email": "Methompson@madison.k12.wi.us",
-      "role": "Principal",
-      "sport": "",
-      "first": "Mat",
-      "last": "Thompson"
-    },
-    {
-      "school": "Madison Lafollette",
-      "email": "TORRANCE_H@YAHOO.COM",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Torrance",
-      "last": "Holmes"
     },
     {
       "school": "Madison Lafollette",
@@ -3284,6 +3260,14 @@
     },
     {
       "school": "Madison Lafollette",
+      "email": "Methompson@madison.k12.wi.us",
+      "role": "Principal",
+      "sport": "",
+      "first": "Mat",
+      "last": "Thompson"
+    },
+    {
+      "school": "Madison Lafollette",
       "email": "mlestkowski@madison.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Swimming & Diving",
@@ -3321,6 +3305,14 @@
       "sport": "",
       "first": "Scott",
       "last": "Swanson"
+    },
+    {
+      "school": "Madison Lafollette",
+      "email": "TORRANCE_H@YAHOO.COM",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Torrance",
+      "last": "Holmes"
     },
     {
       "school": "Madison Lafollette",
@@ -4188,14 +4180,6 @@
     },
     {
       "school": "Onalaska",
-      "email": "Cap17Ry@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Ryan",
-      "last": "Capwell"
-    },
-    {
-      "school": "Onalaska",
       "email": "afetterman225@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Lacrosse-Boys",
@@ -4217,6 +4201,14 @@
       "sport": "Boys Swimming & Diving",
       "first": "Henry",
       "last": "Bauer"
+    },
+    {
+      "school": "Onalaska",
+      "email": "Cap17Ry@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Ryan",
+      "last": "Capwell"
     },
     {
       "school": "Onalaska",
@@ -4404,14 +4396,6 @@
     },
     {
       "school": "Onalaska Luther",
-      "email": "Charles_12_10@hotmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Charlie",
-      "last": "Marshall"
-    },
-    {
-      "school": "Onalaska Luther",
       "email": "afetterman225@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Lacrosse-Boys",
@@ -4449,6 +4433,14 @@
       "sport": "Girls Soccer",
       "first": "Charles",
       "last": "Nassar"
+    },
+    {
+      "school": "Onalaska Luther",
+      "email": "Charles_12_10@hotmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Charlie",
+      "last": "Marshall"
     },
     {
       "school": "Onalaska Luther",
@@ -4876,14 +4868,6 @@
     },
     {
       "school": "Riverdale",
-      "email": "JJOHNSON@RIVERDALE.K12.WI.US",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Jeff",
-      "last": "Johnson"
-    },
-    {
-      "school": "Riverdale",
       "email": "bjhinkle@riverdale.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -4956,6 +4940,14 @@
     },
     {
       "school": "Riverdale",
+      "email": "JJOHNSON@RIVERDALE.K12.WI.US",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Jeff",
+      "last": "Johnson"
+    },
+    {
+      "school": "Riverdale",
       "email": "larry.swiggum@riverdale.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Basketball",
@@ -4980,6 +4972,14 @@
     },
     {
       "school": "Royall",
+      "email": "ben.pooley@hillsboroschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Golf",
+      "first": "Ben",
+      "last": "Pooley"
+    },
+    {
+      "school": "Royall",
       "email": "Boardj@Royall.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Football",
@@ -4993,14 +4993,6 @@
       "sport": "Girls Softball",
       "first": "Joshua",
       "last": "Board"
-    },
-    {
-      "school": "Royall",
-      "email": "ben.pooley@hillsboroschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "Ben",
-      "last": "Pooley"
     },
     {
       "school": "Royall",
@@ -5092,14 +5084,6 @@
     },
     {
       "school": "Seneca",
-      "email": "Derk5984@yahoo.com",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Derrick",
-      "last": "Joy"
-    },
-    {
-      "school": "Seneca",
       "email": "adamhady@hotmail.com",
       "role": "Head Coach",
       "sport": "Girls Wrestling",
@@ -5137,6 +5121,14 @@
       "sport": "Boys & Girls Cross Country",
       "first": "Cody",
       "last": "Sime"
+    },
+    {
+      "school": "Seneca",
+      "email": "Derk5984@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Derrick",
+      "last": "Joy"
     },
     {
       "school": "Seneca",
@@ -5220,14 +5212,6 @@
     },
     {
       "school": "Sparta",
-      "email": "DSands@spartan.org",
-      "role": "Assistant Principal",
-      "sport": "",
-      "first": "Derrick",
-      "last": "Sands"
-    },
-    {
-      "school": "Sparta",
       "email": "adow@spartan.org",
       "role": "Athletic Director",
       "sport": "",
@@ -5281,6 +5265,14 @@
       "sport": "Girls Wrestling",
       "first": "Corey",
       "last": "Zimmerman"
+    },
+    {
+      "school": "Sparta",
+      "email": "DSands@spartan.org",
+      "role": "Assistant Principal",
+      "sport": "",
+      "first": "Derrick",
+      "last": "Sands"
     },
     {
       "school": "Sparta",
@@ -5404,14 +5396,6 @@
     },
     {
       "school": "Tomah",
-      "email": "CarsonHaag@tomah.education",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Carson",
-      "last": "Haag"
-    },
-    {
-      "school": "Tomah",
       "email": "benjaminbannan@tomah.education",
       "role": "Head Coach",
       "sport": "Boys & Girls Tennis",
@@ -5433,6 +5417,14 @@
       "sport": "Girls Hockey",
       "first": "Brady",
       "last": "Mathison"
+    },
+    {
+      "school": "Tomah",
+      "email": "CarsonHaag@tomah.education",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Carson",
+      "last": "Haag"
     },
     {
       "school": "Tomah",
@@ -5580,22 +5572,6 @@
     },
     {
       "school": "Viroqua",
-      "email": "Hubhei@viroquablackhawk.org",
-      "role": "Head Coach",
-      "sport": "Girls Golf",
-      "first": "Heidi",
-      "last": "Hubatch"
-    },
-    {
-      "school": "Viroqua",
-      "email": "JUSTIN@BADAXELOGHOMES.COM",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Justin",
-      "last": "Halverson"
-    },
-    {
-      "school": "Viroqua",
       "email": "adrianmugo@hotmail.com",
       "role": "Head Coach",
       "sport": "Boys & Girls Track and Field",
@@ -5668,6 +5644,14 @@
     },
     {
       "school": "Viroqua",
+      "email": "Hubhei@viroquablackhawk.org",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "Heidi",
+      "last": "Hubatch"
+    },
+    {
+      "school": "Viroqua",
       "email": "jcress@viroquablackhawk.org",
       "role": "Principal",
       "sport": "",
@@ -5681,6 +5665,14 @@
       "sport": "",
       "first": "Jeremy",
       "last": "Hill"
+    },
+    {
+      "school": "Viroqua",
+      "email": "JUSTIN@BADAXELOGHOMES.COM",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Justin",
+      "last": "Halverson"
     },
     {
       "school": "Viroqua",
@@ -5748,30 +5740,6 @@
     },
     {
       "school": "West Salem",
-      "email": "BJBABIASH@YAHOO.COM",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Brian",
-      "last": "Babiash"
-    },
-    {
-      "school": "West Salem",
-      "email": "Brewer.Josh@wsalem.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
-      "first": "Josh",
-      "last": "Brewer"
-    },
-    {
-      "school": "West Salem",
-      "email": "Ledoux.Joanne@wsalem.k12.wi.us",
-      "role": "AD Admin Assistant",
-      "sport": "",
-      "first": "Joanne",
-      "last": "Ledoux"
-    },
-    {
-      "school": "West Salem",
       "email": "afetterman225@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Lacrosse-Boys",
@@ -5796,11 +5764,27 @@
     },
     {
       "school": "West Salem",
+      "email": "BJBABIASH@YAHOO.COM",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Brian",
+      "last": "Babiash"
+    },
+    {
+      "school": "West Salem",
       "email": "braun.cody@wsalem.k12.wi.us",
       "role": "Assistant Principal",
       "sport": "",
       "first": "Cody",
       "last": "Braun"
+    },
+    {
+      "school": "West Salem",
+      "email": "Brewer.Josh@wsalem.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Wrestling",
+      "first": "Josh",
+      "last": "Brewer"
     },
     {
       "school": "West Salem",
@@ -5857,6 +5841,14 @@
       "sport": "Boys & Girls Tennis",
       "first": "Julie",
       "last": "Kamla"
+    },
+    {
+      "school": "West Salem",
+      "email": "Ledoux.Joanne@wsalem.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Joanne",
+      "last": "Ledoux"
     },
     {
       "school": "West Salem",
@@ -5964,22 +5956,6 @@
     },
     {
       "school": "Westby",
-      "email": "Hubhei@viroquablackhawk.org",
-      "role": "Head Coach",
-      "sport": "Girls Golf",
-      "first": "Heidi",
-      "last": "Hubatch"
-    },
-    {
-      "school": "Westby",
-      "email": "JUSTIN@BADAXELOGHOMES.COM",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Justin",
-      "last": "Halverson"
-    },
-    {
-      "school": "Westby",
       "email": "alex.gluch@westby-norse.org",
       "role": "Head Coach",
       "sport": "Boys Football",
@@ -6036,11 +6012,27 @@
     },
     {
       "school": "Westby",
+      "email": "Hubhei@viroquablackhawk.org",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "Heidi",
+      "last": "Hubatch"
+    },
+    {
+      "school": "Westby",
       "email": "john.hamilton@westby-norse.org",
       "role": "Head Coach",
       "sport": "Boys Baseball",
       "first": "John",
       "last": "Hamilton"
+    },
+    {
+      "school": "Westby",
+      "email": "JUSTIN@BADAXELOGHOMES.COM",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Justin",
+      "last": "Halverson"
     },
     {
       "school": "Westby",
@@ -6108,14 +6100,6 @@
     },
     {
       "school": "Weston",
-      "email": "McCauley@weston.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Wrestling",
-      "first": "Marcus",
-      "last": "McCauley"
-    },
-    {
-      "school": "Weston",
       "email": "april.lynn.jennings@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -6180,6 +6164,14 @@
     },
     {
       "school": "Weston",
+      "email": "McCauley@weston.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Marcus",
+      "last": "McCauley"
+    },
+    {
+      "school": "Weston",
       "email": "mcdonough@weston.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Cross Country",
@@ -6220,14 +6212,6 @@
     },
     {
       "school": "Wisconsin Heights",
-      "email": "David.ruhly@saukprairieschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "David",
-      "last": "Ruhly"
-    },
-    {
-      "school": "Wisconsin Heights",
       "email": "ahammerschmidt@wisheights.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
@@ -6265,6 +6249,14 @@
       "sport": "Boys & Girls Track and Field",
       "first": "Craig",
       "last": "Dreikosen"
+    },
+    {
+      "school": "Wisconsin Heights",
+      "email": "David.ruhly@saukprairieschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "David",
+      "last": "Ruhly"
     },
     {
       "school": "Wisconsin Heights",
