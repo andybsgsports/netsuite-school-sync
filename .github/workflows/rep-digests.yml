@@ -61,5 +61,11 @@ jobs:
             echo "No snapshot changes to commit."
           else
             git commit -m "chore: update rep digest snapshots [skip ci]"
-            git push
+            # Rebase onto any changes pushed to master during the 5-15 min run.
+            # Retry a couple times in case of races with other workflows.
+            for i in 1 2 3; do
+              git pull --rebase origin master && git push && break
+              echo "push attempt $i failed, retrying..."
+              sleep 5
+            done
           fi
