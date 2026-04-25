@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-04-24T11:02:06.966596Z",
+  "updated": "2026-04-25T10:25:10.384899Z",
   "records": [
     {
       "school": "Alden-Hebron",
@@ -2612,6 +2612,14 @@
     },
     {
       "school": "Byron",
+      "email": "brentnix12@gmail.com",
+      "role": "Coach",
+      "sport": "Bass Fishing",
+      "first": "Brent",
+      "last": "Nix"
+    },
+    {
+      "school": "Byron",
       "email": "bstewart@byron226.org",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -2673,14 +2681,6 @@
       "sport": "Speech",
       "first": "Dirk",
       "last": "Palmer"
-    },
-    {
-      "school": "Byron",
-      "email": "dpkesler@hotmail.com",
-      "role": "Coach",
-      "sport": "Bass Fishing",
-      "first": "Phil",
-      "last": "Kesler"
     },
     {
       "school": "Byron",
