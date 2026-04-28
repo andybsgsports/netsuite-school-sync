@@ -424,8 +424,7 @@ def build_contact_payload(person: dict) -> dict:
     types = sorted(person["types"])
     norm_roles = sorted(set(person["normalized_roles"]))
     assignments = person.get("assignments", [])
-
-    display = f"{first} {last}".strip() or email
+    person_name = f"{first} {last}".strip() or email
     # primary_school = the school they hold their primary role at, falling
     # back to first alphabetically. Helps multi-school people show their
     # most-relevant school in the Company field.
@@ -444,6 +443,26 @@ def build_contact_payload(person: dict) -> dict:
 
     primary_rep = pick_primary_rep(list(person["reps"]))
     job_title = format_job_title(assignments)
+
+    # displayName: "School (Coach Name, Title, Sport)"
+    # so the list view in each rep/sport folder reads like an at-a-glance
+    # roster. Falls back to plain "First Last" when school data is missing.
+    primary_sub = pick_primary_subfolder(person["normalized_roles"]) \
+        if norm_roles else ""
+    primary_type = ""
+    for ctype, role, _s in assignments:
+        if role == primary_sub:
+            primary_type = ctype
+            break
+    inner_parts = [person_name]
+    if primary_type and primary_type.strip().lower() != "admin":
+        inner_parts.append(primary_type)
+    if primary_sub:
+        inner_parts.append(primary_sub)
+    if primary_school:
+        display = f"{primary_school} ({', '.join(inner_parts)})"
+    else:
+        display = person_name
 
     # Categories: SYNC_TAG + types + every normalized role + school(s)
     # School in categories so users can filter by school across folders.
