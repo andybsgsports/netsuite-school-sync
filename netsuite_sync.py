@@ -530,11 +530,10 @@ def _set_sales_team(customer_id, team_item):
 def build_customer_body(school_name, state, school_info, contacts=None, sales_rep=None):
     """Build the full Customer record body."""
     level     = school_info.get("level", "")
-    # Only append level if it's not already present in the school name
-    if level and level.lower() not in school_name.lower():
-        full_name = f"{school_name} {level}".strip()
-    else:
-        full_name = school_name
+    # companyName is school_name as passed in — typically the Full Name column
+    # from the Schools sheet. The caller decides the exact name; we do not
+    # append the WIAA-scraped level (e.g. "High School") here.
+    full_name = school_name
     external_id = slugify(school_name)
     st          = school_info.get("state", state)
     zp          = school_info.get("zip", "")
