@@ -36,7 +36,7 @@ def row_hash(first, last, email, role):
     return hashlib.sha1(s.encode("utf-8")).hexdigest()[:16]
 
 from netsuite_sync import (
-    sync_school, sync_contact, inactivate_contact,
+    sync_school, sync_customer, sync_contact, inactivate_contact,
     remove_contact_ship_to, sync_address_book, compute_school_domain,
 )
 from school_netsuite_sync import (
@@ -47,6 +47,9 @@ from school_netsuite_sync import (
     C_SCHOOL, C_FIRST, C_LAST, C_EMAIL, C_ROLE, C_TYPE,
     C_SYNC, C_NS_CID, C_NS_CUS, C_SYNCED, C_HASH,
 )
+# Reuse the IL row -> school_info shaper. Single source of truth so the
+# manual IL workflow and this nightly push read the sheet identically.
+from ihsa_sync import school_info_from_row, M_FULL
 
 SCHOOL_FILTER    = os.environ.get("SCHOOL_FILTER", "").strip()
 STATE_FILTER     = os.environ.get("STATE_FILTER", "").strip().upper()
@@ -82,7 +85,7 @@ def load_schools(gc):
         if SALES_REP_FILTER and rep.lower() != SALES_REP_FILTER.lower():
             continue
         out.append({"row": i, "name": name, "ns_id": ns_id, "url": url,
-                    "state": state, "rep": rep})
+                    "state": state, "rep": rep, "raw": rec})
     return out, ws, synced_col
 
 
@@ -124,12 +127,27 @@ def main():
             continue
 
         # Update Customer. WI: sync_school scrapes WIAA + updates custom
-        # fields, address book, etc. IL: IHSA doesn't expose address or
-        # school-attribute data, so we skip sync_school and only sync
-        # contacts for IL rows.
+        # fields, address book, etc. IL: IHSA API doesn't carry address
+        # or school-attribute data, so we read them from the Schools tab
+        # and feed sync_customer with the same shape the WIAA scraper
+        # produces. Mirrors what ihsa_sync.py does for the manual workflow.
         if state == "IL":
-            result_id = ns_id
-            school_info_out = {"state": "IL"}
+            school_info_out = school_info_from_row(sch["raw"], "IL")
+            full_name = str(sch["raw"].get(M_FULL, "")).strip() or school_name
+            try:
+                result_id, _ = sync_customer(
+                    full_name, "IL", school_info_out,
+                    contacts=[], ns_customer_id=ns_id, sales_rep=rep or None,
+                )
+            except Exception as e:
+                print(f"  ERROR syncing IL customer: {e}")
+                errors += 1
+                time.sleep(DELAY)
+                continue
+            if not result_id:
+                print(f"  Could not sync IL Customer — skipping contacts")
+                errors += 1
+                continue
         else:
             try:
                 result_id, school_info_out, _, _ = sync_school(
@@ -220,8 +238,11 @@ def main():
                 c[C_NS_CID] = ""
                 time.sleep(0.15)
 
-        # Ship-To addresses — only meaningful for WI (IHSA has no address)
-        if state != "IL":
+        # Ship-To addresses. WI: WIAA scrape filled school_info_out with
+        # the school's address. IL: school_info_out comes from the sheet,
+        # so addresses are present whenever Andy populated Address1/City.
+        # Skip if we genuinely don't have an address row.
+        if school_info_out.get("address1") or school_info_out.get("city") or state != "IL":
             active_contacts = [
                 {"first": str(c.get(C_FIRST, "")).strip(),
                  "last":  str(c.get(C_LAST, "")).strip(),
