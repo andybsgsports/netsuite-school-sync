@@ -21,7 +21,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install requests beautifulsoup4 gspread google-auth
+        run: pip install requests beautifulsoup4 gspread google-auth msal
 
       - name: Run school sync
         run: python school_netsuite_sync.py
@@ -33,3 +33,13 @@ jobs:
           NS_TOKEN_SEC: ${{ secrets.NS_TOKEN_SEC }}
           GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
           GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+
+      - name: Run Outlook contacts sync
+        if: success()
+        run: python outlook_contacts_sync.py
+        env:
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+          OUTLOOK_CLIENT_ID: ${{ secrets.OUTLOOK_CLIENT_ID }}
+          OUTLOOK_TENANT_ID: ${{ secrets.OUTLOOK_TENANT_ID }}
+          OUTLOOK_TOKEN_CACHE: ${{ secrets.OUTLOOK_TOKEN_CACHE }}
