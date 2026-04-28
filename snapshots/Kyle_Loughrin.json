@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-04-27T11:40:12.765270Z",
+  "updated": "2026-04-28T11:36:34.559950Z",
   "records": [
     {
       "school": "Algoma",
@@ -7604,6 +7604,14 @@
     },
     {
       "school": "Shiocton",
+      "email": "gzimmerman@shiocton.k12.wi.us",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Garrett",
+      "last": "Zimmerman"
+    },
+    {
+      "school": "Shiocton",
       "email": "jeremydyoung98@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Basketball",
@@ -7641,14 +7649,6 @@
       "sport": "",
       "first": "Nick",
       "last": "Ortlieb"
-    },
-    {
-      "school": "Shiocton",
-      "email": "nschweitzer@shiocton.k12.wi.us",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Nichole",
-      "last": "Schweitzer"
     },
     {
       "school": "Shiocton",

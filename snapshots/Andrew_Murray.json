@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-04-27T11:36:27.795348Z",
+  "updated": "2026-04-28T11:32:51.592199Z",
   "records": [
     {
       "school": "Alden-Hebron",
@@ -2852,14 +2852,6 @@
     },
     {
       "school": "Cary (C.-Grove)",
-      "email": "amccloud@d155.org",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Adam",
-      "last": "McCloud"
-    },
-    {
-      "school": "Cary (C.-Grove)",
       "email": "asaldivar-castaneda@d155.org",
       "role": "Head Coach",
       "sport": "Girls Wrestling",
@@ -2945,6 +2937,14 @@
       "sport": "",
       "first": "Cindy",
       "last": "Hernandez"
+    },
+    {
+      "school": "Cary (C.-Grove)",
+      "email": "cspandiary@barrington220.org",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Christian",
+      "last": "Spandiary"
     },
     {
       "school": "Cary (C.-Grove)",
@@ -4644,14 +4644,6 @@
     },
     {
       "school": "Dakota",
-      "email": "adamgreen20.ag@gmail.com",
-      "role": "Coach",
-      "sport": "Bass Fishing",
-      "first": "Adam",
-      "last": "Green"
-    },
-    {
-      "school": "Dakota",
       "email": "ahackbarth@dakota201.com",
       "role": "Band Director & Marching Band Director & Orchestra Director",
       "sport": "",
@@ -4673,6 +4665,14 @@
       "sport": "Girls Bowling",
       "first": "Breanna",
       "last": "Martindale"
+    },
+    {
+      "school": "Dakota",
+      "email": "braxtonniedermeier@gmail.com",
+      "role": "Coach",
+      "sport": "Bass Fishing",
+      "first": "Braxton",
+      "last": "Niedermeier"
     },
     {
       "school": "Dakota",
