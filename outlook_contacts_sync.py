@@ -61,7 +61,7 @@ SYNC_TAG = "WIAA-Sync"
 # A role is allowed if it contains any ALLOW_PATTERNS substring AND no
 # BLOCK_PATTERNS substring. Block always wins.
 ALLOW_PATTERNS = [
-    "Athletic Director",
+    "Athletic Director", "Activities Director",
     "Baseball", "Basketball", "Football", "Softball", "Volleyball",
     "Soccer", "Cross Country", "Track and Field", "Track & Field",
     "Wrestling", "Tennis", "Golf", "Hockey", "Swimming", "Gymnastics",
@@ -72,7 +72,7 @@ BLOCK_PATTERNS = [
     "Band", "Bowling", "Bass Fishing", "Cheer", "Chess", "Dance",
     "Esports", "Flag Football", "Field Hockey",
     "Assistant", "Asst", "Admin Assistant", "Supervisor", "Trainer",
-    "Principal", "Superintendent", "Activities Director", "IHSA Official",
+    "Principal", "Superintendent", "IHSA Official",
 ]
 
 
