@@ -65,11 +65,12 @@ ALLOW_PATTERNS = [
     "Baseball", "Basketball", "Football", "Softball", "Volleyball",
     "Soccer", "Cross Country", "Track and Field", "Track & Field",
     "Wrestling", "Tennis", "Golf", "Hockey", "Swimming", "Gymnastics",
+    "Lacrosse",
 ]
 
 BLOCK_PATTERNS = [
     "Band", "Bowling", "Bass Fishing", "Cheer", "Chess", "Dance",
-    "Esports", "Lacrosse", "Flag Football", "Field Hockey",
+    "Esports", "Flag Football", "Field Hockey",
     "Assistant", "Asst", "Admin Assistant", "Supervisor", "Trainer",
     "Principal", "Superintendent", "Activities Director", "IHSA Official",
 ]
