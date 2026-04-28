@@ -342,7 +342,9 @@ def aggregate_people(syncable_rows: List[dict],
     """Group sheet rows by email and return per-person state dict.
 
     Each value contains: first, last, email, schools (set), reps (set),
-    raw_roles (list), normalized_roles (list of folder names), types (set).
+    raw_roles (list), normalized_roles (list of folder names), types (set),
+    assignments (list of (type, normalized_role, school) tuples preserving
+    pairing for human-readable jobTitle formatting).
     """
     by_email: Dict[str, dict] = {}
     for row in syncable_rows:
@@ -355,6 +357,7 @@ def aggregate_people(syncable_rows: List[dict],
         ctype = str(row.get(C_TYPE, "")).strip()
         first = str(row.get(C_FIRST, "")).strip()
         last  = str(row.get(C_LAST, "")).strip()
+        norm_role = normalize_role_for_folder(role) if role else ""
 
         person = by_email.setdefault(email, {
             "email":   email,
@@ -365,6 +368,7 @@ def aggregate_people(syncable_rows: List[dict],
             "raw_roles": [],
             "normalized_roles": [],
             "types":   set(),
+            "assignments": [],
         })
         # Prefer a non-empty first/last seen first
         if first and not person["first"]:
@@ -377,10 +381,38 @@ def aggregate_people(syncable_rows: List[dict],
             person["reps"].add(rep)
         if role:
             person["raw_roles"].append(role)
-            person["normalized_roles"].append(normalize_role_for_folder(role))
+            person["normalized_roles"].append(norm_role)
         if ctype:
             person["types"].add(ctype)
+        if ctype or norm_role:
+            person["assignments"].append((ctype, norm_role, school))
     return by_email
+
+
+def format_job_title(assignments: List[Tuple[str, str, str]]) -> str:
+    """Build a readable jobTitle from (type, normalized_role, school) tuples.
+
+    Examples:
+      [(Admin, Athletic Director, ...)]                      -> "Athletic Director"
+      [(Head Coach, Boys Football, ...),
+       (Assistant Coach, Boys Basketball, ...)]              -> "Head Coach - Boys Football; Assistant Coach - Boys Basketball"
+      [(Head Coach, Boys Football, ...),
+       (Head Coach, Boys Football, ...)]                     -> "Head Coach - Boys Football"  (deduped)
+    """
+    seen = set()
+    pieces: List[str] = []
+    for ctype, role, _school in assignments:
+        key = (ctype.lower().strip(), role.lower().strip())
+        if key in seen:
+            continue
+        seen.add(key)
+        if ctype and role and ctype.lower() not in ("admin",):
+            pieces.append(f"{ctype} - {role}")
+        elif role:
+            pieces.append(role)
+        elif ctype:
+            pieces.append(ctype)
+    return "; ".join(pieces)[:255]
 
 
 def build_contact_payload(person: dict) -> dict:
@@ -389,24 +421,33 @@ def build_contact_payload(person: dict) -> dict:
     last  = person["last"]
     email = person["email"]
     schools = sorted(person["schools"])
-    reps = sorted(person["reps"])
     types = sorted(person["types"])
     norm_roles = sorted(set(person["normalized_roles"]))
+    assignments = person.get("assignments", [])
 
     display = f"{first} {last}".strip() or email
-    primary_school = schools[0] if schools else ""
+    # primary_school = the school they hold their primary role at, falling
+    # back to first alphabetically. Helps multi-school people show their
+    # most-relevant school in the Company field.
+    primary_school = ""
+    if assignments:
+        # Prefer school of an Athletic/Activities Director assignment
+        for prio in _ADMIN_PRIORITY:
+            for _t, r, s in assignments:
+                if prio in r and s:
+                    primary_school = s
+                    break
+            if primary_school:
+                break
+    if not primary_school:
+        primary_school = schools[0] if schools else ""
+
     primary_rep = pick_primary_rep(list(person["reps"]))
+    job_title = format_job_title(assignments)
 
-    # jobTitle: comma-joined unique types + roles (Outlook limit ~255 chars)
-    job_parts = []
-    for t in types:
-        job_parts.append(t)
-    for r in norm_roles:
-        job_parts.append(r)
-    job_title = ", ".join(dict.fromkeys(job_parts))[:255]
-
-    # Categories: SYNC_TAG + types + every normalized role
-    cats = [SYNC_TAG] + types + norm_roles
+    # Categories: SYNC_TAG + types + every normalized role + school(s)
+    # School in categories so users can filter by school across folders.
+    cats = [SYNC_TAG] + types + norm_roles + schools
     cats = list(dict.fromkeys([c for c in cats if c]))
 
     return {
@@ -416,12 +457,58 @@ def build_contact_payload(person: dict) -> dict:
         "companyName": primary_school,
         "jobTitle":    job_title,
         "department":  primary_rep,
+        # Stuff full assignment list + every school into the body so it
+        # always gets saved with the contact even if the title is truncated.
+        "personalNotes": _build_notes(assignments, schools, primary_rep),
         "emailAddresses": [{
             "address": email,
             "name":    display,
         }] if email else [],
         "categories":  cats,
     }
+
+
+def _build_notes(assignments: List[Tuple[str, str, str]],
+                 schools: List[str], rep: str) -> str:
+    """Plain-text notes block with full role detail and all schools."""
+    lines = []
+    if rep:
+        lines.append(f"Sales Rep: {rep}")
+    if schools:
+        if len(schools) == 1:
+            lines.append(f"School: {schools[0]}")
+        else:
+            lines.append("Schools:")
+            for s in schools:
+                lines.append(f"  - {s}")
+    if assignments:
+        # Group by school
+        by_school: Dict[str, List[Tuple[str, str]]] = defaultdict(list)
+        for ctype, role, school in assignments:
+            key = (ctype, role)
+            if key not in by_school[school]:
+                by_school[school].append(key)
+        lines.append("")
+        lines.append("Roles:")
+        for school in sorted(by_school.keys()):
+            if school:
+                lines.append(f"  {school}:")
+                indent = "    "
+            else:
+                indent = "  "
+            seen = set()
+            for ctype, role in by_school[school]:
+                key = (ctype.lower().strip(), role.lower().strip())
+                if key in seen:
+                    continue
+                seen.add(key)
+                if ctype and role:
+                    lines.append(f"{indent}- {ctype} - {role}")
+                elif role:
+                    lines.append(f"{indent}- {role}")
+                elif ctype:
+                    lines.append(f"{indent}- {ctype}")
+    return "\n".join(lines)
 
 
 def contact_email(c: dict) -> str:
@@ -434,7 +521,7 @@ def contact_email(c: dict) -> str:
 def contact_needs_update(existing: dict, desired: dict) -> bool:
     """Compare the fields we care about."""
     fields = ["givenName", "surname", "displayName", "companyName",
-              "jobTitle", "department"]
+              "jobTitle", "department", "personalNotes"]
     for f in fields:
         if (existing.get(f) or "") != (desired.get(f) or ""):
             return True
@@ -536,7 +623,8 @@ def main():
     # email -> list of (folder_id, contact_id, contact_data, full_path)
     existing_by_email: Dict[str, List[Tuple[str, str, dict, str]]] = defaultdict(list)
     select = ("?$select=id,givenName,surname,displayName,companyName,"
-              "jobTitle,department,emailAddresses,categories,parentFolderId")
+              "jobTitle,department,emailAddresses,categories,parentFolderId,"
+              "personalNotes")
     for fld in all_folders_now:
         contacts = g.get_all(f"/me/contactFolders/{fld['id']}/contacts" + select)
         for c in contacts:
