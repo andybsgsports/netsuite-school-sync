@@ -631,7 +631,10 @@ def main():
     folder_ids: Dict[Tuple[str, str], str] = {}
     for (rep, sub) in sorted(desired.keys()):
         top_id = ensure_top_folder(g, rep, top_cache)
-        sub_id = ensure_sub_folder(g, top_id, sub, sub_cache)
+        # Append rep name in parens so the sub-folder is self-describing in
+        # flat pickers / address-book views that don't show parent context.
+        sub_display = f"{sub} ({rep})"
+        sub_id = ensure_sub_folder(g, top_id, sub_display, sub_cache)
         folder_ids[(rep, sub)] = sub_id
 
     # 6. Build a global view of every WIAA-Sync contact currently in Outlook,
@@ -755,7 +758,10 @@ def main():
     #    delete children before parents.
     print("\n[CLEANUP] Pruning empty / leftover folders...")
     desired_top_names = {safe_folder_name(rep) for rep, _ in desired.keys()}
-    desired_sub_pairs = {(safe_folder_name(rep), safe_folder_name(sub))
+    # Sub-folders are now stored as "Sport (Rep)" so they're self-
+    # describing in flat pickers. Cleanup must compare against the same.
+    desired_sub_pairs = {(safe_folder_name(rep),
+                          safe_folder_name(f"{sub} ({rep})"))
                          for rep, sub in desired.keys()}
     # Re-fetch since we deleted things above
     all_folders_after = list_all_folders_recursive(g)
