@@ -10,7 +10,7 @@ sheet into Andy's Outlook contacts (`andy@bsgsports.com`) via Microsoft Graph.
 - `Categories` = `[WIAA-Sync, Sales Rep, Type]` (filter by salesman or coach level in Outlook).
 - Match key is **email**. Adds new, updates changed, deletes departed.
 - Only contacts tagged with the `WIAA-Sync` category get deleted — your hand-made contacts in the same folder are safe.
-- Runs in the existing daily GitHub Actions workflow, right after the NetSuite sync.
+- Runs as its own workflow `Outlook Contacts Sync`, triggered automatically after `Rep Digests` finishes each morning (with a 7:30 AM Central backstop).
 
 ## Azure setup (already done)
 
@@ -53,7 +53,7 @@ Then **delete `outlook_token_cache.json` from your laptop** — it contains your
 
 Manually trigger the workflow:
 1. Go to https://github.com/andybsgsports/netsuite-school-sync/actions
-2. Click **Daily School Sync** -> **Run workflow** -> **Run workflow**
+2. Click **Outlook Contacts Sync** -> **Run workflow** -> **Run workflow**
 3. Watch the **Run Outlook contacts sync** step.
 
 Then check Outlook (web or desktop) — you should see new contact folders by sport with the contacts populated.
@@ -70,7 +70,7 @@ Refresh tokens for public clients have a ~90-day rolling lifetime. If the daily 
 
 - `outlook_auth_setup.py` — one-time local auth, writes token cache
 - `outlook_contacts_sync.py` — daily sync engine
-- `.github/workflows/daily-sync.yml` — added step + new secrets, added `msal` to pip install
+- `.github/workflows/outlook-sync.yml` — new standalone workflow (chains off Rep Digests)
 
 ## Notes
 
