@@ -557,9 +557,24 @@ def main():
     totals = {"added": 0, "updated": 0, "moved": 0, "deleted": 0,
               "unchanged": 0, "skipped": 0, "dedup_deleted": 0}
 
+    total_to_process = sum(len(v) for v in desired.values())
+    processed = 0
+    last_progress_pct = -1
+    sync_start = time.time()
+
     for (rep, sub), people_payloads in sorted(desired.items()):
         target_fid = folder_ids[(rep, sub)]
+        print(f"  [{rep} / {sub}] {len(people_payloads)} people")
         for email, payload in people_payloads.items():
+            processed += 1
+            pct = (processed * 100) // max(total_to_process, 1)
+            if pct != last_progress_pct and pct % 5 == 0:
+                elapsed = time.time() - sync_start
+                rate = processed / max(elapsed, 1)
+                eta = (total_to_process - processed) / max(rate, 0.1)
+                print(f"    [progress] {processed}/{total_to_process} "
+                      f"({pct}%) -- {rate:.1f}/s -- ETA {int(eta)}s")
+                last_progress_pct = pct
             existing_list = existing_by_email.get(email, [])
             if not existing_list:
                 # Brand new
