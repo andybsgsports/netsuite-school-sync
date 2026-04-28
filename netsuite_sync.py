@@ -151,6 +151,12 @@ def ns_delete(path):
         "Authorization": make_auth("DELETE", url),
         "Content-Type": "application/json"})
 
+def ns_delete(path):
+    url = f"{BASE_URL}/{path}"
+    return requests.delete(url, headers={
+        "Authorization": make_auth("DELETE", url),
+        "Content-Type": "application/json"})
+
 SUITEQL_URL = f"https://{NS_ACCOUNT}.suitetalk.api.netsuite.com/services/rest/query/v1/suiteql"
 
 def ns_suiteql(query, limit=1000):

@@ -57,6 +57,60 @@ S_SALES = "Sales Rep"
 # Tag we put on Categories so we only touch contacts WE created
 SYNC_TAG = "WIAA-Sync"
 
+# -- Role filter ------------------------------------------------------------
+# A role is allowed if it contains any ALLOW_PATTERNS substring AND no
+# BLOCK_PATTERNS substring. Block always wins.
+ALLOW_PATTERNS = [
+    "Athletic Director",
+    "Baseball", "Basketball", "Football", "Softball", "Volleyball",
+    "Soccer", "Cross Country", "Track and Field", "Track & Field",
+    "Wrestling", "Tennis", "Golf", "Hockey", "Swimming", "Gymnastics",
+]
+
+BLOCK_PATTERNS = [
+    "Band", "Bowling", "Bass Fishing", "Cheer", "Chess", "Dance",
+    "Esports", "Lacrosse", "Flag Football", "Field Hockey",
+    "Assistant", "Asst", "Admin Assistant", "Supervisor", "Trainer",
+    "Principal", "Superintendent", "Activities Director", "IHSA Official",
+]
+
+
+def is_role_allowed(role: str) -> bool:
+    if not role or not role.strip():
+        return False
+    rl = role.lower()
+    for blk in BLOCK_PATTERNS:
+        if blk.lower() in rl:
+            return False
+    for allow in ALLOW_PATTERNS:
+        if allow.lower() in rl:
+            return True
+    return False
+
+
+# -- Folder name normalization ---------------------------------------------
+# Strip coach-level suffixes so "Boys Baseball Head Coach" and "Boys Baseball"
+# collapse into the same folder. Type column already preserves the level.
+_NORMALIZE_SUFFIXES = [
+    " Head Coach", " Assistant Coach", " Coach",
+    "'s Assistant", "'s Head Coach",
+]
+# Spelling/synonym normalization to consolidate equivalent roles.
+_NORMALIZE_REPLACEMENTS = [
+    ("Track and Field", "Track & Field"),
+]
+
+def normalize_role_for_folder(role: str) -> str:
+    name = role.strip()
+    for s in _NORMALIZE_SUFFIXES:
+        if name.endswith(s):
+            name = name[: -len(s)].strip()
+    for src, dst in _NORMALIZE_REPLACEMENTS:
+        name = name.replace(src, dst)
+    # Consolidate Swimming variants
+    if "Swimming" in name and "Diving" not in name:
+        name = name.replace("Swimming", "Swimming & Diving")
+    return name
 
 # -- Google Sheets helpers ---------------------------------------------------
 def get_gspread_client():
@@ -270,33 +324,42 @@ def main():
     gc = get_gspread_client()
     contacts_data, rep_by_school = load_contacts_and_schools(gc)
 
-    # Filter to syncable rows with email
+    # Filter to syncable rows with email AND allowed role
     syncable = []
+    skipped_role = 0
     for row in contacts_data:
         if str(row.get(C_SYNC, "N")).strip().upper() != "Y":
             continue
         if not str(row.get(C_EMAIL, "")).strip():
             continue
-        if not str(row.get(C_ROLE, "")).strip():
+        role = str(row.get(C_ROLE, "")).strip()
+        if not role:
+            continue
+        if not is_role_allowed(role):
+            skipped_role += 1
             continue
         syncable.append(row)
-    print(f"  {len(syncable)} syncable contacts (have email + role + Sync=Y)")
+    print(f"  {len(syncable)} syncable contacts "
+          f"({skipped_role} skipped by role filter)")
 
     # 2. Auth + Graph client
     print("\n[2/5] Authenticating to Microsoft Graph...")
     token = get_access_token()
     g = Graph(token)
 
-    # 3. Build desired state: {role -> {email -> payload}}
+    # 3. Build desired state: {folder_name -> {email -> payload}}
+    # Folder name is the NORMALIZED role (so "Boys Baseball Head Coach" and
+    # "Boys Baseball" land in the same "Boys Baseball" folder).
     print("\n[3/5] Building desired contact state...")
     desired: Dict[str, Dict[str, dict]] = {}
     for row in syncable:
-        role  = str(row[C_ROLE]).strip()
-        email = str(row[C_EMAIL]).strip().lower()
+        role   = str(row[C_ROLE]).strip()
+        folder = normalize_role_for_folder(role)
+        email  = str(row[C_EMAIL]).strip().lower()
         school = str(row.get(C_SCHOOL, "")).strip()
         rep    = rep_by_school.get(school.lower(), "")
         payload = build_contact_payload(row, rep)
-        desired.setdefault(role, {})[email] = payload
+        desired.setdefault(folder, {})[email] = payload
     print(f"  {len(desired)} role-folders, "
           f"{sum(len(v) for v in desired.values())} contacts")
 
@@ -363,6 +426,49 @@ def main():
             except Exception as e:
                 print(f"    ERROR delete {em}: {e}")
                 totals["skipped"] += 1
+
+    # 6. Orphan cleanup -- folders we no longer want (e.g. Bowling, Cheer
+    #    from a previous run, or roles that just got blocked).
+    #    Strategy: walk every contact folder; if its name isn't in the
+    #    current desired set, delete every WIAA-Sync-tagged contact in it,
+    #    then delete the folder if it ends up empty.
+    print("\n[CLEANUP] Pruning orphan folders...")
+    desired_folder_names = {safe_folder_name(r) for r in desired.keys()}
+    all_folders = g.get_all("/me/contactFolders")
+    for fld in all_folders:
+        fname = fld.get("displayName", "")
+        if fname in desired_folder_names:
+            continue
+        fid = fld["id"]
+        contacts_in_folder = g.get_all(
+            f"/me/contactFolders/{fid}/contacts"
+            "?$select=id,categories,emailAddresses"
+        )
+        # Delete only OUR contacts (tagged WIAA-Sync)
+        deleted_here = 0
+        kept_here = 0
+        for c in contacts_in_folder:
+            if SYNC_TAG in (c.get("categories") or []):
+                try:
+                    g.delete(f"/me/contacts/{c['id']}")
+                    totals["deleted"] += 1
+                    deleted_here += 1
+                except Exception as e:
+                    print(f"    ERROR delete orphan {contact_email(c)}: {e}")
+                    totals["skipped"] += 1
+            else:
+                kept_here += 1
+        # If the folder is now fully empty AND only had our contacts,
+        # remove it. Skip if it had any non-WIAA-Sync contacts.
+        if deleted_here > 0 and kept_here == 0:
+            try:
+                g.delete(f"/me/contactFolders/{fid}")
+                print(f"  [FOLDER] removed empty: {fname} ({deleted_here} contacts)")
+            except Exception as e:
+                print(f"    ERROR delete folder {fname}: {e}")
+        elif deleted_here > 0:
+            print(f"  [FOLDER] cleaned {deleted_here} sync'd contacts from {fname} "
+                  f"(kept {kept_here} non-sync contacts, folder retained)")
 
     print("\n" + "=" * 60)
     print("  SUMMARY")
