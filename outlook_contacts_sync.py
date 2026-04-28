@@ -112,7 +112,6 @@ def normalize_role_for_folder(role: str) -> str:
         name = name.replace("Swimming", "Swimming & Diving")
     return name
 
-
 # -- Google Sheets helpers ---------------------------------------------------
 def get_gspread_client():
     creds_json = os.environ.get("GOOGLE_CREDENTIALS_JSON", "")

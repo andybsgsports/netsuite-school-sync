@@ -1,0 +1,48 @@
+name: Manual - Fix Wrong Customer ID
+
+on:
+  workflow_dispatch:
+    inputs:
+      school_name:
+        description: 'Exact school name in Schools tab (e.g. "Portage")'
+        required: true
+        default: 'Portage'
+      old_ns_id:
+        description: 'Current (wrong) NS Customer ID'
+        required: true
+        default: '2823'
+      new_ns_id:
+        description: 'Correct NS Customer ID'
+        required: true
+        default: '2838'
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+
+      - name: Run fix
+        run: python fix_portage_customer_id.py
+        env:
+          SCHOOL_NAME:             ${{ inputs.school_name }}
+          OLD_NS_ID:               ${{ inputs.old_ns_id }}
+          NEW_NS_ID:               ${{ inputs.new_ns_id }}
+          NS_ACCOUNT:              ${{ secrets.NS_ACCOUNT }}
+          NS_CONSUMER_KEY:         ${{ secrets.NS_CONSUMER_KEY }}
+          NS_CONSUMER_SEC:         ${{ secrets.NS_CONSUMER_SEC }}
+          NS_TOKEN_KEY:            ${{ secrets.NS_TOKEN_KEY }}
+          NS_TOKEN_SEC:            ${{ secrets.NS_TOKEN_SEC }}
+          GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}

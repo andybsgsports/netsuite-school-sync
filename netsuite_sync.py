@@ -109,23 +109,47 @@ def make_auth(method, full_url):
             f'oauth_timestamp="{ts}",oauth_nonce="{nonce}",oauth_version="1.0",'
             f'oauth_signature="{quote(sig,safe="")}"')
 
-def ns_get(path):
+def _ns_call(method, path, body=None, max_retries=5):
+    """Single NS REST call with exponential backoff on 429 (concurrent
+    request limit). NS returns HTTP 429 when too many concurrent requests
+    land on the same account — common when running parallel per-rep
+    jobs. Sleep 2s, 4s, 8s, 16s, 32s and retry up to 5 times."""
     url = f"{BASE_URL}/{path}"
-    return requests.get(url, headers={
-        "Authorization": make_auth("GET", url),
-        "Content-Type": "application/json"})
+    delay = 2.0
+    for attempt in range(max_retries + 1):
+        headers = {
+            "Authorization": make_auth(method, url),
+            "Content-Type":  "application/json",
+        }
+        if body is not None:
+            r = requests.request(method, url, headers=headers, json=body)
+        else:
+            r = requests.request(method, url, headers=headers)
+        if r.status_code != 429 or attempt == max_retries:
+            return r
+        import time as _t
+        _t.sleep(delay)
+        delay *= 2
+    return r  # unreachable but keeps linter happy
+
+
+def ns_get(path):
+    return _ns_call("GET", path)
 
 def ns_post(path, body):
-    url = f"{BASE_URL}/{path}"
-    return requests.post(url, headers={
-        "Authorization": make_auth("POST", url),
-        "Content-Type": "application/json"}, json=body)
+    return _ns_call("POST", path, body)
 
 def ns_patch(path, body):
+    return _ns_call("PATCH", path, body)
+
+def ns_delete(path):
+    return _ns_call("DELETE", path)
+
+def ns_delete(path):
     url = f"{BASE_URL}/{path}"
-    return requests.patch(url, headers={
-        "Authorization": make_auth("PATCH", url),
-        "Content-Type": "application/json"}, json=body)
+    return requests.delete(url, headers={
+        "Authorization": make_auth("DELETE", url),
+        "Content-Type": "application/json"})
 
 def ns_delete(path):
     url = f"{BASE_URL}/{path}"
@@ -150,6 +174,29 @@ def ns_suiteql(query, limit=1000):
 # ============================================================
 # HELPERS
 # ============================================================
+def smart_title(s):
+    """
+    Proper-case a name without the bugs of str.title():
+      - doesn't capitalize the letter after an apostrophe
+        ('d'andrea' -> 'D'Andrea', not 'D'Andrea')  -- wait actually we want D'Andrea
+        Actually: "o'brien" -> "O'Brien"  (cap after apostrophe IS wanted for names)
+      - leaves already-mixed-case input alone ('McDonald' stays 'McDonald')
+      - fixes all-caps ('JAMES HOVORKA' -> 'James Hovorka')
+      - fixes all-lowercase ('james hovorka' -> 'James Hovorka')
+    """
+    t = str(s or "")
+    if not t:
+        return t
+    if t != t.lower() and t != t.upper():
+        return t  # mixed case already — trust it
+    # Capitalize each word AND the letter after each apostrophe.
+    return re.sub(
+        r"[a-zA-Z]+",
+        lambda m: m.group(0)[0].upper() + m.group(0)[1:].lower(),
+        t,
+    )
+
+
 def slugify(name):
     s = name.upper().strip()
     s = re.sub(r"[^A-Z0-9]+", "-", s)
@@ -495,11 +542,10 @@ def _set_sales_team(customer_id, team_item):
 def build_customer_body(school_name, state, school_info, contacts=None, sales_rep=None):
     """Build the full Customer record body."""
     level     = school_info.get("level", "")
-    # Only append level if it's not already present in the school name
-    if level and level.lower() not in school_name.lower():
-        full_name = f"{school_name} {level}".strip()
-    else:
-        full_name = school_name
+    # companyName is school_name as passed in — typically the Full Name column
+    # from the Schools sheet. The caller decides the exact name; we do not
+    # append the WIAA-scraped level (e.g. "High School") here.
+    full_name = school_name
     external_id = slugify(school_name)
     st          = school_info.get("state", state)
     zp          = school_info.get("zip", "")
@@ -597,18 +643,104 @@ def get_contact_by_external_id(external_id):
         return data.get("id"), data.get("isInactive", False)
     return None, None
 
-def make_contact_external_id(school_name, email, role=None):
-    """Build external ID from school + email. Role is ignored (kept for compat)."""
+def make_contact_external_id(email, school_name=None, *_ignored):
+    """
+    Contact external ID.
+
+    Per-school keying when a school is supplied: `{school_slug}__{email}`. This
+    gives co-op coaches (same email, multiple schools) their own NS contact
+    record per school, so each school's Contacts tab shows them. NetSuite's
+    REST API doesn't allow sharing one contact across customers via
+    contactRoles — per-school records are the working alternative.
+
+    When called without a school (e.g. cleanup tooling that dedupes by
+    email), falls back to the email-only format `EM_{email}`.
+    """
+    email_clean = re.sub(r"[^a-z0-9@._-]", "", (email or "").lower())[:80]
+    if school_name:
+        return f"{slugify(school_name)}__{email_clean}"[:150]
+    return f"EM_{email_clean}"[:150]
+
+
+def _make_legacy_school_ext_id(school_name, email):
+    """Prior format: SCHOOL__email (per-school dedup). Used for fallback lookup."""
     school_slug = slugify(school_name)
-    email_clean = re.sub(r"[^a-z0-9@._-]", "", email.lower())[:50]
+    email_clean = re.sub(r"[^a-z0-9@._-]", "", (email or "").lower())[:50]
     return f"{school_slug}__{email_clean}"[:150]
 
+
 def _make_legacy_ext_id(school_name, email, role):
-    """Old format that included role — used for fallback lookups."""
+    """Oldest format: SCHOOL__ROLE__email. Used for fallback lookup."""
     school_slug = slugify(school_name)
-    role_slug   = re.sub(r"[^A-Z0-9]+", "-", role.upper().strip())[:30]
-    email_clean = re.sub(r"[^a-z0-9@._-]", "", email.lower())[:50]
+    role_slug   = re.sub(r"[^A-Z0-9]+", "-", (role or "").upper().strip())[:30]
+    email_clean = re.sub(r"[^a-z0-9@._-]", "", (email or "").lower())[:50]
     return f"{school_slug}__{role_slug}__{email_clean}"[:150]
+
+
+FREE_EMAIL_DOMAINS = {
+    "gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "msn.com",
+    "aol.com", "icloud.com", "att.net", "comcast.net", "sbcglobal.net",
+    "verizon.net", "mail.com", "live.com", "me.com", "ymail.com",
+    "cox.net", "charter.net", "bellsouth.net", "earthlink.net",
+    "protonmail.com", "pm.me", "proton.me", "duck.com", "fastmail.com",
+}
+
+
+def extract_email_domain(email):
+    """'john@barneveld.k12.wi.us' -> 'barneveld.k12.wi.us'. Empty string if no @."""
+    s = (email or "").strip().lower()
+    if "@" not in s:
+        return ""
+    return s.split("@", 1)[1]
+
+
+def compute_school_domain(contacts):
+    """
+    Given the contacts for one school, return that school's institutional
+    email domain (the most common non-free domain), or "" if none clear.
+    Used to decide whether a contact's email identifies *this* school as
+    the person's home school (primary company link).
+    """
+    counts = {}
+    for c in contacts or []:
+        dom = extract_email_domain(c.get("email", ""))
+        if not dom or dom in FREE_EMAIL_DOMAINS:
+            continue
+        counts[dom] = counts.get(dom, 0) + 1
+    if not counts:
+        return ""
+    return max(counts.items(), key=lambda kv: kv[1])[0]
+
+
+def find_contact_any_format(school_name, email, role="", customer_id=None):
+    """
+    Locate an existing NS contact by trying each external-ID format in order:
+      1. canonical: {SCHOOL}__{email}          (per-school — current scheme)
+      2. legacy:    EM_{email}                 (email-only era)  *claimed only
+         if that contact's `company` already points at customer_id, so we
+         don't steal a co-op coach's home-school record for a second school
+      3. oldest:    {SCHOOL}__{ROLE}__{email}
+    Returns (contact_id, is_inactive, found_via). None values if nothing found.
+    """
+    cid, inactive = get_contact_by_external_id(make_contact_external_id(email, school_name))
+    if cid:
+        return cid, inactive, "school_email"
+
+    cid, inactive = get_contact_by_external_id(make_contact_external_id(email))  # EM_ legacy
+    if cid:
+        if customer_id is None:
+            return cid, inactive, "email"
+        r = ns_get(f"contact/{cid}?fields=company")
+        if r.status_code == 200:
+            company = (r.json().get("company") or {}).get("id", "")
+            if str(company) == str(customer_id):
+                return cid, inactive, "email"
+
+    if role:
+        cid, inactive = get_contact_by_external_id(_make_legacy_ext_id(school_name, email, role))
+        if cid:
+            return cid, inactive, "legacy_school_role"
+    return None, None, None
 
 def _find_contact_for_customer(customer_id, email):
     """Search for a contact under a customer by email using the contacts sublist.
@@ -636,21 +768,22 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
     contact_row: dict with first, last, email, role, type
     Returns contact NS internal ID.
     """
-    first = contact_row.get("first", "")
-    last  = contact_row.get("last", "")
+    # Normalize casing so ALL-CAPS rows from WIAA/IHSA get fixed in NS on
+    # every sync ("JAMES HOVORKA" -> "James Hovorka").
+    first = smart_title(contact_row.get("first", ""))
+    last  = smart_title(contact_row.get("last", ""))
     email = contact_row.get("email", "")
     role  = contact_row.get("role", "")
     state = school_info.get("state", "")
 
-    ext_id = make_contact_external_id(school_name, email)
-    contact_id, is_inactive = get_contact_by_external_id(ext_id)
+    # One NS contact per (school, email). Co-op coaches get a distinct
+    # contact record at each school they serve, so every school's Contacts
+    # tab shows them (NS REST doesn't allow sharing via contactRoles).
+    ext_id = make_contact_external_id(email, school_name)
+    contact_id, is_inactive, found_via = find_contact_any_format(
+        school_name, email, role, customer_id=customer_id)
 
-    # Fallback: try legacy external ID format (included role)
-    if not contact_id and role:
-        legacy_id = _make_legacy_ext_id(school_name, email, role)
-        contact_id, is_inactive = get_contact_by_external_id(legacy_id)
-
-    body = {
+    body_create = {
         "externalId": ext_id,
         "firstName":  first,
         "lastName":   last,
@@ -661,23 +794,28 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
     }
 
     if contact_id and is_inactive:
-        # Reactivate
-        body["isInactive"] = False
-        r = ns_patch(f"contact/{contact_id}", body)
+        body_update = dict(body_create)
+        body_update["isInactive"] = False
+        r = ns_patch(f"contact/{contact_id}", body_update)
         if r.status_code == 204:
             print(f"  [NS] Reactivated Contact: {first} {last} (ID: {contact_id})")
         return contact_id
 
     elif contact_id:
-        # Update (also migrates external ID to new format)
-        r = ns_patch(f"contact/{contact_id}", body)
+        # Per-school contact record: always set company to this school's customer.
+        body_update = dict(body_create)
+        r = ns_patch(f"contact/{contact_id}", body_update)
         if r.status_code == 204:
-            print(f"  [NS] Updated Contact: {first} {last} (ID: {contact_id})")
+            if found_via == "school_email":
+                print(f"  [NS] Updated Contact: {first} {last} (ID: {contact_id})")
+            else:
+                print(f"  [NS] Updated Contact (migrated from {found_via}): {first} {last} (ID: {contact_id})")
         return contact_id
 
     else:
-        # Create
-        r = ns_post("contact", body)
+        # Create fresh — include company as the primary link.
+        r = ns_post("contact", body_create)
+        body = body_create  # kept for the error-path recovery block below
         if r.status_code == 204:
             new_id = extract_id_from_location(r)
             print(f"  [NS] Created Contact: {first} {last} - {role} (ID: {new_id})")
@@ -857,8 +995,7 @@ def sync_changes_to_netsuite(added_rows, removed_rows, columns):
         if not customer_id:
             continue
 
-        contact_ext = make_contact_external_id(school, email, role)
-        contact_id, is_inactive = get_contact_by_external_id(contact_ext)
+        contact_id, is_inactive, _ = find_contact_any_format(school, email, role)
         if contact_id and not is_inactive:
             inactivate_contact(contact_id, f"{first} {last}")
             remove_contact_ship_to(customer_id, f"{first} {last}")

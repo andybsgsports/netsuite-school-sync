@@ -1,0 +1,56 @@
+name: IL Sync to NetSuite (manual)
+
+on:
+  # Schedule disabled — daily refresh is now "Daily Scrape (no NetSuite)".
+  # Run this workflow when you want to push IL sheet changes to NS.
+  workflow_dispatch:
+    inputs:
+      sales_rep:
+        description: 'Only sync schools for this Sales Rep (blank = all)'
+        required: false
+        default: ''
+        type: choice
+        options:
+          - ''
+          - 'Andrew Murray'
+          - 'Jeff Howard'
+          - 'Tyler Fuhrman'
+          - 'Kyle Loughrin'
+          - 'Paul Speth'
+          - 'John Viles'
+          - 'Jeff Wedvick'
+      school_filter:
+        description: 'Run only this school (leave blank for all).'
+        required: false
+        default: ''
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        # netsuite_sync.py imports bs4 at module load, so we need it here too
+        run: pip install requests beautifulsoup4 gspread google-auth
+
+      - name: Run IL sync
+        run: python ihsa_sync.py
+        env:
+          NS_ACCOUNT:              ${{ secrets.NS_ACCOUNT }}
+          NS_CONSUMER_KEY:         ${{ secrets.NS_CONSUMER_KEY }}
+          NS_CONSUMER_SEC:         ${{ secrets.NS_CONSUMER_SEC }}
+          NS_TOKEN_KEY:            ${{ secrets.NS_TOKEN_KEY }}
+          NS_TOKEN_SEC:            ${{ secrets.NS_TOKEN_SEC }}
+          GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+          SCHOOL_FILTER:           ${{ inputs.school_filter }}
+          SALES_REP_FILTER:        ${{ inputs.sales_rep }}

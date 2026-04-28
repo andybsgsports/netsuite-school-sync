@@ -50,6 +50,8 @@ This system scrapes Wisconsin school data from the WIAA website daily and syncs 
 Netsuite Contacts Sync/
   netsuite_sync.py          # Core engine: OAuth auth, WIAA scraper, NS API
   school_netsuite_sync.py   # Daily runner (Google Sheets + GitHub Actions)
+  rep_digests.py            # Daily per-rep WIAA digest emails (Gmail SMTP)
+  cleanup_duplicate_addresses.py  # Manual duplicate-address cleanup
   Andy-WIAA Script.py       # Local script: scrape + diff + Outlook email
   Andy-School Script.py     # Original version of Andy script (reference)
   run_sync.py               # Legacy local runner (backward compat)
@@ -59,9 +61,12 @@ Netsuite Contacts Sync/
   requirements.txt          # Python dependencies
   .env                      # Local credentials (NEVER committed)
   credentials.json          # Google service account key (NEVER committed)
+  snapshots/                # Per-rep diff snapshots (committed by workflow)
   .gitignore                # Excludes sensitive/data files
   .github/workflows/
-    daily-sync.yml          # GitHub Actions cron workflow
+    daily-sync.yml          # Daily WIAA → Google Sheets → NetSuite sync
+    rep-digests.yml         # Daily per-rep digest emails
+    manual-cleanup.yml      # On-demand duplicate-address cleanup
 ```
 
 ---
@@ -192,6 +197,72 @@ python "Andy-WIAA Script.py"
 |---|---|---|
 | NetSuite API keys | `.env` file | GitHub Secrets |
 | Google service account | `credentials.json` file | `GOOGLE_CREDENTIALS_JSON` secret |
-| Google Sheet ID | `.env` file | `GOOGLE_SHEET_ID` secret |
+| Google Sheet ID (sync) | `.env` file | `GOOGLE_SHEET_ID` secret |
+| Google Sheet ID (reps)  | `.env` file | `GOOGLE_SHEET_ID_REPS` secret (WI School List- Master) |
+| Gmail sender | `.env` file | `GMAIL_USER` secret |
+| Gmail app password | `.env` file | `GMAIL_APP_PASSWORD` secret |
 
 **Important**: `.env` and `credentials.json` are in `.gitignore` and must NEVER be committed to git.
+
+---
+
+## Rep Digests (per-rep WIAA emails)
+
+Consolidates the six old Desktop/Task-Scheduler scripts (`KyleLrun_wiaa_scraper.py`, etc.)
+into a single config-driven script. Reads the "WI School List- Master" sheet, groups schools
+by `Sales Rep`, scrapes WIAA for each rep's territory, diffs vs. yesterday, and emails a digest
+via Gmail SMTP.
+
+### One-time setup
+
+1. **Create a Gmail app password** (requires 2FA on andy@bsgsports.com or whichever account sends):
+   - https://myaccount.google.com/security → 2-Step Verification → App passwords
+   - Generate one for "Mail" / "Windows Computer"
+   - Copy the 16-char password
+
+2. **Add GitHub Secrets** (repo → Settings → Secrets and variables → Actions):
+   ```
+   gh secret set GMAIL_USER           --body "andy@bsgsports.com"
+   gh secret set GMAIL_APP_PASSWORD   --body "<16-char app password>"
+   gh secret set GOOGLE_SHEET_ID_REPS --body "1SlZHbGRvPiO8Qtq7kY2aI0Y9oUsKZ2CxXNXcuw211N0"
+   ```
+
+3. **Confirm rep email addresses** in `rep_digests.py` (the `REPS` list near the top).
+   Only Paul and KyleL were explicit in the old scripts — the others are best-guesses.
+
+### Testing before going live
+
+The workflow defaults to DRY-RUN on both scheduled and manual triggers. In dry-run mode all
+emails are redirected to `GMAIL_USER` so you can confirm formatting and rep splits.
+
+```bash
+# Trigger a dry run against just one rep:
+gh workflow run "Rep Digests" -f rep_filter="Kyle Loughrin" -f dry_run=true
+
+# Trigger a live run against one rep (DO THIS FIRST when flipping live):
+gh workflow run "Rep Digests" -f rep_filter="Kyle Loughrin" -f dry_run=false
+```
+
+### Going fully live
+
+Once dry-run output looks right for every rep, change the default `DRY_RUN` env in
+`.github/workflows/rep-digests.yml` — the expression
+
+```yaml
+DRY_RUN: ${{ (inputs.dry_run == false && github.event_name == 'workflow_dispatch') && '0' || '1' }}
+```
+
+should become
+
+```yaml
+DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
+```
+
+That flips scheduled (cron) runs to live while letting manual dispatches still opt into dry-run.
+
+### Snapshots
+
+Each rep's contact set is snapshotted to `snapshots/{Rep_Name}.json` after each run. The
+workflow commits these back to `master` with `[skip ci]`. Diffs on the next run compare
+against the committed snapshot. First run for any rep has no prior snapshot → sends a
+"Initial snapshot" digest.
