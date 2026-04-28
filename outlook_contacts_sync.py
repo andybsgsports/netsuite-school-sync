@@ -325,15 +325,21 @@ def main():
     gc = get_gspread_client()
     contacts_data, rep_by_school = load_contacts_and_schools(gc)
 
-    # Filter to syncable rows with email AND allowed role
+    # Filter to syncable rows with email AND allowed role.
+    # Also collect EVERY role string seen (even blocked ones) so we know
+    # which folder names "look like ours" -- used by empty-folder cleanup.
     syncable = []
     skipped_role = 0
+    sheet_role_names: set = set()
     for row in contacts_data:
+        role = str(row.get(C_ROLE, "")).strip()
+        if role:
+            sheet_role_names.add(role)
+            sheet_role_names.add(normalize_role_for_folder(role))
         if str(row.get(C_SYNC, "N")).strip().upper() != "Y":
             continue
         if not str(row.get(C_EMAIL, "")).strip():
             continue
-        role = str(row.get(C_ROLE, "")).strip()
         if not role:
             continue
         if not is_role_allowed(role):
@@ -342,6 +348,7 @@ def main():
         syncable.append(row)
     print(f"  {len(syncable)} syncable contacts "
           f"({skipped_role} skipped by role filter)")
+    sheet_role_names_lower = {n.lower() for n in sheet_role_names if n}
 
     # 2. Auth + Graph client
     print("\n[2/5] Authenticating to Microsoft Graph...")
@@ -459,12 +466,24 @@ def main():
                     totals["skipped"] += 1
             else:
                 kept_here += 1
-        # If the folder is now fully empty AND only had our contacts,
-        # remove it. Skip if it had any non-WIAA-Sync contacts.
+        # Decide whether to remove the folder itself.
+        # 1) Had only WIAA-Sync contacts and now empty -> remove.
+        # 2) Was already empty AND name matches a known sheet role
+        #    (i.e. it's almost certainly a leftover folder we created
+        #    in a prior run that didn't write any contacts) -> remove.
+        # 3) Otherwise (folder had hand-made contacts, or unknown name)
+        #    -> leave alone.
+        looks_like_ours = fname.lower() in sheet_role_names_lower
         if deleted_here > 0 and kept_here == 0:
             try:
                 g.delete(f"/me/contactFolders/{fid}")
                 print(f"  [FOLDER] removed empty: {fname} ({deleted_here} contacts)")
+            except Exception as e:
+                print(f"    ERROR delete folder {fname}: {e}")
+        elif deleted_here == 0 and kept_here == 0 and looks_like_ours:
+            try:
+                g.delete(f"/me/contactFolders/{fid}")
+                print(f"  [FOLDER] removed empty leftover: {fname}")
             except Exception as e:
                 print(f"    ERROR delete folder {fname}: {e}")
         elif deleted_here > 0:
