@@ -32,6 +32,8 @@ from google.oauth2.service_account import Credentials
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from netsuite_sync import (
     sync_contact,
+    sync_customer,
+    sync_address_book,
     inactivate_contact,
     compute_school_domain,
     smart_title,
@@ -66,12 +68,72 @@ SALES_REP_FILTER = os.environ.get("SALES_REP_FILTER", "").strip()
 MASTER_TAB   = "Schools"
 STATE_FILTER = "IL"
 M_NAME       = "School Name"
+M_FULL       = "Full Name"
 M_STATE      = "State"
 M_URL        = "School URL"
 M_SALES      = "Sales Rep"
 M_NS_ID      = "NS Customer ID"
 M_LOCKED     = "Locked"
 M_SYNCED     = "Last Synced"
+
+# School-metadata columns (read from the sheet — the IHSA API doesn't expose
+# these, so the sheet is the only source of truth for IL Customer details).
+M_CLASS      = "Class"
+M_LEVEL      = "Level"
+M_NICKNAME   = "Nickname"
+M_COLORS     = "Colors"
+M_CONFERENCE = "Conference"
+M_DISTRICT   = "District"      # build_master_sheet.py originally used "WIAA District"
+M_ENROLLMENT = "Enrollment"
+M_SIZE       = "Size"
+M_PHONE      = "Phone"
+M_ADDR1      = "Address1"
+M_ADDR2      = "Address2"
+M_CITY       = "City"
+M_ZIP        = "Zip"
+M_WEBSITE    = "Website"
+
+
+def school_info_from_row(row, state):
+    """Build the same shape of dict that scrape_wiaa_school_detail returns,
+    but from the sheet row instead of a scraper. Used to feed sync_customer
+    and sync_address_book for IL schools where IHSA's API doesn't carry these
+    fields."""
+    def get(key, *fallbacks):
+        for k in (key,) + fallbacks:
+            if k in row:
+                v = row.get(k)
+                if v is not None and str(v).strip():
+                    return str(v).strip()
+        return ""
+
+    enroll_str = get(M_ENROLLMENT)
+    enrollment = None
+    if enroll_str:
+        digits = re.sub(r"[^\d]", "", enroll_str)
+        if digits:
+            try:
+                enrollment = int(digits)
+            except ValueError:
+                pass
+
+    return {
+        "level":         get(M_LEVEL),
+        "school_class":  get(M_CLASS),
+        "wiaa_district": get(M_DISTRICT, "WIAA District"),
+        "school_size":   get(M_SIZE),
+        "nickname":      get(M_NICKNAME),
+        "colors":        get(M_COLORS),
+        "conference":    get(M_CONFERENCE),
+        "phone":         get(M_PHONE),
+        "address1":      get(M_ADDR1),
+        "address2":      get(M_ADDR2),
+        "city":          get(M_CITY),
+        "state":         state,
+        "zip":           get(M_ZIP),
+        "website":       get(M_WEBSITE),
+        "enrollment":    enrollment,
+    }
 
 # Contacts tab columns (shared with WI)
 C_SCHOOL = "School Name"
@@ -320,8 +382,10 @@ def main():
 
     for sheet_row, school_row in rows:
         school_name = str(school_row.get(M_NAME, "")).strip()
+        full_name   = str(school_row.get(M_FULL, "")).strip() or school_name
         url         = str(school_row.get(M_URL, "")).strip()
         ns_id       = str(school_row.get(M_NS_ID, "")).strip()
+        sales_rep   = str(school_row.get(M_SALES, "")).strip()
         state       = "IL"
         locked      = str(school_row.get(M_LOCKED, "")).strip().upper() == "Y"
 
@@ -337,6 +401,10 @@ def main():
             continue
 
         print(f"\n{'-'*60}\n[IL] {school_name}  (ihsa id {school_id})")
+
+        # Sheet-derived school metadata (Class, Level, Conference, address, etc.).
+        # The IHSA API does not expose any of this, so the sheet is authoritative.
+        sheet_info = school_info_from_row(school_row, state)
 
         site_contacts = scrape_school(school_id)
         print(f"  Scraped: {len(site_contacts)} contacts (with email)")
@@ -363,6 +431,22 @@ def main():
                 existing_keys.add(key)
             continue
 
+        # Update the Customer record from sheet-derived metadata. Pass empty
+        # contacts so build_customer_body does not include addressBook items
+        # in the body (we add per-contact Ship-Tos via sync_address_book below
+        # so the additive PATCH semantics don't create duplicates).
+        try:
+            sync_customer(
+                school_name=full_name,
+                state=state,
+                school_info=sheet_info,
+                contacts=[],
+                ns_customer_id=ns_id,
+                sales_rep=sales_rep or None,
+            )
+        except Exception as e:
+            print(f"  [WARN] Customer update failed: {e}")
+
         existing_keys = {
             (c.get(C_EMAIL, "").strip().lower(), c.get(C_ROLE, "").strip().lower())
             for c in contacts
@@ -383,12 +467,13 @@ def main():
             print(f"  + New: {sc['first']} {sc['last']} — {sc['role']} [{sc['type']}]")
             contact_creates += 1
 
-        # Pass the school's institutional email domain so sync_contact can
-        # claim home-school primary for matching contacts.
-        school_info = {
-            "state":  state,
-            "domain": compute_school_domain([{"email": sc["email"]} for sc in site_contacts]),
-        }
+        # school_info for sync_contact: extend the sheet info with the
+        # institutional email domain so sync_contact can claim home-school
+        # primary for matching contacts.
+        school_info = dict(sheet_info)
+        school_info["domain"] = compute_school_domain(
+            [{"email": sc["email"]} for sc in site_contacts]
+        )
         if school_info["domain"]:
             print(f"  School domain: {school_info['domain']}")
         for c in contacts:
@@ -428,6 +513,23 @@ def main():
                 c[C_NS_CID] = ""
                 contact_inactivates += 1
             time.sleep(0.15)
+
+        # Per-contact Ship-To addresses on the Customer (sheet address +
+        # contact name). Skipped if the sheet has no street/city for this row.
+        active_contacts = [
+            {
+                "first": str(c.get(C_FIRST, "")).strip(),
+                "last":  str(c.get(C_LAST, "")).strip(),
+                "email": str(c.get(C_EMAIL, "")).strip(),
+                "role":  str(c.get(C_ROLE, "")).strip(),
+            }
+            for c in contacts
+            if c.get(C_SCHOOL, "").strip() == school_name
+            and str(c.get(C_SYNC, "N")).strip().upper() == "Y"
+        ]
+        if active_contacts and sheet_info.get("address1") and sheet_info.get("city"):
+            sync_address_book(ns_id, sheet_info, active_contacts,
+                              school_name=full_name)
 
         last_synced_updates.append((sheet_row, datetime.now().strftime("%Y-%m-%d %H:%M")))
         synced += 1
