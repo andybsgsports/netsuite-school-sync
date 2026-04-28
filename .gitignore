@@ -1,6 +1,7 @@
 # Credentials (never commit)
 credentials.json
 .env
+outlook_token_cache.json
 
 # Data files (live in Google Sheets now)
 *.xlsx
