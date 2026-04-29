@@ -354,6 +354,26 @@ def delete_contact_folder(g: Graph, fld: dict) -> None:
         g.delete(f"/me/contactFolders/{fid}")
 
 
+def rename_contact_folder(g: Graph, fld: dict, new_name: str) -> None:
+    """PATCH a folder's displayName. Used as a fallback when Graph refuses
+    to actually delete the folder."""
+    fid = fld["id"]
+    parent_id = fld.get("parentFolderId")
+    if parent_id:
+        g.patch(f"/me/contactFolders/{parent_id}/childFolders/{fid}",
+                {"displayName": new_name})
+    else:
+        g.patch(f"/me/contactFolders/{fid}",
+                {"displayName": new_name})
+
+
+# Prefix used to mark folders that should have been deleted but Graph
+# refused (ErrorCannotDeleteObject). User can find + bulk-delete these
+# via Outlook desktop.
+ARCHIVED_PREFIX = "ZZZ_OLD_"
+
+
+
 # -- Contact aggregation & payload ------------------------------------------
 def aggregate_people(syncable_rows: List[dict],
                      rep_by_school: Dict[str, str]) -> Dict[str, dict]:
@@ -828,13 +848,28 @@ def main():
         looks_like_ours = (fname.lower() in sheet_role_names_lower
                            or fname in desired_top_names)
         if deleted_here > 0 or looks_like_ours:
+            # Skip folders we already renamed in a previous run -- they're
+            # already marked for manual cleanup by the user.
+            if fname.startswith(ARCHIVED_PREFIX):
+                continue
             try:
                 delete_contact_folder(g, fld)
                 print(f"  [FOLDER] removed: "
                       f"{fld.get('fullPath', fname)}"
                       f" ({deleted_here} contacts cleared)")
-            except Exception as e:
-                print(f"    ERROR delete folder {fname}: {e}")
+            except Exception:
+                # Graph refused (likely 403 ErrorCannotDeleteObject).
+                # Fallback: rename with ZZZ_OLD_ prefix so the user can
+                # find + bulk-delete these in Outlook desktop. Folders
+                # sort alphabetically; this groups all dead folders at
+                # the bottom of every rep's hierarchy.
+                new_name = ARCHIVED_PREFIX + fname
+                try:
+                    rename_contact_folder(g, fld, new_name)
+                    print(f"  [FOLDER] archived (delete denied by Graph): "
+                          f"{fld.get('fullPath', fname)} -> {new_name}")
+                except Exception as e2:
+                    print(f"    ERROR archive folder {fname}: {e2}")
 
     print("\n" + "=" * 60)
     print("  SUMMARY")
