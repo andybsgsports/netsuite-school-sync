@@ -373,6 +373,59 @@ def delete_contact_folder(g: Graph, fld: dict) -> None:
         g.delete(f"/me/contactFolders/{fid}")
 
 
+def cleanup_master_categories(g: Graph,
+                              keep_categories: Set[str],
+                              known_rep_names: Set[str],
+                              known_role_names: Set[str]) -> int:
+    """Delete ghost master-categories that match our naming patterns but
+    are no longer in `keep_categories`. Only deletes categories that
+    look like ours (role name with optional "(Rep Name)" suffix, or a
+    bare rep name) so we don't trash unrelated user categories.
+
+    Returns count of deleted categories.
+    """
+    deleted = 0
+    keep_lower = {c.lower() for c in keep_categories}
+    rep_lower = {r.lower() for r in known_rep_names if r}
+    role_lower = {r.lower() for r in known_role_names if r}
+
+    rep_suffix_re = re.compile(r"^(.+?)\s*\(([^()]+)\)\s*$")
+
+    cats = g.get_all("/me/outlook/masterCategories")
+    print(f"  [CATEGORIES] {len(cats)} master categories on the account")
+    for cat in cats:
+        name = cat.get("displayName", "")
+        cid = cat.get("id")
+        if not name or not cid:
+            continue
+        if name.lower() in keep_lower:
+            continue
+
+        looks_like_ours = False
+        # Pattern: bare rep name (e.g. "Andrew Murray")
+        if name.lower() in rep_lower:
+            looks_like_ours = True
+        else:
+            # Pattern: "Role (Rep Name)" e.g. "Athletic Director (Jeff Howard)"
+            m = rep_suffix_re.match(name)
+            if m:
+                base, suffix = m.group(1).strip(), m.group(2).strip()
+                if (suffix.lower() in rep_lower
+                        and base.lower() in role_lower):
+                    looks_like_ours = True
+
+        if not looks_like_ours:
+            continue
+
+        try:
+            g.delete(f"/me/outlook/masterCategories/{cid}")
+            deleted += 1
+            print(f"  [CATEGORY] removed ghost: {name}")
+        except Exception as e:
+            print(f"    ERROR delete category {name}: {e}")
+    return deleted
+
+
 def rename_contact_folder(g: Graph, fld: dict, new_name: str) -> None:
     """PATCH a folder's displayName. Used as a fallback when Graph refuses
     to actually delete the folder."""
@@ -920,12 +973,31 @@ def main():
                 except Exception as e2:
                     print(f"    ERROR archive folder {fname}: {e2}")
 
+    # 10. Master-category cleanup. Categories live in a master list that
+    #     persists independently of contacts -- old "(Rep Name)"-style
+    #     categories from earlier runs hang around in the People view.
+    print("\n[CLEANUP] Pruning ghost master-categories...")
+    keep_categories: Set[str] = {SYNC_TAG}
+    for people_payloads in desired.values():
+        for payload in people_payloads.values():
+            for c in payload.get("categories") or []:
+                keep_categories.add(c)
+    known_rep_names = {r for r in rep_by_school.values() if r}
+    cat_deleted = cleanup_master_categories(
+        g,
+        keep_categories=keep_categories,
+        known_rep_names=known_rep_names,
+        known_role_names=sheet_role_names,
+    )
+    totals["categories_deleted"] = cat_deleted
+
     print("\n" + "=" * 60)
     print("  SUMMARY")
     print("=" * 60)
     for k in ("added", "updated", "moved", "unchanged",
-              "deleted", "dedup_deleted", "skipped"):
-        print(f"  {k.capitalize():14s}{totals[k]}")
+              "deleted", "dedup_deleted", "categories_deleted",
+              "skipped"):
+        print(f"  {k.replace('_', ' ').capitalize():20s}{totals.get(k, 0)}")
     print()
 
 
