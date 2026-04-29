@@ -322,18 +322,36 @@ def pick_primary_rep(reps: List[str]) -> str:
 # -- Recursive folder walking -----------------------------------------------
 def list_all_folders_recursive(g: Graph) -> List[dict]:
     """Return list of all contact folders (top + nested children).
-    Each item gets an extra 'fullPath' key for diagnostic logging."""
+    Each item gets extra 'fullPath' / 'parentDisplayName' / 'parentFolderId'
+    keys so the caller knows whether it's a top-level or child folder
+    (and how to address it for DELETE)."""
     out = []
     top = g.get_all("/me/contactFolders")
     for t in top:
         t["fullPath"] = t["displayName"]
+        # Top-level folders have no parent we care about for deletion
         out.append(t)
         children = g.get_all(f"/me/contactFolders/{t['id']}/childFolders")
         for c in children:
             c["fullPath"] = f"{t['displayName']}/{c['displayName']}"
             c["parentDisplayName"] = t["displayName"]
+            c["parentFolderId"] = t["id"]
             out.append(c)
     return out
+
+
+def delete_contact_folder(g: Graph, fld: dict) -> None:
+    """Delete a contact folder using the correct endpoint based on whether
+    it's a top-level folder or a child folder. Microsoft Graph returns
+    403 ErrorCannotDeleteObject when you try to delete a child folder via
+    /me/contactFolders/{id} -- you must go through the parent.
+    """
+    fid = fld["id"]
+    parent_id = fld.get("parentFolderId")
+    if parent_id:
+        g.delete(f"/me/contactFolders/{parent_id}/childFolders/{fid}")
+    else:
+        g.delete(f"/me/contactFolders/{fid}")
 
 
 # -- Contact aggregation & payload ------------------------------------------
@@ -811,7 +829,7 @@ def main():
                            or fname in desired_top_names)
         if deleted_here > 0 or looks_like_ours:
             try:
-                g.delete(f"/me/contactFolders/{fid}")
+                delete_contact_folder(g, fld)
                 print(f"  [FOLDER] removed: "
                       f"{fld.get('fullPath', fname)}"
                       f" ({deleted_here} contacts cleared)")
