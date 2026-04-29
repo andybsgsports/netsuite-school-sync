@@ -30,7 +30,7 @@ except ImportError:
 CLIENT_ID  = "15c37b48-585f-437b-8da6-7301d993399e"
 TENANT_ID  = "72bd9a57-7017-4871-88c0-2ea274e11fd9"
 AUTHORITY  = f"https://login.microsoftonline.com/{TENANT_ID}"
-SCOPES     = ["Contacts.ReadWrite", "User.Read", "MailboxSettings.ReadWrite"]
+SCOPES     = ["Contacts.ReadWrite", "User.Read"]
 CACHE_FILE = Path(__file__).parent / "outlook_token_cache.json"
 
 
