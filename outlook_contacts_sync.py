@@ -62,7 +62,7 @@ GOOGLE_SCOPES   = [
 CLIENT_ID  = os.environ.get("OUTLOOK_CLIENT_ID", "15c37b48-585f-437b-8da6-7301d993399e")
 TENANT_ID  = os.environ.get("OUTLOOK_TENANT_ID", "72bd9a57-7017-4871-88c0-2ea274e11fd9")
 AUTHORITY  = f"https://login.microsoftonline.com/{TENANT_ID}"
-GRAPH_SCOPES = ["Contacts.ReadWrite", "User.Read", "MailboxSettings.ReadWrite"]
+GRAPH_SCOPES = ["Contacts.ReadWrite", "User.Read"]
 GRAPH_BASE = "https://graph.microsoft.com/v1.0"
 
 # Sheet column names (must match school_netsuite_sync.py)
