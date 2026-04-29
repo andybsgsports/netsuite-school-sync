@@ -391,7 +391,13 @@ def cleanup_master_categories(g: Graph,
 
     rep_suffix_re = re.compile(r"^(.+?)\s*\(([^()]+)\)\s*$")
 
-    cats = g.get_all("/me/outlook/masterCategories")
+    try:
+        cats = g.get_all("/me/outlook/masterCategories")
+    except Exception as e:
+        print(f"  [CATEGORIES] cannot read master categories ({e}). "
+              f"Add MailboxSettings.ReadWrite scope + re-auth to enable "
+              f"automatic category cleanup. Skipping.")
+        return 0
     print(f"  [CATEGORIES] {len(cats)} master categories on the account")
     for cat in cats:
         name = cat.get("displayName", "")
