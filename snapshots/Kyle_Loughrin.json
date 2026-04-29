@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-04-28T11:36:34.559950Z",
+  "updated": "2026-04-29T11:29:31.025765Z",
   "records": [
     {
       "school": "Algoma",
@@ -9348,6 +9348,14 @@
     },
     {
       "school": "Weyauwega-Fremont",
+      "email": "bkirkland@wfsd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Brandon",
+      "last": "Kirkland"
+    },
+    {
+      "school": "Weyauwega-Fremont",
       "email": "clintzumer@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Hockey",
@@ -9433,14 +9441,6 @@
       "sport": "",
       "first": "Stacey",
       "last": "Wester"
-    },
-    {
-      "school": "Weyauwega-Fremont",
-      "email": "tbillington@wfsd.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Teal",
-      "last": "Billington"
     },
     {
       "school": "Weyauwega-Fremont",
