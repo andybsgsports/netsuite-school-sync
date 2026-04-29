@@ -5,23 +5,27 @@ Daily sync: reads the Contacts tab from the Google master sheet and
 mirrors it into Andy's Outlook contacts (andy@bsgsports.com) via Microsoft
 Graph.
 
-Folder structure: nested. Top folder per Sales Rep, sub-folder per
+Folder structure: nested. Top folder per State, sub-folder per
 normalized Role (sport / admin title):
 
-    Andy Murray/
+    WI/
         Athletic Director/
         Boys Football/
         Boys Basketball/
         ...
-    Paul Speth/
+    IL/
         Boys Baseball/
         ...
 
 Each PERSON appears ONCE (deduped globally by email). They live in their
-primary rep's hierarchy under their primary sub-folder:
-  - rep is alphabetically-first if multiple
+primary state's hierarchy under their primary sub-folder:
+  - state is alphabetically-first if multiple
   - sub-folder is Athletic Director / Activities Director if applicable,
     else the most-common sport (alphabetical tiebreak)
+
+Optional rep filter: set OUTLOOK_ONLY_REP env var (or hardcode in ONLY_REP)
+to mirror only contacts at schools assigned to that Sales Rep. Default is
+"Andrew Murray".
 
 The contact's Categories list every sport / admin role they have, so a
 cross-rep filter ("show me all wrestlers") still works via Outlook's
@@ -72,9 +76,15 @@ C_SYNC   = "Sync"
 
 S_NAME  = "School Name"
 S_SALES = "Sales Rep"
+S_STATE = "State"
 
 # Tag we put on Categories so we only touch contacts WE created
 SYNC_TAG = "WIAA-Sync"
+
+# Only sync rows where the school's Sales Rep equals this exact value.
+# Empty string = no filter (sync everyone in the sheet).
+# Override with env var OUTLOOK_ONLY_REP if you want to flip filters later.
+ONLY_REP = os.environ.get("OUTLOOK_ONLY_REP", "Andrew Murray")
 
 # -- Role filter ------------------------------------------------------------
 # A role is allowed if it contains any ALLOW_PATTERNS substring AND no
@@ -152,15 +162,18 @@ def load_contacts_and_schools(gc):
     contacts = contacts_ws.get_all_records()
     schools  = schools_ws.get_all_records()
 
-    # School Name -> Sales Rep map
+    # School Name -> Sales Rep + State maps
     rep_by_school: Dict[str, str] = {}
+    state_by_school: Dict[str, str] = {}
     for s in schools:
         name = str(s.get(S_NAME, "")).strip()
         rep  = str(s.get(S_SALES, "")).strip()
+        state = str(s.get(S_STATE, "")).strip().upper()
         if name:
             rep_by_school[name.lower()] = rep
+            state_by_school[name.lower()] = state
 
-    return contacts, rep_by_school
+    return contacts, rep_by_school, state_by_school
 
 
 # -- Auth --------------------------------------------------------------------
@@ -319,6 +332,12 @@ def pick_primary_rep(reps: List[str]) -> str:
     return cleaned[0] if cleaned else "Unassigned"
 
 
+def pick_primary_state(states: List[str]) -> str:
+    """If a person spans multiple states, pick alphabetically first non-empty."""
+    cleaned = sorted({s for s in states if s})
+    return cleaned[0] if cleaned else "Unknown"
+
+
 # -- Recursive folder walking -----------------------------------------------
 def list_all_folders_recursive(g: Graph) -> List[dict]:
     """Return list of all contact folders (top + nested children).
@@ -376,13 +395,14 @@ ARCHIVED_PREFIX = "ZZZ_OLD_"
 
 # -- Contact aggregation & payload ------------------------------------------
 def aggregate_people(syncable_rows: List[dict],
-                     rep_by_school: Dict[str, str]) -> Dict[str, dict]:
+                     rep_by_school: Dict[str, str],
+                     state_by_school: Dict[str, str]) -> Dict[str, dict]:
     """Group sheet rows by email and return per-person state dict.
 
     Each value contains: first, last, email, schools (set), reps (set),
-    raw_roles (list), normalized_roles (list of folder names), types (set),
-    assignments (list of (type, normalized_role, school) tuples preserving
-    pairing for human-readable jobTitle formatting).
+    states (set), raw_roles (list), normalized_roles (list of folder names),
+    types (set), assignments (list of (type, normalized_role, school)
+    tuples preserving pairing for human-readable jobTitle formatting).
     """
     by_email: Dict[str, dict] = {}
     for row in syncable_rows:
@@ -391,6 +411,7 @@ def aggregate_people(syncable_rows: List[dict],
             continue
         school = str(row.get(C_SCHOOL, "")).strip()
         rep = rep_by_school.get(school.lower(), "")
+        state = state_by_school.get(school.lower(), "")
         role = str(row.get(C_ROLE, "")).strip()
         ctype = str(row.get(C_TYPE, "")).strip()
         first = str(row.get(C_FIRST, "")).strip()
@@ -403,6 +424,7 @@ def aggregate_people(syncable_rows: List[dict],
             "last":    last,
             "schools": set(),
             "reps":    set(),
+            "states":  set(),
             "raw_roles": [],
             "normalized_roles": [],
             "types":   set(),
@@ -417,6 +439,8 @@ def aggregate_people(syncable_rows: List[dict],
             person["schools"].add(school)
         if rep:
             person["reps"].add(rep)
+        if state:
+            person["states"].add(state)
         if role:
             person["raw_roles"].append(role)
             person["normalized_roles"].append(norm_role)
@@ -604,13 +628,18 @@ def main():
     # 1. Load source data
     print("\n[1/5] Loading Google Sheet...")
     gc = get_gspread_client()
-    contacts_data, rep_by_school = load_contacts_and_schools(gc)
+    contacts_data, rep_by_school, state_by_school = load_contacts_and_schools(gc)
 
-    # Filter to syncable rows with email AND allowed role.
-    # Also collect EVERY role string seen (even blocked ones) so we know
-    # which folder names "look like ours" -- used by empty-folder cleanup.
+    if ONLY_REP:
+        print(f"  REP FILTER: only syncing schools assigned to {ONLY_REP}")
+
+    # Filter to syncable rows with email AND allowed role AND (optionally)
+    # the configured Sales Rep. Also collect EVERY role string seen (even
+    # blocked ones) so we know which folder names "look like ours" --
+    # used by empty-folder cleanup.
     syncable = []
     skipped_role = 0
+    skipped_rep = 0
     sheet_role_names: set = set()
     for row in contacts_data:
         role = str(row.get(C_ROLE, "")).strip()
@@ -626,9 +655,16 @@ def main():
         if not is_role_allowed(role):
             skipped_role += 1
             continue
+        if ONLY_REP:
+            school = str(row.get(C_SCHOOL, "")).strip().lower()
+            row_rep = rep_by_school.get(school, "")
+            if row_rep != ONLY_REP:
+                skipped_rep += 1
+                continue
         syncable.append(row)
     print(f"  {len(syncable)} syncable contacts "
-          f"({skipped_role} skipped by role filter)")
+          f"({skipped_role} skipped by role filter, "
+          f"{skipped_rep} skipped by rep filter)")
     sheet_role_names_lower = {n.lower() for n in sheet_role_names if n}
 
     # 2. Auth + Graph client
@@ -638,28 +674,34 @@ def main():
 
     # 3. Aggregate by person (one Outlook contact per email)
     print("\n[3/6] Aggregating by person...")
-    people = aggregate_people(syncable, rep_by_school)
+    people = aggregate_people(syncable, rep_by_school, state_by_school)
     print(f"  {len(people)} unique people")
 
-    # 4. Decide each person's primary rep + primary sub-folder
-    print("\n[4/6] Picking primary rep + sub-folder per person...")
-    # desired[(rep, sub)] -> {email -> payload}
+    # 4. Decide each person's primary state + primary sub-folder
+    #    (since we filter to a single rep, the rep is no longer the
+    #    natural top-level grouping; we use State instead.)
+    print("\n[4/6] Picking primary state + sub-folder per person...")
+    # desired[(state, sub)] -> {email -> payload}
     desired: Dict[Tuple[str, str], Dict[str, dict]] = defaultdict(dict)
     for email, person in people.items():
-        primary_rep = pick_primary_rep(list(person["reps"]))
+        primary_state = pick_primary_state(list(person["states"]))
         primary_sub = pick_primary_subfolder(person["normalized_roles"])
-        # Override the primary_rep we put in payload with the canonical one
+        # Lock the rep on the payload to the configured ONLY_REP (or pick
+        # alphabetically when no filter). Used for the Department field.
+        primary_rep = (ONLY_REP
+                       if ONLY_REP and ONLY_REP in person["reps"]
+                       else pick_primary_rep(list(person["reps"])))
         person["reps"] = {primary_rep}
         payload = build_contact_payload(person)
-        desired[(primary_rep, primary_sub)][email] = payload
-    rep_count = len({rep for rep, _ in desired.keys()})
+        desired[(primary_state, primary_sub)][email] = payload
+    state_count = len({state for state, _ in desired.keys()})
     sub_count = len({sub for _, sub in desired.keys()})
-    print(f"  {rep_count} reps, {sub_count} distinct sub-folders, "
+    print(f"  {state_count} states, {sub_count} distinct sub-folders, "
           f"{sum(len(v) for v in desired.values())} contacts")
 
-    # 5. Ensure folder hierarchy exists
-    print("\n[5/6] Ensuring rep + sub-folders...")
-    top_cache: Dict[str, str] = {}  # rep_name -> top_folder_id
+    # 5. Ensure folder hierarchy exists  (State / Sport)
+    print("\n[5/6] Ensuring state + sub-folders...")
+    top_cache: Dict[str, str] = {}  # state_name -> top_folder_id
     sub_cache: Dict[Tuple[str, str], str] = {}  # (top_id, sub_name) -> sub_id
 
     # Pre-load existing top folders into cache once
@@ -667,13 +709,12 @@ def main():
         top_cache[f["displayName"]] = f["id"]
 
     folder_ids: Dict[Tuple[str, str], str] = {}
-    for (rep, sub) in sorted(desired.keys()):
-        top_id = ensure_top_folder(g, rep, top_cache)
-        # Append rep name in parens so the sub-folder is self-describing in
-        # flat pickers / address-book views that don't show parent context.
-        sub_display = f"{sub} ({rep})"
-        sub_id = ensure_sub_folder(g, top_id, sub_display, sub_cache)
-        folder_ids[(rep, sub)] = sub_id
+    for (state, sub) in sorted(desired.keys()):
+        top_id = ensure_top_folder(g, state, top_cache)
+        # No rep suffix on sub-folders -- there's only one rep, so it'd
+        # be redundant.
+        sub_id = ensure_sub_folder(g, top_id, sub, sub_cache)
+        folder_ids[(state, sub)] = sub_id
 
     # 6. Build a global view of every WIAA-Sync contact currently in Outlook,
     #    keyed by email. We need this to dedupe across folders and detect
@@ -710,9 +751,9 @@ def main():
     last_progress_pct = -1
     sync_start = time.time()
 
-    for (rep, sub), people_payloads in sorted(desired.items()):
-        target_fid = folder_ids[(rep, sub)]
-        print(f"  [{rep} / {sub}] {len(people_payloads)} people")
+    for (state, sub), people_payloads in sorted(desired.items()):
+        target_fid = folder_ids[(state, sub)]
+        print(f"  [{state} / {sub}] {len(people_payloads)} people")
         for email, payload in people_payloads.items():
             processed += 1
             pct = (processed * 100) // max(total_to_process, 1)
@@ -795,12 +836,15 @@ def main():
     #    and any empty sub-folders. Walk top-down, then bottom-up so we
     #    delete children before parents.
     print("\n[CLEANUP] Pruning empty / leftover folders...")
-    desired_top_names = {safe_folder_name(rep) for rep, _ in desired.keys()}
-    # Sub-folders are now stored as "Sport (Rep)" so they're self-
-    # describing in flat pickers. Cleanup must compare against the same.
-    desired_sub_pairs = {(safe_folder_name(rep),
-                          safe_folder_name(f"{sub} ({rep})"))
-                         for rep, sub in desired.keys()}
+    desired_top_names = {safe_folder_name(state) for state, _ in desired.keys()}
+    # Sub-folders are stored under their state parent with the bare sport
+    # name (no rep suffix needed when only one rep is synced).
+    desired_sub_pairs = {(safe_folder_name(state), safe_folder_name(sub))
+                         for state, sub in desired.keys()}
+    # Set of rep names from the sheet -- used to recognise old top-level
+    # rep folders as "ours" so they get cleaned up after the migration
+    # from rep-based structure to state-based structure.
+    old_rep_names_lower = {r.lower() for r in rep_by_school.values() if r}
     # Re-fetch since we deleted things above
     all_folders_after = list_all_folders_recursive(g)
     # Sort: children first (they have parentDisplayName), then top-level.
@@ -845,8 +889,13 @@ def main():
         #                a prior run).
         if kept_here > 0:
             continue
+        # Also try with any "(Rep Name)" suffix stripped, since the prior
+        # structure named sub-folders like "Boys & Girls Golf (Andrew Murray)".
+        fname_stripped = re.sub(r"\s*\([^)]+\)\s*$", "", fname).strip()
         looks_like_ours = (fname.lower() in sheet_role_names_lower
-                           or fname in desired_top_names)
+                           or fname_stripped.lower() in sheet_role_names_lower
+                           or fname in desired_top_names
+                           or fname.lower() in old_rep_names_lower)
         if deleted_here > 0 or looks_like_ours:
             # Skip folders we already renamed in a previous run -- they're
             # already marked for manual cleanup by the user.
