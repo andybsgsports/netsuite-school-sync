@@ -373,6 +373,7 @@ def rename_contact_folder(g: Graph, fld: dict, new_name: str) -> None:
 ARCHIVED_PREFIX = "ZZZ_OLD_"
 
 
+
 # -- Contact aggregation & payload ------------------------------------------
 def aggregate_people(syncable_rows: List[dict],
                      rep_by_school: Dict[str, str]) -> Dict[str, dict]:
