@@ -113,10 +113,13 @@ def main():
     synced_updates = []
 
     for sch in schools:
-        school_name = sch["name"]
+        school_name = sch["name"]                              # Schools tab "School Name" column
         ns_id       = sch["ns_id"]
         rep         = sch["rep"]
         state       = sch["state"]
+        # display_name is what NetSuite shows as companyName. Read from the
+        # Full Name column; fall back to School Name if Full Name is blank.
+        display_name = str(sch["raw"].get(M_FULL, "")).strip() or school_name
 
         print(f"\n[{school_name}]  NS {ns_id}  (rep: {rep})")
 
@@ -133,10 +136,9 @@ def main():
         # produces. Mirrors what ihsa_sync.py does for the manual workflow.
         if state == "IL":
             school_info_out = school_info_from_row(sch["raw"], "IL")
-            full_name = str(sch["raw"].get(M_FULL, "")).strip() or school_name
             try:
                 result_id, _ = sync_customer(
-                    full_name, "IL", school_info_out,
+                    display_name, "IL", school_info_out,
                     contacts=[], ns_customer_id=ns_id, sales_rep=rep or None,
                 )
             except Exception as e:
@@ -150,8 +152,10 @@ def main():
                 continue
         else:
             try:
+                # Pass display_name (from Full Name column) — sync_school
+                # propagates it through to sync_customer's companyName.
                 result_id, school_info_out, _, _ = sync_school(
-                    school_name=school_name,
+                    school_name=display_name,
                     school_url=sch["url"],
                     state=state or "WI",
                     sync_contacts=[],
