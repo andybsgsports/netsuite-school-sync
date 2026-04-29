@@ -1,0 +1,42 @@
+name: Outlook Contacts Sync
+
+# Mirrors the Contacts tab from the master sheet into Andy's Outlook contacts.
+# Triggers after Rep Digests completes (sheet is fresh by then) and also
+# runs on its own daily schedule as a backstop.
+
+on:
+  workflow_run:
+    workflows: ["Rep Digests"]
+    types: [completed]
+  schedule:
+    # 12:30 UTC = ~7:30 AM Central. Backstop in case workflow_run misses.
+    - cron: '30 12 * * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    # Only run after a successful Rep Digests run (skip if it failed)
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests gspread google-auth msal
+
+      - name: Run Outlook contacts sync
+        run: python outlook_contacts_sync.py
+        env:
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+          OUTLOOK_CLIENT_ID: ${{ secrets.OUTLOOK_CLIENT_ID }}
+          OUTLOOK_TENANT_ID: ${{ secrets.OUTLOOK_TENANT_ID }}
+          OUTLOOK_TOKEN_CACHE: ${{ secrets.OUTLOOK_TOKEN_CACHE }}

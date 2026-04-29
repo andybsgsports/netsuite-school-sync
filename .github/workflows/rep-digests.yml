@@ -1,0 +1,71 @@
+name: Rep Digests
+
+on:
+  schedule:
+    # 09:30 UTC = ~4:30 AM Central. Scrapes WIAA/IHSA, emails per-rep
+    # XLSX, and writes fresh contacts into the master sheet. NS push
+    # workflow runs 2h later and reads the sheet (no re-scrape).
+    - cron: '30 9 * * *'
+  workflow_dispatch:
+    inputs:
+      rep_filter:
+        description: 'Run only this rep (leave blank for all). Name must match sheet.'
+        required: false
+        default: ''
+      dry_run:
+        description: 'Dry run — prefix body with [DRY RUN] and force send to GMAIL_USER'
+        required: true
+        default: false
+        type: boolean
+
+jobs:
+  digests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write  # needed to commit updated snapshots
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth google-api-python-client openpyxl pandas
+
+      - name: Run rep digests
+        run: python rep_digests.py
+        env:
+          GOOGLE_SHEET_ID_REPS:    ${{ secrets.GOOGLE_SHEET_ID_REPS }}
+          GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}  # for IL_Schools tab
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+          GMAIL_USER:              ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD:      ${{ secrets.GMAIL_APP_PASSWORD }}
+          DIGESTS_OVERRIDE_TO:     ${{ secrets.DIGESTS_OVERRIDE_TO }}
+          REP_FILTER:              ${{ inputs.rep_filter }}
+          # Scheduled runs are live (DRY_RUN=0). Safety while validating comes
+          # from DIGESTS_OVERRIDE_TO redirecting every email to one inbox.
+          # Manual dispatch still honors the dry_run input.
+          DRY_RUN:                 ${{ inputs.dry_run && '1' || '0' }}
+
+      - name: Commit updated snapshots
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add snapshots/
+          if git diff --cached --quiet; then
+            echo "No snapshot changes to commit."
+          else
+            git commit -m "chore: update rep digest snapshots [skip ci]"
+            # Rebase onto any changes pushed to master during the 5-15 min run.
+            # Retry a couple times in case of races with other workflows.
+            for i in 1 2 3; do
+              git pull --rebase origin master && git push && break
+              echo "push attempt $i failed, retrying..."
+              sleep 5
+            done
+          fi

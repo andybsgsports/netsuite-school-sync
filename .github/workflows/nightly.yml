@@ -1,0 +1,47 @@
+name: Daily NS Push (sheet -> NetSuite, per rep)
+
+# Reads the master sheet (populated earlier by Rep Digests at 4:30 AM)
+# and pushes each rep's contacts to NetSuite — one rep at a time so
+# one rep's failure doesn't block the others.
+on:
+  schedule:
+    # 11:30 UTC = ~6:30 AM Central. Rep Digests finishes ~4:30-5:30 AM.
+    - cron: '30 11 * * *'
+  workflow_dispatch:
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    strategy:
+      fail-fast: false
+      max-parallel: 1   # serial per-rep — NS concurrent request limit is low
+      matrix:
+        rep:
+          - Andrew Murray
+          - Jeff Howard
+          - Tyler Fuhrman
+          - Kyle Loughrin
+          - Paul Speth
+          - John Viles
+          - Jeff Wedvick
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+      - name: Push ${{ matrix.rep }} to NetSuite
+        run: python push_only.py
+        env:
+          SALES_REP_FILTER:        ${{ matrix.rep }}
+          NS_ACCOUNT:              ${{ secrets.NS_ACCOUNT }}
+          NS_CONSUMER_KEY:         ${{ secrets.NS_CONSUMER_KEY }}
+          NS_CONSUMER_SEC:         ${{ secrets.NS_CONSUMER_SEC }}
+          NS_TOKEN_KEY:            ${{ secrets.NS_TOKEN_KEY }}
+          NS_TOKEN_SEC:            ${{ secrets.NS_TOKEN_SEC }}
+          GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
