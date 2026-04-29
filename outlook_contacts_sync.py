@@ -585,10 +585,11 @@ def build_contact_payload(person: dict) -> dict:
     else:
         display = person_name
 
-    # Categories: SYNC_TAG + types + every normalized role + school(s)
-    # School in categories so users can filter by school across folders.
-    cats = [SYNC_TAG] + types + norm_roles + schools
-    cats = list(dict.fromkeys([c for c in cats if c]))
+    # Categories: only SYNC_TAG. Required for the script to identify its
+    # own contacts (and never touch hand-made ones). Everything else has
+    # been removed -- the user didn't ask for cross-folder category
+    # filtering and the extras only created clutter.
+    cats = [SYNC_TAG]
 
     return {
         "givenName":   first,
