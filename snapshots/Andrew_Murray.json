@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-04-28T11:32:51.592199Z",
+  "updated": "2026-04-29T11:25:46.473474Z",
   "records": [
     {
       "school": "Alden-Hebron",
@@ -92,11 +92,11 @@
     },
     {
       "school": "Alden-Hebron",
-      "email": "timoman72@gmail.com",
+      "email": "skeeballstew@yahoo.com",
       "role": "Coach",
       "sport": "Bass Fishing",
-      "first": "Tim",
-      "last": "Oman"
+      "first": "Ryan",
+      "last": "Stewart"
     },
     {
       "school": "Antioch",
@@ -257,6 +257,14 @@
       "sport": "Boys Wrestling",
       "first": "John",
       "last": "Ridle"
+    },
+    {
+      "school": "Antioch",
+      "email": "jon.boettcher@chsd117.org",
+      "role": "Head Coach",
+      "sport": "Girls Bowling",
+      "first": "Jon",
+      "last": "Boettcher"
     },
     {
       "school": "Antioch",
@@ -16420,6 +16428,14 @@
     },
     {
       "school": "Rockford (Lutheran)",
+      "email": "jeremyweaver98@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Jeremy",
+      "last": "Weaver"
+    },
+    {
+      "school": "Rockford (Lutheran)",
       "email": "jlodico@rockfordlutheran.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Bowling",
@@ -16497,14 +16513,6 @@
       "sport": "",
       "first": "Mark",
       "last": "Robinson"
-    },
-    {
-      "school": "Rockford (Lutheran)",
-      "email": "mccoidb@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Brandy",
-      "last": "McCoid"
     },
     {
       "school": "Rockford (Lutheran)",
