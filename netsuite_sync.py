@@ -610,6 +610,11 @@ def sync_customer(school_name, state, school_info, contacts=None, ns_customer_id
         # ── Direct PATCH — bypass all name/externalId matching ──────────────
         # Handle salesTeam separately (can't add if one already exists)
         sales_team_data = body.pop("salesTeam", None)
+        # Don't update externalId on existing customers. The slugify of
+        # school_name can drift (e.g. School Name -> Full Name), and NS
+        # rejects PATCHes that try to claim an externalId held by another
+        # customer with HTTP 400 "This entity already exists".
+        body.pop("externalId", None)
 
         r = ns_patch(f"customer/{ns_customer_id}", body)
         if r.status_code == 204:
