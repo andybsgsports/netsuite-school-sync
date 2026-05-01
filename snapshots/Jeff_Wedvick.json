@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-04-30T11:35:00.273843Z",
+  "updated": "2026-05-01T11:13:23.828255Z",
   "records": [
     {
       "school": "Arrowhead",
@@ -348,14 +348,6 @@
     },
     {
       "school": "Beaver Dam",
-      "email": "kositzkem@bdusd.org",
-      "role": "Head Coach",
-      "sport": "Boys Wrestling",
-      "first": "Michael",
-      "last": "Kositzke"
-    },
-    {
-      "school": "Beaver Dam",
       "email": "kraftd@bdusd.org",
       "role": "Head Coach",
       "sport": "Boys Hockey",
@@ -377,6 +369,14 @@
       "sport": "Boys Football",
       "first": "Brock",
       "last": "Linde"
+    },
+    {
+      "school": "Beaver Dam",
+      "email": "michaelkositzke@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Michael",
+      "last": "Kositzke"
     },
     {
       "school": "Beaver Dam",

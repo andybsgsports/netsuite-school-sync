@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-04-30T11:32:18.687909Z",
+  "updated": "2026-05-01T11:10:35.543705Z",
   "records": [
     {
       "school": "Algoma",
@@ -3073,6 +3073,198 @@
       "sport": "",
       "first": "Vicki",
       "last": "Bayer"
+    },
+    {
+      "school": "Green Bay Notre Dame",
+      "email": "ahearden@notredameacademy.com",
+      "role": "Principal",
+      "sport": "",
+      "first": "Andrea",
+      "last": "Hearden"
+    },
+    {
+      "school": "Green Bay Notre Dame",
+      "email": "bbobinski@notredameacademy.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Golf",
+      "first": "Brian",
+      "last": "Bobinski"
+    },
+    {
+      "school": "Green Bay Notre Dame",
+      "email": "bbobinski@notredameacademy.com",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Brian",
+      "last": "Bobinski"
+    },
+    {
+      "school": "Green Bay Notre Dame",
+      "email": "chris@prepdig.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Chris",
+      "last": "Fitzgerald"
+    },
+    {
+      "school": "Green Bay Notre Dame",
+      "email": "cmcgowan@notredameacademy.com",
+      "role": "Head Coach",
+      "sport": "Girls Track and Field",
+      "first": "Cassidy",
+      "last": "McGowan"
+    },
+    {
+      "school": "Green Bay Notre Dame",
+      "email": "handerson@notredameacademy.com",
+      "role": "Head Coach",
+      "sport": "Girls Lacrosse-Girls",
+      "first": "Hailey",
+      "last": "Anderson"
+    },
+    {
+      "school": "Green Bay Notre Dame",
+      "email": "hermes.scott1962@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Scott",
+      "last": "Hermes"
+    },
+    {
+      "school": "Green Bay Notre Dame",
+      "email": "hockeymb@hotmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Mike",
+      "last": "Buchan"
+    },
+    {
+      "school": "Green Bay Notre Dame",
+      "email": "jeffrey.m.dow@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Jeff",
+      "last": "Dow"
+    },
+    {
+      "school": "Green Bay Notre Dame",
+      "email": "jwbarker03@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Jared",
+      "last": "Barker"
+    },
+    {
+      "school": "Green Bay Notre Dame",
+      "email": "maxjsalscheider@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Lacrosse-Boys",
+      "first": "Max",
+      "last": "Salscheider"
+    },
+    {
+      "school": "Green Bay Notre Dame",
+      "email": "mikescud3535@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Mike",
+      "last": "Szkodzinski"
+    },
+    {
+      "school": "Green Bay Notre Dame",
+      "email": "mjrader4@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Michael",
+      "last": "Rader"
+    },
+    {
+      "school": "Green Bay Notre Dame",
+      "email": "mkoenig@notredameacademy.com",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Matthew",
+      "last": "Koenig"
+    },
+    {
+      "school": "Green Bay Notre Dame",
+      "email": "nbrowne56@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Girls Soccer",
+      "first": "Nick",
+      "last": "Browne"
+    },
+    {
+      "school": "Green Bay Notre Dame",
+      "email": "nhunter@notredameacademy.com",
+      "role": "Assistant Athletic Director",
+      "sport": "",
+      "first": "Nichole",
+      "last": "Hunter"
+    },
+    {
+      "school": "Green Bay Notre Dame",
+      "email": "nicsturdy@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Nic",
+      "last": "Sturdivant"
+    },
+    {
+      "school": "Green Bay Notre Dame",
+      "email": "notredamecc@hotmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "John",
+      "last": "Gard"
+    },
+    {
+      "school": "Green Bay Notre Dame",
+      "email": "notredamecc@hotmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Track and Field",
+      "first": "John",
+      "last": "Gard"
+    },
+    {
+      "school": "Green Bay Notre Dame",
+      "email": "nrongos6@hotmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Tennis",
+      "first": "Niko",
+      "last": "Rongos"
+    },
+    {
+      "school": "Green Bay Notre Dame",
+      "email": "paulm@onpacemovement.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Tennis",
+      "first": "Paul",
+      "last": "Miller"
+    },
+    {
+      "school": "Green Bay Notre Dame",
+      "email": "srohde@depere.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Sara",
+      "last": "Rohde"
+    },
+    {
+      "school": "Green Bay Notre Dame",
+      "email": "tigerfish@hotmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Swimming Diving",
+      "first": "Julie",
+      "last": "Collison"
+    },
+    {
+      "school": "Green Bay Notre Dame",
+      "email": "tyler.beckett@mativ.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Tyler",
+      "last": "Beckett"
     },
     {
       "school": "Green Bay Preble",
