@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-04-30T11:34:13.055682Z",
+  "updated": "2026-05-01T11:12:33.990482Z",
   "records": [
     {
       "school": "Cambria Friesland",
@@ -2428,6 +2428,14 @@
     },
     {
       "school": "Laconia",
+      "email": "rauedia@rbsd.k12.wi.us",
+      "role": "Principal",
+      "sport": "",
+      "first": "Diane",
+      "last": "Raue-Schommer"
+    },
+    {
+      "school": "Laconia",
       "email": "ritzsco@rbsd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -2437,7 +2445,7 @@
     {
       "school": "Laconia",
       "email": "webeway@rbsd.k12.wi.us",
-      "role": "Principal & Superintendent",
+      "role": "Superintendent",
       "sport": "",
       "first": "Wayne",
       "last": "Weber"
