@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-05-01T11:12:33.990482Z",
+  "updated": "2026-05-02T10:42:43.863173Z",
   "records": [
     {
       "school": "Cambria Friesland",
@@ -4620,14 +4620,6 @@
     },
     {
       "school": "Plymouth",
-      "email": "bshutter@plymouth.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Brad",
-      "last": "Shutter"
-    },
-    {
-      "school": "Plymouth",
       "email": "cijohnson@plymouth.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -4657,6 +4649,14 @@
       "sport": "Girls Soccer",
       "first": "Dillon",
       "last": "Maass"
+    },
+    {
+      "school": "Plymouth",
+      "email": "ewest@plymouth.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Erik",
+      "last": "West"
     },
     {
       "school": "Plymouth",
