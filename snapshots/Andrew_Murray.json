@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-05-01T11:06:43.782458Z",
+  "updated": "2026-05-02T10:37:16.646514Z",
   "records": [
     {
       "school": "Alden-Hebron",
@@ -15500,14 +15500,6 @@
     },
     {
       "school": "Rockford (Boylan Catholic)",
-      "email": "crozanski@boylan.org",
-      "role": "IHSA Official Representative & Principal",
-      "sport": "",
-      "first": "Chris",
-      "last": "Rozanski"
-    },
-    {
-      "school": "Rockford (Boylan Catholic)",
       "email": "customfeeder@yahoo.com",
       "role": "Coach",
       "sport": "Bass Fishing",
@@ -15633,6 +15625,14 @@
       "sport": "",
       "first": "Paul",
       "last": "Heitkamp"
+    },
+    {
+      "school": "Rockford (Boylan Catholic)",
+      "email": "pkirk@boylan.org",
+      "role": "Principal",
+      "sport": "",
+      "first": "Paul",
+      "last": "Kirk"
     },
     {
       "school": "Rockford (Boylan Catholic)",
@@ -19756,14 +19756,6 @@
     },
     {
       "school": "Westosha Central",
-      "email": "jasonjkoeppel@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Jason",
-      "last": "Koeppel"
-    },
-    {
-      "school": "Westosha Central",
       "email": "jhyllber@kusd.edu",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -19801,6 +19793,14 @@
       "sport": "Girls Basketball",
       "first": "Sarah",
       "last": "Klahs"
+    },
+    {
+      "school": "Westosha Central",
+      "email": "koeppelj@westosha.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Jason",
+      "last": "Koeppel"
     },
     {
       "school": "Westosha Central",
