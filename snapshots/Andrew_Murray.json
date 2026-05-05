@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-05-04T11:32:35.308813Z",
+  "updated": "2026-05-05T11:11:19.752902Z",
   "records": [
     {
       "school": "Alden-Hebron",
@@ -10084,14 +10084,6 @@
     },
     {
       "school": "Kenosha Bradford",
-      "email": "danielrichardrossi@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Lacrosse-Boys",
-      "first": "Daniel",
-      "last": "Rossi"
-    },
-    {
-      "school": "Kenosha Bradford",
       "email": "ecorrao@kusd.edu",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -10137,6 +10129,14 @@
       "sport": "Boys & Girls Wrestling",
       "first": "Jerril",
       "last": "Grover"
+    },
+    {
+      "school": "Kenosha Bradford",
+      "email": "jim.kenesie@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Lacrosse-Boys",
+      "first": "Jim",
+      "last": "Kenesie"
     },
     {
       "school": "Kenosha Bradford",
@@ -10420,14 +10420,6 @@
     },
     {
       "school": "Kenosha Tremper",
-      "email": "danielrichardrossi@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Lacrosse-Boys",
-      "first": "Daniel",
-      "last": "Rossi"
-    },
-    {
-      "school": "Kenosha Tremper",
       "email": "dbornhue@kusd.edu",
       "role": "Head Coach",
       "sport": "Girls Track and Field",
@@ -10449,6 +10441,14 @@
       "sport": "Girls Softball",
       "first": "Emma",
       "last": "Dummer"
+    },
+    {
+      "school": "Kenosha Tremper",
+      "email": "jim.kenesie@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Lacrosse-Boys",
+      "first": "Jim",
+      "last": "Kenesie"
     },
     {
       "school": "Kenosha Tremper",
@@ -12220,6 +12220,14 @@
     },
     {
       "school": "McHenry",
+      "email": "madsonchris@dist156.org",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Chris",
+      "last": "Madson"
+    },
+    {
+      "school": "McHenry",
       "email": "matt.matusek12@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Water Polo",
@@ -12241,14 +12249,6 @@
       "sport": "",
       "first": "Ryan",
       "last": "McTague"
-    },
-    {
-      "school": "McHenry",
-      "email": "mitschmikaela@dist156.org",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Mikaela",
-      "last": "Mitsch"
     },
     {
       "school": "McHenry",
@@ -19716,14 +19716,6 @@
     },
     {
       "school": "Westosha Central",
-      "email": "danielrichardrossi@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Lacrosse-Boys",
-      "first": "Daniel",
-      "last": "Rossi"
-    },
-    {
-      "school": "Westosha Central",
       "email": "ferruzzi.ale@bristol.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Tennis",
@@ -19761,6 +19753,14 @@
       "sport": "Boys Basketball",
       "first": "James",
       "last": "Hyllberg"
+    },
+    {
+      "school": "Westosha Central",
+      "email": "jim.kenesie@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Lacrosse-Boys",
+      "first": "Jim",
+      "last": "Kenesie"
     },
     {
       "school": "Westosha Central",

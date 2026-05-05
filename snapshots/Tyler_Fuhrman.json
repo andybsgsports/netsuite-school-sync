@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-05-04T11:34:40.201545Z",
+  "updated": "2026-05-05T11:13:26.280938Z",
   "records": [
     {
       "school": "Abundant Life Christian School",
@@ -3300,6 +3300,14 @@
     },
     {
       "school": "Madison Lafollette",
+      "email": "sfischer217@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Susan",
+      "last": "Fischer"
+    },
+    {
+      "school": "Madison Lafollette",
       "email": "spswanson@madison.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
@@ -3313,6 +3321,14 @@
       "sport": "Boys Basketball",
       "first": "Torrance",
       "last": "Holmes"
+    },
+    {
+      "school": "Madison Lafollette",
+      "email": "tyoung@madison.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Toren",
+      "last": "Young"
     },
     {
       "school": "Madison Lafollette",
