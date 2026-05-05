@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-05-04T11:38:20.410911Z",
+  "updated": "2026-05-05T11:17:13.828560Z",
   "records": [
     {
       "school": "Cambria Friesland",
@@ -1196,19 +1196,19 @@
     },
     {
       "school": "Fall River",
-      "email": "kckbull4@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Kaycee",
-      "last": "Bull"
-    },
-    {
-      "school": "Fall River",
       "email": "krbook@fallriver.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Track and Field",
       "first": "Kristin",
       "last": "Book"
+    },
+    {
+      "school": "Fall River",
+      "email": "lltrautmann@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Laura",
+      "last": "Trautmann"
     },
     {
       "school": "Fall River",
@@ -2366,6 +2366,14 @@
       "school": "Laconia",
       "email": "cmorgan2110@gmail.com",
       "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Chris",
+      "last": "Morgan"
+    },
+    {
+      "school": "Laconia",
+      "email": "cmorgan2110@gmail.com",
+      "role": "Head Coach",
       "sport": "Girls Basketball",
       "first": "Chris",
       "last": "Morgan"
@@ -2393,14 +2401,6 @@
       "sport": "Girls Volleyball",
       "first": "Kaitlyn",
       "last": "Wiese"
-    },
-    {
-      "school": "Laconia",
-      "email": "leadjoe@rbsd.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Joseph",
-      "last": "Leadley"
     },
     {
       "school": "Laconia",
