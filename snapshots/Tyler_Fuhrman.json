@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-05-05T11:13:26.280938Z",
+  "updated": "2026-05-06T11:41:09.604131Z",
   "records": [
     {
       "school": "Abundant Life Christian School",
@@ -6227,6 +6227,14 @@
       "last": "Villiard"
     },
     {
+      "school": "Weston",
+      "email": "wolft5940@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Football 8-Player",
+      "first": "Tom",
+      "last": "Wolfe"
+    },
+    {
       "school": "Wisconsin Heights",
       "email": "ahammerschmidt@wisheights.k12.wi.us",
       "role": "Athletic Director",
@@ -6497,6 +6505,14 @@
       "sport": "Boys & Girls Track and Field",
       "first": "Jason",
       "last": "Winchel"
+    },
+    {
+      "school": "Wonewoc-Center",
+      "email": "wolft5940@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Football 8-Player",
+      "first": "Tom",
+      "last": "Wolfe"
     }
   ]
 }
