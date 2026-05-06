@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-05-05T11:12:16.582042Z",
+  "updated": "2026-05-06T11:39:59.727147Z",
   "records": [
     {
       "school": "Albany",
@@ -604,14 +604,6 @@
     },
     {
       "school": "Belmont",
-      "email": "dbonin1989@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Danielle",
-      "last": "Bonin"
-    },
-    {
-      "school": "Belmont",
       "email": "HillJessicaA@JohnDeere.com",
       "role": "Head Coach",
       "sport": "Girls Gymnastics",
@@ -665,6 +657,14 @@
       "sport": "Girls Cross Country",
       "first": "Tammy",
       "last": "Woodworth"
+    },
+    {
+      "school": "Belmont",
+      "email": "voigtsam@belmont.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Amie",
+      "last": "Voigts"
     },
     {
       "school": "Belmont",
