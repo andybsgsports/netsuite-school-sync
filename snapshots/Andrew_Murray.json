@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-05-06T11:39:00.485978Z",
+  "updated": "2026-05-07T11:40:40.452606Z",
   "records": [
     {
       "school": "Alden-Hebron",
@@ -18988,6 +18988,14 @@
     },
     {
       "school": "Waukesha West",
+      "email": "svitale@waukesha.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Steve",
+      "last": "Vitale"
+    },
+    {
+      "school": "Waukesha West",
       "email": "tdeleon@waukesha.k12.wi.us",
       "role": "Principal",
       "sport": "",
@@ -19009,14 +19017,6 @@
       "sport": "Boys Swimming & Diving",
       "first": "Chris",
       "last": "Foti"
-    },
-    {
-      "school": "Waukesha West",
-      "email": "vitalesj34@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Steve",
-      "last": "Vitale"
     },
     {
       "school": "Wauwatosa West",
