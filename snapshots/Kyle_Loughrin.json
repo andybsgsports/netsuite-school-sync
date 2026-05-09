@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-05-08T11:11:16.527356Z",
+  "updated": "2026-05-09T10:47:56.366707Z",
   "records": [
     {
       "school": "Algoma",
@@ -5508,17 +5508,17 @@
     },
     {
       "school": "Marion",
-      "email": "micah.schwantes@marion-mustangs.org",
+      "email": "mark.fredy@marion-mustangs.org",
       "role": "Head Coach",
-      "sport": "Boys Football 8-Player",
-      "first": "Micah",
-      "last": "Schwantes"
+      "sport": "Boys Golf",
+      "first": "Mark",
+      "last": "Fredy"
     },
     {
       "school": "Marion",
       "email": "micah.schwantes@marion-mustangs.org",
       "role": "Head Coach",
-      "sport": "Boys Golf",
+      "sport": "Boys Football 8-Player",
       "first": "Micah",
       "last": "Schwantes"
     },
@@ -9193,6 +9193,14 @@
       "sport": "Girls Wrestling",
       "first": "Dallas",
       "last": "Moe"
+    },
+    {
+      "school": "Wausau West",
+      "email": "fvue@wausauschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Farla",
+      "last": "Vue"
     },
     {
       "school": "Wausau West",
