@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-05-08T11:07:26.095718Z",
+  "updated": "2026-05-09T10:44:10.728976Z",
   "records": [
     {
       "school": "Alden-Hebron",
@@ -5865,6 +5865,14 @@
       "sport": "",
       "first": "Kyle",
       "last": "Zick"
+    },
+    {
+      "school": "Forreston",
+      "email": "lawman06@gmail.com",
+      "role": "Coach",
+      "sport": "Bass Fishing",
+      "first": "Chris",
+      "last": "Thiel"
     },
     {
       "school": "Forreston",
