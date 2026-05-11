@@ -1,0 +1,38 @@
+# gitleaks configuration for netsuite-school-sync
+#
+# Extends gitleaks's default rule set with NetSuite-specific patterns. NS's
+# OAuth1 Consumer Key, Consumer Secret, Token Key, and Token Secret are all
+# 64-character hex strings — the same shape we accidentally committed in
+# test_auth.py and leaked publicly.
+#
+# Inheriting the default rules picks up AWS keys, GitHub tokens, Stripe,
+# Slack, Google service-account JSON, and ~100 other common secret types.
+
+[extend]
+useDefault = true
+
+[[rules]]
+id          = "netsuite-oauth-token-64hex"
+description = "NetSuite OAuth1 64-char hex token (consumer key/secret, token key/secret)"
+# Plain 64-char lowercase-hex blob, common shape NS hands out. Catches
+# verbatim hardcoded values in Python source like:
+#   NS_TOKEN_SEC = "10a34befd1beb67e742b4e896f96fb4d341ea7e33d8bbb239ba496b9fcb5bedc"
+regex       = '''\b[a-f0-9]{64}\b'''
+# Restrict to assignments of NS-named variables (or quoted in source) so we
+# don't false-positive on git SHAs in commit-log diffs or sha256 hashes
+# anywhere in the codebase.
+path        = '''\.(py|yml|yaml|json|env|md|txt)$'''
+keywords    = [
+    "NS_TOKEN",
+    "NS_CONSUMER",
+    "NS_ACCOUNT",
+    "netsuite",
+]
+
+# Skip our own test fixtures, .env example, and lockfiles. Add real paths
+# here if a legit 64-hex hash (e.g. an integrity field) ever trips this.
+[allowlist]
+paths = [
+    '''(?i)snapshots/.*\.json$''',
+    '''(?i)\.lock$''',
+]
