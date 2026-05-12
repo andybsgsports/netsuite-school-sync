@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-05-11T12:40:29.996191Z",
+  "updated": "2026-05-12T11:43:38.758840Z",
   "records": [
     {
       "school": "Abundant Life Christian School",
@@ -3396,14 +3396,6 @@
     },
     {
       "school": "Madison Memorial",
-      "email": "chopp@madison.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Cross Country",
-      "first": "Casey",
-      "last": "Hopp"
-    },
-    {
-      "school": "Madison Memorial",
       "email": "crfranz@madison.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Track and Field",
@@ -3417,14 +3409,6 @@
       "sport": "Girls Soccer",
       "first": "Cathy",
       "last": "Patton"
-    },
-    {
-      "school": "Madison Memorial",
-      "email": "elvosberg@madison.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Emily",
-      "last": "Vosberg"
     },
     {
       "school": "Madison Memorial",
@@ -3556,11 +3540,11 @@
     },
     {
       "school": "Madison Memorial",
-      "email": "pbrenner24@gmail.com",
+      "email": "rjpewowarvk@madison.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Peter",
-      "last": "Brenner"
+      "sport": "Boys Cross Country",
+      "first": "Ryan",
+      "last": "Pewowaruk"
     },
     {
       "school": "Madison Memorial",
@@ -3572,19 +3556,27 @@
     },
     {
       "school": "Madison Memorial",
-      "email": "stcollins@madison.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Steve",
-      "last": "Collins"
-    },
-    {
-      "school": "Madison Memorial",
       "email": "ttrichardson@madison.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
       "first": "Tim",
       "last": "Richardson"
+    },
+    {
+      "school": "Madison Memorial",
+      "email": "wjwilson@madison.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Billy",
+      "last": "Wilson"
+    },
+    {
+      "school": "Madison Memorial",
+      "email": "zlanham@madison.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Zachary",
+      "last": "Lanham"
     },
     {
       "school": "Madison West",

@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-05-11T12:44:53.901513Z",
+  "updated": "2026-05-12T11:48:07.384312Z",
   "records": [
     {
       "school": "Arrowhead",
@@ -2585,6 +2585,14 @@
       "sport": "",
       "first": "Tonya",
       "last": "Olson"
+    },
+    {
+      "school": "Lake Mills",
+      "email": "topel0530@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Alexis",
+      "last": "Milbrath"
     },
     {
       "school": "Lake Mills",
