@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-05-11T12:38:27.977721Z",
+  "updated": "2026-05-12T11:41:31.116456Z",
   "records": [
     {
       "school": "Alden-Hebron",
@@ -10892,6 +10892,14 @@
     },
     {
       "school": "Lake Villa (Lakes)",
+      "email": "michael.sansonetti@chsd117.org",
+      "role": "Coach",
+      "sport": "Bass Fishing",
+      "first": "Michael",
+      "last": "Sansonetti"
+    },
+    {
+      "school": "Lake Villa (Lakes)",
       "email": "mike.gedville@chsd117.org",
       "role": "Certified Athletic Trainer",
       "sport": "",
@@ -14412,19 +14420,19 @@
     },
     {
       "school": "Racine Lutheran",
+      "email": "cnelson@racinelutheran.org",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Chris",
+      "last": "Nelson"
+    },
+    {
+      "school": "Racine Lutheran",
       "email": "coryann.stmc@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Tennis",
       "first": "CoryAnn",
       "last": "St. Marie-Carls"
-    },
-    {
-      "school": "Racine Lutheran",
-      "email": "dburgess@racinelutheran.org",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "David",
-      "last": "Burgess"
     },
     {
       "school": "Racine Lutheran",
