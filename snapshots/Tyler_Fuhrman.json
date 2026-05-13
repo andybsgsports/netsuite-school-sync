@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-05-12T11:43:38.758840Z",
+  "updated": "2026-05-13T11:53:18.706237Z",
   "records": [
     {
       "school": "Abundant Life Christian School",
@@ -1300,14 +1300,6 @@
     },
     {
       "school": "Holmen",
-      "email": "afetterman225@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Lacrosse-Boys",
-      "first": "Alex",
-      "last": "Fetterman"
-    },
-    {
-      "school": "Holmen",
       "email": "apalmer2033@yahoo.com",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -1513,6 +1505,14 @@
       "sport": "",
       "first": "Matt",
       "last": "Sullivan"
+    },
+    {
+      "school": "Holmen",
+      "email": "truettwilson205@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Lacrosse-Boys",
+      "first": "Truett",
+      "last": "Wilson"
     },
     {
       "school": "Holmen",
@@ -1892,14 +1892,6 @@
     },
     {
       "school": "Lacrosse Aquinas",
-      "email": "afetterman225@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Lacrosse-Boys",
-      "first": "Alex",
-      "last": "Fetterman"
-    },
-    {
-      "school": "Lacrosse Aquinas",
       "email": "bauer.henry001@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Swimming & Diving",
@@ -2108,6 +2100,14 @@
     },
     {
       "school": "Lacrosse Aquinas",
+      "email": "truettwilson205@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Lacrosse-Boys",
+      "first": "Truett",
+      "last": "Wilson"
+    },
+    {
+      "school": "Lacrosse Aquinas",
       "email": "wscoopgymnastics@yahoo.com",
       "role": "Head Coach",
       "sport": "Girls Gymnastics",
@@ -2121,14 +2121,6 @@
       "sport": "",
       "first": "Aaron",
       "last": "Engel"
-    },
-    {
-      "school": "Lacrosse Central",
-      "email": "afetterman225@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Lacrosse-Boys",
-      "first": "Alex",
-      "last": "Fetterman"
     },
     {
       "school": "Lacrosse Central",
@@ -2324,6 +2316,14 @@
     },
     {
       "school": "Lacrosse Central",
+      "email": "truettwilson205@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Lacrosse-Boys",
+      "first": "Truett",
+      "last": "Wilson"
+    },
+    {
+      "school": "Lacrosse Central",
       "email": "zachsiegmeier@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Track and Field",
@@ -2345,14 +2345,6 @@
       "sport": "",
       "first": "Aaron",
       "last": "Engel"
-    },
-    {
-      "school": "Lacrosse Logan",
-      "email": "afetterman225@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Lacrosse-Boys",
-      "first": "Alex",
-      "last": "Fetterman"
     },
     {
       "school": "Lacrosse Logan",
@@ -2545,6 +2537,14 @@
       "sport": "Boys Tennis",
       "first": "Robin",
       "last": "Roberts"
+    },
+    {
+      "school": "Lacrosse Logan",
+      "email": "truettwilson205@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Lacrosse-Boys",
+      "first": "Truett",
+      "last": "Wilson"
     },
     {
       "school": "Lacrosse Logan",
@@ -4188,14 +4188,6 @@
     },
     {
       "school": "Onalaska",
-      "email": "afetterman225@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Lacrosse-Boys",
-      "first": "Alex",
-      "last": "Fetterman"
-    },
-    {
-      "school": "Onalaska",
       "email": "barton.benjamin@onalaskaschools.com",
       "role": "Superintendent",
       "sport": "",
@@ -4388,6 +4380,14 @@
     },
     {
       "school": "Onalaska",
+      "email": "truettwilson205@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Lacrosse-Boys",
+      "first": "Truett",
+      "last": "Wilson"
+    },
+    {
+      "school": "Onalaska",
       "email": "walza@onalaskaschools.com",
       "role": "Head Coach",
       "sport": "Boys Track and Field",
@@ -4401,14 +4401,6 @@
       "sport": "Boys Football",
       "first": "Thomas",
       "last": "Yashinsky"
-    },
-    {
-      "school": "Onalaska Luther",
-      "email": "afetterman225@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Lacrosse-Boys",
-      "first": "Alex",
-      "last": "Fetterman"
     },
     {
       "school": "Onalaska Luther",
@@ -4553,6 +4545,14 @@
       "sport": "Boys Wrestling",
       "first": "Thomas",
       "last": "Fortier"
+    },
+    {
+      "school": "Onalaska Luther",
+      "email": "truettwilson205@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Lacrosse-Boys",
+      "first": "Truett",
+      "last": "Wilson"
     },
     {
       "school": "Onalaska Luther",
@@ -5748,14 +5748,6 @@
     },
     {
       "school": "West Salem",
-      "email": "afetterman225@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Lacrosse-Boys",
-      "first": "Alex",
-      "last": "Fetterman"
-    },
-    {
-      "school": "West Salem",
       "email": "autumnschuster23@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Soccer",
@@ -5937,6 +5929,14 @@
       "sport": "Boys Track and Field",
       "first": "Justin",
       "last": "Stakston"
+    },
+    {
+      "school": "West Salem",
+      "email": "truettwilson205@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Lacrosse-Boys",
+      "first": "Truett",
+      "last": "Wilson"
     },
     {
       "school": "West Salem",

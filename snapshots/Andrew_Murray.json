@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-05-12T11:41:31.116456Z",
+  "updated": "2026-05-13T11:51:13.986384Z",
   "records": [
     {
       "school": "Alden-Hebron",
@@ -105,6 +105,14 @@
       "sport": "Esports",
       "first": "Ajay",
       "last": "Cheberenchick"
+    },
+    {
+      "school": "Antioch",
+      "email": "ajrochon22@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Andrew",
+      "last": "Rochon"
     },
     {
       "school": "Antioch",
@@ -11036,6 +11044,14 @@
     },
     {
       "school": "Lena-Winslow",
+      "email": "crossb@le-win.net",
+      "role": "Coach",
+      "sport": "Sideline Cheer",
+      "first": "Bailey",
+      "last": "Cross"
+    },
+    {
+      "school": "Lena-Winslow",
       "email": "daggerta@le-win.net",
       "role": "Vocal Director",
       "sport": "",
@@ -11073,14 +11089,6 @@
       "sport": "",
       "first": "Ryan",
       "last": "Hahne"
-    },
-    {
-      "school": "Lena-Winslow",
-      "email": "meganscace@hotmail.com",
-      "role": "Coach",
-      "sport": "Sideline Cheer",
-      "first": "Megan",
-      "last": "Scace"
     },
     {
       "school": "Lena-Winslow",
@@ -18668,14 +18676,6 @@
     },
     {
       "school": "Waukesha South",
-      "email": "dgramdor@waukesha.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Cross Country",
-      "first": "Darrell",
-      "last": "Gramdorf"
-    },
-    {
-      "school": "Waukesha South",
       "email": "dkupsky22@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Hockey",
@@ -18782,7 +18782,7 @@
       "school": "Waukesha South",
       "email": "mblaedow@waukesha.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys Track and Field",
+      "sport": "Boys Cross Country",
       "first": "Maddy",
       "last": "Blaedow"
     },
