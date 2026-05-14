@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-05-13T11:57:02.521290Z",
+  "updated": "2026-05-14T11:40:48.507981Z",
   "records": [
     {
       "school": "Cambria Friesland",
@@ -129,6 +129,14 @@
       "sport": "Girls Volleyball",
       "first": "Ally",
       "last": "Schrieber"
+    },
+    {
+      "school": "Campbellsport",
+      "email": "bbogenhagen@csd.k12.wi.us",
+      "role": "Assistant Athletic Director",
+      "sport": "",
+      "first": "Blake",
+      "last": "Bogenhagen"
     },
     {
       "school": "Campbellsport",

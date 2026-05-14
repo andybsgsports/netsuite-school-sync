@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-05-13T11:57:50.470648Z",
+  "updated": "2026-05-14T11:41:36.555422Z",
   "records": [
     {
       "school": "Arrowhead",
@@ -129,6 +129,14 @@
       "sport": "Boys Tennis",
       "first": "John",
       "last": "Stuart"
+    },
+    {
+      "school": "Arrowhead",
+      "email": "Kimberlydecroix@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Kimberly",
+      "last": "Kuptz"
     },
     {
       "school": "Arrowhead",

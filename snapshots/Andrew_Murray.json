@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-05-13T11:51:13.986384Z",
+  "updated": "2026-05-14T11:35:14.501148Z",
   "records": [
     {
       "school": "Alden-Hebron",
@@ -10276,19 +10276,19 @@
     },
     {
       "school": "Kenosha St. Joseph Catholic",
+      "email": "clarkk913@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Kyle",
+      "last": "Clark"
+    },
+    {
+      "school": "Kenosha St. Joseph Catholic",
       "email": "coachangelofinaldi@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Softball",
       "first": "Angelo",
       "last": "Finaldi"
-    },
-    {
-      "school": "Kenosha St. Joseph Catholic",
-      "email": "dtownsend@sjcawi.org",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Doug",
-      "last": "Townsend"
     },
     {
       "school": "Kenosha St. Joseph Catholic",
@@ -10321,14 +10321,6 @@
       "sport": "Boys & Girls Track and Field",
       "first": "Jon",
       "last": "Furreness"
-    },
-    {
-      "school": "Kenosha St. Joseph Catholic",
-      "email": "Jgarcia@sjcawi.org",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Jose",
-      "last": "Garcia"
     },
     {
       "school": "Kenosha St. Joseph Catholic",

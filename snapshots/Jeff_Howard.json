@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-05-13T11:52:09.561367Z",
+  "updated": "2026-05-14T11:36:09.611075Z",
   "records": [
     {
       "school": "Albany",
@@ -2372,6 +2372,14 @@
     },
     {
       "school": "Monroe",
+      "email": "barbkeegan@monroe.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Barb",
+      "last": "Keegan"
+    },
+    {
+      "school": "Monroe",
       "email": "barry.einbeck@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Hockey",
@@ -2481,14 +2489,6 @@
       "sport": "Boys Soccer",
       "first": "Matt",
       "last": "Coplien"
-    },
-    {
-      "school": "Monroe",
-      "email": "patrickkenny@monroe.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Patrick",
-      "last": "Kenny"
     },
     {
       "school": "Monroe",
