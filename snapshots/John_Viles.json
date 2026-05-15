@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-05-14T11:40:48.507981Z",
+  "updated": "2026-05-15T11:51:15.691037Z",
   "records": [
     {
       "school": "Cambria Friesland",
@@ -998,14 +998,6 @@
       "school": "Elkhart Lake",
       "email": "blarson@goresorters.com",
       "role": "Head Coach",
-      "sport": "Boys & Girls Cross Country",
-      "first": "Bart",
-      "last": "Larson"
-    },
-    {
-      "school": "Elkhart Lake",
-      "email": "blarson@goresorters.com",
-      "role": "Head Coach",
       "sport": "Boys Golf",
       "first": "Bart",
       "last": "Larson"
@@ -1065,6 +1057,14 @@
       "sport": "Girls Soccer",
       "first": "Jacqueline",
       "last": "Guilbeault"
+    },
+    {
+      "school": "Elkhart Lake",
+      "email": "janafogarty@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Jana",
+      "last": "Fogarty"
     },
     {
       "school": "Elkhart Lake",
@@ -3932,14 +3932,6 @@
     },
     {
       "school": "Oakfield",
-      "email": "jasoncollien@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Jason",
-      "last": "Collien"
-    },
-    {
-      "school": "Oakfield",
       "email": "jduel@oakfield.k12.wi.us",
       "role": "AD Admin Assistant",
       "sport": "",
@@ -3958,7 +3950,7 @@
       "school": "Oakfield",
       "email": "mmorell@oakfield.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
+      "sport": "Boys Wrestling",
       "first": "Mark",
       "last": "Morell"
     },
@@ -4001,14 +3993,6 @@
       "sport": "Boys & Girls Cross Country",
       "first": "Sara",
       "last": "Drews"
-    },
-    {
-      "school": "Oakfield",
-      "email": "sgross@oakfield.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Steven",
-      "last": "Gross"
     },
     {
       "school": "Oakfield",
@@ -6484,19 +6468,19 @@
     },
     {
       "school": "Sun Prairie West",
+      "email": "alreed@sunprairieschools.org",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Dr.",
+      "last": "Antoine Reed"
+    },
+    {
+      "school": "Sun Prairie West",
       "email": "apbuss@sunprairieschools.org",
       "role": "Head Coach",
       "sport": "Boys Baseball",
       "first": "Aaron",
       "last": "Buss"
-    },
-    {
-      "school": "Sun Prairie West",
-      "email": "bgsaron@sunprairieschools.org",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Brad",
-      "last": "Saron"
     },
     {
       "school": "Sun Prairie West",

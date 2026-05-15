@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-05-14T11:35:14.501148Z",
+  "updated": "2026-05-15T11:45:20.317248Z",
   "records": [
     {
       "school": "Alden-Hebron",
@@ -5678,7 +5678,15 @@
       "school": "Elkhorn",
       "email": "kaysch@elkhorn.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys & Girls Soccer",
+      "sport": "Boys Soccer",
+      "first": "Chandler",
+      "last": "Kayser"
+    },
+    {
+      "school": "Elkhorn",
+      "email": "kayserc24@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Soccer",
       "first": "Chandler",
       "last": "Kayser"
     },
@@ -7028,14 +7036,6 @@
     },
     {
       "school": "Grayslake (North)",
-      "email": "dsheridan@d127.org",
-      "role": "Coach",
-      "sport": "Chess",
-      "first": "Daniel",
-      "last": "Sheridan"
-    },
-    {
-      "school": "Grayslake (North)",
       "email": "dzubert@d127.org",
       "role": "Coach",
       "sport": "Debate",
@@ -7068,27 +7068,11 @@
     },
     {
       "school": "Grayslake (North)",
-      "email": "jfries@d127.org",
-      "role": "Newspaper Adviser",
-      "sport": "",
-      "first": "Joseph",
-      "last": "Fries"
-    },
-    {
-      "school": "Grayslake (North)",
       "email": "jgarza@d127.org",
       "role": "Activities Director's Assistant & Boys Athletic Director's Assistant & Girls Athletic Director's Assistant",
       "sport": "",
       "first": "Jenny",
       "last": "Garza"
-    },
-    {
-      "school": "Grayslake (North)",
-      "email": "jgebert@d127.org",
-      "role": "Coach",
-      "sport": "Bass Fishing",
-      "first": "Jeff",
-      "last": "Gebert"
     },
     {
       "school": "Grayslake (North)",

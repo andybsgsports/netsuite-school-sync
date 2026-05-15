@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-05-14T11:41:36.555422Z",
+  "updated": "2026-05-15T11:52:05.370532Z",
   "records": [
     {
       "school": "Arrowhead",
@@ -1225,6 +1225,14 @@
       "sport": "Boys Basketball",
       "first": "Michael",
       "last": "Hintz"
+    },
+    {
+      "school": "Fort Atkinson",
+      "email": "kory.knickrehm@fortschools.org",
+      "role": "President",
+      "sport": "",
+      "first": "Kory",
+      "last": "Knickrehm"
     },
     {
       "school": "Fort Atkinson",
@@ -4260,14 +4268,6 @@
     },
     {
       "school": "Slinger",
-      "email": "christie.rohlinger@slingerschools.org",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Christie",
-      "last": "Rohlinger"
-    },
-    {
-      "school": "Slinger",
       "email": "ctons09@hotmail.com",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
@@ -4353,14 +4353,6 @@
       "sport": "Boys & Girls Soccer",
       "first": "Kj",
       "last": "Michel"
-    },
-    {
-      "school": "Slinger",
-      "email": "korie.schofield@slingerschools.org",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Korie",
-      "last": "Schofield"
     },
     {
       "school": "Slinger",

@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-05-14T11:36:09.611075Z",
+  "updated": "2026-05-15T11:46:18.358667Z",
   "records": [
     {
       "school": "Albany",
@@ -1116,7 +1116,7 @@
     },
     {
       "school": "Cassville",
-      "email": "JLuster@cassvillesd.k12.wi.us",
+      "email": "jluster@cassvillesd.k12.wi.us",
       "role": "Superintendent, Principal",
       "sport": "",
       "first": "John",
@@ -1745,14 +1745,6 @@
       "sport": "Boys Football",
       "first": "Hayden",
       "last": "Link"
-    },
-    {
-      "school": "Iowa Grant",
-      "email": "jschultz@igs.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Jessica",
-      "last": "Schultz"
     },
     {
       "school": "Iowa Grant",
