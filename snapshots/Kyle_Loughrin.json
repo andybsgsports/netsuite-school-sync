@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-05-14T11:38:53.307776Z",
+  "updated": "2026-05-15T11:49:16.186311Z",
   "records": [
     {
       "school": "Algoma",
@@ -4484,6 +4484,14 @@
     },
     {
       "school": "Kaukauna",
+      "email": "mcdanielc@kaukaunasd.org",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Chris",
+      "last": "McDaniel"
+    },
+    {
+      "school": "Kaukauna",
       "email": "metkojana@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Swimming & Diving",
@@ -8812,6 +8820,14 @@
     },
     {
       "school": "Waupaca",
+      "email": "BryanDFay@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Track and Field",
+      "first": "Bryan",
+      "last": "Fay"
+    },
+    {
+      "school": "Waupaca",
       "email": "cikert@waupacaschools.org",
       "role": "AD Admin Assistant",
       "sport": "",
@@ -8881,14 +8897,6 @@
       "sport": "",
       "first": "Kyle",
       "last": "Scherwinski"
-    },
-    {
-      "school": "Waupaca",
-      "email": "lajohnson@waupacaschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Track and Field",
-      "first": "Lana",
-      "last": "Johnson"
     },
     {
       "school": "Waupaca",
