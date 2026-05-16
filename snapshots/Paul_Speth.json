@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-05-15T11:49:52.362658Z",
+  "updated": "2026-05-16T11:00:33.086642Z",
   "records": [
     {
       "school": "Adams Friendship",
@@ -2209,6 +2209,14 @@
       "sport": "",
       "first": "Dr.",
       "last": "Antoine Reed"
+    },
+    {
+      "school": "Sun Prairie East",
+      "email": "bgsaron@sunprairieschools.org",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Brad",
+      "last": "Saron"
     },
     {
       "school": "Sun Prairie East",

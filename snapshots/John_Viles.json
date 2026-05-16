@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-05-15T11:51:15.691037Z",
+  "updated": "2026-05-16T11:01:57.044374Z",
   "records": [
     {
       "school": "Cambria Friesland",
@@ -6481,6 +6481,14 @@
       "sport": "Boys Baseball",
       "first": "Aaron",
       "last": "Buss"
+    },
+    {
+      "school": "Sun Prairie West",
+      "email": "bgsaron@sunprairieschools.org",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Brad",
+      "last": "Saron"
     },
     {
       "school": "Sun Prairie West",
