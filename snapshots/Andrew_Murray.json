@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-05-19T12:39:48.645892Z",
+  "updated": "2026-05-20T12:19:23.578320Z",
   "records": [
     {
       "school": "Alden-Hebron",
@@ -11517,7 +11517,7 @@
     {
       "school": "Marengo",
       "email": "ackleyl@mchs154.org",
-      "role": "Activities Director's Assistant & Boys Athletic Director's Assistant & Girls Athletic Director's Assistant",
+      "role": "Activities Director's Assistant",
       "sport": "",
       "first": "Lisa",
       "last": "Ackley"
@@ -11553,14 +11553,6 @@
       "sport": "Girls Basketball",
       "first": "Elisa",
       "last": "Hanson"
-    },
-    {
-      "school": "Marengo",
-      "email": "engelbrechtd@mchs154.org",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "David",
-      "last": "Engelbrecht"
     },
     {
       "school": "Marengo",
@@ -11660,22 +11652,6 @@
     },
     {
       "school": "Marengo",
-      "email": "mullensj@mchs154.org",
-      "role": "Principal",
-      "sport": "",
-      "first": "Jay",
-      "last": "Mullens"
-    },
-    {
-      "school": "Marengo",
-      "email": "nanced@mchs154.org",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Dwain",
-      "last": "Nance"
-    },
-    {
-      "school": "Marengo",
       "email": "nanced@mchs154.org",
       "role": "Coach",
       "sport": "Bass Fishing",
@@ -11687,6 +11663,14 @@
       "email": "nanced@mchs154.org",
       "role": "Head Coach",
       "sport": "Girls Softball",
+      "first": "Dwain",
+      "last": "Nance"
+    },
+    {
+      "school": "Marengo",
+      "email": "nanced@mchs154.org",
+      "role": "IHSA Official Representative",
+      "sport": "",
       "first": "Dwain",
       "last": "Nance"
     },
@@ -12036,14 +12020,6 @@
     },
     {
       "school": "McHenry",
-      "email": "calabresechristina@dist156.org",
-      "role": "Head Coach",
-      "sport": "Competitive Dance",
-      "first": "Christina",
-      "last": "Calabrese"
-    },
-    {
-      "school": "McHenry",
       "email": "cardraymond@dist156.org",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -12174,7 +12150,7 @@
       "school": "McHenry",
       "email": "khorst@d15.org",
       "role": "Head Coach",
-      "sport": "Boys & Girls Cross Country",
+      "sport": "Boys Cross Country",
       "first": "Kevin",
       "last": "Horst"
     },
@@ -12319,14 +12295,6 @@
       "email": "randazzopayton@dist156.org",
       "role": "Coach",
       "sport": "Sideline Cheer",
-      "first": "Miss",
-      "last": "Payton Randazzo"
-    },
-    {
-      "school": "McHenry",
-      "email": "randazzopayton@dist156.org",
-      "role": "Head Coach",
-      "sport": "Competitive Cheerleading",
       "first": "Miss",
       "last": "Payton Randazzo"
     },
