@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-05-19T12:43:41.755804Z",
+  "updated": "2026-05-20T12:23:24.336163Z",
   "records": [
     {
       "school": "Algoma",
@@ -2622,7 +2622,7 @@
       "school": "Freedom",
       "email": "bradmbaker82@gmail.com",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
+      "sport": "Boys Wrestling",
       "first": "Brad",
       "last": "Baker"
     },
@@ -2753,6 +2753,14 @@
       "sport": "Girls Golf",
       "first": "Travis",
       "last": "Gerritts"
+    },
+    {
+      "school": "Freedom",
+      "email": "tkazik@freedomschools.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Tony",
+      "last": "Kazik"
     },
     {
       "school": "Freedom",
