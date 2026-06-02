@@ -7,6 +7,12 @@ name: Manual - Fix Contact School Names
 
 on:
   workflow_dispatch:
+    inputs:
+      allow_name_merge:
+        description: 'Overwrite even when an NS Customer ID has multiple distinct contact-tab names (use after verifying the Schools-tab row is correct).'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   fix:
@@ -28,5 +34,6 @@ jobs:
       - name: Run fix
         run: python fix_contact_school_names.py
         env:
+          ALLOW_NAME_MERGE:        ${{ inputs.allow_name_merge && '1' || '' }}
           GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
           GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
