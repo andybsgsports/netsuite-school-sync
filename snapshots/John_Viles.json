@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-05-20T12:25:21.863462Z",
+  "updated": "2026-06-02T15:46:45.731673Z",
   "records": [
     {
       "school": "Cambria Friesland",
@@ -604,6 +604,14 @@
     },
     {
       "school": "Chilton",
+      "email": "kielm@chiltonsd.org",
+      "role": "Principal",
+      "sport": "",
+      "first": "Matt",
+      "last": "Kiel"
+    },
+    {
+      "school": "Chilton",
       "email": "kmmgolf@hotmail.com",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -649,14 +657,6 @@
       "sport": "Boys & Girls Track and Field",
       "first": "Rocky",
       "last": "Gozdziewski"
-    },
-    {
-      "school": "Chilton",
-      "email": "rudes@chiltonsd.org",
-      "role": "Principal",
-      "sport": "",
-      "first": "Shawn",
-      "last": "Rude"
     },
     {
       "school": "Columbus",
@@ -1084,14 +1084,6 @@
     },
     {
       "school": "Elkhart Lake",
-      "email": "nneuhaus@kiel.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Swimming & Diving",
-      "first": "Nadine",
-      "last": "Neuhaus"
-    },
-    {
-      "school": "Elkhart Lake",
       "email": "ottohenschel@hotmail.com",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
@@ -1260,6 +1252,14 @@
     },
     {
       "school": "Fond Du Lac",
+      "email": "dienerd@fonddulac.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Drake",
+      "last": "Diener"
+    },
+    {
+      "school": "Fond Du Lac",
       "email": "duanewoeshnick@hotmail.com",
       "role": "Head Coach",
       "sport": "Boys & Girls Golf",
@@ -1308,11 +1308,11 @@
     },
     {
       "school": "Fond Du Lac",
-      "email": "joshdilling2020@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Josh",
-      "last": "Dilling"
+      "email": "jahna@fonddulac.k12.wi.us",
+      "role": "Principal",
+      "sport": "",
+      "first": "Amy",
+      "last": "Jahn"
     },
     {
       "school": "Fond Du Lac",
@@ -1321,14 +1321,6 @@
       "sport": "Girls Hockey",
       "first": "Lindsay",
       "last": "Lewison"
-    },
-    {
-      "school": "Fond Du Lac",
-      "email": "michalkiewiczd@fonddulac.k12.wi.us",
-      "role": "Principal",
-      "sport": "",
-      "first": "Dave",
-      "last": "Michalkiewicz"
     },
     {
       "school": "Fond Du Lac",
@@ -1385,14 +1377,6 @@
       "sport": "Boys & Girls Swimming Diving",
       "first": "Nikki",
       "last": "Schneider"
-    },
-    {
-      "school": "Fond Du Lac",
-      "email": "schreiterb@fonddulac.k12.wi.us",
-      "role": "AD Admin Assistant",
-      "sport": "",
-      "first": "Brianna",
-      "last": "Schreiter"
     },
     {
       "school": "Fond Du Lac",
@@ -2164,14 +2148,6 @@
     },
     {
       "school": "Kiel",
-      "email": "nneuhaus@kiel.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Swimming & Diving",
-      "first": "Nadine",
-      "last": "Neuhaus"
-    },
-    {
-      "school": "Kiel",
       "email": "swalsh@kiel.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
@@ -2190,7 +2166,7 @@
       "school": "Kohler",
       "email": "bobs24444@gmail.com",
       "role": "Head Coach",
-      "sport": "Boys & Girls Tennis",
+      "sport": "Boys Tennis",
       "first": "Bob",
       "last": "Sasse"
     },
@@ -2294,6 +2270,14 @@
       "school": "Kohler",
       "email": "remjay8504@gmail.com",
       "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Remington",
+      "last": "Michael"
+    },
+    {
+      "school": "Kohler",
+      "email": "remjay8504@gmail.com",
+      "role": "Head Coach",
       "sport": "Boys Track and Field",
       "first": "Remington",
       "last": "Michael"
@@ -2332,11 +2316,11 @@
     },
     {
       "school": "Kohler",
-      "email": "wieser@kohler.k12.wi.us",
+      "email": "villwock624@gmail.com",
       "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Richard",
-      "last": "Wiese"
+      "sport": "Girls Tennis",
+      "first": "John",
+      "last": "Villwock"
     },
     {
       "school": "Laconia",
@@ -5020,6 +5004,14 @@
     },
     {
       "school": "Randolph",
+      "email": "waterworthd@rsdwi.org",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Donna",
+      "last": "Waterworth"
+    },
+    {
+      "school": "Randolph",
       "email": "wdgolf@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -5500,6 +5492,14 @@
     },
     {
       "school": "Sheboygan Christian",
+      "email": "remjay8504@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Remington",
+      "last": "Michael"
+    },
+    {
+      "school": "Sheboygan Christian",
       "email": "Todd.Wagner@kohler.com",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -5769,6 +5769,14 @@
       "sport": "Boys & Girls Track and Field",
       "first": "Nathan",
       "last": "Pennekamp"
+    },
+    {
+      "school": "Sheboygan Lutheran",
+      "email": "remjay8504@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Remington",
+      "last": "Michael"
     },
     {
       "school": "Sheboygan Lutheran",

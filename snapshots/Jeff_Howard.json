@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-05-20T12:20:21.445347Z",
+  "updated": "2026-06-02T15:42:01.952984Z",
   "records": [
     {
       "school": "Albany",
@@ -1108,14 +1108,6 @@
     },
     {
       "school": "Cassville",
-      "email": "janebel@hotmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Jamie",
-      "last": "Nebel"
-    },
-    {
-      "school": "Cassville",
       "email": "jluster@cassvillesd.k12.wi.us",
       "role": "Superintendent, Principal",
       "sport": "",
@@ -1137,6 +1129,14 @@
       "sport": "Girls Volleyball",
       "first": "Kristin",
       "last": "Infield"
+    },
+    {
+      "school": "Cassville",
+      "email": "knappd@potosisd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Desiree",
+      "last": "Knapp"
     },
     {
       "school": "Cassville",
@@ -3228,14 +3228,6 @@
     },
     {
       "school": "Potosi",
-      "email": "janebel@hotmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Jamie",
-      "last": "Nebel"
-    },
-    {
-      "school": "Potosi",
       "email": "jtuescher@cassvillesd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Track and Field",
@@ -3249,6 +3241,14 @@
       "sport": "Girls Volleyball",
       "first": "Justice",
       "last": "Udelhofen"
+    },
+    {
+      "school": "Potosi",
+      "email": "knappd@potosisd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Desiree",
+      "last": "Knapp"
     },
     {
       "school": "Potosi",
@@ -4440,7 +4440,7 @@
       "role": "Head Coach",
       "sport": "Boys Baseball",
       "first": "Cooper",
-      "last": "Holewinki"
+      "last": "Holewinski"
     },
     {
       "school": "Waunakee",
