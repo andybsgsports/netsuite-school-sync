@@ -1,0 +1,32 @@
+name: Manual - Fix Contact School Names
+
+# One-time cleanup that overwrites the Contacts tab's School Name
+# column to match what's on the Schools tab, pivoting on NS Customer
+# ID. Run after a school rename on the Schools tab so the Contacts
+# rows pick up the new name.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+
+      - name: Run fix
+        run: python fix_contact_school_names.py
+        env:
+          GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
