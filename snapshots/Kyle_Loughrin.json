@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-05-20T12:23:24.336163Z",
+  "updated": "2026-06-02T15:44:48.966769Z",
   "records": [
     {
       "school": "Algoma",
@@ -721,14 +721,6 @@
       "sport": "Girls Lacrosse-Girls",
       "first": "Teona",
       "last": "King-Arndt"
-    },
-    {
-      "school": "Appleton West",
-      "email": "bumptanner@aasd.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Tanner",
-      "last": "Bump"
     },
     {
       "school": "Appleton West",
@@ -4108,7 +4100,7 @@
     },
     {
       "school": "Hortonville",
-      "email": "kevinsours@hasd.org",
+      "email": "kevinsours77@gmail.com",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
       "first": "Kevin",
@@ -4116,7 +4108,7 @@
     },
     {
       "school": "Hortonville",
-      "email": "kevinsours@hasd.org",
+      "email": "kevinsours77@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Track and Field",
       "first": "Kevin",
@@ -4492,14 +4484,6 @@
     },
     {
       "school": "Kaukauna",
-      "email": "mcdanielc@kaukaunasd.org",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Chris",
-      "last": "McDaniel"
-    },
-    {
-      "school": "Kaukauna",
       "email": "metkojana@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Swimming & Diving",
@@ -4644,14 +4628,6 @@
     },
     {
       "school": "Kewaunee",
-      "email": "jlgeier4@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Lynn",
-      "last": "Geier"
-    },
-    {
-      "school": "Kewaunee",
       "email": "JTess@kewaunee.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Soccer",
@@ -4681,14 +4657,6 @@
       "sport": "Girls Track and Field",
       "first": "Marlene",
       "last": "Hall"
-    },
-    {
-      "school": "Kewaunee",
-      "email": "mhahn@kewaunee.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Tennis",
-      "first": "Mitchell",
-      "last": "Hahn"
     },
     {
       "school": "Kewaunee",
@@ -7812,11 +7780,11 @@
     },
     {
       "school": "Shiocton",
-      "email": "jeremydyoung98@gmail.com",
+      "email": "heinemeyerb@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Basketball",
-      "first": "Jeremy",
-      "last": "Young"
+      "first": "Bo",
+      "last": "Heinemeyer"
     },
     {
       "school": "Shiocton",
@@ -8812,11 +8780,11 @@
     },
     {
       "school": "Waupaca",
-      "email": "aaltmann@waupacaschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Anthony",
-      "last": "Altmann"
+      "email": "abrill@waupacaschools.org",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Ashley",
+      "last": "Brill"
     },
     {
       "school": "Waupaca",
@@ -8972,6 +8940,14 @@
     },
     {
       "school": "Wausau East",
+      "email": "ameyer@wausauschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Andy",
+      "last": "Meyer"
+    },
+    {
+      "school": "Wausau East",
       "email": "bbednarczyk@wausauschools.org",
       "role": "Head Coach",
       "sport": "Boys Hockey",
@@ -9057,14 +9033,6 @@
       "sport": "Girls Hockey",
       "first": "Jana",
       "last": "Wimmer"
-    },
-    {
-      "school": "Wausau East",
-      "email": "jstout@wausauschools.org",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Jennifer",
-      "last": "Stout"
     },
     {
       "school": "Wausau East",
@@ -9580,14 +9548,6 @@
     },
     {
       "school": "Weyauwega-Fremont",
-      "email": "jnollenberg@wfsd.k12.wi.us",
-      "role": "AD Admin Assistant",
-      "sport": "",
-      "first": "JoLene",
-      "last": "Nollenberg"
-    },
-    {
-      "school": "Weyauwega-Fremont",
       "email": "jparker@wfsd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Basketball",
@@ -9609,14 +9569,6 @@
       "sport": "Boys Golf",
       "first": "Melinda",
       "last": "Brace"
-    },
-    {
-      "school": "Weyauwega-Fremont",
-      "email": "mresch@wfsd.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Mara",
-      "last": "Resch"
     },
     {
       "school": "Weyauwega-Fremont",

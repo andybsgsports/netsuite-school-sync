@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-05-20T12:21:29.915162Z",
+  "updated": "2026-06-02T15:43:08.627289Z",
   "records": [
     {
       "school": "Abundant Life Christian School",
@@ -2756,6 +2756,14 @@
     },
     {
       "school": "Madison East",
+      "email": "ellebraunn@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Elle",
+      "last": "Braun"
+    },
+    {
+      "school": "Madison East",
       "email": "eshalberg@madison.k12.wi.us",
       "role": "Assistant Athletic Director",
       "sport": "",
@@ -5404,7 +5412,7 @@
     },
     {
       "school": "Tomah",
-      "email": "benjaminbannan@tomah.education",
+      "email": "benbannan@tomah.education",
       "role": "Head Coach",
       "sport": "Boys & Girls Tennis",
       "first": "Ben",
@@ -5588,14 +5596,6 @@
     },
     {
       "school": "Viroqua",
-      "email": "anderi@viroquablackhawk.org",
-      "role": "Assistant Athletic Director",
-      "sport": "",
-      "first": "Eric",
-      "last": "Anderson"
-    },
-    {
-      "school": "Viroqua",
       "email": "bensco@viroquablackhawk.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -5625,6 +5625,14 @@
       "sport": "Boys Golf",
       "first": "Eli",
       "last": "Jackson"
+    },
+    {
+      "school": "Viroqua",
+      "email": "ericanderson.viroqua@gmail.com",
+      "role": "Assistant Athletic Director",
+      "sport": "",
+      "first": "Eric",
+      "last": "Anderson"
     },
     {
       "school": "Viroqua",
@@ -6108,6 +6116,14 @@
     },
     {
       "school": "Weston",
+      "email": "acbrice26@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Ashley",
+      "last": "McBain"
+    },
+    {
+      "school": "Weston",
       "email": "april.lynn.jennings@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -6143,14 +6159,6 @@
       "email": "landsinger@weston.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
-      "first": "Maggie",
-      "last": "Landsinger"
-    },
-    {
-      "school": "Weston",
-      "email": "landsinger@weston.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
       "first": "Maggie",
       "last": "Landsinger"
     },

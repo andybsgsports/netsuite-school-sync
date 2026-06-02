@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-05-20T12:23:58.515565Z",
+  "updated": "2026-06-02T15:45:24.265730Z",
   "records": [
     {
       "school": "Adams Friendship",
@@ -1660,19 +1660,19 @@
     },
     {
       "school": "Pardeeville",
+      "email": "bellda@pasdwi.org",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "David",
+      "last": "Bell"
+    },
+    {
+      "school": "Pardeeville",
       "email": "Denuam@pasdwi.org",
       "role": "Athletic Director",
       "sport": "",
       "first": "Amber",
       "last": "Denure"
-    },
-    {
-      "school": "Pardeeville",
-      "email": "guenjo@pasdwi.org",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Joseph",
-      "last": "Guenther"
     },
     {
       "school": "Pardeeville",
@@ -1697,14 +1697,6 @@
       "sport": "Boys Wrestling",
       "first": "Jesse",
       "last": "Huset"
-    },
-    {
-      "school": "Pardeeville",
-      "email": "jacoro@pasdwi.org",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Ron",
-      "last": "Jacobson"
     },
     {
       "school": "Pardeeville",
@@ -1868,14 +1860,6 @@
     },
     {
       "school": "Portage",
-      "email": "bohrerc@portage.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Caleb",
-      "last": "Bohrer"
-    },
-    {
-      "school": "Portage",
       "email": "carlsone@portage.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
@@ -2030,7 +2014,7 @@
       "school": "Portage",
       "email": "trevor.hoff73@gmail.com",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
+      "sport": "Boys Wrestling",
       "first": "Trevor",
       "last": "Hoff"
     },
