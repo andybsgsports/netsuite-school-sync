@@ -1,0 +1,32 @@
+name: Manual - Align Legacy Reps Sheet School Names
+
+# Overwrites the school-name column on the legacy "WI School List- Master"
+# sheet to match the canonical "School Name" column on the main master
+# sheet's Schools tab. Pivots on the URL column.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  align:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+
+      - name: Run align
+        run: python align_reps_sheet.py
+        env:
+          GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_SHEET_ID_REPS:    ${{ secrets.GOOGLE_SHEET_ID_REPS }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
