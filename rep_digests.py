@@ -110,16 +110,29 @@ def get_gspread_client():
 
 
 def load_rep_schools(gc):
-    """Returns {rep_name: [(school_name, school_url), ...]}."""
-    wb = gc.open_by_key(GOOGLE_SHEET_ID_REPS)
-    ws = wb.sheet1  # WI School List- Master has one tab
-    rows = ws.get_all_records()
+    """Returns {rep_name: [(school_name, school_url), ...]} for WI rows on
+    the MAIN master sheet's Schools tab. The canonical "School Name"
+    column is used so scraped contact rows land with the same name the
+    rest of the system uses (e.g. 'Antioch Community High School', not
+    the legacy shorthand 'Antioch' from the retired WI School List-
+    Master sheet that this function used to read)."""
+    if not GOOGLE_SHEET_ID_MAIN:
+        return {}
+    wb = gc.open_by_key(GOOGLE_SHEET_ID_MAIN)
+    try:
+        ws = wb.worksheet("Schools")
+    except Exception:
+        return {}
     by_rep = {}
-    for row in rows:
-        school = str(row.get("Schools", "")).strip()
-        url = str(row.get("School Website", "")).strip()
-        rep = str(row.get("Sales Rep", "")).strip()
-        if not (school and url and rep):
+    for row in ws.get_all_records():
+        state = str(row.get("State", "")).strip().upper()
+        if state != "WI":
+            continue
+        school = str(row.get("School Name", "")).strip()
+        url    = str(row.get("School URL", "")).strip()
+        rep    = str(row.get("Sales Rep", "")).strip()
+        locked = str(row.get("Locked", "")).strip().upper() == "Y"
+        if not (school and url and rep) or locked:
             continue
         by_rep.setdefault(rep, []).append((school, url))
     return by_rep

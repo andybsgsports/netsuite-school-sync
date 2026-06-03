@@ -1,0 +1,31 @@
+name: Manual - Dedup Contacts
+
+# One-time cleanup that drops exact (School Name, Email, Role)
+# duplicates from the Contacts tab. Useful after a school rename
+# pass when shorthand and full-name rows collapse to the same key.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  dedup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+
+      - name: Run dedup
+        run: python dedup_contacts.py
+        env:
+          GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
