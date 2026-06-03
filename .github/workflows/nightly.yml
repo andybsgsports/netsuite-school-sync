@@ -1,12 +1,13 @@
 name: Daily NS Push (sheet -> NetSuite, per rep)
 
-# Reads the master sheet (populated earlier by Rep Digests at 4:30 AM)
+# Reads the master sheet (populated earlier by Rep Digests at 12:30 AM)
 # and pushes each rep's contacts to NetSuite — one rep at a time so
 # one rep's failure doesn't block the others.
 on:
   schedule:
-    # 11:30 UTC = ~6:30 AM Central. Rep Digests finishes ~4:30-5:30 AM.
-    - cron: '30 11 * * *'
+    # 07:30 UTC = 2:30 AM Central (CDT). Rep Digests targets 12:30 AM
+    # and finishes well before this slot.
+    - cron: '30 7 * * *'
   workflow_dispatch:
 
 jobs:
