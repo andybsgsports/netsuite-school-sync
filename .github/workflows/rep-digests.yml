@@ -2,10 +2,12 @@ name: Rep Digests
 
 on:
   schedule:
-    # 09:30 UTC = ~4:30 AM Central. Scrapes WIAA/IHSA, emails per-rep
-    # XLSX, and writes fresh contacts into the master sheet. NS push
-    # workflow runs 2h later and reads the sheet (no re-scrape).
-    - cron: '30 9 * * *'
+    # 05:30 UTC = 12:30 AM Central (CDT). Scrapes WIAA/IHSA, emails
+    # per-rep XLSX, and writes fresh contacts into the master sheet.
+    # NS push workflow runs 2h later and reads the sheet (no re-scrape).
+    # Note: GitHub Actions free-tier schedules can lag 1-6 h during
+    # busy windows; this is the earliest target slot.
+    - cron: '30 5 * * *'
   workflow_dispatch:
     inputs:
       rep_filter:
