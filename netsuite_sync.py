@@ -551,12 +551,19 @@ def build_customer_body(school_name, state, school_info, contacts=None, sales_re
     zp          = school_info.get("zip", "")
     school_class = school_info.get("school_class", "")
 
+    # NetSuite rejects PATCH with HTTP 400 "Invalid url. Spaces are not
+    # allowed" when the url field contains whitespace anywhere. Some sheet
+    # rows have stray inner spaces (e.g. "https://www. district100.com")
+    # from copy-paste. Strip all whitespace, not just leading/trailing.
+    raw_url = str(school_info.get("website", "") or "")
+    safe_url = re.sub(r"\s+", "", raw_url)
+
     body = {
         "companyName":  full_name,
         "externalId":   external_id,
         "isPerson":     False,
         "phone":        school_info.get("phone", ""),
-        "url":          school_info.get("website", ""),
+        "url":          safe_url,
         CF_LEVEL:       level,
         CF_NICKNAME:    school_info.get("nickname", ""),
         CF_COLORS:      school_info.get("colors", ""),
@@ -788,12 +795,20 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
     contact_id, is_inactive, found_via = find_contact_any_format(
         school_name, email, role, customer_id=customer_id)
 
+    # NetSuite caps the `title` field at 100 characters and rejects PATCH/POST
+    # with HTTP 400 "The field title contained more than the maximum number
+    # of characters" otherwise. Some scraped IL titles can be 200+ chars
+    # (e.g. "activities director's assistant & boys athletic director's
+    # assistant & girls athletic director's assistant & student council
+    # adviser"). Truncate defensively, leaving an ellipsis when we cut.
+    safe_title = role if len(role) <= 100 else role[:97].rstrip() + "..."
+
     body_create = {
         "externalId": ext_id,
         "firstName":  first,
         "lastName":   last,
         "email":      email,
-        "title":      role,
+        "title":      safe_title,
         "company":    {"id": customer_id},
         "comments":   f"{state} | Auto-synced by School Sync",
     }
