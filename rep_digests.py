@@ -5,16 +5,17 @@ Consolidated replacement for the six per-rep WIAA scraper scripts that used to
 live on the Desktop and send Outlook emails via Task Scheduler.
 
 One run:
-  1. Reads the "WI School List- Master" Google Sheet (grouped by Sales Rep col)
+  1. Reads the main master sheet's Schools tab, grouped by Sales Rep col
   2. For each configured rep, scrapes WIAA for their schools
   3. Builds an xlsx with Athletic Admins / Administrators / per-sport coach tabs
   4. Diffs current vs. previous snapshot (stored in snapshots/{rep}.json)
   5. Emails the rep (and BCC andy) via Gmail SMTP if anything changed
   6. Writes the new snapshot back to disk (committed by the workflow)
+  7. Uploads the per-rep xlsx to the shared Drive archive folder
+  8. Merges any new scraped rows into the master sheet's Contacts tab
 
 Env vars required:
-  GOOGLE_SHEET_ID_REPS     - ID of "WI School List- Master" sheet
-                             (default: 1SlZHbGRvPiO8Qtq7kY2aI0Y9oUsKZ2CxXNXcuw211N0)
+  GOOGLE_SHEET_ID          - main master sheet (Schools tab + Contacts tab)
   GOOGLE_CREDENTIALS_JSON  - service account JSON (same as daily-sync)
   GMAIL_USER               - e.g. andy@bsgsports.com
   GMAIL_APP_PASSWORD       - Gmail app password (requires 2FA enabled)
@@ -45,10 +46,6 @@ from netsuite_sync import scrape_wiaa_school_detail
 from ihsa_sync import fetch_school_staff, fetch_email, extract_school_id
 
 # -- Config -------------------------------------------------------------------
-GOOGLE_SHEET_ID_REPS = os.environ.get(
-    "GOOGLE_SHEET_ID_REPS",
-    "1SlZHbGRvPiO8Qtq7kY2aI0Y9oUsKZ2CxXNXcuw211N0",
-)
 GOOGLE_SCOPES = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive",
