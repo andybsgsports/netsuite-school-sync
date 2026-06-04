@@ -459,6 +459,7 @@ def sync_address_book(customer_id, school_info, contacts, school_name=""):
     # pre-existing Ship-To, and it caused the same contacts to be re-added
     # on every run (80+ duplicate Ship-Tos on Barneveld as of Apr 2026).
     existing_labels = set()
+    addressee_fixes = 0
     r = ns_get(f"customer/{customer_id}?expand=addressBook")
     if r.status_code == 200:
         items = r.json().get("addressBook", {}).get("items", [])
@@ -468,10 +469,28 @@ def sync_address_book(customer_id, school_info, contacts, school_name=""):
             if not line_id:
                 continue
             r2 = ns_get(f"customer/{customer_id}/addressBook/{line_id}")
-            if r2.status_code == 200:
-                lbl = (r2.json().get("label") or "").strip()
-                if lbl:
-                    existing_labels.add(lbl.lower())
+            if r2.status_code != 200:
+                continue
+            data = r2.json()
+            lbl = (data.get("label") or "").strip()
+            if lbl:
+                existing_labels.add(lbl.lower())
+            # Self-heal renamed schools: if this line's addressee no longer
+            # matches the canonical name (e.g. "Cary (C.-Grove)" -> "Cary-
+            # Grove High School"), PATCH just the addressee in place. NS
+            # allows PATCH on the addressBook sub-resource. No-op once the
+            # addressee already matches, so this stays quiet after one pass.
+            if school_name:
+                cur_addressee = ((data.get("addressBookAddress") or {})
+                                 .get("addressee") or "").strip()
+                if cur_addressee and cur_addressee != school_name:
+                    pr = ns_patch(
+                        f"customer/{customer_id}/addressBook/{line_id}",
+                        {"addressBookAddress": {"addressee": school_name}})
+                    if pr.status_code in (200, 204):
+                        addressee_fixes += 1
+    if addressee_fixes:
+        print(f"  [NS] Updated addressee on {addressee_fixes} address(es) -> '{school_name}'")
 
     new_items = []
     for name in contact_names:
