@@ -287,8 +287,11 @@ def main():
                 if str(c.get(C_SYNC, "N")).strip().upper() == "Y"
             ]
             if active_contacts and school_info_out:
+                # Pass display_name (Full Name column) so the address
+                # addressee matches the customer's company name, not the
+                # short School Name.
                 sync_address_book(result_id, school_info_out, active_contacts,
-                                  school_name=school_name)
+                                  school_name=display_name)
 
         # Save every 10 schools so a timeout doesn't lose all hash progress.
         # sync_y_N is modulo — cheap sheet write vs. hours of re-push on re-run.
