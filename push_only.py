@@ -186,9 +186,38 @@ def main():
         if school_info_out["domain"]:
             print(f"  School domain: {school_info_out['domain']}")
 
-        # Dedupe: one coach with multiple sports = multiple sheet rows but
-        # should be one NS PATCH. Key by email (same person); carry the NS
-        # Contact ID forward so we don't re-PATCH the same record.
+        # A person who holds several roles at one school (e.g. John Lalor =
+        # Athletic Director AND head football coach AND head wrestling coach)
+        # has multiple Sync=Y rows but should be ONE NetSuite contact with a
+        # combined title — NS has a single `title` field per contact. Build
+        # that combined title per email up front so every role shows in NS.
+        email_title = {}   # email_lower -> "Athletic Director, Head Coach (Boys Football), ..."
+        for c in school_contacts:
+            if str(c.get(C_SYNC, "N")).strip().upper() != "Y":
+                continue
+            em = str(c.get(C_EMAIL, "")).strip().lower()
+            if not em:
+                continue
+            role_txt = str(c.get(C_ROLE, "")).strip()
+            type_txt = str(c.get(C_TYPE, "")).strip()
+            # Admin rows: role IS the title. Coach rows: role is the sport,
+            # type is "Head Coach"/"Coach" — combine to "Head Coach (Sport)".
+            if type_txt and type_txt.lower() not in ("admin", ""):
+                label = f"{type_txt} ({role_txt})" if role_txt else type_txt
+            else:
+                label = role_txt
+            if not label:
+                continue
+            parts = email_title.setdefault(em, [])
+            if label not in parts:               # de-dupe identical labels
+                parts.append(label)
+
+        def combined_title(em):
+            return ", ".join(email_title.get(em, []))
+
+        # Dedupe: one person with multiple roles = multiple sheet rows but
+        # one NS PATCH. Key by email; carry the NS Contact ID forward so we
+        # don't re-PATCH the same record.
         pushed_emails = {}    # email_lower -> ns_contact_id (after sync)
         for c in school_contacts:
             sync_flag  = str(c.get(C_SYNC, "N")).strip().upper()
@@ -201,20 +230,22 @@ def main():
                 continue
             c[C_NS_CUS] = str(result_id)
             em_key = email.lower()
+            title  = combined_title(em_key) or role   # all roles, comma-joined
 
             if sync_flag == "Y":
                 if contact_ns == "UNLINKED":
                     continue
                 if em_key in pushed_emails:
-                    # Same person, different sport row — reuse the known NS ID
+                    # Same person, another role row — reuse the known NS ID
                     if pushed_emails[em_key]:
                         c[C_NS_CID] = str(pushed_emails[em_key])
                         c[C_SYNCED] = datetime.now().strftime("%Y-%m-%d %H:%M")
-                        c[C_HASH]   = row_hash(first, last, email, role)
+                        c[C_HASH]   = row_hash(first, last, email, title)
                     continue
 
-                # Change detection: skip if already in NS with matching hash
-                current_hash = row_hash(first, last, email, role)
+                # Change detection keyed on the COMBINED title so picking up
+                # or dropping a role re-pushes the contact.
+                current_hash = row_hash(first, last, email, title)
                 stored_hash  = str(c.get(C_HASH, "")).strip()
                 if contact_ns and contact_ns not in ("nan", "None") and stored_hash == current_hash:
                     # No change since last push — skip the NS PATCH
@@ -223,7 +254,7 @@ def main():
 
                 new_id = sync_contact(result_id, school_name, {
                     "first": first, "last": last,
-                    "email": email, "role": role,
+                    "email": email, "role": title,
                     "ns_id": contact_ns if contact_ns not in ("", "nan", "None") else "",
                 }, school_info_out)
                 if new_id:
