@@ -202,6 +202,14 @@ def slugify(name):
     s = re.sub(r"[^A-Z0-9]+", "-", s)
     return s.strip("-")[:50]
 
+
+def _safe_title(role):
+    """NetSuite's contact `title` field rejects values over its max length
+    (a 100-char title was rejected, so the cap is <=99). Truncate to a safe
+    95 with an ellipsis when we cut."""
+    role = (role or "").strip()
+    return role if len(role) <= 95 else role[:92].rstrip() + "..."
+
 def extract_id_from_location(resp):
     loc = resp.headers.get("Location", "")
     m = re.search(r"/(\d+)$", loc)
@@ -804,13 +812,16 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
     # could not find ID"). The stored internal ID is rename-proof.
     known_id = str(contact_row.get("ns_id", "")).strip()
     if known_id and known_id.isdigit():
-        safe_title_known = role if len(role) <= 100 else role[:97].rstrip() + "..."
+        # Do NOT set externalId here. For co-op coaches (one shared NS
+        # contact referenced from several schools) trying to migrate the
+        # externalId to this school's slug collides with the slug already
+        # held for another school -> HTTP 400. We know the record by its
+        # internal ID, so externalId is irrelevant to the update.
         body_known = {
-            "externalId": ext_id,        # migrate externalId to current slug
             "firstName":  first,
             "lastName":   last,
             "email":      email,
-            "title":      safe_title_known,
+            "title":      _safe_title(role),
             "company":    {"id": customer_id},
             "comments":   f"{state} | Auto-synced by School Sync",
         }
@@ -825,20 +836,12 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
     contact_id, is_inactive, found_via = find_contact_any_format(
         school_name, email, role, customer_id=customer_id)
 
-    # NetSuite caps the `title` field at 100 characters and rejects PATCH/POST
-    # with HTTP 400 "The field title contained more than the maximum number
-    # of characters" otherwise. Some scraped IL titles can be 200+ chars
-    # (e.g. "activities director's assistant & boys athletic director's
-    # assistant & girls athletic director's assistant & student council
-    # adviser"). Truncate defensively, leaving an ellipsis when we cut.
-    safe_title = role if len(role) <= 100 else role[:97].rstrip() + "..."
-
     body_create = {
         "externalId": ext_id,
         "firstName":  first,
         "lastName":   last,
         "email":      email,
-        "title":      safe_title,
+        "title":      _safe_title(role),
         "company":    {"id": customer_id},
         "comments":   f"{state} | Auto-synced by School Sync",
     }
