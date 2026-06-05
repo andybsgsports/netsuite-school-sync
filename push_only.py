@@ -65,10 +65,29 @@ def clean_titles(labels):
          Girls exist with no combined, synthesize "Boys & Girls X".
       3. Otherwise keep the single variant as-is (e.g. a boys-only coach).
     """
-    # de-dup, preserve first-seen order
-    seen = []
+    # Pre-expand single-cell "A & B & C" titles into components so a long
+    # IHSA blob like "athletic supervisor & boys athletic director's
+    # assistant & girls athletic director's assistant" becomes three short
+    # titles (which then dedupe/gender-collapse). Gender combos are left
+    # whole: a part that is a bare "boys"/"girls" word means the "&" is
+    # joining gender qualifiers, not distinct titles (e.g.
+    # "Boys & Girls Wrestling").
+    expanded = []
     for l in labels:
         l = (l or "").strip()
+        if not l:
+            continue
+        # Don't split a gender combo ("Boys & Girls Wrestling") — that "&"
+        # joins gender qualifiers, not distinct titles.
+        is_gender_combo = re.search(r"(?i)boys\s*&\s*girls|boys\s+and\s+girls", l)
+        if " & " in l and not is_gender_combo:
+            expanded.extend(p.strip() for p in l.split(" & "))
+            continue
+        expanded.append(l)
+
+    # de-dup, preserve first-seen order
+    seen = []
+    for l in expanded:
         if l and l not in seen:
             seen.append(l)
     label_set = set(seen)
@@ -104,7 +123,14 @@ def clean_titles(labels):
         boys = next((v for v in variants if re.search(r"(?i)\bboys\b", v)), None)
         girls = next((v for v in variants if re.search(r"(?i)\bgirls\b", v)), None)
         if boys and girls:
-            out.append(re.sub(r"(?i)\bboys\b", "Boys & Girls", boys, count=1))
+            # Coaches: boys & girls are different teams of one sport -> keep
+            # a combined "Boys & Girls X". Admins (Athletic Director etc.):
+            # the gender is meaningless for the role -> collapse to the base.
+            is_coach = bool(re.search(r"(?i)coach\s*\(", boys))
+            if is_coach:
+                out.append(re.sub(r"(?i)\bboys\b", "Boys & Girls", boys, count=1))
+            else:
+                out.append(base)
         else:
             out.append(variants[0])
     return out
