@@ -477,18 +477,25 @@ def sync_address_book(customer_id, school_info, contacts, school_name=""):
                 existing_labels.add(lbl.lower())
             # Self-heal renamed schools: if this line's addressee no longer
             # matches the canonical name (e.g. "Cary (C.-Grove)" -> "Cary-
-            # Grove High School"), PATCH just the addressee in place. NS
-            # allows PATCH on the addressBook sub-resource. No-op once the
-            # addressee already matches, so this stays quiet after one pass.
-            if school_name:
-                cur_addressee = ((data.get("addressBookAddress") or {})
-                                 .get("addressee") or "").strip()
+            # Grove High School"), update it. The address fields live on the
+            # nested addressBookAddress SUBRECORD — reading the line itself
+            # returns only a link for it, so we must GET/PATCH the subrecord
+            # path directly (the previous inline read always saw empty and
+            # silently did nothing). Bill-To (defaultBilling) is left alone.
+            if school_name and not data.get("defaultBilling"):
+                sub = ns_get(f"customer/{customer_id}/addressBook/{line_id}/addressBookAddress")
+                cur_addressee = ""
+                if sub.status_code == 200:
+                    cur_addressee = (sub.json().get("addressee") or "").strip()
                 if cur_addressee and cur_addressee != school_name:
                     pr = ns_patch(
-                        f"customer/{customer_id}/addressBook/{line_id}",
-                        {"addressBookAddress": {"addressee": school_name}})
+                        f"customer/{customer_id}/addressBook/{line_id}/addressBookAddress",
+                        {"addressee": school_name})
                     if pr.status_code in (200, 204):
                         addressee_fixes += 1
+                    else:
+                        print(f"  [NS] WARN: addressee update failed on line {line_id}: "
+                              f"{pr.status_code} {pr.text[:120]}")
     if addressee_fixes:
         print(f"  [NS] Updated addressee on {addressee_fixes} address(es) -> '{school_name}'")
 
@@ -811,6 +818,33 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
     # contact record at each school they serve, so every school's Contacts
     # tab shows them (NS REST doesn't allow sharing via contactRoles).
     ext_id = make_contact_external_id(email, school_name)
+
+    # FAST PATH: trust the NS Contact ID already stored in the sheet
+    # (contact_row["ns_id"]). externalId-based lookup breaks after a
+    # school rename (the slug changes, e.g. CARY-C-GROVE__email ->
+    # CARY-GROVE-HIGH-SCHOOL__email) so find_contact_any_format returns
+    # nothing and we'd wrongly try to create a duplicate ("exists but
+    # could not find ID"). The stored internal ID is rename-proof.
+    known_id = str(contact_row.get("ns_id", "")).strip()
+    if known_id and known_id.isdigit():
+        safe_title_known = role if len(role) <= 100 else role[:97].rstrip() + "..."
+        body_known = {
+            "externalId": ext_id,        # migrate externalId to current slug
+            "firstName":  first,
+            "lastName":   last,
+            "email":      email,
+            "title":      safe_title_known,
+            "company":    {"id": customer_id},
+            "comments":   f"{state} | Auto-synced by School Sync",
+        }
+        r = ns_patch(f"contact/{known_id}", body_known)
+        if r.status_code == 204:
+            print(f"  [NS] Updated Contact (by stored ID): {first} {last} (ID: {known_id})")
+            return known_id
+        # Stored ID stale/invalid — fall through to lookup below.
+        print(f"  [NS] stored ID {known_id} for {first} {last} didn't PATCH "
+              f"({r.status_code}); falling back to lookup")
+
     contact_id, is_inactive, found_via = find_contact_any_format(
         school_name, email, role, customer_id=customer_id)
 
