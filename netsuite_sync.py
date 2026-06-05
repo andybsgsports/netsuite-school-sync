@@ -458,8 +458,10 @@ def sync_address_book(customer_id, school_info, contacts, school_name=""):
     # that was unreliable when the sample happened to be a Bill-To or a
     # pre-existing Ship-To, and it caused the same contacts to be re-added
     # on every run (80+ duplicate Ship-Tos on Barneveld as of Apr 2026).
+    # NOTE: addressee on existing lines is NOT healed here — that's a
+    # one-time-after-rename concern handled by fix_address_names.py, so the
+    # nightly push stays fast (no per-line subrecord reads).
     existing_labels = set()
-    addressee_fixes = 0
     r = ns_get(f"customer/{customer_id}?expand=addressBook")
     if r.status_code == 200:
         items = r.json().get("addressBook", {}).get("items", [])
@@ -469,35 +471,10 @@ def sync_address_book(customer_id, school_info, contacts, school_name=""):
             if not line_id:
                 continue
             r2 = ns_get(f"customer/{customer_id}/addressBook/{line_id}")
-            if r2.status_code != 200:
-                continue
-            data = r2.json()
-            lbl = (data.get("label") or "").strip()
-            if lbl:
-                existing_labels.add(lbl.lower())
-            # Self-heal renamed schools: if this line's addressee no longer
-            # matches the canonical name (e.g. "Cary (C.-Grove)" -> "Cary-
-            # Grove High School"), update it. The address fields live on the
-            # nested addressBookAddress SUBRECORD — reading the line itself
-            # returns only a link for it, so we must GET/PATCH the subrecord
-            # path directly (the previous inline read always saw empty and
-            # silently did nothing). Bill-To (defaultBilling) is left alone.
-            if school_name and not data.get("defaultBilling"):
-                sub = ns_get(f"customer/{customer_id}/addressBook/{line_id}/addressBookAddress")
-                cur_addressee = ""
-                if sub.status_code == 200:
-                    cur_addressee = (sub.json().get("addressee") or "").strip()
-                if cur_addressee and cur_addressee != school_name:
-                    pr = ns_patch(
-                        f"customer/{customer_id}/addressBook/{line_id}/addressBookAddress",
-                        {"addressee": school_name})
-                    if pr.status_code in (200, 204):
-                        addressee_fixes += 1
-                    else:
-                        print(f"  [NS] WARN: addressee update failed on line {line_id}: "
-                              f"{pr.status_code} {pr.text[:120]}")
-    if addressee_fixes:
-        print(f"  [NS] Updated addressee on {addressee_fixes} address(es) -> '{school_name}'")
+            if r2.status_code == 200:
+                lbl = (r2.json().get("label") or "").strip()
+                if lbl:
+                    existing_labels.add(lbl.lower())
 
     new_items = []
     for name in contact_names:
