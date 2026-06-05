@@ -60,11 +60,7 @@ def fix_school(customer_id, canonical):
         if sub.status_code != 200:
             continue
         checked += 1
-        subj = sub.json()
-        if os.environ.get("DEBUG_ADDR") and checked <= 2:
-            import json as _j
-            print(f"    DEBUG subrecord JSON: {_j.dumps(subj)[:600]}")
-        cur = (subj.get("addressee") or "").strip()
+        cur = (sub.json().get("addressee") or "").strip()
         if cur and cur != canonical:
             pr = ns_patch(
                 f"customer/{customer_id}/addressBook/{line_id}/addressBookAddress",
