@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import hashlib
 import os
+import re
 import sys
 import time
 from datetime import datetime
@@ -34,6 +35,79 @@ def row_hash(first, last, email, role):
     haven't changed since the last push."""
     s = f"{first.strip().lower()}|{last.strip().lower()}|{email.strip().lower()}|{role.strip().lower()}"
     return hashlib.sha1(s.encode("utf-8")).hexdigest()[:16]
+
+
+def _strip_gender(s):
+    """Remove Boys/Girls/Boys & Girls qualifiers wherever they appear so
+    gendered variants share a base ('Boys Athletic Director' ->
+    'Athletic Director', 'Head Coach (Girls Wrestling)' ->
+    'Head Coach (Wrestling)')."""
+    s = re.sub(r"(?i)\bboys\s*&\s*girls\s+", "", s)
+    s = re.sub(r"(?i)\bboys\s+and\s+girls\s+", "", s)
+    s = re.sub(r"(?i)\bboys\s+", "", s)
+    s = re.sub(r"(?i)\bgirls\s+", "", s)
+    return re.sub(r"\s+", " ", s).strip()
+
+
+def clean_titles(labels):
+    """Collapse the redundant title variants IHSA emits into a minimal set.
+
+    Three reductions, in order:
+      1. Drop an "A & B" combined title when A and B both appear as their
+         own titles ("Band Director & Marching Band Director" dropped when
+         "Band Director" and "Marching Band Director" are present). Gender
+         combos like "Boys & Girls Wrestling" are NOT split this way
+         because their halves ("Boys", "Girls Wrestling") aren't titles.
+      2. Within a gender family (same gender-stripped base): if the plain
+         base exists use only it ("Athletic Director" wins over Boys/Girls
+         AD); else if a "Boys & Girls X" form exists use only it
+         (Kevin Milder -> Boys & Girls Wrestling); else if both Boys and
+         Girls exist with no combined, synthesize "Boys & Girls X".
+      3. Otherwise keep the single variant as-is (e.g. a boys-only coach).
+    """
+    # de-dup, preserve first-seen order
+    seen = []
+    for l in labels:
+        l = (l or "").strip()
+        if l and l not in seen:
+            seen.append(l)
+    label_set = set(seen)
+
+    # Reduction 1: drop true "A & B" combos whose parts are standalone titles
+    kept = []
+    for l in seen:
+        if " & " in l:
+            parts = [p.strip() for p in l.split(" & ")]
+            if len(parts) >= 2 and all(p in label_set for p in parts):
+                continue
+        kept.append(l)
+
+    # Reduction 2/3: gender families keyed by gender-stripped base
+    families = []          # list of (base, [variants]) preserving order
+    index = {}
+    for l in kept:
+        base = _strip_gender(l)
+        if base not in index:
+            index[base] = len(families)
+            families.append((base, []))
+        families[index[base]][1].append(l)
+
+    out = []
+    for base, variants in families:
+        if base in variants:
+            out.append(base)
+            continue
+        bg = next((v for v in variants if re.search(r"(?i)boys\s*&\s*girls|boys\s+and\s+girls", v)), None)
+        if bg:
+            out.append(bg)
+            continue
+        boys = next((v for v in variants if re.search(r"(?i)\bboys\b", v)), None)
+        girls = next((v for v in variants if re.search(r"(?i)\bgirls\b", v)), None)
+        if boys and girls:
+            out.append(re.sub(r"(?i)\bboys\b", "Boys & Girls", boys, count=1))
+        else:
+            out.append(variants[0])
+    return out
 
 from netsuite_sync import (
     sync_school, sync_customer, sync_contact, inactivate_contact,
@@ -213,7 +287,7 @@ def main():
                 parts.append(label)
 
         def combined_title(em):
-            return ", ".join(email_title.get(em, []))
+            return ", ".join(clean_titles(email_title.get(em, [])))
 
         # Dedupe: one person with multiple roles = multiple sheet rows but
         # one NS PATCH. Key by email; carry the NS Contact ID forward so we
