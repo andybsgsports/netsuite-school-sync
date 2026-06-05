@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-06-04T09:29:25.640732Z",
+  "updated": "2026-06-05T09:12:39.224475Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -3084,6 +3084,14 @@
     },
     {
       "school": "Manitowoc Lutheran High School",
+      "email": "bott@mlhslancers.org",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Brandon",
+      "last": "Ott"
+    },
+    {
+      "school": "Manitowoc Lutheran High School",
       "email": "brian.knauf@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Tennis",
@@ -3191,14 +3199,6 @@
       "email": "sloberger@mlhslancers.org",
       "role": "Athletic Director",
       "sport": "",
-      "first": "Scott",
-      "last": "Loberger"
-    },
-    {
-      "school": "Manitowoc Lutheran High School",
-      "email": "sloberger@mlhslancers.org",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
       "first": "Scott",
       "last": "Loberger"
     },
