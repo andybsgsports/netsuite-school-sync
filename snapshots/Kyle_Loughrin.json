@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-06-05T09:10:41.700059Z",
+  "updated": "2026-06-06T08:21:24.517740Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -1769,6 +1769,14 @@
       "sport": "Girls Volleyball",
       "first": "Jamie",
       "last": "Kriewaldt"
+    },
+    {
+      "school": "Clintonville High School",
+      "email": "joshefsky@clintonville.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Justin",
+      "last": "Oshefsky"
     },
     {
       "school": "Clintonville High School",
@@ -6340,19 +6348,19 @@
     },
     {
       "school": "Oconto Falls High School",
-      "email": "jerome.moynihan@of-ps.org",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Jerry",
-      "last": "Moynihan"
-    },
-    {
-      "school": "Oconto Falls High School",
       "email": "jesse.delfosse@of-ps.org",
       "role": "Head Coach",
       "sport": "Boys Baseball",
       "first": "Jesse",
       "last": "Delfosse"
+    },
+    {
+      "school": "Oconto Falls High School",
+      "email": "jesse.jorgensen@of-ps.org",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Jesse",
+      "last": "Jorgensen"
     },
     {
       "school": "Oconto Falls High School",
