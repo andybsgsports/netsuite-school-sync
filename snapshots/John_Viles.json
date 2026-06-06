@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-06-05T09:12:39.224475Z",
+  "updated": "2026-06-06T08:23:18.539214Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -1244,11 +1244,11 @@
     },
     {
       "school": "Fond Du Lac High School",
-      "email": "dechantt@fonddulac.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Track and Field",
-      "first": "Thomas",
-      "last": "Dechant"
+      "email": "dienerd@fonddulac.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Drake",
+      "last": "Diener"
     },
     {
       "school": "Fond Du Lac High School",
@@ -1316,6 +1316,14 @@
     },
     {
       "school": "Fond Du Lac High School",
+      "email": "johnsonj@fonddulac.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Jenna",
+      "last": "Johnson"
+    },
+    {
+      "school": "Fond Du Lac High School",
       "email": "lewisonl@fonddulac.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Hockey",
@@ -1337,14 +1345,6 @@
       "sport": "Boys Football",
       "first": "Sam",
       "last": "Plucker"
-    },
-    {
-      "school": "Fond Du Lac High School",
-      "email": "reinhardts@fonddulac.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Steven",
-      "last": "Reinhardt"
     },
     {
       "school": "Fond Du Lac High School",

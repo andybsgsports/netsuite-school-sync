@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-06-05T09:06:52.790209Z",
+  "updated": "2026-06-06T08:17:41.773817Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -7684,14 +7684,6 @@
     },
     {
       "school": "Greenfield High School",
-      "email": "Abergemann@greenfield.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Aiden",
-      "last": "Bergemann"
-    },
-    {
-      "school": "Greenfield High School",
       "email": "ashley.hoffmann@franklin.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Lacrosse-Girls",
@@ -7753,6 +7745,14 @@
       "sport": "Boys Baseball",
       "first": "James",
       "last": "Zacher"
+    },
+    {
+      "school": "Greenfield High School",
+      "email": "jknebel@greenfield.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Jordan",
+      "last": "Knebel"
     },
     {
       "school": "Greenfield High School",
@@ -16228,14 +16228,6 @@
     },
     {
       "school": "Rockford Lutheran High School",
-      "email": "bblecker@rosecrance.org",
-      "role": "Head Coach",
-      "sport": "Girls Soccer",
-      "first": "Brad",
-      "last": "Blecker"
-    },
-    {
-      "school": "Rockford Lutheran High School",
       "email": "brockg1108@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -16244,11 +16236,11 @@
     },
     {
       "school": "Rockford Lutheran High School",
-      "email": "carlson2994@yahoo.com",
+      "email": "bryanbennett@lonniescarpet.com",
       "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Chris",
-      "last": "Carlson"
+      "sport": "Girls Golf",
+      "first": "Bryan",
+      "last": "Bennett"
     },
     {
       "school": "Rockford Lutheran High School",
@@ -16292,14 +16284,6 @@
     },
     {
       "school": "Rockford Lutheran High School",
-      "email": "futmex58@sbcglobal.net",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Lucio",
-      "last": "Aldana"
-    },
-    {
-      "school": "Rockford Lutheran High School",
       "email": "ghaut@rockfordlutheran.org",
       "role": "Coach",
       "sport": "Bass Fishing",
@@ -16316,30 +16300,6 @@
     },
     {
       "school": "Rockford Lutheran High School",
-      "email": "jlodico@rockfordlutheran.org",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Bowling",
-      "first": "Joe",
-      "last": "Lodico"
-    },
-    {
-      "school": "Rockford Lutheran High School",
-      "email": "jlodico@rockfordlutheran.org",
-      "role": "Head Coach",
-      "sport": "Girls Golf",
-      "first": "Joe",
-      "last": "Lodico"
-    },
-    {
-      "school": "Rockford Lutheran High School",
-      "email": "jlodico@rockfordlutheran.org",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Joe",
-      "last": "Lodico"
-    },
-    {
-      "school": "Rockford Lutheran High School",
       "email": "jonicarlson11@yahoo.com",
       "role": "Head Coach",
       "sport": "Girls Basketball",
@@ -16348,19 +16308,19 @@
     },
     {
       "school": "Rockford Lutheran High School",
+      "email": "jordanturbopollock@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Bowling",
+      "first": "Jordan",
+      "last": "Pollock"
+    },
+    {
+      "school": "Rockford Lutheran High School",
       "email": "kchampion@rockfordlutheran.org",
       "role": "Academic Dean",
       "sport": "",
       "first": "Kelly",
       "last": "Champion"
-    },
-    {
-      "school": "Rockford Lutheran High School",
-      "email": "kjensen@rockfordlutheran.org",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Track Field",
-      "first": "Karen",
-      "last": "Jensen"
     },
     {
       "school": "Rockford Lutheran High School",

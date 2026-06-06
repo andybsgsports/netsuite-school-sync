@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-06-05T09:08:58.316091Z",
+  "updated": "2026-06-06T08:19:44.365187Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -892,6 +892,14 @@
     },
     {
       "school": "DeSoto High School",
+      "email": "",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "",
+      "last": ""
+    },
+    {
+      "school": "DeSoto High School",
       "email": "ajohnson@desoto.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Cross Country",
@@ -921,14 +929,6 @@
       "sport": "Girls Basketball",
       "first": "Dale",
       "last": "Piurkowski"
-    },
-    {
-      "school": "DeSoto High School",
-      "email": "ekoch9975@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Eric",
-      "last": "Koch"
     },
     {
       "school": "DeSoto High School",
