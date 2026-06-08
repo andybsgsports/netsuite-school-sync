@@ -817,6 +817,9 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
         # externalId to this school's slug collides with the slug already
         # held for another school -> HTTP 400. We know the record by its
         # internal ID, so externalId is irrelevant to the update.
+        # isInactive: False reactivates contacts that were previously
+        # inactivated then re-added to Sync=Y; NS returns 400 on PATCH to
+        # an inactive contact if isInactive is omitted.
         body_known = {
             "firstName":  first,
             "lastName":   last,
@@ -824,6 +827,7 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
             "title":      _safe_title(role),
             "company":    {"id": customer_id},
             "comments":   f"{state} | Auto-synced by School Sync",
+            "isInactive": False,
         }
         r = ns_patch(f"contact/{known_id}", body_known)
         if r.status_code == 204:
@@ -831,7 +835,7 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
             return known_id
         # Stored ID stale/invalid — fall through to lookup below.
         print(f"  [NS] stored ID {known_id} for {first} {last} didn't PATCH "
-              f"({r.status_code}); falling back to lookup")
+              f"({r.status_code} {r.text[:160]}); falling back to lookup")
 
     contact_id, is_inactive, found_via = find_contact_any_format(
         school_name, email, role, customer_id=customer_id)
@@ -881,7 +885,8 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
                 if r2.status_code == 204:
                     print(f"  [NS] Updated Contact (recovered): {first} {last} (ID: {found_id})")
                 return found_id
-            print(f"  [NS] WARN: contact {first} {last} exists but could not find ID")
+            print(f"  [NS] WARN: contact {first} {last} exists but could not find ID"
+                  f" ({r.text[:160]})")
             return None
         else:
             print(f"  [NS] ERROR creating contact {first} {last}: "

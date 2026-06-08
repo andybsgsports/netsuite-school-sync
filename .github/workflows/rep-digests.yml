@@ -23,6 +23,8 @@ on:
 jobs:
   digests:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
     timeout-minutes: 60
     permissions:
       contents: write  # needed to commit updated snapshots
