@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-06-08T10:18:46.116030Z",
+  "updated": "2026-06-09T09:03:46.381020Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -497,6 +497,14 @@
       "sport": "Girls Lacrosse-Girls",
       "first": "Teona",
       "last": "King-Arndt"
+    },
+    {
+      "school": "Appleton North High School",
+      "email": "berlowskimatth@aasd.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Matthew",
+      "last": "Berlowski"
     },
     {
       "school": "Appleton North High School",

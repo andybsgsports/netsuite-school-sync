@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-06-08T10:15:03.573867Z",
+  "updated": "2026-06-09T08:59:27.793260Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -5292,19 +5292,19 @@
     },
     {
       "school": "Dundee-Crown High School",
-      "email": "matthew.dangelo@d300.org",
-      "role": "Head Coach",
-      "sport": "Boys Track & Field",
-      "first": "Matthew",
-      "last": "D'Angelo"
-    },
-    {
-      "school": "Dundee-Crown High School",
       "email": "matthew.michalski@d300.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
       "first": "Matthew",
       "last": "Michalski"
+    },
+    {
+      "school": "Dundee-Crown High School",
+      "email": "mdangelo@d127.org",
+      "role": "Head Coach",
+      "sport": "Boys Track & Field",
+      "first": "Matthew",
+      "last": "D'Angelo"
     },
     {
       "school": "Dundee-Crown High School",
@@ -11644,14 +11644,6 @@
     },
     {
       "school": "Libertyville High School",
-      "email": "daniel.schaechter@d128.org",
-      "role": "Head Coach",
-      "sport": "Girls Badminton",
-      "first": "Danny",
-      "last": "Schaechter"
-    },
-    {
-      "school": "Libertyville High School",
       "email": "darwin.townsend@d128.org",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -11694,7 +11686,7 @@
       "school": "Libertyville High School",
       "email": "greg.herman@d128.org",
       "role": "Head Coach",
-      "sport": "Boys & Girls Swimming",
+      "sport": "Girls Swimming",
       "first": "Greg",
       "last": "Herman"
     },
@@ -11761,6 +11753,14 @@
       "sport": "",
       "first": "John",
       "last": "Woods"
+    },
+    {
+      "school": "Libertyville High School",
+      "email": "judi.neuberger@d128.org",
+      "role": "Head Coach",
+      "sport": "Girls Badminton",
+      "first": "Judi",
+      "last": "Neuberger"
     },
     {
       "school": "Libertyville High School",
@@ -14668,14 +14668,6 @@
     },
     {
       "school": "Pecatonica High School",
-      "email": "briannajacobs@pecschools.com",
-      "role": "Student Council Adviser",
-      "sport": "",
-      "first": "Brianna",
-      "last": "Jacobs"
-    },
-    {
-      "school": "Pecatonica High School",
       "email": "carlcarlson@pecschools.com",
       "role": "Superintendent",
       "sport": "",
@@ -14756,6 +14748,14 @@
     },
     {
       "school": "Pecatonica High School",
+      "email": "jessicaberg@pecschools.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Jessica",
+      "last": "Berg"
+    },
+    {
+      "school": "Pecatonica High School",
       "email": "karleedodd@pecschools.com",
       "role": "Boys Athletic Director's Assistant & Girls Athletic Director's Assistant & Principal's Assistant",
       "sport": "",
@@ -14777,14 +14777,6 @@
       "sport": "",
       "first": "Kevin",
       "last": "Kunkel"
-    },
-    {
-      "school": "Pecatonica High School",
-      "email": "michael.mandujano2310@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Michael",
-      "last": "Mandujano"
     },
     {
       "school": "Pecatonica High School",
