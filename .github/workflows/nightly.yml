@@ -5,9 +5,10 @@ name: Daily NS Push (sheet -> NetSuite, per rep)
 # one rep's failure doesn't block the others.
 on:
   schedule:
-    # 04:30 UTC = 11:30 PM Central (CDT). Rep Digests targets 9:30 PM
+    # 03:30 UTC = 10:30 PM Central (CDT); targets 11:30 PM start after
+    # typical GitHub Actions scheduler lag. Rep Digests targets 9:30 PM
     # and finishes well before this slot.
-    - cron: '30 4 * * *'
+    - cron: '30 3 * * *'
   workflow_dispatch:
 
 jobs:
