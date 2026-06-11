@@ -5,9 +5,9 @@ name: Daily NS Push (sheet -> NetSuite, per rep)
 # one rep's failure doesn't block the others.
 on:
   schedule:
-    # 07:30 UTC = 2:30 AM Central (CDT). Rep Digests targets 12:30 AM
+    # 04:30 UTC = 11:30 PM Central (CDT). Rep Digests targets 9:30 PM
     # and finishes well before this slot.
-    - cron: '30 7 * * *'
+    - cron: '30 4 * * *'
   workflow_dispatch:
 
 jobs:
