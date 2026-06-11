@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-06-10T09:14:14.372136Z",
+  "updated": "2026-06-11T10:03:41.892441Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -721,6 +721,214 @@
       "sport": "Boys & Girls Swimming",
       "first": "Zach",
       "last": "Dal Pra"
+    },
+    {
+      "school": "Badger High School",
+      "email": "alison.whowell@gordysboats.com",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Alison",
+      "last": "Whowell"
+    },
+    {
+      "school": "Badger High School",
+      "email": "andrea.chart@badger.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Gymnastics",
+      "first": "Andrea",
+      "last": "Chart"
+    },
+    {
+      "school": "Badger High School",
+      "email": "andrea.kaplan@badger.k12.wi.us",
+      "role": "Principal",
+      "sport": "",
+      "first": "Andrea",
+      "last": "Kaplan"
+    },
+    {
+      "school": "Badger High School",
+      "email": "andy.smith@badger.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Andy",
+      "last": "Smith"
+    },
+    {
+      "school": "Badger High School",
+      "email": "annie.cuculi@badger.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "Annie",
+      "last": "Cuculi"
+    },
+    {
+      "school": "Badger High School",
+      "email": "braden.tice@badger.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Braden",
+      "last": "Tice"
+    },
+    {
+      "school": "Badger High School",
+      "email": "chelsea.miller@badger.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Chelsea",
+      "last": "Miller"
+    },
+    {
+      "school": "Badger High School",
+      "email": "david.davila@badger.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "David",
+      "last": "Davila"
+    },
+    {
+      "school": "Badger High School",
+      "email": "David.Deshambo@badger.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Golf",
+      "first": "David",
+      "last": "DeShambo"
+    },
+    {
+      "school": "Badger High School",
+      "email": "Elkslaxcoaches@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Lacrosse-Boys",
+      "first": "Jordan",
+      "last": "Reynolds"
+    },
+    {
+      "school": "Badger High School",
+      "email": "jacob.kiefer@badger.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Cross Country",
+      "first": "Jake",
+      "last": "Kiefer"
+    },
+    {
+      "school": "Badger High School",
+      "email": "jason.bousman@badger.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Track and Field",
+      "first": "Jason",
+      "last": "Bousman"
+    },
+    {
+      "school": "Badger High School",
+      "email": "jason.bousman@badger.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Jason",
+      "last": "Bousman"
+    },
+    {
+      "school": "Badger High School",
+      "email": "jim.kluge@badger.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Jim",
+      "last": "Kluge"
+    },
+    {
+      "school": "Badger High School",
+      "email": "Matt.Hensler@badger.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Matt",
+      "last": "Hensler"
+    },
+    {
+      "school": "Badger High School",
+      "email": "mikebrannen@ymail.com",
+      "role": "Head Coach",
+      "sport": "Girls Tennis",
+      "first": "Mike",
+      "last": "Brannen"
+    },
+    {
+      "school": "Badger High School",
+      "email": "millerj@wilmoths.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Gymnastics",
+      "first": "Jordin",
+      "last": "Miller"
+    },
+    {
+      "school": "Badger High School",
+      "email": "nick.hughes@badger.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Nick",
+      "last": "Hughes"
+    },
+    {
+      "school": "Badger High School",
+      "email": "paul@lakegenevatennis.com",
+      "role": "Head Coach",
+      "sport": "Boys Tennis",
+      "first": "Paul",
+      "last": "Lauterbach"
+    },
+    {
+      "school": "Badger High School",
+      "email": "peter.wilson@badger.k12.wi.us",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Peter",
+      "last": "Wilson"
+    },
+    {
+      "school": "Badger High School",
+      "email": "rachel.stettner@badger.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Rachel",
+      "last": "Stettner"
+    },
+    {
+      "school": "Badger High School",
+      "email": "Ross.Fowler@badger.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Soccer",
+      "first": "Ross",
+      "last": "Fowler"
+    },
+    {
+      "school": "Badger High School",
+      "email": "Steele@gordysboats.com",
+      "role": "Head Coach",
+      "sport": "Boys Swimming & Diving",
+      "first": "Steele",
+      "last": "Whowell"
+    },
+    {
+      "school": "Badger High School",
+      "email": "stephani.reynolds@badger.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Cross Country",
+      "first": "Stephani",
+      "last": "Reynolds"
+    },
+    {
+      "school": "Badger High School",
+      "email": "Tami.Buntrock@badger.k12.wi.us",
+      "role": "Assistant Athletic Director",
+      "sport": "",
+      "first": "Tami",
+      "last": "Buntrock"
+    },
+    {
+      "school": "Badger High School",
+      "email": "Tyler.VanDeVelde@badger.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Track and Field",
+      "first": "Tyler",
+      "last": "VanDeVelde"
     },
     {
       "school": "Barneveld High School",
@@ -10329,14 +10537,6 @@
       "sport": "",
       "first": "Jason",
       "last": "Nault"
-    },
-    {
-      "school": "Johnsburg High School",
-      "email": "jrodgers@johnsburg12.org",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "John",
-      "last": "Rodgers"
     },
     {
       "school": "Johnsburg High School",
