@@ -26,6 +26,8 @@ Env:
   FIX_NEW_FULL_NAME  - new "Full Name" (optional; blank = leave as-is)
   FIX_PARENT_NS_ID   - parent customer internal id (optional)
   FIX_EXPECT_NAME    - substring the target's companyName must contain
+  FIX_FORCE_REHASH   - "1" = clear hashes even if the NS ID didn't change
+                       (re-run after partial contact failures)
   plus the usual GOOGLE_SHEET_ID / GOOGLE_CREDENTIALS_JSON / NS_* tokens
 """
 from __future__ import annotations
@@ -49,6 +51,7 @@ NEW_ID  = os.environ.get("FIX_NEW_NS_ID", "").strip()
 FULL    = os.environ.get("FIX_NEW_FULL_NAME", "").strip()
 PARENT  = os.environ.get("FIX_PARENT_NS_ID", "").strip()
 EXPECT  = os.environ.get("FIX_EXPECT_NAME", "").strip().lower()
+FORCE   = os.environ.get("FIX_FORCE_REHASH", "").strip() in ("1", "true", "Y", "y")
 
 
 def verify_customer(ns_id, label):
@@ -131,7 +134,7 @@ def main():
           f"{f' | {M_PARENT} -> {PARENT}' if PARENT.isdigit() else ''}")
 
     # --- Contacts tab: force re-push only when the target moved ------
-    if not id_changed:
+    if not id_changed and not FORCE:
         print("  NS Customer ID already correct — hashes left alone.")
         return
 
