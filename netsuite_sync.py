@@ -771,22 +771,40 @@ def _list_customer_contact_ids(customer_id):
     """Contact internal ids linked to a customer via the contactRoles
     sublist. NS auto-populates contactRoles for primary-company links, and
     unlike contactList it actually returns items (and includes inactive
-    contacts, which UI lists and dropdowns hide). Pages through all results.
+    contacts, which UI lists and dropdowns hide). Pages through all results
+    using the sub-resource endpoint (customer/{id}/contactRoles?offset=N)
+    rather than ?expand=contactRoles, which does not accept limit/offset.
     Cached per run."""
     key = str(customer_id)
     if key in _contact_roles_cache:
         return _contact_roles_cache[key]
     ids = []
     offset = 0
-    limit  = 1000  # large page to minimize round-trips
+    limit  = 100
     while True:
-        r = ns_get(f"customer/{customer_id}?expand=contactRoles"
-                   f"&limit={limit}&offset={offset}")
+        # Use the sub-resource path for pagination; ?expand= on the parent
+        # record rejects limit/offset and returns only its own default page.
+        r = ns_get(f"customer/{customer_id}/contactRoles?limit={limit}&offset={offset}")
         if r.status_code != 200:
+            # Fall back to the single-page expand approach (works for most
+            # schools; sub-resource may not exist for all NS account configs).
+            if offset == 0:
+                r2 = ns_get(f"customer/{customer_id}?expand=contactRoles")
+                if r2.status_code == 200:
+                    for item in r2.json().get("contactRoles", {}).get("items", []):
+                        cid = (item.get("contact") or {}).get("id")
+                        if not cid:
+                            href = (item.get("links") or [{}])[0].get("href", "")
+                            line = href.rstrip("/").split("/")[-1] if href else ""
+                            if line:
+                                r3 = ns_get(f"customer/{customer_id}/contactRoles/{line}")
+                                if r3.status_code == 200:
+                                    cid = (r3.json().get("contact") or {}).get("id")
+                        if cid:
+                            ids.append(str(cid))
             break
         body  = r.json()
-        cr    = body.get("contactRoles", {})
-        items = cr.get("items", [])
+        items = body.get("items", [])
         for item in items:
             cid = (item.get("contact") or {}).get("id")
             if not cid:
@@ -798,7 +816,7 @@ def _list_customer_contact_ids(customer_id):
                         cid = (r2.json().get("contact") or {}).get("id")
             if cid:
                 ids.append(str(cid))
-        total = cr.get("totalResults") or body.get("totalResults") or 0
+        total  = body.get("totalResults", 0)
         offset += limit
         if offset >= total or not items:
             break
