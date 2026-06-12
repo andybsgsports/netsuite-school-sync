@@ -1,0 +1,39 @@
+name: Diag Horeb Contacts
+
+# Diagnoses why Tim Sarbacker and Brett Quale are not being resolved
+# on Mt. Horeb High School (NS customer 2217). Read-only.
+on:
+  push:
+    branches: [master]
+    paths: ['.github/workflows/diag-horeb-contacts.yml']
+  workflow_dispatch:
+
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+
+      - name: Run Horeb contact diagnostic
+        run: python diag_horeb_contacts.py
+        env:
+          NS_ACCOUNT:              ${{ secrets.NS_ACCOUNT }}
+          NS_CONSUMER_KEY:         ${{ secrets.NS_CONSUMER_KEY }}
+          NS_CONSUMER_SEC:         ${{ secrets.NS_CONSUMER_SEC }}
+          NS_TOKEN_KEY:            ${{ secrets.NS_TOKEN_KEY }}
+          NS_TOKEN_SEC:            ${{ secrets.NS_TOKEN_SEC }}
+          GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}

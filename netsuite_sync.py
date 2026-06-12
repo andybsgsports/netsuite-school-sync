@@ -771,14 +771,23 @@ def _list_customer_contact_ids(customer_id):
     """Contact internal ids linked to a customer via the contactRoles
     sublist. NS auto-populates contactRoles for primary-company links, and
     unlike contactList it actually returns items (and includes inactive
-    contacts, which UI lists and dropdowns hide). Cached per run."""
+    contacts, which UI lists and dropdowns hide). Pages through all results.
+    Cached per run."""
     key = str(customer_id)
     if key in _contact_roles_cache:
         return _contact_roles_cache[key]
     ids = []
-    r = ns_get(f"customer/{customer_id}?expand=contactRoles")
-    if r.status_code == 200:
-        for item in r.json().get("contactRoles", {}).get("items", []):
+    offset = 0
+    limit  = 1000  # large page to minimize round-trips
+    while True:
+        r = ns_get(f"customer/{customer_id}?expand=contactRoles"
+                   f"&limit={limit}&offset={offset}")
+        if r.status_code != 200:
+            break
+        body  = r.json()
+        cr    = body.get("contactRoles", {})
+        items = cr.get("items", [])
+        for item in items:
             cid = (item.get("contact") or {}).get("id")
             if not cid:
                 href = (item.get("links") or [{}])[0].get("href", "")
@@ -789,6 +798,10 @@ def _list_customer_contact_ids(customer_id):
                         cid = (r2.json().get("contact") or {}).get("id")
             if cid:
                 ids.append(str(cid))
+        total = cr.get("totalResults") or body.get("totalResults") or 0
+        offset += limit
+        if offset >= total or not items:
+            break
     _contact_roles_cache[key] = ids
     return ids
 
