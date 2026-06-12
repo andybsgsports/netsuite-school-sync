@@ -835,7 +835,7 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
             return known_id
         # Stored ID stale/invalid — fall through to lookup below.
         print(f"  [NS] stored ID {known_id} for {first} {last} didn't PATCH "
-              f"({r.status_code} {r.text[:160]}); falling back to lookup")
+              f"({r.status_code} {r.text[:400]}); falling back to lookup")
 
     contact_id, is_inactive, found_via = find_contact_any_format(
         school_name, email, role, customer_id=customer_id)
@@ -867,6 +867,9 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
                 print(f"  [NS] Updated Contact: {first} {last} (ID: {contact_id})")
             else:
                 print(f"  [NS] Updated Contact (migrated from {found_via}): {first} {last} (ID: {contact_id})")
+        else:
+            print(f"  [NS] ERROR re-PATCHing found contact {contact_id} "
+                  f"({first} {last}): {r.status_code} {r.text[:400]}")
         return contact_id
 
     else:
