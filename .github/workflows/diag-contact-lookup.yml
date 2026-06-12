@@ -1,0 +1,48 @@
+name: Diag Contact Lookup
+
+# One-off, read-only probe of NS contact-discovery mechanisms (see
+# diag_contact_lookup.py). Runs when this file lands on master.
+on:
+  push:
+    branches: [master]
+    paths: ['.github/workflows/diag-contact-lookup.yml']
+  workflow_dispatch:
+    inputs:
+      customer_id:
+        description: 'NS customer internal id to probe'
+        required: false
+        default: '2217'
+      email:
+        description: 'Contact email to probe (optional)'
+        required: false
+        default: 'lundquistcody@mounthorebschools.org'
+
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+
+      - name: Probe contact lookups
+        run: python diag_contact_lookup.py
+        env:
+          DIAG_CUSTOMER_ID: ${{ inputs.customer_id || '2217' }}
+          DIAG_EMAIL:       ${{ inputs.email || 'lundquistcody@mounthorebschools.org' }}
+          NS_ACCOUNT:       ${{ secrets.NS_ACCOUNT }}
+          NS_CONSUMER_KEY:  ${{ secrets.NS_CONSUMER_KEY }}
+          NS_CONSUMER_SEC:  ${{ secrets.NS_CONSUMER_SEC }}
+          NS_TOKEN_KEY:     ${{ secrets.NS_TOKEN_KEY }}
+          NS_TOKEN_SEC:     ${{ secrets.NS_TOKEN_SEC }}
