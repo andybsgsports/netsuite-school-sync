@@ -1,0 +1,43 @@
+name: Fix Horeb Stragglers 2 (rename-move)
+
+# Moves Tim Sarbacker (48486) and Brett Quale (48485) from district
+# parent (2290) to HS sub-customer (2217) using a rename-then-move strategy:
+#   1. PATCH to temp last name to clear the "unique name" collision
+#   2. PATCH company to 2217
+#   3. PATCH back to real name
+# Updates sheet NS Customer ID rows on success.
+on:
+  push:
+    branches: [master]
+    paths: ['.github/workflows/fix-horeb-stragglers2.yml']
+  workflow_dispatch:
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+
+      - name: Fix Horeb stragglers via rename-move
+        run: python fix_horeb_stragglers2.py
+        env:
+          NS_ACCOUNT:              ${{ secrets.NS_ACCOUNT }}
+          NS_CONSUMER_KEY:         ${{ secrets.NS_CONSUMER_KEY }}
+          NS_CONSUMER_SEC:         ${{ secrets.NS_CONSUMER_SEC }}
+          NS_TOKEN_KEY:            ${{ secrets.NS_TOKEN_KEY }}
+          NS_TOKEN_SEC:            ${{ secrets.NS_TOKEN_SEC }}
+          GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
