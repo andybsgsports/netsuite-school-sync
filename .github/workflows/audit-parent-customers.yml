@@ -1,0 +1,49 @@
+name: Audit Parent-Child Customers
+
+# Walks every school on the Schools tab (all reps), detects parent/child
+# customer structures in NetSuite, fills the "NS Parent ID" column for
+# subcustomer-pointing schools, and reports schools that point at a
+# parent/district record (repoint candidates for the Fix School Customer
+# ID workflow). Runs once when this file lands on master; re-run any time
+# via workflow_dispatch.
+on:
+  push:
+    branches: [master]
+    paths: ['.github/workflows/audit-parent-customers.yml']
+  workflow_dispatch:
+    inputs:
+      rep_filter:
+        description: 'Only audit this rep''s schools (blank = all)'
+        required: false
+        default: ''
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+
+      - name: Audit parent/child customers
+        run: python audit_parent_customers.py
+        env:
+          AUDIT_REP_FILTER:        ${{ inputs.rep_filter || '' }}
+          NS_ACCOUNT:              ${{ secrets.NS_ACCOUNT }}
+          NS_CONSUMER_KEY:         ${{ secrets.NS_CONSUMER_KEY }}
+          NS_CONSUMER_SEC:         ${{ secrets.NS_CONSUMER_SEC }}
+          NS_TOKEN_KEY:            ${{ secrets.NS_TOKEN_KEY }}
+          NS_TOKEN_SEC:            ${{ secrets.NS_TOKEN_SEC }}
+          GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
