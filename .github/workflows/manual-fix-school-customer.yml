@@ -8,6 +8,8 @@ name: Fix School Customer ID
 # The push trigger runs the Mount Horeb defaults once when this file lands
 # on master; the script is idempotent so re-runs are harmless. Use
 # workflow_dispatch for any future school.
+# Rev 3: re-run with name-collision recovery (update the customer's own
+# same-named contact record instead of failing to move another one in).
 on:
   push:
     branches: [master]
