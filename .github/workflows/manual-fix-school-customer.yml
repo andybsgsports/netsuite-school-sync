@@ -34,6 +34,10 @@ on:
         description: 'Substring the target companyName must contain (safety check)'
         required: true
         default: 'Horeb'
+      force_rehash:
+        description: 'Clear contact hashes even if the NS ID is already correct'
+        required: false
+        default: '1'
 
 jobs:
   fix:
@@ -62,6 +66,7 @@ jobs:
           FIX_NEW_FULL_NAME: ${{ inputs.new_full_name || 'Mount Horeb High School' }}
           FIX_PARENT_NS_ID:  ${{ inputs.parent_ns_id  || '2290' }}
           FIX_EXPECT_NAME:   ${{ inputs.expect_name   || 'Horeb' }}
+          FIX_FORCE_REHASH:  ${{ inputs.force_rehash  || '1' }}
           NS_ACCOUNT:              ${{ secrets.NS_ACCOUNT }}
           NS_CONSUMER_KEY:         ${{ secrets.NS_CONSUMER_KEY }}
           NS_CONSUMER_SEC:         ${{ secrets.NS_CONSUMER_SEC }}
