@@ -1,0 +1,83 @@
+name: Fix School Customer ID
+
+# Repoints a school's NS Customer ID in the sheet (e.g. district parent ->
+# high-school subcustomer), clears its contact hashes, then immediately
+# re-pushes that school so contacts' primary Company moves to the right
+# customer record (fixes the Loyalty Contact dropdown on transactions).
+#
+# The push trigger runs the Mount Horeb defaults once when this file lands
+# on master; the script is idempotent so re-runs are harmless. Use
+# workflow_dispatch for any future school.
+on:
+  push:
+    branches: [master]
+    paths: ['.github/workflows/manual-fix-school-customer.yml']
+  workflow_dispatch:
+    inputs:
+      school_name:
+        description: 'Schools tab "School Name" (exact match)'
+        required: true
+        default: 'Mount Horeb School District'
+      new_ns_id:
+        description: 'New NS Customer internal id (the record transactions use)'
+        required: true
+        default: '2217'
+      new_full_name:
+        description: 'New "Full Name" (blank = leave as-is)'
+        required: false
+        default: 'Mount Horeb High School'
+      parent_ns_id:
+        description: 'Parent customer internal id (blank = none)'
+        required: false
+        default: '2290'
+      expect_name:
+        description: 'Substring the target companyName must contain (safety check)'
+        required: true
+        default: 'Horeb'
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+
+      - name: Repoint sheet + clear hashes
+        run: python fix_school_customer.py
+        env:
+          FIX_SCHOOL_NAME:   ${{ inputs.school_name   || 'Mount Horeb School District' }}
+          FIX_NEW_NS_ID:     ${{ inputs.new_ns_id     || '2217' }}
+          FIX_NEW_FULL_NAME: ${{ inputs.new_full_name || 'Mount Horeb High School' }}
+          FIX_PARENT_NS_ID:  ${{ inputs.parent_ns_id  || '2290' }}
+          FIX_EXPECT_NAME:   ${{ inputs.expect_name   || 'Horeb' }}
+          NS_ACCOUNT:              ${{ secrets.NS_ACCOUNT }}
+          NS_CONSUMER_KEY:         ${{ secrets.NS_CONSUMER_KEY }}
+          NS_CONSUMER_SEC:         ${{ secrets.NS_CONSUMER_SEC }}
+          NS_TOKEN_KEY:            ${{ secrets.NS_TOKEN_KEY }}
+          NS_TOKEN_SEC:            ${{ secrets.NS_TOKEN_SEC }}
+          GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+
+      - name: Re-push school to NetSuite
+        run: python push_only.py
+        env:
+          SCHOOL_FILTER:           ${{ inputs.school_name || 'Mount Horeb School District' }}
+          NS_ACCOUNT:              ${{ secrets.NS_ACCOUNT }}
+          NS_CONSUMER_KEY:         ${{ secrets.NS_CONSUMER_KEY }}
+          NS_CONSUMER_SEC:         ${{ secrets.NS_CONSUMER_SEC }}
+          NS_TOKEN_KEY:            ${{ secrets.NS_TOKEN_KEY }}
+          NS_TOKEN_SEC:            ${{ secrets.NS_TOKEN_SEC }}
+          GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
