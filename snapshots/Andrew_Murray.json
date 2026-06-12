@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-06-11T10:03:41.892441Z",
+  "updated": "2026-06-12T06:25:41.452758Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -4444,6 +4444,14 @@
     },
     {
       "school": "Crystal Lake Central High School",
+      "email": "bchmielewshi@olympiachiroandpt.com",
+      "role": "Certified Athletic Trainer",
+      "sport": "",
+      "first": "Brody",
+      "last": "Chmielewski"
+    },
+    {
+      "school": "Crystal Lake Central High School",
       "email": "biversen@d155.org",
       "role": "Activities Director's Assistant & Boys Athletic Director's Assistant & Girls Athletic Director's Assistant",
       "sport": "",
@@ -7908,14 +7916,6 @@
     },
     {
       "school": "Greenfield High School",
-      "email": "charrison@greenfield.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Cross Country",
-      "first": "Cindy",
-      "last": "Harrison"
-    },
-    {
-      "school": "Greenfield High School",
       "email": "dmorris@greenfield.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Football",
@@ -7985,6 +7985,14 @@
       "sport": "Boys Wrestling",
       "first": "John",
       "last": "Quinlan"
+    },
+    {
+      "school": "Greenfield High School",
+      "email": "jsabinash@greenfield.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Jim",
+      "last": "Sabinash"
     },
     {
       "school": "Greenfield High School",
@@ -8825,6 +8833,14 @@
       "sport": "Girls Flag Football",
       "first": "Mykal",
       "last": "Brown"
+    },
+    {
+      "school": "Harlem High School",
+      "email": "paige.yoder@harlem122.org",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Paige",
+      "last": "Yoder"
     },
     {
       "school": "Harlem High School",
@@ -11433,6 +11449,14 @@
       "sport": "Girls Gymnastics",
       "first": "Kristie",
       "last": "Blasinski"
+    },
+    {
+      "school": "Lakes Community High School",
+      "email": "kurt.rowells@chsd117.org",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Kurt",
+      "last": "Rowells"
     },
     {
       "school": "Lakes Community High School",

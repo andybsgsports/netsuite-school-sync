@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-06-11T10:09:30.019342Z",
+  "updated": "2026-06-12T06:31:31.497719Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -996,6 +996,14 @@
     },
     {
       "school": "Elkhart Lake High School",
+      "email": "ckuhfuss@hgtigers.com",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Cooper",
+      "last": "Kuhfuss"
+    },
+    {
+      "school": "Elkhart Lake High School",
       "email": "dhill@goresorters.com",
       "role": "Athletic Director",
       "sport": "",
@@ -1593,6 +1601,14 @@
       "sport": "Girls Soccer",
       "first": "Brittany",
       "last": "Suemnicht"
+    },
+    {
+      "school": "Howards Grove High School",
+      "email": "ckuhfuss@hgtigers.com",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Cooper",
+      "last": "Kuhfuss"
     },
     {
       "school": "Howards Grove High School",
@@ -5225,6 +5241,14 @@
       "sport": "Boys Baseball",
       "first": "Trevor",
       "last": "Kearney"
+    },
+    {
+      "school": "Rio High School",
+      "email": "winchell@rio.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Gunnar",
+      "last": "Winchell"
     },
     {
       "school": "Ripon High School",
