@@ -151,6 +151,12 @@ from school_netsuite_sync import (
 # manual IL workflow and this nightly push read the sheet identically.
 from ihsa_sync import school_info_from_row, M_FULL
 
+# Optional Schools-tab column for parent/child customers (e.g. Mount Horeb:
+# district parent + high-school subcustomer). Contacts' primary company and
+# the customer update target the NS Customer ID (the child); when this
+# column holds the parent's internal id we keep its Ship-To book current too.
+M_PARENT = "NS Parent ID"
+
 SCHOOL_FILTER    = os.environ.get("SCHOOL_FILTER", "").strip()
 STATE_FILTER     = os.environ.get("STATE_FILTER", "").strip().upper()
 SALES_REP_FILTER = os.environ.get("SALES_REP_FILTER", "").strip()
@@ -185,7 +191,8 @@ def load_schools(gc):
         if SALES_REP_FILTER and rep.lower() != SALES_REP_FILTER.lower():
             continue
         out.append({"row": i, "name": name, "ns_id": ns_id, "url": url,
-                    "state": state, "rep": rep, "raw": rec})
+                    "state": state, "rep": rep, "raw": rec,
+                    "parent": str(rec.get(M_PARENT, "")).strip()})
     return out, ws, synced_col
 
 
@@ -392,6 +399,13 @@ def main():
                 # short School Name.
                 sync_address_book(result_id, school_info_out, active_contacts,
                                   school_name=display_name)
+                # Parent/child customers: also keep the parent's Ship-To
+                # book current. Addressee uses School Name, which holds the
+                # district-level name for these schools.
+                parent_id = sch.get("parent", "")
+                if parent_id.isdigit() and parent_id != str(result_id):
+                    sync_address_book(parent_id, school_info_out, active_contacts,
+                                      school_name=school_name)
 
         # Save every 10 schools so a timeout doesn't lose all hash progress.
         # sync_y_N is modulo — cheap sheet write vs. hours of re-push on re-run.
