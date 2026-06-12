@@ -8,8 +8,9 @@ name: Fix School Customer ID
 # The push trigger runs the Mount Horeb defaults once when this file lands
 # on master; the script is idempotent so re-runs are harmless. Use
 # workflow_dispatch for any future school.
-# Rev 3: re-run with name-collision recovery (update the customer's own
-# same-named contact record instead of failing to move another one in).
+# Rev 4: collision recovery now enumerates the customer's contacts via
+# the contactRoles sublist (contactList returns nothing; SuiteQL and REST
+# search are blocked by the integration role's permissions).
 on:
   push:
     branches: [master]

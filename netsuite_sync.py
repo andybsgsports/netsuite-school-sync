@@ -765,6 +765,55 @@ def find_contact_any_format(school_name, email, role="", customer_id=None):
             return cid, inactive, "legacy_school_role"
     return None, None, None
 
+_contact_roles_cache = {}  # customer_id -> [contact internal ids]
+
+def _list_customer_contact_ids(customer_id):
+    """Contact internal ids linked to a customer via the contactRoles
+    sublist. NS auto-populates contactRoles for primary-company links, and
+    unlike contactList it actually returns items (and includes inactive
+    contacts, which UI lists and dropdowns hide). Cached per run."""
+    key = str(customer_id)
+    if key in _contact_roles_cache:
+        return _contact_roles_cache[key]
+    ids = []
+    r = ns_get(f"customer/{customer_id}?expand=contactRoles")
+    if r.status_code == 200:
+        for item in r.json().get("contactRoles", {}).get("items", []):
+            cid = (item.get("contact") or {}).get("id")
+            if not cid:
+                href = (item.get("links") or [{}])[0].get("href", "")
+                line = href.rstrip("/").split("/")[-1] if href else ""
+                if line:
+                    r2 = ns_get(f"customer/{customer_id}/contactRoles/{line}")
+                    if r2.status_code == 200:
+                        cid = (r2.json().get("contact") or {}).get("id")
+            if cid:
+                ids.append(str(cid))
+    _contact_roles_cache[key] = ids
+    return ids
+
+def _find_same_name_contact(customer_id, first, last, email="", exclude_id=None):
+    """Find the customer's own contact record matching first+last (the
+    record behind NS's "unique name" PATCH rejection). GETs each candidate
+    from the contactRoles sublist, so inactive records are found too."""
+    target = f"{first} {last}".strip().lower()
+    fallback = None
+    for cid in _list_customer_contact_ids(customer_id):
+        if exclude_id and str(cid) == str(exclude_id):
+            continue
+        r = ns_get(f"contact/{cid}")
+        if r.status_code != 200:
+            continue
+        c = r.json()
+        name = (f"{(c.get('firstName') or '').strip()} "
+                f"{(c.get('lastName') or '').strip()}").strip().lower()
+        if target and name == target:
+            return str(cid)
+        c_email = (c.get("email") or "").strip().lower()
+        if fallback is None and email and c_email == email.strip().lower():
+            fallback = str(cid)
+    return fallback
+
 def _find_contact_for_customer(customer_id, email, first="", last="", exclude_id=None):
     """Search for a contact under a customer by email — or, when first/last
     are given, by contact name — using the contacts sublist.
@@ -857,8 +906,8 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
         # repoint the sheet to it; the old record stays with its customer so
         # contacts remain visible on both parent and child.
         if "unique name" in r.text or "already exists" in r.text:
-            dup_id = _find_contact_for_customer(customer_id, email, first, last,
-                                                exclude_id=known_id)
+            dup_id = _find_same_name_contact(customer_id, first, last, email,
+                                             exclude_id=known_id)
             if dup_id:
                 r2 = ns_patch(f"contact/{dup_id}", body_known)
                 if r2.status_code == 204:
@@ -904,8 +953,8 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
             # Same name-collision recovery as the stored-ID path: the target
             # customer already owns a same-named record — update that one.
             if "unique name" in r.text or "already exists" in r.text:
-                dup_id = _find_contact_for_customer(customer_id, email, first, last,
-                                                    exclude_id=contact_id)
+                dup_id = _find_same_name_contact(customer_id, first, last, email,
+                                                 exclude_id=contact_id)
                 if dup_id:
                     body2 = {k: v for k, v in body_update.items() if k != "externalId"}
                     body2["isInactive"] = False
@@ -930,7 +979,8 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
             # Contact exists but external ID mismatch — find by customer
             # contact list (email first, then contact name for the
             # "unique name" collision case)
-            found_id = _find_contact_for_customer(customer_id, email, first, last)
+            found_id = (_find_contact_for_customer(customer_id, email, first, last)
+                        or _find_same_name_contact(customer_id, first, last, email))
             if found_id:
                 r2 = ns_patch(f"contact/{found_id}", body)
                 if r2.status_code == 204:
