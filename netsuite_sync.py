@@ -765,8 +765,14 @@ def find_contact_any_format(school_name, email, role="", customer_id=None):
             return cid, inactive, "legacy_school_role"
     return None, None, None
 
-def _find_contact_for_customer(customer_id, email):
-    """Search for a contact under a customer by email using the contacts sublist.
+def _find_contact_for_customer(customer_id, email, first="", last="", exclude_id=None):
+    """Search for a contact under a customer by email — or, when first/last
+    are given, by contact name — using the contacts sublist.
+
+    Name matching resolves NS's "contact record with this name already
+    exists" collisions: the customer already owns a same-named contact
+    record, so find it (excluding the record that just failed to PATCH)
+    and update it instead of trying to move another record in.
 
     Note: SuiteQL and REST search are both blocked by the current role's
     permissions, so this falls back to the contactList expand. Many schools
@@ -778,12 +784,21 @@ def _find_contact_for_customer(customer_id, email):
         return None
     data = resp.json()
     contact_list = data.get("contactList", {}).get("items", [])
+    target_name = f"{first} {last}".strip().lower()
+    by_email = by_name = None
     for item in contact_list:
         c = item.get("fields", item)
+        cid = c.get("contact", {}).get("id") or c.get("id")
+        if not cid or (exclude_id and str(cid) == str(exclude_id)):
+            continue
         c_email = c.get("email", "")
-        if c_email and c_email.lower() == email.lower():
-            return c.get("contact", {}).get("id") or c.get("id")
-    return None
+        if by_email is None and email and c_email and c_email.lower() == email.lower():
+            by_email = cid
+        ref = (c.get("contact", {}) or {}).get("refName", "") or c.get("name", "")
+        if by_name is None and target_name and ref \
+                and ref.strip().lower().endswith(target_name):
+            by_name = cid
+    return by_email or by_name
 
 def sync_contact(customer_id, school_name, contact_row, school_info):
     """
@@ -836,6 +851,22 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
         # Stored ID stale/invalid — fall through to lookup below.
         print(f"  [NS] stored ID {known_id} for {first} {last} didn't PATCH "
               f"({r.status_code} {r.text[:400]}); falling back to lookup")
+        # Name collision: the target customer already owns a same-named
+        # contact record (e.g. an original HS-native record where the sheet
+        # previously pointed at the district parent). Update THAT record and
+        # repoint the sheet to it; the old record stays with its customer so
+        # contacts remain visible on both parent and child.
+        if "unique name" in r.text or "already exists" in r.text:
+            dup_id = _find_contact_for_customer(customer_id, email, first, last,
+                                                exclude_id=known_id)
+            if dup_id:
+                r2 = ns_patch(f"contact/{dup_id}", body_known)
+                if r2.status_code == 204:
+                    print(f"  [NS] Updated existing Contact on customer {customer_id}: "
+                          f"{first} {last} (ID: {dup_id}; sheet repointed from {known_id})")
+                    return dup_id
+                print(f"  [NS] collision contact {dup_id} PATCH failed: "
+                      f"{r2.status_code} {r2.text[:200]}")
 
     contact_id, is_inactive, found_via = find_contact_any_format(
         school_name, email, role, customer_id=customer_id)
@@ -870,6 +901,21 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
         else:
             print(f"  [NS] ERROR re-PATCHing found contact {contact_id} "
                   f"({first} {last}): {r.status_code} {r.text[:400]}")
+            # Same name-collision recovery as the stored-ID path: the target
+            # customer already owns a same-named record — update that one.
+            if "unique name" in r.text or "already exists" in r.text:
+                dup_id = _find_contact_for_customer(customer_id, email, first, last,
+                                                    exclude_id=contact_id)
+                if dup_id:
+                    body2 = {k: v for k, v in body_update.items() if k != "externalId"}
+                    body2["isInactive"] = False
+                    r2 = ns_patch(f"contact/{dup_id}", body2)
+                    if r2.status_code == 204:
+                        print(f"  [NS] Updated existing Contact on customer {customer_id}: "
+                              f"{first} {last} (ID: {dup_id}; sheet repointed from {contact_id})")
+                        return dup_id
+                    print(f"  [NS] collision contact {dup_id} PATCH failed: "
+                          f"{r2.status_code} {r2.text[:200]}")
         return contact_id
 
     else:
@@ -881,8 +927,10 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
             print(f"  [NS] Created Contact: {first} {last} - {role} (ID: {new_id})")
             return new_id
         elif r.status_code == 400 and "already exists" in r.text:
-            # Contact exists but external ID mismatch — find by customer contact list
-            found_id = _find_contact_for_customer(customer_id, email)
+            # Contact exists but external ID mismatch — find by customer
+            # contact list (email first, then contact name for the
+            # "unique name" collision case)
+            found_id = _find_contact_for_customer(customer_id, email, first, last)
             if found_id:
                 r2 = ns_patch(f"contact/{found_id}", body)
                 if r2.status_code == 204:
