@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-06-12T06:26:37.697314Z",
+  "updated": "2026-06-16T07:09:28.285388Z",
   "records": [
     {
       "school": "Albany High School",
@@ -748,14 +748,6 @@
     },
     {
       "school": "Benton High School",
-      "email": "jdroessler@benton.k12.wi.us",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Jeff",
-      "last": "Droessler"
-    },
-    {
-      "school": "Benton High School",
       "email": "Karenwiederholt74@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Gymnastics",
@@ -769,6 +761,14 @@
       "sport": "Girls Volleyball",
       "first": "Kiera",
       "last": "Holzemer"
+    },
+    {
+      "school": "Benton High School",
+      "email": "kkern@benton.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Kyle",
+      "last": "Kern"
     },
     {
       "school": "Benton High School",

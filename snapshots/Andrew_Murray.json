@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-06-12T06:25:41.452758Z",
+  "updated": "2026-06-16T07:08:32.613117Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -2212,6 +2212,14 @@
     },
     {
       "school": "Brookfield Academy High School",
+      "email": "abbie.curran@brookfieldacademy.org",
+      "role": "Assistant Athletic Director",
+      "sport": "",
+      "first": "Abbie",
+      "last": "Curran"
+    },
+    {
+      "school": "Brookfield Academy High School",
       "email": "chris.mason@brookfieldacademy.org",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -2225,14 +2233,6 @@
       "sport": "Girls Volleyball",
       "first": "Anne",
       "last": "Slattery"
-    },
-    {
-      "school": "Brookfield Academy High School",
-      "email": "david.archibald@brookfieldacademy.org",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Dave",
-      "last": "Archibald"
     },
     {
       "school": "Brookfield Academy High School",
@@ -2268,6 +2268,14 @@
     },
     {
       "school": "Brookfield Academy High School",
+      "email": "Jeff.Mrochinski@brookfieldacademy.org",
+      "role": "Head Coach",
+      "sport": "Girls Tennis",
+      "first": "Jeff",
+      "last": "Mrochinski"
+    },
+    {
+      "school": "Brookfield Academy High School",
       "email": "larryrlanza@yahoo.com",
       "role": "Head Coach",
       "sport": "Boys Swimming & Diving",
@@ -2294,7 +2302,7 @@
       "school": "Brookfield Academy High School",
       "email": "michael.rajchel@brookfieldacademy.org",
       "role": "Head Coach",
-      "sport": "Boys & Girls Tennis",
+      "sport": "Boys Tennis",
       "first": "Michael",
       "last": "Rajchel"
     },
@@ -2337,6 +2345,22 @@
       "sport": "Boys Golf",
       "first": "Steve",
       "last": "Hinkens"
+    },
+    {
+      "school": "Brookfield Academy High School",
+      "email": "vince.sciano@brookfieldacademy.org",
+      "role": "Assistant Athletic Director",
+      "sport": "",
+      "first": "Vince",
+      "last": "Sciano"
+    },
+    {
+      "school": "Brookfield Academy High School",
+      "email": "vince.sciano@brookfieldacademy.org",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Vince",
+      "last": "Sciano"
     },
     {
       "school": "Brookfield Central High School",
@@ -5596,22 +5620,6 @@
     },
     {
       "school": "Dundee-Crown High School",
-      "email": "robert.sweeney@d300.org",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "Bob",
-      "last": "Sweeney"
-    },
-    {
-      "school": "Dundee-Crown High School",
-      "email": "ryan.thompson@d300.org",
-      "role": "Head Coach",
-      "sport": "Boys Lacrosse",
-      "first": "Ryan",
-      "last": "Thompson"
-    },
-    {
-      "school": "Dundee-Crown High School",
       "email": "scott.mcnees@d300.org",
       "role": "Coach",
       "sport": "Scholastic Bowl",
@@ -7892,14 +7900,6 @@
     },
     {
       "school": "Greenfield High School",
-      "email": "abbyzysk14@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Abby",
-      "last": "Zysk"
-    },
-    {
-      "school": "Greenfield High School",
       "email": "ashley.hoffmann@franklin.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Lacrosse-Girls",
@@ -7948,14 +7948,6 @@
     },
     {
       "school": "Greenfield High School",
-      "email": "jamesgllcoach@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "James",
-      "last": "Zacher"
-    },
-    {
-      "school": "Greenfield High School",
       "email": "jknebel@greenfield.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Soccer",
@@ -8001,6 +7993,14 @@
       "sport": "Boys & Girls Track and Field",
       "first": "Jim",
       "last": "Sabinash"
+    },
+    {
+      "school": "Greenfield High School",
+      "email": "jzacher@greenfield.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "James",
+      "last": "Zacher"
     },
     {
       "school": "Greenfield High School",
@@ -10988,7 +10988,7 @@
     },
     {
       "school": "Kenosha St. Joseph Catholic High School",
-      "email": "pconnolly@sjcawi.org",
+      "email": "patrickconnolly@sjcawi.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Soccer",
       "first": "Patrick",
@@ -15100,14 +15100,6 @@
     },
     {
       "school": "Prairie Ridge High School",
-      "email": "ebaker@d155.org",
-      "role": "Head Coach",
-      "sport": "Boys Cross Country",
-      "first": "Ethan",
-      "last": "Baker"
-    },
-    {
-      "school": "Prairie Ridge High School",
       "email": "epalese@d155.org",
       "role": "Head Coach",
       "sport": "Girls Tennis",
@@ -15225,6 +15217,14 @@
       "sport": "Competitive Dance",
       "first": "Lauren",
       "last": "Mackey"
+    },
+    {
+      "school": "Prairie Ridge High School",
+      "email": "mcphersonpc@icloud.com",
+      "role": "Head Coach",
+      "sport": "Boys Cross Country",
+      "first": "Mark",
+      "last": "McPherson"
     },
     {
       "school": "Prairie Ridge High School",
@@ -18604,6 +18604,14 @@
     },
     {
       "school": "Waukesha North High School",
+      "email": "dsweger@waukesha.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Derek",
+      "last": "Sweger"
+    },
+    {
+      "school": "Waukesha North High School",
       "email": "eplitzuwei@waukesha.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
@@ -18753,14 +18761,6 @@
       "sport": "",
       "first": "Tom",
       "last": "Schalmo"
-    },
-    {
-      "school": "Waukesha North High School",
-      "email": "vsciano@waukesha.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Vince",
-      "last": "Sciano"
     },
     {
       "school": "Waukesha South High School",

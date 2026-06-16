@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-06-12T06:32:21.278177Z",
+  "updated": "2026-06-16T07:14:59.324572Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -1556,6 +1556,14 @@
     },
     {
       "school": "Grafton High School",
+      "email": "aburgos@grafton.12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Swimming & Diving",
+      "first": "Adan",
+      "last": "Burgos"
+    },
+    {
+      "school": "Grafton High School",
       "email": "averyhuibregtse@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Hockey",
@@ -1569,14 +1577,6 @@
       "sport": "Girls Volleyball",
       "first": "Ashley",
       "last": "Wilson"
-    },
-    {
-      "school": "Grafton High School",
-      "email": "baileyclarkbodart@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Swimming & Diving",
-      "first": "Bailey",
-      "last": "Bodart"
     },
     {
       "school": "Grafton High School",
@@ -2228,6 +2228,14 @@
     },
     {
       "school": "Johnson Creek High School",
+      "email": "prestoe@johnsoncreekschools.org",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Ellyn",
+      "last": "Presto"
+    },
+    {
+      "school": "Johnson Creek High School",
       "email": "ramseierb@johnsoncreekschools.org",
       "role": "Athletic Director",
       "sport": "",
@@ -2241,6 +2249,14 @@
       "sport": "Girls Basketball",
       "first": "Chris",
       "last": "Schick"
+    },
+    {
+      "school": "Johnson Creek High School",
+      "email": "tracyj@johnsoncreekschools.org",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Jenny",
+      "last": "Tracy"
     },
     {
       "school": "Johnson Creek High School",

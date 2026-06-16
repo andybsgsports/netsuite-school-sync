@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-06-12T06:31:31.497719Z",
+  "updated": "2026-06-16T07:14:10.697531Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -1244,6 +1244,14 @@
     },
     {
       "school": "Fond Du Lac High School",
+      "email": "devriesm@fonddulac.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Melissa",
+      "last": "DeVries"
+    },
+    {
+      "school": "Fond Du Lac High School",
       "email": "dienerd@fonddulac.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
@@ -1901,7 +1909,7 @@
     {
       "school": "Kewaskum High School",
       "email": "jhalopka@kewaskumschools.org",
-      "role": "Athletic Director",
+      "role": "Assistant Athletic Director",
       "sport": "",
       "first": "Jeridiah",
       "last": "Halopka"
@@ -1961,14 +1969,6 @@
       "sport": "",
       "first": "Dr.",
       "last": "Mark Bazata"
-    },
-    {
-      "school": "Kewaskum High School",
-      "email": "mbingham@kewaskumschools.org",
-      "role": "Assistant Principal",
-      "sport": "",
-      "first": "Mark",
-      "last": "Bingham"
     },
     {
       "school": "Kewaskum High School",

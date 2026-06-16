@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-06-12T06:29:28.904863Z",
+  "updated": "2026-06-16T07:12:15.080268Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -588,14 +588,6 @@
     },
     {
       "school": "Appleton North High School",
-      "email": "kellettchristo@aasd.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Chris",
-      "last": "Kellett"
-    },
-    {
-      "school": "Appleton North High School",
       "email": "klukas1724@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Lacrosse-Girls",
@@ -641,6 +633,14 @@
       "sport": "Girls Softball",
       "first": "Chris",
       "last": "Nissen"
+    },
+    {
+      "school": "Appleton North High School",
+      "email": "nonemacherjohn@aasd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "John",
+      "last": "Nonemacher"
     },
     {
       "school": "Appleton North High School",
@@ -701,7 +701,7 @@
     {
       "school": "Appleton North High School",
       "email": "wernernathan@aasd.k12.wi.us",
-      "role": "Principal",
+      "role": "Assistant Athletic Director",
       "sport": "",
       "first": "Nate",
       "last": "Werner"
@@ -1772,27 +1772,11 @@
     },
     {
       "school": "Clintonville High School",
-      "email": "jkriewaldt@clintonville.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Jamie",
-      "last": "Kriewaldt"
-    },
-    {
-      "school": "Clintonville High School",
       "email": "joshefsky@clintonville.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
       "first": "Justin",
       "last": "Oshefsky"
-    },
-    {
-      "school": "Clintonville High School",
-      "email": "jwondra@clintonville.k12.wi.us",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Joel",
-      "last": "Wondra"
     },
     {
       "school": "Clintonville High School",
@@ -1841,6 +1825,14 @@
       "sport": "",
       "first": "Suzanne",
       "last": "Marquardt"
+    },
+    {
+      "school": "Clintonville High School",
+      "email": "stacy.jepson@cedarcorp.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Stacy",
+      "last": "Jepson"
     },
     {
       "school": "Clintonville High School",
@@ -5137,6 +5129,14 @@
       "sport": "Girls Soccer",
       "first": "Allyson",
       "last": "Price"
+    },
+    {
+      "school": "Marinette High School",
+      "email": "bruemlhb@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Tennis",
+      "first": "Lauren",
+      "last": "Wilcox"
     },
     {
       "school": "Marinette High School",

@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-06-12T06:27:46.232801Z",
+  "updated": "2026-06-16T07:10:35.119056Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -2180,6 +2180,14 @@
     },
     {
       "school": "Lacrosse Central High School",
+      "email": "ipischke@lacrossesd.org",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Isaac",
+      "last": "Pischke"
+    },
+    {
+      "school": "Lacrosse Central High School",
       "email": "ismith@lacrossesd.org",
       "role": "Head Coach",
       "sport": "Boys Soccer",
@@ -2260,19 +2268,19 @@
     },
     {
       "school": "Lacrosse Central High School",
+      "email": "marnold@lacrossesd.org",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Michael",
+      "last": "Arnold"
+    },
+    {
+      "school": "Lacrosse Central High School",
       "email": "mdeforre@lacrossesd.org",
       "role": "AD Admin Assistant",
       "sport": "",
       "first": "Mikayla",
       "last": "DeForrest"
-    },
-    {
-      "school": "Lacrosse Central High School",
-      "email": "molson@lacrossesd.org",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Mitch",
-      "last": "Olson"
     },
     {
       "school": "Lacrosse Central High School",
@@ -2310,7 +2318,7 @@
       "school": "Lacrosse Central High School",
       "email": "tpeterso@lacrossesd.org",
       "role": "Head Coach",
-      "sport": "Boys & Girls Cross Country",
+      "sport": "Girls Cross Country",
       "first": "Thaddeus",
       "last": "Peterson"
     },
@@ -2604,14 +2612,6 @@
     },
     {
       "school": "Madison Country Day High School",
-      "email": "jboyd@madisoncountryday.org",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Jerod",
-      "last": "Boyd"
-    },
-    {
-      "school": "Madison Country Day High School",
       "email": "jprestigiacomo@madisoncountryday.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -2631,14 +2631,6 @@
       "email": "kconditt@madisoncountryday.org",
       "role": "Head Coach",
       "sport": "Girls Basketball",
-      "first": "Kassi",
-      "last": "Conditt"
-    },
-    {
-      "school": "Madison Country Day High School",
-      "email": "kconditt@madisoncountryday.org",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
       "first": "Kassi",
       "last": "Conditt"
     },
