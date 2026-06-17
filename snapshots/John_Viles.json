@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-06-16T07:14:10.697531Z",
+  "updated": "2026-06-17T06:54:22.374391Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -5844,14 +5844,6 @@
     },
     {
       "school": "Sheboygan North High School",
-      "email": "4bjleroy@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Bj",
-      "last": "LeRoy"
-    },
-    {
-      "school": "Sheboygan North High School",
       "email": "alexisrae3262005@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Gymnastics",
@@ -5916,14 +5908,6 @@
     },
     {
       "school": "Sheboygan North High School",
-      "email": "ericspiels@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Tennis",
-      "first": "Eric",
-      "last": "Spielman"
-    },
-    {
-      "school": "Sheboygan North High School",
       "email": "eworth@sasd.net",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -5977,14 +5961,6 @@
       "sport": "Boys & Girls Wrestling",
       "first": "Joseph",
       "last": "Duesterbeck"
-    },
-    {
-      "school": "Sheboygan North High School",
-      "email": "jsteinhaus@sasd.net",
-      "role": "Head Coach",
-      "sport": "Girls Cross Country",
-      "first": "Jennifer",
-      "last": "Steinhaus"
     },
     {
       "school": "Sheboygan North High School",
@@ -6057,6 +6033,14 @@
       "sport": "Boys Baseball",
       "first": "Stephen",
       "last": "Goes"
+    },
+    {
+      "school": "Sheboygan North High School",
+      "email": "swidder@sasd.net",
+      "role": "Head Coach",
+      "sport": "Girls Tennis",
+      "first": "Scott",
+      "last": "Widder"
     },
     {
       "school": "Sheboygan North High School",

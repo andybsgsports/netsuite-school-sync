@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-06-16T07:08:32.613117Z",
+  "updated": "2026-06-17T06:48:33.476194Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -12012,14 +12012,6 @@
     },
     {
       "school": "Libertyville High School",
-      "email": "kevin.gorell@d128.org",
-      "role": "Head Coach",
-      "sport": "Boys Bowling",
-      "first": "Kevin",
-      "last": "Gorell"
-    },
-    {
-      "school": "Libertyville High School",
       "email": "kevin.thunholm@d128.org",
       "role": "Head Coach",
       "sport": "Boys Soccer",
@@ -12097,14 +12089,6 @@
       "sport": "",
       "first": "Raymond",
       "last": "Albin"
-    },
-    {
-      "school": "Libertyville High School",
-      "email": "robert.uliks@d128.org",
-      "role": "Coach",
-      "sport": "Bass Fishing",
-      "first": "Robert",
-      "last": "Uliks"
     },
     {
       "school": "Libertyville High School",
@@ -12540,7 +12524,15 @@
     },
     {
       "school": "Marian Central Catholic High School",
-      "email": "lbell@harvestchristianacademy.org",
+      "email": "lbell@marian.com",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Lafeyette",
+      "last": "Bell"
+    },
+    {
+      "school": "Marian Central Catholic High School",
+      "email": "lbell@marian.com",
       "role": "Head Coach",
       "sport": "Boys Basketball",
       "first": "Lafeyette",

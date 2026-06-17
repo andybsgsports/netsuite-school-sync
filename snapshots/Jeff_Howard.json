@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-06-16T07:09:28.285388Z",
+  "updated": "2026-06-17T06:49:32.244756Z",
   "records": [
     {
       "school": "Albany High School",
@@ -2636,14 +2636,6 @@
     },
     {
       "school": "New Glarus High School",
-      "email": "coachparman@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Kevin",
-      "last": "Parman"
-    },
-    {
-      "school": "New Glarus High School",
       "email": "dennis.haak@ngsd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -2761,6 +2753,14 @@
       "sport": "Boys Basketball",
       "first": "Travis",
       "last": "Sysko"
+    },
+    {
+      "school": "New Glarus High School",
+      "email": "tyler.ballweg@ngsd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Tyler",
+      "last": "Ballweg"
     },
     {
       "school": "Oregon School District",
