@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-06-17T06:52:23.672969Z",
+  "updated": "2026-06-18T06:32:09.554377Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -5372,6 +5372,14 @@
     },
     {
       "school": "Menasha High School",
+      "email": "benthiel77@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Ben",
+      "last": "Thiel"
+    },
+    {
+      "school": "Menasha High School",
       "email": "carlsonn@mjsd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -5420,6 +5428,14 @@
     },
     {
       "school": "Menasha High School",
+      "email": "Grabigj@mjsd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Jessica",
+      "last": "Grabig"
+    },
+    {
+      "school": "Menasha High School",
       "email": "grabler@mjsd.k12.wi.us",
       "role": "Assistant Principal, Athletic Director",
       "sport": "",
@@ -5460,14 +5476,6 @@
     },
     {
       "school": "Menasha High School",
-      "email": "kuglitschj@mjsd.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Jessica",
-      "last": "Kuglitsch"
-    },
-    {
-      "school": "Menasha High School",
       "email": "Lambergj@mjsd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
@@ -5497,14 +5505,6 @@
       "sport": "Girls Hockey",
       "first": "Stephanie",
       "last": "Brunkhorst"
-    },
-    {
-      "school": "Menasha High School",
-      "email": "wadeski12@hotmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Wade",
-      "last": "Fox"
     },
     {
       "school": "Menasha High School",

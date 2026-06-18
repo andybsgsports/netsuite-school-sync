@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-06-17T06:54:22.374391Z",
+  "updated": "2026-06-18T06:34:02.970622Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -129,14 +129,6 @@
       "sport": "Girls Volleyball",
       "first": "Ally",
       "last": "Schrieber"
-    },
-    {
-      "school": "Campbellsport High School",
-      "email": "bbogenhagen@csd.k12.wi.us",
-      "role": "Assistant Athletic Director",
-      "sport": "",
-      "first": "Blake",
-      "last": "Bogenhagen"
     },
     {
       "school": "Campbellsport High School",
@@ -1740,14 +1732,6 @@
     },
     {
       "school": "Hustisford High School",
-      "email": "busheyc@hustisford.k12.wi.us",
-      "role": "Principal",
-      "sport": "",
-      "first": "Clint",
-      "last": "Bushey"
-    },
-    {
-      "school": "Hustisford High School",
       "email": "ctracy358@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -1817,6 +1801,14 @@
       "sport": "Boys Football",
       "first": "Timothy",
       "last": "Meyer"
+    },
+    {
+      "school": "Hustisford High School",
+      "email": "moep@hustisford.k12.wi.us",
+      "role": "Principal",
+      "sport": "",
+      "first": "Peter",
+      "last": "Moe"
     },
     {
       "school": "Hustisford High School",
@@ -7145,6 +7137,14 @@
       "sport": "Boys Lacrosse-Boys",
       "first": "Rob",
       "last": "Maclellan"
+    },
+    {
+      "school": "Wayland Academy High School",
+      "email": "rnill@wayland.org",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Rob",
+      "last": "Nill"
     },
     {
       "school": "Wayland Academy High School",

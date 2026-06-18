@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-06-17T06:48:33.476194Z",
+  "updated": "2026-06-18T06:28:27.206633Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -2537,6 +2537,14 @@
       "sport": "Girls Lacrosse-Girls",
       "first": "Jen",
       "last": "Simon"
+    },
+    {
+      "school": "Brookfield Central High School",
+      "email": "thompsoa@elmbrookschools.org",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Andrew",
+      "last": "Thompson"
     },
     {
       "school": "Brookfield Central High School",
@@ -12444,14 +12452,6 @@
     },
     {
       "school": "Marian Central Catholic High School",
-      "email": "coneill@marian.com",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Cody",
-      "last": "O'Neill"
-    },
-    {
-      "school": "Marian Central Catholic High School",
       "email": "cstephenthomas@gmail.com",
       "role": "Head Coach",
       "sport": "Boys & Girls Track Field",
@@ -20372,14 +20372,6 @@
     },
     {
       "school": "Woodstock High School",
-      "email": "ckitsis@wcusd200.org",
-      "role": "Head Coach",
-      "sport": "Girls Golf",
-      "first": "Casey",
-      "last": "Kitsis"
-    },
-    {
-      "school": "Woodstock High School",
       "email": "dlee@wcusd200.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Bowling",
@@ -20457,6 +20449,14 @@
       "sport": "Boys & Girls Tennis",
       "first": "John",
       "last": "Oliveira"
+    },
+    {
+      "school": "Woodstock High School",
+      "email": "jrhode22@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "Jim",
+      "last": "Rhode"
     },
     {
       "school": "Woodstock High School",
