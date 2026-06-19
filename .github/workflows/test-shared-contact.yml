@@ -1,0 +1,33 @@
+name: Test Shared Contact
+
+on:
+  push:
+    branches: [claude/relaxed-cori-iAQkq]
+    paths: ['.github/workflows/test-shared-contact.yml', 'test_shared_contact.py']
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run shared-contact test
+        run: python test_shared_contact.py
+        env:
+          NS_ACCOUNT:      ${{ secrets.NS_ACCOUNT }}
+          NS_CONSUMER_KEY: ${{ secrets.NS_CONSUMER_KEY }}
+          NS_CONSUMER_SEC: ${{ secrets.NS_CONSUMER_SEC }}
+          NS_TOKEN_KEY:    ${{ secrets.NS_TOKEN_KEY }}
+          NS_TOKEN_SEC:    ${{ secrets.NS_TOKEN_SEC }}
