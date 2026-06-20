@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-06-19T06:51:30.023436Z",
+  "updated": "2026-06-20T06:08:31.337920Z",
   "records": [
     {
       "school": "Albany High School",
@@ -300,14 +300,6 @@
     },
     {
       "school": "Baraboo High School",
-      "email": "jlangkamp@barabooschools.net",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Jim",
-      "last": "Langkamp"
-    },
-    {
-      "school": "Baraboo High School",
       "email": "jlitscher@barabooschools.net",
       "role": "Head Coach",
       "sport": "Girls Basketball",
@@ -401,6 +393,14 @@
       "sport": "",
       "first": "Steve",
       "last": "Considine"
+    },
+    {
+      "school": "Baraboo High School",
+      "email": "sturkington@barabooschools.net",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Steve",
+      "last": "Turkington"
     },
     {
       "school": "Baraboo High School",

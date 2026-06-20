@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-06-19T06:56:56.833334Z",
+  "updated": "2026-06-20T06:14:05.134279Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -1356,14 +1356,6 @@
     },
     {
       "school": "Germantown High School",
-      "email": "creuter@gsdwi.org",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Chris",
-      "last": "Reuter"
-    },
-    {
-      "school": "Germantown High School",
       "email": "dheinz@gsdwi.org",
       "role": "AD Admin Assistant",
       "sport": "",
@@ -1473,6 +1465,14 @@
       "sport": "Girls Swimming & Diving",
       "first": "Lori",
       "last": "Bruss"
+    },
+    {
+      "school": "Germantown High School",
+      "email": "mcastro@gsdwi.org",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Martin",
+      "last": "Castro"
     },
     {
       "school": "Germantown High School",
