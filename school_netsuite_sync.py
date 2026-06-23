@@ -112,13 +112,14 @@ def load_master_wi(gc):
         return [], ws, None
     headers = values[0]
     last_synced_col = headers.index(M_SYNCED) + 1 if M_SYNCED in headers else None
+    ns_id_col       = headers.index(M_NS_ID) + 1 if M_NS_ID in headers else None
     out = []
     for i, raw in enumerate(values[1:], start=2):  # sheet rows are 1-indexed; row 1 is header
         rec = dict(zip(headers, raw))
         if str(rec.get(M_STATE, "")).strip().upper() != STATE_FILTER:
             continue
         out.append((i, rec))
-    return out, ws, last_synced_col
+    return out, ws, last_synced_col, ns_id_col
 
 
 def load_contacts(gc):
@@ -188,7 +189,7 @@ def main():
         sys.exit(1)
 
     gc = get_gspread_client()
-    rows, master_ws, last_synced_col = load_master_wi(gc)
+    rows, master_ws, last_synced_col, ns_id_col = load_master_wi(gc)
     contacts_data, contacts_ws = load_contacts(gc)
 
     if SCHOOL_FILTER:
@@ -207,7 +208,9 @@ def main():
     skipped_locked = 0
     skipped_no_url = 0
     errors = 0
+    created_count = 0
     last_synced_updates = []  # (sheet_row_1based, timestamp_str)
+    ns_id_updates = []        # (sheet_row_1based, new_ns_id) for created customers
 
     for sheet_row, school_row in rows:
         school_name = str(school_row.get(M_NAME, "")).strip()
@@ -224,13 +227,14 @@ def main():
             print(f"  [SKIP no-url] {school_name}")
             skipped_no_url += 1
             continue
+        # Blank / sentinel NS Customer ID means no NS customer exists yet.
+        # Normalize to '' so sync_school CREATES the customer (and we write
+        # the new ID back below) instead of skipping the row.
         if ns_id in ("", "nan", "None", "0"):
-            print(f"  [SKIP no-ns-id] {school_name}  -- run create_missing_ns_customers to link")
-            skipped_no_ns += 1
-            continue
+            ns_id = ""
 
         print(f"\n{'=' * 60}")
-        print(f"[SCHOOL] {school_name}  (NS {ns_id})")
+        print(f"[SCHOOL] {school_name}  (NS {ns_id or 'NEW'})")
 
         # 1. Scrape WIAA
         school_info, scraped_admins, scraped_coaches = scrape_wiaa_school_detail(url)
@@ -243,7 +247,7 @@ def main():
 
         # 3. Sync Customer (update only — never create, ns_id is always set here)
         try:
-            result_id, school_info_out, _, _ = sync_school(
+            result_id, school_info_out, _, created = sync_school(
                 school_name=school_name,
                 school_url=url,
                 state=STATE_FILTER,
@@ -265,6 +269,14 @@ def main():
 
         synced += 1
         last_synced_updates.append((sheet_row, datetime.now().strftime("%Y-%m-%d %H:%M")))
+
+        # New customer created this run — write the ID back so the next run
+        # takes the direct-PATCH path instead of creating a duplicate.
+        if created and not ns_id:
+            ns_id = str(result_id)
+            ns_id_updates.append((sheet_row, str(result_id)))
+            created_count += 1
+            print(f"  Created NS Customer ID {result_id} — writing back to sheet")
 
         # 4. Build site-emails set for departure detection
         site_emails = {p.get("email", "").strip().lower()
@@ -375,11 +387,21 @@ def main():
         } for row, ts in last_synced_updates]
         master_ws.batch_update(batch)
 
+    # -- Write newly-created NS Customer IDs back to master --
+    if ns_id_col and ns_id_updates:
+        print(f"  Writing NS Customer ID on {len(ns_id_updates)} newly-created row(s)...")
+        batch = [{
+            "range": gspread.utils.rowcol_to_a1(row, ns_id_col),
+            "values": [[new_id]],
+        } for row, new_id in ns_id_updates]
+        master_ws.batch_update(batch)
+
     save_contacts(contacts_ws, contacts_data)
 
     print(f"\n{'=' * 60}")
     print(f"  WI SYNC COMPLETE")
     print(f"  Synced: {synced}")
+    print(f"  Created (new NS customers): {created_count}")
     print(f"  Skipped (no NS ID):  {skipped_no_ns}")
     print(f"  Skipped (locked):    {skipped_locked}")
     print(f"  Skipped (no URL):    {skipped_no_url}")
