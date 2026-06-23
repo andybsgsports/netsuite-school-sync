@@ -1,0 +1,45 @@
+name: Push single school to NetSuite (manual)
+
+# Targeted manual run of push_only.py for one school (or one rep).
+# Useful for creating a newly-added school immediately instead of waiting
+# for the nightly run. A blank NS Customer ID on the Schools tab is created
+# in NetSuite and the new ID is written back to the sheet.
+on:
+  workflow_dispatch:
+    inputs:
+      school_filter:
+        description: 'School Name to push (exact match). Blank = use sales_rep.'
+        required: false
+        default: ''
+      sales_rep:
+        description: 'Limit to this Sales Rep (blank = all). Ignored if school_filter set.'
+        required: false
+        default: ''
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+    timeout-minutes: 60
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+      - name: Push to NetSuite
+        run: python push_only.py
+        env:
+          SCHOOL_FILTER:           ${{ inputs.school_filter }}
+          SALES_REP_FILTER:        ${{ inputs.sales_rep }}
+          NS_ACCOUNT:              ${{ secrets.NS_ACCOUNT }}
+          NS_CONSUMER_KEY:         ${{ secrets.NS_CONSUMER_KEY }}
+          NS_CONSUMER_SEC:         ${{ secrets.NS_CONSUMER_SEC }}
+          NS_TOKEN_KEY:            ${{ secrets.NS_TOKEN_KEY }}
+          NS_TOKEN_SEC:            ${{ secrets.NS_TOKEN_SEC }}
+          GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}

@@ -171,6 +171,7 @@ def load_schools(gc):
         return [], ws, None
     headers = values[0]
     synced_col = headers.index(M_SYNCED) + 1 if M_SYNCED in headers else None
+    ns_id_col  = headers.index(M_NS_ID) + 1 if M_NS_ID in headers else None
     out = []
     for i, raw in enumerate(values[1:], start=2):
         rec = dict(zip(headers, raw))
@@ -182,8 +183,13 @@ def load_schools(gc):
         locked = str(rec.get(M_LOCKED, "")).strip().upper() == "Y"
         if not name or locked:
             continue
-        if ns_id in ("", "nan", "None", "0"):
-            continue
+        # Blank / sentinel NS Customer ID means "no NS customer yet" — we no
+        # longer skip these. They flow through to sync_school/sync_customer
+        # with ns_customer_id="" which CREATES the customer, and the new ID
+        # is written back to the sheet (see main()). This restores the old
+        # behavior where adding a school to the list auto-created it in NS.
+        if ns_id in ("nan", "None", "0"):
+            ns_id = ""
         if SCHOOL_FILTER and name != SCHOOL_FILTER:
             continue
         if STATE_FILTER and state != STATE_FILTER:
@@ -193,7 +199,7 @@ def load_schools(gc):
         out.append({"row": i, "name": name, "ns_id": ns_id, "url": url,
                     "state": state, "rep": rep, "raw": rec,
                     "parent": str(rec.get(M_PARENT, "")).strip()})
-    return out, ws, synced_col
+    return out, ws, synced_col, ns_id_col
 
 
 def main():
@@ -209,7 +215,7 @@ def main():
         sys.exit(1)
 
     gc = get_gspread_client()
-    schools, master_ws, synced_col = load_schools(gc)
+    schools, master_ws, synced_col, ns_id_col = load_schools(gc)
     contacts_data, contacts_ws = load_contacts(gc)
 
     print(f"  Schools in scope: {len(schools)}")
@@ -218,6 +224,7 @@ def main():
     synced_schools = 0
     errors = 0
     synced_updates = []
+    created_updates = []   # (row, new_ns_id) for schools created this run
 
     for sch in schools:
         school_name = sch["name"]                              # Schools tab "School Name" column
@@ -232,9 +239,14 @@ def main():
 
         school_contacts = [c for c in contacts_data
                            if c.get(C_SCHOOL, "").strip() == school_name]
-        if not school_contacts:
+        if not school_contacts and ns_id:
+            # Existing customer with nothing on the Contacts tab to push.
             print(f"  (no rows on Contacts tab)")
             continue
+        if not school_contacts:
+            # New school (blank NS ID) — still create the customer even
+            # though no contacts have been added to the Contacts tab yet.
+            print(f"  (no rows on Contacts tab — creating NS customer only)")
 
         # Update Customer. WI: sync_school scrapes WIAA + updates custom
         # fields, address book, etc. IL: IHSA API doesn't carry address
@@ -244,7 +256,7 @@ def main():
         if state == "IL":
             school_info_out = school_info_from_row(sch["raw"], "IL")
             try:
-                result_id, _ = sync_customer(
+                result_id, created = sync_customer(
                     display_name, "IL", school_info_out,
                     contacts=[], ns_customer_id=ns_id, sales_rep=rep or None,
                 )
@@ -261,7 +273,7 @@ def main():
             try:
                 # Pass display_name (from Full Name column) — sync_school
                 # propagates it through to sync_customer's companyName.
-                result_id, school_info_out, _, _ = sync_school(
+                result_id, school_info_out, _, created = sync_school(
                     school_name=display_name,
                     school_url=sch["url"],
                     state=state or "WI",
@@ -281,6 +293,14 @@ def main():
 
         synced_schools += 1
         synced_updates.append((sch["row"], datetime.now().strftime("%Y-%m-%d %H:%M")))
+
+        # New school: write the freshly-created NS Customer ID back to the
+        # Schools tab so future runs take the direct-PATCH path instead of
+        # creating a duplicate.
+        if created and not ns_id and result_id:
+            created_updates.append((sch["row"], str(result_id)))
+            ns_id = str(result_id)
+            print(f"  Created — wrote NS Customer ID {result_id} to sheet row {sch['row']}")
 
         # Compute school domain for home-school detection
         sync_y = [
@@ -422,11 +442,20 @@ def main():
             "values": [[ts]],
         } for row, ts in synced_updates]
         master_ws.batch_update(batch)
+    if ns_id_col and created_updates:
+        batch = [{
+            "range": gspread.utils.rowcol_to_a1(row, ns_id_col),
+            "values": [[new_id]],
+        } for row, new_id in created_updates]
+        master_ws.batch_update(batch)
 
     print(f"\n{'=' * 60}")
     print(f"  PUSH COMPLETE")
-    print(f"  Schools pushed: {synced_schools}")
-    print(f"  Errors:         {errors}")
+    print(f"  Schools pushed:  {synced_schools}")
+    print(f"  Customers created: {len(created_updates)}")
+    for row, new_id in created_updates:
+        print(f"    row {row}  ->  NS {new_id}")
+    print(f"  Errors:          {errors}")
     print(f"  Finished: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     print("=" * 60)
 
