@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-06-22T07:18:21.202518Z",
+  "updated": "2026-06-23T06:00:42.767534Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -348,14 +348,6 @@
     },
     {
       "school": "Cedar Grove Belgium High School",
-      "email": "jburke@cgbrockets.com",
-      "role": "AD Admin Assistant",
-      "sport": "",
-      "first": "Jordyn",
-      "last": "Burke"
-    },
-    {
-      "school": "Cedar Grove Belgium High School",
       "email": "jhock@cgbrockets.com",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -385,6 +377,14 @@
       "sport": "Boys Soccer",
       "first": "Kyle",
       "last": "Schultz"
+    },
+    {
+      "school": "Cedar Grove Belgium High School",
+      "email": "mkautzer@cgbrockets.com",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Megan",
+      "last": "Kautzer"
     },
     {
       "school": "Cedar Grove Belgium High School",
@@ -3017,6 +3017,14 @@
       "sport": "Boys & Girls Track and Field",
       "first": "Michael",
       "last": "Bubolz"
+    },
+    {
+      "school": "Manitowoc Lincoln High School",
+      "email": "primusj@mpsd.school",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Jessica",
+      "last": "Primus"
     },
     {
       "school": "Manitowoc Lincoln High School",
