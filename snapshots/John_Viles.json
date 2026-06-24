@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-06-23T06:00:42.767534Z",
+  "updated": "2026-06-24T05:53:53.963791Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -1900,14 +1900,6 @@
     },
     {
       "school": "Kewaskum High School",
-      "email": "jhalopka@kewaskumschools.org",
-      "role": "Assistant Athletic Director",
-      "sport": "",
-      "first": "Jeridiah",
-      "last": "Halopka"
-    },
-    {
-      "school": "Kewaskum High School",
       "email": "jrondorf@kewaskumschools.org",
       "role": "Head Coach",
       "sport": "Boys Football",
@@ -2113,6 +2105,14 @@
       "sport": "Girls Golf",
       "first": "Kell",
       "last": "Gozdziewski"
+    },
+    {
+      "school": "Kiel High School",
+      "email": "kschrems@kiel.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Keegan",
+      "last": "Schrems"
     },
     {
       "school": "Kiel High School",

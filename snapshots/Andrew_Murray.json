@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-06-23T05:54:50.051127Z",
+  "updated": "2026-06-24T05:48:10.300732Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -6356,14 +6356,6 @@
     },
     {
       "school": "Forreston High School",
-      "email": "kgetz@fvdistrict221.org",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Kyle",
-      "last": "Getz"
-    },
-    {
-      "school": "Forreston High School",
       "email": "kjanicke@fvdistrict221.org",
       "role": "Head Coach",
       "sport": "Boys Football",
@@ -6687,6 +6679,14 @@
       "email": "samantha.warner@fsd145.org",
       "role": "Boys Athletic Director's Assistant & Girls Athletic Director's Assistant",
       "sport": "",
+      "first": "Samantha",
+      "last": "Warner"
+    },
+    {
+      "school": "Freeport High School",
+      "email": "samantha.warner@fsd145.org",
+      "role": "Head Coach",
+      "sport": "Competitive Dance",
       "first": "Samantha",
       "last": "Warner"
     },
@@ -11729,6 +11729,14 @@
       "sport": "Boys & Girls Wrestling",
       "first": "Kevin",
       "last": "Milder"
+    },
+    {
+      "school": "Lena-Winslow High School",
+      "email": "ransomm@le-win.net",
+      "role": "Coach",
+      "sport": "Sideline Cheer",
+      "first": "Madison",
+      "last": "Ransom"
     },
     {
       "school": "Lena-Winslow High School",
