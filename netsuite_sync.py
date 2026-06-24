@@ -652,6 +652,17 @@ def sync_customer(school_name, state, school_info, contacts=None, ns_customer_id
             new_id = extract_id_from_location(r)
             print(f"  [NS] Created Customer: {body['companyName']} (ID: {new_id})")
             return new_id, True
+        elif r.status_code == 400 and "already exists" in r.text.lower():
+            # The externalId is already taken — the customer exists in NS but
+            # the sheet row lost its ID (e.g. manually cleared). Look it up by
+            # externalId and return the existing ID so the sheet gets patched.
+            ext_id = body.get("externalId", "")
+            existing_id = get_customer_by_external_id(ext_id) if ext_id else None
+            if existing_id:
+                print(f"  [NS] Customer already exists (ID: {existing_id}) — recovering ID")
+                return existing_id, False
+            print(f"  [NS] ERROR creating customer: {r.status_code} {r.text[:200]}")
+            return None, False
         else:
             print(f"  [NS] ERROR creating customer: {r.status_code} {r.text[:200]}")
             return None, False

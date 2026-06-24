@@ -149,7 +149,12 @@ from school_netsuite_sync import (
 )
 # Reuse the IL row -> school_info shaper. Single source of truth so the
 # manual IL workflow and this nightly push read the sheet identically.
-from ihsa_sync import school_info_from_row, M_FULL
+from ihsa_sync import (
+    school_info_from_row, M_FULL,
+    M_CLASS, M_LEVEL, M_NICKNAME, M_COLORS, M_CONFERENCE,
+    M_DISTRICT, M_ENROLLMENT, M_SIZE, M_PHONE,
+    M_ADDR1, M_ADDR2, M_CITY, M_ZIP, M_WEBSITE,
+)
 
 # Optional Schools-tab column for parent/child customers (e.g. Mount Horeb:
 # district parent + high-school subcustomer). Contacts' primary company and
@@ -290,6 +295,46 @@ def main():
                 print(f"  Could not sync Customer — skipping contacts")
                 errors += 1
                 continue
+
+            # Write scraped WIAA fields back to the Schools tab so the sheet
+            # stays in sync. Only fills blank cells — never overwrites a value
+            # the user has manually set. IL schools are sheet-sourced so no
+            # write-back needed there.
+            _WIAA_FIELDS = [
+                (M_CLASS,      "school_class"),
+                (M_LEVEL,      "level"),
+                (M_NICKNAME,   "nickname"),
+                (M_COLORS,     "colors"),
+                (M_CONFERENCE, "conference"),
+                (M_DISTRICT,   "wiaa_district"),
+                (M_ENROLLMENT, "enrollment"),
+                (M_SIZE,       "school_size"),
+                (M_PHONE,      "phone"),
+                (M_ADDR1,      "address1"),
+                (M_ADDR2,      "address2"),
+                (M_CITY,       "city"),
+                (M_ZIP,        "zip"),
+                (M_WEBSITE,    "website"),
+            ]
+            headers = list(sch["raw"].keys())
+            wiaa_updates = []
+            for col_name, info_key in _WIAA_FIELDS:
+                scraped_val = school_info_out.get(info_key)
+                if not scraped_val:
+                    continue
+                existing = str(sch["raw"].get(col_name, "")).strip()
+                if existing:
+                    continue  # don't overwrite manually set values
+                if col_name not in headers:
+                    continue
+                col_idx = headers.index(col_name) + 1
+                wiaa_updates.append({
+                    "range": gspread.utils.rowcol_to_a1(sch["row"], col_idx),
+                    "values": [[str(scraped_val)]],
+                })
+            if wiaa_updates:
+                master_ws.batch_update(wiaa_updates)
+                print(f"  Wrote {len(wiaa_updates)} scraped field(s) back to Schools tab")
 
         synced_schools += 1
         synced_updates.append((sch["row"], datetime.now().strftime("%Y-%m-%d %H:%M")))
