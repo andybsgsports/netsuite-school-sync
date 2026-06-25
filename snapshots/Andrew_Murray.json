@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-06-24T05:48:10.300732Z",
+  "updated": "2026-06-25T05:55:13.233685Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -10028,6 +10028,14 @@
     },
     {
       "school": "Janesville Craig High School",
+      "email": "ashley.boyer@janesville.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Ashley",
+      "last": "Boyer"
+    },
+    {
+      "school": "Janesville Craig High School",
       "email": "bcorey@janesville.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -10060,6 +10068,14 @@
     },
     {
       "school": "Janesville Craig High School",
+      "email": "hiqmet.dauti@janesville.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Hiqmet",
+      "last": "Dauti"
+    },
+    {
+      "school": "Janesville Craig High School",
       "email": "hunter.salmon@janesville.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Cross Country",
@@ -10073,14 +10089,6 @@
       "sport": "",
       "first": "Jim",
       "last": "McClowry, CMAA"
-    },
-    {
-      "school": "Janesville Craig High School",
-      "email": "jhammen@janesville.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Josh",
-      "last": "Hammen"
     },
     {
       "school": "Janesville Craig High School",
@@ -12257,6 +12265,14 @@
       "sport": "Esports",
       "first": "Dan",
       "last": "Kane"
+    },
+    {
+      "school": "Marengo High School",
+      "email": "kruegerj@mchs154.org",
+      "role": "Head Coach",
+      "sport": "Competitive Dance",
+      "first": "Jasmine",
+      "last": "Krueger"
     },
     {
       "school": "Marengo High School",

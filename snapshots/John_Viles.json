@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-06-24T05:53:53.963791Z",
+  "updated": "2026-06-25T06:01:06.906145Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -1580,6 +1580,22 @@
     },
     {
       "school": "Howards Grove High School",
+      "email": "ahouston@hgsd.k12.wi.us",
+      "role": "Principal",
+      "sport": "",
+      "first": "Angie",
+      "last": "Houston"
+    },
+    {
+      "school": "Howards Grove High School",
+      "email": "ahouston@hgtigers.com",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Angie",
+      "last": "Houston"
+    },
+    {
+      "school": "Howards Grove High School",
       "email": "averyhuibregtse@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Hockey",
@@ -1652,22 +1668,6 @@
     },
     {
       "school": "Howards Grove High School",
-      "email": "jhess@hgsd.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Jon",
-      "last": "Hess"
-    },
-    {
-      "school": "Howards Grove High School",
-      "email": "jhess@hgsd.k12.wi.us",
-      "role": "Principal",
-      "sport": "",
-      "first": "Jon",
-      "last": "Hess"
-    },
-    {
-      "school": "Howards Grove High School",
       "email": "khager@hgsd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -1705,14 +1705,6 @@
       "sport": "Boys Basketball",
       "first": "Wade",
       "last": "Georgeff"
-    },
-    {
-      "school": "Howards Grove High School",
-      "email": "zachlensmire@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Zach",
-      "last": "Lensmire"
     },
     {
       "school": "Hustisford High School",

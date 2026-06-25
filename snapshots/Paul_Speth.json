@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-06-24T05:52:32.343178Z",
+  "updated": "2026-06-25T05:59:42.640743Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -1548,14 +1548,6 @@
     },
     {
       "school": "New Lisbon High School",
-      "email": "bobbi_plueger12@yahoo.com",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Bobbi",
-      "last": "Ulrich"
-    },
-    {
-      "school": "New Lisbon High School",
       "email": "j.elsing@nlsd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -1585,6 +1577,14 @@
       "sport": "",
       "first": "Katy",
       "last": "Bullard"
+    },
+    {
+      "school": "New Lisbon High School",
+      "email": "l.faber@nlsd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Leah",
+      "last": "Faber"
     },
     {
       "school": "New Lisbon High School",
@@ -1756,14 +1756,6 @@
     },
     {
       "school": "Port Edwards High School",
-      "email": "Brian.strnad.13@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Brian",
-      "last": "Strnad"
-    },
-    {
-      "school": "Port Edwards High School",
       "email": "greenju17@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -1785,22 +1777,6 @@
       "sport": "Boys Wrestling",
       "first": "Josh",
       "last": "Jensen"
-    },
-    {
-      "school": "Port Edwards High School",
-      "email": "justin.beck@tweetgarot.com",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Justin",
-      "last": "Beck"
-    },
-    {
-      "school": "Port Edwards High School",
-      "email": "martibe@pesd.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Ben",
-      "last": "Martinson"
     },
     {
       "school": "Port Edwards High School",

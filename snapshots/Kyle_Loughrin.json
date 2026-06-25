@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-06-24T05:51:58.715254Z",
+  "updated": "2026-06-25T05:59:06.381918Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -881,14 +881,6 @@
       "sport": "Girls Hockey",
       "first": "Stephanie",
       "last": "Brunkhorst"
-    },
-    {
-      "school": "Appleton West High School",
-      "email": "SYSONGRACE@aasd.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Grace",
-      "last": "Syson"
     },
     {
       "school": "Appleton West High School",
@@ -5132,14 +5124,6 @@
     },
     {
       "school": "Marinette High School",
-      "email": "clambie@marinette.k12.wi.us",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Corry",
-      "last": "Lambie"
-    },
-    {
-      "school": "Marinette High School",
       "email": "cnelson@marinette.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -5204,6 +5188,22 @@
     },
     {
       "school": "Marinette High School",
+      "email": "lmauldin@marinette.k12.wi.us",
+      "role": "Principal",
+      "sport": "",
+      "first": "Lucas",
+      "last": "Maulding"
+    },
+    {
+      "school": "Marinette High School",
+      "email": "matt.smith@marinette.k12.wi.us",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Matt",
+      "last": "Smith"
+    },
+    {
+      "school": "Marinette High School",
       "email": "mmaedke@marinette.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -5217,14 +5217,6 @@
       "sport": "Boys Football",
       "first": "Nathan",
       "last": "Anderson"
-    },
-    {
-      "school": "Marinette High School",
-      "email": "slinssen@marinette.k12.wi.us",
-      "role": "Principal",
-      "sport": "",
-      "first": "Steve",
-      "last": "Linssen"
     },
     {
       "school": "Marinette High School",
@@ -8305,14 +8297,6 @@
       "sport": "Boys Volleyball",
       "first": "Jeff",
       "last": "Dow"
-    },
-    {
-      "school": "Sturgeon Bay High School",
-      "email": "knerby@sbsdmail.net",
-      "role": "Principal",
-      "sport": "",
-      "first": "Keith",
-      "last": "Nerby"
     },
     {
       "school": "Sturgeon Bay High School",
