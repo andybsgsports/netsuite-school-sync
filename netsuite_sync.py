@@ -466,10 +466,15 @@ def sync_address_book(customer_id, school_info, contacts, school_name=""):
     # that was unreliable when the sample happened to be a Bill-To or a
     # pre-existing Ship-To, and it caused the same contacts to be re-added
     # on every run (80+ duplicate Ship-Tos on Barneveld as of Apr 2026).
-    # NOTE: addressee on existing lines is NOT healed here — that's a
-    # one-time-after-rename concern handled by fix_address_names.py, so the
-    # nightly push stays fast (no per-line subrecord reads).
+    #
+    # While we're reading each line, also HEAL the addressee: if a line's
+    # addressee differs from the canonical school_name (e.g. left as "Harvard"
+    # after the school was renamed "Harvard High School"), PATCH it. This used
+    # to be a separate manual run of fix_address_names.py; folding it in here
+    # means renames self-correct on the next nightly push. Bill-To lines are
+    # left alone.
     existing_labels = set()
+    healed = 0
     r = ns_get(f"customer/{customer_id}?expand=addressBook")
     if r.status_code == 200:
         items = r.json().get("addressBook", {}).get("items", [])
@@ -479,10 +484,25 @@ def sync_address_book(customer_id, school_info, contacts, school_name=""):
             if not line_id:
                 continue
             r2 = ns_get(f"customer/{customer_id}/addressBook/{line_id}")
-            if r2.status_code == 200:
-                lbl = (r2.json().get("label") or "").strip()
-                if lbl:
-                    existing_labels.add(lbl.lower())
+            if r2.status_code != 200:
+                continue
+            line = r2.json()
+            lbl = (line.get("label") or "").strip()
+            if lbl:
+                existing_labels.add(lbl.lower())
+            # Heal addressee on non-Bill-To lines when we know the canonical name
+            if school_name and not line.get("defaultBilling"):
+                sub = ns_get(f"customer/{customer_id}/addressBook/{line_id}/addressBookAddress")
+                if sub.status_code == 200:
+                    cur = (sub.json().get("addressee") or "").strip()
+                    if cur and cur != school_name:
+                        pr = ns_patch(
+                            f"customer/{customer_id}/addressBook/{line_id}/addressBookAddress",
+                            {"addressee": school_name})
+                        if pr.status_code in (200, 204):
+                            healed += 1
+    if healed:
+        print(f"  [NS] Healed addressee on {healed} address line(s) -> '{school_name}'")
 
     new_items = []
     for name in contact_names:
