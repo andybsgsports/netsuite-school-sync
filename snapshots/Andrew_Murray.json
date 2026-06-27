@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-06-26T05:57:53.605863Z",
+  "updated": "2026-06-27T05:25:26.518813Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -18196,6 +18196,14 @@
     },
     {
       "school": "Waterford High School",
+      "email": "jmcclowry@wuhs.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Jim",
+      "last": "McClowry, CMAA"
+    },
+    {
+      "school": "Waterford High School",
       "email": "joe.britt@muskegonorway.org",
       "role": "Head Coach",
       "sport": "Boys Hockey",
@@ -18209,14 +18217,6 @@
       "sport": "Boys Golf",
       "first": "Joe",
       "last": "Rydzewski"
-    },
-    {
-      "school": "Waterford High School",
-      "email": "jstobber@wuhs.us",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Jill",
-      "last": "Stobber"
     },
     {
       "school": "Waterford High School",
