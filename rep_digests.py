@@ -370,6 +370,7 @@ def build_xlsx(admins, coaches, rep_name):
     df_admins = pd.DataFrame(admins)
     df_coaches = pd.DataFrame(coaches)
 
+    wrote_any = False
     with pd.ExcelWriter(bio, engine="openpyxl") as w:
         if not df_admins.empty:
             df_ath = df_admins[df_admins["Role"].isin(ATHLETIC_AD_ROLES)]
@@ -379,10 +380,12 @@ def build_xlsx(admins, coaches, rep_name):
                 df_ath.reindex(columns=cols).sort_values(["State", "School"]) \
                     .to_excel(w, sheet_name="Athletic Admins", index=False)
                 summary["Athletic Admins"] = len(df_ath)
+                wrote_any = True
             if not df_oth.empty:
                 df_oth.reindex(columns=cols).sort_values(["State", "School"]) \
                     .to_excel(w, sheet_name="Administrators", index=False)
                 summary["Administrators"] = len(df_oth)
+                wrote_any = True
 
         if not df_coaches.empty:
             df_coaches = df_coaches.copy()
@@ -394,6 +397,17 @@ def build_xlsx(admins, coaches, rep_name):
                 df_group = group.reindex(columns=cols).sort_values(["State", "School"])
                 df_group.to_excel(w, sheet_name=sheet, index=False)
                 summary[sheet] = len(df_group)
+                wrote_any = True
+
+        # openpyxl refuses to save a workbook with zero sheets
+        # ("At least one sheet must be visible"). When a scrape comes back
+        # completely empty (e.g. WIAA returning 503s for every school), write
+        # a placeholder sheet so the run doesn't crash and take down every
+        # rep processed after this one.
+        if not wrote_any:
+            pd.DataFrame({"Note": ["No contacts scraped this run (source site "
+                                   "may have been unavailable)."]}) \
+                .to_excel(w, sheet_name="No Data", index=False)
 
     apply_table_formatting(bio)
     return bio.getvalue(), summary
