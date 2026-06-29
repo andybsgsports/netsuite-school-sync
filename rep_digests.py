@@ -757,6 +757,11 @@ def main():
         print("-" * 60)
 
         admins, coaches = scrape_rep(rep["name"], schools)
+        # A rep with WI schools that yields ZERO admins AND ZERO coaches is a
+        # scrape failure (WIAA unreachable / page layout changed), never a
+        # legitimate mass exodus. Capture this BEFORE the IL merge below, or
+        # IL contacts would mask an empty WI scrape.
+        wi_empty = bool(schools) and not admins and not coaches
         all_scraped.extend(("WI", a) for a in admins)
         all_scraped.extend(("WI", c) for c in coaches)
 
@@ -779,6 +784,46 @@ def main():
         xlsx_bytes, sheet_summary = build_xlsx(admins, coaches, rep["name"])
         digest_label = "WI+IL" if rep.get("include_il") else "WI"
         xlsx_name = f"{rep['name'].replace(' ', '_')}-{digest_label}_School_Admins_Coaches.xlsx"
+
+        # GUARD: don't trust a run that lost a large share of contacts with
+        # nothing new added — that's a source-site scrape failure, not real
+        # churn (e.g. WIAA returned empty -> the diff lists every WI contact
+        # as "removed"). When suspected: do NOT overwrite the snapshot (so the
+        # next run diffs against good data) and do NOT send the alarming
+        # "removed everything" digest. The sheet merge is add-only and the NS
+        # push keys off the Sync column, so nothing is ever deleted regardless;
+        # this just stops the false alarm and the next-day phantom "+N added".
+        suspect_failure = wi_empty or (
+            not first_run and not added and len(removed) >= 50
+            and len(current_keys) < len(previous_keys) * 0.5
+        )
+        if suspect_failure:
+            print(f"  [GUARD] Suspected scrape failure for {rep['name']}: "
+                  f"removed={len(removed)} added={len(added)} "
+                  f"current={len(current_keys)} previous={len(previous_keys)} "
+                  f"wi_empty={wi_empty}. Preserving snapshot; skipping digest.")
+            alert = (
+                f"{digest_label} digest for {rep['name']} was SKIPPED.\n\n"
+                f"The scrape came back far smaller than last run "
+                f"({len(removed)} contacts missing, 0 new), which means the "
+                f"source site (WIAA/IHSA) was unreachable or changed its page "
+                f"layout — not that contacts actually left.\n\n"
+                f"No changes were made: the snapshot was preserved and no "
+                f"removals were reported. Your sheet and NetSuite are untouched. "
+                f"The next run will re-check automatically."
+            )
+            subject = f"{rep['name']} - {digest_label} digest SKIPPED (scrape looked incomplete)"
+            # Only alert in shadow/dry mode (goes to Andy). In true-live mode
+            # send_email would deliver to the rep, who shouldn't get a
+            # "skipped" notice — just log it there. Snapshot is intentionally
+            # NOT saved in either case.
+            in_shadow = bool(os.environ.get("DIGESTS_OVERRIDE_TO", "").strip()) or DRY_RUN
+            sent = send_email(rep, subject, alert, xlsx_bytes, xlsx_name) if in_shadow else False
+            results.append({
+                "rep": rep["name"], "schools": len(schools),
+                "added": 0, "removed": 0, "sent": sent,
+            })
+            continue
 
         def render(prefix, key, records):
             # key = (school, email, role, sport)
