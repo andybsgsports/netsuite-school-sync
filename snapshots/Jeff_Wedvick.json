@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-06-28T06:10:18.374154Z",
+  "updated": "2026-06-30T06:02:29.688032Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -2164,27 +2164,11 @@
     },
     {
       "school": "Johnson Creek High School",
-      "email": "gruenm@johnsoncreekschools.org",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Mark",
-      "last": "Gruen"
-    },
-    {
-      "school": "Johnson Creek High School",
       "email": "hannae@johnsoncreekschools.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
       "first": "Beth",
       "last": "Hanna"
-    },
-    {
-      "school": "Johnson Creek High School",
-      "email": "hebbet@johnsoncreekschools.org",
-      "role": "AD Admin Assistant",
-      "sport": "",
-      "first": "Trisha",
-      "last": "Hebbe"
     },
     {
       "school": "Johnson Creek High School",
@@ -2205,7 +2189,7 @@
     {
       "school": "Johnson Creek High School",
       "email": "oconnelln@johnsoncreekschools.org",
-      "role": "Principal",
+      "role": "Superintendent",
       "sport": "",
       "first": "Neil",
       "last": "O'Connell"
@@ -2237,7 +2221,7 @@
     {
       "school": "Johnson Creek High School",
       "email": "ramseierb@johnsoncreekschools.org",
-      "role": "Athletic Director",
+      "role": "Principal",
       "sport": "",
       "first": "Brady",
       "last": "Ramseier"
@@ -2649,6 +2633,14 @@
       "sport": "Boys & Girls Wrestling",
       "first": "Clayton",
       "last": "Grow"
+    },
+    {
+      "school": "Lakeside Lutheran High School",
+      "email": "coachquale24@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Brett",
+      "last": "Quale"
     },
     {
       "school": "Lakeside Lutheran High School",
@@ -3593,14 +3585,6 @@
       "sport": "",
       "first": "David",
       "last": "Karrels"
-    },
-    {
-      "school": "Ozaukee High School",
-      "email": "georgeschroeder53@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "George",
-      "last": "Schroeder"
     },
     {
       "school": "Ozaukee High School",

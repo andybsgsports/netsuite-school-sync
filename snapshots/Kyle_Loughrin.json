@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-06-28T06:07:33.462383Z",
+  "updated": "2026-06-30T05:59:41.287846Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -356,6 +356,14 @@
     },
     {
       "school": "Appleton East High School",
+      "email": "herrmannsamuel@aasd.k12.wi.us",
+      "role": "Assistant Principal, Athletic Director",
+      "sport": "",
+      "first": "Sam",
+      "last": "Herrmann"
+    },
+    {
+      "school": "Appleton East High School",
       "email": "HUTHSHALENE@aasd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Swimming & Diving",
@@ -436,7 +444,7 @@
     },
     {
       "school": "Appleton East High School",
-      "email": "smedbergjacque@aasd.k12.wi.us",
+      "email": "SMEDBERGJACQUL@aasd.k12.wi.us",
       "role": "Principal",
       "sport": "",
       "first": "Jacque",
@@ -932,14 +940,6 @@
     },
     {
       "school": "Ashwaubenon High School",
-      "email": "bkriescher@ashwaubenonk12.org",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Brooke",
-      "last": "Kriescher"
-    },
-    {
-      "school": "Ashwaubenon High School",
       "email": "blanks@reflectionsprogram.net",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -980,6 +980,14 @@
     },
     {
       "school": "Ashwaubenon High School",
+      "email": "cochkevin@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Kevin",
+      "last": "Coch"
+    },
+    {
+      "school": "Ashwaubenon High School",
       "email": "cschneider@ashwaubenonk12.org",
       "role": "Assistant Principal",
       "sport": "",
@@ -996,14 +1004,6 @@
     },
     {
       "school": "Ashwaubenon High School",
-      "email": "dribbens@ashwaubenonk12.org",
-      "role": "Principal",
-      "sport": "",
-      "first": "Dirk",
-      "last": "Ribbens"
-    },
-    {
-      "school": "Ashwaubenon High School",
       "email": "dstroud@ashwaubenonk12.org",
       "role": "Head Coach",
       "sport": "Girls Soccer",
@@ -1012,11 +1012,11 @@
     },
     {
       "school": "Ashwaubenon High School",
-      "email": "ewichlacz@ashwaubenonk12.org",
+      "email": "ejohnson@ashwaubenonk12.org",
       "role": "Head Coach",
-      "sport": "Girls Cross Country",
-      "first": "Elizabeth",
-      "last": "Wichlacz"
+      "sport": "Girls Volleyball",
+      "first": "Erin",
+      "last": "Johnson"
     },
     {
       "school": "Ashwaubenon High School",
@@ -1060,14 +1060,6 @@
     },
     {
       "school": "Ashwaubenon High School",
-      "email": "jimig@ashwaubenonk12.org",
-      "role": "Head Coach",
-      "sport": "Boys Cross Country",
-      "first": "Jake",
-      "last": "Imig"
-    },
-    {
-      "school": "Ashwaubenon High School",
       "email": "jmartin@ashwaubenonk12.org",
       "role": "Head Coach",
       "sport": "Boys Swimming & Diving",
@@ -1081,6 +1073,14 @@
       "sport": "Girls Swimming & Diving",
       "first": "Kari",
       "last": "Kleczka"
+    },
+    {
+      "school": "Ashwaubenon High School",
+      "email": "kmach@ashwaubenonk12.org",
+      "role": "Principal",
+      "sport": "",
+      "first": "Kane",
+      "last": "Mach"
     },
     {
       "school": "Ashwaubenon High School",
@@ -2724,6 +2724,14 @@
     },
     {
       "school": "Freedom High School",
+      "email": "stracy@seymour.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Sarah",
+      "last": "Tracy"
+    },
+    {
+      "school": "Freedom High School",
       "email": "tgerritts@freedomschools.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Golf",
@@ -2929,6 +2937,14 @@
       "sport": "Boys Cross Country",
       "first": "Isaac",
       "last": "Flynn Buggs"
+    },
+    {
+      "school": "Green Bay East High School",
+      "email": "jeffrey.m.dow@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Jeff",
+      "last": "Dow"
     },
     {
       "school": "Green Bay East High School",
@@ -5316,14 +5332,6 @@
     },
     {
       "school": "Marion High School",
-      "email": "tracie.voight@marion-mustangs.org",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Cross Country",
-      "first": "Tracie",
-      "last": "Voight"
-    },
-    {
-      "school": "Marion High School",
       "email": "troy.edwards@marion-mustangs.org",
       "role": "Superintendent, Principal",
       "sport": "",
@@ -5705,6 +5713,14 @@
       "sport": "Boys Football",
       "first": "Jason",
       "last": "Wadzinski"
+    },
+    {
+      "school": "Merrill High School",
+      "email": "jjurkovich@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Jana",
+      "last": "Wimmer"
     },
     {
       "school": "Merrill High School",
@@ -6665,6 +6681,14 @@
       "sport": "",
       "first": "Larry",
       "last": "Theiss"
+    },
+    {
+      "school": "Pacelli High School",
+      "email": "lustigashley@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Gymnastics",
+      "first": "Ashley",
+      "last": "Guzman"
     },
     {
       "school": "Pacelli High School",
@@ -7676,6 +7700,14 @@
     },
     {
       "school": "Southern door High School",
+      "email": "jeffrey.m.dow@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Jeff",
+      "last": "Dow"
+    },
+    {
+      "school": "Southern door High School",
       "email": "jvandenbush@sdsd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -8660,6 +8692,14 @@
     },
     {
       "school": "Waupaca High School",
+      "email": "jkrcmar@charter.net",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Jay",
+      "last": "Krcmar"
+    },
+    {
+      "school": "Waupaca High School",
       "email": "kscherwinski@waupacaschools.org",
       "role": "Assistant Principal",
       "sport": "",
@@ -8737,14 +8777,6 @@
       "sport": "Girls Basketball",
       "first": "Andy",
       "last": "Meyer"
-    },
-    {
-      "school": "Wausau East High School",
-      "email": "bbednarczyk@wausauschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Brian",
-      "last": "Bednarczyk"
     },
     {
       "school": "Wausau East High School",

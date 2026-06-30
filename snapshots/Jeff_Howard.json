@@ -1,15 +1,7 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-06-28T06:04:44.242449Z",
+  "updated": "2026-06-30T05:56:50.093468Z",
   "records": [
-    {
-      "school": "Albany High School",
-      "email": "barry.einbeck@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Barry",
-      "last": "Einbeck"
-    },
     {
       "school": "Albany High School",
       "email": "BDAVIS@MARTINAUTO.COM",
@@ -76,6 +68,14 @@
     },
     {
       "school": "Albany High School",
+      "email": "olsonma@monticello.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Mark",
+      "last": "Olson"
+    },
+    {
+      "school": "Albany High School",
       "email": "rkwachholz39@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -126,7 +126,7 @@
       "school": "Argyle High School",
       "email": "gsutter89@hotmail.com",
       "role": "Head Coach",
-      "sport": "Boys Wrestling",
+      "sport": "Boys & Girls Wrestling",
       "first": "Grant",
       "last": "Sutter"
     },
@@ -713,14 +713,6 @@
       "sport": "Boys Wrestling",
       "first": "Craig",
       "last": "Donar"
-    },
-    {
-      "school": "Benton High School",
-      "email": "dustinhamm0408@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "Dustin",
-      "last": "Hamm"
     },
     {
       "school": "Benton High School",
@@ -1780,6 +1772,14 @@
     },
     {
       "school": "Iowa Grant High School",
+      "email": "radler@igs.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Robert",
+      "last": "Adler"
+    },
+    {
+      "school": "Iowa Grant High School",
       "email": "rallen@igs.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
@@ -2532,6 +2532,14 @@
     },
     {
       "school": "Monticello High School",
+      "email": "barry.einbeck@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Barry",
+      "last": "Einbeck"
+    },
+    {
+      "school": "Monticello High School",
       "email": "delwiam@monticello.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Track and Field",
@@ -2617,6 +2625,14 @@
       "sport": "Boys & Girls Wrestling",
       "first": "Peter",
       "last": "Swenson"
+    },
+    {
+      "school": "Monticello High School",
+      "email": "tonygbrewer20@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Track and Field",
+      "first": "Tony",
+      "last": "Brewer"
     },
     {
       "school": "New Glarus High School",
@@ -3201,6 +3217,14 @@
       "sport": "Girls Wrestling",
       "first": "Jacob",
       "last": "Zizis"
+    },
+    {
+      "school": "Potosi High School",
+      "email": "cassville92@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Don",
+      "last": "Adams"
     },
     {
       "school": "Potosi High School",
@@ -3908,11 +3932,27 @@
     },
     {
       "school": "Shullsburg High School",
+      "email": "goffinetk@swsd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Gymnastics",
+      "first": "Kelsie",
+      "last": "Goffinet"
+    },
+    {
+      "school": "Shullsburg High School",
       "email": "hamster.one@hotmail.com",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
       "first": "Russell",
       "last": "Hamm"
+    },
+    {
+      "school": "Shullsburg High School",
+      "email": "Karenwiederholt74@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Gymnastics",
+      "first": "Karen",
+      "last": "Wiederholt"
     },
     {
       "school": "Shullsburg High School",
@@ -4017,14 +4057,6 @@
       "sport": "Boys Wrestling",
       "first": "Craig",
       "last": "Donar"
-    },
-    {
-      "school": "Southwestewrn High School",
-      "email": "dustinhamm0408@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "Dustin",
-      "last": "Hamm"
     },
     {
       "school": "Southwestewrn High School",

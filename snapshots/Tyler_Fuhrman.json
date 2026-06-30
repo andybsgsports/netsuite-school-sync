@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-06-28T06:05:51.905103Z",
+  "updated": "2026-06-30T05:57:58.504616Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -9,14 +9,6 @@
       "sport": "Boys & Girls Track and Field",
       "first": "Amy",
       "last": "Parker"
-    },
-    {
-      "school": "Abundant Life Christian High School",
-      "email": "aslater@uwalumni.com",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Amanda",
-      "last": "Slater"
     },
     {
       "school": "Abundant Life Christian High School",
@@ -180,6 +172,14 @@
     },
     {
       "school": "Arcadia High School",
+      "email": "cm_boos@hotmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Gymnastics",
+      "first": "Carley",
+      "last": "Boos"
+    },
+    {
+      "school": "Arcadia High School",
       "email": "coachboots27@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -201,6 +201,14 @@
       "sport": "Girls Soccer",
       "first": "Brooke",
       "last": "Hanson"
+    },
+    {
+      "school": "Arcadia High School",
+      "email": "morgansiekert@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Gymnastics",
+      "first": "Morgan",
+      "last": "Siekert"
     },
     {
       "school": "Arcadia High School",
@@ -972,6 +980,14 @@
     },
     {
       "school": "DeSoto High School",
+      "email": "JUSTIN@BADAXELOGHOMES.COM",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Justin",
+      "last": "Halverson"
+    },
+    {
+      "school": "DeSoto High School",
       "email": "l_wetter@hotmail.com",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -1116,11 +1132,35 @@
     },
     {
       "school": "Highland High School",
+      "email": "apronschinske@igs.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Golf",
+      "first": "Art",
+      "last": "Pronschinske"
+    },
+    {
+      "school": "Highland High School",
       "email": "aultmanchr@gmial.com",
       "role": "Head Coach",
       "sport": "Girls Wrestling",
       "first": "Chris",
       "last": "Aultman"
+    },
+    {
+      "school": "Highland High School",
+      "email": "bholman@igs.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Brent",
+      "last": "Holman"
+    },
+    {
+      "school": "Highland High School",
+      "email": "dbaker@igs.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Dan",
+      "last": "Baker"
     },
     {
       "school": "Highland High School",
@@ -1161,6 +1201,14 @@
       "sport": "",
       "first": "Lynn",
       "last": "Michek"
+    },
+    {
+      "school": "Highland High School",
+      "email": "lstevens@igs.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Track and Field",
+      "first": "Lexie",
+      "last": "Stevens"
     },
     {
       "school": "Highland High School",
@@ -1652,6 +1700,14 @@
     },
     {
       "school": "Ithaca High School",
+      "email": "villiard@weston.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Larry",
+      "last": "Villiard"
+    },
+    {
+      "school": "Ithaca High School",
       "email": "villiardlar@gmail.com",
       "role": "Assistant Athletic Director",
       "sport": "",
@@ -1817,14 +1873,6 @@
       "sport": "Boys Track and Field",
       "first": "Jeremy",
       "last": "Lee"
-    },
-    {
-      "school": "LaFarge High School",
-      "email": "JUSTIN@BADAXELOGHOMES.COM",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Justin",
-      "last": "Halverson"
     },
     {
       "school": "LaFarge High School",
@@ -2636,11 +2684,11 @@
     },
     {
       "school": "Madison Country Day High School",
-      "email": "rmaclellan@wayland.org",
+      "email": "mstefonek1@hotmail.com",
       "role": "Head Coach",
-      "sport": "Boys Lacrosse-Boys",
-      "first": "Rob",
-      "last": "Maclellan"
+      "sport": "Boys Baseball",
+      "first": "Marcus",
+      "last": "Stefonek"
     },
     {
       "school": "Madison Country Day High School",
@@ -3017,14 +3065,6 @@
       "sport": "Boys Hockey",
       "first": "Pete",
       "last": "Rothering"
-    },
-    {
-      "school": "Madison Edgewood High School",
-      "email": "rachael.hauser@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Gymnastics",
-      "first": "Rachael",
-      "last": "Hauser"
     },
     {
       "school": "Madison Edgewood High School",
@@ -4796,6 +4836,14 @@
     },
     {
       "school": "River Valley High School",
+      "email": "nbreunig@barabooschools.net",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Nate",
+      "last": "Breunig"
+    },
+    {
+      "school": "River Valley High School",
       "email": "nhunstiger@rvschools.org",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -6124,6 +6172,14 @@
     },
     {
       "school": "Weston High School",
+      "email": "kellkyl@ithaca.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Kyle",
+      "last": "Kelly"
+    },
+    {
+      "school": "Weston High School",
       "email": "landsinger@weston.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
@@ -6193,14 +6249,6 @@
       "sport": "Girls Softball",
       "first": "Larry",
       "last": "Villiard"
-    },
-    {
-      "school": "Weston High School",
-      "email": "wolft5940@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Football 8-Player",
-      "first": "Tom",
-      "last": "Wolfe"
     },
     {
       "school": "Wisconsin Heights High School",

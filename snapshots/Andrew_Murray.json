@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-06-28T06:03:48.629483Z",
+  "updated": "2026-06-30T05:55:53.269606Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -8092,14 +8092,6 @@
     },
     {
       "school": "Greenfield High School",
-      "email": "spingolabilly@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Lacrosse-Boys",
-      "first": "Billy",
-      "last": "Spingola"
-    },
-    {
-      "school": "Greenfield High School",
       "email": "sswaer@greenfield.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Tennis",
@@ -14628,14 +14620,6 @@
     },
     {
       "school": "Palmyra-Eagle High School",
-      "email": "1bdwilde@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Brandon",
-      "last": "Wilde"
-    },
-    {
-      "school": "Palmyra-Eagle High School",
       "email": "bjczeshinski@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Basketball",
@@ -18853,7 +18837,7 @@
     {
       "school": "Waukesha South High School",
       "email": "dschreie@waukesha.k12.wi.us",
-      "role": "Assistant Principal, Athletic Director",
+      "role": "Assistant Principal",
       "sport": "",
       "first": "Dan",
       "last": "Schreier"
@@ -18969,6 +18953,14 @@
       "sport": "Girls Tennis",
       "first": "Melissa",
       "last": "Premeau"
+    },
+    {
+      "school": "Waukesha South High School",
+      "email": "nconrad@waukesha.k12.wi.us",
+      "role": "Assistant Principal, Athletic Director",
+      "sport": "",
+      "first": "Nick",
+      "last": "Conrad"
     },
     {
       "school": "Waukesha South High School",
@@ -19857,6 +19849,14 @@
       "sport": "Boys & Girls Cross Country",
       "first": "James",
       "last": "Newman"
+    },
+    {
+      "school": "Williams Bay High School",
+      "email": "jjkarabas@bigfoot.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "John",
+      "last": "Karabas"
     },
     {
       "school": "Williams Bay High School",

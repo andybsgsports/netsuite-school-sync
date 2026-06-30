@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-06-28T06:09:29.779446Z",
+  "updated": "2026-06-30T06:01:39.568349Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -97,6 +97,14 @@
       "sport": "Girls Softball",
       "first": "Mike",
       "last": "Heller"
+    },
+    {
+      "school": "Cambria Friesland High School",
+      "email": "tchasebigcat@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Thomas",
+      "last": "Chase"
     },
     {
       "school": "Cambria Friesland High School",
@@ -884,6 +892,14 @@
     },
     {
       "school": "Dodgeland High School",
+      "email": "gracypeterson28@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Tracy",
+      "last": "Peterson"
+    },
+    {
+      "school": "Dodgeland High School",
       "email": "greco@dodgeland.k12.wi.us",
       "role": "Superintendent",
       "sport": "",
@@ -897,6 +913,14 @@
       "sport": "Boys & Girls Track and Field",
       "first": "Kevin",
       "last": "Klueger"
+    },
+    {
+      "school": "Dodgeland High School",
+      "email": "mergena22@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Ashley",
+      "last": "Christian"
     },
     {
       "school": "Dodgeland High School",
@@ -1204,6 +1228,14 @@
     },
     {
       "school": "Fall River High School",
+      "email": "pogorelecmi@bdusd.org",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Mike",
+      "last": "Pogorelec"
+    },
+    {
+      "school": "Fall River High School",
       "email": "schraufnagel@rio.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -1420,6 +1452,14 @@
     },
     {
       "school": "Horicon High School",
+      "email": "aselgrad@horicon.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Andrew",
+      "last": "Selgrad"
+    },
+    {
+      "school": "Horicon High School",
       "email": "benstrieff@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -1468,14 +1508,6 @@
     },
     {
       "school": "Horicon High School",
-      "email": "efirari@horicon.k12.wi.us",
-      "role": "AD Admin Assistant",
-      "sport": "",
-      "first": "Emily",
-      "last": "Firari"
-    },
-    {
-      "school": "Horicon High School",
       "email": "hogfarmer360@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -1517,7 +1549,7 @@
     {
       "school": "Horicon High School",
       "email": "mlebouton@horicon.k12.wi.us",
-      "role": "Athletic Director",
+      "role": "Principal",
       "sport": "",
       "first": "Mike",
       "last": "LeBouton"
@@ -1556,11 +1588,11 @@
     },
     {
       "school": "Horicon High School",
-      "email": "tgraven@horicon.k12.wi.us",
-      "role": "Principal",
+      "email": "tpieper@horicon.k12.wi.us",
+      "role": "AD Admin Assistant",
       "sport": "",
-      "first": "Teresa",
-      "last": "Graven"
+      "first": "Trish",
+      "last": "Pieper"
     },
     {
       "school": "Horicon High School",
@@ -1636,6 +1668,14 @@
     },
     {
       "school": "Howards Grove High School",
+      "email": "dsteinbruecker@sasd.net",
+      "role": "Head Coach",
+      "sport": "Boys Swimming & Diving",
+      "first": "Deylin",
+      "last": "Steinbruecker"
+    },
+    {
+      "school": "Howards Grove High School",
       "email": "dziegelbauer@hgtigers.com",
       "role": "Athletic Director",
       "sport": "",
@@ -1665,6 +1705,14 @@
       "sport": "Boys & Girls Track and Field",
       "first": "Heidi",
       "last": "Georgeff"
+    },
+    {
+      "school": "Howards Grove High School",
+      "email": "hprisinger@sbcglobal.net",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Chad",
+      "last": "Prisinger"
     },
     {
       "school": "Howards Grove High School",
@@ -1708,6 +1756,14 @@
     },
     {
       "school": "Hustisford High School",
+      "email": "bingenr@dodgeland.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Rachael",
+      "last": "Bingen"
+    },
+    {
+      "school": "Hustisford High School",
       "email": "biwer@dodgeland.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -1721,6 +1777,14 @@
       "sport": "",
       "first": "Todd",
       "last": "Bugnacki"
+    },
+    {
+      "school": "Hustisford High School",
+      "email": "clash.laine+wiaa@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Laine",
+      "last": "Leitzke"
     },
     {
       "school": "Hustisford High School",
@@ -1756,6 +1820,14 @@
     },
     {
       "school": "Hustisford High School",
+      "email": "goods@dodgeland.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Wrestling",
+      "first": "Steve",
+      "last": "Good"
+    },
+    {
+      "school": "Hustisford High School",
       "email": "gracypeterson28@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Wrestling",
@@ -1769,6 +1841,14 @@
       "sport": "Girls Volleyball",
       "first": "Jackie",
       "last": "Thimm"
+    },
+    {
+      "school": "Hustisford High School",
+      "email": "klueger@dodgeland.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Track and Field",
+      "first": "Kevin",
+      "last": "Klueger"
     },
     {
       "school": "Hustisford High School",
@@ -1812,6 +1892,14 @@
     },
     {
       "school": "Hustisford High School",
+      "email": "perkins@dodgeland.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Andrew",
+      "last": "Perkins"
+    },
+    {
+      "school": "Hustisford High School",
       "email": "powersa@hustisford.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Track and Field",
@@ -1825,6 +1913,22 @@
       "sport": "Boys Baseball",
       "first": "Timothy",
       "last": "Tallmann"
+    },
+    {
+      "school": "Hustisford High School",
+      "email": "tshramek@sjnma.org",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Tim",
+      "last": "Shramek"
+    },
+    {
+      "school": "Hustisford High School",
+      "email": "white@dodgeland.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Jason",
+      "last": "White"
     },
     {
       "school": "Kewaskum High School",
@@ -2137,14 +2241,6 @@
       "sport": "Boys Swimming & Diving",
       "first": "Noah",
       "last": "Draxler"
-    },
-    {
-      "school": "Kiel High School",
-      "email": "swalsh@kiel.k12.wi.us",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Steve",
-      "last": "Walsh"
     },
     {
       "school": "Kohler High School",
@@ -2697,6 +2793,14 @@
       "sport": "Boys Basketball",
       "first": "Nick",
       "last": "Kohler"
+    },
+    {
+      "school": "Lomira High School",
+      "email": "pogorelecmi@bdusd.org",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Mike",
+      "last": "Pogorelec"
     },
     {
       "school": "Lomira High School",
@@ -3396,6 +3500,14 @@
     },
     {
       "school": "Mayville High School",
+      "email": "mmorell@oakfield.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Mark",
+      "last": "Morell"
+    },
+    {
+      "school": "Mayville High School",
       "email": "pogorelecmi@bdusd.org",
       "role": "Head Coach",
       "sport": "Girls Hockey",
@@ -3521,22 +3633,6 @@
       "sport": "",
       "first": "Elizabeth",
       "last": "Tierney-Olson"
-    },
-    {
-      "school": "Montello High School",
-      "email": "lwood@montelloschools.org",
-      "role": "Head Coach",
-      "sport": "Girls Track and Field",
-      "first": "Leslie",
-      "last": "Wood"
-    },
-    {
-      "school": "Montello High School",
-      "email": "mcniels730@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Track and Field",
-      "first": "John",
-      "last": "McNiel"
     },
     {
       "school": "Montello High School",
@@ -3756,6 +3852,30 @@
     },
     {
       "school": "North Fond Du Lac High School",
+      "email": "griedl@nfdlschools.org",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Grace",
+      "last": "Riedl"
+    },
+    {
+      "school": "North Fond Du Lac High School",
+      "email": "jkrug@oakfield.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Jonah",
+      "last": "Krug"
+    },
+    {
+      "school": "North Fond Du Lac High School",
+      "email": "jrohlfs@nfdlschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Jeff",
+      "last": "Rohlfs"
+    },
+    {
+      "school": "North Fond Du Lac High School",
       "email": "mcuadra@nfdlschools.org",
       "role": "Athletic Director",
       "sport": "",
@@ -3772,14 +3892,6 @@
     },
     {
       "school": "North Fond Du Lac High School",
-      "email": "renee.wisniowicz@nm.com",
-      "role": "Head Coach",
-      "sport": "Girls Soccer",
-      "first": "Renee",
-      "last": "Corriveau"
-    },
-    {
-      "school": "North Fond Du Lac High School",
       "email": "rheath@nfdlschools.org",
       "role": "Head Coach",
       "sport": "Girls Wrestling",
@@ -3793,30 +3905,6 @@
       "sport": "Boys Hockey",
       "first": "Ryan",
       "last": "Sarazin"
-    },
-    {
-      "school": "North Fond Du Lac High School",
-      "email": "schneidern@fonddulac.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Swimming & Diving",
-      "first": "Nikki",
-      "last": "Schneider"
-    },
-    {
-      "school": "North Fond Du Lac High School",
-      "email": "sdrews@nfdlschools.org",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Cross Country",
-      "first": "Sara",
-      "last": "Drews"
-    },
-    {
-      "school": "North Fond Du Lac High School",
-      "email": "sdrews@nfdlschools.org",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Track and Field",
-      "first": "Sara",
-      "last": "Drews"
     },
     {
       "school": "North Fond Du Lac High School",
@@ -3849,14 +3937,6 @@
       "sport": "Girls Softball",
       "first": "Taylan",
       "last": "Ybarra"
-    },
-    {
-      "school": "North Fond Du Lac High School",
-      "email": "zlaituri@nfdlschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "Zach",
-      "last": "Laituri"
     },
     {
       "school": "Oakfield High School",
@@ -3892,6 +3972,14 @@
     },
     {
       "school": "Oakfield High School",
+      "email": "coachhaefs14@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Soccer",
+      "first": "Joshua",
+      "last": "Haefs"
+    },
+    {
+      "school": "Oakfield High School",
       "email": "crickert@oakfield.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Football 8-Player",
@@ -3900,27 +3988,11 @@
     },
     {
       "school": "Oakfield High School",
-      "email": "cschmidt@nfdlschools.org",
-      "role": "Head Coach",
-      "sport": "Girls Soccer",
-      "first": "Cassie",
-      "last": "Schmidt"
-    },
-    {
-      "school": "Oakfield High School",
       "email": "dmock@oakfield.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
       "first": "Doug",
       "last": "Mock"
-    },
-    {
-      "school": "Oakfield High School",
-      "email": "edwardsk@fonddulac.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Tennis",
-      "first": "Killian",
-      "last": "Edwards"
     },
     {
       "school": "Oakfield High School",
@@ -3948,14 +4020,6 @@
     },
     {
       "school": "Oakfield High School",
-      "email": "renee.wisniowicz@nm.com",
-      "role": "Head Coach",
-      "sport": "Girls Soccer",
-      "first": "Renee",
-      "last": "Corriveau"
-    },
-    {
-      "school": "Oakfield High School",
       "email": "rjschaefer@quad.com",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -3969,22 +4033,6 @@
       "sport": "Boys Hockey",
       "first": "Ryan",
       "last": "Sarazin"
-    },
-    {
-      "school": "Oakfield High School",
-      "email": "schneidern@fonddulac.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Swimming Diving",
-      "first": "Nikki",
-      "last": "Schneider"
-    },
-    {
-      "school": "Oakfield High School",
-      "email": "sdrews@nfdlschools.org",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Cross Country",
-      "first": "Sara",
-      "last": "Drews"
     },
     {
       "school": "Oakfield High School",
@@ -5844,6 +5892,14 @@
     },
     {
       "school": "Sheboygan North High School",
+      "email": "amheling@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Michael",
+      "last": "Heling"
+    },
+    {
+      "school": "Sheboygan North High School",
       "email": "averyhuibregtse@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Hockey",
@@ -5977,6 +6033,14 @@
       "sport": "Girls Hockey",
       "first": "Lindsay",
       "last": "Lewison"
+    },
+    {
+      "school": "Sheboygan North High School",
+      "email": "mheling29@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Michaela",
+      "last": "Heling"
     },
     {
       "school": "Sheboygan North High School",
@@ -7436,6 +7500,14 @@
     },
     {
       "school": "West Bend West High School",
+      "email": "bmurraymckelvey@wbsd-schools.org",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Brant",
+      "last": "Murray-McKelvey"
+    },
+    {
+      "school": "West Bend West High School",
       "email": "broach@wbsd-schools.org",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -7597,6 +7669,14 @@
     {
       "school": "West Bend West High School",
       "email": "sgostisha@wbsd-schools.org",
+      "role": "Head Coach",
+      "sport": "Girls Gymnastics",
+      "first": "Samantha",
+      "last": "Gostisha"
+    },
+    {
+      "school": "West Bend West High School",
+      "email": "sroeming@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Gymnastics",
       "first": "Samantha",
