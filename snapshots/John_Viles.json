@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-06-30T06:01:39.568349Z",
+  "updated": "2026-07-01T06:20:12.494509Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -1804,14 +1804,6 @@
     },
     {
       "school": "Hustisford High School",
-      "email": "falkenthalg@hustisford.k12.wi.us",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Glen",
-      "last": "Falkenthal"
-    },
-    {
-      "school": "Hustisford High School",
       "email": "fink@dodgeland.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Soccer",
@@ -2377,6 +2369,14 @@
       "sport": "Boys Track and Field",
       "first": "Remington",
       "last": "Michael"
+    },
+    {
+      "school": "Kohler High School",
+      "email": "roederk@kohler.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Ken",
+      "last": "Roeder"
     },
     {
       "school": "Kohler High School",
@@ -3793,6 +3793,14 @@
       "sport": "Boys & Girls Cross Country",
       "first": "Susan",
       "last": "Roepke"
+    },
+    {
+      "school": "North Fond Du Lac High School",
+      "email": "adittburner@nfdlschools.org",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Track and Field",
+      "first": "Andrew",
+      "last": "Dittburner"
     },
     {
       "school": "North Fond Du Lac High School",

@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-06-30T05:59:41.287846Z",
+  "updated": "2026-07-01T06:18:13.802088Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -1984,7 +1984,7 @@
       "role": "Athletic Director",
       "sport": "",
       "first": "Jeff",
-      "last": "Dorschner"
+      "last": "Dorschner, CMAA"
     },
     {
       "school": "Crivitz High School",
@@ -1992,12 +1992,20 @@
       "role": "Head Coach",
       "sport": "Boys Baseball",
       "first": "Jeff",
-      "last": "Dorschner"
+      "last": "Dorschner, CMAA"
+    },
+    {
+      "school": "Crivitz High School",
+      "email": "jlauber@crivitz.k12.wi.us",
+      "role": "Principal",
+      "sport": "",
+      "first": "Justin",
+      "last": "Lauber"
     },
     {
       "school": "Crivitz High School",
       "email": "krobinson@crivitz.k12.wi.us",
-      "role": "Superintendent, Principal",
+      "role": "Superintendent",
       "sport": "",
       "first": "Kelly",
       "last": "Robinson"
@@ -7412,19 +7420,19 @@
     },
     {
       "school": "Shawano High School",
+      "email": "amanders@shawanoschools.org",
+      "role": "Principal",
+      "sport": "",
+      "first": "Aaron",
+      "last": "Manders"
+    },
+    {
+      "school": "Shawano High School",
       "email": "cbedroske@shawanoschools.org",
       "role": "Head Coach",
       "sport": "Girls Swimming & Diving",
       "first": "Caroline",
       "last": "Bedroske"
-    },
-    {
-      "school": "Shawano High School",
-      "email": "dambrosius@shawanoschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "David",
-      "last": "Ambrosius"
     },
     {
       "school": "Shawano High School",
@@ -7500,35 +7508,11 @@
     },
     {
       "school": "Shawano High School",
-      "email": "mraduechel@shawanoschools.org",
-      "role": "Principal",
-      "sport": "",
-      "first": "Matt",
-      "last": "Raduechel"
-    },
-    {
-      "school": "Shawano High School",
-      "email": "mzoll@shawanoschools.org",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Tennis",
-      "first": "Matthew",
-      "last": "Zoll"
-    },
-    {
-      "school": "Shawano High School",
       "email": "nboucher@shawanoschools.org",
       "role": "Head Coach",
       "sport": "Girls Softball",
       "first": "Nate",
       "last": "Boucher"
-    },
-    {
-      "school": "Shawano High School",
-      "email": "rkoenig@shawanoschools.org",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Ryan",
-      "last": "Koenig"
     },
     {
       "school": "Shawano High School",

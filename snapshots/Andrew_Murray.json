@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-06-30T05:55:53.269606Z",
+  "updated": "2026-07-01T06:14:26.828607Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -1513,6 +1513,14 @@
       "sport": "Boys Track & Field",
       "first": "Tyler",
       "last": "Ebany"
+    },
+    {
+      "school": "Belvidere North High School",
+      "email": "abeiersdorff@district100.com",
+      "role": "Head Coach",
+      "sport": "Girls Flag Football",
+      "first": "Amy",
+      "last": "Beiersdorff"
     },
     {
       "school": "Belvidere North High School",
@@ -5404,6 +5412,38 @@
     },
     {
       "school": "Dundee-Crown High School",
+      "email": "cnunnery@district158.org",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Curtis",
+      "last": "Nunnery"
+    },
+    {
+      "school": "Dundee-Crown High School",
+      "email": "cnunnery@district158.org",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Gymnastics",
+      "first": "Curtis",
+      "last": "Nunnery"
+    },
+    {
+      "school": "Dundee-Crown High School",
+      "email": "cnunnery@district158.org",
+      "role": "Head Coach",
+      "sport": "Boys Bowling",
+      "first": "Curtis",
+      "last": "Nunnery"
+    },
+    {
+      "school": "Dundee-Crown High School",
+      "email": "daniel.izbicki@d300.org",
+      "role": "Head Coach",
+      "sport": "Boys Golf",
+      "first": "Daniel",
+      "last": "Izbicki"
+    },
+    {
+      "school": "Dundee-Crown High School",
       "email": "dawn.griswold@d300.org",
       "role": "Boys Athletic Director's Assistant",
       "sport": "",
@@ -5540,14 +5580,6 @@
     },
     {
       "school": "Dundee-Crown High School",
-      "email": "mdangelo@d127.org",
-      "role": "Head Coach",
-      "sport": "Boys Track & Field",
-      "first": "Matthew",
-      "last": "D'Angelo"
-    },
-    {
-      "school": "Dundee-Crown High School",
       "email": "michael.steinhaus@d300.org",
       "role": "Head Coach",
       "sport": "Boys Football",
@@ -5625,30 +5657,6 @@
       "sport": "Scholastic Bowl",
       "first": "Scott",
       "last": "McNees"
-    },
-    {
-      "school": "Dundee-Crown High School",
-      "email": "steven.gertz@d300.org",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Steve",
-      "last": "Gertz"
-    },
-    {
-      "school": "Dundee-Crown High School",
-      "email": "steven.gertz@d300.org",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Gymnastics",
-      "first": "Steve",
-      "last": "Gertz"
-    },
-    {
-      "school": "Dundee-Crown High School",
-      "email": "steven.gertz@d300.org",
-      "role": "Head Coach",
-      "sport": "Boys Bowling",
-      "first": "Steve",
-      "last": "Gertz"
     },
     {
       "school": "Dundee-Crown High School",
@@ -19812,14 +19820,6 @@
     },
     {
       "school": "Williams Bay High School",
-      "email": "edwardwiley15@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Edward",
-      "last": "Wiley"
-    },
-    {
-      "school": "Williams Bay High School",
       "email": "Elkslaxcoaches@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Lacrosse-Boys",
@@ -19889,14 +19889,6 @@
       "sport": "Girls Gymnastics",
       "first": "Jordin",
       "last": "Miller"
-    },
-    {
-      "school": "Williams Bay High School",
-      "email": "nborgen@williamsbayschool.org",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Nathan",
-      "last": "Borgen"
     },
     {
       "school": "Williams Bay High School",

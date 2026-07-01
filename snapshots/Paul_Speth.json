@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-06-30T06:00:16.469993Z",
+  "updated": "2026-07-01T06:18:49.075902Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -2988,14 +2988,6 @@
     },
     {
       "school": "Wisconsin Dells High School",
-      "email": "mejiaariasernesto@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Ernesto",
-      "last": "Arias"
-    },
-    {
-      "school": "Wisconsin Dells High School",
       "email": "mjanke@sdwd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Football",
@@ -3041,6 +3033,14 @@
       "sport": "",
       "first": "Terrance",
       "last": "Slack"
+    },
+    {
+      "school": "Wisconsin Dells High School",
+      "email": "willvandin@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "William",
+      "last": "Van Dinter"
     },
     {
       "school": "Wisconsin Dells High School",
