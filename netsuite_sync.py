@@ -854,10 +854,54 @@ def _list_customer_contact_ids(customer_id):
     _contact_roles_cache[key] = ids
     return ids
 
+def _find_contact_via_suiteql(customer_id, email="", first="", last="", exclude_id=None):
+    """Locate an existing contact on `customer_id` via SuiteQL — the reliable
+    way to resolve NS's "contact record with this name already exists"
+    collisions for co-op coaches (one person, a separate record per
+    school/company).
+
+    Requires the integration role to have the 'SuiteAnalytics Workbook'
+    permission plus View access to Contacts. Without it, ns_suiteql returns []
+    and this yields None, so callers fall back to the contactRoles sublist
+    scan (the previous, unreliable behavior). Matches the person by email or
+    first+last and returns the record whose primary company is THIS customer
+    (the per-school record we should update), else None.
+    """
+    def esc(s):
+        return str(s or "").replace("'", "''").lower()
+    try:
+        cust = int(str(customer_id))
+    except (TypeError, ValueError):
+        return None
+    conds = []
+    if email:
+        conds.append(f"LOWER(email) = '{esc(email)}'")
+    if first and last:
+        conds.append(f"(LOWER(firstname) = '{esc(first)}' AND LOWER(lastname) = '{esc(last)}')")
+    if not conds:
+        return None
+    rows = ns_suiteql(
+        f"SELECT id, company FROM contact WHERE {' OR '.join(conds)}", limit=50
+    )
+    for row in rows:
+        cid = str(row.get("id") or "").strip()
+        if not cid or cid == str(exclude_id or ""):
+            continue
+        if str(row.get("company") or "").strip() == str(cust):
+            print(f"  [NS] SuiteQL located contact {cid} on customer {cust}")
+            return cid
+    return None
+
+
 def _find_same_name_contact(customer_id, first, last, email="", exclude_id=None):
     """Find the customer's own contact record matching first+last (the
-    record behind NS's "unique name" PATCH rejection). GETs each candidate
-    from the contactRoles sublist, so inactive records are found too."""
+    record behind NS's "unique name" PATCH rejection). Tries SuiteQL first
+    (reliable when the role can run it), then falls back to GETting each
+    candidate from the contactRoles sublist, so inactive records are found
+    too."""
+    via_ql = _find_contact_via_suiteql(customer_id, email, first, last, exclude_id)
+    if via_ql:
+        return via_ql
     target = f"{first} {last}".strip().lower()
     fallback = None
     for cid in _list_customer_contact_ids(customer_id):
@@ -1041,7 +1085,8 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
             # Contact exists but external ID mismatch — find by customer
             # contact list (email first, then contact name for the
             # "unique name" collision case)
-            found_id = (_find_contact_for_customer(customer_id, email, first, last)
+            found_id = (_find_contact_via_suiteql(customer_id, email, first, last)
+                        or _find_contact_for_customer(customer_id, email, first, last)
                         or _find_same_name_contact(customer_id, first, last, email))
             if found_id:
                 r2 = ns_patch(f"contact/{found_id}", body)
