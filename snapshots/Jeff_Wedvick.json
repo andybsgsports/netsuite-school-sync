@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-07-01T06:20:59.810259Z",
+  "updated": "2026-07-02T05:49:26.782069Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -4796,6 +4796,14 @@
     },
     {
       "school": "Watertown Luther Prep High School",
+      "email": "dodgedl@lps.wels.net",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "David",
+      "last": "Dodge"
+    },
+    {
+      "school": "Watertown Luther Prep High School",
       "email": "ewingsbs@lps.wels.net",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
@@ -4812,27 +4820,11 @@
     },
     {
       "school": "Watertown Luther Prep High School",
-      "email": "gregorjt@lps.wels.net",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Justin",
-      "last": "Gregorius"
-    },
-    {
-      "school": "Watertown Luther Prep High School",
       "email": "gummjb@lps.wels.net",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
       "first": "Joseph",
       "last": "Gumm"
-    },
-    {
-      "school": "Watertown Luther Prep High School",
-      "email": "gurgelrr@lps.wels.net",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Ryan",
-      "last": "Gurgel"
     },
     {
       "school": "Watertown Luther Prep High School",

@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-07-01T06:14:26.828607Z",
+  "updated": "2026-07-02T05:42:52.548800Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -177,14 +177,6 @@
       "sport": "Girls Track & Field",
       "first": "Dan",
       "last": "Oslage"
-    },
-    {
-      "school": "Antioch Community High School",
-      "email": "francis.fracek@chsd117.org",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Frank",
-      "last": "Fracek"
     },
     {
       "school": "Antioch Community High School",
@@ -3884,6 +3876,14 @@
     },
     {
       "school": "Central High School",
+      "email": "amy.maccrindle@central301.net",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Amy",
+      "last": "MacCrindle"
+    },
+    {
+      "school": "Central High School",
       "email": "andrew.brown@central301.net",
       "role": "Head Coach",
       "sport": "Boys & Girls Wrestling",
@@ -4065,14 +4065,6 @@
       "sport": "Boys Baseball",
       "first": "Kyle",
       "last": "Nelson"
-    },
-    {
-      "school": "Central High School",
-      "email": "kyle.schumacher@central301.net",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Kyle",
-      "last": "Schumacher"
     },
     {
       "school": "Central High School",
@@ -8012,7 +8004,7 @@
     },
     {
       "school": "Greenfield High School",
-      "email": "khickey@greenfield.k12.wi.us",
+      "email": "khickey@martinlutherhs.org",
       "role": "Assistant Athletic Director",
       "sport": "",
       "first": "Kaitlyn",
@@ -8964,14 +8956,6 @@
     },
     {
       "school": "Harvard High School",
-      "email": "bedinger@cusd50.org",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Becky",
-      "last": "Edinger"
-    },
-    {
-      "school": "Harvard High School",
       "email": "bheidtke@cusd50.org",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -9052,6 +9036,14 @@
     },
     {
       "school": "Harvard High School",
+      "email": "crozanski@cusd50.org",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Chris",
+      "last": "Rozanski"
+    },
+    {
+      "school": "Harvard High School",
       "email": "cseyller@cusd50.org",
       "role": "Head Coach",
       "sport": "Girls Track & Field",
@@ -9089,14 +9081,6 @@
       "sport": "Chess",
       "first": "David",
       "last": "Widzisz"
-    },
-    {
-      "school": "Harvard High School",
-      "email": "jcummins@cusd50.org",
-      "role": "Asst. Principal",
-      "sport": "",
-      "first": "Jason",
-      "last": "Cummins"
     },
     {
       "school": "Harvard High School",
@@ -9172,14 +9156,6 @@
     },
     {
       "school": "Harvard High School",
-      "email": "rmecklenburg@cusd50.org",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Robert",
-      "last": "Mecklenburg"
-    },
-    {
-      "school": "Harvard High School",
       "email": "sgrady@cusd50.org",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -9209,14 +9185,6 @@
       "sport": "Boys & Girls Soccer",
       "first": "Victor",
       "last": "Gonzalez"
-    },
-    {
-      "school": "Hiawatha High School",
-      "email": "a.p.charles9@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Andre",
-      "last": "Charles"
     },
     {
       "school": "Hiawatha High School",
@@ -9260,14 +9228,6 @@
     },
     {
       "school": "Hiawatha High School",
-      "email": "daniel.burke@d426.org",
-      "role": "Band Director & Marching Band Director & Vocal Director",
-      "sport": "",
-      "first": "Daniel",
-      "last": "Burke"
-    },
-    {
-      "school": "Hiawatha High School",
       "email": "dayna.breese@d426.org",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -9279,6 +9239,14 @@
       "email": "dedric.wright21@yahoo.com",
       "role": "Head Coach",
       "sport": "Boys Baseball",
+      "first": "Dedric",
+      "last": "Wright"
+    },
+    {
+      "school": "Hiawatha High School",
+      "email": "dedric.wright21@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
       "first": "Dedric",
       "last": "Wright"
     },
@@ -9321,6 +9289,14 @@
       "sport": "Girls Basketball",
       "first": "Kenny",
       "last": "McPeek"
+    },
+    {
+      "school": "Hiawatha High School",
+      "email": "korbynringer17@gmail.com",
+      "role": "Band Director & Marching Band Director",
+      "sport": "",
+      "first": "Korbyn",
+      "last": "Ringer"
     },
     {
       "school": "Hiawatha High School",
@@ -11524,14 +11500,6 @@
     },
     {
       "school": "Lakes Community High School",
-      "email": "matthew.rife@chsd117.org",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Matt",
-      "last": "Rife"
-    },
-    {
-      "school": "Lakes Community High School",
       "email": "melissa.cross@chsd117.org",
       "role": "Student Council Adviser",
       "sport": "",
@@ -11609,22 +11577,6 @@
       "sport": "Girls Volleyball",
       "first": "Sarah",
       "last": "Yeager"
-    },
-    {
-      "school": "Lakes Community High School",
-      "email": "travis.shepherd@chsd117.org",
-      "role": "Head Coach",
-      "sport": "Girls Cross Country",
-      "first": "Travis",
-      "last": "Shepherd"
-    },
-    {
-      "school": "Lakes Community High School",
-      "email": "troy.parola@chsd117.org",
-      "role": "Boys Athletic Director & IHSA Official Representative",
-      "sport": "",
-      "first": "Troy",
-      "last": "Parola"
     },
     {
       "school": "Lakes Community High School",

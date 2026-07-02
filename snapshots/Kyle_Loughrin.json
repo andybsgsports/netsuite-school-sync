@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-07-01T06:18:13.802088Z",
+  "updated": "2026-07-02T05:46:40.556909Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -153,6 +153,14 @@
       "sport": "Boys Swimming & Diving",
       "first": "Lucas",
       "last": "Behm"
+    },
+    {
+      "school": "Antigo High School",
+      "email": "iflannery@antigoschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Ivan",
+      "last": "Flannery"
     },
     {
       "school": "Antigo High School",
@@ -580,19 +588,19 @@
     },
     {
       "school": "Appleton North High School",
+      "email": "jkubuske@depere.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Jere",
+      "last": "Kubuske"
+    },
+    {
+      "school": "Appleton North High School",
       "email": "klukas1724@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Lacrosse-Girls",
       "first": "Kate",
       "last": "Lukashewich"
-    },
-    {
-      "school": "Appleton North High School",
-      "email": "kubuskejere@aasd.k12.wi.us",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Jere",
-      "last": "Kubuske"
     },
     {
       "school": "Appleton North High School",
@@ -1756,14 +1764,6 @@
     },
     {
       "school": "Clintonville High School",
-      "email": "kevinstargazer16@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Kevin",
-      "last": "Ramirez"
-    },
-    {
-      "school": "Clintonville High School",
       "email": "nraasch19@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Football",
@@ -1796,19 +1796,19 @@
     },
     {
       "school": "Clintonville High School",
+      "email": "sjepson@clintonville.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Stacy",
+      "last": "Jepson"
+    },
+    {
+      "school": "Clintonville High School",
       "email": "smarquardt@clintonville.k12.wi.us",
       "role": "AD Admin Assistant",
       "sport": "",
       "first": "Suzanne",
       "last": "Marquardt"
-    },
-    {
-      "school": "Clintonville High School",
-      "email": "stacy.jepson@cedarcorp.com",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Stacy",
-      "last": "Jepson"
     },
     {
       "school": "Clintonville High School",
@@ -2164,19 +2164,19 @@
     },
     {
       "school": "De Pere High School",
-      "email": "jbyczek@depere.k12.wi.us",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Jeff",
-      "last": "Byczek"
-    },
-    {
-      "school": "De Pere High School",
       "email": "jjoseph@depere.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
       "first": "Jackie",
       "last": "Joseph"
+    },
+    {
+      "school": "De Pere High School",
+      "email": "jkubuske@depere.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Jere",
+      "last": "Kubuske"
     },
     {
       "school": "De Pere High School",

@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-07-01T06:18:49.075902Z",
+  "updated": "2026-07-02T05:47:16.322551Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -1084,22 +1084,6 @@
     },
     {
       "school": "Monona Grove High School",
-      "email": "evan.gluch@mgschools.net",
-      "role": "Head Coach",
-      "sport": "Girls Gymnastics",
-      "first": "Evan",
-      "last": "Gluch"
-    },
-    {
-      "school": "Monona Grove High School",
-      "email": "hayleyhomburg88@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Tennis",
-      "first": "Hayley",
-      "last": "Homburg"
-    },
-    {
-      "school": "Monona Grove High School",
       "email": "jackandringa@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Hockey",
@@ -1132,14 +1116,6 @@
     },
     {
       "school": "Monona Grove High School",
-      "email": "kevin.connor@mgschools.net",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Kevin",
-      "last": "Connor"
-    },
-    {
-      "school": "Monona Grove High School",
       "email": "kristin.sobocinski@mgschools.net",
       "role": "Assistant Superintendent",
       "sport": "",
@@ -1156,11 +1132,11 @@
     },
     {
       "school": "Monona Grove High School",
-      "email": "larsdoll@gmail.com",
+      "email": "laneyseffrood@gmail.com",
       "role": "Head Coach",
-      "sport": "Girls Swimming & Diving",
-      "first": "Lars",
-      "last": "Doll"
+      "sport": "Girls Gymnastics",
+      "first": "Delaney",
+      "last": "Seffrood"
     },
     {
       "school": "Monona Grove High School",
@@ -1204,6 +1180,14 @@
     },
     {
       "school": "Monona Grove High School",
+      "email": "mitchell.asplund@mgschools.net",
+      "role": "Head Coach",
+      "sport": "Girls Soccer",
+      "first": "Mitchell",
+      "last": "Asplund"
+    },
+    {
+      "school": "Monona Grove High School",
       "email": "mjreiter3@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Lacrosse-Boys",
@@ -1217,14 +1201,6 @@
       "sport": "Boys Soccer",
       "first": "Randy",
       "last": "Becker"
-    },
-    {
-      "school": "Monona Grove High School",
-      "email": "samkeltner@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Cross Country",
-      "first": "Sam",
-      "last": "Keltner"
     },
     {
       "school": "Monona Grove High School",
@@ -1252,11 +1228,11 @@
     },
     {
       "school": "Monona Grove High School",
-      "email": "zoe.kurth@mgschools.net",
+      "email": "xtinaschmoker@gmail.com",
       "role": "Head Coach",
-      "sport": "Girls Soccer",
-      "first": "Zoe",
-      "last": "Kurth"
+      "sport": "Girls Tennis",
+      "first": "Christina",
+      "last": "Schmoker"
     },
     {
       "school": "Necedah High School",

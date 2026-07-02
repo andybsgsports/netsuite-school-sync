@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-07-01T06:16:31.543045Z",
+  "updated": "2026-07-02T05:44:59.096270Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -1388,14 +1388,6 @@
     },
     {
       "school": "Holmen High School",
-      "email": "Charles_12_10@hotmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Charlie",
-      "last": "Marshall"
-    },
-    {
-      "school": "Holmen High School",
       "email": "delcar@holmen.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Wrestling",
@@ -1553,6 +1545,14 @@
       "sport": "",
       "first": "Matt",
       "last": "Sullivan"
+    },
+    {
+      "school": "Holmen High School",
+      "email": "timfranzini4@charter.net",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Tim",
+      "last": "Franzini"
     },
     {
       "school": "Holmen High School",
@@ -1940,11 +1940,11 @@
     },
     {
       "school": "Lacrosse Aquinas High School",
-      "email": "blugoldtrack@gmail.com",
+      "email": "bkachel5@centurylink.net",
       "role": "Head Coach",
-      "sport": "Boys & Girls Track and Field",
-      "first": "Chris",
-      "last": "Carley"
+      "sport": "Boys Baseball",
+      "first": "Bob",
+      "last": "Kachel"
     },
     {
       "school": "Lacrosse Aquinas High School",
@@ -1953,14 +1953,6 @@
       "sport": "Boys Basketball",
       "first": "Brad",
       "last": "Reinhart"
-    },
-    {
-      "school": "Lacrosse Aquinas High School",
-      "email": "Charles_12_10@hotmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Charlie",
-      "last": "Marshall"
     },
     {
       "school": "Lacrosse Aquinas High School",
@@ -2028,6 +2020,14 @@
     },
     {
       "school": "Lacrosse Aquinas High School",
+      "email": "isaac.petersen@aquinasschool.org",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Isaac",
+      "last": "Petersen"
+    },
+    {
+      "school": "Lacrosse Aquinas High School",
       "email": "james@makepeaceengineering.com",
       "role": "Head Coach",
       "sport": "Girls Golf",
@@ -2084,14 +2084,6 @@
     },
     {
       "school": "Lacrosse Aquinas High School",
-      "email": "mike.dee@aquinasschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Mike",
-      "last": "Dee"
-    },
-    {
-      "school": "Lacrosse Aquinas High School",
       "email": "olson.jamie@wsalem.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Hockey",
@@ -2105,14 +2097,6 @@
       "sport": "",
       "first": "Pam",
       "last": "Donarski"
-    },
-    {
-      "school": "Lacrosse Aquinas High School",
-      "email": "ryanloeffler21@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Ryan",
-      "last": "Loeffler"
     },
     {
       "school": "Lacrosse Aquinas High School",
@@ -2137,6 +2121,14 @@
       "sport": "",
       "first": "Ted",
       "last": "Knutson"
+    },
+    {
+      "school": "Lacrosse Aquinas High School",
+      "email": "timfranzini4@charter.net",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Tim",
+      "last": "Franzini"
     },
     {
       "school": "Lacrosse Aquinas High School",
@@ -4476,14 +4468,6 @@
     },
     {
       "school": "Onalaska Luther High School",
-      "email": "Charles_12_10@hotmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Charlie",
-      "last": "Marshall"
-    },
-    {
-      "school": "Onalaska Luther High School",
       "email": "jahka@onalaskaschools.com",
       "role": "Head Coach",
       "sport": "Girls Gymnastics",
@@ -4585,6 +4569,14 @@
       "sport": "Boys Wrestling",
       "first": "Thomas",
       "last": "Fortier"
+    },
+    {
+      "school": "Onalaska Luther High School",
+      "email": "timfranzini4@charter.net",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Tim",
+      "last": "Franzini"
     },
     {
       "school": "Onalaska Luther High School",
