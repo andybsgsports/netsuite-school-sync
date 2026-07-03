@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-07-02T05:49:26.782069Z",
+  "updated": "2026-07-03T05:43:08.763013Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -1753,6 +1753,14 @@
       "sport": "",
       "first": "Dominic",
       "last": "Bauer"
+    },
+    {
+      "school": "Hamilton High School",
+      "email": "beckla@hamilton.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Lanell",
+      "last": "Becker"
     },
     {
       "school": "Hamilton High School",

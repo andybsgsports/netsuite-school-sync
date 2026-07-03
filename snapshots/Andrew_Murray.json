@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-07-02T05:42:52.548800Z",
+  "updated": "2026-07-03T05:36:37.658487Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -2468,14 +2468,6 @@
     },
     {
       "school": "Brookfield Central High School",
-      "email": "kurthd@elmbrookschools.org",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Don",
-      "last": "Kurth"
-    },
-    {
-      "school": "Brookfield Central High School",
       "email": "lewisl@elmbrookschools.org",
       "role": "Head Coach",
       "sport": "Girls Cross Country",
@@ -2489,6 +2481,14 @@
       "sport": "Boys & Girls Soccer",
       "first": "Dan",
       "last": "Makal"
+    },
+    {
+      "school": "Brookfield Central High School",
+      "email": "markesd@elmbrookschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "David",
+      "last": "Markes"
     },
     {
       "school": "Brookfield Central High School",
@@ -2513,6 +2513,14 @@
       "sport": "Girls Hockey",
       "first": "Blake",
       "last": "Panosh"
+    },
+    {
+      "school": "Brookfield Central High School",
+      "email": "russelle@elmbrookschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Tennis",
+      "first": "Erika",
+      "last": "Wentz-Russell"
     },
     {
       "school": "Brookfield Central High School",
@@ -2542,7 +2550,7 @@
       "school": "Brookfield Central High School",
       "email": "vogtj@elmbrookschools.org",
       "role": "Head Coach",
-      "sport": "Boys & Girls Tennis",
+      "sport": "Boys Tennis",
       "first": "Jon",
       "last": "Vogt"
     },
@@ -6500,19 +6508,19 @@
     },
     {
       "school": "Freeport High School",
-      "email": "brad.pemberton@fsd145.org",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Brad",
-      "last": "Pemberton"
-    },
-    {
-      "school": "Freeport High School",
       "email": "carsonbuck23@gmail.com",
       "role": "Certified Athletic Trainer",
       "sport": "",
       "first": "Carson",
       "last": "Buck"
+    },
+    {
+      "school": "Freeport High School",
+      "email": "darrin.sisk@rps205.com",
+      "role": "District Athletic Director",
+      "sport": "",
+      "first": "Darrin",
+      "last": "Sisk"
     },
     {
       "school": "Freeport High School",
@@ -7764,6 +7772,14 @@
     },
     {
       "school": "Greendale High School",
+      "email": "jakup.sinani@greendaleschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Jakup",
+      "last": "Sinani"
+    },
+    {
+      "school": "Greendale High School",
       "email": "joe.britt@muskegonorway.org",
       "role": "Head Coach",
       "sport": "Boys Hockey",
@@ -7780,19 +7796,19 @@
     },
     {
       "school": "Greendale High School",
-      "email": "kelly.schmidt@greendaleschools.org",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Kelly",
-      "last": "Schmidt"
-    },
-    {
-      "school": "Greendale High School",
       "email": "kim.amidzich@greendaleschools.org",
       "role": "Superintendent",
       "sport": "",
       "first": "Kim",
       "last": "Amidzich"
+    },
+    {
+      "school": "Greendale High School",
+      "email": "laura.sadowsky@greendaleschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Laura",
+      "last": "Sadowski"
     },
     {
       "school": "Greendale High School",
@@ -8401,6 +8417,14 @@
       "sport": "",
       "first": "Dominic",
       "last": "Bauer"
+    },
+    {
+      "school": "Hamilton High School",
+      "email": "beckla@hamilton.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Lanell",
+      "last": "Becker"
     },
     {
       "school": "Hamilton High School",
@@ -13636,14 +13660,6 @@
     },
     {
       "school": "Mundelein High School",
-      "email": "ataylor@d120.org",
-      "role": "Principal",
-      "sport": "",
-      "first": "Alexandria",
-      "last": "Rios Taylor"
-    },
-    {
-      "school": "Mundelein High School",
       "email": "bmayerson@d120.org",
       "role": "Certified Athletic Trainer",
       "sport": "",
@@ -13708,14 +13724,6 @@
     },
     {
       "school": "Mundelein High School",
-      "email": "dstrauss@d120.org",
-      "role": "Head Coach",
-      "sport": "Girls Gymnastics",
-      "first": "Daniella",
-      "last": "Strauss"
-    },
-    {
-      "school": "Mundelein High School",
       "email": "efilley@d120.org",
       "role": "Head Coach",
       "sport": "Girls Lacrosse",
@@ -13729,14 +13737,6 @@
       "sport": "",
       "first": "George",
       "last": "Andretich"
-    },
-    {
-      "school": "Mundelein High School",
-      "email": "gdressen@d120.org",
-      "role": "Head Coach",
-      "sport": "Boys Volleyball",
-      "first": "George",
-      "last": "Dressen Jr."
     },
     {
       "school": "Mundelein High School",
@@ -13981,7 +13981,7 @@
     {
       "school": "Mundelein High School",
       "email": "slibert@d120.org",
-      "role": "Associate Principal",
+      "role": "Principal",
       "sport": "",
       "first": "Stevee",
       "last": "Libert"
@@ -19204,6 +19204,14 @@
     },
     {
       "school": "Wauwatosa West High School",
+      "email": "gruenema@wauwatosa.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Maya",
+      "last": "Grueneberg"
+    },
+    {
+      "school": "Wauwatosa West High School",
       "email": "hegwoohe@wauwatosa.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Swimming & Diving",
@@ -19297,14 +19305,6 @@
       "sport": "Boys & Girls Cross Country",
       "first": "Tom",
       "last": "Schneider"
-    },
-    {
-      "school": "Wauwatosa West High School",
-      "email": "schremke@wauwatosa.k12.wi.us",
-      "role": "AD Admin Assistant",
-      "sport": "",
-      "first": "Keegan",
-      "last": "Schrems"
     },
     {
       "school": "Wauwatosa West High School",

@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-07-02T05:46:40.556909Z",
+  "updated": "2026-07-03T05:40:23.173067Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -4284,6 +4284,14 @@
     },
     {
       "school": "Kaukauna High School",
+      "email": "laabsn@kaukaunasd.org",
+      "role": "Head Coach",
+      "sport": "Girls Soccer",
+      "first": "Nate",
+      "last": "Laabs"
+    },
+    {
+      "school": "Kaukauna High School",
       "email": "matczakj@kaukaunasd.org",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
@@ -4305,14 +4313,6 @@
       "sport": "Girls Swimming & Diving",
       "first": "Jana",
       "last": "Metko"
-    },
-    {
-      "school": "Kaukauna High School",
-      "email": "nklaabs@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Soccer",
-      "first": "Nate",
-      "last": "Laabs"
     },
     {
       "school": "Kaukauna High School",

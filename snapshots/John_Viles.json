@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-07-02T05:48:37.244318Z",
+  "updated": "2026-07-03T05:42:19.716278Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -1924,7 +1924,7 @@
     },
     {
       "school": "Kewaskum High School",
-      "email": "brad.preder@gmail.com",
+      "email": "bpreder@kewaskumschools.org",
       "role": "Head Coach",
       "sport": "Girls Tennis",
       "first": "Brad",
@@ -7700,14 +7700,6 @@
     },
     {
       "school": "Winnebago Lutheran High School",
-      "email": "bbendix@wlavikings.org",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Brad",
-      "last": "Bendix"
-    },
-    {
-      "school": "Winnebago Lutheran High School",
       "email": "dschroeder@wlavikings.org",
       "role": "Principal",
       "sport": "",
@@ -7777,6 +7769,14 @@
       "sport": "Boys & Girls Cross Country",
       "first": "Matt",
       "last": "Kohlman"
+    },
+    {
+      "school": "Winnebago Lutheran High School",
+      "email": "kwalta@wlavikings.org",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Kris",
+      "last": "Walta"
     },
     {
       "school": "Winnebago Lutheran High School",
