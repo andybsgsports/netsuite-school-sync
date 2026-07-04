@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-07-03T05:40:23.173067Z",
+  "updated": "2026-07-04T05:25:29.685018Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -412,6 +412,14 @@
     },
     {
       "school": "Appleton East High School",
+      "email": "mikebrolsma@hotmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Mike",
+      "last": "Brolsma"
+    },
+    {
+      "school": "Appleton East High School",
       "email": "palmaanthony@aasd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Tennis",
@@ -483,20 +491,20 @@
       "last": "Botz"
     },
     {
-      "school": "Appleton East High School",
-      "email": "westsamuel@aasd.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Sam",
-      "last": "West"
-    },
-    {
       "school": "Appleton North High School",
       "email": "arndtteona@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Lacrosse-Girls",
       "first": "Teona",
       "last": "King-Arndt"
+    },
+    {
+      "school": "Appleton North High School",
+      "email": "bednarjarrett@aasd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "Jarrett",
+      "last": "Bednar"
     },
     {
       "school": "Appleton North High School",
@@ -588,14 +596,6 @@
     },
     {
       "school": "Appleton North High School",
-      "email": "jkubuske@depere.k12.wi.us",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Jere",
-      "last": "Kubuske"
-    },
-    {
-      "school": "Appleton North High School",
       "email": "klukas1724@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Lacrosse-Girls",
@@ -628,6 +628,14 @@
     },
     {
       "school": "Appleton North High School",
+      "email": "mikebrolsma@hotmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Mike",
+      "last": "Brolsma"
+    },
+    {
+      "school": "Appleton North High School",
       "email": "nissenfam4@yahoo.com",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -657,14 +665,6 @@
       "sport": "Boys Football",
       "first": "Robert",
       "last": "Salm"
-    },
-    {
-      "school": "Appleton North High School",
-      "email": "SCHAUERMATTHEW@aasd.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Golf",
-      "first": "Matthew",
-      "last": "Schauer"
     },
     {
       "school": "Appleton North High School",
@@ -705,14 +705,6 @@
       "sport": "",
       "first": "Nate",
       "last": "Werner"
-    },
-    {
-      "school": "Appleton North High School",
-      "email": "westsamuel@aasd.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Sam",
-      "last": "West"
     },
     {
       "school": "Appleton West High School",
@@ -852,6 +844,14 @@
     },
     {
       "school": "Appleton West High School",
+      "email": "mikebrolsma@hotmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Mike",
+      "last": "Brolsma"
+    },
+    {
+      "school": "Appleton West High School",
       "email": "millerjohnf@aasd.k12.wi.us",
       "role": "Assistant Principal, Athletic Director",
       "sport": "",
@@ -913,14 +913,6 @@
       "sport": "Boys Cross Country",
       "first": "Bryce",
       "last": "Verheyen"
-    },
-    {
-      "school": "Appleton West High School",
-      "email": "westsamuel@aasd.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Sam",
-      "last": "West"
     },
     {
       "school": "Appleton West High School",
