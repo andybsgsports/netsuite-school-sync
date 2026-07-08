@@ -162,8 +162,13 @@ def load_il_schools(gc):
 
 # -- Scraping helpers --------------------------------------------------------
 def scrape_rep(rep_name, schools):
-    """Scrape every school assigned to `rep_name`. Returns (admins, coaches)."""
+    """Scrape every school assigned to `rep_name`.
+    Returns (admins, coaches, scraped_schools) — scraped_schools is the set of
+    (smart-titled) school names that scraped successfully this run. A school
+    whose WIAA page errored is NOT in this set, so callers can avoid treating
+    its previously-known staff as "departed" just because of a fetch failure."""
     admins, coaches = [], []
+    scraped_schools = set()
     for i, (school, url) in enumerate(schools, 1):
         print(f"  [{i}/{len(schools)}] {school}")
         try:
@@ -171,6 +176,7 @@ def scrape_rep(rep_name, schools):
         except Exception as exc:
             print(f"    ERROR: {exc}")
             continue
+        scraped_schools.add(smart_title(school))
         for a in scraped_admins:
             admins.append({
                 "School":     smart_title(school),
@@ -191,7 +197,7 @@ def scrape_rep(rep_name, schools):
                 "State":      "WI",
             })
         time.sleep(DELAY_BETWEEN_SCHOOLS)
-    return dedup_admins(admins), dedup_coaches(coaches)
+    return dedup_admins(admins), dedup_coaches(coaches), scraped_schools
 
 
 # IHSA role IDs that belong on the Administrators-style sheets rather than a
@@ -204,10 +210,12 @@ IL_ATHLETIC_AD_ROLE_IDS = {"B2-AthDir", "C1-BoysAD", "C1-GirlsAD"}
 
 def scrape_il_schools(il_schools):
     """
-    Scrape IL via IHSA API. Returns (admins, coaches) in the same row shape
-    as scrape_rep() so they can be merged into Andy's combined xlsx.
+    Scrape IL via IHSA API. Returns (admins, coaches, scraped_schools) in the
+    same shape as scrape_rep() so they can be merged into Andy's combined
+    xlsx and the same departure-scoping logic applies to IL schools too.
     """
     admins, coaches = [], []
+    scraped_schools = set()
     for i, (school, url) in enumerate(il_schools, 1):
         school_id = extract_school_id(url)
         if not school_id:
@@ -219,6 +227,7 @@ def scrape_il_schools(il_schools):
         except Exception as exc:
             print(f"    ERROR staff2: {exc}")
             continue
+        scraped_schools.add(smart_title(school))
         # Resolve emails
         for p in people:
             if p.get("has_email") and p.get("person_id"):
@@ -258,7 +267,7 @@ def scrape_il_schools(il_schools):
                     "State":      "IL",
                 })
         time.sleep(0.5)
-    return dedup_admins(admins), dedup_coaches(coaches)
+    return dedup_admins(admins), dedup_coaches(coaches), scraped_schools
 
 
 def _norm(s):
@@ -670,12 +679,19 @@ def send_email(rep, subject, body, xlsx_bytes, xlsx_name):
 
 
 # -- Main --------------------------------------------------------------------
-def merge_scraped_into_master_sheet(gc, scraped):
+def merge_scraped_into_master_sheet(gc, scraped, departed_triples=None):
     """Merge today's scraped admins+coaches into the main master sheet's
     Contacts tab. Dedupes on (School, Email, Role) so re-runs don't create
-    duplicate rows. Does NOT touch NS; a later workflow reads this sheet
-    and pushes changes to NetSuite."""
-    if not scraped:
+    duplicate rows.
+
+    departed_triples: optional set of (school, email_lower, role_col_lower)
+    keys — people who were on last run's snapshot for that school but are
+    no longer on this run's fresh WIAA/IHSA scrape (and whose school DID
+    scrape successfully this run, so we trust the absence). Any Sync=Y
+    Contacts-tab row matching one of these triples is flipped to Sync=N.
+    Does NOT touch NS directly; a later workflow (push_only.py) reads the
+    Sync column and inactivates the NetSuite contact + Ship-To."""
+    if not scraped and not departed_triples:
         return
     main_sheet_id = os.environ.get("GOOGLE_SHEET_ID", "")
     if not main_sheet_id:
@@ -735,8 +751,23 @@ def merge_scraped_into_master_sheet(gc, scraped):
         existing_keys.add(key)
         added += 1
 
+    departed = 0
+    if departed_triples:
+        for c in contacts_data:
+            if str(c.get(C_SYNC, "N")).strip().upper() != "Y":
+                continue
+            triple = (str(c.get(C_SCHOOL, "")).strip(),
+                      str(c.get(C_EMAIL, "")).strip().lower(),
+                      str(c.get(C_ROLE, "")).strip().lower())
+            if triple in departed_triples:
+                c[C_SYNC] = "N"
+                departed += 1
+
     save_contacts(contacts_ws, contacts_data)
     print(f"\n[merge] {added} new row(s) added to master sheet Contacts tab")
+    if departed_triples:
+        print(f"[merge] {departed} row(s) flipped to Sync=N (no longer on WIAA/IHSA) "
+              f"— push_only.py will inactivate them in NetSuite tonight")
 
 
 def main():
@@ -756,7 +787,8 @@ def main():
 
     rep_name_to_config = {r["name"]: r for r in REPS}
     results = []
-    all_scraped = []  # accumulate across reps for one sheet write at the end
+    all_scraped = []          # accumulate across reps for one sheet write at the end
+    all_departed_triples = set()  # (school, email_lower, role_col_lower) no longer on WIAA/IHSA
 
     for rep in REPS:
         if REP_FILTER and rep["name"] != REP_FILTER:
@@ -770,7 +802,7 @@ def main():
         print(f"[{rep['name']}] {len(schools)} schools")
         print("-" * 60)
 
-        admins, coaches = scrape_rep(rep["name"], schools)
+        admins, coaches, wi_scraped_schools = scrape_rep(rep["name"], schools)
         # A rep with WI schools that yields ZERO admins AND ZERO coaches is a
         # scrape failure (WIAA unreachable / page layout changed), never a
         # legitimate mass exodus. Capture this BEFORE the IL merge below, or
@@ -781,14 +813,19 @@ def main():
 
         # Merge IL schools into this rep's digest if configured (Andy only)
         il_count = 0
+        il_scraped_schools = set()
         if rep.get("include_il") and il_schools:
             print(f"  Pulling {len(il_schools)} IL schools via IHSA API...")
-            il_admins, il_coaches = scrape_il_schools(il_schools)
+            il_admins, il_coaches, il_scraped_schools = scrape_il_schools(il_schools)
             admins = admins + il_admins
             coaches = coaches + il_coaches
             il_count = len(il_schools)
             all_scraped.extend(("IL", a) for a in il_admins)
             all_scraped.extend(("IL", c) for c in il_coaches)
+
+        # Schools that scraped successfully this run — used to scope which
+        # "removed" keys we trust as real departures (see below).
+        scraped_schools_this_run = wi_scraped_schools | il_scraped_schools
 
         current_records = contacts_to_records(admins, coaches)
         current_keys = set(current_records.keys())
@@ -839,6 +876,26 @@ def main():
             })
             continue
 
+        # Only trust a "removed" key as a real departure if its school
+        # actually scraped successfully this run. Otherwise a single school's
+        # transient WIAA fetch error (the rep-level total-loss guard above
+        # doesn't catch a one-school hiccup) would look like everyone at that
+        # school quit. Keys from failed-scrape schools are left untouched —
+        # they'll be re-checked (and reported/acted on) the next time that
+        # school's page loads successfully.
+        removed_scoped = {k for k in removed if k[0] in scraped_schools_this_run}
+        removed_skipped = removed - removed_scoped
+        if removed_skipped:
+            skipped_schools = sorted({k[0] for k in removed_skipped})
+            print(f"  [GUARD] Ignoring {len(removed_skipped)} 'removed' key(s) at "
+                  f"{len(skipped_schools)} school(s) that failed to scrape this run "
+                  f"(not treated as departures): {skipped_schools[:10]}"
+                  + (" ..." if len(skipped_schools) > 10 else ""))
+
+        for k in removed_scoped:
+            school, email, role, sport = k
+            all_departed_triples.add((school, email, sport or role))
+
         def render(prefix, key, records):
             # key = (school, email, role, sport)
             rec = records.get(key, {})
@@ -851,19 +908,19 @@ def main():
         if first_run:
             body_lines.append("Initial snapshot — no previous version to diff against.")
         else:
-            body_lines.append(f"Changes since last run: +{len(added)} / -{len(removed)}")
+            body_lines.append(f"Changes since last run: +{len(added)} / -{len(removed_scoped)}")
             if added:
                 body_lines.append("\nAdded:")
                 for k in sorted(added):
                     body_lines.append(render("+", k, current_records))
-            if removed:
-                body_lines.append("\nRemoved:")
-                for k in sorted(removed):
+            if removed_scoped:
+                body_lines.append("\nRemoved (marked inactive in NetSuite tonight):")
+                for k in sorted(removed_scoped):
                     body_lines.append(render("-", k, previous_records))
         body_lines += ["", "Sheet counts:"] + [f"  {k}: {v}" for k, v in sorted(sheet_summary.items())]
         body = "\n".join(body_lines)
 
-        should_send = first_run or added or removed
+        should_send = first_run or added or removed_scoped
         if should_send:
             subject = f"{rep['name']} - Updated {digest_label} School Admins and Coaches"
             sent = send_email(rep, subject, body, xlsx_bytes, xlsx_name)
@@ -875,12 +932,20 @@ def main():
         # of whether an email went out. Useful for auditing back in time.
         upload_digest_to_drive(rep["name"], xlsx_bytes, xlsx_name)
 
-        save_snapshot(rep["name"], current_records)
+        # Carry forward last-known-good records for any school that failed to
+        # scrape this run, so the snapshot doesn't silently lose that
+        # school's people (which would falsely show them as "+N added" the
+        # next time that school's page loads, and would make their real
+        # absence undetectable since they'd no longer be in "previous").
+        carried_records = {k: v for k, v in previous_records.items()
+                           if k[0] not in scraped_schools_this_run}
+        snapshot_records = {**carried_records, **current_records}
+        save_snapshot(rep["name"], snapshot_records)
         results.append({
             "rep": rep["name"],
             "schools": len(schools),
             "added": len(added),
-            "removed": len(removed),
+            "removed": len(removed_scoped),
             "sent": sent,
         })
 
@@ -888,7 +953,7 @@ def main():
     # this once at the end (after all reps) means a single Google Sheets
     # write instead of one per rep, and every scraped contact lands on
     # the sheet before the 6:30 AM NS push workflow reads it.
-    merge_scraped_into_master_sheet(gc, all_scraped)
+    merge_scraped_into_master_sheet(gc, all_scraped, all_departed_triples)
 
     print("\n" + "=" * 60)
     print("Summary:")

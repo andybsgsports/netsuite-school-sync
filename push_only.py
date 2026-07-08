@@ -245,10 +245,17 @@ def main():
         school_contacts = [c for c in contacts_data
                            if c.get(C_SCHOOL, "").strip() == school_name]
         if not school_contacts and ns_id:
-            # Existing customer with nothing on the Contacts tab to push.
-            print(f"  (no rows on Contacts tab)")
-            continue
-        if not school_contacts:
+            # Existing customer with nothing on the Contacts tab to push —
+            # still run sync_school below so the customer record and
+            # Schools-tab fields (address, enrollment, etc.) get refreshed
+            # from WIAA; only the per-contact push loop has nothing to do.
+            # A school with zero matching Contacts rows despite WIAA
+            # listing staff is often a sign the School Name here doesn't
+            # match what's stored in the Contacts tab (e.g. after a rename)
+            # — refreshing here at least keeps the Schools tab itself
+            # accurate even when that join is broken.
+            print(f"  (no rows on Contacts tab — refreshing customer/Schools-tab fields only)")
+        if not school_contacts and not ns_id:
             # New school (blank NS ID) — still create the customer even
             # though no contacts have been added to the Contacts tab yet.
             print(f"  (no rows on Contacts tab — creating NS customer only)")
@@ -296,11 +303,22 @@ def main():
                 errors += 1
                 continue
 
-            # Write scraped WIAA fields back to the Schools tab so the sheet
-            # stays in sync. Only fills blank cells — never overwrites a value
-            # the user has manually set. IL schools are sheet-sourced so no
-            # write-back needed there.
-            _WIAA_FIELDS = [
+            # Write scraped WIAA fields back to the Schools tab so it stays in
+            # sync with the live source: every field here is overwritten
+            # whenever it differs from the fresh WIAA scrape, even if the
+            # cell already has a value. This mirrors what already happens in
+            # NetSuite (build_customer_body syncs the same scraped fields to
+            # the customer record every night) — the sheet should never be
+            # allowed to drift from WIAA the way Adams-Friendship's address
+            # did indefinitely with nothing to correct it.
+            # No "county" here — WIAA's school detail page doesn't publish one.
+            # IL schools are sheet-sourced so no write-back needed there.
+            HEAL_FIELDS = [
+                (M_ADDR1,      "address1"),
+                (M_ADDR2,      "address2"),
+                (M_CITY,       "city"),
+                (M_STATE,      "state"),
+                (M_ZIP,        "zip"),
                 (M_CLASS,      "school_class"),
                 (M_LEVEL,      "level"),
                 (M_NICKNAME,   "nickname"),
@@ -310,23 +328,17 @@ def main():
                 (M_ENROLLMENT, "enrollment"),
                 (M_SIZE,       "school_size"),
                 (M_PHONE,      "phone"),
-                (M_ADDR1,      "address1"),
-                (M_ADDR2,      "address2"),
-                (M_CITY,       "city"),
-                (M_ZIP,        "zip"),
                 (M_WEBSITE,    "website"),
             ]
             headers = list(sch["raw"].keys())
             wiaa_updates = []
-            for col_name, info_key in _WIAA_FIELDS:
+            for col_name, info_key in HEAL_FIELDS:
                 scraped_val = school_info_out.get(info_key)
-                if not scraped_val:
+                if not scraped_val or col_name not in headers:
                     continue
                 existing = str(sch["raw"].get(col_name, "")).strip()
-                if existing:
-                    continue  # don't overwrite manually set values
-                if col_name not in headers:
-                    continue
+                if existing.lower() == str(scraped_val).strip().lower():
+                    continue  # already matches — no-op
                 col_idx = headers.index(col_name) + 1
                 wiaa_updates.append({
                     "range": gspread.utils.rowcol_to_a1(sch["row"], col_idx),
@@ -334,7 +346,7 @@ def main():
                 })
             if wiaa_updates:
                 master_ws.batch_update(wiaa_updates)
-                print(f"  Wrote {len(wiaa_updates)} scraped field(s) back to Schools tab")
+                print(f"  Healed {len(wiaa_updates)} field(s) on Schools tab to match live WIAA")
 
         synced_schools += 1
         synced_updates.append((sch["row"], datetime.now().strftime("%Y-%m-%d %H:%M")))
@@ -441,6 +453,7 @@ def main():
             elif sync_flag == "N" and contact_ns not in ("", "nan", "None", "UNLINKED"):
                 if em_key not in pushed_emails:
                     inactivate_contact(contact_ns, f"{first} {last}")
+                    remove_contact_ship_to(result_id, f"{first} {last}")
                     pushed_emails[em_key] = ""
                 c[C_NS_CID] = ""
                 time.sleep(0.15)
