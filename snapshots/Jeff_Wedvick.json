@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-06-19T06:56:56.833334Z",
+  "updated": "2026-07-08T05:02:25.499899Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -684,6 +684,14 @@
     },
     {
       "school": "Deerfield High School",
+      "email": "feinn@mcfsd.org",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Nicole",
+      "last": "Fein"
+    },
+    {
+      "school": "Deerfield High School",
       "email": "girlssoccer@cambridge.K12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Soccer",
@@ -1356,14 +1364,6 @@
     },
     {
       "school": "Germantown High School",
-      "email": "creuter@gsdwi.org",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Chris",
-      "last": "Reuter"
-    },
-    {
-      "school": "Germantown High School",
       "email": "dheinz@gsdwi.org",
       "role": "AD Admin Assistant",
       "sport": "",
@@ -1473,6 +1473,14 @@
       "sport": "Girls Swimming & Diving",
       "first": "Lori",
       "last": "Bruss"
+    },
+    {
+      "school": "Germantown High School",
+      "email": "mcastro@gsdwi.org",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Martin",
+      "last": "Castro"
     },
     {
       "school": "Germantown High School",
@@ -1753,6 +1761,14 @@
       "sport": "",
       "first": "Dominic",
       "last": "Bauer"
+    },
+    {
+      "school": "Hamilton High School",
+      "email": "beckla@hamilton.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Lanell",
+      "last": "Becker"
     },
     {
       "school": "Hamilton High School",
@@ -2164,27 +2180,11 @@
     },
     {
       "school": "Johnson Creek High School",
-      "email": "gruenm@johnsoncreekschools.org",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Mark",
-      "last": "Gruen"
-    },
-    {
-      "school": "Johnson Creek High School",
       "email": "hannae@johnsoncreekschools.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
       "first": "Beth",
       "last": "Hanna"
-    },
-    {
-      "school": "Johnson Creek High School",
-      "email": "hebbet@johnsoncreekschools.org",
-      "role": "AD Admin Assistant",
-      "sport": "",
-      "first": "Trisha",
-      "last": "Hebbe"
     },
     {
       "school": "Johnson Creek High School",
@@ -2205,7 +2205,7 @@
     {
       "school": "Johnson Creek High School",
       "email": "oconnelln@johnsoncreekschools.org",
-      "role": "Principal",
+      "role": "Superintendent",
       "sport": "",
       "first": "Neil",
       "last": "O'Connell"
@@ -2237,7 +2237,7 @@
     {
       "school": "Johnson Creek High School",
       "email": "ramseierb@johnsoncreekschools.org",
-      "role": "Athletic Director",
+      "role": "Principal",
       "sport": "",
       "first": "Brady",
       "last": "Ramseier"
@@ -2548,14 +2548,6 @@
     },
     {
       "school": "Lake Mills High School",
-      "email": "molly.hooper@lakemills.k12.wi.us",
-      "role": "AD Admin Assistant",
-      "sport": "",
-      "first": "Molly",
-      "last": "Hooper"
-    },
-    {
-      "school": "Lake Mills High School",
       "email": "rachel.dickhut@lakemills.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Track and Field",
@@ -2612,6 +2604,14 @@
     },
     {
       "school": "Lake Mills High School",
+      "email": "trisha.hebbe@lakemills.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Trisha",
+      "last": "Hebbe"
+    },
+    {
+      "school": "Lake Mills High School",
       "email": "tyler.huber@lakemills.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Football",
@@ -2649,6 +2649,14 @@
       "sport": "Boys & Girls Wrestling",
       "first": "Clayton",
       "last": "Grow"
+    },
+    {
+      "school": "Lakeside Lutheran High School",
+      "email": "coachquale24@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Brett",
+      "last": "Quale"
     },
     {
       "school": "Lakeside Lutheran High School",
@@ -3593,14 +3601,6 @@
       "sport": "",
       "first": "David",
       "last": "Karrels"
-    },
-    {
-      "school": "Ozaukee High School",
-      "email": "georgeschroeder53@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "George",
-      "last": "Schroeder"
     },
     {
       "school": "Ozaukee High School",
@@ -4812,6 +4812,14 @@
     },
     {
       "school": "Watertown Luther Prep High School",
+      "email": "dodgedl@lps.wels.net",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "David",
+      "last": "Dodge"
+    },
+    {
+      "school": "Watertown Luther Prep High School",
       "email": "ewingsbs@lps.wels.net",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
@@ -4828,27 +4836,11 @@
     },
     {
       "school": "Watertown Luther Prep High School",
-      "email": "gregorjt@lps.wels.net",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Justin",
-      "last": "Gregorius"
-    },
-    {
-      "school": "Watertown Luther Prep High School",
       "email": "gummjb@lps.wels.net",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
       "first": "Joseph",
       "last": "Gumm"
-    },
-    {
-      "school": "Watertown Luther Prep High School",
-      "email": "gurgelrr@lps.wels.net",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Ryan",
-      "last": "Gurgel"
     },
     {
       "school": "Watertown Luther Prep High School",

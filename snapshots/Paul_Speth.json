@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-06-19T06:54:50.035747Z",
+  "updated": "2026-07-08T05:00:13.812745Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -852,6 +852,14 @@
     },
     {
       "school": "McFarland High School",
+      "email": "feinn@mcfsd.org",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Nicole",
+      "last": "Fein"
+    },
+    {
+      "school": "McFarland High School",
       "email": "FeldneJ@mcfsd.org",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -1084,19 +1092,11 @@
     },
     {
       "school": "Monona Grove High School",
-      "email": "evan.gluch@mgschools.net",
+      "email": "feinn@mcfsd.org",
       "role": "Head Coach",
-      "sport": "Girls Gymnastics",
-      "first": "Evan",
-      "last": "Gluch"
-    },
-    {
-      "school": "Monona Grove High School",
-      "email": "hayleyhomburg88@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Tennis",
-      "first": "Hayley",
-      "last": "Homburg"
+      "sport": "Boys Volleyball",
+      "first": "Nicole",
+      "last": "Fein"
     },
     {
       "school": "Monona Grove High School",
@@ -1132,14 +1132,6 @@
     },
     {
       "school": "Monona Grove High School",
-      "email": "kevin.connor@mgschools.net",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Kevin",
-      "last": "Connor"
-    },
-    {
-      "school": "Monona Grove High School",
       "email": "kristin.sobocinski@mgschools.net",
       "role": "Assistant Superintendent",
       "sport": "",
@@ -1156,11 +1148,11 @@
     },
     {
       "school": "Monona Grove High School",
-      "email": "larsdoll@gmail.com",
+      "email": "laneyseffrood@gmail.com",
       "role": "Head Coach",
-      "sport": "Girls Swimming & Diving",
-      "first": "Lars",
-      "last": "Doll"
+      "sport": "Girls Gymnastics",
+      "first": "Delaney",
+      "last": "Seffrood"
     },
     {
       "school": "Monona Grove High School",
@@ -1204,6 +1196,14 @@
     },
     {
       "school": "Monona Grove High School",
+      "email": "mitchell.asplund@mgschools.net",
+      "role": "Head Coach",
+      "sport": "Girls Soccer",
+      "first": "Mitchell",
+      "last": "Asplund"
+    },
+    {
+      "school": "Monona Grove High School",
       "email": "mjreiter3@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Lacrosse-Boys",
@@ -1217,14 +1217,6 @@
       "sport": "Boys Soccer",
       "first": "Randy",
       "last": "Becker"
-    },
-    {
-      "school": "Monona Grove High School",
-      "email": "samkeltner@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Cross Country",
-      "first": "Sam",
-      "last": "Keltner"
     },
     {
       "school": "Monona Grove High School",
@@ -1252,11 +1244,11 @@
     },
     {
       "school": "Monona Grove High School",
-      "email": "zoe.kurth@mgschools.net",
+      "email": "xtinaschmoker@gmail.com",
       "role": "Head Coach",
-      "sport": "Girls Soccer",
-      "first": "Zoe",
-      "last": "Kurth"
+      "sport": "Girls Tennis",
+      "first": "Christina",
+      "last": "Schmoker"
     },
     {
       "school": "Necedah High School",
@@ -1289,14 +1281,6 @@
       "sport": "Girls Basketball",
       "first": "Nick",
       "last": "Murphy"
-    },
-    {
-      "school": "Necedah High School",
-      "email": "kandreasen@maustonschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "Kurt",
-      "last": "Andreasen"
     },
     {
       "school": "Necedah High School",
@@ -1548,14 +1532,6 @@
     },
     {
       "school": "New Lisbon High School",
-      "email": "bobbi_plueger12@yahoo.com",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Bobbi",
-      "last": "Ulrich"
-    },
-    {
-      "school": "New Lisbon High School",
       "email": "j.elsing@nlsd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -1585,6 +1561,22 @@
       "sport": "",
       "first": "Katy",
       "last": "Bullard"
+    },
+    {
+      "school": "New Lisbon High School",
+      "email": "kyoss@necedahschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Kayden",
+      "last": "Yoss"
+    },
+    {
+      "school": "New Lisbon High School",
+      "email": "l.faber@nlsd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Leah",
+      "last": "Faber"
     },
     {
       "school": "New Lisbon High School",
@@ -1653,14 +1645,6 @@
     {
       "school": "Pardeeville High School",
       "email": "bellda@pasdwi.org",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "David",
-      "last": "Bell"
-    },
-    {
-      "school": "Pardeeville High School",
-      "email": "bellda@pasdwi.org",
       "role": "Head Coach",
       "sport": "Girls Basketball",
       "first": "David",
@@ -1668,11 +1652,27 @@
     },
     {
       "school": "Pardeeville High School",
-      "email": "Denuam@pasdwi.org",
-      "role": "Athletic Director",
+      "email": "bellda@pasdwi.org",
+      "role": "Principal",
+      "sport": "",
+      "first": "David",
+      "last": "Bell"
+    },
+    {
+      "school": "Pardeeville High School",
+      "email": "denuam@pasdwi.org",
+      "role": "Superintendent",
       "sport": "",
       "first": "Amber",
       "last": "Denure"
+    },
+    {
+      "school": "Pardeeville High School",
+      "email": "fronri@pasdwi.org",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Rich",
+      "last": "Fronheiser"
     },
     {
       "school": "Pardeeville High School",
@@ -1697,14 +1697,6 @@
       "sport": "Boys Wrestling",
       "first": "Jesse",
       "last": "Huset"
-    },
-    {
-      "school": "Pardeeville High School",
-      "email": "knitgus@pasdwi.org",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Gus",
-      "last": "Knitt"
     },
     {
       "school": "Pardeeville High School",
@@ -1756,14 +1748,6 @@
     },
     {
       "school": "Port Edwards High School",
-      "email": "Brian.strnad.13@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Brian",
-      "last": "Strnad"
-    },
-    {
-      "school": "Port Edwards High School",
       "email": "greenju17@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -1785,22 +1769,6 @@
       "sport": "Boys Wrestling",
       "first": "Josh",
       "last": "Jensen"
-    },
-    {
-      "school": "Port Edwards High School",
-      "email": "justin.beck@tweetgarot.com",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Justin",
-      "last": "Beck"
-    },
-    {
-      "school": "Port Edwards High School",
-      "email": "martibe@pesd.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Ben",
-      "last": "Martinson"
     },
     {
       "school": "Port Edwards High School",
@@ -2404,14 +2372,6 @@
     },
     {
       "school": "Sun Prairie East High School",
-      "email": "sortiz@sunprairieschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Tennis",
-      "first": "Sandee",
-      "last": "Ortiz"
-    },
-    {
-      "school": "Sun Prairie East High School",
       "email": "troygiesegh@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Hockey",
@@ -2440,7 +2400,15 @@
       "role": "Athletic Director",
       "sport": "",
       "first": "Jessica",
-      "last": "Rettler"
+      "last": "Rettler Jody Congdon"
+    },
+    {
+      "school": "Tri-County High School",
+      "email": "boquistj@wildroseschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Golf",
+      "first": "Jason",
+      "last": "Boquist"
     },
     {
       "school": "Tri-County High School",
@@ -2501,26 +2469,10 @@
     {
       "school": "Tri-County High School",
       "email": "jessicarettler@tcpenguin.net",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Jessica",
-      "last": "Rettler"
-    },
-    {
-      "school": "Tri-County High School",
-      "email": "jessicarettler@tcpenguin.net",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
       "first": "Jessica",
       "last": "Rettler"
-    },
-    {
-      "school": "Tri-County High School",
-      "email": "jodycongdon@tcpenguin.net",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Jody",
-      "last": "Congdon"
     },
     {
       "school": "Tri-County High School",
@@ -2537,6 +2489,14 @@
       "sport": "",
       "first": "Nicholas",
       "last": "Marti"
+    },
+    {
+      "school": "Tri-County High School",
+      "email": "noahbunge@tcpenguin.net",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Noah",
+      "last": "Bunge"
     },
     {
       "school": "Tri-County High School",
@@ -3020,14 +2980,6 @@
     },
     {
       "school": "Wisconsin Dells High School",
-      "email": "mejiaariasernesto@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Ernesto",
-      "last": "Arias"
-    },
-    {
-      "school": "Wisconsin Dells High School",
       "email": "mjanke@sdwd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Football",
@@ -3073,6 +3025,14 @@
       "sport": "",
       "first": "Terrance",
       "last": "Slack"
+    },
+    {
+      "school": "Wisconsin Dells High School",
+      "email": "willvandin@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "William",
+      "last": "Van Dinter"
     },
     {
       "school": "Wisconsin Dells High School",

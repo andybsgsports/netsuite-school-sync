@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-06-19T06:50:35.182141Z",
+  "updated": "2026-07-08T04:55:51.947986Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -20,11 +20,11 @@
     },
     {
       "school": "Alden-Hebron High School",
-      "email": "dvanderpal@alden-hebron.org",
-      "role": "Principal's Assistant",
-      "sport": "",
-      "first": "Deanna",
-      "last": "VanderPal"
+      "email": "jkanaly@ah19.org",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Jodie",
+      "last": "Kanaly"
     },
     {
       "school": "Alden-Hebron High School",
@@ -81,14 +81,6 @@
       "sport": "Boys Basketball",
       "first": "Rick",
       "last": "Peterson"
-    },
-    {
-      "school": "Alden-Hebron High School",
-      "email": "scombsy@gmail.com",
-      "role": "Coach",
-      "sport": "Sideline Cheer",
-      "first": "Shannon",
-      "last": "Combs"
     },
     {
       "school": "Alden-Hebron High School",
@@ -185,14 +177,6 @@
       "sport": "Girls Track & Field",
       "first": "Dan",
       "last": "Oslage"
-    },
-    {
-      "school": "Antioch Community High School",
-      "email": "francis.fracek@chsd117.org",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Frank",
-      "last": "Fracek"
     },
     {
       "school": "Antioch Community High School",
@@ -1524,6 +1508,14 @@
     },
     {
       "school": "Belvidere North High School",
+      "email": "abeiersdorff@district100.com",
+      "role": "Head Coach",
+      "sport": "Girls Flag Football",
+      "first": "Amy",
+      "last": "Beiersdorff"
+    },
+    {
+      "school": "Belvidere North High School",
       "email": "alewandowski@district100.com",
       "role": "Head Coach",
       "sport": "Boys Swimming",
@@ -2476,14 +2468,6 @@
     },
     {
       "school": "Brookfield Central High School",
-      "email": "kurthd@elmbrookschools.org",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Don",
-      "last": "Kurth"
-    },
-    {
-      "school": "Brookfield Central High School",
       "email": "lewisl@elmbrookschools.org",
       "role": "Head Coach",
       "sport": "Girls Cross Country",
@@ -2497,6 +2481,14 @@
       "sport": "Boys & Girls Soccer",
       "first": "Dan",
       "last": "Makal"
+    },
+    {
+      "school": "Brookfield Central High School",
+      "email": "markesd@elmbrookschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "David",
+      "last": "Markes"
     },
     {
       "school": "Brookfield Central High School",
@@ -2521,6 +2513,14 @@
       "sport": "Girls Hockey",
       "first": "Blake",
       "last": "Panosh"
+    },
+    {
+      "school": "Brookfield Central High School",
+      "email": "russelle@elmbrookschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Tennis",
+      "first": "Erika",
+      "last": "Wentz-Russell"
     },
     {
       "school": "Brookfield Central High School",
@@ -2550,7 +2550,7 @@
       "school": "Brookfield Central High School",
       "email": "vogtj@elmbrookschools.org",
       "role": "Head Coach",
-      "sport": "Boys & Girls Tennis",
+      "sport": "Boys Tennis",
       "first": "Jon",
       "last": "Vogt"
     },
@@ -3884,6 +3884,14 @@
     },
     {
       "school": "Central High School",
+      "email": "amy.maccrindle@central301.net",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Amy",
+      "last": "MacCrindle"
+    },
+    {
+      "school": "Central High School",
       "email": "andrew.brown@central301.net",
       "role": "Head Coach",
       "sport": "Boys & Girls Wrestling",
@@ -4020,19 +4028,19 @@
     },
     {
       "school": "Central High School",
-      "email": "jessica.arneson@central301.net",
+      "email": "jessica.nussman@central301.net",
       "role": "Head Coach",
       "sport": "Boys & Girls Swimming",
       "first": "Jessica",
-      "last": "Arneson"
+      "last": "Nussbaum"
     },
     {
       "school": "Central High School",
-      "email": "jessica.arneson@central301.net",
+      "email": "jessica.nussman@central301.net",
       "role": "Head Coach",
       "sport": "Girls Soccer",
       "first": "Jessica",
-      "last": "Arneson"
+      "last": "Nussbaum"
     },
     {
       "school": "Central High School",
@@ -4065,14 +4073,6 @@
       "sport": "Boys Baseball",
       "first": "Kyle",
       "last": "Nelson"
-    },
-    {
-      "school": "Central High School",
-      "email": "kyle.schumacher@central301.net",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Kyle",
-      "last": "Schumacher"
     },
     {
       "school": "Central High School",
@@ -5412,6 +5412,38 @@
     },
     {
       "school": "Dundee-Crown High School",
+      "email": "cnunnery@district158.org",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Curtis",
+      "last": "Nunnery"
+    },
+    {
+      "school": "Dundee-Crown High School",
+      "email": "cnunnery@district158.org",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Gymnastics",
+      "first": "Curtis",
+      "last": "Nunnery"
+    },
+    {
+      "school": "Dundee-Crown High School",
+      "email": "cnunnery@district158.org",
+      "role": "Head Coach",
+      "sport": "Boys Bowling",
+      "first": "Curtis",
+      "last": "Nunnery"
+    },
+    {
+      "school": "Dundee-Crown High School",
+      "email": "daniel.izbicki@d300.org",
+      "role": "Head Coach",
+      "sport": "Boys Golf",
+      "first": "Daniel",
+      "last": "Izbicki"
+    },
+    {
+      "school": "Dundee-Crown High School",
       "email": "dawn.griswold@d300.org",
       "role": "Boys Athletic Director's Assistant",
       "sport": "",
@@ -5548,14 +5580,6 @@
     },
     {
       "school": "Dundee-Crown High School",
-      "email": "mdangelo@d127.org",
-      "role": "Head Coach",
-      "sport": "Boys Track & Field",
-      "first": "Matthew",
-      "last": "D'Angelo"
-    },
-    {
-      "school": "Dundee-Crown High School",
       "email": "michael.steinhaus@d300.org",
       "role": "Head Coach",
       "sport": "Boys Football",
@@ -5633,30 +5657,6 @@
       "sport": "Scholastic Bowl",
       "first": "Scott",
       "last": "McNees"
-    },
-    {
-      "school": "Dundee-Crown High School",
-      "email": "steven.gertz@d300.org",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Steve",
-      "last": "Gertz"
-    },
-    {
-      "school": "Dundee-Crown High School",
-      "email": "steven.gertz@d300.org",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Gymnastics",
-      "first": "Steve",
-      "last": "Gertz"
-    },
-    {
-      "school": "Dundee-Crown High School",
-      "email": "steven.gertz@d300.org",
-      "role": "Head Coach",
-      "sport": "Boys Bowling",
-      "first": "Steve",
-      "last": "Gertz"
     },
     {
       "school": "Dundee-Crown High School",
@@ -6364,14 +6364,6 @@
     },
     {
       "school": "Forreston High School",
-      "email": "kgetz@fvdistrict221.org",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Kyle",
-      "last": "Getz"
-    },
-    {
-      "school": "Forreston High School",
       "email": "kjanicke@fvdistrict221.org",
       "role": "Head Coach",
       "sport": "Boys Football",
@@ -6516,19 +6508,19 @@
     },
     {
       "school": "Freeport High School",
-      "email": "brad.pemberton@fsd145.org",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Brad",
-      "last": "Pemberton"
-    },
-    {
-      "school": "Freeport High School",
       "email": "carsonbuck23@gmail.com",
       "role": "Certified Athletic Trainer",
       "sport": "",
       "first": "Carson",
       "last": "Buck"
+    },
+    {
+      "school": "Freeport High School",
+      "email": "darrin.sisk@rps205.com",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Darrin",
+      "last": "Sisk"
     },
     {
       "school": "Freeport High School",
@@ -6695,6 +6687,14 @@
       "email": "samantha.warner@fsd145.org",
       "role": "Boys Athletic Director's Assistant & Girls Athletic Director's Assistant",
       "sport": "",
+      "first": "Samantha",
+      "last": "Warner"
+    },
+    {
+      "school": "Freeport High School",
+      "email": "samantha.warner@fsd145.org",
+      "role": "Head Coach",
+      "sport": "Competitive Dance",
       "first": "Samantha",
       "last": "Warner"
     },
@@ -7772,6 +7772,14 @@
     },
     {
       "school": "Greendale High School",
+      "email": "jakup.sinani@greendaleschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Jakup",
+      "last": "Sinani"
+    },
+    {
+      "school": "Greendale High School",
       "email": "joe.britt@muskegonorway.org",
       "role": "Head Coach",
       "sport": "Boys Hockey",
@@ -7788,19 +7796,19 @@
     },
     {
       "school": "Greendale High School",
-      "email": "kelly.schmidt@greendaleschools.org",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Kelly",
-      "last": "Schmidt"
-    },
-    {
-      "school": "Greendale High School",
       "email": "kim.amidzich@greendaleschools.org",
       "role": "Superintendent",
       "sport": "",
       "first": "Kim",
       "last": "Amidzich"
+    },
+    {
+      "school": "Greendale High School",
+      "email": "laura.sadowsky@greendaleschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Laura",
+      "last": "Sadowski"
     },
     {
       "school": "Greendale High School",
@@ -8012,7 +8020,7 @@
     },
     {
       "school": "Greenfield High School",
-      "email": "khickey@greenfield.k12.wi.us",
+      "email": "khickey@martinlutherhs.org",
       "role": "Assistant Athletic Director",
       "sport": "",
       "first": "Kaitlyn",
@@ -8100,14 +8108,6 @@
     },
     {
       "school": "Greenfield High School",
-      "email": "spingolabilly@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Lacrosse-Boys",
-      "first": "Billy",
-      "last": "Spingola"
-    },
-    {
-      "school": "Greenfield High School",
       "email": "sswaer@greenfield.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Tennis",
@@ -8129,30 +8129,6 @@
       "sport": "",
       "first": "Abigail",
       "last": "Compton"
-    },
-    {
-      "school": "Guilford High School",
-      "email": "adam.lewis@rps205.com",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Adam",
-      "last": "Lewis"
-    },
-    {
-      "school": "Guilford High School",
-      "email": "alexis.henderson@rps205.com",
-      "role": "Coach",
-      "sport": "Sideline Cheer",
-      "first": "Alexis",
-      "last": "Ihonde"
-    },
-    {
-      "school": "Guilford High School",
-      "email": "alexis.henderson@rps205.com",
-      "role": "Head Coach",
-      "sport": "Competitive Cheerleading",
-      "first": "Alexis",
-      "last": "Ihonde"
     },
     {
       "school": "Guilford High School",
@@ -8193,14 +8169,6 @@
       "sport": "Girls Volleyball",
       "first": "Caitlin",
       "last": "Seibert"
-    },
-    {
-      "school": "Guilford High School",
-      "email": "damon.roznowski@rps205.com",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Damon",
-      "last": "Roznowski"
     },
     {
       "school": "Guilford High School",
@@ -8252,14 +8220,6 @@
     },
     {
       "school": "Guilford High School",
-      "email": "dcbowers@me.com",
-      "role": "Head Coach",
-      "sport": "Boys Swimming",
-      "first": "Dave",
-      "last": "Bowers"
-    },
-    {
-      "school": "Guilford High School",
       "email": "ehren.jarrett@rps205.com",
       "role": "Superintendent",
       "sport": "",
@@ -8273,14 +8233,6 @@
       "sport": "",
       "first": "Ellissa",
       "last": "Morales"
-    },
-    {
-      "school": "Guilford High School",
-      "email": "emilio.rodriguez@rps205.com",
-      "role": "Coach",
-      "sport": "Chess",
-      "first": "Emilio",
-      "last": "Rodriguez"
     },
     {
       "school": "Guilford High School",
@@ -8332,11 +8284,19 @@
     },
     {
       "school": "Guilford High School",
-      "email": "michael.selover@rps205.com",
+      "email": "michael.molloy@rps205.com",
       "role": "Head Coach",
-      "sport": "Boys Track & Field",
+      "sport": "Boys Diving",
       "first": "Michael",
-      "last": "Selover"
+      "last": "Molloy"
+    },
+    {
+      "school": "Guilford High School",
+      "email": "michael.molloy@rps205.com",
+      "role": "Head Coach",
+      "sport": "Boys Swimming",
+      "first": "Michael",
+      "last": "Molloy"
     },
     {
       "school": "Guilford High School",
@@ -8350,7 +8310,7 @@
       "school": "Guilford High School",
       "email": "muptmanuel@hotmail.com",
       "role": "Head Coach",
-      "sport": "Boys & Girls Cross Country",
+      "sport": "Girls Cross Country",
       "first": "Manuel",
       "last": "Molina"
     },
@@ -8364,19 +8324,19 @@
     },
     {
       "school": "Guilford High School",
-      "email": "ronald.carter@rps205.com",
-      "role": "Principal",
-      "sport": "",
-      "first": "Gus",
-      "last": "Carter"
-    },
-    {
-      "school": "Guilford High School",
       "email": "salisburytrevor14@gmail.com",
       "role": "Head Coach",
       "sport": "Competitive Dance",
       "first": "Trevor",
       "last": "Salisbury"
+    },
+    {
+      "school": "Guilford High School",
+      "email": "seanzuba15@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Sean",
+      "last": "Zuba"
     },
     {
       "school": "Guilford High School",
@@ -8417,6 +8377,14 @@
       "sport": "",
       "first": "Dominic",
       "last": "Bauer"
+    },
+    {
+      "school": "Hamilton High School",
+      "email": "beckla@hamilton.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Lanell",
+      "last": "Becker"
     },
     {
       "school": "Hamilton High School",
@@ -8972,14 +8940,6 @@
     },
     {
       "school": "Harvard High School",
-      "email": "bedinger@cusd50.org",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Becky",
-      "last": "Edinger"
-    },
-    {
-      "school": "Harvard High School",
       "email": "bheidtke@cusd50.org",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -9060,6 +9020,14 @@
     },
     {
       "school": "Harvard High School",
+      "email": "crozanski@cusd50.org",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Chris",
+      "last": "Rozanski"
+    },
+    {
+      "school": "Harvard High School",
       "email": "cseyller@cusd50.org",
       "role": "Head Coach",
       "sport": "Girls Track & Field",
@@ -9097,14 +9065,6 @@
       "sport": "Chess",
       "first": "David",
       "last": "Widzisz"
-    },
-    {
-      "school": "Harvard High School",
-      "email": "jcummins@cusd50.org",
-      "role": "Asst. Principal",
-      "sport": "",
-      "first": "Jason",
-      "last": "Cummins"
     },
     {
       "school": "Harvard High School",
@@ -9180,14 +9140,6 @@
     },
     {
       "school": "Harvard High School",
-      "email": "rmecklenburg@cusd50.org",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Robert",
-      "last": "Mecklenburg"
-    },
-    {
-      "school": "Harvard High School",
       "email": "sgrady@cusd50.org",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -9217,14 +9169,6 @@
       "sport": "Boys & Girls Soccer",
       "first": "Victor",
       "last": "Gonzalez"
-    },
-    {
-      "school": "Hiawatha High School",
-      "email": "a.p.charles9@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Andre",
-      "last": "Charles"
     },
     {
       "school": "Hiawatha High School",
@@ -9268,14 +9212,6 @@
     },
     {
       "school": "Hiawatha High School",
-      "email": "daniel.burke@d426.org",
-      "role": "Band Director & Marching Band Director & Vocal Director",
-      "sport": "",
-      "first": "Daniel",
-      "last": "Burke"
-    },
-    {
-      "school": "Hiawatha High School",
       "email": "dayna.breese@d426.org",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -9287,6 +9223,14 @@
       "email": "dedric.wright21@yahoo.com",
       "role": "Head Coach",
       "sport": "Boys Baseball",
+      "first": "Dedric",
+      "last": "Wright"
+    },
+    {
+      "school": "Hiawatha High School",
+      "email": "dedric.wright21@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
       "first": "Dedric",
       "last": "Wright"
     },
@@ -9329,6 +9273,14 @@
       "sport": "Girls Basketball",
       "first": "Kenny",
       "last": "McPeek"
+    },
+    {
+      "school": "Hiawatha High School",
+      "email": "korbynringer17@gmail.com",
+      "role": "Band Director & Marching Band Director",
+      "sport": "",
+      "first": "Korbyn",
+      "last": "Ringer"
     },
     {
       "school": "Hiawatha High School",
@@ -10036,6 +9988,14 @@
     },
     {
       "school": "Janesville Craig High School",
+      "email": "ashley.boyer@janesville.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Ashley",
+      "last": "Boyer"
+    },
+    {
+      "school": "Janesville Craig High School",
       "email": "bcorey@janesville.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -10068,6 +10028,14 @@
     },
     {
       "school": "Janesville Craig High School",
+      "email": "hiqmet.dauti@janesville.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Hiqmet",
+      "last": "Dauti"
+    },
+    {
+      "school": "Janesville Craig High School",
       "email": "hunter.salmon@janesville.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Cross Country",
@@ -10081,14 +10049,6 @@
       "sport": "",
       "first": "Jim",
       "last": "McClowry, CMAA"
-    },
-    {
-      "school": "Janesville Craig High School",
-      "email": "jhammen@janesville.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Josh",
-      "last": "Hammen"
     },
     {
       "school": "Janesville Craig High School",
@@ -11524,14 +11484,6 @@
     },
     {
       "school": "Lakes Community High School",
-      "email": "matthew.rife@chsd117.org",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Matt",
-      "last": "Rife"
-    },
-    {
-      "school": "Lakes Community High School",
       "email": "melissa.cross@chsd117.org",
       "role": "Student Council Adviser",
       "sport": "",
@@ -11609,22 +11561,6 @@
       "sport": "Girls Volleyball",
       "first": "Sarah",
       "last": "Yeager"
-    },
-    {
-      "school": "Lakes Community High School",
-      "email": "travis.shepherd@chsd117.org",
-      "role": "Head Coach",
-      "sport": "Girls Cross Country",
-      "first": "Travis",
-      "last": "Shepherd"
-    },
-    {
-      "school": "Lakes Community High School",
-      "email": "troy.parola@chsd117.org",
-      "role": "Boys Athletic Director & IHSA Official Representative",
-      "sport": "",
-      "first": "Troy",
-      "last": "Parola"
     },
     {
       "school": "Lakes Community High School",
@@ -11737,6 +11673,14 @@
       "sport": "Boys & Girls Wrestling",
       "first": "Kevin",
       "last": "Milder"
+    },
+    {
+      "school": "Lena-Winslow High School",
+      "email": "ransomm@le-win.net",
+      "role": "Coach",
+      "sport": "Sideline Cheer",
+      "first": "Madison",
+      "last": "Ransom"
     },
     {
       "school": "Lena-Winslow High School",
@@ -12257,6 +12201,14 @@
       "sport": "Esports",
       "first": "Dan",
       "last": "Kane"
+    },
+    {
+      "school": "Marengo High School",
+      "email": "kruegerj@mchs154.org",
+      "role": "Head Coach",
+      "sport": "Competitive Dance",
+      "first": "Jasmine",
+      "last": "Krueger"
     },
     {
       "school": "Marengo High School",
@@ -13020,14 +12972,6 @@
     },
     {
       "school": "Menomonee Falls High School",
-      "email": "bison3030@yahoo.com",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Fred",
-      "last": "Riley"
-    },
-    {
-      "school": "Menomonee Falls High School",
       "email": "brookfieldstarshockey@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Hockey",
@@ -13073,14 +13017,6 @@
       "sport": "Girls Softball",
       "first": "Scott",
       "last": "Eldredge"
-    },
-    {
-      "school": "Menomonee Falls High School",
-      "email": "fallsboysvb@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Volleyball",
-      "first": "Todd",
-      "last": "Smith"
     },
     {
       "school": "Menomonee Falls High School",
@@ -13193,6 +13129,14 @@
       "sport": "Girls Wrestling",
       "first": "Dave",
       "last": "Rutke"
+    },
+    {
+      "school": "Menomonee Falls High School",
+      "email": "Samanthacsmith@att.net",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Samantha",
+      "last": "Smith"
     },
     {
       "school": "Menomonee Falls High School",
@@ -13676,14 +13620,6 @@
     },
     {
       "school": "Mundelein High School",
-      "email": "ataylor@d120.org",
-      "role": "Principal",
-      "sport": "",
-      "first": "Alexandria",
-      "last": "Rios Taylor"
-    },
-    {
-      "school": "Mundelein High School",
       "email": "bmayerson@d120.org",
       "role": "Certified Athletic Trainer",
       "sport": "",
@@ -13748,14 +13684,6 @@
     },
     {
       "school": "Mundelein High School",
-      "email": "dstrauss@d120.org",
-      "role": "Head Coach",
-      "sport": "Girls Gymnastics",
-      "first": "Daniella",
-      "last": "Strauss"
-    },
-    {
-      "school": "Mundelein High School",
       "email": "efilley@d120.org",
       "role": "Head Coach",
       "sport": "Girls Lacrosse",
@@ -13769,14 +13697,6 @@
       "sport": "",
       "first": "George",
       "last": "Andretich"
-    },
-    {
-      "school": "Mundelein High School",
-      "email": "gdressen@d120.org",
-      "role": "Head Coach",
-      "sport": "Boys Volleyball",
-      "first": "George",
-      "last": "Dressen Jr."
     },
     {
       "school": "Mundelein High School",
@@ -14021,7 +13941,7 @@
     {
       "school": "Mundelein High School",
       "email": "slibert@d120.org",
-      "role": "Associate Principal",
+      "role": "Principal",
       "sport": "",
       "first": "Stevee",
       "last": "Libert"
@@ -14548,6 +14468,30 @@
     },
     {
       "school": "Orangeville High School",
+      "email": "josh.wallin1426@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Josh",
+      "last": "Wallin"
+    },
+    {
+      "school": "Orangeville High School",
+      "email": "linsmac29@hotmail.com",
+      "role": "Coach",
+      "sport": "Sideline Cheer",
+      "first": "Lindsay",
+      "last": "Baker"
+    },
+    {
+      "school": "Orangeville High School",
+      "email": "lschaefer@tricorinsurance.com",
+      "role": "Coach",
+      "sport": "Sideline Cheer",
+      "first": "Leah",
+      "last": "Schaefer"
+    },
+    {
+      "school": "Orangeville High School",
       "email": "lscheuerell@orangevillecusd.com",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -14591,14 +14535,6 @@
       "email": "1bdwilde@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Basketball",
-      "first": "Brandon",
-      "last": "Wilde"
-    },
-    {
-      "school": "Palmyra-Eagle High School",
-      "email": "1bdwilde@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Football",
       "first": "Brandon",
       "last": "Wilde"
     },
@@ -17468,6 +17404,22 @@
     },
     {
       "school": "Verona Area High School",
+      "email": "fergerc@verona.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "Caleb",
+      "last": "Ferger"
+    },
+    {
+      "school": "Verona Area High School",
+      "email": "gregoirp@verona.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "Pj",
+      "last": "Gregoire"
+    },
+    {
+      "school": "Verona Area High School",
       "email": "happelm@verona.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Tennis",
@@ -17588,27 +17540,11 @@
     },
     {
       "school": "Verona Area High School",
-      "email": "stokesj@verona.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "Jonathon",
-      "last": "Stokes"
-    },
-    {
-      "school": "Verona Area High School",
       "email": "vangj@verona.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Soccer",
       "first": "Jonathan",
       "last": "Vang"
-    },
-    {
-      "school": "Verona Area High School",
-      "email": "wiemer@verona.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Golf",
-      "first": "Ryan",
-      "last": "Wieme"
     },
     {
       "school": "Verona Area High School",
@@ -18164,6 +18100,14 @@
     },
     {
       "school": "Waterford High School",
+      "email": "jmcclowry@wuhs.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Jim",
+      "last": "McClowry, CMAA"
+    },
+    {
+      "school": "Waterford High School",
       "email": "joe.britt@muskegonorway.org",
       "role": "Head Coach",
       "sport": "Boys Hockey",
@@ -18177,14 +18121,6 @@
       "sport": "Boys Golf",
       "first": "Joe",
       "last": "Rydzewski"
-    },
-    {
-      "school": "Waterford High School",
-      "email": "jstobber@wuhs.us",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Jill",
-      "last": "Stobber"
     },
     {
       "school": "Waterford High School",
@@ -18821,7 +18757,7 @@
     {
       "school": "Waukesha South High School",
       "email": "dschreie@waukesha.k12.wi.us",
-      "role": "Assistant Principal, Athletic Director",
+      "role": "Assistant Principal",
       "sport": "",
       "first": "Dan",
       "last": "Schreier"
@@ -18937,6 +18873,14 @@
       "sport": "Girls Tennis",
       "first": "Melissa",
       "last": "Premeau"
+    },
+    {
+      "school": "Waukesha South High School",
+      "email": "nconrad@waukesha.k12.wi.us",
+      "role": "Assistant Principal, Athletic Director",
+      "sport": "",
+      "first": "Nick",
+      "last": "Conrad"
     },
     {
       "school": "Waukesha South High School",
@@ -19220,6 +19164,14 @@
     },
     {
       "school": "Wauwatosa West High School",
+      "email": "gruenema@wauwatosa.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Maya",
+      "last": "Grueneberg"
+    },
+    {
+      "school": "Wauwatosa West High School",
       "email": "hegwoohe@wauwatosa.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Swimming & Diving",
@@ -19313,14 +19265,6 @@
       "sport": "Boys & Girls Cross Country",
       "first": "Tom",
       "last": "Schneider"
-    },
-    {
-      "school": "Wauwatosa West High School",
-      "email": "schremke@wauwatosa.k12.wi.us",
-      "role": "AD Admin Assistant",
-      "sport": "",
-      "first": "Keegan",
-      "last": "Schrems"
     },
     {
       "school": "Wauwatosa West High School",
@@ -19788,14 +19732,6 @@
     },
     {
       "school": "Williams Bay High School",
-      "email": "edwardwiley15@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Edward",
-      "last": "Wiley"
-    },
-    {
-      "school": "Williams Bay High School",
       "email": "Elkslaxcoaches@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Lacrosse-Boys",
@@ -19828,6 +19764,14 @@
     },
     {
       "school": "Williams Bay High School",
+      "email": "jjkarabas@bigfoot.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "John",
+      "last": "Karabas"
+    },
+    {
+      "school": "Williams Bay High School",
       "email": "keith.blakeman@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Soccer",
@@ -19857,14 +19801,6 @@
       "sport": "Girls Gymnastics",
       "first": "Jordin",
       "last": "Miller"
-    },
-    {
-      "school": "Williams Bay High School",
-      "email": "nborgen@williamsbayschool.org",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Nathan",
-      "last": "Borgen"
     },
     {
       "school": "Williams Bay High School",

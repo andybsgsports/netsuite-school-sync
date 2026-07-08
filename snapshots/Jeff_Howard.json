@@ -1,15 +1,7 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-06-19T06:51:30.023436Z",
+  "updated": "2026-07-08T04:56:48.712671Z",
   "records": [
-    {
-      "school": "Albany High School",
-      "email": "barry.einbeck@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Barry",
-      "last": "Einbeck"
-    },
     {
       "school": "Albany High School",
       "email": "BDAVIS@MARTINAUTO.COM",
@@ -76,6 +68,14 @@
     },
     {
       "school": "Albany High School",
+      "email": "olsonma@monticello.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Mark",
+      "last": "Olson"
+    },
+    {
+      "school": "Albany High School",
       "email": "rkwachholz39@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -126,7 +126,7 @@
       "school": "Argyle High School",
       "email": "gsutter89@hotmail.com",
       "role": "Head Coach",
-      "sport": "Boys Wrestling",
+      "sport": "Boys & Girls Wrestling",
       "first": "Grant",
       "last": "Sutter"
     },
@@ -300,14 +300,6 @@
     },
     {
       "school": "Baraboo High School",
-      "email": "jlangkamp@barabooschools.net",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Jim",
-      "last": "Langkamp"
-    },
-    {
-      "school": "Baraboo High School",
       "email": "jlitscher@barabooschools.net",
       "role": "Head Coach",
       "sport": "Girls Basketball",
@@ -404,6 +396,14 @@
     },
     {
       "school": "Baraboo High School",
+      "email": "sturkington@barabooschools.net",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Steve",
+      "last": "Turkington"
+    },
+    {
+      "school": "Baraboo High School",
       "email": "tcapps@barabooschools.net",
       "role": "Head Coach",
       "sport": "Boys & Girls Swimming Diving",
@@ -460,6 +460,14 @@
     },
     {
       "school": "Belleville High School",
+      "email": "boutells@belleville.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Sara",
+      "last": "Boutelle"
+    },
+    {
+      "school": "Belleville High School",
       "email": "dennis.haak@ngsd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Track and Field",
@@ -473,14 +481,6 @@
       "sport": "Boys Soccer",
       "first": "Robert",
       "last": "Gentilli"
-    },
-    {
-      "school": "Belleville High School",
-      "email": "housert@belleville.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Cross Country",
-      "first": "Tamara",
-      "last": "Houser"
     },
     {
       "school": "Belleville High School",
@@ -713,14 +713,6 @@
       "sport": "Boys Wrestling",
       "first": "Craig",
       "last": "Donar"
-    },
-    {
-      "school": "Benton High School",
-      "email": "dustinhamm0408@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "Dustin",
-      "last": "Hamm"
     },
     {
       "school": "Benton High School",
@@ -1492,6 +1484,14 @@
     },
     {
       "school": "Dodgeville High School",
+      "email": "kprofitt@draschools.org",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Kellie",
+      "last": "Profitt"
+    },
+    {
+      "school": "Dodgeville High School",
       "email": "lthole@draschools.org",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -1777,6 +1777,14 @@
       "sport": "",
       "first": "Michael",
       "last": "Shimshak"
+    },
+    {
+      "school": "Iowa Grant High School",
+      "email": "radler@igs.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Robert",
+      "last": "Adler"
     },
     {
       "school": "Iowa Grant High School",
@@ -2532,6 +2540,14 @@
     },
     {
       "school": "Monticello High School",
+      "email": "barry.einbeck@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Barry",
+      "last": "Einbeck"
+    },
+    {
+      "school": "Monticello High School",
       "email": "delwiam@monticello.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Track and Field",
@@ -2617,6 +2633,14 @@
       "sport": "Boys & Girls Wrestling",
       "first": "Peter",
       "last": "Swenson"
+    },
+    {
+      "school": "Monticello High School",
+      "email": "tonygbrewer20@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Track and Field",
+      "first": "Tony",
+      "last": "Brewer"
     },
     {
       "school": "New Glarus High School",
@@ -2849,6 +2873,14 @@
       "sport": "Boys & Girls Tennis",
       "first": "Ethan",
       "last": "Uhlmann"
+    },
+    {
+      "school": "Oregon School District",
+      "email": "feinn@mcfsd.org",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Nicole",
+      "last": "Fein"
     },
     {
       "school": "Oregon School District",
@@ -3201,6 +3233,14 @@
       "sport": "Girls Wrestling",
       "first": "Jacob",
       "last": "Zizis"
+    },
+    {
+      "school": "Potosi High School",
+      "email": "cassville92@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Don",
+      "last": "Adams"
     },
     {
       "school": "Potosi High School",
@@ -3749,6 +3789,14 @@
     {
       "school": "Sauk Prairie High School",
       "email": "drew.kornish@saukprairieschools.org",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Drew",
+      "last": "Kornish"
+    },
+    {
+      "school": "Sauk Prairie High School",
+      "email": "drew.kornish@saukprairieschools.org",
       "role": "Head Coach",
       "sport": "Boys Soccer",
       "first": "Drew",
@@ -3769,14 +3817,6 @@
       "sport": "",
       "first": "Jeff",
       "last": "Wright"
-    },
-    {
-      "school": "Sauk Prairie High School",
-      "email": "joshua.boyer@saukprairieschools.org",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Josh",
-      "last": "Boyer"
     },
     {
       "school": "Sauk Prairie High School",
@@ -3900,11 +3940,27 @@
     },
     {
       "school": "Shullsburg High School",
+      "email": "goffinetk@swsd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Gymnastics",
+      "first": "Kelsie",
+      "last": "Goffinet"
+    },
+    {
+      "school": "Shullsburg High School",
       "email": "hamster.one@hotmail.com",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
       "first": "Russell",
       "last": "Hamm"
+    },
+    {
+      "school": "Shullsburg High School",
+      "email": "Karenwiederholt74@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Gymnastics",
+      "first": "Karen",
+      "last": "Wiederholt"
     },
     {
       "school": "Shullsburg High School",
@@ -3979,7 +4035,7 @@
       "last": "Woodworth"
     },
     {
-      "school": "Southwestewrn High School",
+      "school": "Southwestern High School",
       "email": "angerk@swsd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -3987,7 +4043,7 @@
       "last": "Anger"
     },
     {
-      "school": "Southwestewrn High School",
+      "school": "Southwestern High School",
       "email": "baholmes1999@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Wrestling",
@@ -3995,7 +4051,7 @@
       "last": "Holmes"
     },
     {
-      "school": "Southwestewrn High School",
+      "school": "Southwestern High School",
       "email": "belken_sj@hotmail.com",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -4003,7 +4059,7 @@
       "last": "Bates"
     },
     {
-      "school": "Southwestewrn High School",
+      "school": "Southwestern High School",
       "email": "cdonar24@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
@@ -4011,15 +4067,7 @@
       "last": "Donar"
     },
     {
-      "school": "Southwestewrn High School",
-      "email": "dustinhamm0408@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "Dustin",
-      "last": "Hamm"
-    },
-    {
-      "school": "Southwestewrn High School",
+      "school": "Southwestern High School",
       "email": "goffinetk@swsd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Gymnastics",
@@ -4027,7 +4075,7 @@
       "last": "Goffinet"
     },
     {
-      "school": "Southwestewrn High School",
+      "school": "Southwestern High School",
       "email": "hoegerd@swsd.k12.wi.us",
       "role": "Superintendent",
       "sport": "",
@@ -4035,7 +4083,7 @@
       "last": "Hoeger"
     },
     {
-      "school": "Southwestewrn High School",
+      "school": "Southwestern High School",
       "email": "hutchinsa@swsd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -4043,15 +4091,15 @@
       "last": "Hutchins"
     },
     {
-      "school": "Southwestewrn High School",
-      "email": "jedler@edbqhs.org",
+      "school": "Southwestern High School",
+      "email": "jasonjamesfoley@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Football",
-      "first": "Josef",
-      "last": "Edler"
+      "first": "Jason",
+      "last": "Foley"
     },
     {
-      "school": "Southwestewrn High School",
+      "school": "Southwestern High School",
       "email": "Karenwiederholt74@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Gymnastics",
@@ -4059,7 +4107,7 @@
       "last": "Wiederholt"
     },
     {
-      "school": "Southwestewrn High School",
+      "school": "Southwestern High School",
       "email": "koellert@swsd.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
@@ -4067,7 +4115,7 @@
       "last": "Koeller"
     },
     {
-      "school": "Southwestewrn High School",
+      "school": "Southwestern High School",
       "email": "laceyc@swsd.k12.wi.us",
       "role": "Principal",
       "sport": "",
@@ -4075,7 +4123,7 @@
       "last": "Lacey"
     },
     {
-      "school": "Southwestewrn High School",
+      "school": "Southwestern High School",
       "email": "middendorfta@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Basketball",
@@ -4083,7 +4131,7 @@
       "last": "Middendorf"
     },
     {
-      "school": "Southwestewrn High School",
+      "school": "Southwestern High School",
       "email": "nemitzc@swsd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -4091,7 +4139,7 @@
       "last": "Nemitz"
     },
     {
-      "school": "Southwestewrn High School",
+      "school": "Southwestern High School",
       "email": "nemitzc@swsd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Golf",
@@ -4099,7 +4147,7 @@
       "last": "Nemitz"
     },
     {
-      "school": "Southwestewrn High School",
+      "school": "Southwestern High School",
       "email": "preynolds8585@gmail.com",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -4107,7 +4155,7 @@
       "last": "Reynolds"
     },
     {
-      "school": "Southwestewrn High School",
+      "school": "Southwestern High School",
       "email": "preynolds8585@gmail.com",
       "role": "Head Coach",
       "sport": "Boys & Girls Track and Field",
@@ -4404,14 +4452,6 @@
     },
     {
       "school": "Waunakee School District",
-      "email": "brianborowski@waunakee.k12.wi.us",
-      "role": "Principal",
-      "sport": "",
-      "first": "Brian",
-      "last": "Borowski"
-    },
-    {
-      "school": "Waunakee School District",
       "email": "chasedrake@waunakee.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Hockey",
@@ -4441,6 +4481,14 @@
       "sport": "Girls Tennis",
       "first": "Corey",
       "last": "Westphal"
+    },
+    {
+      "school": "Waunakee School District",
+      "email": "deannelensert@waunakee.k12.wi.us",
+      "role": "Principal",
+      "sport": "",
+      "first": "Deanne",
+      "last": "Lensert"
     },
     {
       "school": "Waunakee School District",
@@ -4524,11 +4572,11 @@
     },
     {
       "school": "Waunakee School District",
-      "email": "nicholasconrad@waunakee.k12.wi.us",
+      "email": "ninarouse@waunakee.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
-      "first": "Nick",
-      "last": "Conrad"
+      "first": "Nina",
+      "last": "Rouse"
     },
     {
       "school": "Waunakee School District",
