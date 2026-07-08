@@ -441,6 +441,7 @@ def main():
             elif sync_flag == "N" and contact_ns not in ("", "nan", "None", "UNLINKED"):
                 if em_key not in pushed_emails:
                     inactivate_contact(contact_ns, f"{first} {last}")
+                    remove_contact_ship_to(result_id, f"{first} {last}")
                     pushed_emails[em_key] = ""
                 c[C_NS_CID] = ""
                 time.sleep(0.15)
