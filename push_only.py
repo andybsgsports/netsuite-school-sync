@@ -245,10 +245,17 @@ def main():
         school_contacts = [c for c in contacts_data
                            if c.get(C_SCHOOL, "").strip() == school_name]
         if not school_contacts and ns_id:
-            # Existing customer with nothing on the Contacts tab to push.
-            print(f"  (no rows on Contacts tab)")
-            continue
-        if not school_contacts:
+            # Existing customer with nothing on the Contacts tab to push —
+            # still run sync_school below so the customer record and
+            # Schools-tab fields (address, enrollment, etc.) get refreshed
+            # from WIAA; only the per-contact push loop has nothing to do.
+            # A school with zero matching Contacts rows despite WIAA
+            # listing staff is often a sign the School Name here doesn't
+            # match what's stored in the Contacts tab (e.g. after a rename)
+            # — refreshing here at least keeps the Schools tab itself
+            # accurate even when that join is broken.
+            print(f"  (no rows on Contacts tab — refreshing customer/Schools-tab fields only)")
+        if not school_contacts and not ns_id:
             # New school (blank NS ID) — still create the customer even
             # though no contacts have been added to the Contacts tab yet.
             print(f"  (no rows on Contacts tab — creating NS customer only)")
