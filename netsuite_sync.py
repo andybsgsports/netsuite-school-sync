@@ -171,6 +171,65 @@ def ns_suiteql(query, limit=1000):
         return r.json().get("items", [])
     return []
 
+
+# ============================================================
+# RESTLET — native contact attach/detach (shared contacts)
+# ============================================================
+# The SuiteTalk REST record API exposes a customer's contactRoles as a
+# READ-ONLY sublist (POST -> 405, nested PATCH -> 400 "static sublist";
+# both verified against this account). The UI's "Attach" button — one
+# contact card shared across multiple schools — is only reachable through
+# SuiteScript's record.attach/record.detach. suitescript/
+# attach_contact_restlet.js is a thin RESTlet bridge for that; these env
+# vars point at its deployment (see RESTLET_SETUP.md). When unset, every
+# caller falls back to the old per-school duplicate-contact behavior.
+NS_RESTLET_SCRIPT_ID = os.environ.get("NS_RESTLET_SCRIPT_ID", "").strip()
+NS_RESTLET_DEPLOY_ID = os.environ.get("NS_RESTLET_DEPLOY_ID", "").strip()
+RESTLET_URL = (f"https://{NS_ACCOUNT}.restlets.api.netsuite.com/app/site/hosting/restlet.nl"
+               f"?script={NS_RESTLET_SCRIPT_ID}&deploy={NS_RESTLET_DEPLOY_ID}")
+
+
+def restlet_available():
+    return bool(NS_ACCOUNT and NS_RESTLET_SCRIPT_ID and NS_RESTLET_DEPLOY_ID)
+
+
+def ns_restlet_attach(contact_id, customer_id, action="attach"):
+    """Attach/detach an existing contact to/from a customer via the deployed
+    RESTlet (NetSuite's native mechanism — same as the UI's "Attach" button).
+
+    Returns True on success. Returns False when the RESTlet isn't configured
+    or the call fails; callers then fall back to per-school duplicates.
+    An "already attached" style error is treated as success (idempotent)."""
+    if not restlet_available():
+        return False
+    try:
+        r = requests.post(RESTLET_URL, headers={
+            "Authorization": make_auth("POST", RESTLET_URL),
+            "Content-Type": "application/json",
+        }, json={"action": action, "contactId": str(contact_id),
+                 "customerId": str(customer_id)}, timeout=30)
+    except Exception as e:
+        print(f"  [NS] RESTlet {action} error: {e}")
+        return False
+    if r.status_code != 200:
+        print(f"  [NS] RESTlet {action} HTTP {r.status_code}: {r.text[:200]}")
+        return False
+    try:
+        data = r.json()
+    except ValueError:
+        print(f"  [NS] RESTlet {action} returned non-JSON: {r.text[:200]}")
+        return False
+    if data.get("success"):
+        verb = "Attached" if action == "attach" else "Detached"
+        prep = "to" if action == "attach" else "from"
+        print(f"  [NS] {verb} shared contact {contact_id} {prep} customer {customer_id}")
+        return True
+    err = str(data.get("error", ""))
+    if "already" in err.lower():
+        return True  # already in the desired state — fine
+    print(f"  [NS] RESTlet {action} failed: {err[:200]}")
+    return False
+
 # ============================================================
 # HELPERS
 # ============================================================
@@ -893,6 +952,51 @@ def _find_contact_via_suiteql(customer_id, email="", first="", last="", exclude_
     return None
 
 
+def _find_person_anywhere_via_suiteql(email="", first="", last="", exclude_id=None):
+    """Find a person's existing contact record on ANY customer via SuiteQL
+    (email match preferred, name match as fallback). Used by the shared-
+    contact path: when creating a co-op coach at their second school, we
+    want their record from the first school so it can be ATTACHED here
+    instead of duplicated. Returns the contact internal id or None."""
+    def esc(s):
+        return str(s or "").replace("'", "''").lower()
+    by_email, by_name = None, None
+    if email:
+        rows = ns_suiteql(
+            f"SELECT id, company FROM contact WHERE LOWER(email) = '{esc(email)}' "
+            f"AND (isinactive = 'F' OR isinactive IS NULL)", limit=50)
+        for row in rows:
+            cid = str(row.get("id") or "").strip()
+            if cid and cid != str(exclude_id or ""):
+                by_email = cid
+                break
+    if not by_email and first and last:
+        rows = ns_suiteql(
+            f"SELECT id, company FROM contact WHERE LOWER(firstname) = '{esc(first)}' "
+            f"AND LOWER(lastname) = '{esc(last)}' "
+            f"AND (isinactive = 'F' OR isinactive IS NULL)", limit=50)
+        for row in rows:
+            cid = str(row.get("id") or "").strip()
+            if cid and cid != str(exclude_id or ""):
+                by_name = cid
+                break
+    return by_email or by_name
+
+
+def ensure_attached(contact_id, customer_id):
+    """Make sure `contact_id` appears on `customer_id`'s Relationships >
+    Contacts (contactRoles) — attaching via the RESTlet when it doesn't.
+    No-op (returns True) if already attached. Returns False when the
+    RESTlet is unavailable or the attach fails."""
+    if str(contact_id) in _list_customer_contact_ids(customer_id):
+        return True
+    if not ns_restlet_attach(contact_id, customer_id, "attach"):
+        return False
+    # keep the per-run cache truthful so repeat calls don't re-attach
+    _contact_roles_cache.setdefault(str(customer_id), []).append(str(contact_id))
+    return True
+
+
 def _find_same_name_contact(customer_id, first, last, email="", exclude_id=None):
     """Find the customer's own contact record matching first+last (the
     record behind NS's "unique name" PATCH rejection). Tries SuiteQL first
@@ -955,11 +1059,22 @@ def _find_contact_for_customer(customer_id, email, first="", last="", exclude_id
             by_name = cid
     return by_email or by_name
 
-def sync_contact(customer_id, school_name, contact_row, school_info):
+def sync_contact(customer_id, school_name, contact_row, school_info, shared=False):
     """
     Create or update a Contact linked to the Customer.
     contact_row: dict with first, last, email, role, type
     Returns contact NS internal ID.
+
+    shared=True marks a co-op person — the SAME NS contact record serves
+    multiple schools (their sheet NS Contact ID appears under 2+ schools).
+    For those we update the record's fields WITHOUT touching its primary
+    company (so nightly per-school runs don't thrash it back and forth) and
+    ensure the record is ATTACHED to this school's customer via the RESTlet
+    (suitescript/attach_contact_restlet.js — NetSuite's native mechanism,
+    same as the UI's "Attach" button). One card per person, visible on the
+    Relationships tab of every school they serve. When the RESTlet isn't
+    deployed/configured, shared behaves like the old per-school-duplicate
+    path so nothing breaks.
     """
     # Normalize casing so ALL-CAPS rows from WIAA/IHSA get fixed in NS on
     # every sync ("JAMES HOVORKA" -> "James Hovorka").
@@ -969,9 +1084,6 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
     role  = contact_row.get("role", "")
     state = school_info.get("state", "")
 
-    # One NS contact per (school, email). Co-op coaches get a distinct
-    # contact record at each school they serve, so every school's Contacts
-    # tab shows them (NS REST doesn't allow sharing via contactRoles).
     ext_id = make_contact_external_id(email, school_name)
 
     # FAST PATH: trust the NS Contact ID already stored in the sheet
@@ -999,6 +1111,20 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
             "comments":   f"{state} | Auto-synced by School Sync",
             "isInactive": False,
         }
+        if shared and restlet_available():
+            # Shared card: never move its primary company — each school's
+            # nightly job would otherwise re-point it in turn. Update the
+            # person's fields once and make sure the card is attached to
+            # THIS school's Relationships tab.
+            body_shared = {k: v for k, v in body_known.items() if k != "company"}
+            r = ns_patch(f"contact/{known_id}", body_shared)
+            if r.status_code == 204:
+                ensure_attached(known_id, customer_id)
+                print(f"  [NS] Updated shared Contact: {first} {last} (ID: {known_id})")
+                return known_id
+            print(f"  [NS] shared contact {known_id} PATCH failed "
+                  f"({r.status_code} {r.text[:200]}); falling back")
+            # fall through to the standard path below
         r = ns_patch(f"contact/{known_id}", body_known)
         if r.status_code == 204:
             print(f"  [NS] Updated Contact (by stored ID): {first} {last} (ID: {known_id})")
@@ -1006,12 +1132,23 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
         # Stored ID stale/invalid — fall through to lookup below.
         print(f"  [NS] stored ID {known_id} for {first} {last} didn't PATCH "
               f"({r.status_code} {r.text[:400]}); falling back to lookup")
-        # Name collision: the target customer already owns a same-named
-        # contact record (e.g. an original HS-native record where the sheet
-        # previously pointed at the district parent). Update THAT record and
-        # repoint the sheet to it; the old record stays with its customer so
-        # contacts remain visible on both parent and child.
         if "unique name" in r.text or "already exists" in r.text:
+            # The PATCH tried to move this record's primary company to a
+            # customer that already owns a same-named contact. With the
+            # RESTlet available the RIGHT fix is sharing: leave the record's
+            # primary company alone, update its fields, and attach the card
+            # to this school instead of duplicating it here.
+            if restlet_available():
+                body_shared = {k: v for k, v in body_known.items() if k != "company"}
+                r2 = ns_patch(f"contact/{known_id}", body_shared)
+                if r2.status_code == 204 and ensure_attached(known_id, customer_id):
+                    print(f"  [NS] Shared Contact via attach: {first} {last} "
+                          f"(ID: {known_id}) now on customer {customer_id}")
+                    return known_id
+            # Legacy recovery: the target customer already owns a same-named
+            # contact record (e.g. an original HS-native record where the
+            # sheet previously pointed at the district parent). Update THAT
+            # record and repoint the sheet to it.
             dup_id = _find_same_name_contact(customer_id, first, last, email,
                                              exclude_id=known_id)
             if dup_id:
@@ -1074,6 +1211,25 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
         return contact_id
 
     else:
+        # Shared (co-op) person with no stored id yet: if their card already
+        # exists at ANOTHER school, ATTACH it here instead of creating a
+        # duplicate. NetSuite's unique-name rule is per-customer, so a blind
+        # create at the second school would quietly succeed and duplicate —
+        # this pre-check is what keeps new co-op coaches on one card.
+        if shared and restlet_available():
+            anywhere_id = _find_person_anywhere_via_suiteql(email, first, last)
+            if anywhere_id and ensure_attached(anywhere_id, customer_id):
+                body_shared = {
+                    "firstName": first, "lastName": last, "email": email,
+                    "title": _safe_title(role),
+                    "comments": f"{state} | Auto-synced by School Sync",
+                    "isInactive": False,
+                }
+                ns_patch(f"contact/{anywhere_id}", body_shared)
+                print(f"  [NS] Shared existing Contact via attach: {first} {last} "
+                      f"(ID: {anywhere_id}) now on customer {customer_id}")
+                return anywhere_id
+
         # Create fresh — include company as the primary link.
         r = ns_post("contact", body_create)
         body = body_create  # kept for the error-path recovery block below
@@ -1093,6 +1249,19 @@ def sync_contact(customer_id, school_name, contact_row, school_info):
                 if r2.status_code == 204:
                     print(f"  [NS] Updated Contact (recovered): {first} {last} (ID: {found_id})")
                 return found_id
+            # Not on this customer at all — the person's record lives at
+            # ANOTHER school (co-op coach). With the RESTlet available,
+            # share that one card here (the UI's "Attach") instead of
+            # fighting the unique-name rule with a duplicate.
+            if restlet_available():
+                anywhere_id = _find_person_anywhere_via_suiteql(email, first, last)
+                if anywhere_id and ensure_attached(anywhere_id, customer_id):
+                    body_shared = {k: v for k, v in body.items()
+                                   if k not in ("externalId", "company")}
+                    ns_patch(f"contact/{anywhere_id}", body_shared)
+                    print(f"  [NS] Shared existing Contact via attach: {first} {last} "
+                          f"(ID: {anywhere_id}) now on customer {customer_id}")
+                    return anywhere_id
             print(f"  [NS] WARN: contact {first} {last} exists but could not find ID"
                   f" ({r.text[:160]})")
             return None

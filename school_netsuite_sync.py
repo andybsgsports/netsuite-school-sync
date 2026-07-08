@@ -45,6 +45,8 @@ from netsuite_sync import (
     sync_address_book,
     compute_school_domain,
     smart_title,
+    restlet_available,
+    ns_restlet_attach,
 )
 
 # -- Config -------------------------------------------------------------------
@@ -321,6 +323,24 @@ def main():
         if school_info_out["domain"]:
             print(f"  School domain: {school_info_out['domain']}")
 
+        # Co-op (shared) people: still actively serving another school on the
+        # Contacts tab. Their card is SHARED (attached via RESTlet), so a
+        # departure from this school detaches rather than inactivates, and
+        # updates avoid moving the card's primary company. See sync_contact.
+        def _other_active_schools(em_lower, cid):
+            others = set()
+            for oc in contacts_data:
+                if str(oc.get(C_SYNC, "N")).strip().upper() != "Y":
+                    continue
+                osch = str(oc.get(C_SCHOOL, "")).strip()
+                if not osch or osch == school_name:
+                    continue
+                if em_lower and str(oc.get(C_EMAIL, "")).strip().lower() == em_lower:
+                    others.add(osch)
+                elif cid and str(oc.get(C_NS_CID, "")).strip() == cid:
+                    others.add(osch)
+            return others
+
         for c in contacts_data:
             if c.get(C_SCHOOL, "").strip() != school_name:
                 continue
@@ -334,6 +354,7 @@ def main():
                 continue
             c[C_NS_CUS] = str(result_id)
             departed = email.lower() not in site_emails
+            still_at = _other_active_schools(email.lower(), contact_ns)
 
             if sync_flag == "Y" and not departed:
                 if contact_ns == "UNLINKED":
@@ -342,20 +363,30 @@ def main():
                     "first": first, "last": last,
                     "email": email, "role": role,
                     "ns_id": contact_ns if contact_ns not in ("", "nan", "None") else "",
-                }, school_info_out)
+                }, school_info_out, shared=bool(still_at))
                 if new_id:
                     c[C_NS_CID] = str(new_id)
                     c[C_SYNCED] = datetime.now().strftime("%Y-%m-%d %H:%M")
                 elif new_id is None and not contact_ns:
                     c[C_NS_CID] = "UNLINKED"
             elif departed and contact_ns not in ("", "nan", "None", "UNLINKED") and all_site_contacts:
-                inactivate_contact(contact_ns, f"{first} {last}")
-                remove_contact_ship_to(result_id, f"{first} {last}")
+                if still_at and restlet_available():
+                    ns_restlet_attach(contact_ns, result_id, "detach")
+                    remove_contact_ship_to(result_id, f"{first} {last}")
+                    print(f"  - Departed (co-op): {first} {last} — detached from "
+                          f"{school_name}; still at {sorted(still_at)[:3]}")
+                else:
+                    inactivate_contact(contact_ns, f"{first} {last}")
+                    remove_contact_ship_to(result_id, f"{first} {last}")
+                    print(f"  - Departed: {first} {last} — inactivated")
                 c[C_SYNC]   = "N"
                 c[C_NS_CID] = ""
-                print(f"  - Departed: {first} {last} — inactivated")
             elif sync_flag == "N" and contact_ns not in ("", "nan", "None", "UNLINKED"):
-                inactivate_contact(contact_ns, f"{first} {last}")
+                if still_at and restlet_available():
+                    ns_restlet_attach(contact_ns, result_id, "detach")
+                    remove_contact_ship_to(result_id, f"{first} {last}")
+                else:
+                    inactivate_contact(contact_ns, f"{first} {last}")
                 c[C_NS_CID] = ""
             time.sleep(0.2)
 
