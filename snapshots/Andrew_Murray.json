@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-07-06T06:11:08.780424Z",
+  "updated": "2026-07-08T04:55:51.947986Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -4028,19 +4028,19 @@
     },
     {
       "school": "Central High School",
-      "email": "jessica.arneson@central301.net",
+      "email": "jessica.nussman@central301.net",
       "role": "Head Coach",
       "sport": "Boys & Girls Swimming",
       "first": "Jessica",
-      "last": "Arneson"
+      "last": "Nussbaum"
     },
     {
       "school": "Central High School",
-      "email": "jessica.arneson@central301.net",
+      "email": "jessica.nussman@central301.net",
       "role": "Head Coach",
       "sport": "Girls Soccer",
       "first": "Jessica",
-      "last": "Arneson"
+      "last": "Nussbaum"
     },
     {
       "school": "Central High School",
@@ -6517,7 +6517,7 @@
     {
       "school": "Freeport High School",
       "email": "darrin.sisk@rps205.com",
-      "role": "District Athletic Director",
+      "role": "Athletic Director",
       "sport": "",
       "first": "Darrin",
       "last": "Sisk"
@@ -8132,30 +8132,6 @@
     },
     {
       "school": "Guilford High School",
-      "email": "adam.lewis@rps205.com",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Adam",
-      "last": "Lewis"
-    },
-    {
-      "school": "Guilford High School",
-      "email": "alexis.henderson@rps205.com",
-      "role": "Coach",
-      "sport": "Sideline Cheer",
-      "first": "Alexis",
-      "last": "Ihonde"
-    },
-    {
-      "school": "Guilford High School",
-      "email": "alexis.henderson@rps205.com",
-      "role": "Head Coach",
-      "sport": "Competitive Cheerleading",
-      "first": "Alexis",
-      "last": "Ihonde"
-    },
-    {
-      "school": "Guilford High School",
       "email": "anthony.capriotti@rps205.com",
       "role": "Head Coach",
       "sport": "Boys Football",
@@ -8193,14 +8169,6 @@
       "sport": "Girls Volleyball",
       "first": "Caitlin",
       "last": "Seibert"
-    },
-    {
-      "school": "Guilford High School",
-      "email": "damon.roznowski@rps205.com",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Damon",
-      "last": "Roznowski"
     },
     {
       "school": "Guilford High School",
@@ -8252,14 +8220,6 @@
     },
     {
       "school": "Guilford High School",
-      "email": "dcbowers@me.com",
-      "role": "Head Coach",
-      "sport": "Boys Swimming",
-      "first": "Dave",
-      "last": "Bowers"
-    },
-    {
-      "school": "Guilford High School",
       "email": "ehren.jarrett@rps205.com",
       "role": "Superintendent",
       "sport": "",
@@ -8273,14 +8233,6 @@
       "sport": "",
       "first": "Ellissa",
       "last": "Morales"
-    },
-    {
-      "school": "Guilford High School",
-      "email": "emilio.rodriguez@rps205.com",
-      "role": "Coach",
-      "sport": "Chess",
-      "first": "Emilio",
-      "last": "Rodriguez"
     },
     {
       "school": "Guilford High School",
@@ -8332,11 +8284,19 @@
     },
     {
       "school": "Guilford High School",
-      "email": "michael.selover@rps205.com",
+      "email": "michael.molloy@rps205.com",
       "role": "Head Coach",
-      "sport": "Boys Track & Field",
+      "sport": "Boys Diving",
       "first": "Michael",
-      "last": "Selover"
+      "last": "Molloy"
+    },
+    {
+      "school": "Guilford High School",
+      "email": "michael.molloy@rps205.com",
+      "role": "Head Coach",
+      "sport": "Boys Swimming",
+      "first": "Michael",
+      "last": "Molloy"
     },
     {
       "school": "Guilford High School",
@@ -8350,7 +8310,7 @@
       "school": "Guilford High School",
       "email": "muptmanuel@hotmail.com",
       "role": "Head Coach",
-      "sport": "Boys & Girls Cross Country",
+      "sport": "Girls Cross Country",
       "first": "Manuel",
       "last": "Molina"
     },
@@ -8364,19 +8324,19 @@
     },
     {
       "school": "Guilford High School",
-      "email": "ronald.carter@rps205.com",
-      "role": "Principal",
-      "sport": "",
-      "first": "Gus",
-      "last": "Carter"
-    },
-    {
-      "school": "Guilford High School",
       "email": "salisburytrevor14@gmail.com",
       "role": "Head Coach",
       "sport": "Competitive Dance",
       "first": "Trevor",
       "last": "Salisbury"
+    },
+    {
+      "school": "Guilford High School",
+      "email": "seanzuba15@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Sean",
+      "last": "Zuba"
     },
     {
       "school": "Guilford High School",
@@ -17444,6 +17404,22 @@
     },
     {
       "school": "Verona Area High School",
+      "email": "fergerc@verona.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "Caleb",
+      "last": "Ferger"
+    },
+    {
+      "school": "Verona Area High School",
+      "email": "gregoirp@verona.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "Pj",
+      "last": "Gregoire"
+    },
+    {
+      "school": "Verona Area High School",
       "email": "happelm@verona.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Tennis",
@@ -17564,27 +17540,11 @@
     },
     {
       "school": "Verona Area High School",
-      "email": "stokesj@verona.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "Jonathon",
-      "last": "Stokes"
-    },
-    {
-      "school": "Verona Area High School",
       "email": "vangj@verona.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Soccer",
       "first": "Jonathan",
       "last": "Vang"
-    },
-    {
-      "school": "Verona Area High School",
-      "email": "wiemer@verona.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Golf",
-      "first": "Ryan",
-      "last": "Wieme"
     },
     {
       "school": "Verona Area High School",

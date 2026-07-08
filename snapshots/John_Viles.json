@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-07-06T06:16:55.230939Z",
+  "updated": "2026-07-08T05:01:36.456953Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -3052,14 +3052,6 @@
     },
     {
       "school": "Manitowoc Lincoln High School",
-      "email": "garber@mpsd.school",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Riley",
-      "last": "Garbe"
-    },
-    {
-      "school": "Manitowoc Lincoln High School",
       "email": "grodekc@mpsd.school",
       "role": "Head Coach",
       "sport": "Boys & Girls Golf",
@@ -3081,14 +3073,6 @@
       "sport": "Girls Gymnastics",
       "first": "Jacque",
       "last": "Bartow"
-    },
-    {
-      "school": "Manitowoc Lincoln High School",
-      "email": "jeffgadzinski357@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Jeffrey",
-      "last": "Gadzinski"
     },
     {
       "school": "Manitowoc Lincoln High School",
@@ -3164,19 +3148,19 @@
     },
     {
       "school": "Manitowoc Lincoln High School",
+      "email": "wiesnerj@mpsd.school",
+      "role": "Head Coach",
+      "sport": "Boys Swimming & Diving",
+      "first": "Joe",
+      "last": "Wiesner"
+    },
+    {
+      "school": "Manitowoc Lincoln High School",
       "email": "wilsmannm@mpsd.school",
       "role": "Athletic Director",
       "sport": "",
       "first": "Molly",
       "last": "Wilsmann"
-    },
-    {
-      "school": "Manitowoc Lincoln High School",
-      "email": "zupekm@mpsd.school",
-      "role": "Head Coach",
-      "sport": "Boys Swimming & Diving",
-      "first": "Michael",
-      "last": "Zupek"
     },
     {
       "school": "Manitowoc Lutheran High School",
@@ -3225,14 +3209,6 @@
       "sport": "Boys Baseball",
       "first": "Jeff",
       "last": "Dolan"
-    },
-    {
-      "school": "Manitowoc Lutheran High School",
-      "email": "jeffgadzinski357@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Jeffrey",
-      "last": "Gadzinski"
     },
     {
       "school": "Manitowoc Lutheran High School",
@@ -3489,6 +3465,14 @@
       "sport": "Boys Hockey",
       "first": "Doug",
       "last": "Kraft"
+    },
+    {
+      "school": "Mayville High School",
+      "email": "mattgross120@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Matt",
+      "last": "Gross"
     },
     {
       "school": "Mayville High School",
@@ -3974,9 +3958,25 @@
       "school": "Oakfield High School",
       "email": "cbargenquast@oakfield.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys Track and Field",
+      "sport": "Boys & Girls Cross Country",
       "first": "Chelsie",
       "last": "Bargenquast"
+    },
+    {
+      "school": "Oakfield High School",
+      "email": "cbargenquast@oakfield.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Track and Field",
+      "first": "Chelsie",
+      "last": "Bargenquast"
+    },
+    {
+      "school": "Oakfield High School",
+      "email": "cbhartwig@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Brenda",
+      "last": "Hartwig"
     },
     {
       "school": "Oakfield High School",
@@ -4004,6 +4004,14 @@
     },
     {
       "school": "Oakfield High School",
+      "email": "ericfelton81@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Eric",
+      "last": "Felton"
+    },
+    {
+      "school": "Oakfield High School",
       "email": "jduel@oakfield.k12.wi.us",
       "role": "AD Admin Assistant",
       "sport": "",
@@ -4017,6 +4025,14 @@
       "sport": "Boys Baseball",
       "first": "Jonah",
       "last": "Krug"
+    },
+    {
+      "school": "Oakfield High School",
+      "email": "mattgross120@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Matt",
+      "last": "Gross"
     },
     {
       "school": "Oakfield High School",
@@ -4060,11 +4076,19 @@
     },
     {
       "school": "Oakfield High School",
-      "email": "timbrow@princeton.k12.wi.us",
+      "email": "twood@oakfield.k12.wi.usk12.wi.us",
       "role": "Principal",
       "sport": "",
-      "first": "Tim",
-      "last": "Brown"
+      "first": "Tyler",
+      "last": "Wood"
+    },
+    {
+      "school": "Oakfield High School",
+      "email": "williamst1964@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Tyler",
+      "last": "Williams"
     },
     {
       "school": "Oostburg High School",
@@ -4908,19 +4932,19 @@
     },
     {
       "school": "Princeton High School",
-      "email": "timbrow@princeton.k12.wi.us",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Tim",
-      "last": "Brown"
-    },
-    {
-      "school": "Princeton High School",
       "email": "toddzamz@princeton.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Softball",
       "first": "Todd",
       "last": "Zamzow"
+    },
+    {
+      "school": "Princeton High School",
+      "email": "twood@oakfield.k12.wi.usk12.wi.us",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Tyler",
+      "last": "Wood"
     },
     {
       "school": "Princeton High School",
@@ -6796,14 +6820,6 @@
     },
     {
       "school": "Valders High School",
-      "email": "jeffgadzinski357@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Jeffrey",
-      "last": "Gadzinski"
-    },
-    {
-      "school": "Valders High School",
       "email": "jonlenz3033@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Football",
@@ -7708,7 +7724,15 @@
     },
     {
       "school": "Winnebago Lutheran High School",
-      "email": "eric.schraufnagel@gmail.com",
+      "email": "ehahn@wlavikings.org",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Soccer",
+      "first": "Eric",
+      "last": "Hahn"
+    },
+    {
+      "school": "Winnebago Lutheran High School",
+      "email": "eschraufnagel@wlavikings.org",
       "role": "Head Coach",
       "sport": "Girls Basketball",
       "first": "Eric",
@@ -7716,19 +7740,11 @@
     },
     {
       "school": "Winnebago Lutheran High School",
-      "email": "fdlhaag@yahoo.com",
+      "email": "jason@zellner.realestate",
       "role": "Head Coach",
-      "sport": "Boys & Girls Soccer",
-      "first": "David",
-      "last": "Haag"
-    },
-    {
-      "school": "Winnebago Lutheran High School",
-      "email": "jroecker@wlavikings.org",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
-      "first": "Jamie",
-      "last": "Roecker"
+      "sport": "Girls Tennis",
+      "first": "Jason",
+      "last": "Zellner"
     },
     {
       "school": "Winnebago Lutheran High School",
@@ -7796,11 +7812,27 @@
     },
     {
       "school": "Winnebago Lutheran High School",
+      "email": "mhackbarth@wlavikings.org",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Moriah",
+      "last": "Hackbarth"
+    },
+    {
+      "school": "Winnebago Lutheran High School",
       "email": "mseibel@bciburke.com",
       "role": "Head Coach",
       "sport": "Boys Baseball",
       "first": "Mike",
       "last": "Seibel"
+    },
+    {
+      "school": "Winnebago Lutheran High School",
+      "email": "ryanjaco50@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Wrestling",
+      "first": "Ryan",
+      "last": "Jacobs"
     },
     {
       "school": "Winnebago Lutheran High School",

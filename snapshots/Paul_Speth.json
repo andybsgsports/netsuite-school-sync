@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-07-06T06:15:32.974174Z",
+  "updated": "2026-07-08T05:00:13.812745Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -852,6 +852,14 @@
     },
     {
       "school": "McFarland High School",
+      "email": "feinn@mcfsd.org",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Nicole",
+      "last": "Fein"
+    },
+    {
+      "school": "McFarland High School",
       "email": "FeldneJ@mcfsd.org",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -1081,6 +1089,14 @@
       "sport": "Boys Golf",
       "first": "Dan",
       "last": "Zweifel"
+    },
+    {
+      "school": "Monona Grove High School",
+      "email": "feinn@mcfsd.org",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Nicole",
+      "last": "Fein"
     },
     {
       "school": "Monona Grove High School",

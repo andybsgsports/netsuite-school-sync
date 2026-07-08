@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-07-06T06:14:59.243647Z",
+  "updated": "2026-07-08T04:59:38.767541Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -2052,7 +2052,7 @@
     },
     {
       "school": "De Pere High School",
-      "email": "ajropson@yahoo.com",
+      "email": "aropson@depere.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Soccer",
       "first": "Adam",
@@ -3748,6 +3748,14 @@
     },
     {
       "school": "Hilbert High School",
+      "email": "konenj@hilbertk12.org",
+      "role": "Principal",
+      "sport": "",
+      "first": "Jennifer",
+      "last": "Konen"
+    },
+    {
+      "school": "Hilbert High School",
       "email": "kruegerl@hilbertk12.org",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -3788,16 +3796,8 @@
     },
     {
       "school": "Hilbert High School",
-      "email": "sweeret@hilbertk12.org",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Anthony",
-      "last": "Sweere"
-    },
-    {
-      "school": "Hilbert High School",
       "email": "wesenern@hilbertk12.org",
-      "role": "Principal",
+      "role": "Superintendent",
       "sport": "",
       "first": "Nate",
       "last": "Wesener"
@@ -5310,17 +5310,17 @@
       "school": "Marion High School",
       "email": "mark.fredy@marion-mustangs.org",
       "role": "Head Coach",
-      "sport": "Boys Golf",
+      "sport": "Boys Football 8-Player",
       "first": "Mark",
       "last": "Fredy"
     },
     {
       "school": "Marion High School",
-      "email": "micah.schwantes@marion-mustangs.org",
+      "email": "mark.fredy@marion-mustangs.org",
       "role": "Head Coach",
-      "sport": "Boys Football 8-Player",
-      "first": "Micah",
-      "last": "Schwantes"
+      "sport": "Boys Golf",
+      "first": "Mark",
+      "last": "Fredy"
     },
     {
       "school": "Marion High School",
@@ -5676,6 +5676,14 @@
     },
     {
       "school": "Merrill High School",
+      "email": "casandra.wroblewski@mapsedu.org",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Casandra",
+      "last": "Wroblewski"
+    },
+    {
+      "school": "Merrill High School",
       "email": "christopher.hahn@mapsedu.org",
       "role": "Athletic Director",
       "sport": "",
@@ -5689,14 +5697,6 @@
       "sport": "Girls Soccer",
       "first": "Daniel",
       "last": "Kufahl"
-    },
-    {
-      "school": "Merrill High School",
-      "email": "elizabeth.thiel@mapsedu.org",
-      "role": "Head Coach",
-      "sport": "Girls Tennis",
-      "first": "Elizabeth",
-      "last": "Thiel"
     },
     {
       "school": "Merrill High School",
@@ -5732,19 +5732,19 @@
     },
     {
       "school": "Merrill High School",
-      "email": "kasie.holt@mapsedu.org",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Kasie",
-      "last": "Holt"
-    },
-    {
-      "school": "Merrill High School",
       "email": "mason.gebert@mapsedu.org",
       "role": "Head Coach",
       "sport": "Boys Soccer",
       "first": "Mason",
       "last": "Gebert"
+    },
+    {
+      "school": "Merrill High School",
+      "email": "samantha.braun@mapsedu.org",
+      "role": "Head Coach",
+      "sport": "Girls Tennis",
+      "first": "Samantha",
+      "last": "Braun"
     },
     {
       "school": "Merrill High School",
@@ -8481,14 +8481,6 @@
       "sport": "",
       "first": "Diane",
       "last": "Johnson"
-    },
-    {
-      "school": "Two Rivers High School",
-      "email": "jeffgadzinski357@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Jeffrey",
-      "last": "Gadzinski"
     },
     {
       "school": "Two Rivers High School",

@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-07-06T06:17:43.608908Z",
+  "updated": "2026-07-08T05:02:25.499899Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -681,6 +681,14 @@
       "sport": "Boys Baseball",
       "first": "Andrew",
       "last": "Christianson"
+    },
+    {
+      "school": "Deerfield High School",
+      "email": "feinn@mcfsd.org",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Nicole",
+      "last": "Fein"
     },
     {
       "school": "Deerfield High School",
@@ -2540,14 +2548,6 @@
     },
     {
       "school": "Lake Mills High School",
-      "email": "molly.hooper@lakemills.k12.wi.us",
-      "role": "AD Admin Assistant",
-      "sport": "",
-      "first": "Molly",
-      "last": "Hooper"
-    },
-    {
-      "school": "Lake Mills High School",
       "email": "rachel.dickhut@lakemills.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Track and Field",
@@ -2601,6 +2601,14 @@
       "sport": "Girls Softball",
       "first": "Alexis",
       "last": "Milbrath"
+    },
+    {
+      "school": "Lake Mills High School",
+      "email": "trisha.hebbe@lakemills.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Trisha",
+      "last": "Hebbe"
     },
     {
       "school": "Lake Mills High School",
