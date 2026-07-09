@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-07-08T04:55:51.947986Z",
+  "updated": "2026-07-09T05:51:56.528953Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -8020,14 +8020,6 @@
     },
     {
       "school": "Greenfield High School",
-      "email": "khickey@martinlutherhs.org",
-      "role": "Assistant Athletic Director",
-      "sport": "",
-      "first": "Kaitlyn",
-      "last": "Hickey"
-    },
-    {
-      "school": "Greenfield High School",
       "email": "lascher@greenfield.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Volleyball",
@@ -8068,14 +8060,6 @@
     },
     {
       "school": "Greenfield High School",
-      "email": "nrouse@greenfield.k12.wi.us",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Nina",
-      "last": "Rouse"
-    },
-    {
-      "school": "Greenfield High School",
       "email": "panoshb@elmbrookschools.org",
       "role": "Head Coach",
       "sport": "Girls Hockey",
@@ -8089,6 +8073,14 @@
       "sport": "Boys Basketball",
       "first": "Ryan",
       "last": "DePouw"
+    },
+    {
+      "school": "Greenfield High School",
+      "email": "Shurd@Greenfield.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Sam",
+      "last": "Hurd"
     },
     {
       "school": "Greenfield High School",
@@ -18929,6 +18921,14 @@
       "sport": "Girls Soccer",
       "first": "Ben",
       "last": "Hetzel"
+    },
+    {
+      "school": "Waukesha West High School",
+      "email": "cniven@waukesha.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Christian",
+      "last": "Niven"
     },
     {
       "school": "Waukesha West High School",
