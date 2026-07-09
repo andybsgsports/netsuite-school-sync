@@ -28,6 +28,7 @@ Env vars:
 
 import json
 import os
+import re
 import sys
 import time
 from datetime import datetime
@@ -180,6 +181,135 @@ def save_contacts(ws, rows):
     print(f"  [SHEETS] Contacts tab saved ({len(clean)} rows, sorted by School + Role)")
 
 
+# -- School-rename healing ----------------------------------------------------
+def _norm_school_name(s):
+    """Loose key for matching a school name across rename variants:
+    lowercase, punctuation collapsed to spaces, and one trailing generic
+    suffix dropped — so 'Waupaca', 'Waupaca High School' and
+    'Adams-Friendship'/'Adams Friendship' all land on the same key."""
+    s = str(s or "").strip().lower()
+    s = re.sub(r"[^a-z0-9 ]+", " ", s)
+    s = re.sub(r"\s+", " ", s).strip()
+    s = re.sub(r" (high school|hs|school)$", "", s)
+    return s
+
+
+def canonicalize_contact_school_names(contacts_data, schools_records,
+                                      log_prefix="  [rename-heal]"):
+    """Heal Contacts-tab rows whose School Name no longer matches any row on
+    the Schools tab — the aftermath of a school being renamed there (or on
+    the WIAA site). Two passes, mutating contacts_data in place:
+
+    1. RENAME: a stale row is repointed at the canonical Schools-tab name,
+       resolved by its NS Customer ID when it has one (stable across
+       renames), otherwise by a unique normalized-name match ('Waupaca' ->
+       'Waupaca High School'). NS ids that legitimately serve two School
+       Names (e.g. West Bend East/West share one customer) are never used
+       for resolution, and ambiguous name matches are left alone.
+
+    2. MERGE: a rename can collide with a fresh row the scraper already
+       added under the new name for the same (school, email, role). One
+       row survives — preferring the one holding an NS Contact ID so the
+       person's NetSuite link is kept — and it inherits NS ids it lacks
+       from the dropped rows. Sync and Type come from a non-renamed row
+       when one exists (the scraper maintained THAT row's state; the
+       stale row's Sync was unreachable by departure detection). The
+       survivor's Content Hash is cleared so the next push refreshes the
+       NS card.
+
+    Returns (renamed, merged, unresolved) counts. Rows that can't be
+    resolved are reported and left untouched.
+    """
+    canonical = {str(r.get(M_NAME, "")).strip()
+                 for r in schools_records if str(r.get(M_NAME, "")).strip()}
+
+    ns_to_names = {}
+    for r in schools_records:
+        ns = str(r.get(M_NS_ID, "")).strip()
+        nm = str(r.get(M_NAME, "")).strip()
+        if ns.isdigit() and nm:
+            ns_to_names.setdefault(ns, set()).add(nm)
+    id_map = {ns: next(iter(names)) for ns, names in ns_to_names.items()
+              if len(names) == 1}
+
+    norm_to_names = {}
+    for nm in canonical:
+        norm_to_names.setdefault(_norm_school_name(nm), set()).add(nm)
+    norm_map = {k: next(iter(names)) for k, names in norm_to_names.items()
+                if len(names) == 1}
+
+    renamed = unresolved = 0
+    renamed_rows = set()  # id() of rows renamed this pass
+    for row in contacts_data:
+        sch = str(row.get(C_SCHOOL, "")).strip()
+        if not sch or sch in canonical:
+            continue
+        cus = str(row.get(C_NS_CUS, "")).strip()
+        target = id_map.get(cus) or norm_map.get(_norm_school_name(sch))
+        if target:
+            print(f"{log_prefix} '{sch}' -> '{target}'  "
+                  f"({row.get(C_FIRST, '')} {row.get(C_LAST, '')})")
+            row[C_SCHOOL] = target
+            renamed += 1
+            renamed_rows.add(id(row))
+        else:
+            unresolved += 1
+            if unresolved <= 15:
+                print(f"{log_prefix} WARN: '{sch}' not on Schools tab and "
+                      f"couldn't be resolved — row left as-is "
+                      f"({row.get(C_FIRST, '')} {row.get(C_LAST, '')})")
+
+    merged = 0
+    if renamed:
+        groups = {}
+        for row in contacts_data:
+            em = str(row.get(C_EMAIL, "")).strip().lower()
+            if not em:
+                continue
+            key = (str(row.get(C_SCHOOL, "")).strip().lower(), em,
+                   str(row.get(C_ROLE, "")).strip().lower())
+            groups.setdefault(key, []).append(row)
+
+        drop = set()
+        for key, rows in groups.items():
+            if len(rows) < 2:
+                continue
+            # Only merge groups a rename just created — pre-existing exact
+            # duplicates are load_contacts' dedupe's job, not ours.
+            if not any(id(r) in renamed_rows for r in rows):
+                continue
+            survivor = max(rows, key=lambda r: (
+                str(r.get(C_NS_CID, "")).strip().isdigit(),
+                str(r.get(C_SYNC, "")).strip().upper() == "Y",
+                str(r.get(C_NS_CUS, "")).strip().isdigit(),
+            ))
+            fresh = next((r for r in rows if id(r) not in renamed_rows), None)
+            for other in rows:
+                if other is survivor:
+                    continue
+                for col in (C_NS_CID, C_NS_CUS):
+                    if (not str(survivor.get(col, "")).strip()
+                            and str(other.get(col, "")).strip()):
+                        survivor[col] = other[col]
+                drop.add(id(other))
+                merged += 1
+            if fresh is not None and fresh is not survivor:
+                survivor[C_SYNC] = fresh.get(C_SYNC, survivor.get(C_SYNC, ""))
+                if str(fresh.get(C_TYPE, "")).strip():
+                    survivor[C_TYPE] = fresh[C_TYPE]
+            survivor[C_HASH] = ""
+            print(f"{log_prefix} merged {len(rows)} rows for {key[1]} at "
+                  f"'{rows[0].get(C_SCHOOL, '')}' (kept NS Contact ID "
+                  f"{survivor.get(C_NS_CID, '') or 'none'})")
+        if drop:
+            contacts_data[:] = [r for r in contacts_data if id(r) not in drop]
+
+    if renamed or merged or unresolved:
+        print(f"{log_prefix} school renames healed: {renamed} row(s) renamed, "
+              f"{merged} duplicate row(s) merged, {unresolved} unresolved")
+    return renamed, merged, unresolved
+
+
 # -- Main sync ---------------------------------------------------------------
 def main():
     print("=" * 60)
@@ -193,6 +323,14 @@ def main():
     gc = get_gspread_client()
     rows, master_ws, last_synced_col, ns_id_col = load_master_wi(gc)
     contacts_data, contacts_ws = load_contacts(gc)
+
+    # Heal school renames before anything joins on School Name (see
+    # canonicalize_contact_school_names). Persist immediately so the heal
+    # survives even if the sync dies partway.
+    _ren, _mrg, _ = canonicalize_contact_school_names(
+        contacts_data, master_ws.get_all_records())
+    if _ren or _mrg:
+        save_contacts(contacts_ws, contacts_data)
 
     if SCHOOL_FILTER:
         rows = [(i, r) for i, r in rows if str(r.get(M_NAME, "")).strip() == SCHOOL_FILTER]
