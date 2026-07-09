@@ -526,12 +526,19 @@ def sync_address_book(customer_id, school_info, contacts, school_name=""):
     # pre-existing Ship-To, and it caused the same contacts to be re-added
     # on every run (80+ duplicate Ship-Tos on Barneveld as of Apr 2026).
     #
-    # While we're reading each line, also HEAL the addressee: if a line's
-    # addressee differs from the canonical school_name (e.g. left as "Harvard"
-    # after the school was renamed "Harvard High School"), PATCH it. This used
-    # to be a separate manual run of fix_address_names.py; folding it in here
-    # means renames self-correct on the next nightly push. Bill-To lines are
-    # left alone.
+    # While we're reading each line, also HEAL non-Bill-To lines to match the
+    # fresh scrape:
+    #   - addressee: a line left as "Harvard" after the school was renamed
+    #     "Harvard High School" gets the canonical name. (Used to be a manual
+    #     fix_address_names.py run.)
+    #   - street/city/state/zip: a line carrying a stale street (e.g.
+    #     Adams-Friendship's Ship-Tos still on 201 W 6th St after WIAA moved
+    #     to 1109 E North St) gets the school's current address. The sheet
+    #     and the NS customer's custom fields already self-heal to WIAA;
+    #     existing address lines shouldn't be the one place stale data
+    #     survives forever.
+    # Bill-To lines are left alone — billing addresses (often the district
+    # office) are managed intentionally and feed invoices.
     existing_labels = set()
     healed = 0
     r = ns_get(f"customer/{customer_id}?expand=addressBook")
@@ -549,19 +556,32 @@ def sync_address_book(customer_id, school_info, contacts, school_name=""):
             lbl = (line.get("label") or "").strip()
             if lbl:
                 existing_labels.add(lbl.lower())
-            # Heal addressee on non-Bill-To lines when we know the canonical name
-            if school_name and not line.get("defaultBilling"):
+            if not line.get("defaultBilling"):
                 sub = ns_get(f"customer/{customer_id}/addressBook/{line_id}/addressBookAddress")
                 if sub.status_code == 200:
-                    cur = (sub.json().get("addressee") or "").strip()
-                    if cur and cur != school_name:
+                    cur = sub.json()
+                    fix = {}
+                    if school_name and (cur.get("addressee") or "").strip() \
+                            and (cur.get("addressee") or "").strip() != school_name:
+                        fix["addressee"] = school_name
+                    def _same(a, b):
+                        return str(a or "").strip().lower() == str(b or "").strip().lower()
+                    if addr1 and not _same(cur.get("addr1"), addr1):
+                        fix.update({"addr1": addr1, "city": city,
+                                    "state": st, "zip": zp})
+                    elif city and not _same(cur.get("city"), city):
+                        fix.update({"city": city, "state": st, "zip": zp})
+                    elif zp and not _same(cur.get("zip"), zp):
+                        fix["zip"] = zp
+                    if fix:
                         pr = ns_patch(
                             f"customer/{customer_id}/addressBook/{line_id}/addressBookAddress",
-                            {"addressee": school_name})
+                            fix)
                         if pr.status_code in (200, 204):
                             healed += 1
     if healed:
-        print(f"  [NS] Healed addressee on {healed} address line(s) -> '{school_name}'")
+        print(f"  [NS] Healed {healed} address line(s) to current WIAA "
+              f"address/addressee ('{school_name}', {addr1}, {city} {zp})")
 
     new_items = []
     for name in contact_names:
