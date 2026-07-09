@@ -1,15 +1,19 @@
 name: Manual - Fix Contact School Names
 
-# One-time cleanup that overwrites the Contacts tab's School Name
-# column to match what's on the Schools tab, pivoting on NS Customer
-# ID. Run after a school rename on the Schools tab so the Contacts
-# rows pick up the new name.
+# Manual repair for school renames: rewrites Contacts-tab School Name
+# cells to match the canonical Schools-tab name (resolved by NS Customer
+# ID, else by normalized-name match) and merges the duplicate rows a
+# rename leaves behind, keeping NS ids intact. The nightly jobs run the
+# same heal automatically; use this to fix things up on demand.
+#
+# Run once with "live" unchecked to review the plan, then again with it
+# checked to apply.
 
 on:
   workflow_dispatch:
     inputs:
-      allow_name_merge:
-        description: 'Overwrite even when an NS Customer ID has multiple distinct contact-tab names (use after verifying the Schools-tab row is correct).'
+      live:
+        description: 'Apply the changes (unchecked = dry run, prints the plan only)'
         required: false
         default: false
         type: boolean
@@ -36,6 +40,6 @@ jobs:
       - name: Run fix
         run: python fix_contact_school_names.py
         env:
-          ALLOW_NAME_MERGE:        ${{ inputs.allow_name_merge && '1' || '' }}
+          LIVE:                    ${{ inputs.live && '1' || '' }}
           GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
           GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}

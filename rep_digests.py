@@ -701,12 +701,21 @@ def merge_scraped_into_master_sheet(gc, scraped, departed_triples=None):
     # Import sheet helpers lazily (avoid circular imports at module load)
     from school_netsuite_sync import (
         load_contacts, save_contacts,
+        canonicalize_contact_school_names, MASTER_TAB,
         C_SCHOOL, C_FIRST, C_LAST, C_EMAIL, C_ROLE, C_TYPE,
         C_SYNC, C_NS_CID, C_NS_CUS, C_SYNCED,
     )
     wb = gc.open_by_key(main_sheet_id)
     contacts_ws = wb.worksheet("Contacts")
     contacts_data = contacts_ws.get_all_records()
+
+    # Heal school renames BEFORE keying on School Name: scraped records
+    # carry the Schools tab's CURRENT name, so rows stranded under a
+    # school's old name would never match and every person would be
+    # re-added as a duplicate row (and later a duplicate NS contact).
+    canonicalize_contact_school_names(
+        contacts_data, wb.worksheet(MASTER_TAB).get_all_records(),
+        log_prefix="[merge][rename-heal]")
 
     existing_keys = {
         (str(c.get(C_SCHOOL, "")).strip(),

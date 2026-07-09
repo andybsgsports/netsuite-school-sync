@@ -143,6 +143,7 @@ from netsuite_sync import (
 from school_netsuite_sync import (
     get_gspread_client,
     load_contacts, save_contacts,
+    canonicalize_contact_school_names,
     GOOGLE_SHEET_ID, MASTER_TAB,
     M_NAME, M_URL, M_NS_ID, M_SALES, M_STATE, M_LOCKED, M_SYNCED,
     C_SCHOOL, C_FIRST, C_LAST, C_EMAIL, C_ROLE, C_TYPE,
@@ -223,6 +224,17 @@ def main():
     gc = get_gspread_client()
     schools, master_ws, synced_col, ns_id_col = load_schools(gc)
     contacts_data, contacts_ws = load_contacts(gc)
+
+    # Heal school renames BEFORE anything keys off School Name: a school
+    # renamed on the Schools tab (or by the WIAA) orphans its Contacts-tab
+    # rows under the old name, so the scraper re-adds everyone as blank new
+    # rows and NetSuite gets duplicate contacts. Rename stale rows to the
+    # canonical name, merge the duplicates, and persist right away so the
+    # heal sticks even if the push later dies.
+    _ren, _mrg, _ = canonicalize_contact_school_names(
+        contacts_data, master_ws.get_all_records())
+    if _ren or _mrg:
+        save_contacts(contacts_ws, contacts_data)
 
     # Shared (co-op) people: one person actively serving 2+ schools — same
     # email or same stored NS Contact ID under multiple School Name values
