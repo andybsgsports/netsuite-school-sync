@@ -138,6 +138,7 @@ def clean_titles(labels):
 from netsuite_sync import (
     sync_school, sync_customer, sync_contact, inactivate_contact,
     remove_contact_ship_to, sync_address_book, compute_school_domain,
+    restlet_available, ns_restlet_attach,
 )
 from school_netsuite_sync import (
     get_gspread_client,
@@ -223,8 +224,73 @@ def main():
     schools, master_ws, synced_col, ns_id_col = load_schools(gc)
     contacts_data, contacts_ws = load_contacts(gc)
 
+    # Shared (co-op) people: one person actively serving 2+ schools — same
+    # email or same stored NS Contact ID under multiple School Name values
+    # among Sync=Y rows. These get ONE shared NS contact card attached to
+    # every school (via the RESTlet) instead of per-school duplicate records.
+    # Computed over the FULL Contacts tab (not just this rep's scope) so a
+    # co-op pair split across two reps is still recognized. Sync=Y-only so
+    # the departure branch can tell "left this school but still coaches at
+    # the other" (detach here) from "left everywhere" (inactivate).
+    y_schools_by_email, y_schools_by_cid = {}, {}
+    for _c in contacts_data:
+        if str(_c.get(C_SYNC, "N")).strip().upper() != "Y":
+            continue
+        _sch = str(_c.get(C_SCHOOL, "")).strip()
+        if not _sch:
+            continue
+        _em = str(_c.get(C_EMAIL, "")).strip().lower()
+        _cid = str(_c.get(C_NS_CID, "")).strip()
+        if _em:
+            y_schools_by_email.setdefault(_em, set()).add(_sch)
+        if _cid.isdigit():
+            y_schools_by_cid.setdefault(_cid, set()).add(_sch)
+    shared_emails = {e for e, s in y_schools_by_email.items() if len(s) > 1}
+    shared_cids   = {i for i, s in y_schools_by_cid.items() if len(s) > 1}
+
+    # A shared card has ONE title field serving every school, so build it
+    # from the person's roles across ALL their schools: roles they hold at
+    # every school stay plain ("Head Coach (Boys Football)"); roles specific
+    # to one school get that school appended ("Athletic Director (Horicon
+    # High School)"). Every school's row then hashes the same merged title,
+    # so nightly per-school runs agree instead of overwriting each other.
+    def _row_label(role_txt, type_txt):
+        # Admin rows: role IS the title. Coach rows: role is the sport,
+        # type is "Head Coach"/"Coach" — combine to "Head Coach (Sport)".
+        if type_txt and type_txt.lower() not in ("admin", ""):
+            return f"{type_txt} ({role_txt})" if role_txt else type_txt
+        return role_txt
+
+    coop_label_schools = {}   # email -> {label: set(schools)}, insertion-ordered
+    for _c in contacts_data:
+        if str(_c.get(C_SYNC, "N")).strip().upper() != "Y":
+            continue
+        _em = str(_c.get(C_EMAIL, "")).strip().lower()
+        if _em not in shared_emails:
+            continue
+        _sch = str(_c.get(C_SCHOOL, "")).strip()
+        _label = _row_label(str(_c.get(C_ROLE, "")).strip(),
+                            str(_c.get(C_TYPE, "")).strip())
+        if _sch and _label:
+            coop_label_schools.setdefault(_em, {}).setdefault(_label, set()).add(_sch)
+
+    def coop_title(em):
+        lab = coop_label_schools.get(em, {})
+        if not lab:
+            return ""
+        all_schools = set().union(*lab.values())
+        common   = [l for l, s in lab.items() if s == all_schools]
+        specific = [(l, s) for l, s in lab.items() if s != all_schools]
+        parts = clean_titles(common)
+        for l, schools in specific:
+            parts.append(f"{l} ({' & '.join(sorted(schools))})")
+        return ", ".join(parts)
+
     print(f"  Schools in scope: {len(schools)}")
-    print(f"  Contacts tab rows: {len(contacts_data)}\n")
+    print(f"  Contacts tab rows: {len(contacts_data)}")
+    print(f"  Co-op (multi-school) people: {len(shared_emails)}"
+          + ("" if restlet_available() else "  [RESTlet not configured — using per-school duplicates]")
+          + "\n")
 
     synced_schools = 0
     errors = 0
@@ -414,7 +480,15 @@ def main():
                 continue
             c[C_NS_CUS] = str(result_id)
             em_key = email.lower()
-            title  = combined_title(em_key) or role   # all roles, comma-joined
+            is_shared = em_key in shared_emails or contact_ns in shared_cids
+            # Shared card: title merges roles across ALL the person's schools
+            # (school-specific roles annotated with the school name) so every
+            # school's nightly run writes the identical value. Otherwise the
+            # usual this-school combined title.
+            if is_shared:
+                title = coop_title(em_key) or combined_title(em_key) or role
+            else:
+                title = combined_title(em_key) or role   # all roles, comma-joined
 
             if sync_flag == "Y":
                 if contact_ns == "UNLINKED":
@@ -440,7 +514,7 @@ def main():
                     "first": first, "last": last,
                     "email": email, "role": title,
                     "ns_id": contact_ns if contact_ns not in ("", "nan", "None") else "",
-                }, school_info_out)
+                }, school_info_out, shared=is_shared)
                 if new_id:
                     c[C_NS_CID] = str(new_id)
                     c[C_SYNCED] = datetime.now().strftime("%Y-%m-%d %H:%M")
@@ -452,8 +526,21 @@ def main():
                 time.sleep(0.15)
             elif sync_flag == "N" and contact_ns not in ("", "nan", "None", "UNLINKED"):
                 if em_key not in pushed_emails:
-                    inactivate_contact(contact_ns, f"{first} {last}")
-                    remove_contact_ship_to(result_id, f"{first} {last}")
+                    # Does this person still actively serve another school?
+                    still_at = (y_schools_by_email.get(em_key, set())
+                                | y_schools_by_cid.get(contact_ns, set())) - {school_name}
+                    if still_at and restlet_available():
+                        # Co-op person leaving THIS school only: detach the
+                        # shared card from this school's Relationships tab
+                        # and drop their Ship-To here — but keep the card
+                        # itself active for their other school(s).
+                        print(f"  Co-op departure: {first} {last} left {school_name} "
+                              f"but still at {sorted(still_at)[:3]} — detaching, not inactivating")
+                        ns_restlet_attach(contact_ns, result_id, "detach")
+                        remove_contact_ship_to(result_id, f"{first} {last}")
+                    else:
+                        inactivate_contact(contact_ns, f"{first} {last}")
+                        remove_contact_ship_to(result_id, f"{first} {last}")
                     pushed_emails[em_key] = ""
                 c[C_NS_CID] = ""
                 time.sleep(0.15)
