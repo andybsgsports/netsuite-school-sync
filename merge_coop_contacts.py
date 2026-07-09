@@ -39,7 +39,7 @@ import time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from netsuite_sync import (
     ns_get, ns_patch,
-    restlet_available, ensure_attached,
+    restlet_available, ensure_attached, ns_restlet_health,
 )
 from school_netsuite_sync import (
     get_gspread_client, load_contacts, save_contacts,
@@ -87,6 +87,12 @@ def main():
               "(NS_RESTLET_SCRIPT_ID / NS_RESTLET_DEPLOY_ID unset). "
               "Deploy it first — see RESTLET_SETUP.md.")
         sys.exit(1)
+
+    ok, detail = ns_restlet_health()
+    if not ok:
+        print(f"\nABORT: attach RESTlet health check FAILED: {detail}")
+        sys.exit(1)
+    print("\nRESTlet health check: OK (reachable with the sync's credentials)")
 
     gc = get_gspread_client()
     school_cust = load_school_customer_map(gc)
