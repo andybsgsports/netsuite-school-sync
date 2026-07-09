@@ -47,5 +47,7 @@ jobs:
           NS_CONSUMER_SEC:         ${{ secrets.NS_CONSUMER_SEC }}
           NS_TOKEN_KEY:            ${{ secrets.NS_TOKEN_KEY }}
           NS_TOKEN_SEC:            ${{ secrets.NS_TOKEN_SEC }}
+          NS_RESTLET_SCRIPT_ID:    ${{ secrets.NS_RESTLET_SCRIPT_ID }}
+          NS_RESTLET_DEPLOY_ID:    ${{ secrets.NS_RESTLET_DEPLOY_ID }}
           GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
           GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}

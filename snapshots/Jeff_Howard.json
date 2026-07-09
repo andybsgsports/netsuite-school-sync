@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-07-08T04:56:48.712671Z",
+  "updated": "2026-07-09T05:52:55.385862Z",
   "records": [
     {
       "school": "Albany High School",
@@ -244,6 +244,14 @@
     },
     {
       "school": "Baraboo High School",
+      "email": "bobbylafd50@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Bobby",
+      "last": "Annen"
+    },
+    {
+      "school": "Baraboo High School",
       "email": "bvisger@barabooschools.net",
       "role": "Assistant Principal",
       "sport": "",
@@ -369,14 +377,6 @@
       "sport": "Girls Wrestling",
       "first": "Michelle",
       "last": "Strong"
-    },
-    {
-      "school": "Baraboo High School",
-      "email": "nbreunig@barabooschools.net",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Nate",
-      "last": "Breunig"
     },
     {
       "school": "Baraboo High School",
@@ -3500,6 +3500,14 @@
     },
     {
       "school": "Reedsburg High School",
+      "email": "bobbylafd50@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Bobby",
+      "last": "Annen"
+    },
+    {
+      "school": "Reedsburg High School",
       "email": "cafry442@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Wrestling",
@@ -3601,14 +3609,6 @@
       "sport": "Girls Basketball",
       "first": "Mark",
       "last": "Simon"
-    },
-    {
-      "school": "Reedsburg High School",
-      "email": "nbreunig@barabooschools.net",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Nate",
-      "last": "Breunig"
     },
     {
       "school": "Reedsburg High School",
@@ -3756,6 +3756,14 @@
     },
     {
       "school": "Sauk Prairie High School",
+      "email": "bobbylafd50@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Bobby",
+      "last": "Annen"
+    },
+    {
+      "school": "Sauk Prairie High School",
       "email": "Chad.Harnisch@saukprairieschools.org",
       "role": "Principal",
       "sport": "",
@@ -3777,14 +3785,6 @@
       "sport": "Boys Baseball",
       "first": "Darin",
       "last": "Pape"
-    },
-    {
-      "school": "Sauk Prairie High School",
-      "email": "David.ruhly@saukprairieschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "David",
-      "last": "Ruhly"
     },
     {
       "school": "Sauk Prairie High School",
@@ -3876,14 +3876,6 @@
     },
     {
       "school": "Sauk Prairie High School",
-      "email": "nbreunig@barabooschools.net",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Nate",
-      "last": "Breunig"
-    },
-    {
-      "school": "Sauk Prairie High School",
       "email": "sean.mcgann@saukprairieschools.org",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -3913,6 +3905,14 @@
       "sport": "Boys Golf",
       "first": "Shane",
       "last": "Frey"
+    },
+    {
+      "school": "Sauk Prairie High School",
+      "email": "timothy.mcinerney1@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Tim",
+      "last": "McInerney"
     },
     {
       "school": "Sauk Prairie High School",

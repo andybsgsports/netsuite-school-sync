@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-07-08T05:02:25.499899Z",
+  "updated": "2026-07-09T05:58:42.182886Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -1340,6 +1340,14 @@
     },
     {
       "school": "Germantown High School",
+      "email": "aaverkamp@gsdwi.org",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Anna",
+      "last": "Averkamp"
+    },
+    {
+      "school": "Germantown High School",
       "email": "awilliams1@gsdwi.org",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -1468,14 +1476,6 @@
     },
     {
       "school": "Germantown High School",
-      "email": "lbruss@gsdwi.org",
-      "role": "Head Coach",
-      "sport": "Girls Swimming & Diving",
-      "first": "Lori",
-      "last": "Bruss"
-    },
-    {
-      "school": "Germantown High School",
       "email": "mcastro@gsdwi.org",
       "role": "Superintendent",
       "sport": "",
@@ -1521,6 +1521,14 @@
       "sport": "Girls Basketball",
       "first": "Matthew",
       "last": "Stuve"
+    },
+    {
+      "school": "Germantown High School",
+      "email": "pokeefe@gsdwi.org",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Padyn",
+      "last": "O'keefe"
     },
     {
       "school": "Germantown High School",

@@ -1,27 +1,28 @@
-name: Push single school to NetSuite (manual)
+name: Manual - Merge Co-op Contacts (shared cards)
 
-# Targeted manual run of push_only.py for one school (or one rep).
-# Useful for creating a newly-added school immediately instead of waiting
-# for the nightly run. A blank NS Customer ID on the Schools tab is created
-# in NetSuite and the new ID is written back to the sheet.
+# One-time migration: consolidate co-op coaches' per-school duplicate NS
+# contact records into a single shared card attached to every school they
+# serve (via the attach RESTlet — see RESTLET_SETUP.md). Run with live
+# UNCHECKED first to review the plan; the dry-run changes nothing.
 on:
   workflow_dispatch:
     inputs:
-      school_filter:
-        description: 'School Name to push (exact match). Blank = use sales_rep.'
+      live:
+        description: 'Apply changes (unchecked = dry-run, prints plan only)'
         required: false
-        default: ''
-      sales_rep:
-        description: 'Limit to this Sales Rep (blank = all). Ignored if school_filter set.'
+        default: false
+        type: boolean
+      email:
+        description: 'Optional: limit to one person (email, exact match) for a careful first test'
         required: false
         default: ''
 
 jobs:
-  push:
+  merge:
     runs-on: ubuntu-latest
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
-    timeout-minutes: 60
+    timeout-minutes: 120
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -31,11 +32,11 @@ jobs:
           python-version: '3.12'
       - name: Install dependencies
         run: pip install requests beautifulsoup4 gspread google-auth
-      - name: Push to NetSuite
-        run: python push_only.py
+      - name: Merge co-op contacts
+        run: python merge_coop_contacts.py
         env:
-          SCHOOL_FILTER:           ${{ inputs.school_filter }}
-          SALES_REP_FILTER:        ${{ inputs.sales_rep }}
+          LIVE:                    ${{ inputs.live && '1' || '' }}
+          EMAIL_FILTER:            ${{ inputs.email }}
           NS_ACCOUNT:              ${{ secrets.NS_ACCOUNT }}
           NS_CONSUMER_KEY:         ${{ secrets.NS_CONSUMER_KEY }}
           NS_CONSUMER_SEC:         ${{ secrets.NS_CONSUMER_SEC }}

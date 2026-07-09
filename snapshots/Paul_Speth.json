@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-07-08T05:00:13.812745Z",
+  "updated": "2026-07-09T05:56:26.608211Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -140,6 +140,150 @@
     },
     {
       "school": "Adams Friendship High School",
+      "email": "wetzel_g@afasd.net",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Gretchen",
+      "last": "Wetzel"
+    },
+    {
+      "school": "Adams-Friendship High School",
+      "email": "blakeley19@hotmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Matthew",
+      "last": "Blakeley"
+    },
+    {
+      "school": "Adams-Friendship High School",
+      "email": "bork_k@afasd.net",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Keith",
+      "last": "Bork"
+    },
+    {
+      "school": "Adams-Friendship High School",
+      "email": "cameroncaldwell15690@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Cameron",
+      "last": "Caldwell"
+    },
+    {
+      "school": "Adams-Friendship High School",
+      "email": "groshek_s@afasd.net",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Shawn",
+      "last": "Groshek"
+    },
+    {
+      "school": "Adams-Friendship High School",
+      "email": "jackson_j@afasd.net",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Jason",
+      "last": "Jackson"
+    },
+    {
+      "school": "Adams-Friendship High School",
+      "email": "jordandolata@outlook.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Jordan",
+      "last": "Dolata"
+    },
+    {
+      "school": "Adams-Friendship High School",
+      "email": "krystianweglarz@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Soccer",
+      "first": "Krystian",
+      "last": "Weglarz"
+    },
+    {
+      "school": "Adams-Friendship High School",
+      "email": "melvin_l@afasd.net",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Laura",
+      "last": "Melvin"
+    },
+    {
+      "school": "Adams-Friendship High School",
+      "email": "moore_k@afasd.net",
+      "role": "Principal",
+      "sport": "",
+      "first": "Kevin",
+      "last": "Moore"
+    },
+    {
+      "school": "Adams-Friendship High School",
+      "email": "mpsshaw@live.com",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Marcus",
+      "last": "Shaw"
+    },
+    {
+      "school": "Adams-Friendship High School",
+      "email": "norton_m@afasd.net",
+      "role": "Head Coach",
+      "sport": "Boys Track and Field",
+      "first": "Mike",
+      "last": "Norton"
+    },
+    {
+      "school": "Adams-Friendship High School",
+      "email": "pease_b@afasd.net",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Ben",
+      "last": "Pease"
+    },
+    {
+      "school": "Adams-Friendship High School",
+      "email": "schneider_d@afasd.net",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "Dominic",
+      "last": "Schneider"
+    },
+    {
+      "school": "Adams-Friendship High School",
+      "email": "seevers_m@afasd.net",
+      "role": "Head Coach",
+      "sport": "Boys Golf",
+      "first": "Marcus",
+      "last": "Seevers"
+    },
+    {
+      "school": "Adams-Friendship High School",
+      "email": "stormoen_n@afasd.net",
+      "role": "Assistant Principal",
+      "sport": "",
+      "first": "Nick",
+      "last": "Stormoen"
+    },
+    {
+      "school": "Adams-Friendship High School",
+      "email": "stormoen_n@afasd.net",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Nick",
+      "last": "Stormoen"
+    },
+    {
+      "school": "Adams-Friendship High School",
+      "email": "wermuth_t@afasd.net",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Dr.",
+      "last": "Tom Wermuth"
+    },
+    {
+      "school": "Adams-Friendship High School",
       "email": "wetzel_g@afasd.net",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -620,6 +764,14 @@
     },
     {
       "school": "Mauston High School",
+      "email": "bobbylafd50@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Bobby",
+      "last": "Annen"
+    },
+    {
+      "school": "Mauston High School",
       "email": "ccyert@maustonschools.org",
       "role": "AD Admin Assistant",
       "sport": "",
@@ -705,14 +857,6 @@
       "sport": "",
       "first": "Mike",
       "last": "Stoughtenger"
-    },
-    {
-      "school": "Mauston High School",
-      "email": "nbreunig@barabooschools.net",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Nate",
-      "last": "Breunig"
     },
     {
       "school": "Mauston High School",
@@ -1828,6 +1972,14 @@
     },
     {
       "school": "Portage High School",
+      "email": "bobbylafd50@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Bobby",
+      "last": "Annen"
+    },
+    {
+      "school": "Portage High School",
       "email": "carlsone@portage.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
@@ -1905,14 +2057,6 @@
       "sport": "Boys Wrestling",
       "first": "Mitch",
       "last": "Beckett"
-    },
-    {
-      "school": "Portage High School",
-      "email": "nbreunig@barabooschools.net",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Nate",
-      "last": "Breunig"
     },
     {
       "school": "Portage High School",
@@ -2924,6 +3068,14 @@
     },
     {
       "school": "Wisconsin Dells High School",
+      "email": "bobbylafd50@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Bobby",
+      "last": "Annen"
+    },
+    {
+      "school": "Wisconsin Dells High School",
       "email": "brohling@sdwd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -2985,14 +3137,6 @@
       "sport": "Boys Football",
       "first": "Michael",
       "last": "Janke"
-    },
-    {
-      "school": "Wisconsin Dells High School",
-      "email": "nbreunig@barabooschools.net",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Nate",
-      "last": "Breunig"
     },
     {
       "school": "Wisconsin Dells High School",

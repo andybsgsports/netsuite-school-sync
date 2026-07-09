@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-07-08T04:59:38.767541Z",
+  "updated": "2026-07-09T05:55:51.119558Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -4025,6 +4025,14 @@
       "sport": "Boys & Girls Golf",
       "first": "Travis",
       "last": "Bauer"
+    },
+    {
+      "school": "Hortonville High School",
+      "email": "zacharyashauer@hasd.org",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Zach",
+      "last": "Ashauer"
     },
     {
       "school": "Hortonville High School",
@@ -8308,6 +8316,14 @@
     },
     {
       "school": "Sturgeon Bay High School",
+      "email": "jesus.mejia212396@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Jesus",
+      "last": "Mejia"
+    },
+    {
+      "school": "Sturgeon Bay High School",
       "email": "mbryfczynski@sbsdmail.net",
       "role": "Head Coach",
       "sport": "Boys & Girls Golf",
@@ -8369,14 +8385,6 @@
       "sport": "Girls Soccer",
       "first": "Shane",
       "last": "Olson"
-    },
-    {
-      "school": "Sturgeon Bay High School",
-      "email": "tmaas@sbsdmail.net",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Todd",
-      "last": "Maas"
     },
     {
       "school": "Sturgeon Bay High School",
@@ -8593,14 +8601,6 @@
       "sport": "Boys Track and Field",
       "first": "Bryan",
       "last": "Fay"
-    },
-    {
-      "school": "Waupaca High School",
-      "email": "cikert@waupacaschools.org",
-      "role": "AD Admin Assistant",
-      "sport": "",
-      "first": "Cindy",
-      "last": "Ikert"
     },
     {
       "school": "Waupaca High School",

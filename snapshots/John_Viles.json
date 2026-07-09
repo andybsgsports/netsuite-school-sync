@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-07-08T05:01:36.456953Z",
+  "updated": "2026-07-09T05:57:51.532904Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -1460,6 +1460,14 @@
     },
     {
       "school": "Horicon High School",
+      "email": "aselgrad@horicon.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Andrew",
+      "last": "Selgrad"
+    },
+    {
+      "school": "Horicon High School",
       "email": "benstrieff@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -1537,14 +1545,6 @@
       "sport": "",
       "first": "Katie",
       "last": "Schwartz"
-    },
-    {
-      "school": "Horicon High School",
-      "email": "meyertc43@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Timothy",
-      "last": "Meyer"
     },
     {
       "school": "Horicon High School",
@@ -1756,6 +1756,14 @@
     },
     {
       "school": "Hustisford High School",
+      "email": "aselgrad@horicon.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Andrew",
+      "last": "Selgrad"
+    },
+    {
+      "school": "Hustisford High School",
       "email": "bingenr@dodgeland.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -1857,14 +1865,6 @@
       "sport": "Girls Basketball",
       "first": "Ashley",
       "last": "Christian"
-    },
-    {
-      "school": "Hustisford High School",
-      "email": "meyertc43@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Timothy",
-      "last": "Meyer"
     },
     {
       "school": "Hustisford High School",
