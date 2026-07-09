@@ -193,6 +193,39 @@ def restlet_available():
     return bool(NS_ACCOUNT and NS_RESTLET_SCRIPT_ID and NS_RESTLET_DEPLOY_ID)
 
 
+def ns_restlet_health():
+    """GET health check against the deployed RESTlet using the sync's own
+    credentials. Returns (ok, detail). Distinguishes the two common
+    deployment mistakes: wrong script/deploy ids (404) and the integration
+    token's role missing from the deployment's Audience (401/403)."""
+    if not restlet_available():
+        return False, "NS_RESTLET_SCRIPT_ID / NS_RESTLET_DEPLOY_ID not set"
+    try:
+        r = requests.get(RESTLET_URL, headers={
+            "Authorization": make_auth("GET", RESTLET_URL),
+            "Content-Type": "application/json",
+        }, timeout=30)
+    except Exception as e:
+        return False, f"request error: {e}"
+    if r.status_code == 200:
+        try:
+            if r.json().get("success"):
+                return True, "ok"
+        except ValueError:
+            pass
+        return False, f"unexpected response body: {r.text[:200]}"
+    if r.status_code in (401, 403):
+        return False, (f"HTTP {r.status_code} — the integration token's ROLE is "
+                       f"probably missing from the script deployment's Audience "
+                       f"(NetSuite: Customization > Scripting > Script Deployments "
+                       f"> BSG Attach Contact > Audience > Roles). {r.text[:200]}")
+    if r.status_code == 404:
+        return False, (f"HTTP 404 — script/deploy ids look wrong "
+                       f"(script={NS_RESTLET_SCRIPT_ID}, deploy={NS_RESTLET_DEPLOY_ID}). "
+                       f"{r.text[:200]}")
+    return False, f"HTTP {r.status_code}: {r.text[:200]}"
+
+
 def ns_restlet_attach(contact_id, customer_id, action="attach"):
     """Attach/detach an existing contact to/from a customer via the deployed
     RESTlet (NetSuite's native mechanism — same as the UI's "Attach" button).
