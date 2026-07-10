@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-07-09T05:58:42.182886Z",
+  "updated": "2026-07-10T05:56:28.178240Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -380,14 +380,6 @@
     },
     {
       "school": "Beaver Dam High School",
-      "email": "michaelkositzke@yahoo.com",
-      "role": "Head Coach",
-      "sport": "Boys Wrestling",
-      "first": "Michael",
-      "last": "Kositzke"
-    },
-    {
-      "school": "Beaver Dam High School",
       "email": "nortmanj@bdusd.org",
       "role": "Head Coach",
       "sport": "Girls Golf",
@@ -401,14 +393,6 @@
       "sport": "Girls Soccer",
       "first": "Brandie",
       "last": "Paredes"
-    },
-    {
-      "school": "Beaver Dam High School",
-      "email": "pickartsd@bdusd.org",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Doug",
-      "last": "Pickarts"
     },
     {
       "school": "Beaver Dam High School",
@@ -457,6 +441,14 @@
       "sport": "Girls Tennis",
       "first": "Ryan",
       "last": "Radig"
+    },
+    {
+      "school": "Beaver Dam High School",
+      "email": "salettels@bdusd.org",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Summer",
+      "last": "Salettel"
     },
     {
       "school": "Beaver Dam High School",
@@ -1052,6 +1044,14 @@
     },
     {
       "school": "Evansville High School",
+      "email": "dunklebergerb@evansville.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Ben",
+      "last": "Dunkleberger"
+    },
+    {
+      "school": "Evansville High School",
       "email": "garth_coats@hotmail.com",
       "role": "Head Coach",
       "sport": "Boys Football",
@@ -1121,14 +1121,6 @@
       "sport": "",
       "first": "Nathan",
       "last": "Perry"
-    },
-    {
-      "school": "Evansville High School",
-      "email": "rosonkes@evansville.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Scott",
-      "last": "Rosonke"
     },
     {
       "school": "Evansville High School",
@@ -1652,14 +1644,6 @@
     },
     {
       "school": "Grafton High School",
-      "email": "djames@grafton.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Damon",
-      "last": "James"
-    },
-    {
-      "school": "Grafton High School",
       "email": "dwade@cedarburg.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Hockey",
@@ -1761,6 +1745,14 @@
       "sport": "Girls Gymnastics",
       "first": "Anna",
       "last": "Tominsek"
+    },
+    {
+      "school": "Grafton High School",
+      "email": "voelker.connor34@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Connor",
+      "last": "Voelker"
     },
     {
       "school": "Hamilton High School",

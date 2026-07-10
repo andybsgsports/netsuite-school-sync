@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-07-09T05:51:56.528953Z",
+  "updated": "2026-07-10T05:49:56.312469Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -8020,14 +8020,6 @@
     },
     {
       "school": "Greenfield High School",
-      "email": "lascher@greenfield.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Volleyball",
-      "first": "Logan",
-      "last": "Ascher"
-    },
-    {
-      "school": "Greenfield High School",
       "email": "lelliott@greenfield.k12.wi.us",
       "role": "Superintendent",
       "sport": "",
@@ -15996,6 +15988,14 @@
     },
     {
       "school": "Rochelle High School",
+      "email": "oklein@rthsd212.org",
+      "role": "Head Coach",
+      "sport": "Competitive Dance",
+      "first": "Olivia",
+      "last": "Klein"
+    },
+    {
+      "school": "Rochelle High School",
       "email": "rharvey@rthsd212.org",
       "role": "Athletic Director",
       "sport": "",
@@ -16023,14 +16023,6 @@
       "email": "sstaab@rthsd212.org",
       "role": "Coach",
       "sport": "Halftime Dance",
-      "first": "Sumayya",
-      "last": "Staab"
-    },
-    {
-      "school": "Rochelle High School",
-      "email": "sstaab@rthsd212.org",
-      "role": "Head Coach",
-      "sport": "Competitive Dance",
       "first": "Sumayya",
       "last": "Staab"
     },
@@ -16105,14 +16097,6 @@
       "sport": "Boys Track & Field",
       "first": "Anthony",
       "last": "Wilson"
-    },
-    {
-      "school": "Rockford East High School",
-      "email": "caitlyn.simross@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Volleyball",
-      "first": "Caitlyn",
-      "last": "Simross"
     },
     {
       "school": "Rockford East High School",
@@ -16401,6 +16385,14 @@
       "sport": "Boys Football",
       "first": "Don",
       "last": "Lee"
+    },
+    {
+      "school": "Rockford Lutheran High School",
+      "email": "eldinibrahimovic85@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Eldin",
+      "last": "Ibrahimovic"
     },
     {
       "school": "Rockford Lutheran High School",
