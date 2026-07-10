@@ -69,6 +69,7 @@ M_STATE  = "State"
 M_URL    = "School URL"
 M_SALES  = "Sales Rep"
 M_NS_ID  = "NS Customer ID"
+M_EXT_ID = "NS Ext ID"   # NetSuite external id; often carries a school's prior name after a rename
 M_LOCKED = "Locked"
 M_SYNCED = "Last Synced"
 
@@ -182,6 +183,20 @@ def save_contacts(ws, rows):
 
 
 # -- School-rename healing ----------------------------------------------------
+# Hand-curated bridges for renames too drastic for the automatic matchers
+# (normalized-name and NS-Ext-ID). Key = normalized OLD name, value = exact
+# current Schools-tab name. Only used when the value is actually present on
+# the Schools tab, so a stale entry here can never invent a school. Prefer
+# putting the old name in the school's NS Ext ID cell (auto-detected); this
+# dict is the fallback when that isn't possible.
+SCHOOL_RENAME_ALIASES = {
+    # 'Green Bay Notre Dame' was renamed to 'Notre Dame Academy High School';
+    # its old name is also preserved in that row's NS Ext ID, so this is
+    # belt-and-suspenders.
+    "green bay notre dame": "Notre Dame Academy High School",
+}
+
+
 def _norm_school_name(s):
     """Loose key for matching a school name across rename variants:
     lowercase, punctuation collapsed to spaces, and one trailing generic
@@ -201,11 +216,14 @@ def canonicalize_contact_school_names(contacts_data, schools_records,
     the WIAA site). Two passes, mutating contacts_data in place:
 
     1. RENAME: a stale row is repointed at the canonical Schools-tab name,
-       resolved by its NS Customer ID when it has one (stable across
-       renames), otherwise by a unique normalized-name match ('Waupaca' ->
-       'Waupaca High School'). NS ids that legitimately serve two School
-       Names (e.g. West Bend East/West share one customer) are never used
-       for resolution, and ambiguous name matches are left alone.
+       resolved (in order) by its NS Customer ID when it has one (stable
+       across renames), a unique normalized-name match ('Waupaca' ->
+       'Waupaca High School'), a unique NS Ext ID match (the old name is
+       often preserved in that column after a rename, e.g. 'Green Bay Notre
+       Dame' -> 'Notre Dame Academy High School'), or a hand-curated
+       SCHOOL_RENAME_ALIASES entry. NS ids that legitimately serve two
+       School Names (e.g. West Bend East/West share one customer) are never
+       used for resolution, and ambiguous name/ext-id matches are left alone.
 
     2. MERGE: a rename can collide with a fresh row the scraper already
        added under the new name for the same (school, email, role). One
@@ -238,6 +256,24 @@ def canonicalize_contact_school_names(contacts_data, schools_records,
     norm_map = {k: next(iter(names)) for k, names in norm_to_names.items()
                 if len(names) == 1}
 
+    # NS Ext ID -> canonical name, for renames that kept the old name in that
+    # column. Built with the same uniqueness discipline as the other maps
+    # (an ext id shared by two School Names is ambiguous -> unused), and only
+    # kept when it points somewhere the normalized-name map doesn't already
+    # (so it strictly ADDS reach and never overrides a name match).
+    ext_to_names = {}
+    for r in schools_records:
+        ext = _norm_school_name(r.get(M_EXT_ID, ""))
+        nm = str(r.get(M_NAME, "")).strip()
+        if ext and nm:
+            ext_to_names.setdefault(ext, set()).add(nm)
+    ext_map = {k: next(iter(names)) for k, names in ext_to_names.items()
+               if len(names) == 1 and k not in norm_map}
+
+    def _alias(sch):
+        target = SCHOOL_RENAME_ALIASES.get(_norm_school_name(sch))
+        return target if target in canonical else None
+
     renamed = unresolved = 0
     renamed_rows = set()  # id() of rows renamed this pass
     for row in contacts_data:
@@ -245,7 +281,8 @@ def canonicalize_contact_school_names(contacts_data, schools_records,
         if not sch or sch in canonical:
             continue
         cus = str(row.get(C_NS_CUS, "")).strip()
-        target = id_map.get(cus) or norm_map.get(_norm_school_name(sch))
+        target = (id_map.get(cus) or norm_map.get(_norm_school_name(sch))
+                  or ext_map.get(_norm_school_name(sch)) or _alias(sch))
         if target:
             print(f"{log_prefix} '{sch}' -> '{target}'  "
                   f"({row.get(C_FIRST, '')} {row.get(C_LAST, '')})")
