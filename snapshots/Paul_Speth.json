@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-07-11T04:59:40.434868Z",
+  "updated": "2026-07-12T05:10:55.404561Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -1398,14 +1398,6 @@
       "school": "Necedah High School",
       "email": "ahedden@necedahschools.org",
       "role": "Head Coach",
-      "sport": "Boys & Girls Cross Country",
-      "first": "Amanda",
-      "last": "Hedden"
-    },
-    {
-      "school": "Necedah High School",
-      "email": "ahedden@necedahschools.org",
-      "role": "Head Coach",
       "sport": "Boys & Girls Track and Field",
       "first": "Amanda",
       "last": "Hedden"
@@ -1457,6 +1449,14 @@
       "sport": "Boys Baseball",
       "first": "Dustin",
       "last": "Stickney"
+    },
+    {
+      "school": "Necedah High School",
+      "email": "rochelle.t.vanier@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Cross Country",
+      "first": "Rochelle",
+      "last": "Vanier"
     },
     {
       "school": "Necedah High School",
