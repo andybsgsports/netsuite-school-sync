@@ -12,8 +12,16 @@ last week appear in the email.
 CSV required columns:
   School Name, State, Sport, TeamID
 
+Sending: prefers Microsoft Graph (mail goes out genuinely FROM the
+andy@bsgsports.com M365 mailbox) when OUTLOOK_* secrets are present and the
+token has Mail.Send; otherwise falls back to Gmail SMTP.
+
 Env vars:
-  GMAIL_USER           sender + default recipient  (andy@bsgsports.com)
+  OUTLOOK_CLIENT_ID    Azure app id      (same as outlook contacts sync)
+  OUTLOOK_TENANT_ID    Azure tenant id   (same as outlook contacts sync)
+  OUTLOOK_TOKEN_CACHE  MSAL token cache JSON — must include Mail.Send scope
+                       (re-run outlook_auth_setup.py once to add it)
+  GMAIL_USER           fallback sender + default recipient
   GMAIL_APP_PASSWORD   Gmail app password (16-char, 2FA required)
   SCORES_CSV           path to CSV  (default: scores_schools.csv)
   SCORES_RECIPIENT     override recipient for the whole run
@@ -347,8 +355,61 @@ def build_html(school_results, week_start, week_end):
 
 
 # ── Email sender ──────────────────────────────────────────────────────────────
-def send_email(subject, html_body, recipient):
-    """Send HTML email via Gmail SMTP (TLS). Returns True on success."""
+OUTLOOK_CLIENT_ID   = os.environ.get("OUTLOOK_CLIENT_ID", "").strip()
+OUTLOOK_TENANT_ID   = os.environ.get("OUTLOOK_TENANT_ID", "").strip()
+OUTLOOK_TOKEN_CACHE = os.environ.get("OUTLOOK_TOKEN_CACHE", "").strip()
+
+
+def _graph_token():
+    """Acquire a Graph access token with Mail.Send via the saved MSAL cache
+    (same cache the Outlook contacts sync uses). Returns token or None."""
+    if not (OUTLOOK_CLIENT_ID and OUTLOOK_TENANT_ID and OUTLOOK_TOKEN_CACHE):
+        return None
+    try:
+        from msal import PublicClientApplication, SerializableTokenCache
+        cache = SerializableTokenCache()
+        cache.deserialize(OUTLOOK_TOKEN_CACHE)
+        app = PublicClientApplication(
+            OUTLOOK_CLIENT_ID,
+            authority=f"https://login.microsoftonline.com/{OUTLOOK_TENANT_ID}",
+            token_cache=cache,
+        )
+        accounts = app.get_accounts()
+        if not accounts:
+            return None
+        result = app.acquire_token_silent(["Mail.Send"], account=accounts[0])
+        if result and "access_token" in result:
+            return result["access_token"]
+    except Exception as e:
+        print(f"  [WARN] Graph auth failed: {e}")
+    return None
+
+
+def send_via_graph(subject, html_body, recipient, token):
+    """Send from the signed-in M365 mailbox (andy@bsgsports.com) via Graph."""
+    payload = {
+        "message": {
+            "subject": subject,
+            "body": {"contentType": "HTML", "content": html_body},
+            "toRecipients": [{"emailAddress": {"address": recipient}}],
+        },
+        "saveToSentItems": True,
+    }
+    r = requests.post(
+        "https://graph.microsoft.com/v1.0/me/sendMail",
+        headers={"Authorization": f"Bearer {token}",
+                 "Content-Type": "application/json"},
+        json=payload,
+        timeout=30,
+    )
+    if r.status_code == 202:
+        return True
+    print(f"  [WARN] Graph sendMail failed: {r.status_code} {r.text[:200]}")
+    return False
+
+
+def send_via_gmail(subject, html_body, recipient):
+    """Fallback: send HTML email via Gmail SMTP (TLS)."""
     if not (GMAIL_USER and GMAIL_APP_PASSWORD):
         print("  [WARN] GMAIL_USER / GMAIL_APP_PASSWORD not set — skipping send")
         return False
@@ -363,6 +424,19 @@ def send_email(subject, html_body, recipient):
         s.login(GMAIL_USER, GMAIL_APP_PASSWORD)
         s.send_message(msg)
     return True
+
+
+def send_email(subject, html_body, recipient):
+    """Prefer Graph (true From: andy@bsgsports.com); fall back to Gmail."""
+    token = _graph_token()
+    if token:
+        print("  [MAIL] Sending via Microsoft Graph (from bsgsports mailbox)")
+        if send_via_graph(subject, html_body, recipient, token):
+            return True
+        print("  [MAIL] Graph failed — falling back to Gmail SMTP")
+    else:
+        print("  [MAIL] Graph not configured (or token lacks Mail.Send) — using Gmail SMTP")
+    return send_via_gmail(subject, html_body, recipient)
 
 
 # ── CSV loader ────────────────────────────────────────────────────────────────
