@@ -8,7 +8,6 @@ outlook_token_cache.json
 *.csv
 # Scores email config — committed so GitHub Actions can read it
 !scores_schools.csv
-!scores_test_2025-26.csv
 
 # Python
 __pycache__/
