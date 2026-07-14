@@ -12,27 +12,17 @@ last week appear in the email.
 CSV required columns:
   School Name, State, Sport, TeamID
 
-Sending — first configured sender wins:
-  1. NetSuite email RESTlet  (From: andy@bsgsports.com — the way NetSuite
-     already sends his email; see suitescript/send_email_restlet.js)
-  2. Microsoft Graph         (From: the bsgsports M365 mailbox; needs
-     Mail.Send consent, currently blocked pending MS admin approval)
-  3. Gmail SMTP              (fallback — same account as the rep digests)
+Sends via Gmail SMTP (same account as the rep digests) to Andy only —
+the sales reps do not receive this email.
 
 Env vars:
-  NS_ACCOUNT + NS_CONSUMER_KEY/SEC + NS_TOKEN_KEY/SEC   (existing secrets)
-  NS_EMAIL_RESTLET_SCRIPT_ID   script= id of the deployed send-email RESTlet
-  NS_EMAIL_RESTLET_DEPLOY_ID   deploy= id of the deployed send-email RESTlet
-  NS_EMAIL_AUTHOR_ID           optional employee internal id to send as
-                               (defaults to the integration token's user)
-  OUTLOOK_CLIENT_ID    Azure app id      (same as outlook contacts sync)
-  OUTLOOK_TENANT_ID    Azure tenant id   (same as outlook contacts sync)
-  OUTLOOK_TOKEN_CACHE  MSAL token cache JSON — must include Mail.Send scope
-  GMAIL_USER           fallback sender + default recipient
+  GMAIL_USER           sender + default recipient
   GMAIL_APP_PASSWORD   Gmail app password (16-char, 2FA required)
   SCORES_CSV           path to CSV  (default: scores_schools.csv)
   SCORES_RECIPIENT     override recipient for the whole run
   SCHOOL_FILTER        substring filter on school name (testing)
+  SEND_EMPTY           "1" → send the email even when no games were found
+                       (useful for testing the pipeline out of season)
   DRY_RUN              "1" → print instead of send
   DUMP_HTML            "1" → write raw schedule HTML + parse diagnostics
 """
@@ -57,6 +47,7 @@ SCORES_RECIPIENT   = os.environ.get("SCORES_RECIPIENT", "").strip() or GMAIL_USE
 DRY_RUN            = os.environ.get("DRY_RUN", "0") == "1"
 DUMP_HTML          = os.environ.get("DUMP_HTML", "0") == "1"
 SCHOOL_FILTER      = os.environ.get("SCHOOL_FILTER", "").strip().lower()
+SEND_EMPTY         = os.environ.get("SEND_EMPTY", "0") == "1"
 
 # Same headers the existing WIAA scraper uses — already bypass bot protection
 WIAA_HEADERS = {
@@ -362,97 +353,8 @@ def build_html(school_results, week_start, week_end):
 
 
 # ── Email sender ──────────────────────────────────────────────────────────────
-NS_EMAIL_SCRIPT_ID = os.environ.get("NS_EMAIL_RESTLET_SCRIPT_ID", "").strip()
-NS_EMAIL_DEPLOY_ID = os.environ.get("NS_EMAIL_RESTLET_DEPLOY_ID", "").strip()
-NS_EMAIL_AUTHOR_ID = os.environ.get("NS_EMAIL_AUTHOR_ID", "").strip()
-
-
-def send_via_netsuite(subject, html_body, recipient):
-    """Send from andy@bsgsports.com through NetSuite's email RESTlet.
-    Returns True on success, False on failure, None if not configured."""
-    if not (NS_EMAIL_SCRIPT_ID and NS_EMAIL_DEPLOY_ID
-            and os.environ.get("NS_ACCOUNT", "").strip()):
-        return None
-    try:
-        # Reuse the sync's OAuth 1.0 signer — same credentials, RESTlet host.
-        from netsuite_sync import make_auth, NS_ACCOUNT
-        url = (f"https://{NS_ACCOUNT}.restlets.api.netsuite.com"
-               f"/app/site/hosting/restlet.nl"
-               f"?script={NS_EMAIL_SCRIPT_ID}&deploy={NS_EMAIL_DEPLOY_ID}")
-        payload = {"recipient": recipient, "subject": subject, "htmlBody": html_body}
-        if NS_EMAIL_AUTHOR_ID:
-            payload["authorId"] = NS_EMAIL_AUTHOR_ID
-        r = requests.post(url, json=payload, timeout=30, headers={
-            "Authorization": make_auth("POST", url),
-            "Content-Type": "application/json",
-        })
-        if r.status_code == 200:
-            out = r.json()
-            if out.get("success"):
-                return True
-            print(f"  [WARN] NetSuite email RESTlet error: {out.get('error', '?')}")
-        else:
-            print(f"  [WARN] NetSuite email RESTlet HTTP {r.status_code}: {r.text[:200]}")
-    except Exception as e:
-        print(f"  [WARN] NetSuite email send failed: {e}")
-    return False
-
-
-OUTLOOK_CLIENT_ID   = os.environ.get("OUTLOOK_CLIENT_ID", "").strip()
-OUTLOOK_TENANT_ID   = os.environ.get("OUTLOOK_TENANT_ID", "").strip()
-OUTLOOK_TOKEN_CACHE = os.environ.get("OUTLOOK_TOKEN_CACHE", "").strip()
-
-
-def _graph_token():
-    """Acquire a Graph access token with Mail.Send via the saved MSAL cache
-    (same cache the Outlook contacts sync uses). Returns token or None."""
-    if not (OUTLOOK_CLIENT_ID and OUTLOOK_TENANT_ID and OUTLOOK_TOKEN_CACHE):
-        return None
-    try:
-        from msal import PublicClientApplication, SerializableTokenCache
-        cache = SerializableTokenCache()
-        cache.deserialize(OUTLOOK_TOKEN_CACHE)
-        app = PublicClientApplication(
-            OUTLOOK_CLIENT_ID,
-            authority=f"https://login.microsoftonline.com/{OUTLOOK_TENANT_ID}",
-            token_cache=cache,
-        )
-        accounts = app.get_accounts()
-        if not accounts:
-            return None
-        result = app.acquire_token_silent(["Mail.Send"], account=accounts[0])
-        if result and "access_token" in result:
-            return result["access_token"]
-    except Exception as e:
-        print(f"  [WARN] Graph auth failed: {e}")
-    return None
-
-
-def send_via_graph(subject, html_body, recipient, token):
-    """Send from the signed-in M365 mailbox (andy@bsgsports.com) via Graph."""
-    payload = {
-        "message": {
-            "subject": subject,
-            "body": {"contentType": "HTML", "content": html_body},
-            "toRecipients": [{"emailAddress": {"address": recipient}}],
-        },
-        "saveToSentItems": True,
-    }
-    r = requests.post(
-        "https://graph.microsoft.com/v1.0/me/sendMail",
-        headers={"Authorization": f"Bearer {token}",
-                 "Content-Type": "application/json"},
-        json=payload,
-        timeout=30,
-    )
-    if r.status_code == 202:
-        return True
-    print(f"  [WARN] Graph sendMail failed: {r.status_code} {r.text[:200]}")
-    return False
-
-
-def send_via_gmail(subject, html_body, recipient):
-    """Fallback: send HTML email via Gmail SMTP (TLS)."""
+def send_email(subject, html_body, recipient):
+    """Send HTML email via Gmail SMTP (TLS). Returns True on success."""
     if not (GMAIL_USER and GMAIL_APP_PASSWORD):
         print("  [WARN] GMAIL_USER / GMAIL_APP_PASSWORD not set — skipping send")
         return False
@@ -467,25 +369,6 @@ def send_via_gmail(subject, html_body, recipient):
         s.login(GMAIL_USER, GMAIL_APP_PASSWORD)
         s.send_message(msg)
     return True
-
-
-def send_email(subject, html_body, recipient):
-    """First configured sender wins: NetSuite RESTlet (true
-    From: andy@bsgsports.com, DKIM already set up) → Graph → Gmail."""
-    ns = send_via_netsuite(subject, html_body, recipient)
-    if ns:
-        print("  [MAIL] Sent via NetSuite (from andy@bsgsports.com)")
-        return True
-    if ns is False:
-        print("  [MAIL] NetSuite send failed — trying next sender")
-
-    token = _graph_token()
-    if token:
-        print("  [MAIL] Sending via Microsoft Graph (from bsgsports mailbox)")
-        if send_via_graph(subject, html_body, recipient, token):
-            return True
-        print("  [MAIL] Graph failed — falling back to Gmail SMTP")
-    return send_via_gmail(subject, html_body, recipient)
 
 
 # ── CSV loader ────────────────────────────────────────────────────────────────
@@ -570,7 +453,7 @@ def main():
         time.sleep(DELAY)
 
     print()
-    if not school_results:
+    if not school_results and not SEND_EMPTY:
         print("[OK] No games last week for any tracked school — no email sent.\n")
         return
 
