@@ -12,19 +12,24 @@ last week appear in the email.
 CSV required columns:
   School Name, State, Sport, TeamID
 
-Sends via Gmail SMTP (same account as the rep digests) to Andy only —
-the sales reps do not receive this email.
+One email per sales rep, covering that rep's schools only (rep assignment
+comes from the master sheet's Schools tab; rep email addresses reuse the
+REPS list in rep_digests.py). Sends via Gmail SMTP.
+
+SAFETY: until SCORES_LIVE=1, every rep's email is redirected to GMAIL_USER
+(Andy) with a "[TEST → rep@...]" subject prefix — reps receive nothing.
 
 Env vars:
-  GMAIL_USER           sender + default recipient
-  GMAIL_APP_PASSWORD   Gmail app password (16-char, 2FA required)
-  SCORES_CSV           path to CSV  (default: scores_schools.csv)
-  SCORES_RECIPIENT     override recipient for the whole run
-  SCHOOL_FILTER        substring filter on school name (testing)
-  SEND_EMPTY           "1" → send the email even when no games were found
-                       (useful for testing the pipeline out of season)
-  DRY_RUN              "1" → print instead of send
-  DUMP_HTML            "1" → write raw schedule HTML + parse diagnostics
+  GMAIL_USER               sender + test-mode recipient
+  GMAIL_APP_PASSWORD       Gmail app password (16-char, 2FA required)
+  GOOGLE_SHEET_ID          master sheet (Schools tab, for rep assignment)
+  GOOGLE_CREDENTIALS_JSON  service account JSON (same as other workflows)
+  SCORES_LIVE              "1" → actually send to each rep (BCC Andy)
+  SCORES_CSV               path to CSV  (default: scores_schools.csv)
+  SCHOOL_FILTER            substring filter on school name (testing)
+  SEND_EMPTY               "1" → send Andy an email even with no games
+  DRY_RUN                  "1" → print instead of send
+  DUMP_HTML                "1" → write raw schedule HTML + parse diagnostics
 """
 
 import csv
@@ -32,7 +37,8 @@ import os
 import re
 import smtplib
 import time
-from datetime import date, timedelta
+from concurrent.futures import ThreadPoolExecutor
+from datetime import date, datetime, timedelta
 from email.message import EmailMessage
 from pathlib import Path
 
@@ -48,6 +54,9 @@ DRY_RUN            = os.environ.get("DRY_RUN", "0") == "1"
 DUMP_HTML          = os.environ.get("DUMP_HTML", "0") == "1"
 SCHOOL_FILTER      = os.environ.get("SCHOOL_FILTER", "").strip().lower()
 SEND_EMPTY         = os.environ.get("SEND_EMPTY", "0") == "1"
+SCORES_LIVE        = os.environ.get("SCORES_LIVE", "0") == "1"
+WEEK_OF            = os.environ.get("WEEK_OF", "").strip()   # YYYY-MM-DD: report that week
+WORKERS            = int(os.environ.get("WORKERS", "6") or "6")
 
 # Same headers the existing WIAA scraper uses — already bypass bot protection
 WIAA_HEADERS = {
@@ -240,9 +249,16 @@ def fetch_wiaa_schedule(team_id, school_name=""):
 
 
 def prior_week_range(today=None):
-    """Return (monday, sunday) of the week before `today`. When run on a
-    Monday this is the immediately preceding Mon–Sun; run mid-week it still
-    reports the last full completed week."""
+    """Return (monday, sunday) of the week to report.
+
+    Default: the week before `today` — run on a Monday that's the
+    immediately preceding Mon–Sun; run mid-week it's the last full week.
+    WEEK_OF=YYYY-MM-DD overrides: report the Mon–Sun week containing that
+    date (for testing against a historical week, e.g. 2026-04-20)."""
+    if WEEK_OF:
+        d = datetime.strptime(WEEK_OF, "%Y-%m-%d").date()
+        monday = d - timedelta(days=d.weekday())
+        return monday, monday + timedelta(days=6)
     if today is None:
         today = date.today()
     this_monday = today - timedelta(days=today.weekday())
@@ -352,15 +368,63 @@ def build_html(school_results, week_start, week_end):
 </html>"""
 
 
+# ── Rep assignment ───────────────────────────────────────────────────────────
+def load_rep_config():
+    """Rep name -> {email, cc} from rep_digests.REPS (single source of truth
+    for rep addresses). Falls back to empty dict if unavailable."""
+    try:
+        from rep_digests import REPS
+        return {r["name"]: r for r in REPS}
+    except Exception as e:
+        print(f"[WARN] Could not load REPS from rep_digests: {e}")
+        return {}
+
+
+def load_school_reps():
+    """School Name -> Sales Rep from the master sheet's Schools tab.
+    Live lookup so rep reassignments take effect immediately. Returns {}
+    (everything routes to Andy) if the sheet is unreachable."""
+    sheet_id = os.environ.get("GOOGLE_SHEET_ID", "").strip()
+    creds_json = os.environ.get("GOOGLE_CREDENTIALS_JSON", "")
+    if not (sheet_id and creds_json):
+        print("[WARN] GOOGLE_SHEET_ID / GOOGLE_CREDENTIALS_JSON not set — "
+              "all schools route to Andy")
+        return {}
+    try:
+        import json as _json
+        import gspread
+        from google.oauth2.service_account import Credentials
+        creds = Credentials.from_service_account_info(
+            _json.loads(creds_json),
+            scopes=["https://www.googleapis.com/auth/spreadsheets",
+                    "https://www.googleapis.com/auth/drive"],
+        )
+        ws = gspread.authorize(creds).open_by_key(sheet_id).worksheet("Schools")
+        out = {}
+        for rec in ws.get_all_records():
+            name = str(rec.get("School Name", "")).strip()
+            rep  = str(rec.get("Sales Rep", "")).strip()
+            if name:
+                out[name] = rep
+        return out
+    except Exception as e:
+        print(f"[WARN] Schools tab lookup failed ({e}) — all schools route to Andy")
+        return {}
+
+
 # ── Email sender ──────────────────────────────────────────────────────────────
-def send_email(subject, html_body, recipient):
+def send_email(subject, html_body, to_addr, cc_addr=None, bcc_addr=None):
     """Send HTML email via Gmail SMTP (TLS). Returns True on success."""
     if not (GMAIL_USER and GMAIL_APP_PASSWORD):
         print("  [WARN] GMAIL_USER / GMAIL_APP_PASSWORD not set — skipping send")
         return False
     msg = EmailMessage()
     msg["From"]    = GMAIL_USER
-    msg["To"]      = recipient
+    msg["To"]      = to_addr
+    if cc_addr:
+        msg["Cc"] = cc_addr
+    if bcc_addr and bcc_addr != to_addr:
+        msg["Bcc"] = bcc_addr
     msg["Subject"] = subject
     msg.set_content("Please open this email in an HTML-capable client.")
     msg.add_alternative(html_body, subtype="html")
@@ -414,43 +478,35 @@ def main():
         print(f"SCHOOL_FILTER='{SCHOOL_FILTER}' → {len(schools)} team(s)")
     print(f"Loaded {len(schools)} team(s) from {SCORES_CSV}\n")
 
-    school_results = []
-
-    for entry in schools:
-        school  = entry["school"]
-        sport   = entry["sport"]
-        team_id = entry["team_id"]
-        state   = entry["state"]
-
-        print(f"[{state}] {school} — {sport}  (TeamID={team_id})")
-
-        if state == "WI":
-            all_games = fetch_wiaa_schedule(team_id, school)
-        elif state == "IL":
-            # IHSA schedule scraping — coming soon. TeamID column should hold
-            # the IHSA identifier once the IL schedule URL pattern is confirmed.
-            print(f"  [TODO] IHSA schedule not yet implemented for {school}")
-            all_games = []
+    def check_team(entry):
+        """Fetch one team's schedule and return its games in the report week."""
+        if entry["state"] == "WI":
+            all_games = fetch_wiaa_schedule(entry["team_id"], entry["school"])
         else:
-            print(f"  [SKIP] Unknown state '{state}' — skipping")
+            # IL/IHSA schedule scraping — coming soon
             all_games = []
-
-        week_games = games_in_range(all_games, week_start, week_end)
-        if week_games:
-            print(f"  → {len(week_games)} game(s) last week")
-            for g in week_games:
-                ha = "vs." if g["is_home"] else " @"
-                sc = f"  {g['result']} {g['score']}" if g["played"] else "  (no score)"
-                print(f"       {g['date']} {ha} {g['opponent']}{sc}")
-            school_results.append({
-                "school": school,
-                "sport":  sport,
-                "games":  week_games,
-            })
-        else:
-            print(f"  → no games last week")
-
         time.sleep(DELAY)
+        return games_in_range(all_games, week_start, week_end)
+
+    print(f"Checking schedules with {WORKERS} parallel workers...")
+    with ThreadPoolExecutor(max_workers=WORKERS) as ex:
+        week_games_per_team = list(ex.map(check_team, schools))
+
+    school_results = []
+    for entry, week_games in zip(schools, week_games_per_team):
+        if not week_games:
+            continue
+        print(f"[{entry['state']}] {entry['school']} — {entry['sport']}: "
+              f"{len(week_games)} game(s)")
+        for g in week_games:
+            ha = "vs." if g["is_home"] else " @"
+            sc = f"  {g['result']} {g['score']}" if g["played"] else "  (no score)"
+            print(f"       {g['date']} {ha} {g['opponent']}{sc}")
+        school_results.append({
+            "school": entry["school"],
+            "sport":  entry["sport"],
+            "games":  week_games,
+        })
 
     print()
     if not school_results and not SEND_EMPTY:
@@ -463,25 +519,61 @@ def main():
     print(f"Games last week: {sum(len(r['games']) for r in school_results)} total, "
           f"{played_count} with scores")
 
-    html      = build_html(school_results, week_start, week_end)
-    subject   = (f"BSG Sports Scores — Week of {week_start.strftime('%b %d')}"
-                 f" – {week_end.strftime('%b %d, %Y')}")
-    recipient = SCORES_RECIPIENT
+    # ── Group results by sales rep ────────────────────────────────────────────
+    rep_config  = load_rep_config()
+    school_reps = load_school_reps()
 
-    if DRY_RUN:
-        print(f"\n[DRY RUN] Subject: {subject}")
-        print(f"[DRY RUN] Recipient: {recipient}")
-        print(f"[DRY RUN] Schools with games last week:")
-        for r in school_results:
-            print(f"  • {r['school']} ({r['sport']})")
-        Path("dry_run_email.html").write_text(html, encoding="utf-8")
-        print("[DRY RUN] Email HTML written to dry_run_email.html")
-    else:
-        ok = send_email(subject, html, recipient)
-        if ok:
-            print(f"\n[OK] Sent scores email to {recipient}")
+    by_rep = {}
+    for r in school_results:
+        rep = school_reps.get(r["school"], "")
+        if rep not in rep_config:
+            rep = ""  # unknown/unassigned rep → Andy's copy
+        by_rep.setdefault(rep, []).append(r)
+
+    # SEND_EMPTY test mode with no games at all: one empty email to Andy
+    if not by_rep and SEND_EMPTY:
+        by_rep = {"": []}
+
+    week_label = (f"Week of {week_start.strftime('%b %d')}"
+                  f" – {week_end.strftime('%b %d, %Y')}")
+
+    print(f"\nEmails to build: {len(by_rep)} "
+          f"(reps: {[rep or 'Andy/unassigned' for rep in by_rep]})")
+    if not SCORES_LIVE:
+        print("TEST MODE (SCORES_LIVE unset) — every email goes to "
+              f"{GMAIL_USER} instead of the rep\n")
+
+    for rep, results in sorted(by_rep.items()):
+        cfg     = rep_config.get(rep, {})
+        html    = build_html(results, week_start, week_end)
+        subject = (f"{rep + ' — ' if rep else ''}School Scores — {week_label}")
+
+        if rep and cfg.get("email"):
+            intended_to = cfg["email"]
+            intended_cc = cfg.get("cc")
         else:
-            print(f"\n[WARN] Email not sent (check credentials)")
+            intended_to = GMAIL_USER
+            intended_cc = None
+
+        if SCORES_LIVE:
+            to_addr, cc_addr = intended_to, intended_cc
+            bcc_addr = GMAIL_USER  # Andy sees every rep's email
+        else:
+            to_addr, cc_addr, bcc_addr = GMAIL_USER, None, None
+            if intended_to != GMAIL_USER:
+                subject = f"[TEST → {intended_to}] {subject}"
+
+        if DRY_RUN:
+            print(f"[DRY RUN] {subject}  →  {to_addr}"
+                  + (f" (cc {cc_addr})" if cc_addr else ""))
+            for r in results:
+                print(f"    • {r['school']} ({r['sport']}): {len(r['games'])} game(s)")
+            fname = f"dry_run_email_{(rep or 'andy').replace(' ', '_')}.html"
+            Path(fname).write_text(html, encoding="utf-8")
+            print(f"[DRY RUN] wrote {fname}")
+        else:
+            ok = send_email(subject, html, to_addr, cc_addr, bcc_addr)
+            print(f"[{'OK' if ok else 'WARN'}] {subject}  →  {to_addr}")
 
 
 if __name__ == "__main__":

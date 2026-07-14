@@ -10,13 +10,22 @@ on:
     - cron: '0 12 * * 1'
   workflow_dispatch:
     inputs:
-      dry_run:
-        description: 'Dry run — print email content without sending'
+      live:
+        description: 'LIVE — send to each sales rep (unchecked: all emails go to Andy)'
         required: true
-        default: true
+        default: false
         type: boolean
+      dry_run:
+        description: 'Dry run — print email content without sending anything'
+        required: false
+        default: false
+        type: boolean
+      week_of:
+        description: 'Report the week containing this date, YYYY-MM-DD (blank = last week)'
+        required: false
+        default: ''
       send_empty:
-        description: 'Send the email even if no games were found (testing)'
+        description: 'Send Andy an email even if no games were found (testing)'
         required: false
         default: false
         type: boolean
@@ -45,20 +54,26 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install requests beautifulsoup4
+        run: pip install requests beautifulsoup4 gspread google-auth pandas openpyxl
 
       - name: Run scores email
         run: python scores_email.py
         env:
-          GMAIL_USER:         ${{ secrets.GMAIL_USER }}
-          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
-          SCORES_RECIPIENT:   ${{ secrets.SCORES_RECIPIENT }}
-          # Push events are the one-off live test: real send, to Andy only,
-          # Mount Horeb schools only, and send even though it's off-season.
-          DRY_RUN:            ${{ github.event_name == 'push' && '0' || (inputs.dry_run == true && '1' || '0') }}
-          SEND_EMPTY:         ${{ (github.event_name == 'push' || inputs.send_empty == true) && '1' || '0' }}
+          GMAIL_USER:              ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD:      ${{ secrets.GMAIL_APP_PASSWORD }}
+          GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+          # Reps only receive email when the "live" box is checked (or on the
+          # Monday schedule once SCORES_LIVE_DEFAULT repo variable is set to 1).
+          # Otherwise every rep's email is redirected to Andy with a
+          # "[TEST -> rep@...]" subject prefix.
+          SCORES_LIVE:        ${{ (inputs.live == true || (github.event_name == 'schedule' && vars.SCORES_LIVE_DEFAULT == '1')) && '1' || '0' }}
+          DRY_RUN:            ${{ inputs.dry_run == true && '1' || '0' }}
+          SEND_EMPTY:         ${{ inputs.send_empty == true && '1' || '0' }}
           DUMP_HTML:          ${{ inputs.dump_html == true && '1' || '0' }}
-          SCHOOL_FILTER:      ${{ github.event_name == 'push' && 'mount horeb' || inputs.school_filter }}
+          SCHOOL_FILTER:      ${{ inputs.school_filter }}
+          # Push events are the one-off historical test: April 20-26, 2026
+          WEEK_OF:            ${{ github.event_name == 'push' && '2026-04-20' || inputs.week_of }}
 
       - name: Upload HTML dumps (debug)
         if: inputs.dump_html == true
@@ -69,11 +84,11 @@ jobs:
           retention-days: 3
           if-no-files-found: ignore
 
-      - name: Upload dry-run email preview
+      - name: Upload dry-run email previews
         if: always() && inputs.dry_run == true
         uses: actions/upload-artifact@v4
         with:
-          name: email-preview
-          path: dry_run_email.html
+          name: email-previews
+          path: dry_run_email_*.html
           retention-days: 3
           if-no-files-found: ignore
