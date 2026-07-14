@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-07-13T05:14:37.699674Z",
+  "updated": "2026-07-14T04:41:28.117048Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -140,6 +140,14 @@
     },
     {
       "school": "Antigo High School",
+      "email": "dawitman@antigoschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Dan",
+      "last": "Witman"
+    },
+    {
+      "school": "Antigo High School",
       "email": "goginski@antigoschools.org",
       "role": "Superintendent",
       "sport": "",
@@ -164,6 +172,14 @@
     },
     {
       "school": "Antigo High School",
+      "email": "jechiamulera@npsd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Jenny",
+      "last": "Chiamulera"
+    },
+    {
+      "school": "Antigo High School",
       "email": "jferg@antigoschools.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -185,14 +201,6 @@
       "sport": "Boys & Girls Wrestling",
       "first": "Joe",
       "last": "Pregler"
-    },
-    {
-      "school": "Antigo High School",
-      "email": "jstebbeds@npsd.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Jeff",
-      "last": "Stebbeds"
     },
     {
       "school": "Antigo High School",
@@ -233,14 +241,6 @@
       "sport": "Girls Softball",
       "first": "Sandi",
       "last": "Robrecht"
-    },
-    {
-      "school": "Antigo High School",
-      "email": "tborneman@antigoschools.org",
-      "role": "Principal",
-      "sport": "",
-      "first": "Trina",
-      "last": "Borneman"
     },
     {
       "school": "Antigo High School",
@@ -1329,14 +1329,6 @@
       "sport": "Girls Golf",
       "first": "Mitch",
       "last": "Meyer"
-    },
-    {
-      "school": "Bay Port High School",
-      "email": "mpoirier@ashwaubenon.gov",
-      "role": "Head Coach",
-      "sport": "Boys Cross Country",
-      "first": "Matthew",
-      "last": "Poirier"
     },
     {
       "school": "Bay Port High School",
@@ -7700,6 +7692,14 @@
     },
     {
       "school": "Shawano High School",
+      "email": "mprey@shawanoschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Mike",
+      "last": "Prey"
+    },
+    {
+      "school": "Shawano High School",
       "email": "nboucher@shawanoschools.org",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -9441,6 +9441,14 @@
       "sport": "Girls Swimming & Diving",
       "first": "Melissa",
       "last": "Wolf"
+    },
+    {
+      "school": "West De Pere High School",
+      "email": "pheinberg@wdpsd.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Payton",
+      "last": "Heinberg"
     },
     {
       "school": "West De Pere High School",

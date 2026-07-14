@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-07-13T05:12:52.291433Z",
+  "updated": "2026-07-14T04:39:42.618361Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -353,6 +353,14 @@
       "sport": "Boys Hockey",
       "first": "Richard",
       "last": "Brown"
+    },
+    {
+      "school": "Bangor High School",
+      "email": "sschmeling@bangorsd.net",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Shane",
+      "last": "Schmeling"
     },
     {
       "school": "Bangor High School",
