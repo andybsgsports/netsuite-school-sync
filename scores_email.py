@@ -48,7 +48,7 @@ from bs4 import BeautifulSoup
 # ── Config ────────────────────────────────────────────────────────────────────
 GMAIL_USER         = os.environ.get("GMAIL_USER", "")
 GMAIL_APP_PASSWORD = os.environ.get("GMAIL_APP_PASSWORD", "")
-SCORES_CSV         = os.environ.get("SCORES_CSV", "scores_schools.csv")
+SCORES_CSV         = os.environ.get("SCORES_CSV", "").strip() or "scores_schools.csv"
 SCORES_RECIPIENT   = os.environ.get("SCORES_RECIPIENT", "").strip() or GMAIL_USER
 DRY_RUN            = os.environ.get("DRY_RUN", "0") == "1"
 DUMP_HTML          = os.environ.get("DUMP_HTML", "0") == "1"
