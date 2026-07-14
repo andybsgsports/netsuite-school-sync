@@ -6,6 +6,8 @@ outlook_token_cache.json
 # Data files (live in Google Sheets now)
 *.xlsx
 *.csv
+# Scores email config — committed so GitHub Actions can read it
+!scores_schools.csv
 
 # Python
 __pycache__/

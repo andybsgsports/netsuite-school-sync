@@ -1,0 +1,88 @@
+name: Discover Team IDs
+
+on:
+  schedule:
+    # 10:00 UTC on the 1st of each month — refresh TeamIDs as seasons roll over
+    - cron: '0 10 1 * *'
+  workflow_dispatch:
+    inputs:
+      sport_filter:
+        description: 'Only keep sports containing this text (blank = all sports)'
+        required: false
+        default: ''
+      school_filter:
+        description: 'Only process this school (blank = all WI schools)'
+        required: false
+        default: ''
+      dump_html:
+        description: 'Dump first school page HTML as artifact (debugging)'
+        required: false
+        default: false
+        type: boolean
+      commit_csv:
+        description: 'Commit the generated scores_schools.csv to the branch'
+        required: true
+        default: true
+        type: boolean
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write  # to commit the generated CSV
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+
+      - name: Discover team IDs
+        run: python discover_team_ids.py
+        env:
+          GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+          SPORT_FILTER:            ${{ inputs.sport_filter }}
+          SCHOOL_FILTER:           ${{ inputs.school_filter }}
+          DUMP_HTML:               ${{ inputs.dump_html == true && '1' || '0' }}
+
+
+      - name: Upload CSV as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: scores-schools-csv
+          path: scores_schools.csv
+          retention-days: 7
+
+      - name: Upload HTML dump (debug)
+        if: inputs.dump_html == true
+        uses: actions/upload-artifact@v4
+        with:
+          name: school-page-html
+          path: dump_school_*.html
+          retention-days: 3
+          if-no-files-found: ignore
+
+      - name: Commit generated CSV
+        if: inputs.commit_csv == true || github.event_name == 'schedule'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add scores_schools.csv
+          if git diff --cached --quiet; then
+            echo "No CSV changes to commit."
+          else
+            git commit -m "chore: refresh scores_schools.csv via team ID discovery [skip ci]"
+            for i in 1 2 3; do
+              git pull --rebase && git push && break
+              echo "push attempt $i failed, retrying..."
+              sleep 5
+            done
+          fi
