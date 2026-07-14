@@ -12,15 +12,22 @@ last week appear in the email.
 CSV required columns:
   School Name, State, Sport, TeamID
 
-Sending: prefers Microsoft Graph (mail goes out genuinely FROM the
-andy@bsgsports.com M365 mailbox) when OUTLOOK_* secrets are present and the
-token has Mail.Send; otherwise falls back to Gmail SMTP.
+Sending — first configured sender wins:
+  1. NetSuite email RESTlet  (From: andy@bsgsports.com — the way NetSuite
+     already sends his email; see suitescript/send_email_restlet.js)
+  2. Microsoft Graph         (From: the bsgsports M365 mailbox; needs
+     Mail.Send consent, currently blocked pending MS admin approval)
+  3. Gmail SMTP              (fallback — same account as the rep digests)
 
 Env vars:
+  NS_ACCOUNT + NS_CONSUMER_KEY/SEC + NS_TOKEN_KEY/SEC   (existing secrets)
+  NS_EMAIL_RESTLET_SCRIPT_ID   script= id of the deployed send-email RESTlet
+  NS_EMAIL_RESTLET_DEPLOY_ID   deploy= id of the deployed send-email RESTlet
+  NS_EMAIL_AUTHOR_ID           optional employee internal id to send as
+                               (defaults to the integration token's user)
   OUTLOOK_CLIENT_ID    Azure app id      (same as outlook contacts sync)
   OUTLOOK_TENANT_ID    Azure tenant id   (same as outlook contacts sync)
   OUTLOOK_TOKEN_CACHE  MSAL token cache JSON — must include Mail.Send scope
-                       (re-run outlook_auth_setup.py once to add it)
   GMAIL_USER           fallback sender + default recipient
   GMAIL_APP_PASSWORD   Gmail app password (16-char, 2FA required)
   SCORES_CSV           path to CSV  (default: scores_schools.csv)
@@ -355,6 +362,42 @@ def build_html(school_results, week_start, week_end):
 
 
 # ── Email sender ──────────────────────────────────────────────────────────────
+NS_EMAIL_SCRIPT_ID = os.environ.get("NS_EMAIL_RESTLET_SCRIPT_ID", "").strip()
+NS_EMAIL_DEPLOY_ID = os.environ.get("NS_EMAIL_RESTLET_DEPLOY_ID", "").strip()
+NS_EMAIL_AUTHOR_ID = os.environ.get("NS_EMAIL_AUTHOR_ID", "").strip()
+
+
+def send_via_netsuite(subject, html_body, recipient):
+    """Send from andy@bsgsports.com through NetSuite's email RESTlet.
+    Returns True on success, False on failure, None if not configured."""
+    if not (NS_EMAIL_SCRIPT_ID and NS_EMAIL_DEPLOY_ID
+            and os.environ.get("NS_ACCOUNT", "").strip()):
+        return None
+    try:
+        # Reuse the sync's OAuth 1.0 signer — same credentials, RESTlet host.
+        from netsuite_sync import make_auth, NS_ACCOUNT
+        url = (f"https://{NS_ACCOUNT}.restlets.api.netsuite.com"
+               f"/app/site/hosting/restlet.nl"
+               f"?script={NS_EMAIL_SCRIPT_ID}&deploy={NS_EMAIL_DEPLOY_ID}")
+        payload = {"recipient": recipient, "subject": subject, "htmlBody": html_body}
+        if NS_EMAIL_AUTHOR_ID:
+            payload["authorId"] = NS_EMAIL_AUTHOR_ID
+        r = requests.post(url, json=payload, timeout=30, headers={
+            "Authorization": make_auth("POST", url),
+            "Content-Type": "application/json",
+        })
+        if r.status_code == 200:
+            out = r.json()
+            if out.get("success"):
+                return True
+            print(f"  [WARN] NetSuite email RESTlet error: {out.get('error', '?')}")
+        else:
+            print(f"  [WARN] NetSuite email RESTlet HTTP {r.status_code}: {r.text[:200]}")
+    except Exception as e:
+        print(f"  [WARN] NetSuite email send failed: {e}")
+    return False
+
+
 OUTLOOK_CLIENT_ID   = os.environ.get("OUTLOOK_CLIENT_ID", "").strip()
 OUTLOOK_TENANT_ID   = os.environ.get("OUTLOOK_TENANT_ID", "").strip()
 OUTLOOK_TOKEN_CACHE = os.environ.get("OUTLOOK_TOKEN_CACHE", "").strip()
@@ -427,15 +470,21 @@ def send_via_gmail(subject, html_body, recipient):
 
 
 def send_email(subject, html_body, recipient):
-    """Prefer Graph (true From: andy@bsgsports.com); fall back to Gmail."""
+    """First configured sender wins: NetSuite RESTlet (true
+    From: andy@bsgsports.com, DKIM already set up) → Graph → Gmail."""
+    ns = send_via_netsuite(subject, html_body, recipient)
+    if ns:
+        print("  [MAIL] Sent via NetSuite (from andy@bsgsports.com)")
+        return True
+    if ns is False:
+        print("  [MAIL] NetSuite send failed — trying next sender")
+
     token = _graph_token()
     if token:
         print("  [MAIL] Sending via Microsoft Graph (from bsgsports mailbox)")
         if send_via_graph(subject, html_body, recipient, token):
             return True
         print("  [MAIL] Graph failed — falling back to Gmail SMTP")
-    else:
-        print("  [MAIL] Graph not configured (or token lacks Mail.Send) — using Gmail SMTP")
     return send_via_gmail(subject, html_body, recipient)
 
 

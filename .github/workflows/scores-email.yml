@@ -41,6 +41,14 @@ jobs:
       - name: Run scores email
         run: python scores_email.py
         env:
+          NS_ACCOUNT:                 ${{ secrets.NS_ACCOUNT }}
+          NS_CONSUMER_KEY:            ${{ secrets.NS_CONSUMER_KEY }}
+          NS_CONSUMER_SEC:            ${{ secrets.NS_CONSUMER_SEC }}
+          NS_TOKEN_KEY:               ${{ secrets.NS_TOKEN_KEY }}
+          NS_TOKEN_SEC:               ${{ secrets.NS_TOKEN_SEC }}
+          NS_EMAIL_RESTLET_SCRIPT_ID: ${{ secrets.NS_EMAIL_RESTLET_SCRIPT_ID }}
+          NS_EMAIL_RESTLET_DEPLOY_ID: ${{ secrets.NS_EMAIL_RESTLET_DEPLOY_ID }}
+          NS_EMAIL_AUTHOR_ID:         ${{ secrets.NS_EMAIL_AUTHOR_ID }}
           OUTLOOK_CLIENT_ID:   ${{ secrets.OUTLOOK_CLIENT_ID }}
           OUTLOOK_TENANT_ID:   ${{ secrets.OUTLOOK_TENANT_ID }}
           OUTLOOK_TOKEN_CACHE: ${{ secrets.OUTLOOK_TOKEN_CACHE }}
