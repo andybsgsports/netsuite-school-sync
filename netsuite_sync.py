@@ -524,7 +524,8 @@ def build_address_items(school_info, contacts, school_name=""):
 
     return items
 
-def sync_address_book(customer_id, school_info, contacts, school_name=""):
+def sync_address_book(customer_id, school_info, contacts, school_name="",
+                      heal_billing=True):
     """
     Sync Ship-To addresses for active contacts. Adds one Ship-To per
     contact that doesn't already have one (matched by label = contact name).
@@ -532,6 +533,15 @@ def sync_address_book(customer_id, school_info, contacts, school_name=""):
     NetSuite REST API PATCH always adds to addressBook — it cannot
     replace or clear. So we only add missing entries.
     Removals are handled by remove_contact_ship_to() when contacts depart.
+
+    heal_billing: when True (the school's own customer record) the default
+    Bill-To line's street/addressee are healed to the fresh WIAA address
+    just like the Ship-To lines — that line is the address NetSuite shows
+    on the customer, and it used to be the one place a stale address
+    survived forever (Monroe stayed on 1600 26th St after WIAA moved the
+    school to 1004 31st Ave). Pass False when syncing a district PARENT
+    record: its Bill-To is the district office, not the school, and must
+    not be overwritten with a child school's address.
     """
     addr1 = school_info.get("address1", "")
     city  = school_info.get("city", "")
@@ -559,8 +569,8 @@ def sync_address_book(customer_id, school_info, contacts, school_name=""):
     # pre-existing Ship-To, and it caused the same contacts to be re-added
     # on every run (80+ duplicate Ship-Tos on Barneveld as of Apr 2026).
     #
-    # While we're reading each line, also HEAL non-Bill-To lines to match the
-    # fresh scrape:
+    # While we're reading each line, also HEAL lines to match the fresh
+    # scrape:
     #   - addressee: a line left as "Harvard" after the school was renamed
     #     "Harvard High School" gets the canonical name. (Used to be a manual
     #     fix_address_names.py run.)
@@ -570,8 +580,10 @@ def sync_address_book(customer_id, school_info, contacts, school_name=""):
     #     and the NS customer's custom fields already self-heal to WIAA;
     #     existing address lines shouldn't be the one place stale data
     #     survives forever.
-    # Bill-To lines are left alone — billing addresses (often the district
-    # office) are managed intentionally and feed invoices.
+    # The default Bill-To line — the address NetSuite displays on the
+    # customer — heals too when heal_billing=True (the school's own record).
+    # It stays untouched on district PARENT records (heal_billing=False):
+    # a district office's billing address must not become a child school's.
     existing_labels = set()
     healed = 0
     r = ns_get(f"customer/{customer_id}?expand=addressBook")
@@ -589,7 +601,7 @@ def sync_address_book(customer_id, school_info, contacts, school_name=""):
             lbl = (line.get("label") or "").strip()
             if lbl:
                 existing_labels.add(lbl.lower())
-            if not line.get("defaultBilling"):
+            if heal_billing or not line.get("defaultBilling"):
                 sub = ns_get(f"customer/{customer_id}/addressBook/{line_id}/addressBookAddress")
                 if sub.status_code == 200:
                     cur = sub.json()

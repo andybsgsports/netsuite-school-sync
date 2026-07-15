@@ -578,11 +578,14 @@ def main():
                                   school_name=display_name)
                 # Parent/child customers: also keep the parent's Ship-To
                 # book current. Addressee uses School Name, which holds the
-                # district-level name for these schools.
+                # district-level name for these schools. heal_billing=False:
+                # the parent's Bill-To is the district office and must not
+                # be overwritten with the school's WIAA address.
                 parent_id = sch.get("parent", "")
                 if parent_id.isdigit() and parent_id != str(result_id):
                     sync_address_book(parent_id, school_info_out, active_contacts,
-                                      school_name=school_name)
+                                      school_name=school_name,
+                                      heal_billing=False)
 
         # Save every 10 schools so a timeout doesn't lose all hash progress.
         # sync_y_N is modulo — cheap sheet write vs. hours of re-push on re-run.
