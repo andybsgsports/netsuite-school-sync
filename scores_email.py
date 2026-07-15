@@ -526,75 +526,70 @@ def sport_section(sport):
 def build_html(school_results, week_start, week_end):
     """
     school_results: list of {"school": str, "sport": str, "games": [game_dict, ...]}
-    Returns an HTML string covering the week, grouped into one section per
-    sport (BASEBALL, SOFTBALL, ...) with that sport's games listed under it.
+    Returns an HTML string covering the week. Condensed layout: one section
+    per sport (BASEBALL, SOFTBALL, ...), and inside it each school is a
+    slim sub-header with its games in tight rows underneath.
     """
     date_str = (f"Week of {week_start.strftime('%B %d')} – "
                 f"{week_end.strftime('%B %d, %Y')}")
 
-    # Flatten to (section, school, game) and group by section. The school's
-    # record label lives on each game (it updates game to game through the
-    # week), so it renders per row rather than per school.
+    # section -> school -> [games]
     sections = {}
     for item in school_results:
         section = sport_section(item["sport"])
-        for g in item["games"]:
-            sections.setdefault(section, []).append((item["school"], g))
+        bucket = sections.setdefault(section, {}).setdefault(item["school"], [])
+        bucket.extend(item["games"])
+
+    cell = "padding:4px 10px;border-bottom:1px solid #f0f0f0;font-size:13px"
 
     blocks = []
     for section in sorted(sections):
         rows = []
-        # Schools alphabetical, each school's games together in date order
-        # (doubleheaders ordered by start time so records read game 1 → 2).
-        for school, g in sorted(
-                sections[section],
-                key=lambda x: (x[0], x[1]["date"],
-                               x[1].get("time_min") if x[1].get("time_min") is not None else 1441)):
-            ha = "vs." if g["is_home"] else "@"
+        for school in sorted(sections[section]):
+            games = sorted(
+                sections[section][school],
+                key=lambda g: (g["date"],
+                               g.get("time_min") if g.get("time_min") is not None else 1441))
 
-            if g["played"]:
-                color = {"W": "#2e7d32", "L": "#c62828", "T": "#555"}.get(g["result"], "#555")
-                label = g["result"] or "Final"
-                sc    = f"&nbsp;&nbsp;{g['score']}" if g["score"] else ""
-                result_html = f'<strong style="color:{color}">{label}{sc}</strong>'
-            else:
-                result_html = '<span style="color:#888;font-style:italic">No score reported</span>'
-
+            # Slim school sub-header spanning the table
             rows.append(f"""
         <tr>
-          <td style="padding:8px 14px;border-bottom:1px solid #eee;white-space:nowrap;color:#777;font-size:13px">
+          <td colspan="4" style="padding:6px 10px 4px;background:#eef0f7;
+              border-bottom:1px solid #dde;font-size:13px;font-weight:700;
+              color:#1a237e">{school}</td>
+        </tr>""")
+
+            for g in games:
+                ha = "vs." if g["is_home"] else "@"
+                if g["played"]:
+                    color = {"W": "#2e7d32", "L": "#c62828", "T": "#555"}.get(g["result"], "#555")
+                    sc = f"&nbsp;{g['score']}" if g["score"] else ""
+                    result_html = f'<strong style="color:{color}">{g["result"] or "F"}{sc}</strong>'
+                else:
+                    result_html = '<span style="color:#999;font-style:italic">no score</span>'
+
+                opp = (f'{ha} {g["opponent"]}'
+                       + (f' <span style="color:#888;font-size:12px">({g["opp_record"]})</span>'
+                          if g.get("opp_record") else ""))
+                rec = (f'<span style="color:#555;font-size:12px">{g["self_record"]}</span>'
+                       if g.get("self_record") else "")
+
+                rows.append(f"""
+        <tr>
+          <td style="{cell};white-space:nowrap;color:#888;width:62px">
             {g["date"].strftime("%a %m/%d")}
           </td>
-          <td style="padding:8px 14px;border-bottom:1px solid #eee;font-weight:600">
-            {school}{f' <span style="font-weight:400;color:#666;font-size:13px">({g["self_record"]})</span>' if g.get("self_record") else ""}
-          </td>
-          <td style="padding:8px 14px;border-bottom:1px solid #eee">
-            {ha} {g["opponent"]}{f' <span style="color:#666;font-size:13px">({g["opp_record"]})</span>' if g.get("opp_record") else ""}
-          </td>
-          <td style="padding:8px 14px;border-bottom:1px solid #eee;text-align:center;white-space:nowrap">
-            {result_html}
-          </td>
+          <td style="{cell}">{opp}</td>
+          <td style="{cell};text-align:center;white-space:nowrap;width:70px">{result_html}</td>
+          <td style="{cell};white-space:nowrap;text-align:right">{rec}</td>
         </tr>""")
 
         blocks.append(f"""
-      <div style="background:#1a237e;color:#fff;padding:9px 16px;margin:26px 0 0;
-                  border-radius:6px 6px 0 0;font-size:15px;font-weight:700;
+      <div style="background:#1a237e;color:#fff;padding:7px 12px;margin:18px 0 0;
+                  border-radius:6px 6px 0 0;font-size:14px;font-weight:700;
                   letter-spacing:1px">{section}</div>
       <table width="100%" cellpadding="0" cellspacing="0"
-             style="border-collapse:collapse;font-size:14px;border:1px solid #eee;
-                    border-top:none">
-        <thead>
-          <tr style="background:#f5f5f5">
-            <th style="padding:8px 14px;text-align:left;border-bottom:2px solid #ddd;
-                       font-weight:600;font-size:12px;color:#666">Date</th>
-            <th style="padding:8px 14px;text-align:left;border-bottom:2px solid #ddd;
-                       font-weight:600;font-size:12px;color:#666">School</th>
-            <th style="padding:8px 14px;text-align:left;border-bottom:2px solid #ddd;
-                       font-weight:600;font-size:12px;color:#666">Opponent</th>
-            <th style="padding:8px 14px;text-align:center;border-bottom:2px solid #ddd;
-                       font-weight:600;font-size:12px;color:#666">Result</th>
-          </tr>
-        </thead>
+             style="border-collapse:collapse;border:1px solid #eee;border-top:none">
         <tbody>{"".join(rows)}
         </tbody>
       </table>""")
