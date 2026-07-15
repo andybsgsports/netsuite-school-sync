@@ -212,14 +212,7 @@ def fetch_wiaa_schedule(team_id, school_name=""):
         if not (home_team or away_team):
             continue
 
-        # Which side is our school? Token match against the school name.
-        is_home = _team_matches(home_team, school_tokens)
-        if not is_home and not _team_matches(away_team, school_tokens):
-            # Neither side matches (multi-team meet row etc.) — assume home
-            is_home = True
-        opponent = away_team if is_home else home_team
-
-        # Opponent's TeamID from the link in their cell (for record lookup)
+        # TeamIDs from the links in the home/away cells
         def cell_team_id(idx):
             if idx is None or idx >= len(cells):
                 return ""
@@ -227,7 +220,22 @@ def fetch_wiaa_schedule(team_id, school_name=""):
             m = TEAMID_RE.search(a["href"]) if a else None
             return m.group(1) if m else ""
 
-        opp_team_id = cell_team_id(ci_away if is_home else ci_home)
+        home_id = cell_team_id(ci_home)
+        away_id = cell_team_id(ci_away)
+
+        # Which side is our team? TeamID match is authoritative; fall back
+        # to name-token matching when the cell has no link.
+        if team_id and team_id in (home_id, away_id):
+            is_home = (home_id == team_id)
+        else:
+            is_home = _team_matches(home_team, school_tokens)
+            if not is_home and not _team_matches(away_team, school_tokens):
+                is_home = True
+        opponent = away_team if is_home else home_team
+        opp_team_id = away_id if is_home else home_id
+
+        # Conference game flag: WIAA marks these with "(C)" on the date
+        is_conf = "(c)" in cell(ci_date).lower()
 
         raw_result = cell(ci_result)
 
@@ -250,16 +258,19 @@ def fetch_wiaa_schedule(team_id, school_name=""):
                     score = f"{sc.group(1)}-{sc.group(2)}"
 
         games.append({
-            "date":        game_date,
-            "opponent":    opponent,
-            "opp_team_id": opp_team_id,
-            "opp_record":  "",   # filled in later from opponent schedule
-            "location":    cell(_col(headers, "location", "site")),
-            "is_home":     is_home,
-            "result":      result,
-            "score":       score,
-            "played":      played,
-            "level":       cell(ci_level),
+            "date":         game_date,
+            "opponent":     opponent,
+            "opp_team_id":  opp_team_id,
+            "opp_record":   "",   # filled in later from opponent schedule
+            "home_team_id": home_id,
+            "away_team_id": away_id,
+            "is_conf":      is_conf,
+            "location":     cell(_col(headers, "location", "site")),
+            "is_home":      is_home,
+            "result":       result,
+            "score":        score,
+            "played":       played,
+            "level":        cell(ci_level),
         })
 
     if DUMP_HTML:
@@ -314,6 +325,92 @@ def record_through(games, end_date):
 def games_in_range(games, start, end):
     """Filter game list to those with start <= date <= end."""
     return [g for g in games if start <= g["date"] <= end]
+
+
+def _win_pct(games, end_date):
+    """Winning pct of played games through end_date (ties = half win).
+    None when no games have been played."""
+    w = l = t = 0
+    for g in games:
+        if not g["played"] or g["date"] > end_date:
+            continue
+        if g["result"] == "W":
+            w += 1
+        elif g["result"] == "L":
+            l += 1
+        elif g["result"] == "T":
+            t += 1
+    n = w + l + t
+    return (w + 0.5 * t) / n if n else None
+
+
+def _opp_id(g, self_tid):
+    """Opponent TeamID in game g relative to team self_tid."""
+    if g["home_team_id"] == self_tid:
+        return g["away_team_id"]
+    if g["away_team_id"] == self_tid:
+        return g["home_team_id"]
+    return g.get("opp_team_id", "")
+
+
+def _ordinal(n):
+    if 10 <= n % 100 <= 20:
+        return f"{n}th"
+    return f"{n}{ {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th') }"
+
+
+def conf_member_ids(tid, cache):
+    """Direct conference rivals of team tid = opponents in its (C) games."""
+    return {m for m in (_opp_id(g, tid) for g in cache.get(tid, [])
+                        if g["is_conf"]) if m}
+
+
+def conf_component(tid, cache):
+    """Full conference membership: transitive closure of (C)-game opponents
+    (early in a season a team hasn't played every rival yet, but rivals of
+    rivals are still in the same conference). Excludes tid itself."""
+    seen = {tid}
+    frontier = [tid]
+    while frontier:
+        nxt = []
+        for t in frontier:
+            for m in conf_member_ids(t, cache):
+                if m not in seen:
+                    seen.add(m)
+                    nxt.append(m)
+        frontier = nxt
+    seen.discard(tid)
+    return seen
+
+
+def team_label_stats(tid, end_date, cache):
+    """'15-5, 8-2 Conf, 1st' — overall record, conference record, and
+    conference standing computed by ranking conference-rival win pcts.
+    Parts that can't be computed are omitted."""
+    games = cache.get(tid, [])
+    conf_games = [g for g in games if g["is_conf"]]
+    overall = record_through(games, end_date)
+    confrec = record_through(conf_games, end_date)
+
+    place = ""
+    my_pct = _win_pct(conf_games, end_date)
+    if my_pct is not None:
+        rival_pcts = []
+        for m in conf_component(tid, cache):
+            p = _win_pct([g for g in cache.get(m, []) if g["is_conf"]], end_date)
+            if p is not None:
+                rival_pcts.append(p)
+        if rival_pcts:
+            better = sum(1 for p in rival_pcts if p > my_pct + 1e-9)
+            tied   = sum(1 for p in rival_pcts if abs(p - my_pct) <= 1e-9)
+            place = ("T-" if tied else "") + _ordinal(better + 1)
+
+    parts = [overall]
+    if confrec:
+        parts.append(f"{confrec} Conf")
+    if place:
+        parts.append(place)
+    return ", ".join(p for p in parts if p)
 
 
 # ── HTML email ────────────────────────────────────────────────────────────────
@@ -553,49 +650,69 @@ def main():
         print(f"SCHOOL_FILTER='{SCHOOL_FILTER}' → {len(schools)} team(s)")
     print(f"Loaded {len(schools)} team(s) from {SCORES_CSV}\n")
 
-    def check_team(entry):
-        """Fetch one team's schedule; return (week games, season record)."""
-        if entry["state"] == "WI":
-            all_games = fetch_wiaa_schedule(entry["team_id"], entry["school"])
-        else:
-            # IL/IHSA schedule scraping — coming soon
-            all_games = []
-        time.sleep(DELAY)
-        return (games_in_range(all_games, week_start, week_end),
-                record_through(all_games, week_end))
+    # Schedule cache: TeamID -> full season game list. Filled in three passes:
+    #   A) our tracked teams   B) their week opponents
+    #   C) conference rivals of everyone displayed (for standings ranking)
+    schedule_cache = {}
 
-    print(f"Checking schedules with {WORKERS} parallel workers...")
-    with ThreadPoolExecutor(max_workers=WORKERS) as ex:
-        results_per_team = list(ex.map(check_team, schools))
+    def fetch_batch(pairs, label):
+        pairs = [(t, n) for t, n in pairs if t and t not in schedule_cache]
+        if not pairs:
+            return
+        print(f"Fetching {len(pairs)} schedule(s) ({label})...")
 
-    # Opponent records: fetch each unique opponent's schedule once and
-    # compute their record too. Teams we already track reuse their result.
-    record_by_team_id = {
-        e["team_id"]: rec for e, (_, rec) in zip(schools, results_per_team)
-    }
-    opp_ids = sorted({
-        g["opp_team_id"]
-        for _, (week_games, _) in zip(schools, results_per_team)
-        for g in week_games
-        if g["opp_team_id"] and g["opp_team_id"] not in record_by_team_id
-    })
-    if opp_ids:
-        print(f"Fetching {len(opp_ids)} opponent schedule(s) for records...")
-
-        def opp_record(tid):
-            games = fetch_wiaa_schedule(tid)  # W/L/T parse needs no name
+        def one(pair):
+            tid, name = pair
+            games = fetch_wiaa_schedule(tid, name)
             time.sleep(DELAY)
-            return tid, record_through(games, week_end)
+            return tid, games
 
         with ThreadPoolExecutor(max_workers=WORKERS) as ex:
-            record_by_team_id.update(dict(ex.map(opp_record, opp_ids)))
+            schedule_cache.update(dict(ex.map(one, pairs)))
+
+    print(f"Checking schedules with {WORKERS} parallel workers...")
+    fetch_batch([(e["team_id"], e["school"]) for e in schools
+                 if e["state"] == "WI"], "tracked teams")
+
+    week_by_entry = [
+        games_in_range(schedule_cache.get(e["team_id"], []), week_start, week_end)
+        for e in schools
+    ]
+
+    # Pass B: week-game opponents (their record + standing appear in rows)
+    display_opps = {g["opp_team_id"]
+                    for wg in week_by_entry for g in wg if g["opp_team_id"]}
+    fetch_batch([(t, "") for t in sorted(display_opps)], "week opponents")
+
+    # Pass C: conference rivals of every displayed team — needed to rank
+    # conference standings from (C)-game win percentages. Expands
+    # iteratively because a rival's rivals (not yet played) are also
+    # conference members whose records shape the standings.
+    display_ids = ({e["team_id"] for e, wg in zip(schools, week_by_entry) if wg}
+                   | display_opps)
+    for round_no in range(1, 4):
+        rivals = set()
+        for tid in display_ids:
+            rivals |= conf_component(tid, schedule_cache)
+        new = sorted(rivals - set(schedule_cache))
+        if not new:
+            break
+        fetch_batch([(t, "") for t in new], f"conference rivals round {round_no}")
+
+    label_cache = {}
+
+    def label_for(tid):
+        if tid not in label_cache:
+            label_cache[tid] = team_label_stats(tid, week_end, schedule_cache)
+        return label_cache[tid]
 
     school_results = []
-    for entry, (week_games, record) in zip(schools, results_per_team):
-        for g in week_games:
-            g["opp_record"] = record_by_team_id.get(g["opp_team_id"], "")
+    for entry, week_games in zip(schools, week_by_entry):
         if not week_games:
             continue
+        record = label_for(entry["team_id"])
+        for g in week_games:
+            g["opp_record"] = label_for(g["opp_team_id"]) if g["opp_team_id"] else ""
         rec = f" ({record})" if record else ""
         print(f"[{entry['state']}] {entry['school']}{rec} — {entry['sport']}: "
               f"{len(week_games)} game(s)")
