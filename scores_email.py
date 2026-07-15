@@ -636,10 +636,17 @@ def load_rep_config():
         return {}
 
 
+def _norm_school(name):
+    """Normalized school-name key: case/space/punct-insensitive so minor
+    drift between the sheet and the TeamID CSV ('Southern door' vs
+    'Southern Door') still routes to the right rep."""
+    return re.sub(r"[^a-z0-9]+", " ", str(name or "").lower()).strip()
+
+
 def load_school_reps():
-    """School Name -> Sales Rep from the master sheet's Schools tab.
-    Live lookup so rep reassignments take effect immediately. Returns {}
-    (everything routes to Andy) if the sheet is unreachable."""
+    """Normalized school name -> Sales Rep from the master sheet's Schools
+    tab. Live lookup so rep reassignments take effect immediately. Returns
+    {} (everything routes to Andy) if the sheet is unreachable."""
     sheet_id = os.environ.get("GOOGLE_SHEET_ID", "").strip()
     creds_json = os.environ.get("GOOGLE_CREDENTIALS_JSON", "")
     if not (sheet_id and creds_json):
@@ -661,7 +668,7 @@ def load_school_reps():
             name = str(rec.get("School Name", "")).strip()
             rep  = str(rec.get("Sales Rep", "")).strip()
             if name:
-                out[name] = rep
+                out[_norm_school(name)] = rep
         return out
     except Exception as e:
         print(f"[WARN] Schools tab lookup failed ({e}) — all schools route to Andy")
@@ -826,7 +833,7 @@ def main():
 
     by_rep = {}
     for r in school_results:
-        rep = school_reps.get(r["school"], "")
+        rep = school_reps.get(_norm_school(r["school"]), "")
         if rep not in rep_config:
             rep = ""  # unknown/unassigned rep → Andy's copy
         by_rep.setdefault(rep, []).append(r)
