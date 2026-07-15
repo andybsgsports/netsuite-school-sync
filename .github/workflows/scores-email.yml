@@ -1,6 +1,10 @@
 name: Weekly Scores Email
 
 on:
+  # TEMPORARY: push trigger — all-reps April 2026 test (2025-26 TeamIDs)
+  push:
+    branches: ['claude/wonderful-maxwell-1c6wt0']
+    paths: ['.trigger-scores']
   schedule:
     # 12:00 UTC Monday = 7:00 AM CDT — weekly digest of last week's games
     - cron: '0 12 * * 1'
@@ -68,7 +72,8 @@ jobs:
           SEND_EMPTY:         ${{ inputs.send_empty == true && '1' || '0' }}
           DUMP_HTML:          ${{ inputs.dump_html == true && '1' || '0' }}
           SCHOOL_FILTER:      ${{ inputs.school_filter }}
-          WEEK_OF:            ${{ inputs.week_of }}
+          WEEK_OF:            ${{ github.event_name == 'push' && '2026-04-20' || inputs.week_of }}
+          SCORES_CSV:         ${{ github.event_name == 'push' && 'scores_test_2025-26.csv' || '' }}
 
       - name: Upload HTML dumps (debug)
         if: inputs.dump_html == true
