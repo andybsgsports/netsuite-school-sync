@@ -162,11 +162,12 @@ def fetch_wiaa_schedule(team_id, school_name=""):
 
     # WIAA ScoreCenter format (confirmed via live dump 2026-06):
     #   Date | Date | Home | Away | Location | Result | ContestID | ContestType
-    ci_date   = _col(headers, "date")
-    ci_home   = _col(headers, "home")
-    ci_away   = _col(headers, "away")
-    ci_result = _col(headers, "result", "score", "final", "w/l", "outcome")
-    ci_level  = _col(headers, "contesttype", "contest type", "level", "class")
+    ci_date    = _col(headers, "date")
+    ci_home    = _col(headers, "home")
+    ci_away    = _col(headers, "away")
+    ci_result  = _col(headers, "result", "score", "final", "w/l", "outcome")
+    ci_level   = _col(headers, "contesttype", "contest type", "level", "class")
+    ci_contest = _col(headers, "contestid", "contest id")
 
     if ci_date is None or ci_home is None or ci_away is None:
         print(f"  [WARN] TeamID {team_id}: can't identify date/home/away columns.")
@@ -237,6 +238,15 @@ def fetch_wiaa_schedule(team_id, school_name=""):
         # Conference game flag: WIAA marks these with "(C)" on the date
         is_conf = "(c)" in cell(ci_date).lower()
 
+        # Start time (for ordering doubleheader games within a day)
+        tm = re.search(r"(\d{1,2}):(\d{2})\s*(AM|PM)", cell(ci_date), re.I)
+        time_min = None
+        if tm:
+            hh = int(tm.group(1)) % 12
+            if tm.group(3).upper() == "PM":
+                hh += 12
+            time_min = hh * 60 + int(tm.group(2))
+
         raw_result = cell(ci_result)
 
         # Result: "W 8-3", "L 2-5", "Tie 0-0", "W 16-2 (5)",
@@ -259,6 +269,8 @@ def fetch_wiaa_schedule(team_id, school_name=""):
 
         games.append({
             "date":         game_date,
+            "time_min":     time_min,
+            "contest_id":   cell(ci_contest).strip(),
             "opponent":     opponent,
             "opp_team_id":  opp_team_id,
             "opp_record":   "",   # filled in later from opponent schedule
@@ -383,6 +395,83 @@ def conf_component(tid, cache):
     return seen
 
 
+def _fmt_rec(w, l, t):
+    if not (w or l or t):
+        return ""
+    return f"{w}-{l}-{t}" if t else f"{w}-{l}"
+
+
+def running_records(tid, cache, store):
+    """Per-game running record for team tid: iterate the season in true
+    chronological order (date, then start time — so doubleheader game 1
+    counts before game 2) and record the team's overall record, conference
+    record, and conference win pct AFTER each game. Keyed by the game
+    object's identity and by ContestID (so the same contest can be looked
+    up from the opponent's copy of the schedule)."""
+    if tid in store:
+        return store[tid]
+    games = cache.get(tid, [])
+    order = sorted(range(len(games)),
+                   key=lambda i: (games[i]["date"],
+                                  games[i]["time_min"] if games[i]["time_min"] is not None else 1441,
+                                  i))
+    w = l = t = cw = cl = ct = 0
+    m = {}
+    for i in order:
+        g = games[i]
+        if g["played"]:
+            if g["result"] == "W":
+                w += 1
+                cw += 1 if g["is_conf"] else 0
+            elif g["result"] == "L":
+                l += 1
+                cl += 1 if g["is_conf"] else 0
+            elif g["result"] == "T":
+                t += 1
+                ct += 1 if g["is_conf"] else 0
+        n = cw + cl + ct
+        entry = (_fmt_rec(w, l, t), _fmt_rec(cw, cl, ct),
+                 (cw + 0.5 * ct) / n if n else None)
+        m[id(g)] = entry
+        if g["contest_id"]:
+            m[("c", g["contest_id"])] = entry
+    store[tid] = m
+    return m
+
+
+def game_label(tid, g, cache, store):
+    """'8-1, 4-1 Conf, 2nd' as of AFTER this specific game — doubleheader
+    game 1 and game 2 get different records. Standings rank this team's
+    post-game conference pct against rivals' pct through the same date."""
+    recs = running_records(tid, cache, store)
+    entry = recs.get(id(g))
+    if entry is None and g["contest_id"]:
+        entry = recs.get(("c", g["contest_id"]))
+    if entry is None:
+        # Game not found in this team's schedule copy — date-based fallback
+        return team_label_stats(tid, g["date"], cache)
+    overall, confrec, my_pct = entry
+
+    place = ""
+    if my_pct is not None:
+        rival_pcts = []
+        for m in conf_component(tid, cache):
+            p = _win_pct([x for x in cache.get(m, []) if x["is_conf"]], g["date"])
+            if p is not None:
+                rival_pcts.append(p)
+        if rival_pcts:
+            better = sum(1 for p in rival_pcts if p > my_pct + 1e-9)
+            tied   = sum(1 for p in rival_pcts if abs(p - my_pct) <= 1e-9)
+            place = ("T-" if tied else "") + _ordinal(better + 1)
+
+    parts = [overall]
+    if confrec:
+        parts.append(f"{confrec} Conf")
+    if place:
+        parts.append(place)
+    return ", ".join(p for p in parts if p)
+
+
 def team_label_stats(tid, end_date, cache):
     """'15-5, 8-2 Conf, 1st' — overall record, conference record, and
     conference standing computed by ranking conference-rival win pcts.
@@ -456,9 +545,11 @@ def build_html(school_results, week_start, week_end):
     for section in sorted(sections):
         rows = []
         # Schools alphabetical, each school's games together in date order
-        # (all of Barneveld's baseball games as a block, then the next school).
-        for school, g in sorted(sections[section],
-                                key=lambda x: (x[0], x[1]["date"])):
+        # (doubleheaders ordered by start time so records read game 1 → 2).
+        for school, g in sorted(
+                sections[section],
+                key=lambda x: (x[0], x[1]["date"],
+                               x[1].get("time_min") if x[1].get("time_min") is not None else 1441)):
             ha = "vs." if g["is_home"] else "@"
 
             if g["played"]:
@@ -697,24 +788,17 @@ def main():
             break
         fetch_batch([(t, "") for t in new], f"conference rivals round {round_no}")
 
-    label_cache = {}
-
-    def label_for(tid, as_of):
-        """Record/standing label as of a given date — records update game
-        by game through the week (Mon's win shows in Mon's row, Tue's row
-        reflects it plus Tue's result)."""
-        key = (tid, as_of)
-        if key not in label_cache:
-            label_cache[key] = team_label_stats(tid, as_of, schedule_cache)
-        return label_cache[key]
+    running_store = {}
 
     school_results = []
     for entry, week_games in zip(schools, week_by_entry):
         if not week_games:
             continue
         for g in week_games:
-            g["self_record"] = label_for(entry["team_id"], g["date"])
-            g["opp_record"] = (label_for(g["opp_team_id"], g["date"])
+            g["self_record"] = game_label(entry["team_id"], g,
+                                          schedule_cache, running_store)
+            g["opp_record"] = (game_label(g["opp_team_id"], g,
+                                          schedule_cache, running_store)
                                if g["opp_team_id"] else "")
         print(f"[{entry['state']}] {entry['school']} — {entry['sport']}: "
               f"{len(week_games)} game(s)")
