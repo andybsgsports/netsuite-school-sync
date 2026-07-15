@@ -599,8 +599,9 @@ def main():
               f"{len(week_games)} game(s)")
         for g in week_games:
             ha = "vs." if g["is_home"] else " @"
+            orec = f" ({g['opp_record']})" if g["opp_record"] else ""
             sc = f"  {g['result']} {g['score']}" if g["played"] else "  (no score)"
-            print(f"       {g['date']} {ha} {g['opponent']}{sc}")
+            print(f"       {g['date']} {ha} {g['opponent']}{orec}{sc}")
         school_results.append({
             "school": entry["school"],
             "sport":  entry["sport"],
