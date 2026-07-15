@@ -273,17 +273,47 @@ def games_in_range(games, start, end):
 
 
 # ── HTML email ────────────────────────────────────────────────────────────────
+# Sports that only one gender plays — drop the Boys/Girls prefix in headers
+# ("Boys Baseball" → "BASEBALL"). Everything else keeps its prefix so
+# GIRLS SOCCER and BOYS SOCCER stay separate sections.
+_SINGLE_GENDER_SPORTS = {
+    "baseball", "softball", "football", "football 8-player", "gymnastics",
+}
+
+
+def sport_section(sport):
+    """Section header for a sport: 'Boys Baseball' → 'BASEBALL',
+    'Girls Soccer' → 'GIRLS SOCCER'."""
+    s = re.sub(r"\s+", " ", str(sport or "").strip())
+    low = s.lower()
+    for prefix in ("boys ", "girls "):
+        if low.startswith(prefix) and low[len(prefix):] in _SINGLE_GENDER_SPORTS:
+            s = s[len(prefix):]
+            break
+    return s.upper() or "OTHER"
+
+
 def build_html(school_results, week_start, week_end):
     """
     school_results: list of {"school": str, "sport": str, "games": [game_dict, ...]}
-    Returns an HTML string covering the week week_start–week_end.
+    Returns an HTML string covering the week, grouped into one section per
+    sport (BASEBALL, SOFTBALL, ...) with that sport's games listed under it.
     """
     date_str = (f"Week of {week_start.strftime('%B %d')} – "
                 f"{week_end.strftime('%B %d, %Y')}")
 
-    rows = []
+    # Flatten to (section, school, game) and group by section
+    sections = {}
     for item in school_results:
-        for g in sorted(item["games"], key=lambda x: x["date"]):
+        section = sport_section(item["sport"])
+        for g in item["games"]:
+            sections.setdefault(section, []).append((item["school"], g))
+
+    blocks = []
+    for section in sorted(sections):
+        rows = []
+        for school, g in sorted(sections[section],
+                                key=lambda x: (x[0], x[1]["date"])):
             ha = "vs." if g["is_home"] else "@"
 
             if g["played"]:
@@ -294,35 +324,49 @@ def build_html(school_results, week_start, week_end):
             else:
                 result_html = '<span style="color:#888;font-style:italic">No score reported</span>'
 
-            lvl = g.get("level", "")
-            lvl_html = (f' <span style="font-size:11px;color:#888">({lvl})</span>'
-                        if lvl and lvl.lower() not in ("", "varsity", "1") else "")
-
             rows.append(f"""
         <tr>
-          <td style="padding:9px 14px;border-bottom:1px solid #eee;white-space:nowrap;color:#555">
+          <td style="padding:8px 14px;border-bottom:1px solid #eee;white-space:nowrap;color:#777;font-size:13px">
             {g["date"].strftime("%a %m/%d")}
           </td>
-          <td style="padding:9px 14px;border-bottom:1px solid #eee;white-space:nowrap">
-            {item["school"]}{lvl_html}
+          <td style="padding:8px 14px;border-bottom:1px solid #eee;font-weight:600">
+            {school}
           </td>
-          <td style="padding:9px 14px;border-bottom:1px solid #eee;color:#555">
-            {item["sport"]}
-          </td>
-          <td style="padding:9px 14px;border-bottom:1px solid #eee">
+          <td style="padding:8px 14px;border-bottom:1px solid #eee">
             {ha} {g["opponent"]}
           </td>
-          <td style="padding:9px 14px;border-bottom:1px solid #eee;text-align:center">
+          <td style="padding:8px 14px;border-bottom:1px solid #eee;text-align:center;white-space:nowrap">
             {result_html}
           </td>
         </tr>""")
 
-    rows_html = "".join(rows) if rows else """
-        <tr>
-          <td colspan="5" style="padding:20px;text-align:center;color:#999">
-            No games found last week.
-          </td>
-        </tr>"""
+        blocks.append(f"""
+      <div style="background:#1a237e;color:#fff;padding:9px 16px;margin:26px 0 0;
+                  border-radius:6px 6px 0 0;font-size:15px;font-weight:700;
+                  letter-spacing:1px">{section}</div>
+      <table width="100%" cellpadding="0" cellspacing="0"
+             style="border-collapse:collapse;font-size:14px;border:1px solid #eee;
+                    border-top:none">
+        <thead>
+          <tr style="background:#f5f5f5">
+            <th style="padding:8px 14px;text-align:left;border-bottom:2px solid #ddd;
+                       font-weight:600;font-size:12px;color:#666">Date</th>
+            <th style="padding:8px 14px;text-align:left;border-bottom:2px solid #ddd;
+                       font-weight:600;font-size:12px;color:#666">School</th>
+            <th style="padding:8px 14px;text-align:left;border-bottom:2px solid #ddd;
+                       font-weight:600;font-size:12px;color:#666">Opponent</th>
+            <th style="padding:8px 14px;text-align:center;border-bottom:2px solid #ddd;
+                       font-weight:600;font-size:12px;color:#666">Result</th>
+          </tr>
+        </thead>
+        <tbody>{"".join(rows)}
+        </tbody>
+      </table>""")
+
+    body_html = "".join(blocks) if blocks else """
+      <p style="padding:20px;text-align:center;color:#999">
+        No games found last week.
+      </p>"""
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -337,26 +381,7 @@ def build_html(school_results, week_start, week_end):
       <p style="margin:5px 0 0;opacity:.8;font-size:14px">{date_str}</p>
     </div>
 
-    <div style="padding:24px 28px">
-      <table width="100%" cellpadding="0" cellspacing="0"
-             style="border-collapse:collapse;font-size:14px">
-        <thead>
-          <tr style="background:#f5f5f5">
-            <th style="padding:10px 14px;text-align:left;border-bottom:2px solid #ddd;
-                       font-weight:600">Date</th>
-            <th style="padding:10px 14px;text-align:left;border-bottom:2px solid #ddd;
-                       font-weight:600">School</th>
-            <th style="padding:10px 14px;text-align:left;border-bottom:2px solid #ddd;
-                       font-weight:600">Sport</th>
-            <th style="padding:10px 14px;text-align:left;border-bottom:2px solid #ddd;
-                       font-weight:600">Opponent</th>
-            <th style="padding:10px 14px;text-align:center;border-bottom:2px solid #ddd;
-                       font-weight:600">Result</th>
-          </tr>
-        </thead>
-        <tbody>{rows_html}
-        </tbody>
-      </table>
+    <div style="padding:4px 28px 24px">{body_html}
     </div>
 
     <div style="padding:14px 28px;background:#f9f9f9;border-top:1px solid #eee;
