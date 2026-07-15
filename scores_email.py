@@ -187,6 +187,18 @@ def fetch_wiaa_schedule(team_id, school_name=""):
 
         if DUMP_HTML and sample < 3:
             print(f"  [SAMPLE] cells={[cell(i) for i in range(len(cells))]}")
+            if sample == 0:
+                # Raw row HTML: shows whether home/away cells carry TeamID
+                # links we could use to look up opponent records.
+                print(f"  [ROWHTML] {str(row)[:1200]}")
+                # Any standings/record/conference breadcrumbs on the page
+                for a in soup.find_all("a", href=True)[:40]:
+                    href = a["href"]
+                    if re.search(r"conference|standing|record", href, re.I):
+                        print(f"  [PAGELINK] {a.get_text(' ', strip=True)!r} -> {href[:160]}")
+                for el in soup.find_all(string=re.compile(r"(Record|Conference|Overall)", re.I))[:8]:
+                    parent_text = el.parent.get_text(" ", strip=True)[:160]
+                    print(f"  [PAGETEXT] {parent_text}")
             sample += 1
 
         game_date = _parse_date(cell(ci_date))
@@ -267,6 +279,24 @@ def prior_week_range(today=None):
     return last_monday, last_sunday
 
 
+def record_through(games, end_date):
+    """Season W-L(-T) record from played games on or before end_date,
+    e.g. '15-5' or '15-5-1'. Empty string if nothing played."""
+    w = l = t = 0
+    for g in games:
+        if not g["played"] or g["date"] > end_date:
+            continue
+        if g["result"] == "W":
+            w += 1
+        elif g["result"] == "L":
+            l += 1
+        elif g["result"] == "T":
+            t += 1
+    if not (w or l or t):
+        return ""
+    return f"{w}-{l}-{t}" if t else f"{w}-{l}"
+
+
 def games_in_range(games, start, end):
     """Filter game list to those with start <= date <= end."""
     return [g for g in games if start <= g["date"] <= end]
@@ -302,12 +332,16 @@ def build_html(school_results, week_start, week_end):
     date_str = (f"Week of {week_start.strftime('%B %d')} – "
                 f"{week_end.strftime('%B %d, %Y')}")
 
-    # Flatten to (section, school, game) and group by section
+    # Flatten to (section, school_label, game) and group by section.
+    # school_label carries the season record: "Barneveld High School (15-5)"
     sections = {}
     for item in school_results:
         section = sport_section(item["sport"])
+        label = item["school"]
+        if item.get("record"):
+            label += f' <span style="font-weight:400;color:#666">({item["record"]})</span>'
         for g in item["games"]:
-            sections.setdefault(section, []).append((item["school"], g))
+            sections.setdefault(section, []).append((label, g))
 
     blocks = []
     for section in sorted(sections):
@@ -504,24 +538,26 @@ def main():
     print(f"Loaded {len(schools)} team(s) from {SCORES_CSV}\n")
 
     def check_team(entry):
-        """Fetch one team's schedule and return its games in the report week."""
+        """Fetch one team's schedule; return (week games, season record)."""
         if entry["state"] == "WI":
             all_games = fetch_wiaa_schedule(entry["team_id"], entry["school"])
         else:
             # IL/IHSA schedule scraping — coming soon
             all_games = []
         time.sleep(DELAY)
-        return games_in_range(all_games, week_start, week_end)
+        return (games_in_range(all_games, week_start, week_end),
+                record_through(all_games, week_end))
 
     print(f"Checking schedules with {WORKERS} parallel workers...")
     with ThreadPoolExecutor(max_workers=WORKERS) as ex:
-        week_games_per_team = list(ex.map(check_team, schools))
+        results_per_team = list(ex.map(check_team, schools))
 
     school_results = []
-    for entry, week_games in zip(schools, week_games_per_team):
+    for entry, (week_games, record) in zip(schools, results_per_team):
         if not week_games:
             continue
-        print(f"[{entry['state']}] {entry['school']} — {entry['sport']}: "
+        rec = f" ({record})" if record else ""
+        print(f"[{entry['state']}] {entry['school']}{rec} — {entry['sport']}: "
               f"{len(week_games)} game(s)")
         for g in week_games:
             ha = "vs." if g["is_home"] else " @"
@@ -530,6 +566,7 @@ def main():
         school_results.append({
             "school": entry["school"],
             "sport":  entry["sport"],
+            "record": record,
             "games":  week_games,
         })
 
