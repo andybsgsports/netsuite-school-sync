@@ -1,10 +1,6 @@
 name: Weekly Scores Email
 
 on:
-  # TEMPORARY: push trigger — one condensed-layout sample email (removed pre-merge)
-  push:
-    branches: ['claude/wonderful-maxwell-1c6wt0']
-    paths: ['.trigger-scores']
   schedule:
     # 12:00 UTC Monday = 7:00 AM CDT — weekly digest of last week's games
     - cron: '0 12 * * 1'
@@ -71,9 +67,8 @@ jobs:
           DRY_RUN:            ${{ inputs.dry_run == true && '1' || '0' }}
           SEND_EMPTY:         ${{ inputs.send_empty == true && '1' || '0' }}
           DUMP_HTML:          ${{ inputs.dump_html == true && '1' || '0' }}
-          SCHOOL_FILTER:      ${{ github.event_name == 'push' && 'mount horeb' || inputs.school_filter }}
-          WEEK_OF:            ${{ github.event_name == 'push' && '2026-04-20' || inputs.week_of }}
-          SCORES_CSV:         ${{ github.event_name == 'push' && 'scores_test_2025-26.csv' || '' }}
+          SCHOOL_FILTER:      ${{ inputs.school_filter }}
+          WEEK_OF:            ${{ inputs.week_of }}
 
       - name: Upload HTML dumps (debug)
         if: inputs.dump_html == true
