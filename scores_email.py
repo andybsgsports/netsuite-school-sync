@@ -766,7 +766,10 @@ def main():
     for rep, results in sorted(by_rep.items()):
         cfg     = rep_config.get(rep, {})
         html    = build_html(results, week_start, week_end)
-        subject = (f"{rep + ' — ' if rep else ''}School Scores — {week_label}")
+        # Schools with a blank/unrecognized Sales Rep on the Schools tab
+        # land in a clearly-labeled catch-all that only Andy receives.
+        who     = rep or "Unassigned Schools (no Sales Rep on sheet)"
+        subject = f"{who} — School Scores — {week_label}"
 
         if rep and cfg.get("email"):
             intended_to = cfg["email"]
