@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-07-14T04:39:42.618361Z",
+  "updated": "2026-07-15T04:39:24.348320Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -916,14 +916,6 @@
     },
     {
       "school": "DeSoto High School",
-      "email": "cgerlach@desoto.k12.wi.us",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Craig",
-      "last": "Gerlach"
-    },
-    {
-      "school": "DeSoto High School",
       "email": "derekfuglsang@desoto.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Cross Country",
@@ -1009,6 +1001,14 @@
       "sport": "Boys Track and Field",
       "first": "Nick",
       "last": "Mooney"
+    },
+    {
+      "school": "DeSoto High School",
+      "email": "tfergot@desoto.k12.wi.us",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Tim",
+      "last": "Fergot"
     },
     {
       "school": "DeSoto High School",
@@ -3108,14 +3108,6 @@
     },
     {
       "school": "Madison Lafollette High School",
-      "email": "akraabe@madison.k12.wi.us",
-      "role": "Assistant Principal",
-      "sport": "",
-      "first": "Alisha",
-      "last": "Raabe"
-    },
-    {
-      "school": "Madison Lafollette High School",
       "email": "alexis.lafollettevolleyball@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -3212,6 +3204,14 @@
     },
     {
       "school": "Madison Lafollette High School",
+      "email": "jbough@madison.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Gymnastics",
+      "first": "Jasmin",
+      "last": "Bough"
+    },
+    {
+      "school": "Madison Lafollette High School",
       "email": "jdmatcha@madison.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
@@ -3281,14 +3281,6 @@
       "sport": "",
       "first": "Mat",
       "last": "Thompson"
-    },
-    {
-      "school": "Madison Lafollette High School",
-      "email": "mlestkowski@madison.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Swimming & Diving",
-      "first": "Madi",
-      "last": "Estkowski"
     },
     {
       "school": "Madison Lafollette High School",
@@ -3493,7 +3485,7 @@
     {
       "school": "Madison Memorial High School",
       "email": "lksponsel@madison.k12.wi.us",
-      "role": "Athletic Director",
+      "role": "Assistant Athletic Director",
       "sport": "",
       "first": "Leigha",
       "last": "Sponsel"
@@ -3553,6 +3545,14 @@
       "sport": "Boys Baseball",
       "first": "Nick",
       "last": "Krohn"
+    },
+    {
+      "school": "Madison Memorial High School",
+      "email": "rjbrachman3@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Rj",
+      "last": "Brachman"
     },
     {
       "school": "Madison Memorial High School",

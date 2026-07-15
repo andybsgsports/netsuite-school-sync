@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-07-14T04:37:34.991894Z",
+  "updated": "2026-07-15T04:37:20.571286Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -2620,6 +2620,14 @@
     },
     {
       "school": "Brookfield East High School",
+      "email": "gardnerm@elmbrookschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Matt",
+      "last": "Gardner"
+    },
+    {
+      "school": "Brookfield East High School",
       "email": "gollad@elmbrookschools.org",
       "role": "Head Coach",
       "sport": "Boys Track and Field",
@@ -2716,14 +2724,6 @@
     },
     {
       "school": "Brookfield East High School",
-      "email": "rosem@elmbrookschools.org",
-      "role": "Head Coach",
-      "sport": "Girls Swimming & Diving",
-      "first": "Michael",
-      "last": "Rose"
-    },
-    {
-      "school": "Brookfield East High School",
       "email": "ruxj@elmbrookschools.org",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -2788,11 +2788,11 @@
     },
     {
       "school": "Brown Deer High School",
-      "email": "ahoppe@browndeerschools.com",
+      "email": "a613af@gmail.com",
       "role": "Head Coach",
       "sport": "Boys & Girls Swimming Diving",
-      "first": "Amanda",
-      "last": "Hoppe"
+      "first": "Ali",
+      "last": "Forier"
     },
     {
       "school": "Brown Deer High School",
@@ -2812,19 +2812,11 @@
     },
     {
       "school": "Brown Deer High School",
-      "email": "canwar@browndeerschools.com",
-      "role": "AD Admin Assistant",
-      "sport": "",
-      "first": "Cathy",
-      "last": "Anwar"
-    },
-    {
-      "school": "Brown Deer High School",
-      "email": "cbrown@browndeerschools.com",
-      "role": "Principal",
-      "sport": "",
-      "first": "Chvala",
-      "last": "Brown"
+      "email": "coachmaryrabe@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Mary",
+      "last": "Rabe"
     },
     {
       "school": "Brown Deer High School",
@@ -2833,14 +2825,6 @@
       "sport": "Boys Basketball",
       "first": "Darryl",
       "last": "Longley"
-    },
-    {
-      "school": "Brown Deer High School",
-      "email": "dopeyones@att.net",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Chris",
-      "last": "Miller"
     },
     {
       "school": "Brown Deer High School",
@@ -2860,11 +2844,11 @@
     },
     {
       "school": "Brown Deer High School",
-      "email": "jduffrin@browndeerschools.com",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Cross Country",
-      "first": "James",
-      "last": "Duffrin"
+      "email": "jmcclain-kelly@browndeerschools.com",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "J'Anna",
+      "last": "McClain-Kelly"
     },
     {
       "school": "Brown Deer High School",
@@ -2876,17 +2860,17 @@
     },
     {
       "school": "Brown Deer High School",
-      "email": "jugladney@browndeerschools.com",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Julian",
-      "last": "Gladney"
+      "email": "jsims@browndeerschools.com",
+      "role": "Principal",
+      "sport": "",
+      "first": "Jamie",
+      "last": "Sims"
     },
     {
       "school": "Brown Deer High School",
       "email": "jugladney@browndeerschools.com",
       "role": "Head Coach",
-      "sport": "Boys Wrestling",
+      "sport": "Boys Football",
       "first": "Julian",
       "last": "Gladney"
     },
@@ -2897,6 +2881,14 @@
       "sport": "",
       "first": "Katrice",
       "last": "Cotton"
+    },
+    {
+      "school": "Brown Deer High School",
+      "email": "kstewart@browndeerschools.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Kevin",
+      "last": "Stewart"
     },
     {
       "school": "Brown Deer High School",
@@ -2918,7 +2910,7 @@
       "school": "Brown Deer High School",
       "email": "rkass@browndeerschools.com",
       "role": "Head Coach",
-      "sport": "Girls Volleyball",
+      "sport": "Boys Volleyball",
       "first": "Rachel",
       "last": "Kass"
     },
@@ -2929,6 +2921,22 @@
       "sport": "Boys Golf",
       "first": "Randy",
       "last": "Williams"
+    },
+    {
+      "school": "Brown Deer High School",
+      "email": "sedrickhay@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Sedrick",
+      "last": "Hay"
+    },
+    {
+      "school": "Brown Deer High School",
+      "email": "skey@browndeerschools.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Shayna",
+      "last": "Key"
     },
     {
       "school": "Burlington High School",
@@ -5404,7 +5412,7 @@
     },
     {
       "school": "Dundee-Crown High School",
-      "email": "cnunnery@district158.org",
+      "email": "curtis.nunnery@d300.org",
       "role": "Athletic Director",
       "sport": "",
       "first": "Curtis",
@@ -5412,7 +5420,7 @@
     },
     {
       "school": "Dundee-Crown High School",
-      "email": "cnunnery@district158.org",
+      "email": "curtis.nunnery@d300.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Gymnastics",
       "first": "Curtis",
@@ -5420,7 +5428,7 @@
     },
     {
       "school": "Dundee-Crown High School",
-      "email": "cnunnery@district158.org",
+      "email": "curtis.nunnery@d300.org",
       "role": "Head Coach",
       "sport": "Boys Bowling",
       "first": "Curtis",
@@ -9412,6 +9420,14 @@
     },
     {
       "school": "Hononegah High School",
+      "email": "ejarre@hononegah.org",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Ehren",
+      "last": "Jarrett"
+    },
+    {
+      "school": "Hononegah High School",
       "email": "gsanto@hononegah.org",
       "role": "Principal's Assistant",
       "sport": "",
@@ -9476,6 +9492,14 @@
     },
     {
       "school": "Hononegah High School",
+      "email": "kjohns@hononegah.org",
+      "role": "Certified Athletic Trainer",
+      "sport": "",
+      "first": "Kristin",
+      "last": "Johns"
+    },
+    {
+      "school": "Hononegah High School",
       "email": "klewis@hononegah.org",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -9489,14 +9513,6 @@
       "sport": "Girls Volleyball",
       "first": "Kaylee",
       "last": "Libby"
-    },
-    {
-      "school": "Hononegah High School",
-      "email": "mdugan@hononegah.org",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Michael",
-      "last": "Dugan"
     },
     {
       "school": "Hononegah High School",
@@ -9673,14 +9689,6 @@
       "sport": "Competitive Dance",
       "first": "Cadence",
       "last": "Niccum"
-    },
-    {
-      "school": "Huntley High School",
-      "email": "cnunnery@district158.org",
-      "role": "Activities Director & Asst. Boys Athletic Director & Asst. Girls Athletic Director",
-      "sport": "",
-      "first": "Curtis",
-      "last": "Nunnery"
     },
     {
       "school": "Huntley High School",

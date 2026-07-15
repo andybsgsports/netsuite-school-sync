@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-07-14T04:41:28.117048Z",
+  "updated": "2026-07-15T04:41:07.115209Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -4620,11 +4620,11 @@
     },
     {
       "school": "Kimberly High School",
-      "email": "kimlotten1@gmail.com",
+      "email": "kimberlygirlstrackandfield@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Track and Field",
-      "first": "Kim",
-      "last": "Lotten"
+      "first": "Don",
+      "last": "Carper"
     },
     {
       "school": "Kimberly High School",
@@ -5329,6 +5329,14 @@
       "sport": "Girls Softball",
       "first": "Timothy",
       "last": "Mehlberg"
+    },
+    {
+      "school": "Marion High School",
+      "email": "tracie.voight@marion-mustangs.org",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Tracie",
+      "last": "Voight"
     },
     {
       "school": "Marion High School",

@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-07-14T04:43:24.906767Z",
+  "updated": "2026-07-15T04:43:02.975767Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -1468,19 +1468,27 @@
     },
     {
       "school": "Horicon High School",
+      "email": "ashepard@horicon.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Adrian",
+      "last": "Shepard"
+    },
+    {
+      "school": "Horicon High School",
+      "email": "awitt@horicon.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Alex",
+      "last": "Witt"
+    },
+    {
+      "school": "Horicon High School",
       "email": "benstrieff@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Baseball",
       "first": "Ben",
       "last": "Strieff"
-    },
-    {
-      "school": "Horicon High School",
-      "email": "bharris@horicon.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Benjamin",
-      "last": "Harris"
     },
     {
       "school": "Horicon High School",
@@ -1497,14 +1505,6 @@
       "sport": "Girls Wrestling",
       "first": "Jacob",
       "last": "Borkowski"
-    },
-    {
-      "school": "Horicon High School",
-      "email": "coachjoekern@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Wrestling",
-      "first": "Joe",
-      "last": "Kern"
     },
     {
       "school": "Horicon High School",
@@ -1985,6 +1985,14 @@
       "sport": "Girls Basketball",
       "first": "Ellie",
       "last": "Steiner"
+    },
+    {
+      "school": "Kewaskum High School",
+      "email": "jboyer@kewaskumschools.org",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Josh",
+      "last": "Boyer"
     },
     {
       "school": "Kewaskum High School",
