@@ -70,6 +70,8 @@ WIAA_HEADERS = {
 WIAA_SCHEDULE_BASE = "https://schools.wiaawi.org/Directory/Schedule/Index"
 DELAY = 0.6  # seconds between requests
 
+TEAMID_RE = re.compile(r"TeamID=(\d+)", re.I)
+
 
 # ── WIAA date parser ──────────────────────────────────────────────────────────
 def _parse_date(text):
@@ -217,6 +219,16 @@ def fetch_wiaa_schedule(team_id, school_name=""):
             is_home = True
         opponent = away_team if is_home else home_team
 
+        # Opponent's TeamID from the link in their cell (for record lookup)
+        def cell_team_id(idx):
+            if idx is None or idx >= len(cells):
+                return ""
+            a = cells[idx].find("a", href=True)
+            m = TEAMID_RE.search(a["href"]) if a else None
+            return m.group(1) if m else ""
+
+        opp_team_id = cell_team_id(ci_away if is_home else ci_home)
+
         raw_result = cell(ci_result)
 
         # Result: "W 8-3", "L 2-5", "Tie 0-0", "W 16-2 (5)",
@@ -238,14 +250,16 @@ def fetch_wiaa_schedule(team_id, school_name=""):
                     score = f"{sc.group(1)}-{sc.group(2)}"
 
         games.append({
-            "date":     game_date,
-            "opponent": opponent,
-            "location": cell(_col(headers, "location", "site")),
-            "is_home":  is_home,
-            "result":   result,
-            "score":    score,
-            "played":   played,
-            "level":    cell(ci_level),
+            "date":        game_date,
+            "opponent":    opponent,
+            "opp_team_id": opp_team_id,
+            "opp_record":  "",   # filled in later from opponent schedule
+            "location":    cell(_col(headers, "location", "site")),
+            "is_home":     is_home,
+            "result":      result,
+            "score":       score,
+            "played":      played,
+            "level":       cell(ci_level),
         })
 
     if DUMP_HTML:
@@ -367,7 +381,7 @@ def build_html(school_results, week_start, week_end):
             {school}
           </td>
           <td style="padding:8px 14px;border-bottom:1px solid #eee">
-            {ha} {g["opponent"]}
+            {ha} {g["opponent"]}{f' <span style="color:#666;font-size:13px">({g["opp_record"]})</span>' if g.get("opp_record") else ""}
           </td>
           <td style="padding:8px 14px;border-bottom:1px solid #eee;text-align:center;white-space:nowrap">
             {result_html}
@@ -552,8 +566,32 @@ def main():
     with ThreadPoolExecutor(max_workers=WORKERS) as ex:
         results_per_team = list(ex.map(check_team, schools))
 
+    # Opponent records: fetch each unique opponent's schedule once and
+    # compute their record too. Teams we already track reuse their result.
+    record_by_team_id = {
+        e["team_id"]: rec for e, (_, rec) in zip(schools, results_per_team)
+    }
+    opp_ids = sorted({
+        g["opp_team_id"]
+        for _, (week_games, _) in zip(schools, results_per_team)
+        for g in week_games
+        if g["opp_team_id"] and g["opp_team_id"] not in record_by_team_id
+    })
+    if opp_ids:
+        print(f"Fetching {len(opp_ids)} opponent schedule(s) for records...")
+
+        def opp_record(tid):
+            games = fetch_wiaa_schedule(tid)  # W/L/T parse needs no name
+            time.sleep(DELAY)
+            return tid, record_through(games, week_end)
+
+        with ThreadPoolExecutor(max_workers=WORKERS) as ex:
+            record_by_team_id.update(dict(ex.map(opp_record, opp_ids)))
+
     school_results = []
     for entry, (week_games, record) in zip(schools, results_per_team):
+        for g in week_games:
+            g["opp_record"] = record_by_team_id.get(g["opp_team_id"], "")
         if not week_games:
             continue
         rec = f" ({record})" if record else ""

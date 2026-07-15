@@ -75,6 +75,10 @@ jobs:
           WEEK_OF:            ${{ github.event_name == 'push' && '2026-04-20' || inputs.week_of }}
           SCORES_CSV:         ${{ github.event_name == 'push' && 'scores_test_2025-26.csv' || '' }}
 
+      - name: Probe standings pages (diagnostic)
+        if: github.event_name == 'push'
+        run: python probe_standings.py
+
       - name: Upload HTML dumps (debug)
         if: inputs.dump_html == true
         uses: actions/upload-artifact@v4
