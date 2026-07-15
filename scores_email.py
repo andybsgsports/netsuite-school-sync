@@ -443,16 +443,14 @@ def build_html(school_results, week_start, week_end):
     date_str = (f"Week of {week_start.strftime('%B %d')} – "
                 f"{week_end.strftime('%B %d, %Y')}")
 
-    # Flatten to (section, school_label, game) and group by section.
-    # school_label carries the season record: "Barneveld High School (15-5)"
+    # Flatten to (section, school, game) and group by section. The school's
+    # record label lives on each game (it updates game to game through the
+    # week), so it renders per row rather than per school.
     sections = {}
     for item in school_results:
         section = sport_section(item["sport"])
-        label = item["school"]
-        if item.get("record"):
-            label += f' <span style="font-weight:400;color:#666">({item["record"]})</span>'
         for g in item["games"]:
-            sections.setdefault(section, []).append((label, g))
+            sections.setdefault(section, []).append((item["school"], g))
 
     blocks = []
     for section in sorted(sections):
@@ -477,7 +475,7 @@ def build_html(school_results, week_start, week_end):
             {g["date"].strftime("%a %m/%d")}
           </td>
           <td style="padding:8px 14px;border-bottom:1px solid #eee;font-weight:600">
-            {school}
+            {school}{f' <span style="font-weight:400;color:#666;font-size:13px">({g["self_record"]})</span>' if g.get("self_record") else ""}
           </td>
           <td style="padding:8px 14px;border-bottom:1px solid #eee">
             {ha} {g["opponent"]}{f' <span style="color:#666;font-size:13px">({g["opp_record"]})</span>' if g.get("opp_record") else ""}
@@ -701,30 +699,34 @@ def main():
 
     label_cache = {}
 
-    def label_for(tid):
-        if tid not in label_cache:
-            label_cache[tid] = team_label_stats(tid, week_end, schedule_cache)
-        return label_cache[tid]
+    def label_for(tid, as_of):
+        """Record/standing label as of a given date — records update game
+        by game through the week (Mon's win shows in Mon's row, Tue's row
+        reflects it plus Tue's result)."""
+        key = (tid, as_of)
+        if key not in label_cache:
+            label_cache[key] = team_label_stats(tid, as_of, schedule_cache)
+        return label_cache[key]
 
     school_results = []
     for entry, week_games in zip(schools, week_by_entry):
         if not week_games:
             continue
-        record = label_for(entry["team_id"])
         for g in week_games:
-            g["opp_record"] = label_for(g["opp_team_id"]) if g["opp_team_id"] else ""
-        rec = f" ({record})" if record else ""
-        print(f"[{entry['state']}] {entry['school']}{rec} — {entry['sport']}: "
+            g["self_record"] = label_for(entry["team_id"], g["date"])
+            g["opp_record"] = (label_for(g["opp_team_id"], g["date"])
+                               if g["opp_team_id"] else "")
+        print(f"[{entry['state']}] {entry['school']} — {entry['sport']}: "
               f"{len(week_games)} game(s)")
         for g in week_games:
             ha = "vs." if g["is_home"] else " @"
+            srec = f" ({g['self_record']})" if g["self_record"] else ""
             orec = f" ({g['opp_record']})" if g["opp_record"] else ""
             sc = f"  {g['result']} {g['score']}" if g["played"] else "  (no score)"
-            print(f"       {g['date']} {ha} {g['opponent']}{orec}{sc}")
+            print(f"       {g['date']}{srec} {ha} {g['opponent']}{orec}{sc}")
         school_results.append({
             "school": entry["school"],
             "sport":  entry["sport"],
-            "record": record,
             "games":  week_games,
         })
 
