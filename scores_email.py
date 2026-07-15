@@ -457,10 +457,10 @@ def build_html(school_results, week_start, week_end):
     blocks = []
     for section in sorted(sections):
         rows = []
-        # Date first (all Mon 4/20 games together, then Tue 4/21, ...),
-        # schools alphabetical within each day.
+        # Schools alphabetical, each school's games together in date order
+        # (all of Barneveld's baseball games as a block, then the next school).
         for school, g in sorted(sections[section],
-                                key=lambda x: (x[1]["date"], x[0])):
+                                key=lambda x: (x[0], x[1]["date"])):
             ha = "vs." if g["is_home"] else "@"
 
             if g["played"]:
