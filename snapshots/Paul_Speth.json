@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-07-15T04:41:40.427157Z",
+  "updated": "2026-07-16T04:51:38.602654Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -1268,6 +1268,14 @@
     },
     {
       "school": "Monona Grove High School",
+      "email": "jonah.elfers04@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Jonah",
+      "last": "Elfers"
+    },
+    {
+      "school": "Monona Grove High School",
       "email": "joseph.schneider@mgschools.net",
       "role": "Assistant Principal, Athletic Director",
       "sport": "",
@@ -1361,6 +1369,14 @@
       "sport": "Boys Soccer",
       "first": "Randy",
       "last": "Becker"
+    },
+    {
+      "school": "Monona Grove High School",
+      "email": "reed.anderson19@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Cross Country",
+      "first": "Reed",
+      "last": "Anderson"
     },
     {
       "school": "Monona Grove High School",
@@ -1900,6 +1916,14 @@
     },
     {
       "school": "Port Edwards High School",
+      "email": "hughest715@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Tom",
+      "last": "Hughes"
+    },
+    {
+      "school": "Port Edwards High School",
       "email": "jenseet@pesd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Basketball",
@@ -1945,6 +1969,14 @@
       "sport": "",
       "first": "Shane",
       "last": "Steltenpohl"
+    },
+    {
+      "school": "Port Edwards High School",
+      "email": "swig1952@hotmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Wayne",
+      "last": "Swiggum"
     },
     {
       "school": "Port Edwards High School",

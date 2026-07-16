@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-07-15T04:43:50.930906Z",
+  "updated": "2026-07-16T04:53:49.756409Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -276,14 +276,6 @@
     },
     {
       "school": "Beaver Dam High School",
-      "email": "casperj@bdusd.org",
-      "role": "Principal",
-      "sport": "",
-      "first": "John",
-      "last": "Casper"
-    },
-    {
-      "school": "Beaver Dam High School",
       "email": "damonr@bdusd.org",
       "role": "Head Coach",
       "sport": "Boys Tennis",
@@ -385,6 +377,14 @@
       "sport": "Girls Golf",
       "first": "John",
       "last": "Nortman"
+    },
+    {
+      "school": "Beaver Dam High School",
+      "email": "oharak@bdusd.org",
+      "role": "Principal",
+      "sport": "",
+      "first": "Kate",
+      "last": "O'Hara"
     },
     {
       "school": "Beaver Dam High School",
@@ -3676,14 +3676,6 @@
     },
     {
       "school": "Parkview High School",
-      "email": "eredman@email.parkview.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Erika",
-      "last": "Redman"
-    },
-    {
-      "school": "Parkview High School",
       "email": "jhoey@sdb.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Hockey",
@@ -4213,6 +4205,14 @@
     {
       "school": "Slinger High School",
       "email": "alexander.lavine@slingerschools.org",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Alex",
+      "last": "Lavine"
+    },
+    {
+      "school": "Slinger High School",
+      "email": "alexander.lavine@slingerschools.org",
       "role": "Head Coach",
       "sport": "Boys Basketball",
       "first": "Alex",
@@ -4241,14 +4241,6 @@
       "sport": "Boys Baseball",
       "first": "Brandon",
       "last": "Nelson"
-    },
-    {
-      "school": "Slinger High School",
-      "email": "brian.heimark@slingerschools.org",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Brian",
-      "last": "Heimark"
     },
     {
       "school": "Slinger High School",

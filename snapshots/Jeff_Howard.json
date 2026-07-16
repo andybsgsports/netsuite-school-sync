@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-07-15T04:38:15.954015Z",
+  "updated": "2026-07-16T04:48:05.883554Z",
   "records": [
     {
       "school": "Albany High School",
@@ -1476,6 +1476,14 @@
     },
     {
       "school": "Dodgeville High School",
+      "email": "kdvorak@draschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Kaelyn",
+      "last": "Dvorak"
+    },
+    {
+      "school": "Dodgeville High School",
       "email": "kglynn@draschools.org",
       "role": "Head Coach",
       "sport": "Boys Soccer",
@@ -1500,25 +1508,9 @@
     },
     {
       "school": "Dodgeville High School",
-      "email": "mdougherty@draschools.org",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Maggie",
-      "last": "Dougherty"
-    },
-    {
-      "school": "Dodgeville High School",
       "email": "mmcgraw@draschools.org",
       "role": "Head Coach",
       "sport": "Boys Basketball",
-      "first": "Matt",
-      "last": "McGraw"
-    },
-    {
-      "school": "Dodgeville High School",
-      "email": "mmcgraw@draschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Track and Field",
       "first": "Matt",
       "last": "McGraw"
     },
@@ -2228,6 +2220,14 @@
     },
     {
       "school": "Mineral Point High School",
+      "email": "chiefwhitford1@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Chad",
+      "last": "Whitford"
+    },
+    {
+      "school": "Mineral Point High School",
       "email": "cory.sokol@asu.edu",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -2284,14 +2284,6 @@
     },
     {
       "school": "Mineral Point High School",
-      "email": "justin.leonard@mp.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Justin",
-      "last": "Leonard"
-    },
-    {
-      "school": "Mineral Point High School",
       "email": "kari.kabat@mp.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -2329,22 +2321,6 @@
       "sport": "",
       "first": "Mitch",
       "last": "Wainwright"
-    },
-    {
-      "school": "Mineral Point High School",
-      "email": "mmcgraw@draschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Track and Field",
-      "first": "Matt",
-      "last": "McGraw"
-    },
-    {
-      "school": "Mineral Point High School",
-      "email": "quinn.schultz@mp.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Quinn",
-      "last": "Schultz"
     },
     {
       "school": "Mineral Point High School",
@@ -2572,6 +2548,22 @@
     },
     {
       "school": "Monticello High School",
+      "email": "karlech@monticello.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Christina",
+      "last": "Karlen"
+    },
+    {
+      "school": "Monticello High School",
+      "email": "karlech@monticello.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Christina",
+      "last": "Karlen"
+    },
+    {
+      "school": "Monticello High School",
       "email": "knobts@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -2601,22 +2593,6 @@
       "sport": "Girls Softball",
       "first": "Rick",
       "last": "Monson"
-    },
-    {
-      "school": "Monticello High School",
-      "email": "schwacar@monticello.k12.wi.us",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Carolyn",
-      "last": "Schwartzlow"
-    },
-    {
-      "school": "Monticello High School",
-      "email": "schwacar@monticello.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Carolyn",
-      "last": "Schwartzlow"
     },
     {
       "school": "Monticello High School",

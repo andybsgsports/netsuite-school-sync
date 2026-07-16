@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-07-15T04:43:02.975767Z",
+  "updated": "2026-07-16T04:53:00.799726Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -4316,14 +4316,6 @@
     },
     {
       "school": "Oshkosh North High School",
-      "email": "coachspj@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Sean",
-      "last": "Johnson"
-    },
-    {
-      "school": "Oshkosh North High School",
       "email": "craig.lieder@oshkosh.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
@@ -4345,6 +4337,22 @@
       "sport": "Boys Baseball",
       "first": "Dylan",
       "last": "Pease"
+    },
+    {
+      "school": "Oshkosh North High School",
+      "email": "gulanalec@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Alec",
+      "last": "Gulan"
+    },
+    {
+      "school": "Oshkosh North High School",
+      "email": "helmbk26@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Kj",
+      "last": "Helmbrecht"
     },
     {
       "school": "Oshkosh North High School",
@@ -4380,14 +4388,6 @@
     },
     {
       "school": "Oshkosh North High School",
-      "email": "luke.ott@riponathletic.com",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Luke",
-      "last": "Ott"
-    },
-    {
-      "school": "Oshkosh North High School",
       "email": "michelle.carbiener@oshkosh.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Track and Field",
@@ -4420,6 +4420,14 @@
     },
     {
       "school": "Oshkosh North High School",
+      "email": "rseeley13@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Ryan",
+      "last": "Seeley"
+    },
+    {
+      "school": "Oshkosh North High School",
       "email": "ryan.davies@oshkosh.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Track and Field",
@@ -4428,11 +4436,11 @@
     },
     {
       "school": "Oshkosh North High School",
-      "email": "skorell7@gmail.com",
+      "email": "said.warsame415@gmail.com",
       "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Stephanie",
-      "last": "Korell"
+      "sport": "Boys Soccer",
+      "first": "Said",
+      "last": "Warsame"
     },
     {
       "school": "Oshkosh North High School",
@@ -4537,6 +4545,14 @@
       "sport": "Boys Basketball",
       "first": "Daniel",
       "last": "Weisse"
+    },
+    {
+      "school": "Oshkosh West High School",
+      "email": "helmbk26@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Kj",
+      "last": "Helmbrecht"
     },
     {
       "school": "Oshkosh West High School",

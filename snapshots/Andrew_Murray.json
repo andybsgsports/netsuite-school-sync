@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-07-15T04:37:20.571286Z",
+  "updated": "2026-07-16T04:47:07.931778Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -3060,6 +3060,14 @@
     },
     {
       "school": "Burlington High School",
+      "email": "lpomeroy@basd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Leann",
+      "last": "Pomeroy"
+    },
+    {
+      "school": "Burlington High School",
       "email": "millerj@wilmoths.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Gymnastics",
@@ -3433,14 +3441,6 @@
       "sport": "Competitive Cheerleading",
       "first": "Rebecca",
       "last": "Bawinkel"
-    },
-    {
-      "school": "Cary-Grove High School",
-      "email": "asaldivar-castaneda@d155.org",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Amy",
-      "last": "Saldivar-Castaneda"
     },
     {
       "school": "Cary-Grove High School",
@@ -3833,6 +3833,14 @@
       "sport": "Boys Golf",
       "first": "Kyle",
       "last": "Ketterhagen"
+    },
+    {
+      "school": "Catholic Central - Burlington High School",
+      "email": "lpomeroy@basd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Leann",
+      "last": "Pomeroy"
     },
     {
       "school": "Catholic Central - Burlington High School",
@@ -5913,6 +5921,14 @@
       "sport": "",
       "first": "Stacey",
       "last": "Kuehn"
+    },
+    {
+      "school": "East Troy High School",
+      "email": "lpomeroy@basd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Leann",
+      "last": "Pomeroy"
     },
     {
       "school": "East Troy High School",
@@ -9380,22 +9396,6 @@
     },
     {
       "school": "Hononegah High School",
-      "email": "dfinch@hononegah.org",
-      "role": "Coach",
-      "sport": "Sideline Cheer",
-      "first": "Dana",
-      "last": "Fincham"
-    },
-    {
-      "school": "Hononegah High School",
-      "email": "dfinch@hononegah.org",
-      "role": "Head Coach",
-      "sport": "Competitive Cheerleading",
-      "first": "Dana",
-      "last": "Fincham"
-    },
-    {
-      "school": "Hononegah High School",
       "email": "dmccab@hononegah.org",
       "role": "Head Coach",
       "sport": "Boys Swimming",
@@ -9489,6 +9489,22 @@
       "sport": "Girls Bowling",
       "first": "Jeremy",
       "last": "Woody"
+    },
+    {
+      "school": "Hononegah High School",
+      "email": "kjohns2@hononegah.org",
+      "role": "Coach",
+      "sport": "Sideline Cheer",
+      "first": "Kelsey",
+      "last": "Johnson"
+    },
+    {
+      "school": "Hononegah High School",
+      "email": "kjohns2@hononegah.org",
+      "role": "Head Coach",
+      "sport": "Competitive Cheerleading",
+      "first": "Kelsey",
+      "last": "Johnson"
     },
     {
       "school": "Hononegah High School",
@@ -10612,7 +10628,7 @@
     },
     {
       "school": "Johnsburg High School",
-      "email": "tkraus@johnsburg12.org",
+      "email": "teggers@johnsburg12.org",
       "role": "Boys Athletic Director's Assistant & Girls Athletic Director's Assistant",
       "sport": "",
       "first": "Taylor",
@@ -11636,6 +11652,14 @@
     },
     {
       "school": "Lena-Winslow High School",
+      "email": "drakeb@le-win.net",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Brittany",
+      "last": "Drake"
+    },
+    {
+      "school": "Lena-Winslow High School",
       "email": "gdammann@fhn.org",
       "role": "Certified Athletic Trainer",
       "sport": "",
@@ -11652,9 +11676,17 @@
     },
     {
       "school": "Lena-Winslow High School",
+      "email": "kempelk@le-win.net",
+      "role": "Head Coach",
+      "sport": "Boys Track & Field",
+      "first": "Kolton",
+      "last": "Kempel"
+    },
+    {
+      "school": "Lena-Winslow High School",
       "email": "milderk@le-win.net",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
+      "sport": "Boys Wrestling",
       "first": "Kevin",
       "last": "Milder"
     },
@@ -11665,14 +11697,6 @@
       "sport": "Sideline Cheer",
       "first": "Madison",
       "last": "Ransom"
-    },
-    {
-      "school": "Lena-Winslow High School",
-      "email": "rickelsa@le-win.net",
-      "role": "Head Coach",
-      "sport": "Boys Track & Field",
-      "first": "Austin",
-      "last": "Rickels"
     },
     {
       "school": "Lena-Winslow High School",
@@ -17236,6 +17260,14 @@
     },
     {
       "school": "Union Grove High School",
+      "email": "lpomeroy@basd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Leann",
+      "last": "Pomeroy"
+    },
+    {
+      "school": "Union Grove High School",
       "email": "mikumic@ug.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -18113,6 +18145,14 @@
       "sport": "",
       "first": "Luke",
       "last": "Francois"
+    },
+    {
+      "school": "Waterford High School",
+      "email": "lpomeroy@basd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Leann",
+      "last": "Pomeroy"
     },
     {
       "school": "Waterford High School",

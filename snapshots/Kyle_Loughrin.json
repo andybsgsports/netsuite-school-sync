@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-07-15T04:41:07.115209Z",
+  "updated": "2026-07-16T04:51:03.325189Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -1145,6 +1145,14 @@
       "sport": "",
       "first": "Alaina",
       "last": "Abel"
+    },
+    {
+      "school": "Bay Port High School",
+      "email": "alex.goldrup@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Cross Country",
+      "first": "Alex",
+      "last": "Goldrup"
     },
     {
       "school": "Bay Port High School",
@@ -2956,6 +2964,14 @@
     },
     {
       "school": "Green Bay East High School",
+      "email": "jmwitt1@gbaps.org",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Jashawn",
+      "last": "Witt"
+    },
+    {
+      "school": "Green Bay East High School",
       "email": "KKREUSER2@NEW.RR.COM",
       "role": "Head Coach",
       "sport": "Boys Swimming & Diving",
@@ -2967,14 +2983,6 @@
       "email": "klarbour@gbaps.org",
       "role": "Head Coach",
       "sport": "Boys Track and Field",
-      "first": "Kenneth",
-      "last": "Arbour"
-    },
-    {
-      "school": "Green Bay East High School",
-      "email": "klarbour@gbaps.org",
-      "role": "Head Coach",
-      "sport": "Girls Cross Country",
       "first": "Kenneth",
       "last": "Arbour"
     },
@@ -5803,6 +5811,118 @@
       "last": "Pieper"
     },
     {
+      "school": "Mishicot School District",
+      "email": "cerlandson@mishicot.k12.wi.us",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Cory",
+      "last": "Erlandson"
+    },
+    {
+      "school": "Mishicot School District",
+      "email": "CJ23KUBI@YAHOO.COM",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Joel",
+      "last": "Kubsch"
+    },
+    {
+      "school": "Mishicot School District",
+      "email": "cschermetzler@mishicot.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Cross Country",
+      "first": "Carly",
+      "last": "Schermetzler"
+    },
+    {
+      "school": "Mishicot School District",
+      "email": "dshimek@mishicot.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Dawn",
+      "last": "Shimek"
+    },
+    {
+      "school": "Mishicot School District",
+      "email": "jgerlach@mishicot.k12.wi.us",
+      "role": "Assistant Athletic Director",
+      "sport": "",
+      "first": "Justin",
+      "last": "Gerlach"
+    },
+    {
+      "school": "Mishicot School District",
+      "email": "kfix@mishicot.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Kevin",
+      "last": "Fix"
+    },
+    {
+      "school": "Mishicot School District",
+      "email": "knovack@mishicot.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Track and Field",
+      "first": "Kyle",
+      "last": "Novack"
+    },
+    {
+      "school": "Mishicot School District",
+      "email": "kswanson@mishicot.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Krissy",
+      "last": "Swanson"
+    },
+    {
+      "school": "Mishicot School District",
+      "email": "mloberger@mishicot.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Wrestling",
+      "first": "Max",
+      "last": "Loberger"
+    },
+    {
+      "school": "Mishicot School District",
+      "email": "nschmidt@mishicot.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Nicole",
+      "last": "Schmidt"
+    },
+    {
+      "school": "Mishicot School District",
+      "email": "rstroess@mishicot.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Golf",
+      "first": "Robert",
+      "last": "Stroess"
+    },
+    {
+      "school": "Mishicot School District",
+      "email": "rwiebensohn@mishicot.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Randy",
+      "last": "Wiebensohn"
+    },
+    {
+      "school": "Mishicot School District",
+      "email": "sgreenwood@mishicot.k12.wi.us",
+      "role": "Assistant Principal",
+      "sport": "",
+      "first": "Sara",
+      "last": "Greenwood"
+    },
+    {
+      "school": "Mishicot School District",
+      "email": "zsand@mishicot.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Zach",
+      "last": "Sand"
+    },
+    {
       "school": "N.E.W. Lutheran High School",
       "email": "dguenterberg@providencegb.org",
       "role": "Head Coach",
@@ -5817,6 +5937,22 @@
       "sport": "Boys Volleyball",
       "first": "Jeff",
       "last": "Dow"
+    },
+    {
+      "school": "N.E.W. Lutheran High School",
+      "email": "joshua_errer@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Boys Golf",
+      "first": "Joshua",
+      "last": "Errer"
+    },
+    {
+      "school": "N.E.W. Lutheran High School",
+      "email": "kingd@newlhs.com",
+      "role": "Head Coach",
+      "sport": "Boys Football 8-Player",
+      "first": "DaVonte",
+      "last": "King"
     },
     {
       "school": "N.E.W. Lutheran High School",
@@ -5884,17 +6020,17 @@
     },
     {
       "school": "N.E.W. Lutheran High School",
-      "email": "vredeveldj@newlhs.com",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Jordan",
-      "last": "Vredeveld"
+      "email": "trimbergerr@newlhs.com",
+      "role": "Head Coach",
+      "sport": "Boys Football 8-Player",
+      "first": "Roman",
+      "last": "Trimberger"
     },
     {
       "school": "N.E.W. Lutheran High School",
       "email": "vredeveldj@newlhs.com",
-      "role": "Head Coach",
-      "sport": "Boys Football 8-Player",
+      "role": "Athletic Director",
+      "sport": "",
       "first": "Jordan",
       "last": "Vredeveld"
     },
@@ -7841,6 +7977,142 @@
       "sport": "Girls Volleyball",
       "first": "Terri",
       "last": "Roesler"
+    },
+    {
+      "school": "Southern Door High School",
+      "email": "abruess@sdsd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Andy",
+      "last": "Bruess"
+    },
+    {
+      "school": "Southern Door High School",
+      "email": "adeguelle@sdsd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Allie",
+      "last": "Deguelle"
+    },
+    {
+      "school": "Southern Door High School",
+      "email": "apaplham@sdsd.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Angie",
+      "last": "Paplham"
+    },
+    {
+      "school": "Southern Door High School",
+      "email": "bkline@sdsd.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Ben",
+      "last": "Kline"
+    },
+    {
+      "school": "Southern Door High School",
+      "email": "epeterson919@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Erin",
+      "last": "Peterson"
+    },
+    {
+      "school": "Southern Door High School",
+      "email": "jeffrey.m.dow@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Jeff",
+      "last": "Dow"
+    },
+    {
+      "school": "Southern Door High School",
+      "email": "jvandenbush@sdsd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Josh",
+      "last": "Vandenbush"
+    },
+    {
+      "school": "Southern Door High School",
+      "email": "kkrutzik@sdsd.k12.wi.us",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Kevin",
+      "last": "Krutzik"
+    },
+    {
+      "school": "Southern Door High School",
+      "email": "mmotquin@sdsd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Mat",
+      "last": "Motquin"
+    },
+    {
+      "school": "Southern Door High School",
+      "email": "nalberts2018@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Nate",
+      "last": "Alberts"
+    },
+    {
+      "school": "Southern Door High School",
+      "email": "pclaflin@sdsd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Track and Field",
+      "first": "Pete",
+      "last": "Claflin"
+    },
+    {
+      "school": "Southern Door High School",
+      "email": "sbousley@sdsd.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Steve",
+      "last": "Bousley"
+    },
+    {
+      "school": "Southern Door High School",
+      "email": "sjeanquart@sdsd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Sara",
+      "last": "Jeanquart"
+    },
+    {
+      "school": "Southern Door High School",
+      "email": "smallien@sdsd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Track and Field",
+      "first": "Scott",
+      "last": "Mallien"
+    },
+    {
+      "school": "Southern Door High School",
+      "email": "smallien@sdsd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Scott",
+      "last": "Mallien"
+    },
+    {
+      "school": "Southern Door High School",
+      "email": "tigerfish@hotmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Swimming & Diving",
+      "first": "Julie",
+      "last": "Collison"
+    },
+    {
+      "school": "Southern Door High School",
+      "email": "walker.dave55@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Dave",
+      "last": "Walker"
     },
     {
       "school": "Southern door High School",

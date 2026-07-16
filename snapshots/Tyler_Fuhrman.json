@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-07-15T04:39:24.348320Z",
+  "updated": "2026-07-16T04:49:13.992145Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -460,14 +460,6 @@
     },
     {
       "school": "Black River Falls High School",
-      "email": "jack.taylor@brf.org",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Jack",
-      "last": "Taylor"
-    },
-    {
-      "school": "Black River Falls High School",
       "email": "kateeahl@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Cross Country",
@@ -577,6 +569,14 @@
       "sport": "Girls Swimming & Diving",
       "first": "Susannah",
       "last": "Zblewski"
+    },
+    {
+      "school": "Black River Falls High School",
+      "email": "thomas.epps@brf.org",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Tom",
+      "last": "Epps"
     },
     {
       "school": "Boscobel High School",
@@ -1292,6 +1292,14 @@
     },
     {
       "school": "Hillsboro High School",
+      "email": "eric.auel@hillsboroschools.org",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Track and Field",
+      "first": "Eric",
+      "last": "Auel"
+    },
+    {
+      "school": "Hillsboro High School",
       "email": "hilary.stanek@hillsboroschools.org",
       "role": "Athletic Director",
       "sport": "",
@@ -1305,14 +1313,6 @@
       "sport": "Boys Basketball",
       "first": "Jordan",
       "last": "Polk"
-    },
-    {
-      "school": "Hillsboro High School",
-      "email": "Kathy.burmaster@hillsboroschools.org",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Catherine",
-      "last": "Burmaster"
     },
     {
       "school": "Hillsboro High School",
@@ -1337,14 +1337,6 @@
       "sport": "",
       "first": "Rich",
       "last": "Moyer"
-    },
-    {
-      "school": "Hillsboro High School",
-      "email": "sdsagert@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Dan",
-      "last": "Sagert"
     },
     {
       "school": "Holmen High School",
@@ -2852,14 +2844,6 @@
     },
     {
       "school": "Madison East High School",
-      "email": "mmcclenaghan@madison.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Matt",
-      "last": "McClenaghan"
-    },
-    {
-      "school": "Madison East High School",
       "email": "nathansmith062@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Lacrosse-Boys",
@@ -2873,14 +2857,6 @@
       "sport": "",
       "first": "Patrice",
       "last": "Haste"
-    },
-    {
-      "school": "Madison East High School",
-      "email": "rmsheehy@madison.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Ryan",
-      "last": "Sheehy"
     },
     {
       "school": "Madison East High School",
@@ -5692,14 +5668,6 @@
     },
     {
       "school": "Viroqua High School",
-      "email": "mezmat@viroquablackhawk.org",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Matt",
-      "last": "Mezera"
-    },
-    {
-      "school": "Viroqua High School",
       "email": "nnoggle@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -5713,6 +5681,14 @@
       "sport": "Girls Hockey",
       "first": "Paul",
       "last": "Severson"
+    },
+    {
+      "school": "Viroqua High School",
+      "email": "piejar@viroquablackhawk.org",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Jared",
+      "last": "Pierce"
     },
     {
       "school": "Viroqua High School",
