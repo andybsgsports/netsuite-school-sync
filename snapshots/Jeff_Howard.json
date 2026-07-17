@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-07-16T04:48:05.883554Z",
+  "updated": "2026-07-17T04:55:32.655888Z",
   "records": [
     {
       "school": "Albany High School",
@@ -2524,14 +2524,6 @@
     },
     {
       "school": "Monticello High School",
-      "email": "delwiam@monticello.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Track and Field",
-      "first": "Molly",
-      "last": "Delwiche"
-    },
-    {
-      "school": "Monticello High School",
       "email": "dennis.haak@ngsd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -2545,14 +2537,6 @@
       "sport": "Girls Basketball",
       "first": "Derik",
       "last": "Doescher"
-    },
-    {
-      "school": "Monticello High School",
-      "email": "karlech@monticello.k12.wi.us",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Christina",
-      "last": "Karlen"
     },
     {
       "school": "Monticello High School",
@@ -2593,6 +2577,14 @@
       "sport": "Girls Softball",
       "first": "Rick",
       "last": "Monson"
+    },
+    {
+      "school": "Monticello High School",
+      "email": "schwacar@monticello.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Carolyn",
+      "last": "Schwartzlow"
     },
     {
       "school": "Monticello High School",

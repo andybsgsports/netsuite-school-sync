@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-07-16T04:51:03.325189Z",
+  "updated": "2026-07-17T04:58:28.133035Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -1404,14 +1404,6 @@
     },
     {
       "school": "Berlin High School",
-      "email": "byineman@berlin.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
-      "first": "Beau",
-      "last": "Yineman"
-    },
-    {
-      "school": "Berlin High School",
       "email": "clintzumer@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Hockey",
@@ -1500,6 +1492,14 @@
     },
     {
       "school": "Berlin High School",
+      "email": "moores@glsd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Sally",
+      "last": "Moore"
+    },
+    {
+      "school": "Berlin High School",
       "email": "mwillett@berlin.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Track and Field",
@@ -1521,14 +1521,6 @@
       "sport": "Boys Baseball",
       "first": "Darrin",
       "last": "Schultz"
-    },
-    {
-      "school": "Berlin High School",
-      "email": "tder@centurytel.net",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "Todd",
-      "last": "DeRuyter"
     },
     {
       "school": "Brillion High School",

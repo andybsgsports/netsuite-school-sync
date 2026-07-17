@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-07-16T04:47:07.931778Z",
+  "updated": "2026-07-17T04:54:34.003827Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -4764,14 +4764,6 @@
     },
     {
       "school": "Crystal Lake South High School",
-      "email": "asaldivar-castaneda@d155.org",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Amy",
-      "last": "Saldivar-Castaneda"
-    },
-    {
-      "school": "Crystal Lake South High School",
       "email": "ballen@d155.org",
       "role": "Head Coach",
       "sport": "Boys Soccer",
@@ -4820,6 +4812,14 @@
     },
     {
       "school": "Crystal Lake South High School",
+      "email": "ddebruycker@d155.org",
+      "role": "Principal",
+      "sport": "",
+      "first": "Dan",
+      "last": "DeBruycker"
+    },
+    {
+      "school": "Crystal Lake South High School",
       "email": "dfoster@d155.org",
       "role": "Band Director & Marching Band Director",
       "sport": "",
@@ -4865,14 +4865,6 @@
       "sport": "Girls Volleyball",
       "first": "Jorie",
       "last": "Fontana"
-    },
-    {
-      "school": "Crystal Lake South High School",
-      "email": "kbromley@d155.org",
-      "role": "Principal",
-      "sport": "",
-      "first": "Kim",
-      "last": "Bromley"
     },
     {
       "school": "Crystal Lake South High School",
@@ -6532,7 +6524,7 @@
     },
     {
       "school": "Freeport High School",
-      "email": "darrin.sisk@rps205.com",
+      "email": "darrin.sisk@fsd145.org",
       "role": "Athletic Director",
       "sport": "",
       "first": "Darrin",
@@ -10017,14 +10009,6 @@
       "sport": "Girls Soccer",
       "first": "Casey",
       "last": "Berg"
-    },
-    {
-      "school": "Janesville Craig High School",
-      "email": "emily.collas@janesville.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Emily",
-      "last": "Collas"
     },
     {
       "school": "Janesville Craig High School",
@@ -13757,7 +13741,7 @@
     {
       "school": "Mundelein High School",
       "email": "jscheuers@d120.org",
-      "role": "Asst. Boys Athletic Director & Asst. Girls Athletic Director",
+      "role": "Activities Director & Asst. Boys Athletic Director & Asst. Girls Athletic Director",
       "sport": "",
       "first": "Joe",
       "last": "Scheuers"
@@ -13773,7 +13757,7 @@
     {
       "school": "Mundelein High School",
       "email": "jschiffer@d120.org",
-      "role": "Activities Director",
+      "role": "Asst Principal",
       "sport": "",
       "first": "JIm",
       "last": "Schiffer"
@@ -13830,7 +13814,7 @@
       "school": "Mundelein High School",
       "email": "lduffy@d120.org",
       "role": "Head Coach",
-      "sport": "Boys & Girls Diving",
+      "sport": "Boys Diving",
       "first": "Laura",
       "last": "Duffy"
     },

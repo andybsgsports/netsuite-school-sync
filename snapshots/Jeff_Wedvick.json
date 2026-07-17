@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-07-16T04:53:49.756409Z",
+  "updated": "2026-07-17T05:01:12.952786Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -673,6 +673,14 @@
       "sport": "Boys Baseball",
       "first": "Andrew",
       "last": "Christianson"
+    },
+    {
+      "school": "Deerfield High School",
+      "email": "deerfieldgirlsvolleyball@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Maria",
+      "last": "Higgins"
     },
     {
       "school": "Deerfield High School",
