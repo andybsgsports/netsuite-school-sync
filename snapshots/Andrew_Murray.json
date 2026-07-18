@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-07-17T04:54:34.003827Z",
+  "updated": "2026-07-18T04:35:37.905308Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -7777,6 +7777,14 @@
       "sport": "Girls Softball",
       "first": "Mike",
       "last": "Krznarich"
+    },
+    {
+      "school": "Greendale High School",
+      "email": "jackson.zgola@greendaleschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Jackson",
+      "last": "Zgola"
     },
     {
       "school": "Greendale High School",

@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-07-17T04:56:40.657552Z",
+  "updated": "2026-07-18T04:37:41.929629Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -2172,14 +2172,6 @@
     },
     {
       "school": "Lacrosse Central High School",
-      "email": "cstauner@lacrossesd.org",
-      "role": "Head Coach",
-      "sport": "Boys Tennis",
-      "first": "Corey",
-      "last": "Stauner"
-    },
-    {
-      "school": "Lacrosse Central High School",
       "email": "dkjos@lacrossesd.org",
       "role": "Head Coach",
       "sport": "Boys Hockey",
@@ -2321,6 +2313,14 @@
       "sport": "Girls Hockey",
       "first": "Jamie",
       "last": "Olson"
+    },
+    {
+      "school": "Lacrosse Central High School",
+      "email": "pholman@lacrossesd.org",
+      "role": "Head Coach",
+      "sport": "Girls Tennis",
+      "first": "Paul",
+      "last": "Holman"
     },
     {
       "school": "Lacrosse Central High School",
@@ -5420,19 +5420,27 @@
     },
     {
       "school": "Tomah High School",
+      "email": "coachhaldy@outlook.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Jeremy",
+      "last": "Haldeman"
+    },
+    {
+      "school": "Tomah High School",
       "email": "collineswein@tomah.education",
       "role": "Head Coach",
-      "sport": "Boys Track and Field",
+      "sport": "Boys Football",
       "first": "Collin",
       "last": "Eswein"
     },
     {
       "school": "Tomah High School",
-      "email": "danielwall@tomah.education",
+      "email": "collineswein@tomah.education",
       "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Daniel",
-      "last": "Wall"
+      "sport": "Boys Track and Field",
+      "first": "Collin",
+      "last": "Eswein"
     },
     {
       "school": "Tomah High School",
@@ -5484,14 +5492,6 @@
     },
     {
       "school": "Tomah High School",
-      "email": "jprotz@tomahonline.com",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Joe",
-      "last": "Protz"
-    },
-    {
-      "school": "Tomah High School",
       "email": "kateschanhofer@tomah.education",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -5537,14 +5537,6 @@
       "sport": "Boys Soccer",
       "first": "Scott",
       "last": "Conzemius"
-    },
-    {
-      "school": "Tomah High School",
-      "email": "tomahcoach@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Mark",
-      "last": "Von Haden"
     },
     {
       "school": "Tomah High School",
