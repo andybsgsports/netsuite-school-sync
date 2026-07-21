@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-07-20T05:16:33.085109Z",
+  "updated": "2026-07-21T05:01:20.507071Z",
   "records": [
     {
       "school": "Albany High School",
@@ -1505,6 +1505,14 @@
       "sport": "Boys Golf",
       "first": "Logan",
       "last": "Thole"
+    },
+    {
+      "school": "Dodgeville High School",
+      "email": "mmcgraw@draschools.org",
+      "role": "Assistant Athletic Director",
+      "sport": "",
+      "first": "Matt",
+      "last": "McGraw"
     },
     {
       "school": "Dodgeville High School",
@@ -4385,14 +4393,6 @@
       "sport": "Girls Soccer",
       "first": "Andy",
       "last": "Moll"
-    },
-    {
-      "school": "Waunakee School District",
-      "email": "ashleymyoung1234@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Gymnastics",
-      "first": "Ashley",
-      "last": "Young"
     },
     {
       "school": "Waunakee School District",

@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-07-20T05:21:17.794201Z",
+  "updated": "2026-07-21T05:06:14.689715Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -68,19 +68,19 @@
     },
     {
       "school": "Cambria Friesland High School",
-      "email": "jamie.link@cambria-frieslandschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Football",
+      "email": "jamie.link@cfsdwi.org",
+      "role": "Athletic Director",
+      "sport": "",
       "first": "Jamie",
       "last": "Link"
     },
     {
       "school": "Cambria Friesland High School",
-      "email": "katelin.york@cambria-frieslandschools.org",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Katelin",
-      "last": "York"
+      "email": "jamie.link@cfsdwi.org",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Jamie",
+      "last": "Link"
     },
     {
       "school": "Cambria Friesland High School",
@@ -2084,6 +2084,14 @@
     },
     {
       "school": "Kiel High School",
+      "email": "ategen@kiel.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Tennis",
+      "first": "Alyssa",
+      "last": "Tegen"
+    },
+    {
+      "school": "Kiel High School",
       "email": "averyhuibregtse@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Hockey",
@@ -2097,6 +2105,14 @@
       "sport": "",
       "first": "Brad",
       "last": "Ebert"
+    },
+    {
+      "school": "Kiel High School",
+      "email": "berickson@kiel.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Brittany",
+      "last": "Erickson"
     },
     {
       "school": "Kiel High School",
@@ -2121,6 +2137,14 @@
       "sport": "Boys Baseball",
       "first": "Brad",
       "last": "Mey"
+    },
+    {
+      "school": "Kiel High School",
+      "email": "cwinkel@kiel.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Calvin",
+      "last": "Winkel"
     },
     {
       "school": "Kiel High School",
@@ -2156,14 +2180,6 @@
     },
     {
       "school": "Kiel High School",
-      "email": "jbraun@kiel.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "Jonathon",
-      "last": "Braun"
-    },
-    {
-      "school": "Kiel High School",
       "email": "jneils@kiel.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -2180,14 +2196,6 @@
     },
     {
       "school": "Kiel High School",
-      "email": "jvandermeuse@kiel.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Jamie",
-      "last": "Vandermeuse"
-    },
-    {
-      "school": "Kiel High School",
       "email": "kgozdziewski@kiel.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Golf",
@@ -2201,14 +2209,6 @@
       "sport": "",
       "first": "Keegan",
       "last": "Schrems"
-    },
-    {
-      "school": "Kiel High School",
-      "email": "mkautzer@kiel.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Megan",
-      "last": "Kautzer"
     },
     {
       "school": "Kiel High School",
@@ -4572,6 +4572,14 @@
     },
     {
       "school": "Oshkosh West High School",
+      "email": "kelly.vansistine@oshkosh.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Kelly",
+      "last": "Van Sistine"
+    },
+    {
+      "school": "Oshkosh West High School",
       "email": "kelly.wayne@oshkosh.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Swimming Diving",
@@ -5052,19 +5060,19 @@
     },
     {
       "school": "Randolph High School",
+      "email": "linkj@rsdwi.org",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Jamie",
+      "last": "Link"
+    },
+    {
+      "school": "Randolph High School",
       "email": "mazourekj@rsdwi.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
       "first": "Jacob",
       "last": "Mazourek"
-    },
-    {
-      "school": "Randolph High School",
-      "email": "nillr@rsdwi.org",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Rob",
-      "last": "Nill"
     },
     {
       "school": "Randolph High School",
@@ -6940,14 +6948,6 @@
     },
     {
       "school": "Waupun High School",
-      "email": "adharmsen@waupun.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Track and Field",
-      "first": "Adrian",
-      "last": "Harmsen"
-    },
-    {
-      "school": "Waupun High School",
       "email": "agifford@waupun.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Basketball",
@@ -6972,17 +6972,25 @@
     },
     {
       "school": "Waupun High School",
-      "email": "bhuenink@waupun.k12.wi.us",
+      "email": "brianbade65@gmail.com",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
-      "first": "Brady",
-      "last": "Huenink"
+      "sport": "Boys Wrestling",
+      "first": "Brian",
+      "last": "Bade"
+    },
+    {
+      "school": "Waupun High School",
+      "email": "byineman@waupun.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Beau",
+      "last": "Yineman"
     },
     {
       "school": "Waupun High School",
       "email": "caterbeest@waupun.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys Tennis",
+      "sport": "Boys & Girls Tennis",
       "first": "Casey",
       "last": "TerBeest"
     },
@@ -7022,7 +7030,7 @@
       "school": "Waupun High School",
       "email": "jfitch@waupun.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys & Girls Soccer",
+      "sport": "Boys Soccer",
       "first": "Josh",
       "last": "Fitch"
     },
@@ -7052,6 +7060,14 @@
     },
     {
       "school": "Waupun High School",
+      "email": "kchwala@waupun.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Kristofer",
+      "last": "Chwala"
+    },
+    {
+      "school": "Waupun High School",
       "email": "lewisonl@fonddulac.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Hockey",
@@ -7060,19 +7076,19 @@
     },
     {
       "school": "Waupun High School",
+      "email": "logan.demaa@thrivent.com",
+      "role": "Head Coach",
+      "sport": "Boys Golf",
+      "first": "Logan",
+      "last": "DeMaa"
+    },
+    {
+      "school": "Waupun High School",
       "email": "ntank@waupun.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Hockey",
       "first": "Nick",
       "last": "Tank"
-    },
-    {
-      "school": "Waupun High School",
-      "email": "rmengert@waupun.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "Robert",
-      "last": "Mengert"
     },
     {
       "school": "Waupun High School",
@@ -7364,11 +7380,11 @@
     },
     {
       "school": "West Bend East High School",
-      "email": "hovorkafamily7@aol.com",
+      "email": "jgrochowski@wbsd-schools.org",
       "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "James",
-      "last": "Hovorka"
+      "sport": "Girls Volleyball",
+      "first": "Janelle",
+      "last": "Grochowski"
     },
     {
       "school": "West Bend East High School",
@@ -7409,6 +7425,14 @@
       "sport": "",
       "first": "Jennifer",
       "last": "Wimmer"
+    },
+    {
+      "school": "West Bend East High School",
+      "email": "lschwechel@wbsd-schools.org",
+      "role": "Head Coach",
+      "sport": "Boys Golf",
+      "first": "Larry",
+      "last": "Schwechel"
     },
     {
       "school": "West Bend East High School",

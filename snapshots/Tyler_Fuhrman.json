@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-07-20T05:17:39.206665Z",
+  "updated": "2026-07-21T05:02:29.548744Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -397,7 +397,7 @@
     {
       "school": "Black River Falls High School",
       "email": "andrew.osegard@brf.org",
-      "role": "Athletic Director",
+      "role": "Assistant Athletic Director",
       "sport": "",
       "first": "Andrew",
       "last": "Osegard"
@@ -409,6 +409,14 @@
       "sport": "Girls Hockey",
       "first": "Brady",
       "last": "Mathison"
+    },
+    {
+      "school": "Black River Falls High School",
+      "email": "cade.murray@brf.org",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Cade",
+      "last": "Murray"
     },
     {
       "school": "Black River Falls High School",
@@ -1996,14 +2004,6 @@
     },
     {
       "school": "Lacrosse Aquinas High School",
-      "email": "evanhuemoeller@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Tennis",
-      "first": "Evan",
-      "last": "Huemoeller"
-    },
-    {
-      "school": "Lacrosse Aquinas High School",
       "email": "harpenaud@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Soccer",
@@ -2062,7 +2062,7 @@
       "school": "Lacrosse Aquinas High School",
       "email": "louisgnash@outlook.com",
       "role": "Head Coach",
-      "sport": "Boys Tennis",
+      "sport": "Boys & Girls Tennis",
       "first": "Louis",
       "last": "Nash"
     },
@@ -4580,6 +4580,14 @@
     },
     {
       "school": "Richland Center High School",
+      "email": "cols0@richland.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Silas",
+      "last": "Coleman"
+    },
+    {
+      "school": "Richland Center High School",
       "email": "davm@richland.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -6265,6 +6273,14 @@
       "sport": "Girls Lacrosse-Girls",
       "first": "Jayna",
       "last": "Poster"
+    },
+    {
+      "school": "Wisconsin Heights High School",
+      "email": "jstokes@wisheights.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Jonathon",
+      "last": "Stokes"
     },
     {
       "school": "Wisconsin Heights High School",

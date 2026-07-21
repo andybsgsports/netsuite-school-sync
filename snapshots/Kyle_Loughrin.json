@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-07-20T05:19:23.041111Z",
+  "updated": "2026-07-21T05:04:15.496393Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -707,6 +707,14 @@
       "last": "Werner"
     },
     {
+      "school": "Appleton North High School",
+      "email": "ZIMMERMANNISAA@aasd.k12.wi.us",
+      "role": "Assistant Athletic Director",
+      "sport": "",
+      "first": "Isaac",
+      "last": "Zimmerman"
+    },
+    {
       "school": "Appleton West High School",
       "email": "andrewsdeborah@aasd.k12.wi.us",
       "role": "AD Admin Assistant",
@@ -1172,14 +1180,6 @@
     },
     {
       "school": "Bay Port High School",
-      "email": "benjalex@hssdschools.org",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Ben",
-      "last": "Alexander-Wolf"
-    },
-    {
-      "school": "Bay Port High School",
       "email": "bradshef@hssdschools.org",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
@@ -1217,14 +1217,6 @@
       "sport": "Boys Hockey",
       "first": "Derek",
       "last": "Donohue"
-    },
-    {
-      "school": "Bay Port High School",
-      "email": "deekapalko@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Denise",
-      "last": "Kapelko"
     },
     {
       "school": "Bay Port High School",
@@ -1305,6 +1297,14 @@
       "sport": "Boys & Girls Tennis",
       "first": "Lindsay",
       "last": "Matuszewski"
+    },
+    {
+      "school": "Bay Port High School",
+      "email": "mackhurs@hssdschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Mackenzie",
+      "last": "Hurst"
     },
     {
       "school": "Bay Port High School",
@@ -5833,14 +5833,6 @@
       "sport": "Girls Softball",
       "first": "Dawn",
       "last": "Shimek"
-    },
-    {
-      "school": "Mishicot School District",
-      "email": "jgerlach@mishicot.k12.wi.us",
-      "role": "Assistant Athletic Director",
-      "sport": "",
-      "first": "Justin",
-      "last": "Gerlach"
     },
     {
       "school": "Mishicot School District",

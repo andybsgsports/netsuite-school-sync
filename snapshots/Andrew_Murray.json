@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-07-20T05:15:38.538011Z",
+  "updated": "2026-07-21T05:00:21.246691Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -820,11 +820,11 @@
     },
     {
       "school": "Badger High School",
-      "email": "mikebrannen@ymail.com",
+      "email": "matt.nelson@gcj2.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Tennis",
-      "first": "Mike",
-      "last": "Brannen"
+      "first": "Matt",
+      "last": "Nelson"
     },
     {
       "school": "Badger High School",
@@ -2076,7 +2076,7 @@
     },
     {
       "school": "Boylan Catholic High School",
-      "email": "john.canova@broadmooragency.com",
+      "email": "john.canova@trucordia.com",
       "role": "Head Coach",
       "sport": "Boys Golf",
       "first": "John",
@@ -2169,14 +2169,6 @@
       "sport": "Girls Swimming",
       "first": "Stephanie",
       "last": "McGuire"
-    },
-    {
-      "school": "Boylan Catholic High School",
-      "email": "spfluger@boylan.org",
-      "role": "Coach",
-      "sport": "Scholastic Bowl",
-      "first": "Sarah",
-      "last": "Pfluger"
     },
     {
       "school": "Boylan Catholic High School",
@@ -5633,14 +5625,6 @@
       "sport": "Boys Soccer",
       "first": "Rey",
       "last": "Vargas"
-    },
-    {
-      "school": "Dundee-Crown High School",
-      "email": "rob.moulton@d300.org",
-      "role": "Head Coach",
-      "sport": "Girls Soccer",
-      "first": "Rob",
-      "last": "Moulton"
     },
     {
       "school": "Dundee-Crown High School",
@@ -19604,14 +19588,6 @@
     },
     {
       "school": "Whitewater High School",
-      "email": "klippens@wwusd.org",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Kristen",
-      "last": "Lippens"
-    },
-    {
-      "school": "Whitewater High School",
       "email": "leifknudsen@sbcglobal.net",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -19644,6 +19620,14 @@
     },
     {
       "school": "Whitewater High School",
+      "email": "mcmaas3@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Michael",
+      "last": "Maas"
+    },
+    {
+      "school": "Whitewater High School",
       "email": "mhookstead@wwusd.org",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -19657,14 +19641,6 @@
       "sport": "Boys & Girls Swimming Diving",
       "first": "Sarah",
       "last": "Reynolds"
-    },
-    {
-      "school": "Whitewater High School",
-      "email": "sbakr01@wwusd.org",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Krista",
-      "last": "Sbarra"
     },
     {
       "school": "Whitewater High School",

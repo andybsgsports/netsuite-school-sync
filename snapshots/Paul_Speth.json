@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-07-20T05:19:55.791713Z",
+  "updated": "2026-07-21T05:04:50.740559Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -537,14 +537,6 @@
       "sport": "Girls Tennis",
       "first": "Alex",
       "last": "Mory"
-    },
-    {
-      "school": "DeForest High School",
-      "email": "ashleymyoung1234@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Gymnastics",
-      "first": "Ashley",
-      "last": "Young"
     },
     {
       "school": "DeForest High School",
@@ -1831,6 +1823,14 @@
       "email": "fronri@pasdwi.org",
       "role": "Athletic Director",
       "sport": "",
+      "first": "Rich",
+      "last": "Fronheiser"
+    },
+    {
+      "school": "Pardeeville High School",
+      "email": "fronri@pasdwi.org",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
       "first": "Rich",
       "last": "Fronheiser"
     },
