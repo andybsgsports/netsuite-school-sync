@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-07-21T05:06:14.689715Z",
+  "updated": "2026-07-22T05:05:58.369351Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -2292,14 +2292,6 @@
     },
     {
       "school": "Kohler High School",
-      "email": "goetschm@kohler.k12.wi.us",
-      "role": "Assistant Athletic Director",
-      "sport": "",
-      "first": "Megan",
-      "last": "Goetsch"
-    },
-    {
-      "school": "Kohler High School",
       "email": "huisman.brett@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -2317,7 +2309,7 @@
     {
       "school": "Kohler High School",
       "email": "juechm@kohler.k12.wi.us",
-      "role": "Assistant Athletic Director",
+      "role": "Superintendent",
       "sport": "",
       "first": "Michael",
       "last": "Juech"
@@ -2417,6 +2409,14 @@
       "sport": "Girls Tennis",
       "first": "John",
       "last": "Villwock"
+    },
+    {
+      "school": "Kohler High School",
+      "email": "wickt@kohler.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Tanya",
+      "last": "Wick"
     },
     {
       "school": "Laconia High School",

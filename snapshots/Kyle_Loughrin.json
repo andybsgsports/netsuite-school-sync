@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-07-21T05:04:15.496393Z",
+  "updated": "2026-07-22T05:03:57.056333Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -284,6 +284,14 @@
     },
     {
       "school": "Appleton East High School",
+      "email": "cfeller@pga.com",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "Corey",
+      "last": "Feller"
+    },
+    {
+      "school": "Appleton East High School",
       "email": "coach@aulax.org",
       "role": "Head Coach",
       "sport": "Boys Lacrosse-Boys",
@@ -313,14 +321,6 @@
       "sport": "Girls Softball",
       "first": "David",
       "last": "Soda"
-    },
-    {
-      "school": "Appleton East High School",
-      "email": "duranmikki@aasd.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Golf",
-      "first": "Mikki",
-      "last": "Duran"
     },
     {
       "school": "Appleton East High School",
@@ -399,7 +399,7 @@
       "email": "LYNCHNATHANIEL@aasd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
-      "first": "Nathan",
+      "first": "Nate",
       "last": "Lynch"
     },
     {
@@ -454,7 +454,7 @@
       "school": "Appleton East High School",
       "email": "shawaaron@aasd.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys Golf",
+      "sport": "Boys & Girls Golf",
       "first": "Aaron",
       "last": "Shaw"
     },
@@ -473,6 +473,14 @@
       "sport": "Girls Soccer",
       "first": "Andy",
       "last": "Smith"
+    },
+    {
+      "school": "Appleton East High School",
+      "email": "smoua07@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Sam",
+      "last": "Moua"
     },
     {
       "school": "Appleton East High School",
@@ -1604,14 +1612,6 @@
     },
     {
       "school": "Brillion High School",
-      "email": "jcapelle@brillionsd.org",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Jeff",
-      "last": "Capelle"
-    },
-    {
-      "school": "Brillion High School",
       "email": "lluchterhand@brillionsd.org",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -1641,6 +1641,14 @@
       "sport": "Boys Wrestling",
       "first": "Nick",
       "last": "Miller"
+    },
+    {
+      "school": "Brillion High School",
+      "email": "nlevash@brillionsd.org",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Nathan",
+      "last": "Levash"
     },
     {
       "school": "Brillion High School",
@@ -6204,14 +6212,6 @@
     },
     {
       "school": "Neenah High School",
-      "email": "madison.ruckdashel@neenah.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Madison",
-      "last": "Ruckdashel"
-    },
-    {
-      "school": "Neenah High School",
       "email": "mheidke@neenah.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Cross Country",
@@ -8876,6 +8876,14 @@
     },
     {
       "school": "Two Rivers High School",
+      "email": "aj.schroeder@trschools.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Aj",
+      "last": "Schroeder"
+    },
+    {
+      "school": "Two Rivers High School",
       "email": "amy.gallagher@trschools.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -8889,6 +8897,14 @@
       "sport": "Girls Track and Field",
       "first": "Amy",
       "last": "Gallagher"
+    },
+    {
+      "school": "Two Rivers High School",
+      "email": "amy.jaklin@trschools.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Amy",
+      "last": "Jaklin"
     },
     {
       "school": "Two Rivers High School",
@@ -8924,14 +8940,6 @@
     },
     {
       "school": "Two Rivers High School",
-      "email": "cayolyn.johnsen@trschools.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Swimming Diving",
-      "first": "Cayolyn",
-      "last": "Johnsen"
-    },
-    {
-      "school": "Two Rivers High School",
       "email": "cory.johnson@trschools.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -8948,6 +8956,14 @@
     },
     {
       "school": "Two Rivers High School",
+      "email": "dylon.becker@trschools.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Dylon",
+      "last": "Becker"
+    },
+    {
+      "school": "Two Rivers High School",
       "email": "jeremy.otte@trschools.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -8961,14 +8977,6 @@
       "sport": "Girls Basketball",
       "first": "Kally",
       "last": "Krueger"
-    },
-    {
-      "school": "Two Rivers High School",
-      "email": "karnie.goessl@trschools.k12.wi.us",
-      "role": "AD Admin Assistant",
-      "sport": "",
-      "first": "Karnie",
-      "last": "Goessl"
     },
     {
       "school": "Two Rivers High School",
@@ -9004,19 +9012,19 @@
     },
     {
       "school": "Two Rivers High School",
+      "email": "noah.huckins@trschools.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Noah",
+      "last": "Huckins"
+    },
+    {
+      "school": "Two Rivers High School",
       "email": "patrick.snider@roncallicatholicschools.org",
       "role": "Head Coach",
       "sport": "Girls Soccer",
       "first": "Patrick",
       "last": "Snider"
-    },
-    {
-      "school": "Two Rivers High School",
-      "email": "speltier6586@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Wrestling",
-      "first": "Scott",
-      "last": "Peltier"
     },
     {
       "school": "Two Rivers High School",

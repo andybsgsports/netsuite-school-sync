@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-07-21T05:04:50.740559Z",
+  "updated": "2026-07-22T05:04:33.178826Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -172,6 +172,14 @@
     },
     {
       "school": "Adams-Friendship High School",
+      "email": "ells_n@afasd.net",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Dr.",
+      "last": "Nicki Ells"
+    },
+    {
+      "school": "Adams-Friendship High School",
       "email": "groshek_s@afasd.net",
       "role": "Athletic Director",
       "sport": "",
@@ -273,14 +281,6 @@
       "sport": "Boys Football",
       "first": "Nick",
       "last": "Stormoen"
-    },
-    {
-      "school": "Adams-Friendship High School",
-      "email": "wermuth_t@afasd.net",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Dr.",
-      "last": "Tom Wermuth"
     },
     {
       "school": "Adams-Friendship High School",
@@ -2713,14 +2713,6 @@
       "sport": "Boys Soccer",
       "first": "David",
       "last": "Clark"
-    },
-    {
-      "school": "Wautoma High School",
-      "email": "esalaj@wautoma.k12.wi.us",
-      "role": "Assistant Principal, Athletic Director",
-      "sport": "",
-      "first": "Jared",
-      "last": "Esala"
     },
     {
       "school": "Wautoma High School",

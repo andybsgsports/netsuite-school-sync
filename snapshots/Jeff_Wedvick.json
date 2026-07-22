@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-07-21T05:07:03.037640Z",
+  "updated": "2026-07-22T05:06:48.636191Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -3324,6 +3324,14 @@
     },
     {
       "school": "Oconomowoc High School",
+      "email": "afhalfen@outlook.com",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Alan",
+      "last": "Halfen"
+    },
+    {
+      "school": "Oconomowoc High School",
       "email": "auxierc@oasd.org",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -3385,14 +3393,6 @@
       "sport": "Girls Cross Country",
       "first": "Laura",
       "last": "Finke"
-    },
-    {
-      "school": "Oconomowoc High School",
-      "email": "gernall@pewaukeeschools.org",
-      "role": "Head Coach",
-      "sport": "Girls Swimming & Diving",
-      "first": "Allison",
-      "last": "Gernhardt"
     },
     {
       "school": "Oconomowoc High School",
@@ -3772,6 +3772,14 @@
     },
     {
       "school": "Pewaukee High School",
+      "email": "afhalfen@outlook.com",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Alan",
+      "last": "Halfen"
+    },
+    {
+      "school": "Pewaukee High School",
       "email": "behrjef@pewaukeeschools.org",
       "role": "Athletic Director",
       "sport": "",
@@ -3841,14 +3849,6 @@
       "sport": "Boys Football",
       "first": "Justin",
       "last": "Friske"
-    },
-    {
-      "school": "Pewaukee High School",
-      "email": "gernall@pewaukeeschools.org",
-      "role": "Head Coach",
-      "sport": "Girls Swimming & Diving",
-      "first": "Allison",
-      "last": "Gernhardt"
     },
     {
       "school": "Pewaukee High School",

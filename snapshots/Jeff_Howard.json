@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-07-21T05:01:20.507071Z",
+  "updated": "2026-07-22T05:00:57.246064Z",
   "records": [
     {
       "school": "Albany High School",
@@ -2884,14 +2884,6 @@
     },
     {
       "school": "Oregon School District",
-      "email": "lcb2@oregonsd.net",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Leslie",
-      "last": "Bergstrom"
-    },
-    {
-      "school": "Oregon School District",
       "email": "matthewstrassman31@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Lacrosse-Boys",
@@ -2945,6 +2937,14 @@
       "sport": "Girls Softball",
       "first": "Scott",
       "last": "Mirkes"
+    },
+    {
+      "school": "Oregon School District",
+      "email": "sla@oregonsd.net",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Shannon",
+      "last": "Anderson"
     },
     {
       "school": "Pecatonica High School",

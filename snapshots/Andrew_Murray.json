@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-07-21T05:00:21.246691Z",
+  "updated": "2026-07-22T04:59:56.273604Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -1228,14 +1228,6 @@
     },
     {
       "school": "Belvidere High School",
-      "email": "ajestr14@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Adam",
-      "last": "Estrada"
-    },
-    {
-      "school": "Belvidere High School",
       "email": "alambaren@district100.com",
       "role": "Principal's Assistant",
       "sport": "",
@@ -1249,6 +1241,14 @@
       "sport": "",
       "first": "Ally",
       "last": "Sandager"
+    },
+    {
+      "school": "Belvidere High School",
+      "email": "atapia@hononegah.org",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Anna",
+      "last": "Tapia"
     },
     {
       "school": "Belvidere High School",
@@ -1420,6 +1420,14 @@
     },
     {
       "school": "Belvidere High School",
+      "email": "rpereznegron@district100.com",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Ray",
+      "last": "Pereznegron"
+    },
+    {
+      "school": "Belvidere High School",
       "email": "sdonnelly@district100.com",
       "role": "Head Coach",
       "sport": "Boys Football",
@@ -1462,7 +1470,7 @@
       "school": "Belvidere High School",
       "email": "svanco@district100.com",
       "role": "Head Coach",
-      "sport": "Boys & Girls Volleyball",
+      "sport": "Boys Volleyball",
       "first": "Samantha",
       "last": "Vanco"
     },
@@ -10964,14 +10972,6 @@
     },
     {
       "school": "Kenosha Tremper High School",
-      "email": "annelson@kusd.edu",
-      "role": "Head Coach",
-      "sport": "Boys Volleyball",
-      "first": "Angela",
-      "last": "Nelson"
-    },
-    {
-      "school": "Kenosha Tremper High School",
       "email": "bmogense@kusd.edu",
       "role": "Athletic Director",
       "sport": "",
@@ -11065,6 +11065,14 @@
       "sport": "Boys & Girls Cross Country",
       "first": "Jodie",
       "last": "Meier"
+    },
+    {
+      "school": "Kenosha Tremper High School",
+      "email": "jphansen@kusd.edu",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Jordan",
+      "last": "Hansen"
     },
     {
       "school": "Kenosha Tremper High School",
@@ -14172,6 +14180,14 @@
     },
     {
       "school": "Oconomowoc High School",
+      "email": "afhalfen@outlook.com",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Alan",
+      "last": "Halfen"
+    },
+    {
+      "school": "Oconomowoc High School",
       "email": "auxierc@oasd.org",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -14233,14 +14249,6 @@
       "sport": "Girls Cross Country",
       "first": "Laura",
       "last": "Finke"
-    },
-    {
-      "school": "Oconomowoc High School",
-      "email": "gernall@pewaukeeschools.org",
-      "role": "Head Coach",
-      "sport": "Girls Swimming & Diving",
-      "first": "Allison",
-      "last": "Gernhardt"
     },
     {
       "school": "Oconomowoc High School",
