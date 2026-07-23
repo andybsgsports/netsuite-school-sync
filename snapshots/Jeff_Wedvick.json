@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-07-22T05:06:48.636191Z",
+  "updated": "2026-07-23T05:12:08.304586Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -516,14 +516,6 @@
     },
     {
       "school": "Cambridge High School",
-      "email": "dbettenh@cambridge.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
-      "first": "Derek",
-      "last": "Bettenhausen"
-    },
-    {
-      "school": "Cambridge High School",
       "email": "dean.f@theracoremgmt.com",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -588,22 +580,6 @@
     },
     {
       "school": "Cambridge High School",
-      "email": "jheinrichs@cambridge.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Golf",
-      "first": "Jesse",
-      "last": "Heinrichs"
-    },
-    {
-      "school": "Cambridge High School",
-      "email": "jrevels@cambridge.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Track and Field",
-      "first": "Jason",
-      "last": "Revels"
-    },
-    {
-      "school": "Cambridge High School",
       "email": "kaylamillerr1@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Gymnastics",
@@ -617,6 +593,14 @@
       "sport": "Girls Golf",
       "first": "Larry",
       "last": "Martin"
+    },
+    {
+      "school": "Cambridge High School",
+      "email": "lunddyla@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Wrestling",
+      "first": "Dlyan",
+      "last": "Lund"
     },
     {
       "school": "Cambridge High School",
@@ -646,7 +630,7 @@
       "school": "Cambridge High School",
       "email": "tdevalk@cambridge.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys Golf",
+      "sport": "Boys & Girls Golf",
       "first": "Taylor",
       "last": "DeValk"
     },

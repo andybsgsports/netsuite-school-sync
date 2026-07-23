@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-07-22T05:03:57.056333Z",
+  "updated": "2026-07-23T05:09:21.490282Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -1060,14 +1060,6 @@
     },
     {
       "school": "Ashwaubenon High School",
-      "email": "jeffrey.m.dow@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Volleyball",
-      "first": "Jeff",
-      "last": "Dow"
-    },
-    {
-      "school": "Ashwaubenon High School",
       "email": "jhill@ashwaubenonk12.org",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -1105,6 +1097,14 @@
       "sport": "Girls Golf",
       "first": "Kevin",
       "last": "Penza"
+    },
+    {
+      "school": "Ashwaubenon High School",
+      "email": "lindsayjschauer@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Lindsay",
+      "last": "Schauer"
     },
     {
       "school": "Ashwaubenon High School",
@@ -1268,14 +1268,6 @@
     },
     {
       "school": "Bay Port High School",
-      "email": "jeffrey.m.dow@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Volleyball",
-      "first": "Jeff",
-      "last": "Dow"
-    },
-    {
-      "school": "Bay Port High School",
       "email": "jonawieb@hssdschools.org",
       "role": "Principal",
       "sport": "",
@@ -1305,6 +1297,14 @@
       "sport": "Boys & Girls Tennis",
       "first": "Lindsay",
       "last": "Matuszewski"
+    },
+    {
+      "school": "Bay Port High School",
+      "email": "lindsayjschauer@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Lindsay",
+      "last": "Schauer"
     },
     {
       "school": "Bay Port High School",
@@ -2940,14 +2940,6 @@
     },
     {
       "school": "Green Bay East High School",
-      "email": "jeffrey.m.dow@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Volleyball",
-      "first": "Jeff",
-      "last": "Dow"
-    },
-    {
-      "school": "Green Bay East High School",
       "email": "jhnash@gbaps.org",
       "role": "Head Coach",
       "sport": "Boys Soccer",
@@ -2996,6 +2988,14 @@
     },
     {
       "school": "Green Bay East High School",
+      "email": "lindsayjschauer@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Lindsay",
+      "last": "Schauer"
+    },
+    {
+      "school": "Green Bay East High School",
       "email": "lmlipp@gbaps.org",
       "role": "Principal",
       "sport": "",
@@ -3009,6 +3009,14 @@
       "sport": "Boys & Girls Wrestling",
       "first": "Luke",
       "last": "Ortscheid"
+    },
+    {
+      "school": "Green Bay East High School",
+      "email": "mahernandez@gbaps.org",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Michael",
+      "last": "Hernandez"
     },
     {
       "school": "Green Bay East High School",
@@ -3065,14 +3073,6 @@
       "sport": "Boys Baseball",
       "first": "Tyler",
       "last": "Nelson"
-    },
-    {
-      "school": "Green Bay East High School",
-      "email": "vlbayer@gbaps.org",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Vicki",
-      "last": "Bayer"
     },
     {
       "school": "Green Bay Preble High School",
@@ -3220,6 +3220,14 @@
     },
     {
       "school": "Green Bay Preble High School",
+      "email": "mahernandez@gbaps.org",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Michael",
+      "last": "Hernandez"
+    },
+    {
+      "school": "Green Bay Preble High School",
       "email": "NCMarcelle@gbaps.org",
       "role": "Assistant Athletic Director",
       "sport": "",
@@ -3273,14 +3281,6 @@
       "sport": "",
       "first": "Timothy",
       "last": "Flood"
-    },
-    {
-      "school": "Green Bay Preble High School",
-      "email": "vlbayer@gbaps.org",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Vicki",
-      "last": "Bayer"
     },
     {
       "school": "Green Bay Southwest High School",
@@ -3412,6 +3412,14 @@
     },
     {
       "school": "Green Bay Southwest High School",
+      "email": "mahernandez@gbaps.org",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Michael",
+      "last": "Hernandez"
+    },
+    {
+      "school": "Green Bay Southwest High School",
       "email": "matz.brian@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -3457,14 +3465,6 @@
       "sport": "",
       "first": "Timothy",
       "last": "Flood"
-    },
-    {
-      "school": "Green Bay Southwest High School",
-      "email": "vlbayer@gbaps.org",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Vicki",
-      "last": "Bayer"
     },
     {
       "school": "Green Bay Southwest High School",
@@ -3580,6 +3580,14 @@
     },
     {
       "school": "Green Bay West High School",
+      "email": "mahernandez@gbaps.org",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Michael",
+      "last": "Hernandez"
+    },
+    {
+      "school": "Green Bay West High School",
       "email": "matz.brian@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -3681,14 +3689,6 @@
       "sport": "Boys Track and Field",
       "first": "Tydus",
       "last": "Morrow"
-    },
-    {
-      "school": "Green Bay West High School",
-      "email": "vlbayer@gbaps.org",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Vicki",
-      "last": "Bayer"
     },
     {
       "school": "Hilbert High School",
@@ -5924,14 +5924,6 @@
     },
     {
       "school": "N.E.W. Lutheran High School",
-      "email": "jeffrey.m.dow@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Volleyball",
-      "first": "Jeff",
-      "last": "Dow"
-    },
-    {
-      "school": "N.E.W. Lutheran High School",
       "email": "joshua_errer@yahoo.com",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -5945,6 +5937,14 @@
       "sport": "Boys Football 8-Player",
       "first": "DaVonte",
       "last": "King"
+    },
+    {
+      "school": "N.E.W. Lutheran High School",
+      "email": "lindsayjschauer@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Lindsay",
+      "last": "Schauer"
     },
     {
       "school": "N.E.W. Lutheran High School",
@@ -5988,19 +5988,19 @@
     },
     {
       "school": "N.E.W. Lutheran High School",
+      "email": "ndaswimming@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Julie",
+      "last": "Collison"
+    },
+    {
+      "school": "N.E.W. Lutheran High School",
       "email": "schmidtm@newlhs.com",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
       "first": "Mike",
       "last": "Schmidt"
-    },
-    {
-      "school": "N.E.W. Lutheran High School",
-      "email": "tigerfish@hotmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Swimming & Diving",
-      "first": "Julie",
-      "last": "Collison"
     },
     {
       "school": "N.E.W. Lutheran High School",
@@ -6524,19 +6524,19 @@
     },
     {
       "school": "Notre Dame Academy High School",
-      "email": "jeffrey.m.dow@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Volleyball",
-      "first": "Jeff",
-      "last": "Dow"
-    },
-    {
-      "school": "Notre Dame Academy High School",
       "email": "jwbarker03@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Baseball",
       "first": "Jared",
       "last": "Barker"
+    },
+    {
+      "school": "Notre Dame Academy High School",
+      "email": "lindsayjschauer@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Lindsay",
+      "last": "Schauer"
     },
     {
       "school": "Notre Dame Academy High School",
@@ -6548,11 +6548,11 @@
     },
     {
       "school": "Notre Dame Academy High School",
-      "email": "mikescud3535@gmail.com",
+      "email": "mirao19@yahoo.com",
       "role": "Head Coach",
       "sport": "Boys Hockey",
-      "first": "Mike",
-      "last": "Szkodzinski"
+      "first": "Silverio",
+      "last": "Mirao"
     },
     {
       "school": "Notre Dame Academy High School",
@@ -6577,6 +6577,14 @@
       "sport": "Girls Soccer",
       "first": "Nick",
       "last": "Browne"
+    },
+    {
+      "school": "Notre Dame Academy High School",
+      "email": "ndaswimming@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Swimming Diving",
+      "first": "Julie",
+      "last": "Collison"
     },
     {
       "school": "Notre Dame Academy High School",
@@ -6633,14 +6641,6 @@
       "sport": "Girls Basketball",
       "first": "Sara",
       "last": "Rohde"
-    },
-    {
-      "school": "Notre Dame Academy High School",
-      "email": "tigerfish@hotmail.com",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Swimming Diving",
-      "first": "Julie",
-      "last": "Collison"
     },
     {
       "school": "Notre Dame Academy High School",
@@ -8004,14 +8004,6 @@
     },
     {
       "school": "Southern Door High School",
-      "email": "jeffrey.m.dow@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Volleyball",
-      "first": "Jeff",
-      "last": "Dow"
-    },
-    {
-      "school": "Southern Door High School",
       "email": "jvandenbush@sdsd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -8028,6 +8020,14 @@
     },
     {
       "school": "Southern Door High School",
+      "email": "lindsayjschauer@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Lindsay",
+      "last": "Schauer"
+    },
+    {
+      "school": "Southern Door High School",
       "email": "mmotquin@sdsd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
@@ -8041,6 +8041,14 @@
       "sport": "Boys Baseball",
       "first": "Nate",
       "last": "Alberts"
+    },
+    {
+      "school": "Southern Door High School",
+      "email": "ndaswimming@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Swimming & Diving",
+      "first": "Julie",
+      "last": "Collison"
     },
     {
       "school": "Southern Door High School",
@@ -8081,14 +8089,6 @@
       "sport": "Boys Football",
       "first": "Scott",
       "last": "Mallien"
-    },
-    {
-      "school": "Southern Door High School",
-      "email": "tigerfish@hotmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Swimming & Diving",
-      "first": "Julie",
-      "last": "Collison"
     },
     {
       "school": "Southern Door High School",
@@ -8764,19 +8764,19 @@
     },
     {
       "school": "Sturgeon Bay High School",
-      "email": "jeffrey.m.dow@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Volleyball",
-      "first": "Jeff",
-      "last": "Dow"
-    },
-    {
-      "school": "Sturgeon Bay High School",
       "email": "jesus.mejia212396@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Soccer",
       "first": "Jesus",
       "last": "Mejia"
+    },
+    {
+      "school": "Sturgeon Bay High School",
+      "email": "lindsayjschauer@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Lindsay",
+      "last": "Schauer"
     },
     {
       "school": "Sturgeon Bay High School",

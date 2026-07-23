@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-07-22T05:00:57.246064Z",
+  "updated": "2026-07-23T05:06:26.456174Z",
   "records": [
     {
       "school": "Albany High School",
@@ -692,14 +692,6 @@
     },
     {
       "school": "Benton High School",
-      "email": "baholmes1999@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Bradley",
-      "last": "Holmes"
-    },
-    {
-      "school": "Benton High School",
       "email": "bastiantodd1989@gmail.com",
       "role": "Athletic Director",
       "sport": "",
@@ -1156,14 +1148,6 @@
     },
     {
       "school": "Cuba City High School",
-      "email": "baholmes1999@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Bradley",
-      "last": "Holmes"
-    },
-    {
-      "school": "Cuba City High School",
       "email": "cdonar24@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
@@ -1177,6 +1161,14 @@
       "sport": "",
       "first": "Christopher",
       "last": "Sander"
+    },
+    {
+      "school": "Cuba City High School",
+      "email": "david.bartsch@hotmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "David",
+      "last": "Bartsch"
     },
     {
       "school": "Cuba City High School",
@@ -1209,6 +1201,14 @@
       "sport": "Girls Basketball",
       "first": "Jason",
       "last": "Derby"
+    },
+    {
+      "school": "Cuba City High School",
+      "email": "julie.kaiser@cubacity.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Julie",
+      "last": "Kaiser"
     },
     {
       "school": "Cuba City High School",
@@ -1273,14 +1273,6 @@
       "sport": "Boys Baseball",
       "first": "Steve",
       "last": "Graber"
-    },
-    {
-      "school": "Cuba City High School",
-      "email": "tanner.schieve@cubacity.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Tanner",
-      "last": "Schieve"
     },
     {
       "school": "Darlington High School",
@@ -4017,14 +4009,6 @@
       "sport": "Girls Volleyball",
       "first": "Karen",
       "last": "Anger"
-    },
-    {
-      "school": "Southwestern High School",
-      "email": "baholmes1999@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Bradley",
-      "last": "Holmes"
     },
     {
       "school": "Southwestern High School",

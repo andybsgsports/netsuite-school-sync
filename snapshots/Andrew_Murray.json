@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-07-22T04:59:56.273604Z",
+  "updated": "2026-07-23T05:05:27.814807Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -2780,7 +2780,7 @@
     },
     {
       "school": "Brown Deer High School",
-      "email": "a613af@gmail.com",
+      "email": "aforier@browndeerschools.com",
       "role": "Head Coach",
       "sport": "Boys & Girls Swimming Diving",
       "first": "Ali",
@@ -2812,7 +2812,7 @@
     },
     {
       "school": "Brown Deer High School",
-      "email": "delongley1@gmail.com",
+      "email": "dlongley@browndeerschools.com",
       "role": "Head Coach",
       "sport": "Boys Basketball",
       "first": "Darryl",
@@ -2916,7 +2916,7 @@
     },
     {
       "school": "Brown Deer High School",
-      "email": "sedrickhay@gmail.com",
+      "email": "shay@browndeerschools.com",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
       "first": "Sedrick",
@@ -5532,7 +5532,7 @@
     },
     {
       "school": "Dundee-Crown High School",
-      "email": "lisayarwood24@gmail.com",
+      "email": "lisa.yarwood@d300.org",
       "role": "Coach",
       "sport": "Halftime Dance",
       "first": "Lisa",
@@ -5540,7 +5540,7 @@
     },
     {
       "school": "Dundee-Crown High School",
-      "email": "lisayarwood24@gmail.com",
+      "email": "lisa.yarwood@d300.org",
       "role": "Head Coach",
       "sport": "Competitive Dance",
       "first": "Lisa",
@@ -9068,14 +9068,6 @@
     },
     {
       "school": "Harvard High School",
-      "email": "kdurham@cusd50.org",
-      "role": "Activities Director",
-      "sport": "",
-      "first": "Keaton",
-      "last": "Durham"
-    },
-    {
-      "school": "Harvard High School",
       "email": "lmiceli@cusd50.org",
       "role": "Head Coach",
       "sport": "Boys Bowling",
@@ -9905,6 +9897,14 @@
       "sport": "Competitive Cheerleading",
       "first": "Renee",
       "last": "Fowler"
+    },
+    {
+      "school": "Huntley High School",
+      "email": "rkelley@nbcusd.org",
+      "role": "Activities Director & Asst. Boys Athletic Director & Asst. Girls Athletic Director",
+      "sport": "",
+      "first": "Ryan",
+      "last": "Kelley"
     },
     {
       "school": "Huntley High School",
@@ -11764,6 +11764,14 @@
     },
     {
       "school": "Libertyville High School",
+      "email": "casey.aubin@d128.org",
+      "role": "Head Coach",
+      "sport": "Boys Bowling",
+      "first": "Casey",
+      "last": "Aubin"
+    },
+    {
+      "school": "Libertyville High School",
       "email": "casey.dugan@d128.org",
       "role": "Coach",
       "sport": "Halftime Dance",
@@ -11785,6 +11793,14 @@
       "sport": "",
       "first": "Christopher",
       "last": "Davis"
+    },
+    {
+      "school": "Libertyville High School",
+      "email": "colinbrady18@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Swimming",
+      "first": "Colin",
+      "last": "Brady"
     },
     {
       "school": "Libertyville High School",
@@ -11831,14 +11847,6 @@
       "email": "erin.vance@d128.org",
       "role": "Coach",
       "sport": "Sideline Cheer",
-      "first": "Erin",
-      "last": "Vance"
-    },
-    {
-      "school": "Libertyville High School",
-      "email": "erin.vance@d128.org",
-      "role": "Head Coach",
-      "sport": "Competitive Cheerleading",
       "first": "Erin",
       "last": "Vance"
     },
@@ -12012,14 +12020,6 @@
     },
     {
       "school": "Libertyville High School",
-      "email": "nicholas.korhumel@d128.org",
-      "role": "Head Coach",
-      "sport": "Boys Track & Field",
-      "first": "Nick",
-      "last": "Korhumel"
-    },
-    {
-      "school": "Libertyville High School",
       "email": "raymond.albin@d128.org",
       "role": "Principal",
       "sport": "",
@@ -12041,6 +12041,14 @@
       "sport": "Boys Cross Country",
       "first": "Stuart",
       "last": "Mendelsohn"
+    },
+    {
+      "school": "Libertyville High School",
+      "email": "sydney.seyter@d128.org",
+      "role": "Head Coach",
+      "sport": "Competitive Cheerleading",
+      "first": "Sydney",
+      "last": "Seyter"
     },
     {
       "school": "Libertyville High School",
@@ -12396,6 +12404,14 @@
     },
     {
       "school": "Marian Central Catholic High School",
+      "email": "dirk_stanger@comcast.net",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Dirk",
+      "last": "Stanger"
+    },
+    {
+      "school": "Marian Central Catholic High School",
       "email": "dwidzisz@cusd50.org",
       "role": "Coach",
       "sport": "Bass Fishing",
@@ -12481,14 +12497,6 @@
       "sport": "Girls Basketball",
       "first": "Lee",
       "last": "Brown"
-    },
-    {
-      "school": "Marian Central Catholic High School",
-      "email": "lkirwan@marian.com",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Liam",
-      "last": "Kirwan"
     },
     {
       "school": "Marian Central Catholic High School",
@@ -12982,7 +12990,7 @@
       "school": "Menomonee Falls High School",
       "email": "coxsha@sdmfschools.org",
       "role": "Head Coach",
-      "sport": "Boys Golf",
+      "sport": "Boys & Girls Golf",
       "first": "Shane",
       "last": "Cox"
     },
@@ -13052,6 +13060,14 @@
     },
     {
       "school": "Menomonee Falls High School",
+      "email": "mckeke@sdmfschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Kevin",
+      "last": "McKenna"
+    },
+    {
+      "school": "Menomonee Falls High School",
       "email": "mooseblock@yahoo.com",
       "role": "Head Coach",
       "sport": "Girls Gymnastics",
@@ -13073,14 +13089,6 @@
       "sport": "Girls Hockey",
       "first": "Blake",
       "last": "Panosh"
-    },
-    {
-      "school": "Menomonee Falls High School",
-      "email": "pro5461@yahoo.com",
-      "role": "Head Coach",
-      "sport": "Girls Track and Field",
-      "first": "Jennifer",
-      "last": "Prochzka"
     },
     {
       "school": "Menomonee Falls High School",
@@ -13116,14 +13124,6 @@
     },
     {
       "school": "Menomonee Falls High School",
-      "email": "Samanthacsmith@att.net",
-      "role": "Head Coach",
-      "sport": "Boys Volleyball",
-      "first": "Samantha",
-      "last": "Smith"
-    },
-    {
-      "school": "Menomonee Falls High School",
       "email": "scottstein0409@gmail.com",
       "role": "Head Coach",
       "sport": "Boys & Girls Soccer",
@@ -13137,6 +13137,14 @@
       "sport": "Girls Basketball",
       "first": "Andrew",
       "last": "Sedlmeier"
+    },
+    {
+      "school": "Menomonee Falls High School",
+      "email": "smitsam@sdmfschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Samantha",
+      "last": "Smith"
     },
     {
       "school": "Menomonee Falls High School",
@@ -15412,14 +15420,6 @@
     },
     {
       "school": "Racine St. Catherine's High School",
-      "email": "coachmyrafox@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Swimming & Diving",
-      "first": "Myra",
-      "last": "Fox"
-    },
-    {
-      "school": "Racine St. Catherine's High School",
       "email": "coryann.stmc@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Tennis",
@@ -15489,6 +15489,14 @@
       "sport": "Girls Wrestling",
       "first": "Marcus",
       "last": "Bouterse"
+    },
+    {
+      "school": "Racine St. Catherine's High School",
+      "email": "mboyd@prairieschool.com",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "McCartney",
+      "last": "Boyd"
     },
     {
       "school": "Racine St. Catherine's High School",
@@ -16489,14 +16497,6 @@
       "sport": "Competitive Cheerleading",
       "first": "Nicole",
       "last": "Figueroa"
-    },
-    {
-      "school": "Rockford Lutheran High School",
-      "email": "tnitz@rockfordlutheran.org",
-      "role": "IHSA Official Representative & Principal",
-      "sport": "",
-      "first": "Todd",
-      "last": "Nitz"
     },
     {
       "school": "South Beloit High School",
