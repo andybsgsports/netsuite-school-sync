@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-07-23T05:09:55.136259Z",
+  "updated": "2026-07-24T05:02:18.273808Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -172,6 +172,14 @@
     },
     {
       "school": "Adams-Friendship High School",
+      "email": "case_r@afasd.net",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Richard",
+      "last": "Case"
+    },
+    {
+      "school": "Adams-Friendship High School",
       "email": "ells_n@afasd.net",
       "role": "Superintendent",
       "sport": "",
@@ -271,14 +279,6 @@
       "email": "stormoen_n@afasd.net",
       "role": "Assistant Principal",
       "sport": "",
-      "first": "Nick",
-      "last": "Stormoen"
-    },
-    {
-      "school": "Adams-Friendship High School",
-      "email": "stormoen_n@afasd.net",
-      "role": "Head Coach",
-      "sport": "Boys Football",
       "first": "Nick",
       "last": "Stormoen"
     },
@@ -2092,27 +2092,27 @@
     },
     {
       "school": "Portage High School",
+      "email": "murphys@portage.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Cross Country",
+      "first": "Steffanie",
+      "last": "Murphy"
+    },
+    {
+      "school": "Portage High School",
+      "email": "murphys@portage.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Track and Field",
+      "first": "Steffanie",
+      "last": "Murphy"
+    },
+    {
+      "school": "Portage High School",
       "email": "olsona@portage.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Golf",
       "first": "Aaron",
       "last": "Olson"
-    },
-    {
-      "school": "Portage High School",
-      "email": "peasej@portage.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Cross Country",
-      "first": "Joe",
-      "last": "Pease"
-    },
-    {
-      "school": "Portage High School",
-      "email": "peasej@portage.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Track and Field",
-      "first": "Joe",
-      "last": "Pease"
     },
     {
       "school": "Portage High School",

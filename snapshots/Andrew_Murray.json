@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-07-23T05:05:27.814807Z",
+  "updated": "2026-07-24T04:57:54.303926Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -5220,6 +5220,14 @@
     },
     {
       "school": "Delavan-Darien High School",
+      "email": "aklein@ddschools.org",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Anthony",
+      "last": "Klein"
+    },
+    {
+      "school": "Delavan-Darien High School",
       "email": "avery23rios@yahoo.com",
       "role": "Head Coach",
       "sport": "Girls Basketball",
@@ -5233,14 +5241,6 @@
       "sport": "Boys & Girls Wrestling",
       "first": "Cole",
       "last": "Williams"
-    },
-    {
-      "school": "Delavan-Darien High School",
-      "email": "dhalbesma@ddschools.org",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Drew",
-      "last": "Halbesma"
     },
     {
       "school": "Delavan-Darien High School",
@@ -5279,6 +5279,14 @@
       "email": "jhanson1961@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
+      "first": "James",
+      "last": "Hanson"
+    },
+    {
+      "school": "Delavan-Darien High School",
+      "email": "jhanson1961@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Tennis",
       "first": "James",
       "last": "Hanson"
     },
@@ -9252,7 +9260,7 @@
     },
     {
       "school": "Hiawatha High School",
-      "email": "korbynringer17@gmail.com",
+      "email": "korbyn.ringer@d426.org",
       "role": "Band Director & Marching Band Director",
       "sport": "",
       "first": "Korbyn",
@@ -9612,14 +9620,6 @@
     },
     {
       "school": "Huntley High School",
-      "email": "awolfenberg@district158.org",
-      "role": "Head Coach",
-      "sport": "Boys Swimming",
-      "first": "Adam",
-      "last": "Wolfenberg"
-    },
-    {
-      "school": "Huntley High School",
       "email": "bbertelsman@district158.org",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
@@ -9649,6 +9649,14 @@
       "sport": "",
       "first": "Christine",
       "last": "DeFrancesco"
+    },
+    {
+      "school": "Huntley High School",
+      "email": "chenricksen@district158.org",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Clayton",
+      "last": "Henricksen"
     },
     {
       "school": "Huntley High School",
@@ -9692,27 +9700,11 @@
     },
     {
       "school": "Huntley High School",
-      "email": "dbrown@district158.org",
-      "role": "Newspaper Adviser",
-      "sport": "",
-      "first": "Dennis",
-      "last": "Brown"
-    },
-    {
-      "school": "Huntley High School",
       "email": "dletkewicz@district158.org",
-      "role": "Asst. Principal",
+      "role": "Asst. Principal & Principal",
       "sport": "",
       "first": "Danyce",
       "last": "Letkewicz"
-    },
-    {
-      "school": "Huntley High School",
-      "email": "edebello@district158.org",
-      "role": "Head Coach",
-      "sport": "Girls Bowling",
-      "first": "Eric",
-      "last": "DeBello"
     },
     {
       "school": "Huntley High School",
@@ -9812,14 +9804,6 @@
     },
     {
       "school": "Huntley High School",
-      "email": "mbelin@district158.org",
-      "role": "Principal",
-      "sport": "",
-      "first": "Marcus",
-      "last": "Belin"
-    },
-    {
-      "school": "Huntley High School",
       "email": "mgreen@district158.org",
       "role": "Coach",
       "sport": "Speech",
@@ -9849,6 +9833,14 @@
       "sport": "Boys Football",
       "first": "Michael",
       "last": "Naymola"
+    },
+    {
+      "school": "Huntley High School",
+      "email": "mochalek@district158.org",
+      "role": "Head Coach",
+      "sport": "Boys Swimming",
+      "first": "Melissa",
+      "last": "Ochalek"
     },
     {
       "school": "Huntley High School",
@@ -9913,14 +9905,6 @@
       "sport": "Girls Wrestling",
       "first": "Sr.",
       "last": "Scott Horcher"
-    },
-    {
-      "school": "Huntley High School",
-      "email": "sraethz@district158.org",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Steven",
-      "last": "Raethz"
     },
     {
       "school": "Huntley High School",
@@ -16499,6 +16483,14 @@
       "last": "Figueroa"
     },
     {
+      "school": "Rockford Lutheran High School",
+      "email": "tnitz@rockfordlutheran.org",
+      "role": "IHSA Official Representative & Principal",
+      "sport": "",
+      "first": "Todd",
+      "last": "Nitz"
+    },
+    {
       "school": "South Beloit High School",
       "email": "abaden@sb320.org",
       "role": "Athletic Director",
@@ -19254,7 +19246,7 @@
       "school": "Wauwatosa West High School",
       "email": "richarmi@wauwatosa.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys Golf",
+      "sport": "Boys & Girls Golf",
       "first": "Mike",
       "last": "Richards"
     },
@@ -19265,14 +19257,6 @@
       "sport": "Boys & Girls Cross Country",
       "first": "Tom",
       "last": "Schneider"
-    },
-    {
-      "school": "Wauwatosa West High School",
-      "email": "sgastrau@aol.com",
-      "role": "Head Coach",
-      "sport": "Girls Golf",
-      "first": "Steve",
-      "last": "Gastrau"
     },
     {
       "school": "Wauwatosa West High School",

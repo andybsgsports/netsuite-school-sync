@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-07-23T05:06:26.456174Z",
+  "updated": "2026-07-24T04:58:50.546547Z",
   "records": [
     {
       "school": "Albany High School",
@@ -324,11 +324,11 @@
     },
     {
       "school": "Baraboo High School",
-      "email": "karllkruse5@gmail.com",
+      "email": "jtaylor@barabooschools.net",
       "role": "Head Coach",
-      "sport": "Girls Tennis",
-      "first": "Karll",
-      "last": "Kruse"
+      "sport": "Boys Soccer",
+      "first": "Jon",
+      "last": "Taylor"
     },
     {
       "school": "Baraboo High School",
@@ -422,7 +422,7 @@
       "school": "Baraboo High School",
       "email": "tjwilliams@barabooschools.net",
       "role": "Head Coach",
-      "sport": "Boys Tennis",
+      "sport": "Boys & Girls Tennis",
       "first": "Tom",
       "last": "Williams"
     },
@@ -436,19 +436,11 @@
     },
     {
       "school": "Baraboo High School",
-      "email": "turkingtonsteve@gmail.com",
+      "email": "wpryor@barabooschools.net",
       "role": "Head Coach",
       "sport": "Boys Football",
-      "first": "Steve",
-      "last": "Turkington"
-    },
-    {
-      "school": "Baraboo High School",
-      "email": "tvorndran@barabooschools.net",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Tyler",
-      "last": "Vorndran"
+      "first": "William",
+      "last": "Pryor"
     },
     {
       "school": "Belleville High School",

@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-07-23T05:07:34.155810Z",
+  "updated": "2026-07-24T04:59:59.294639Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -820,6 +820,14 @@
     },
     {
       "school": "Cashton High School",
+      "email": "fanning.lauren@cashton.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Lauren",
+      "last": "Fanning"
+    },
+    {
+      "school": "Cashton High School",
       "email": "hemmersbach.jered@cashton.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
@@ -865,14 +873,6 @@
       "sport": "Boys Wrestling",
       "first": "Eric",
       "last": "Mlsna"
-    },
-    {
-      "school": "Cashton High School",
-      "email": "moreno.jeffery@cashton.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Jeff",
-      "last": "Moreno"
     },
     {
       "school": "Cashton High School",
@@ -4964,15 +4964,15 @@
     },
     {
       "school": "Royall High School",
-      "email": "Boardj@Royall.k12.wi.us",
+      "email": "boardj@Royall.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys Football",
+      "sport": "Boys Basketball",
       "first": "Joshua",
       "last": "Board"
     },
     {
       "school": "Royall High School",
-      "email": "Boardj@Royall.k12.wi.us",
+      "email": "boardj@Royall.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Softball",
       "first": "Joshua",
@@ -5036,6 +5036,14 @@
     },
     {
       "school": "Royall High School",
+      "email": "lehmanr@royall.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Roland",
+      "last": "Lehman"
+    },
+    {
+      "school": "Royall High School",
       "email": "pfannerstillj@royall.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Wrestling",
@@ -5046,17 +5054,17 @@
       "school": "Royall High School",
       "email": "ryan.mckittrick@gmail.com",
       "role": "Head Coach",
-      "sport": "Boys Wrestling",
+      "sport": "Boys Football",
       "first": "Ryan",
       "last": "McKittrick"
     },
     {
       "school": "Royall High School",
-      "email": "uppenas@royall.k12.wi.us",
+      "email": "ryan.mckittrick@gmail.com",
       "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Scott",
-      "last": "Uppena"
+      "sport": "Boys Wrestling",
+      "first": "Ryan",
+      "last": "McKittrick"
     },
     {
       "school": "Royall High School",

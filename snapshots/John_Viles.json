@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-07-23T05:11:18.199381Z",
+  "updated": "2026-07-24T05:03:39.892990Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -1612,14 +1612,6 @@
     },
     {
       "school": "Howards Grove High School",
-      "email": "ahouston@hgtigers.com",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Angie",
-      "last": "Houston"
-    },
-    {
-      "school": "Howards Grove High School",
       "email": "averyhuibregtse@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Hockey",
@@ -1676,7 +1668,15 @@
     },
     {
       "school": "Howards Grove High School",
-      "email": "heidi.georgeff@kohler.com",
+      "email": "fbwagnera@hgtigers.com",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Andrew",
+      "last": "Wagner"
+    },
+    {
+      "school": "Howards Grove High School",
+      "email": "hgeorgeff@hgsd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Basketball",
       "first": "Heidi",
@@ -2137,6 +2137,14 @@
       "sport": "Boys Baseball",
       "first": "Brad",
       "last": "Mey"
+    },
+    {
+      "school": "Kiel High School",
+      "email": "bneslon@kiel.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Brandon",
+      "last": "Nelson"
     },
     {
       "school": "Kiel High School",
@@ -6804,14 +6812,6 @@
     },
     {
       "school": "Valders High School",
-      "email": "clemberger@valders.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "Charles",
-      "last": "Lemberger"
-    },
-    {
-      "school": "Valders High School",
       "email": "clint.pfund@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -6884,6 +6884,14 @@
     },
     {
       "school": "Valders High School",
+      "email": "knutsonfamily8@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Gymnastics",
+      "first": "Alejendra",
+      "last": "Knutson"
+    },
+    {
+      "school": "Valders High School",
       "email": "ksrpdietrich@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -6908,19 +6916,27 @@
     },
     {
       "school": "Valders High School",
+      "email": "mblatz@stockbridge.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Track and Field",
+      "first": "Maria",
+      "last": "Blatz"
+    },
+    {
+      "school": "Valders High School",
+      "email": "mblatz@valders.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Track and Field",
+      "first": "Maria",
+      "last": "Blatz"
+    },
+    {
+      "school": "Valders High School",
       "email": "perickson@kiel.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
       "first": "Pam",
       "last": "Erickson"
-    },
-    {
-      "school": "Valders High School",
-      "email": "stefkaderabek@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Gymnastics",
-      "first": "Stefanie",
-      "last": "Kaderabek"
     },
     {
       "school": "Valders High School",
@@ -7068,19 +7084,19 @@
     },
     {
       "school": "Waupun High School",
+      "email": "ldemaa@waupun.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Golf",
+      "first": "Logan",
+      "last": "DeMaa"
+    },
+    {
+      "school": "Waupun High School",
       "email": "lewisonl@fonddulac.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Hockey",
       "first": "Lindsay",
       "last": "Lewison"
-    },
-    {
-      "school": "Waupun High School",
-      "email": "logan.demaa@thrivent.com",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "Logan",
-      "last": "DeMaa"
     },
     {
       "school": "Waupun High School",
@@ -7292,14 +7308,6 @@
     },
     {
       "school": "West Bend East High School",
-      "email": "arodenkirch@wbsd-schools.org",
-      "role": "Head Coach",
-      "sport": "Girls Golf",
-      "first": "Andrea",
-      "last": "Rodenkirch"
-    },
-    {
-      "school": "West Bend East High School",
       "email": "aspaeth@wbsd-schools.org",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
@@ -7508,6 +7516,14 @@
     },
     {
       "school": "West Bend East High School",
+      "email": "Shammer@wbsd-schools.org",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "Scott",
+      "last": "Hammer"
+    },
+    {
+      "school": "West Bend East High School",
       "email": "sroeming@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Gymnastics",
@@ -7540,14 +7556,6 @@
     },
     {
       "school": "West Bend West High School",
-      "email": "arodenkirch@wbsd-schools.org",
-      "role": "Head Coach",
-      "sport": "Girls Golf",
-      "first": "Andrea",
-      "last": "Rodenkirch"
-    },
-    {
-      "school": "West Bend West High School",
       "email": "aspaeth@wbsd-schools.org",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
@@ -7577,14 +7585,6 @@
       "sport": "Boys Baseball",
       "first": "Blake",
       "last": "Roach"
-    },
-    {
-      "school": "West Bend West High School",
-      "email": "dbutschlick@wbsd-schools.org",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Debbie",
-      "last": "Butschlick"
     },
     {
       "school": "West Bend West High School",
@@ -7737,6 +7737,14 @@
       "sport": "Girls Gymnastics",
       "first": "Samantha",
       "last": "Gostisha"
+    },
+    {
+      "school": "West Bend West High School",
+      "email": "Shammer@wbsd-schools.org",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "Scott",
+      "last": "Hammer"
     },
     {
       "school": "West Bend West High School",
