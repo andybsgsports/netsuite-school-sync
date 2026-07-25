@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-07-24T04:59:59.294639Z",
+  "updated": "2026-07-25T04:55:45.660438Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -1380,6 +1380,14 @@
     },
     {
       "school": "Holmen High School",
+      "email": "biesar@holmen.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Tennis",
+      "first": "Sara",
+      "last": "Bieneman"
+    },
+    {
+      "school": "Holmen High School",
       "email": "camjcarey@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Track and Field",
@@ -1569,14 +1577,6 @@
       "sport": "Girls Track and Field",
       "first": "Chad",
       "last": "Wedan"
-    },
-    {
-      "school": "Holmen High School",
-      "email": "wensar@holmen.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Tennis",
-      "first": "Sarah",
-      "last": "Wengerter"
     },
     {
       "school": "Holmen High School",

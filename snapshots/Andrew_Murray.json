@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-07-24T04:57:54.303926Z",
+  "updated": "2026-07-25T04:53:42.752838Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -7116,6 +7116,14 @@
     },
     {
       "school": "Grayslake Central High School",
+      "email": "anhgood@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Tennis",
+      "first": "Alan",
+      "last": "Goodman"
+    },
+    {
+      "school": "Grayslake Central High School",
       "email": "bcentella@d127.org",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -7153,14 +7161,6 @@
       "sport": "Boys Track & Field",
       "first": "Brent",
       "last": "Pitt"
-    },
-    {
-      "school": "Grayslake Central High School",
-      "email": "clawson@d127.org",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Tennis",
-      "first": "Charles",
-      "last": "Lawson Sr."
     },
     {
       "school": "Grayslake Central High School",

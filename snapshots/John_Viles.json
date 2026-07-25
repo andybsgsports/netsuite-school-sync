@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-07-24T05:03:39.892990Z",
+  "updated": "2026-07-25T04:59:23.071384Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -188,14 +188,6 @@
     },
     {
       "school": "Campbellsport High School",
-      "email": "lewisonl@fonddulac.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Lindsay",
-      "last": "Lewison"
-    },
-    {
-      "school": "Campbellsport High School",
       "email": "mkulibert@csd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -265,6 +257,14 @@
       "sport": "Boys Golf",
       "first": "Mike",
       "last": "Wettstein"
+    },
+    {
+      "school": "Campbellsport High School",
+      "email": "wotte@csd.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Bill",
+      "last": "Otte"
     },
     {
       "school": "Cedar Grove Belgium High School",
@@ -1348,14 +1348,6 @@
     },
     {
       "school": "Fond Du Lac High School",
-      "email": "lewisonl@fonddulac.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Lindsay",
-      "last": "Lewison"
-    },
-    {
-      "school": "Fond Du Lac High School",
       "email": "moehnd@fonddulac.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Soccer",
@@ -1398,7 +1390,7 @@
       "school": "Fond Du Lac High School",
       "email": "schneidern@fonddulac.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys & Girls Swimming Diving",
+      "sport": "Boys Swimming & Diving",
       "first": "Nikki",
       "last": "Schneider"
     },
@@ -2020,14 +2012,6 @@
     },
     {
       "school": "Kewaskum High School",
-      "email": "lewisonl@fonddulac.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Lindsay",
-      "last": "Lewison"
-    },
-    {
-      "school": "Kewaskum High School",
       "email": "lpiwoni@kewaskumschools.org",
       "role": "Head Coach",
       "sport": "Girls Soccer",
@@ -2337,14 +2321,6 @@
       "sport": "Boys & Girls Cross Country",
       "first": "Joe",
       "last": "Bourland"
-    },
-    {
-      "school": "Kohler High School",
-      "email": "lewisonl@fonddulac.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Lindsay",
-      "last": "Lewison"
     },
     {
       "school": "Kohler High School",
@@ -4380,14 +4356,6 @@
     },
     {
       "school": "Oshkosh North High School",
-      "email": "lewisonl@fonddulac.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Lindsay",
-      "last": "Lewison"
-    },
-    {
-      "school": "Oshkosh North High School",
       "email": "michelle.carbiener@oshkosh.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Track and Field",
@@ -4612,14 +4580,6 @@
     },
     {
       "school": "Oshkosh West High School",
-      "email": "lewisonl@fonddulac.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Lindsay",
-      "last": "Lewison"
-    },
-    {
-      "school": "Oshkosh West High School",
       "email": "matthew.callahan@oshkosh.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Soccer",
@@ -4785,14 +4745,6 @@
       "sport": "",
       "first": "Kevin",
       "last": "Butters"
-    },
-    {
-      "school": "Plymouth High School",
-      "email": "lewisonl@fonddulac.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Lindsay",
-      "last": "Lewison"
     },
     {
       "school": "Plymouth High School",
@@ -5740,14 +5692,6 @@
     },
     {
       "school": "Sheboygan Falls High School",
-      "email": "lewisonl@fonddulac.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Lindsay",
-      "last": "Lewison"
-    },
-    {
-      "school": "Sheboygan Falls High School",
       "email": "lmbocchini@sheboyganfalls.k12.wi.us",
       "role": "Assistant Athletic Director",
       "sport": "",
@@ -6092,14 +6036,6 @@
     },
     {
       "school": "Sheboygan North High School",
-      "email": "lewisonl@fonddulac.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Lindsay",
-      "last": "Lewison"
-    },
-    {
-      "school": "Sheboygan North High School",
       "email": "mheling29@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -6300,14 +6236,6 @@
     },
     {
       "school": "Sheboygan South High School",
-      "email": "lewisonl@fonddulac.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Lindsay",
-      "last": "Lewison"
-    },
-    {
-      "school": "Sheboygan South High School",
       "email": "lherber@sasd.net",
       "role": "Head Coach",
       "sport": "Girls Cross Country",
@@ -6473,14 +6401,6 @@
       "sport": "",
       "first": "Kelly",
       "last": "Mueller"
-    },
-    {
-      "school": "St. Mary's Springs High School",
-      "email": "lewisonl@fonddulac.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Lindsay",
-      "last": "Lewison"
     },
     {
       "school": "St. Mary's Springs High School",
@@ -6900,14 +6820,6 @@
     },
     {
       "school": "Valders High School",
-      "email": "lewisonl@fonddulac.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Lindsay",
-      "last": "Lewison"
-    },
-    {
-      "school": "Valders High School",
       "email": "macswim81@charter.net",
       "role": "Head Coach",
       "sport": "Boys Swimming & Diving",
@@ -7089,14 +7001,6 @@
       "sport": "Boys Golf",
       "first": "Logan",
       "last": "DeMaa"
-    },
-    {
-      "school": "Waupun High School",
-      "email": "lewisonl@fonddulac.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Lindsay",
-      "last": "Lewison"
     },
     {
       "school": "Waupun High School",
@@ -7841,14 +7745,6 @@
       "sport": "",
       "first": "Kris",
       "last": "Walta"
-    },
-    {
-      "school": "Winnebago Lutheran High School",
-      "email": "lewisonl@fonddulac.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Lindsay",
-      "last": "Lewison"
     },
     {
       "school": "Winnebago Lutheran High School",

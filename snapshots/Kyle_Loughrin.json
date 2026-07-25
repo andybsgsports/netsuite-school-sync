@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-07-24T05:01:43.108306Z",
+  "updated": "2026-07-25T04:57:28.520786Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -548,6 +548,14 @@
     },
     {
       "school": "Appleton North High School",
+      "email": "CLARDYSARAH@aasd.k12.wi.us",
+      "role": "Assistant Superintendent",
+      "sport": "",
+      "first": "Sarah",
+      "last": "Clardy"
+    },
+    {
+      "school": "Appleton North High School",
       "email": "coach@aulax.org",
       "role": "Head Coach",
       "sport": "Boys Lacrosse-Boys",
@@ -577,14 +585,6 @@
       "sport": "",
       "first": "Greg",
       "last": "Hartjes"
-    },
-    {
-      "school": "Appleton North High School",
-      "email": "hernandezmicha@aasd.k12.wi.us",
-      "role": "Assistant Superintendent",
-      "sport": "",
-      "first": "Michael",
-      "last": "Hernandez"
     },
     {
       "school": "Appleton North High School",
@@ -665,6 +665,14 @@
       "sport": "Girls Swimming & Diving",
       "first": "Parker",
       "last": "Sonnabend"
+    },
+    {
+      "school": "Appleton North High School",
+      "email": "PYNENBERGDAVID@aasd.k12.wi.us",
+      "role": "Assistant Athletic Director",
+      "sport": "",
+      "first": "David",
+      "last": "Pynenberg"
     },
     {
       "school": "Appleton North High School",
@@ -6316,14 +6324,6 @@
     },
     {
       "school": "New London High School",
-      "email": "jmurnane@newlondon.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Josh",
-      "last": "Murnane"
-    },
-    {
-      "school": "New London High School",
       "email": "jsambs@newlondon.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Golf",
@@ -6356,6 +6356,14 @@
     },
     {
       "school": "New London High School",
+      "email": "mhinterh@newlondon.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Mike",
+      "last": "Hinterthuer"
+    },
+    {
+      "school": "New London High School",
       "email": "nkrueger@newlondon.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
@@ -6380,16 +6388,8 @@
     },
     {
       "school": "New London High School",
-      "email": "plawton@newlondon.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Patrick",
-      "last": "Lawton"
-    },
-    {
-      "school": "New London High School",
       "email": "psloma@newlondon.k12.wi.us",
-      "role": "Athletic Director",
+      "role": "Assistant Principal, Athletic Director",
       "sport": "",
       "first": "Philip",
       "last": "Sloma"
