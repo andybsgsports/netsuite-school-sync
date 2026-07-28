@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-07-27T05:31:14.962862Z",
+  "updated": "2026-07-28T05:03:08.870086Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -385,14 +385,6 @@
       "sport": "",
       "first": "Kate",
       "last": "O'Hara"
-    },
-    {
-      "school": "Beaver Dam High School",
-      "email": "paredesb@bdusd.org",
-      "role": "Head Coach",
-      "sport": "Girls Soccer",
-      "first": "Brandie",
-      "last": "Paredes"
     },
     {
       "school": "Beaver Dam High School",
@@ -2436,14 +2428,6 @@
     },
     {
       "school": "Kettle Moraine High School",
-      "email": "ternsr@kmsd.edu",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Robert",
-      "last": "Terns"
-    },
-    {
-      "school": "Kettle Moraine High School",
       "email": "tomczykr@kmsd.edu",
       "role": "Athletic Director",
       "sport": "",
@@ -4228,7 +4212,7 @@
     },
     {
       "school": "Slinger High School",
-      "email": "bneslon@kiel.k12.wi.us",
+      "email": "bnelson@kiel.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Baseball",
       "first": "Brandon",

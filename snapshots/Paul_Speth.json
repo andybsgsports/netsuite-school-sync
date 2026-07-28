@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-07-27T05:29:04.733263Z",
+  "updated": "2026-07-28T05:00:53.207818Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -572,6 +572,14 @@
     },
     {
       "school": "DeForest High School",
+      "email": "dseboe@deforestschools.org",
+      "role": "Principal",
+      "sport": "",
+      "first": "Danette",
+      "last": "Seboe"
+    },
+    {
+      "school": "DeForest High School",
       "email": "estewart@deforestschools.org",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -625,14 +633,6 @@
       "sport": "Girls Lacrosse-Girls",
       "first": "Jayna",
       "last": "Poster"
-    },
-    {
-      "school": "DeForest High School",
-      "email": "jrouse@deforestschools.org",
-      "role": "Principal",
-      "sport": "",
-      "first": "Jonathan",
-      "last": "Rouse"
     },
     {
       "school": "DeForest High School",
@@ -3148,11 +3148,11 @@
     },
     {
       "school": "Wisconsin Dells High School",
-      "email": "malvarez@sdwd.k12.wi.us",
+      "email": "jfadness@sdwd.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys & Girls Golf",
-      "first": "Moses",
-      "last": "Alvarez"
+      "sport": "Girls Golf",
+      "first": "Jordan",
+      "last": "Fadness"
     },
     {
       "school": "Wisconsin Dells High School",

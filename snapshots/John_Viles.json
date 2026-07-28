@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-07-27T05:30:27.065829Z",
+  "updated": "2026-07-28T05:02:18.400137Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -2124,7 +2124,7 @@
     },
     {
       "school": "Kiel High School",
-      "email": "bneslon@kiel.k12.wi.us",
+      "email": "bnelson@kiel.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Baseball",
       "first": "Brandon",
@@ -3568,15 +3568,7 @@
       "role": "Athletic Director",
       "sport": "",
       "first": "Bernie",
-      "last": "VanRossum"
-    },
-    {
-      "school": "Montello High School",
-      "email": "bvanrossum@montelloschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Football 8-Player",
-      "first": "Bernie",
-      "last": "VanRossum"
+      "last": "Vanrossum"
     },
     {
       "school": "Montello High School",
@@ -3584,7 +3576,7 @@
       "role": "Head Coach",
       "sport": "Girls Softball",
       "first": "Bernie",
-      "last": "VanRossum"
+      "last": "Vanrossum"
     },
     {
       "school": "Montello High School",
@@ -3604,11 +3596,11 @@
     },
     {
       "school": "Montello High School",
-      "email": "rklein@montelloschools.org",
+      "email": "mjennings@montelloschools.org",
       "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Ryan",
-      "last": "Klein"
+      "sport": "Boys Football 8-Player",
+      "first": "Monty",
+      "last": "Jennings"
     },
     {
       "school": "Montello High School",
@@ -7633,6 +7625,14 @@
       "sport": "Boys Swimming & Diving",
       "first": "James",
       "last": "Sachse"
+    },
+    {
+      "school": "West Bend West High School",
+      "email": "sbaker@wbsd-schools.org",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Sara",
+      "last": "Baker"
     },
     {
       "school": "West Bend West High School",

@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-07-27T05:24:38.721966Z",
+  "updated": "2026-07-28T04:56:19.793765Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -20244,14 +20244,6 @@
     },
     {
       "school": "Woodstock High School",
-      "email": "acook@wcusd200.org",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Alyssa",
-      "last": "Cook"
-    },
-    {
-      "school": "Woodstock High School",
       "email": "avallicelli@wcusd200.org",
       "role": "Principal",
       "sport": "",
@@ -20326,7 +20318,7 @@
       "school": "Woodstock High School",
       "email": "jbrown@wcusd200.org",
       "role": "Head Coach",
-      "sport": "Girls Track & Field",
+      "sport": "Girls Flag Football",
       "first": "Jonathan",
       "last": "Brown"
     },
@@ -20380,14 +20372,6 @@
     },
     {
       "school": "Woodstock High School",
-      "email": "likunzie@wcusd200.org",
-      "role": "Head Coach",
-      "sport": "Boys Track & Field",
-      "first": "Lisa",
-      "last": "Kunzie"
-    },
-    {
-      "school": "Woodstock High School",
       "email": "masullivan@wcusd200.org",
       "role": "Head Coach",
       "sport": "Boys Swimming",
@@ -20433,6 +20417,14 @@
       "sport": "",
       "first": "Mike",
       "last": "Moan"
+    },
+    {
+      "school": "Woodstock High School",
+      "email": "rmickey@wcusd200.org",
+      "role": "Head Coach",
+      "sport": "Girls Track & Field",
+      "first": "Bobby",
+      "last": "Mickey"
     },
     {
       "school": "Woodstock High School",

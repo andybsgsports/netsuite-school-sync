@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-07-27T05:28:30.456873Z",
+  "updated": "2026-07-28T05:00:16.328347Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -561,6 +561,14 @@
       "sport": "Boys Lacrosse-Boys",
       "first": "Matthew",
       "last": "Puskarich"
+    },
+    {
+      "school": "Appleton North High School",
+      "email": "EISENSCHINKAMB@aasd.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Amber",
+      "last": "Eisenschink"
     },
     {
       "school": "Appleton North High School",
@@ -3036,6 +3044,14 @@
     },
     {
       "school": "Green Bay East High School",
+      "email": "pkdraak@gbaps.org",
+      "role": "Head Coach",
+      "sport": "Girls Cross Country",
+      "first": "Paige",
+      "last": "Draak"
+    },
+    {
+      "school": "Green Bay East High School",
       "email": "rajohnson@gbaps.org",
       "role": "Head Coach",
       "sport": "Girls Golf",
@@ -3444,19 +3460,19 @@
     },
     {
       "school": "Green Bay Southwest High School",
+      "email": "mjcharles@gbaps.org",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Mario",
+      "last": "Charles"
+    },
+    {
+      "school": "Green Bay Southwest High School",
       "email": "rajohnson@gbaps.org",
       "role": "Head Coach",
       "sport": "Girls Golf",
       "first": "Ray",
       "last": "Johnson"
-    },
-    {
-      "school": "Green Bay Southwest High School",
-      "email": "raowens@gbaps.org",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Rodney",
-      "last": "Owens"
     },
     {
       "school": "Green Bay Southwest High School",
