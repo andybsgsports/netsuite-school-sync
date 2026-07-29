@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-07-28T05:03:08.870086Z",
+  "updated": "2026-07-29T05:03:42.852866Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -4196,14 +4196,6 @@
     },
     {
       "school": "Slinger High School",
-      "email": "aschoephoerster@pga.com",
-      "role": "Head Coach",
-      "sport": "Girls Golf",
-      "first": "Andrea",
-      "last": "Schoephoerster"
-    },
-    {
-      "school": "Slinger High School",
       "email": "Bconnolly@wbsd-schools.org",
       "role": "Head Coach",
       "sport": "Boys Lacrosse-Boys",
@@ -4268,6 +4260,14 @@
     },
     {
       "school": "Slinger High School",
+      "email": "jason.montano@slingerschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Jason",
+      "last": "Montano"
+    },
+    {
+      "school": "Slinger High School",
       "email": "john.kangas@huhs.org",
       "role": "Head Coach",
       "sport": "Boys Swimming & Diving",
@@ -4297,6 +4297,14 @@
       "sport": "Boys Tennis",
       "first": "Jordan",
       "last": "Snoble"
+    },
+    {
+      "school": "Slinger High School",
+      "email": "joshua.molnau@slingerschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "Josh",
+      "last": "Molnau"
     },
     {
       "school": "Slinger High School",

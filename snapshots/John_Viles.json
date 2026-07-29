@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-07-28T05:02:18.400137Z",
+  "updated": "2026-07-29T05:02:53.656275Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -1057,6 +1057,14 @@
       "sport": "Boys Basketball",
       "first": "Mike",
       "last": "Koeher"
+    },
+    {
+      "school": "Elkhart Lake High School",
+      "email": "hjob@kiel.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Hollyann",
+      "last": "Job"
     },
     {
       "school": "Elkhart Lake High School",
@@ -2161,6 +2169,14 @@
       "sport": "Boys & Girls Cross Country",
       "first": "Tony",
       "last": "Grybush"
+    },
+    {
+      "school": "Kiel High School",
+      "email": "hjob@kiel.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Hollyann",
+      "last": "Job"
     },
     {
       "school": "Kiel High School",
@@ -4052,7 +4068,7 @@
     },
     {
       "school": "Oakfield High School",
-      "email": "twood@oakfield.k12.wi.usk12.wi.us",
+      "email": "twood@oakfield.k12.wi.us",
       "role": "Principal",
       "sport": "",
       "first": "Tyler",
@@ -4836,11 +4852,19 @@
     },
     {
       "school": "Princeton High School",
-      "email": "cnhilke1@charter.net",
+      "email": "colwate@princeton.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
-      "first": "Natasha",
-      "last": "Hilke"
+      "first": "Colin",
+      "last": "Waters"
+    },
+    {
+      "school": "Princeton High School",
+      "email": "dakodrah@princeton.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Football 8-Player",
+      "first": "Dakota",
+      "last": "Draheim"
     },
     {
       "school": "Princeton High School",
@@ -4852,19 +4876,11 @@
     },
     {
       "school": "Princeton High School",
-      "email": "elizamacgowan@gmail.com",
+      "email": "jeffbart@princeton.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Basketball",
-      "first": "Beth",
-      "last": "MacGowan"
-    },
-    {
-      "school": "Princeton High School",
-      "email": "katrbrzo@princeton.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Katrina",
-      "last": "Brzozowski"
+      "first": "Jeff",
+      "last": "Bartol"
     },
     {
       "school": "Princeton High School",
@@ -4884,27 +4900,19 @@
     },
     {
       "school": "Princeton High School",
-      "email": "pgltrack@outlook.com",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Track and Field",
-      "first": "Blair",
-      "last": "Weir"
-    },
-    {
-      "school": "Princeton High School",
-      "email": "prievebr@doj.state.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Football 8-Player",
-      "first": "Brian",
-      "last": "Prieve"
-    },
-    {
-      "school": "Princeton High School",
       "email": "saravers@princeton.k12.wi.us",
       "role": "Principal",
       "sport": "",
       "first": "Sarah",
       "last": "Marie Verstegen"
+    },
+    {
+      "school": "Princeton High School",
+      "email": "timbrow@princeton.k12.wi.us",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Tim",
+      "last": "Brown"
     },
     {
       "school": "Princeton High School",
@@ -4916,19 +4924,19 @@
     },
     {
       "school": "Princeton High School",
-      "email": "twood@oakfield.k12.wi.usk12.wi.us",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Tyler",
-      "last": "Wood"
-    },
-    {
-      "school": "Princeton High School",
       "email": "wedigp@glsd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Basketball",
       "first": "Paul",
       "last": "Wedig"
+    },
+    {
+      "school": "Princeton High School",
+      "email": "wschlaefer88@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Wendy",
+      "last": "Schlaefer"
     },
     {
       "school": "Randolph High School",

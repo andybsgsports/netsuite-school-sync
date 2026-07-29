@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-07-28T05:00:53.207818Z",
+  "updated": "2026-07-29T05:01:29.867439Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -588,17 +588,9 @@
     },
     {
       "school": "DeForest High School",
-      "email": "jared.hebert49@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Lacrosse-Boys",
-      "first": "Jared",
-      "last": "Hebert"
-    },
-    {
-      "school": "DeForest High School",
       "email": "jhoward@deforestschools.org",
       "role": "Head Coach",
-      "sport": "Girls Soccer",
+      "sport": "Boys & Girls Soccer",
       "first": "Josh",
       "last": "Howard"
     },
@@ -668,19 +660,19 @@
     },
     {
       "school": "DeForest High School",
+      "email": "makoslowski@deforestschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Lacrosse-Boys",
+      "first": "Matt",
+      "last": "Koslowski"
+    },
+    {
+      "school": "DeForest High School",
       "email": "mrowley@deforestschools.org",
       "role": "AD Admin Assistant",
       "sport": "",
       "first": "Marie",
       "last": "Rowley"
-    },
-    {
-      "school": "DeForest High School",
-      "email": "mscharpf@deforestschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Matthew",
-      "last": "Scharpf"
     },
     {
       "school": "DeForest High School",

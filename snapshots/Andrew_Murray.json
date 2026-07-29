@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-07-28T04:56:19.793765Z",
+  "updated": "2026-07-29T04:56:58.063611Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -1780,6 +1780,14 @@
     },
     {
       "school": "Belvidere North High School",
+      "email": "staylor@district100.com",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Spencer",
+      "last": "Taylor"
+    },
+    {
+      "school": "Belvidere North High School",
       "email": "swolfgram@district100.com",
       "role": "Band Director & Marching Band Director",
       "sport": "",
@@ -3516,7 +3524,7 @@
     },
     {
       "school": "Cary-Grove High School",
-      "email": "cspandiary@barrington220.org",
+      "email": "cspandiary@d155.org",
       "role": "Head Coach",
       "sport": "Boys Basketball",
       "first": "Christian",
@@ -3820,14 +3828,6 @@
     },
     {
       "school": "Catholic Central - Burlington High School",
-      "email": "kyleketterhagen@cchsnet.org",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "Kyle",
-      "last": "Ketterhagen"
-    },
-    {
-      "school": "Catholic Central - Burlington High School",
       "email": "lpomeroy@basd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Swimming & Diving",
@@ -3881,6 +3881,14 @@
       "sport": "Boys & Girls Soccer",
       "first": "Victor",
       "last": "Jabrial"
+    },
+    {
+      "school": "Catholic Central - Burlington High School",
+      "email": "wayneschultz@cchsnet.org",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Wayne",
+      "last": "Schultz"
     },
     {
       "school": "Central High School",
@@ -9701,7 +9709,7 @@
     {
       "school": "Huntley High School",
       "email": "dletkewicz@district158.org",
-      "role": "Asst. Principal & Principal",
+      "role": "Principal",
       "sport": "",
       "first": "Danyce",
       "last": "Letkewicz"
@@ -9769,6 +9777,14 @@
       "sport": "",
       "first": "Janet",
       "last": "Ozzauto"
+    },
+    {
+      "school": "Huntley High School",
+      "email": "jstroh@district158.org",
+      "role": "Asst. Principal",
+      "sport": "",
+      "first": "Justin",
+      "last": "Stroh"
     },
     {
       "school": "Huntley High School",
@@ -9892,7 +9908,7 @@
     },
     {
       "school": "Huntley High School",
-      "email": "rkelley@nbcusd.org",
+      "email": "rkelley@district158.org",
       "role": "Activities Director & Asst. Boys Athletic Director & Asst. Girls Athletic Director",
       "sport": "",
       "first": "Ryan",
@@ -9905,6 +9921,14 @@
       "sport": "Girls Wrestling",
       "first": "Sr.",
       "last": "Scott Horcher"
+    },
+    {
+      "school": "Huntley High School",
+      "email": "spocztowski@district158.org",
+      "role": "Asst. Principal",
+      "sport": "",
+      "first": "Shaina",
+      "last": "Pocztowski"
     },
     {
       "school": "Huntley High School",
@@ -9988,6 +10012,14 @@
     },
     {
       "school": "Janesville Craig High School",
+      "email": "emily.collas@janesville.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Emily",
+      "last": "Collas"
+    },
+    {
+      "school": "Janesville Craig High School",
       "email": "hiqmet.dauti@janesville.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Soccer",
@@ -10001,14 +10033,6 @@
       "sport": "Girls Cross Country",
       "first": "Hunter",
       "last": "Salmon"
-    },
-    {
-      "school": "Janesville Craig High School",
-      "email": "james.mcclowry@janesville.k12.wi.us",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Jim",
-      "last": "McClowry, CMAA"
     },
     {
       "school": "Janesville Craig High School",
@@ -18385,14 +18409,6 @@
       "sport": "Girls Gymnastics",
       "first": "Stephanie",
       "last": "Fike"
-    },
-    {
-      "school": "Wauconda High School",
-      "email": "sflanigan@d118.org",
-      "role": "Activities Director & Asst. Boys Athletic Director & Asst. Girls Athletic Director",
-      "sport": "",
-      "first": "Sara",
-      "last": "Flanigan"
     },
     {
       "school": "Wauconda High School",

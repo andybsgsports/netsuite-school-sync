@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-07-28T04:58:28.334640Z",
+  "updated": "2026-07-29T04:59:01.987611Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -5781,6 +5781,14 @@
     {
       "school": "West Salem High School",
       "email": "jehn.justin@wsalem.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Justin",
+      "last": "Jehn"
+    },
+    {
+      "school": "West Salem High School",
+      "email": "jehn.justin@wsalem.k12.wi.us",
       "role": "Principal",
       "sport": "",
       "first": "Justin",
@@ -5855,14 +5863,6 @@
       "email": "olson.ryan@wsalem.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
-      "first": "Ryan",
-      "last": "Olson"
-    },
-    {
-      "school": "West Salem High School",
-      "email": "olson.ryan@wsalem.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Football",
       "first": "Ryan",
       "last": "Olson"
     },
