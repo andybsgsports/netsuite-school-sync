@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-07-29T05:00:44.912665Z",
+  "updated": "2026-07-30T04:51:06.355044Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -7052,6 +7052,14 @@
     },
     {
       "school": "Peshtigo High School",
+      "email": "beyerk@peshtigo.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Kayla",
+      "last": "Beyer"
+    },
+    {
+      "school": "Peshtigo High School",
       "email": "blocht@peshtigo.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -7092,6 +7100,14 @@
     },
     {
       "school": "Peshtigo High School",
+      "email": "mayed@peshtigo.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Derrik",
+      "last": "Maye"
+    },
+    {
+      "school": "Peshtigo High School",
       "email": "mcmahonb@peshtigo.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Soccer",
@@ -7116,11 +7132,11 @@
     },
     {
       "school": "Peshtigo High School",
-      "email": "olsena@peshtigo.k12.wi.us",
-      "role": "AD Admin Assistant",
-      "sport": "",
-      "first": "Adrianne",
-      "last": "Olsen"
+      "email": "paquettem@peshtigo.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Mike",
+      "last": "Paquette"
     },
     {
       "school": "Peshtigo High School",
@@ -7145,6 +7161,14 @@
       "sport": "Girls Softball",
       "first": "Sean",
       "last": "Finger"
+    },
+    {
+      "school": "Peshtigo High School",
+      "email": "shepherds@peshtigo.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Sara",
+      "last": "Shepherd"
     },
     {
       "school": "Peshtigo High School",
@@ -8745,14 +8769,6 @@
       "sport": "Girls Swimming & Diving",
       "first": "Erin",
       "last": "Peterson"
-    },
-    {
-      "school": "Sturgeon Bay High School",
-      "email": "HAILEYBENESH20@GMAIL.COM",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Hailey",
-      "last": "Benesh"
     },
     {
       "school": "Sturgeon Bay High School",

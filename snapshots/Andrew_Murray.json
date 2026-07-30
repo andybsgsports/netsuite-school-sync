@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-07-29T04:56:58.063611Z",
+  "updated": "2026-07-30T04:47:12.646627Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -20260,19 +20260,11 @@
     },
     {
       "school": "Woodstock High School",
-      "email": "avallicelli@wcusd200.org",
-      "role": "Principal",
-      "sport": "",
-      "first": "Art",
-      "last": "Vallicelli"
-    },
-    {
-      "school": "Woodstock High School",
-      "email": "bjozwiak@wcusd200.org",
-      "role": "Vocal Director",
-      "sport": "",
-      "first": "Brian",
-      "last": "Jozwiak"
+      "email": "brenwick@wcusd200.org",
+      "role": "Coach",
+      "sport": "Sideline Cheer",
+      "first": "Brianna",
+      "last": "Renwick"
     },
     {
       "school": "Woodstock High School",
@@ -20357,7 +20349,7 @@
     {
       "school": "Woodstock High School",
       "email": "jliuzzi@wcusd200.org",
-      "role": "Activities Director",
+      "role": "Principal",
       "sport": "",
       "first": "John",
       "last": "Liuzzi"
@@ -20436,6 +20428,14 @@
     },
     {
       "school": "Woodstock High School",
+      "email": "mthurlwell@wcusd200.org",
+      "role": "Activities Director",
+      "sport": "",
+      "first": "Melissa",
+      "last": "Thurlwell"
+    },
+    {
+      "school": "Woodstock High School",
       "email": "rmickey@wcusd200.org",
       "role": "Head Coach",
       "sport": "Girls Track & Field",
@@ -20457,14 +20457,6 @@
       "sport": "Girls Swimming",
       "first": "Renee",
       "last": "Walker"
-    },
-    {
-      "school": "Woodstock High School",
-      "email": "sbrainard@wcusd200.org",
-      "role": "Asst. Girls Athletic Director & Student Council Adviser",
-      "sport": "",
-      "first": "Sandra",
-      "last": "Brainard"
     },
     {
       "school": "Woodstock High School",
@@ -20532,6 +20524,14 @@
     },
     {
       "school": "Woodstock North High School",
+      "email": "chfain@wcusd200.org",
+      "role": "Activities Director & Assistant Principal",
+      "sport": "",
+      "first": "Christina",
+      "last": "Fain"
+    },
+    {
+      "school": "Woodstock North High School",
       "email": "ckitsis@wcusd200.org",
       "role": "Head Coach",
       "sport": "Girls Golf",
@@ -20596,27 +20596,19 @@
     },
     {
       "school": "Woodstock North High School",
+      "email": "jandron33@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Dale",
+      "last": "Jandron"
+    },
+    {
+      "school": "Woodstock North High School",
       "email": "jehomuth@wcusd200.org",
       "role": "Head Coach",
       "sport": "Boys Football",
       "first": "Jeremiah",
       "last": "Homuth"
-    },
-    {
-      "school": "Woodstock North High School",
-      "email": "jejustice@wcusd200.org",
-      "role": "Asst. Boys Athletic Director & Asst. Girls Athletic Director",
-      "sport": "",
-      "first": "Jay",
-      "last": "Justice"
-    },
-    {
-      "school": "Woodstock North High School",
-      "email": "jejustice@wcusd200.org",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Jay",
-      "last": "Justice"
     },
     {
       "school": "Woodstock North High School",
@@ -20628,27 +20620,11 @@
     },
     {
       "school": "Woodstock North High School",
-      "email": "joslovich@wcusd200.org",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "John",
-      "last": "Oslovich"
-    },
-    {
-      "school": "Woodstock North High School",
       "email": "jpenuel@wcusd200.org",
       "role": "Coach",
       "sport": "Bass Fishing",
       "first": "Jason",
       "last": "Penuel"
-    },
-    {
-      "school": "Woodstock North High School",
-      "email": "jsegura@wcusd200.org",
-      "role": "Principal",
-      "sport": "",
-      "first": "Josh",
-      "last": "Segura"
     },
     {
       "school": "Woodstock North High School",
@@ -20741,7 +20717,7 @@
     {
       "school": "Woodstock North High School",
       "email": "tcarlson@wcusd200.org",
-      "role": "Activities Director & Assistant Principal",
+      "role": "Principal",
       "sport": "",
       "first": "Tyler",
       "last": "Carlson"

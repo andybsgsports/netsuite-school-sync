@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-07-29T05:01:29.867439Z",
+  "updated": "2026-07-30T04:51:42.426704Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -766,7 +766,7 @@
       "school": "Mauston High School",
       "email": "dfelska@maustonschools.org",
       "role": "Head Coach",
-      "sport": "Boys Tennis",
+      "sport": "Boys & Girls Tennis",
       "first": "Derek",
       "last": "Felska"
     },
@@ -823,14 +823,6 @@
       "email": "kandreasen@maustonschools.org",
       "role": "Head Coach",
       "sport": "Boys Golf",
-      "first": "Kurt",
-      "last": "Andreasen"
-    },
-    {
-      "school": "Mauston High School",
-      "email": "kandreasen@maustonschools.org",
-      "role": "Head Coach",
-      "sport": "Girls Tennis",
       "first": "Kurt",
       "last": "Andreasen"
     },

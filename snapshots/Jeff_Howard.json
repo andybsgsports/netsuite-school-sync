@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-07-29T04:57:54.784685Z",
+  "updated": "2026-07-30T04:48:11.332658Z",
   "records": [
     {
       "school": "Albany High School",
@@ -596,6 +596,14 @@
     },
     {
       "school": "Belmont High School",
+      "email": "jroney@shullsburg.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Cross Country",
+      "first": "John",
+      "last": "Roney"
+    },
+    {
+      "school": "Belmont High School",
       "email": "kattret@belmont.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -633,14 +641,6 @@
       "sport": "Girls Softball",
       "first": "Jeff",
       "last": "Hodgson"
-    },
-    {
-      "school": "Belmont High School",
-      "email": "twoodworth@shullsburg.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Cross Country",
-      "first": "Tammy",
-      "last": "Woodworth"
     },
     {
       "school": "Belmont High School",
@@ -3924,6 +3924,14 @@
     },
     {
       "school": "Shullsburg High School",
+      "email": "jroney@shullsburg.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Cross Country",
+      "first": "John",
+      "last": "Roney"
+    },
+    {
+      "school": "Shullsburg High School",
       "email": "Karenwiederholt74@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Gymnastics",
@@ -3993,14 +4001,6 @@
       "sport": "Boys & Girls Wrestling",
       "first": "Noah",
       "last": "Stienmann"
-    },
-    {
-      "school": "Shullsburg High School",
-      "email": "twoodworth@shullsburg.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Cross Country",
-      "first": "Tammy",
-      "last": "Woodworth"
     },
     {
       "school": "Southwestern High School",

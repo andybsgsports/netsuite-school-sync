@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-07-29T05:02:53.656275Z",
+  "updated": "2026-07-30T04:53:06.535093Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -660,7 +660,7 @@
     },
     {
       "school": "Columbus High School",
-      "email": "agunderson@columbus.k12.wi.us",
+      "email": "agunderson@ofsd.k12.wi.us",
       "role": "Principal",
       "sport": "",
       "first": "Arik",
@@ -5556,14 +5556,6 @@
     },
     {
       "school": "Sheboygan Christian High School",
-      "email": "liesa.blattner@lakeshoreunitedfc.org",
-      "role": "Head Coach",
-      "sport": "Girls Soccer",
-      "first": "Liesa",
-      "last": "Blattner"
-    },
-    {
-      "school": "Sheboygan Christian High School",
       "email": "melissaneeb@yahoo.com",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -5820,14 +5812,6 @@
     },
     {
       "school": "Sheboygan Lutheran High School",
-      "email": "liesa.blattner@lakeshoreunitedfc.org",
-      "role": "Head Coach",
-      "sport": "Girls Soccer",
-      "first": "Liesa",
-      "last": "Blattner"
-    },
-    {
-      "school": "Sheboygan Lutheran High School",
       "email": "muth@lutheranhigh.com",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -5852,11 +5836,11 @@
     },
     {
       "school": "Sheboygan Lutheran High School",
-      "email": "Schulz@lutheranhigh.com",
+      "email": "svstellwagen@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
-      "first": "Stephanie",
-      "last": "Schulz"
+      "first": "Sharon",
+      "last": "Stellwagen"
     },
     {
       "school": "Sheboygan Lutheran High School",
