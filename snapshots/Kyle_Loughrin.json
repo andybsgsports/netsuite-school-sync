@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-07-30T04:51:06.355044Z",
+  "updated": "2026-07-31T05:14:07.170014Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -7572,6 +7572,14 @@
     },
     {
       "school": "Seymour High School",
+      "email": "eschadrie@seymour.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Eric",
+      "last": "Schadrie"
+    },
+    {
+      "school": "Seymour High School",
       "email": "handerson@notredameacademy.com",
       "role": "Head Coach",
       "sport": "Girls Lacrosse-Girls",
@@ -7625,6 +7633,14 @@
       "sport": "",
       "first": "Karri",
       "last": "Vanden Langenberg"
+    },
+    {
+      "school": "Seymour High School",
+      "email": "Marshy1976@netscape.net",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Jeff",
+      "last": "Marsh"
     },
     {
       "school": "Seymour High School",

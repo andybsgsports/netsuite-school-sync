@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-07-30T04:48:11.332658Z",
+  "updated": "2026-07-31T05:11:15.577469Z",
   "records": [
     {
       "school": "Albany High School",
@@ -1364,19 +1364,19 @@
     },
     {
       "school": "Darlington High School",
+      "email": "schwartzw@darlington.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Will",
+      "last": "Schwartz"
+    },
+    {
+      "school": "Darlington High School",
       "email": "solbergb@darlington.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Baseball",
       "first": "Brad",
       "last": "Solberg"
-    },
-    {
-      "school": "Darlington High School",
-      "email": "uppenat@darlington.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Tom",
-      "last": "Uppena"
     },
     {
       "school": "Darlington High School",

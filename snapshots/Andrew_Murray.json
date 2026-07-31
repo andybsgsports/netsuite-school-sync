@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-07-30T04:47:12.646627Z",
+  "updated": "2026-07-31T05:10:18.628794Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -980,14 +980,6 @@
     },
     {
       "school": "Barneveld High School",
-      "email": "mreuter@barneveld.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Martina",
-      "last": "Reuter"
-    },
-    {
-      "school": "Barneveld High School",
       "email": "nwood@barneveld.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -1009,6 +1001,14 @@
       "sport": "Boys Football",
       "first": "Bret",
       "last": "St Arnauld"
+    },
+    {
+      "school": "Barneveld High School",
+      "email": "taylorannbloyer@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Taylor",
+      "last": "Bloyer"
     },
     {
       "school": "Barneveld High School",
@@ -1700,6 +1700,14 @@
     },
     {
       "school": "Belvidere North High School",
+      "email": "lgarcia@district100.com",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Lucas",
+      "last": "Garcia"
+    },
+    {
+      "school": "Belvidere North High School",
       "email": "lstites@district100.com",
       "role": "Coach",
       "sport": "Scholastic Bowl",
@@ -1713,14 +1721,6 @@
       "sport": "Boys Bowling",
       "first": "Larry",
       "last": "Tripamer"
-    },
-    {
-      "school": "Belvidere North High School",
-      "email": "lukegaaguirre@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Lucas",
-      "last": "Garcia"
     },
     {
       "school": "Belvidere North High School",
@@ -11548,6 +11548,14 @@
     },
     {
       "school": "Lakes Community High School",
+      "email": "steph.gates@chsd117.org",
+      "role": "Head Coach",
+      "sport": "Girls Cross Country",
+      "first": "Steph",
+      "last": "Gates"
+    },
+    {
+      "school": "Lakes Community High School",
       "email": "william.hamill@chsd117.org",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -17380,6 +17388,14 @@
     },
     {
       "school": "Verona Area High School",
+      "email": "dave.nelson@verona.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Cross Country",
+      "first": "Dave",
+      "last": "Nelson"
+    },
+    {
+      "school": "Verona Area High School",
       "email": "doraziob@verona.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -17601,6 +17617,14 @@
       "sport": "Girls Badminton",
       "first": "Brett",
       "last": "Heimstead"
+    },
+    {
+      "school": "Warren Township High School",
+      "email": "bjanecek@wths.net",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Brad",
+      "last": "Janecek"
     },
     {
       "school": "Warren Township High School",
@@ -17868,14 +17892,6 @@
     },
     {
       "school": "Warren Township High School",
-      "email": "nbaxevanakis@wths.net",
-      "role": "Certified Athletic Trainer",
-      "sport": "",
-      "first": "Nikoleta",
-      "last": "Baxevanakis"
-    },
-    {
-      "school": "Warren Township High School",
       "email": "rfinnegan@wths.net",
       "role": "Coach",
       "sport": "Halftime Dance",
@@ -17961,6 +17977,14 @@
       "sport": "Girls Track & Field",
       "first": "Tom",
       "last": "Malkowski"
+    },
+    {
+      "school": "Warren Township High School",
+      "email": "tvpjrlaw@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "T.J.",
+      "last": "Parker"
     },
     {
       "school": "Warren Township High School",

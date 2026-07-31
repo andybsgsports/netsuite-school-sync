@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-07-30T04:53:54.163749Z",
+  "updated": "2026-07-31T05:16:49.909066Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -3252,19 +3252,19 @@
     },
     {
       "school": "Muskego High School",
-      "email": "stephanie.jansen@muskegonorway.org",
-      "role": "Head Coach",
-      "sport": "Girls Tennis",
-      "first": "Stephanie",
-      "last": "Jansen"
-    },
-    {
-      "school": "Muskego High School",
       "email": "stephen.kerns@muskegonorway.org",
       "role": "Head Coach",
       "sport": "Boys Soccer",
       "first": "Stephen",
       "last": "Kerns"
+    },
+    {
+      "school": "Muskego High School",
+      "email": "tammie.samborski@muskegonorway.org",
+      "role": "Head Coach",
+      "sport": "Girls Tennis",
+      "first": "Tammie",
+      "last": "Samborski"
     },
     {
       "school": "Muskego High School",

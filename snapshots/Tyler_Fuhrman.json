@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-07-30T04:49:19.896259Z",
+  "updated": "2026-07-31T05:12:23.294894Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -1308,14 +1308,6 @@
     },
     {
       "school": "Hillsboro High School",
-      "email": "hilary.stanek@hillsboroschools.org",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Hilary",
-      "last": "Stanek"
-    },
-    {
-      "school": "Hillsboro High School",
       "email": "jordan.polk@Hillsboroschools.org",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -1345,6 +1337,14 @@
       "sport": "",
       "first": "Rich",
       "last": "Moyer"
+    },
+    {
+      "school": "Hillsboro High School",
+      "email": "stanek.hilary@wsalem.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Hilary",
+      "last": "Stanek"
     },
     {
       "school": "Holmen High School",
@@ -5764,14 +5764,6 @@
     },
     {
       "school": "West Salem High School",
-      "email": "fell.thom@yahoo.com",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Thomas",
-      "last": "Fell"
-    },
-    {
-      "school": "West Salem High School",
       "email": "frankwj55@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Wrestling",
@@ -5860,14 +5852,6 @@
     },
     {
       "school": "West Salem High School",
-      "email": "olson.ryan@wsalem.k12.wi.us",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Ryan",
-      "last": "Olson"
-    },
-    {
-      "school": "West Salem High School",
       "email": "rieber.ryan@wsalem.k12.wi.us",
       "role": "Superintendent",
       "sport": "",
@@ -5884,6 +5868,14 @@
     },
     {
       "school": "West Salem High School",
+      "email": "sammyt425@icloud.com",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Sam",
+      "last": "Taylor"
+    },
+    {
+      "school": "West Salem High School",
       "email": "stakhouse46@hotmail.com",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -5897,6 +5889,14 @@
       "sport": "Boys Track and Field",
       "first": "Justin",
       "last": "Stakston"
+    },
+    {
+      "school": "West Salem High School",
+      "email": "stanek.hilary@wsalem.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Hilary",
+      "last": "Stanek"
     },
     {
       "school": "West Salem High School",
