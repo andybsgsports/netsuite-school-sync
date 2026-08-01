@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-07-31T05:14:07.170014Z",
+  "updated": "2026-08-01T05:05:49.520422Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -5692,14 +5692,6 @@
     },
     {
       "school": "Merrill High School",
-      "email": "bradley.potter@mapsedu.org",
-      "role": "Assistant Principal",
-      "sport": "",
-      "first": "Brad",
-      "last": "Potter"
-    },
-    {
-      "school": "Merrill High School",
       "email": "breanne.semling@mapsedu.org",
       "role": "AD Admin Assistant",
       "sport": "",
@@ -5777,6 +5769,14 @@
       "sport": "Boys Soccer",
       "first": "Mason",
       "last": "Gebert"
+    },
+    {
+      "school": "Merrill High School",
+      "email": "potterb@myhatchets.org",
+      "role": "Assistant Principal",
+      "sport": "",
+      "first": "Brad",
+      "last": "Potter"
     },
     {
       "school": "Merrill High School",
@@ -9260,6 +9260,14 @@
     },
     {
       "school": "Wausau East High School",
+      "email": "bzinkel@wausauschools.org",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Brent",
+      "last": "Zinkel"
+    },
+    {
+      "school": "Wausau East High School",
       "email": "cbushman@wausauschools.org",
       "role": "Superintendent",
       "sport": "",
@@ -9353,22 +9361,6 @@
       "sport": "Boys & Girls Wrestling",
       "first": "Matt",
       "last": "Natzke"
-    },
-    {
-      "school": "Wausau East High School",
-      "email": "tolson@wausauschools.org",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Cross Country",
-      "first": "Tim",
-      "last": "Olson"
-    },
-    {
-      "school": "Wausau East High School",
-      "email": "tolson@wausauschools.org",
-      "role": "Head Coach",
-      "sport": "Girls Track and Field",
-      "first": "Tim",
-      "last": "Olson"
     },
     {
       "school": "Wausau East High School",
@@ -9926,7 +9918,7 @@
       "school": "Winneconne High School",
       "email": "Bthomas2@new.rr.com",
       "role": "Head Coach",
-      "sport": "Boys & Girls Golf",
+      "sport": "Boys Golf",
       "first": "Brad",
       "last": "Thomas"
     },
@@ -9935,6 +9927,14 @@
       "email": "buelowtr@w-csd.org",
       "role": "Head Coach",
       "sport": "Girls Basketball",
+      "first": "Troy",
+      "last": "Buelow"
+    },
+    {
+      "school": "Winneconne High School",
+      "email": "buelowtr@w-csd.org",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
       "first": "Troy",
       "last": "Buelow"
     },

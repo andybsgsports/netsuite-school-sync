@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-07-31T05:12:23.294894Z",
+  "updated": "2026-08-01T05:04:06.163967Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -2657,6 +2657,14 @@
       "sport": "",
       "first": "Mark",
       "last": "Brooks"
+    },
+    {
+      "school": "Madison Country Day High School",
+      "email": "salocke@madisoncountryday.org",
+      "role": "Head Coach",
+      "sport": "Girls Tennis",
+      "first": "Sam",
+      "last": "Locke"
     },
     {
       "school": "Madison Country Day High School",
