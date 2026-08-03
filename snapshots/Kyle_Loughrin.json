@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-08-02T05:12:00.512200Z",
+  "updated": "2026-08-03T05:16:09.755413Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -1526,17 +1526,17 @@
       "school": "Berlin High School",
       "email": "mwillett@berlin.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Girls Track and Field",
+      "sport": "Boys & Girls Cross Country",
       "first": "Matt",
       "last": "Willett"
     },
     {
       "school": "Berlin High School",
-      "email": "rlara@berlin.k12.wi.us",
+      "email": "mwillett@berlin.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys & Girls Cross Country",
-      "first": "Roberto",
-      "last": "Lara"
+      "sport": "Girls Track and Field",
+      "first": "Matt",
+      "last": "Willett"
     },
     {
       "school": "Berlin High School",
