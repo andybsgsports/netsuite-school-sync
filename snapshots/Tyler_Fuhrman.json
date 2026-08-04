@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-08-03T05:14:27.194327Z",
+  "updated": "2026-08-04T04:58:58.128921Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -3580,6 +3580,14 @@
     },
     {
       "school": "Madison West High School",
+      "email": "amnoriega@madison.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Alyssen",
+      "last": "Noriega"
+    },
+    {
+      "school": "Madison West High School",
       "email": "bchelstrom@wisc.edu",
       "role": "Head Coach",
       "sport": "Boys Swimming & Diving",
@@ -3617,14 +3625,6 @@
       "sport": "Girls Gymnastics",
       "first": "Brianna",
       "last": "Zeilinger"
-    },
-    {
-      "school": "Madison West High School",
-      "email": "chelseasmith32@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Chelsea",
-      "last": "Jones"
     },
     {
       "school": "Madison West High School",
@@ -3676,14 +3676,6 @@
     },
     {
       "school": "Madison West High School",
-      "email": "eanault@madison.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Golf",
-      "first": "Emily",
-      "last": "Nault"
-    },
-    {
-      "school": "Madison West High School",
       "email": "emrolf@outlook.com",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -3692,11 +3684,19 @@
     },
     {
       "school": "Madison West High School",
+      "email": "gmmartinez2@madison.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Genevieve",
+      "last": "Martinez"
+    },
+    {
+      "school": "Madison West High School",
       "email": "jedalheim@madison.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Volleyball",
       "first": "Jamie",
-      "last": "Dalheim"
+      "last": "Peterson"
     },
     {
       "school": "Madison West High School",
@@ -3718,7 +3718,7 @@
       "school": "Madison West High School",
       "email": "maier@madison.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys Golf",
+      "sport": "Boys & Girls Golf",
       "first": "Scott",
       "last": "Maier"
     },
@@ -3801,14 +3801,6 @@
       "sport": "Boys & Girls Wrestling",
       "first": "Jamey",
       "last": "Simmons"
-    },
-    {
-      "school": "Madison West High School",
-      "email": "wiragha@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Hannah",
-      "last": "Wirag"
     },
     {
       "school": "Middleton High School",
@@ -4180,17 +4172,17 @@
     },
     {
       "school": "Onalaska High School",
-      "email": "ckowal34@yahoo.com",
+      "email": "casis@onalaskaschools.com",
       "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Craig",
-      "last": "Kowal"
+      "sport": "Boys Basketball",
+      "first": "Isaac",
+      "last": "Castellano"
     },
     {
       "school": "Onalaska High School",
       "email": "ckowal34@yahoo.com",
       "role": "Head Coach",
-      "sport": "Boys Basketball",
+      "sport": "Boys Baseball",
       "first": "Craig",
       "last": "Kowal"
     },
@@ -4209,6 +4201,22 @@
       "sport": "Boys Hockey",
       "first": "Andrew",
       "last": "Kjos"
+    },
+    {
+      "school": "Onalaska High School",
+      "email": "freje@onalaskaschools.com",
+      "role": "Head Coach",
+      "sport": "Boys Track and Field",
+      "first": "Jesse",
+      "last": "Fredrick"
+    },
+    {
+      "school": "Onalaska High School",
+      "email": "hana.miehe@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Hana",
+      "last": "Schauf"
     },
     {
       "school": "Onalaska High School",
@@ -4276,14 +4284,6 @@
     },
     {
       "school": "Onalaska High School",
-      "email": "sauerman.luke@onalaskaschools.com",
-      "role": "Head Coach",
-      "sport": "Boys Track and Field",
-      "first": "Luke",
-      "last": "Sauerman"
-    },
-    {
-      "school": "Onalaska High School",
       "email": "schabi@holmen.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Swimming & Diving",
@@ -4305,14 +4305,6 @@
       "sport": "Girls Wrestling",
       "first": "Tyler",
       "last": "Shackle"
-    },
-    {
-      "school": "Onalaska High School",
-      "email": "sheda@onalaskaschools.com",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Cross Country",
-      "first": "Darin",
-      "last": "Shepardson"
     },
     {
       "school": "Onalaska High School",

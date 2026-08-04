@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-08-03T05:12:23.778709Z",
+  "updated": "2026-08-04T04:56:45.412134Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -772,11 +772,11 @@
     },
     {
       "school": "Badger High School",
-      "email": "Elkslaxcoaches@gmail.com",
+      "email": "george5burchfield@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Lacrosse-Boys",
-      "first": "Jordan",
-      "last": "Reynolds"
+      "first": "George",
+      "last": "Burchfield"
     },
     {
       "school": "Badger High School",
@@ -2980,14 +2980,6 @@
     },
     {
       "school": "Burlington High School",
-      "email": "Elkslaxcoaches@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Lacrosse-Boys",
-      "first": "Jordan",
-      "last": "Reynolds"
-    },
-    {
-      "school": "Burlington High School",
       "email": "esulik@basd.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
@@ -3001,6 +2993,14 @@
       "sport": "Boys Swimming & Diving",
       "first": "Chris",
       "last": "Rydelski"
+    },
+    {
+      "school": "Burlington High School",
+      "email": "george5burchfield@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Lacrosse-Boys",
+      "first": "George",
+      "last": "Burchfield"
     },
     {
       "school": "Burlington High School",
@@ -3991,6 +3991,14 @@
       "email": "dominic.pearson@central301.net",
       "role": "Head Coach",
       "sport": "Boys Bowling",
+      "first": "Dominic",
+      "last": "Pearson"
+    },
+    {
+      "school": "Central High School",
+      "email": "dominic.pearson@central301.net",
+      "role": "Head Coach",
+      "sport": "Girls Flag Football",
       "first": "Dominic",
       "last": "Pearson"
     },
@@ -5252,19 +5260,19 @@
     },
     {
       "school": "Delavan-Darien High School",
-      "email": "Elkslaxcoaches@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Lacrosse-Boys",
-      "first": "Jordan",
-      "last": "Reynolds"
-    },
-    {
-      "school": "Delavan-Darien High School",
       "email": "ewallace@ddschools.org",
       "role": "Head Coach",
       "sport": "Girls Swimming & Diving",
       "first": "Erin",
       "last": "Wallace"
+    },
+    {
+      "school": "Delavan-Darien High School",
+      "email": "george5burchfield@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Lacrosse-Boys",
+      "first": "George",
+      "last": "Burchfield"
     },
     {
       "school": "Delavan-Darien High School",
@@ -6028,11 +6036,11 @@
     },
     {
       "school": "Elkhorn High School",
-      "email": "Elkslaxcoaches@gmail.com",
+      "email": "george5burchfield@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Lacrosse-Boys",
-      "first": "Jordan",
-      "last": "Reynolds"
+      "first": "George",
+      "last": "Burchfield"
     },
     {
       "school": "Elkhorn High School",
@@ -8132,6 +8140,14 @@
     },
     {
       "school": "Guilford High School",
+      "email": "amish.shah@rps205.com",
+      "role": "Principal",
+      "sport": "",
+      "first": "Amish",
+      "last": "Shah"
+    },
+    {
+      "school": "Guilford High School",
       "email": "anthony.capriotti@rps205.com",
       "role": "Head Coach",
       "sport": "Boys Football",
@@ -8156,6 +8172,14 @@
     },
     {
       "school": "Guilford High School",
+      "email": "brooke.imbach@rps205.com",
+      "role": "Student Council Adviser",
+      "sport": "",
+      "first": "Brooke",
+      "last": "Imbach"
+    },
+    {
+      "school": "Guilford High School",
       "email": "c33dixon@yahoo.com",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -8169,6 +8193,14 @@
       "sport": "Girls Volleyball",
       "first": "Caitlin",
       "last": "Seibert"
+    },
+    {
+      "school": "Guilford High School",
+      "email": "courtney.kubacki@rps205.com",
+      "role": "Marching Band Director",
+      "sport": "",
+      "first": "Courtney",
+      "last": "Kubacki"
     },
     {
       "school": "Guilford High School",
@@ -8252,6 +8284,14 @@
     },
     {
       "school": "Guilford High School",
+      "email": "joseph.gibbons@rps205.com",
+      "role": "Head Coach",
+      "sport": "Boys Cross Country",
+      "first": "Joe",
+      "last": "Gibbons"
+    },
+    {
+      "school": "Guilford High School",
       "email": "kdjensen300@gmail.com",
       "role": "Other Administrator (2)",
       "sport": "",
@@ -8265,6 +8305,22 @@
       "sport": "Girls Bowling",
       "first": "Kailey",
       "last": "Siemers"
+    },
+    {
+      "school": "Guilford High School",
+      "email": "liv.sweetman@gmail.com",
+      "role": "Coach",
+      "sport": "Sideline Cheer",
+      "first": "Liv",
+      "last": "Sweetman"
+    },
+    {
+      "school": "Guilford High School",
+      "email": "liv.sweetman@gmail.com",
+      "role": "Head Coach",
+      "sport": "Competitive Cheerleading",
+      "first": "Liv",
+      "last": "Sweetman"
     },
     {
       "school": "Guilford High School",
@@ -8324,6 +8380,14 @@
     },
     {
       "school": "Guilford High School",
+      "email": "ruth.odonnell@rps205.com",
+      "role": "Yearbook Adviser",
+      "sport": "",
+      "first": "Ruth",
+      "last": "O'Donnell"
+    },
+    {
+      "school": "Guilford High School",
       "email": "salisburytrevor14@gmail.com",
       "role": "Head Coach",
       "sport": "Competitive Dance",
@@ -8345,6 +8409,14 @@
       "sport": "Girls Wrestling",
       "first": "Rashad",
       "last": "Hoel"
+    },
+    {
+      "school": "Guilford High School",
+      "email": "simon.reinhardt@rps205.com",
+      "role": "Coach",
+      "sport": "Chess",
+      "first": "Simon",
+      "last": "Reinhardt"
     },
     {
       "school": "Guilford High School",
@@ -18366,7 +18438,7 @@
       "school": "Wauconda High School",
       "email": "johara@d118.org",
       "role": "Head Coach",
-      "sport": "Boys Cross Country",
+      "sport": "Boys & Girls Cross Country",
       "first": "Jacob",
       "last": "O'Hara"
     },
@@ -19748,11 +19820,11 @@
     },
     {
       "school": "Williams Bay High School",
-      "email": "Elkslaxcoaches@gmail.com",
+      "email": "george5burchfield@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Lacrosse-Boys",
-      "first": "Jordan",
-      "last": "Reynolds"
+      "first": "George",
+      "last": "Burchfield"
     },
     {
       "school": "Williams Bay High School",

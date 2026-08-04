@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-08-03T05:16:09.755413Z",
+  "updated": "2026-08-04T05:00:49.045135Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -7788,6 +7788,14 @@
     },
     {
       "school": "Shawano High School",
+      "email": "cblack@shawanoschools.org",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Tennis",
+      "first": "Christopher",
+      "last": "Black"
+    },
+    {
+      "school": "Shawano High School",
       "email": "dbeyer@shawanoschools.org",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -10143,14 +10151,6 @@
       "email": "isaac.holberg@wrps.net",
       "role": "Head Coach",
       "sport": "Girls Softball",
-      "first": "Isaac",
-      "last": "Holberg"
-    },
-    {
-      "school": "Wisconsin Rapids High School",
-      "email": "isaac.holberg@wrps.net",
-      "role": "Head Coach",
-      "sport": "Girls Tennis",
       "first": "Isaac",
       "last": "Holberg"
     },

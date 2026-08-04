@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-08-03T05:16:41.967198Z",
+  "updated": "2026-08-04T05:01:26.456829Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -1556,14 +1556,6 @@
     },
     {
       "school": "Nekoosa High School",
-      "email": "john_thomas@nekoosa.k12.wi.us",
-      "role": "Assistant Athletic Director",
-      "sport": "",
-      "first": "John",
-      "last": "Thomas"
-    },
-    {
-      "school": "Nekoosa High School",
       "email": "josh_kolo@nekoosa.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -1628,19 +1620,19 @@
     },
     {
       "school": "Nekoosa High School",
+      "email": "tori_spice@nekoosa.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Tori",
+      "last": "Spice"
+    },
+    {
+      "school": "Nekoosa High School",
       "email": "treeguy1976@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Wrestling",
       "first": "Denny",
       "last": "Mullins"
-    },
-    {
-      "school": "Nekoosa High School",
-      "email": "wendy_janssen@nekoosa.k12.wi.us",
-      "role": "AD Admin Assistant",
-      "sport": "",
-      "first": "Wendy",
-      "last": "Janssen"
     },
     {
       "school": "New Lisbon High School",

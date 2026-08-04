@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-08-03T05:13:17.105123Z",
+  "updated": "2026-08-04T04:57:46.221944Z",
   "records": [
     {
       "school": "Albany High School",
@@ -1988,6 +1988,14 @@
     },
     {
       "school": "Lancaster High School",
+      "email": "stiklestadk@lancastersd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Kyle",
+      "last": "Stiklestad"
+    },
+    {
+      "school": "Lancaster High School",
       "email": "uppenam@lancastersd.k12.wi.us",
       "role": "Principal",
       "sport": "",
@@ -3844,6 +3852,14 @@
     },
     {
       "school": "Sauk Prairie High School",
+      "email": "randall.wallace@saukprairieschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Randy",
+      "last": "Wallace"
+    },
+    {
+      "school": "Sauk Prairie High School",
       "email": "sean.mcgann@saukprairieschools.org",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -3889,14 +3905,6 @@
       "sport": "Boys & Girls Swimming Diving",
       "first": "Todd",
       "last": "Wuerger"
-    },
-    {
-      "school": "Sauk Prairie High School",
-      "email": "WALLACERL30@GMAIL.COM",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Randy",
-      "last": "Wallace"
     },
     {
       "school": "Shullsburg High School",
