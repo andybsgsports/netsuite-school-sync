@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-08-04T04:56:45.412134Z",
+  "updated": "2026-08-05T04:53:37.925451Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -532,14 +532,6 @@
     },
     {
       "school": "Auburn High School",
-      "email": "ehren.jarrett@rps205.com",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Ehren",
-      "last": "Jarrett"
-    },
-    {
-      "school": "Auburn High School",
       "email": "erlest79@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Bowling",
@@ -585,6 +577,14 @@
       "sport": "",
       "first": "Kyle",
       "last": "Owen"
+    },
+    {
+      "school": "Auburn High School",
+      "email": "larry.huff@rps205.com",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Larry",
+      "last": "Huff"
     },
     {
       "school": "Auburn High School",
@@ -4468,14 +4468,6 @@
     },
     {
       "school": "Crystal Lake Central High School",
-      "email": "arichardson@d155.org",
-      "role": "Newspaper Adviser",
-      "sport": "",
-      "first": "Agnes",
-      "last": "Richardson"
-    },
-    {
-      "school": "Crystal Lake Central High School",
       "email": "asaldivar-castaneda@d155.org",
       "role": "Head Coach",
       "sport": "Girls Wrestling",
@@ -4492,7 +4484,7 @@
     },
     {
       "school": "Crystal Lake Central High School",
-      "email": "bchmielewshi@olympiachiroandpt.com",
+      "email": "bchmielewski@d155.org",
       "role": "Certified Athletic Trainer",
       "sport": "",
       "first": "Brody",
@@ -4569,14 +4561,6 @@
       "sport": "Boys Baseball",
       "first": "Caleb",
       "last": "Aldridge"
-    },
-    {
-      "school": "Crystal Lake Central High School",
-      "email": "cazplon@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Lacrosse",
-      "first": "Casimer",
-      "last": "Plonczynski"
     },
     {
       "school": "Crystal Lake Central High School",
@@ -7564,6 +7548,14 @@
     },
     {
       "school": "Grayslake North High School",
+      "email": "ebrysiewicz@d127.org",
+      "role": "Newspaper Adviser",
+      "sport": "",
+      "first": "Erin",
+      "last": "Brysiewicz"
+    },
+    {
+      "school": "Grayslake North High School",
       "email": "elopez@d127.org",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -7737,6 +7729,14 @@
       "sport": "Girls Bowling",
       "first": "Miss",
       "last": "Samantha Knab"
+    },
+    {
+      "school": "Grayslake North High School",
+      "email": "tgrunloh@d127.org",
+      "role": "Coach",
+      "sport": "Chess",
+      "first": "Todd",
+      "last": "Grunloh"
     },
     {
       "school": "Grayslake North High School",
@@ -8252,14 +8252,6 @@
     },
     {
       "school": "Guilford High School",
-      "email": "ehren.jarrett@rps205.com",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Ehren",
-      "last": "Jarrett"
-    },
-    {
-      "school": "Guilford High School",
       "email": "elissavillanueva28@gmail.com",
       "role": "Certified Athletic Trainer",
       "sport": "",
@@ -8305,6 +8297,14 @@
       "sport": "Girls Bowling",
       "first": "Kailey",
       "last": "Siemers"
+    },
+    {
+      "school": "Guilford High School",
+      "email": "larry.huff@rps205.com",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Larry",
+      "last": "Huff"
     },
     {
       "school": "Guilford High School",
@@ -14868,22 +14868,6 @@
     },
     {
       "school": "Pecatonica High School",
-      "email": "alexandersnyder16@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Track & Field",
-      "first": "Alex",
-      "last": "Snyder"
-    },
-    {
-      "school": "Pecatonica High School",
-      "email": "billshepard23@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Track & Field",
-      "first": "Bill",
-      "last": "Shepard"
-    },
-    {
-      "school": "Pecatonica High School",
       "email": "bobbyheisler@pecschools.com",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -14993,14 +14977,6 @@
       "sport": "",
       "first": "Karlee",
       "last": "Dodd"
-    },
-    {
-      "school": "Pecatonica High School",
-      "email": "kasnerkm@gmail.com",
-      "role": "Coach",
-      "sport": "Sideline Cheer",
-      "first": "Koryn",
-      "last": "Brickson"
     },
     {
       "school": "Pecatonica High School",
@@ -16212,14 +16188,6 @@
     },
     {
       "school": "Rockford East High School",
-      "email": "chanice.michowski@rps205.com",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Chanice",
-      "last": "Michowski"
-    },
-    {
-      "school": "Rockford East High School",
       "email": "christian.r.ortega-valenzuela@osfhealthcare.org",
       "role": "Certified Athletic Trainer",
       "sport": "",
@@ -16233,14 +16201,6 @@
       "sport": "",
       "first": "Dawn",
       "last": "Williamson"
-    },
-    {
-      "school": "Rockford East High School",
-      "email": "ehren.jarrett@rps205.com",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Ehren",
-      "last": "Jarrett"
     },
     {
       "school": "Rockford East High School",
@@ -16292,6 +16252,14 @@
     },
     {
       "school": "Rockford East High School",
+      "email": "heriberto.santiago@rps205.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Volleyball",
+      "first": "Heriberto",
+      "last": "Santiago"
+    },
+    {
+      "school": "Rockford East High School",
       "email": "iysis.brown@rps205.com",
       "role": "Head Coach",
       "sport": "Competitive Dance",
@@ -16313,6 +16281,14 @@
       "sport": "",
       "first": "Jim",
       "last": "Parker"
+    },
+    {
+      "school": "Rockford East High School",
+      "email": "larry.huff@rps205.com",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Larry",
+      "last": "Huff"
     },
     {
       "school": "Rockford East High School",
@@ -16377,14 +16353,6 @@
       "sport": "Bass Fishing",
       "first": "Richard",
       "last": "Hacker"
-    },
-    {
-      "school": "Rockford East High School",
-      "email": "roy.sackmaster@rps205.com",
-      "role": "Asst. Boys Athletic Director",
-      "sport": "",
-      "first": "Roy",
-      "last": "Sackmaster"
     },
     {
       "school": "Rockford East High School",
@@ -17304,7 +17272,7 @@
       "role": "Head Coach",
       "sport": "Girls Volleyball",
       "first": "Abigail",
-      "last": "Hogan"
+      "last": "Schouten"
     },
     {
       "school": "Union Grove High School",
@@ -18716,14 +18684,6 @@
     },
     {
       "school": "Waukesha North High School",
-      "email": "ksumbry@juno.com",
-      "role": "Head Coach",
-      "sport": "Boys Track and Field",
-      "first": "Ken",
-      "last": "Sumbry"
-    },
-    {
-      "school": "Waukesha North High School",
       "email": "lhesse@waukesha.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Tennis",
@@ -18761,14 +18721,6 @@
       "sport": "Girls Hockey",
       "first": "Blake",
       "last": "Panosh"
-    },
-    {
-      "school": "Waukesha North High School",
-      "email": "radomskd@elmbrookschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Don",
-      "last": "Radomski"
     },
     {
       "school": "Waukesha North High School",

@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-08-04T05:03:42.001899Z",
+  "updated": "2026-08-05T05:00:10.859831Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -180,14 +180,6 @@
     },
     {
       "school": "Arrowhead High School",
-      "email": "rahnen@wi.rr.com",
-      "role": "Head Coach",
-      "sport": "Girls Swimming & Diving",
-      "first": "Ruth",
-      "last": "Ann Ahnen"
-    },
-    {
-      "school": "Arrowhead High School",
       "email": "randyferrell@wiwrestling.com",
       "role": "Head Coach",
       "sport": "Boys & Girls Wrestling",
@@ -252,11 +244,11 @@
     },
     {
       "school": "Arrowhead High School",
-      "email": "tjshaw16@gmail.com",
+      "email": "Tom@purawellnesslabs.com",
       "role": "Head Coach",
       "sport": "Girls Tennis",
-      "first": "Tim",
-      "last": "Shaw"
+      "first": "Tom",
+      "last": "Heidenberger"
     },
     {
       "school": "Arrowhead High School",
@@ -892,19 +884,19 @@
     },
     {
       "school": "Edgerton High School",
+      "email": "mabuhrow@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Matt",
+      "last": "Buhrow"
+    },
+    {
+      "school": "Edgerton High School",
       "email": "mark.coombs@edgerton.k12.wi.us",
       "role": "Principal",
       "sport": "",
       "first": "Mark",
       "last": "Coombs"
-    },
-    {
-      "school": "Edgerton High School",
-      "email": "mike.gregory@edgerton.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Mike",
-      "last": "Gregory"
     },
     {
       "school": "Edgerton High School",
@@ -2364,6 +2356,14 @@
     },
     {
       "school": "Kettle Moraine High School",
+      "email": "kleinf@kmsd.edu",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Fabian",
+      "last": "Klein"
+    },
+    {
+      "school": "Kettle Moraine High School",
       "email": "kmgirlslax@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Lacrosse-Girls",
@@ -2612,6 +2612,14 @@
     },
     {
       "school": "Lakeside Lutheran High School",
+      "email": "adenoyer@llhs.org",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Austin",
+      "last": "DeNoyer"
+    },
+    {
+      "school": "Lakeside Lutheran High School",
       "email": "btomlin@llhs.org",
       "role": "Head Coach",
       "sport": "Girls Golf",
@@ -2711,14 +2719,6 @@
       "email": "tjahns@llhs.org",
       "role": "Athletic Director",
       "sport": "",
-      "first": "Todd",
-      "last": "Jahns"
-    },
-    {
-      "school": "Lakeside Lutheran High School",
-      "email": "tjahns@llhs.org",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
       "first": "Todd",
       "last": "Jahns"
     },
@@ -4436,19 +4436,11 @@
     },
     {
       "school": "Waterloo High School",
-      "email": "bartelts@waterloo.k12.wi.us",
-      "role": "Principal",
+      "email": "coopert@waterloo.k12.wi.us",
+      "role": "AD Admin Assistant",
       "sport": "",
-      "first": "Shawn",
-      "last": "Bartelt"
-    },
-    {
-      "school": "Waterloo High School",
-      "email": "chwalak@waterloo.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Kristofer",
-      "last": "Chwala"
+      "first": "Tiffany",
+      "last": "Cooper"
     },
     {
       "school": "Waterloo High School",
@@ -4460,11 +4452,11 @@
     },
     {
       "school": "Waterloo High School",
-      "email": "devriesm@waterloo.k12.wi.us",
-      "role": "AD Admin Assistant",
-      "sport": "",
-      "first": "Melissa",
-      "last": "De Vries"
+      "email": "deglerj12@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Otto",
+      "last": "Degler"
     },
     {
       "school": "Waterloo High School",
@@ -4473,14 +4465,6 @@
       "sport": "Boys Wrestling",
       "first": "Scott",
       "last": "Dingee"
-    },
-    {
-      "school": "Waterloo High School",
-      "email": "dosel@waterloo.k12.wi.us",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Lynn",
-      "last": "Dose"
     },
     {
       "school": "Waterloo High School",
@@ -4505,14 +4489,6 @@
       "sport": "",
       "first": "Brian",
       "last": "Henning"
-    },
-    {
-      "school": "Waterloo High School",
-      "email": "jjaehnke66@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Joe",
-      "last": "Jaehnke"
     },
     {
       "school": "Waterloo High School",
@@ -4553,6 +4529,14 @@
       "sport": "",
       "first": "Brandon",
       "last": "Siska"
+    },
+    {
+      "school": "Waterloo High School",
+      "email": "syvrude@waterloo.k12.wi.us",
+      "role": "Principal",
+      "sport": "",
+      "first": "Eugene",
+      "last": "Syvrud"
     },
     {
       "school": "Waterloo High School",

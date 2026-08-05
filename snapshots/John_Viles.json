@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-08-04T05:02:52.970564Z",
+  "updated": "2026-08-05T04:59:21.921140Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -1918,7 +1918,7 @@
       "school": "Kewaskum High School",
       "email": "casey.scheel@gmail.com",
       "role": "Head Coach",
-      "sport": "Boys & Girls Golf",
+      "sport": "Girls Golf",
       "first": "Casey",
       "last": "Scheel"
     },
@@ -2329,14 +2329,6 @@
       "sport": "Boys & Girls Cross Country",
       "first": "Joe",
       "last": "Bourland"
-    },
-    {
-      "school": "Kohler High School",
-      "email": "mvtrojan@yahoo.com",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Mark",
-      "last": "Olivieri"
     },
     {
       "school": "Kohler High School",
@@ -2900,6 +2892,14 @@
     },
     {
       "school": "Lourdes Academy High School",
+      "email": "jason.lowe@thrivent.com",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "Jason",
+      "last": "Lowe"
+    },
+    {
+      "school": "Lourdes Academy High School",
       "email": "jdinegan@lourdes.today",
       "role": "President",
       "sport": "",
@@ -2956,7 +2956,7 @@
     },
     {
       "school": "Lourdes Academy High School",
-      "email": "rverdette@baylandinsurance.com",
+      "email": "rverdette@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Tennis",
       "first": "Randy",

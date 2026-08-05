@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-08-04T05:00:49.045135Z",
+  "updated": "2026-08-05T04:57:26.004840Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -4892,6 +4892,14 @@
     },
     {
       "school": "Little Chute High School",
+      "email": "dmfoley50@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Don",
+      "last": "Foley"
+    },
+    {
+      "school": "Little Chute High School",
       "email": "GUIDO.ONTANEDA@KCC.COM",
       "role": "Head Coach",
       "sport": "Boys Soccer",
@@ -4988,14 +4996,6 @@
     },
     {
       "school": "Little Chute High School",
-      "email": "rbotz@littlechute.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Cross Country",
-      "first": "Rudy",
-      "last": "Botz"
-    },
-    {
-      "school": "Little Chute High School",
       "email": "sappleton@littlechute.k12.wi.us",
       "role": "Assistant Principal",
       "sport": "",
@@ -5036,19 +5036,11 @@
     },
     {
       "school": "Manawa High School",
-      "email": "bjohnson@manawaschools.org",
+      "email": "bscheller@manawaschools.org",
       "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Brad",
-      "last": "Johnson"
-    },
-    {
-      "school": "Manawa High School",
-      "email": "cscheid@manawaschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Conner",
-      "last": "Scheid"
+      "sport": "Boys & Girls Cross Country",
+      "first": "Bruce",
+      "last": "Scheller"
     },
     {
       "school": "Manawa High School",
@@ -5065,6 +5057,14 @@
       "sport": "Girls Volleyball",
       "first": "Gen",
       "last": "Gunderson"
+    },
+    {
+      "school": "Manawa High School",
+      "email": "jwachowiak@manawaschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Josh",
+      "last": "Wachowiak"
     },
     {
       "school": "Manawa High School",
@@ -5124,27 +5124,11 @@
     },
     {
       "school": "Manawa High School",
-      "email": "talioto@manawaschools.org",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Tony",
-      "last": "Alioto"
-    },
-    {
-      "school": "Manawa High School",
       "email": "timschuelke21@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Golf",
       "first": "Tim",
       "last": "Schuelke"
-    },
-    {
-      "school": "Manawa High School",
-      "email": "tschernecker@manawaschools.org",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Cross Country",
-      "first": "Teri",
-      "last": "Schernecker"
     },
     {
       "school": "Marinette High School",

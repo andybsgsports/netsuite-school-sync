@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-08-04T04:58:58.128921Z",
+  "updated": "2026-08-05T04:55:42.035769Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -1604,19 +1604,11 @@
     },
     {
       "school": "Ithaca High School",
-      "email": "brandon.fetterly@ithaca.k12.wi.us",
+      "email": "dwaine.dailey@ithaca.k12.wi.us",
       "role": "Principal",
       "sport": "",
-      "first": "Brandon",
-      "last": "Fetterly"
-    },
-    {
-      "school": "Ithaca High School",
-      "email": "clair.fedderly@ithaca.k12.wi.us",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Clair",
-      "last": "Fedderly"
+      "first": "Dwaine",
+      "last": "Dailey"
     },
     {
       "school": "Ithaca High School",
@@ -1668,6 +1660,14 @@
     },
     {
       "school": "Ithaca High School",
+      "email": "paul.coenen@ithaca.k12.wi.us",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Paul",
+      "last": "Coenen"
+    },
+    {
+      "school": "Ithaca High School",
       "email": "sjablorenz@gmail.com",
       "role": "Head Coach",
       "sport": "Boys & Girls Track and Field",
@@ -1695,14 +1695,6 @@
       "email": "villiard@weston.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Softball",
-      "first": "Larry",
-      "last": "Villiard"
-    },
-    {
-      "school": "Ithaca High School",
-      "email": "villiardlar@gmail.com",
-      "role": "Assistant Athletic Director",
-      "sport": "",
       "first": "Larry",
       "last": "Villiard"
     },
