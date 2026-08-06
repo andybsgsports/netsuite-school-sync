@@ -58,13 +58,26 @@ Manually trigger the workflow:
 
 Then check Outlook (web or desktop) — you should see new contact folders by sport with the contacts populated.
 
-## Re-auth (if it ever stops working)
+## Token auto-rotation (added Aug 2026)
 
-Refresh tokens for public clients have a ~90-day rolling lifetime. If the daily sync runs continuously, the refresh token stays valid. If you skip 90+ days, or your tenant policy revokes it, the sync will fail with `Silent token refresh failed`. To fix:
+Refresh tokens for public clients have a ~90-day lifetime, and a static
+GitHub Secret goes stale (this bit us on 2026-08-01). The workflow now
+self-rotates: after each run, the freshest MSAL token cache is encrypted
+with the `OUTLOOK_CACHE_KEY` secret (Fernet) and committed to the repo as
+`outlook_token_cache.enc`. Load priority is `.enc` file first, then the
+`OUTLOOK_TOKEN_CACHE` secret (bootstrap/fallback), then a local
+`outlook_token_cache.json`. No scheduled re-auth is needed anymore.
+
+## Re-auth (only if rotation breaks)
+
+If the token is revoked by tenant policy, or the sync is down long enough
+that the stored token dies, it fails with `Silent token refresh failed`. To fix:
 
 1. Run `python outlook_auth_setup.py` again on your laptop
 2. Update the `OUTLOOK_TOKEN_CACHE` GitHub Secret with the new cache JSON
 3. Delete the local file again
+4. Delete `outlook_token_cache.enc` from the repo (so the fresh secret wins),
+   then trigger the workflow — it re-bootstraps the encrypted file
 
 ## Files added
 

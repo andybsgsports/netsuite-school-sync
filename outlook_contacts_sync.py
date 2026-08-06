@@ -177,23 +177,66 @@ def load_contacts_and_schools(gc):
 
 
 # -- Auth --------------------------------------------------------------------
-def get_access_token() -> str:
-    """Load token cache from env, refresh, return access token."""
-    cache_json = os.environ.get("OUTLOOK_TOKEN_CACHE", "")
-    if not cache_json:
-        # Fallback: read from local file (for local debugging)
-        local = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                             "outlook_token_cache.json")
-        if os.path.exists(local):
-            cache_json = open(local).read()
-        else:
-            raise RuntimeError(
-                "No OUTLOOK_TOKEN_CACHE env var set and no local "
-                "outlook_token_cache.json found. Run outlook_auth_setup.py first."
-            )
+# Token-cache auto-rotation: Entra ID refresh tokens for public clients die
+# after ~90 days of the STORED token not being reissued. A static GitHub
+# secret therefore expires quarterly. To avoid that, the freshest cache is
+# persisted to the repo as outlook_token_cache.enc, encrypted with the
+# OUTLOOK_CACHE_KEY secret (Fernet). Load priority:
+#   1. outlook_token_cache.enc + OUTLOOK_CACHE_KEY  (self-rotating, preferred)
+#   2. OUTLOOK_TOKEN_CACHE env var                  (bootstrap / fallback)
+#   3. local outlook_token_cache.json               (local debugging)
+# After each successful refresh the updated cache is re-encrypted to the
+# .enc file; the workflow commits it back so the next run starts fresh.
+CACHE_ENC_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                              "outlook_token_cache.enc")
+CACHE_KEY = os.environ.get("OUTLOOK_CACHE_KEY", "")
 
+
+def _load_cache_json() -> str:
+    if CACHE_KEY and os.path.exists(CACHE_ENC_FILE):
+        try:
+            from cryptography.fernet import Fernet
+            with open(CACHE_ENC_FILE, "rb") as f:
+                blob = f.read()
+            print("  [AUTH] token cache loaded from encrypted repo file")
+            return Fernet(CACHE_KEY.encode()).decrypt(blob).decode()
+        except Exception as e:
+            print(f"  [AUTH] could not decrypt {os.path.basename(CACHE_ENC_FILE)}"
+                  f" ({e}); falling back to OUTLOOK_TOKEN_CACHE secret")
+    env_cache = os.environ.get("OUTLOOK_TOKEN_CACHE", "")
+    if env_cache:
+        print("  [AUTH] token cache loaded from OUTLOOK_TOKEN_CACHE secret")
+        return env_cache
+    local = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                         "outlook_token_cache.json")
+    if os.path.exists(local):
+        return open(local).read()
+    raise RuntimeError(
+        "No token cache available (no .enc file, no OUTLOOK_TOKEN_CACHE env "
+        "var, no local outlook_token_cache.json). Run outlook_auth_setup.py."
+    )
+
+
+def _persist_cache(cache: SerializableTokenCache) -> None:
+    """Encrypt the (possibly rotated) cache back to the repo file so the
+    workflow can commit it. No-op when OUTLOOK_CACHE_KEY isn't set."""
+    if not CACHE_KEY:
+        return
+    try:
+        from cryptography.fernet import Fernet
+        blob = Fernet(CACHE_KEY.encode()).encrypt(cache.serialize().encode())
+        with open(CACHE_ENC_FILE, "wb") as f:
+            f.write(blob)
+        print("  [AUTH] rotated token cache written to "
+              f"{os.path.basename(CACHE_ENC_FILE)}")
+    except Exception as e:
+        print(f"  [AUTH] WARNING: failed to persist rotated cache: {e}")
+
+
+def get_access_token() -> str:
+    """Load token cache, refresh, persist rotation, return access token."""
     cache = SerializableTokenCache()
-    cache.deserialize(cache_json)
+    cache.deserialize(_load_cache_json())
 
     app = PublicClientApplication(CLIENT_ID, authority=AUTHORITY, token_cache=cache)
     accounts = app.get_accounts()
@@ -206,6 +249,10 @@ def get_access_token() -> str:
             "Silent token refresh failed. Re-run outlook_auth_setup.py to "
             "re-auth and update the OUTLOOK_TOKEN_CACHE secret."
         )
+    # Persist whenever we have a key: has_state_changed covers rotation, and
+    # a missing .enc file means this is the bootstrap run.
+    if cache.has_state_changed or not os.path.exists(CACHE_ENC_FILE):
+        _persist_cache(cache)
     return result["access_token"]
 
 
