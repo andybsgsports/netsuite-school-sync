@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-08-05T04:53:37.925451Z",
+  "updated": "2026-08-06T04:54:18.758526Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -19596,6 +19596,14 @@
     },
     {
       "school": "Whitewater High School",
+      "email": "dowca01@wwusd.org",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Caitlin",
+      "last": "Dowden"
+    },
+    {
+      "school": "Whitewater High School",
       "email": "dowmi01@wwusd.org",
       "role": "Athletic Director",
       "sport": "",
@@ -19713,14 +19721,6 @@
       "sport": "",
       "first": "Samuel",
       "last": "Karns"
-    },
-    {
-      "school": "Whitewater High School",
-      "email": "speters@wwusd.org",
-      "role": "Head Coach",
-      "sport": "Girls Gymnastics",
-      "first": "Shawnda",
-      "last": "Peters"
     },
     {
       "school": "Williams Bay High School",

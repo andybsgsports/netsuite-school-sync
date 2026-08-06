@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-08-05T04:55:42.035769Z",
+  "updated": "2026-08-06T04:56:21.223358Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -5204,14 +5204,6 @@
     },
     {
       "school": "Sparta High School",
-      "email": "ambirose23@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Tennis",
-      "first": "Ambriel",
-      "last": "Mason"
-    },
-    {
-      "school": "Sparta High School",
       "email": "brady@on-wi.com",
       "role": "Head Coach",
       "sport": "Girls Hockey",
@@ -5350,7 +5342,7 @@
       "school": "Sparta High School",
       "email": "tfortmann@spartan.org",
       "role": "Head Coach",
-      "sport": "Boys Tennis",
+      "sport": "Boys & Girls Tennis",
       "first": "Taylor",
       "last": "Fortmann"
     },
