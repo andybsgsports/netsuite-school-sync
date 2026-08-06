@@ -679,7 +679,78 @@ def send_email(rep, subject, body, xlsx_bytes, xlsx_name):
 
 
 # -- Main --------------------------------------------------------------------
-def merge_scraped_into_master_sheet(gc, scraped, departed_triples=None):
+# Scraper-owned Type values — the reconcile only ever flips rows the scraper
+# itself created. A manually added row with any other Type is never touched.
+RECONCILE_TYPES = {"admin", "head coach", "coach"}
+# A school is only reconciled when its scrape returned at least this many
+# people. A thinner result smells like a partial/failed page, not turnover.
+RECONCILE_MIN_PEOPLE = 5
+
+
+def reconcile_absent_contacts(contacts_data, scraped, scraped_schools):
+    """State-based departure sweep, run after the snapshot-delta flip.
+
+    The snapshot diff only reacts to TRANSITIONS — someone present last run
+    and gone this run. Anyone who left before the snapshots started
+    watching (Steve Gertz was already off Dundee-Crown's IHSA page when the
+    departure feature first ran, so no 'removed' delta ever fired for him)
+    or whose sheet rows carry a role format the scraper no longer emits
+    ('Boys Athletic Director' vs today's 'Athletic Director') can never
+    match a delta and sits at Sync=Y forever — NetSuite keeps them active
+    with their Ship-To address on the school. This pass closes that hole by
+    comparing the sheet against the CURRENT scrape: any Sync=Y row at a
+    successfully-scraped school whose email is absent from that school's
+    fresh staff list flips to Sync=N. push_only then does the rest exactly
+    as for any departure: inactivate (or detach, for co-op people still
+    active elsewhere) AND remove their Ship-To address line.
+
+    Safety rails:
+      - whole-person: keyed on email, so all of a person's rows at a school
+        flip together (push_only's per-email dedupe assumes a person is
+        never half-active at one school);
+      - only schools in scraped_schools (successful scrape this run) that
+        returned >= RECONCILE_MIN_PEOPLE people;
+      - only scraper-owned Types (Admin / Head Coach / Coach) — manual rows
+        with any other Type are never flipped;
+      - reversible: flipping a row back to Y re-syncs the contact with
+        isInactive=False on the next push.
+    """
+    from school_netsuite_sync import C_SCHOOL, C_FIRST, C_LAST, C_EMAIL, C_TYPE, C_SYNC
+    if not scraped_schools:
+        return 0
+    cur = {}
+    for _state, rec in scraped:
+        s = str(rec.get("School", "")).strip()
+        e = str(rec.get("Email", "")).strip().lower()
+        if s and e:
+            cur.setdefault(s, set()).add(e)
+    eligible = {s for s in scraped_schools
+                if len(cur.get(s, ())) >= RECONCILE_MIN_PEOPLE}
+    thin = set(scraped_schools) - eligible
+    if thin:
+        print(f"[merge][reconcile] skipping {len(thin)} scraped school(s) with "
+              f"<{RECONCILE_MIN_PEOPLE} scraped people (partial-scrape guard): "
+              f"{sorted(thin)[:5]}" + (" ..." if len(thin) > 5 else ""))
+    flipped = 0
+    for c in contacts_data:
+        if str(c.get(C_SYNC, "N")).strip().upper() != "Y":
+            continue
+        if str(c.get(C_TYPE, "")).strip().lower() not in RECONCILE_TYPES:
+            continue
+        sch = str(c.get(C_SCHOOL, "")).strip()
+        em = str(c.get(C_EMAIL, "")).strip().lower()
+        if not em or sch not in eligible:
+            continue
+        if em not in cur[sch]:
+            c[C_SYNC] = "N"
+            flipped += 1
+            print(f"[merge][reconcile] {c.get(C_FIRST, '')} {c.get(C_LAST, '')} "
+                  f"<{em}> not on {sch}'s current scrape — Sync=N")
+    return flipped
+
+
+def merge_scraped_into_master_sheet(gc, scraped, departed_triples=None,
+                                    scraped_schools=None):
     """Merge today's scraped admins+coaches into the main master sheet's
     Contacts tab. Dedupes on (School, Email, Role) so re-runs don't create
     duplicate rows.
@@ -772,11 +843,17 @@ def merge_scraped_into_master_sheet(gc, scraped, departed_triples=None):
                 c[C_SYNC] = "N"
                 departed += 1
 
+    reconciled = reconcile_absent_contacts(contacts_data, scraped, scraped_schools)
+
     save_contacts(contacts_ws, contacts_data)
     print(f"\n[merge] {added} new row(s) added to master sheet Contacts tab")
     if departed_triples:
         print(f"[merge] {departed} row(s) flipped to Sync=N (no longer on WIAA/IHSA) "
               f"— push_only.py will inactivate them in NetSuite tonight")
+    if reconciled:
+        print(f"[merge] {reconciled} additional stale row(s) reconciled to Sync=N "
+              f"(absent from the current scrape) — NS inactivation + Ship-To "
+              f"removal happen on tonight's push")
 
 
 def main():
@@ -798,6 +875,7 @@ def main():
     results = []
     all_scraped = []          # accumulate across reps for one sheet write at the end
     all_departed_triples = set()  # (school, email_lower, role_col_lower) no longer on WIAA/IHSA
+    all_scraped_schools = set()   # schools that scraped OK this run (guards the reconcile)
 
     for rep in REPS:
         if REP_FILTER and rep["name"] != REP_FILTER:
@@ -894,6 +972,9 @@ def main():
         # school's page loads successfully.
         removed_scoped = {k for k in removed if k[0] in scraped_schools_this_run}
         removed_skipped = removed - removed_scoped
+        # Past the suspect-failure guard: these schools' scrapes are trusted,
+        # so the end-of-run reconcile may flip their absent contacts.
+        all_scraped_schools |= scraped_schools_this_run
         if removed_skipped:
             skipped_schools = sorted({k[0] for k in removed_skipped})
             print(f"  [GUARD] Ignoring {len(removed_skipped)} 'removed' key(s) at "
@@ -962,7 +1043,8 @@ def main():
     # this once at the end (after all reps) means a single Google Sheets
     # write instead of one per rep, and every scraped contact lands on
     # the sheet before the 6:30 AM NS push workflow reads it.
-    merge_scraped_into_master_sheet(gc, all_scraped, all_departed_triples)
+    merge_scraped_into_master_sheet(gc, all_scraped, all_departed_triples,
+                                    scraped_schools=all_scraped_schools)
 
     print("\n" + "=" * 60)
     print("Summary:")
