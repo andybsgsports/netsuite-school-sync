@@ -530,6 +530,18 @@ def main():
             c[C_NS_CUS] = str(result_id)
             departed = email.lower() not in site_emails
             still_at = _other_active_schools(email.lower(), contact_ns)
+            # Same PERSON still active at THIS school under another row —
+            # happens when their email changes and the old-email row goes
+            # stale while the new-email row shares the NS Contact ID. A
+            # stale ROW must not inactivate a still-active person (or strip
+            # their Ship-To, which is labeled by name).
+            still_here = bool(contact_ns) and contact_ns not in (
+                "nan", "None", "UNLINKED") and any(
+                oc is not c
+                and str(oc.get(C_SYNC, "N")).strip().upper() == "Y"
+                and str(oc.get(C_SCHOOL, "")).strip() == school_name
+                and str(oc.get(C_NS_CID, "")).strip() == contact_ns
+                for oc in contacts_data)
 
             if sync_flag == "Y" and not departed:
                 if contact_ns == "UNLINKED":
@@ -545,7 +557,10 @@ def main():
                 elif new_id is None and not contact_ns:
                     c[C_NS_CID] = "UNLINKED"
             elif departed and contact_ns not in ("", "nan", "None", "UNLINKED") and all_site_contacts:
-                if still_at and restlet_available():
+                if still_here:
+                    print(f"  - Stale row (not a departure): {first} {last} "
+                          f"still active at {school_name} under another row — unlinking only")
+                elif still_at and restlet_available():
                     ns_restlet_attach(contact_ns, result_id, "detach")
                     remove_contact_ship_to(result_id, f"{first} {last}")
                     print(f"  - Departed (co-op): {first} {last} — detached from "
@@ -557,7 +572,9 @@ def main():
                 c[C_SYNC]   = "N"
                 c[C_NS_CID] = ""
             elif sync_flag == "N" and contact_ns not in ("", "nan", "None", "UNLINKED"):
-                if still_at and restlet_available():
+                if still_here:
+                    pass  # dead row for a still-active person — unlink only
+                elif still_at and restlet_available():
                     ns_restlet_attach(contact_ns, result_id, "detach")
                     remove_contact_ship_to(result_id, f"{first} {last}")
                 else:

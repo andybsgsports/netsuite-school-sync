@@ -538,6 +538,21 @@ def main():
                 time.sleep(0.15)
             elif sync_flag == "N" and contact_ns not in ("", "nan", "None", "UNLINKED"):
                 if em_key not in pushed_emails:
+                    # Same PERSON still active at THIS school under another
+                    # row? Happens when their email changes: the old-email
+                    # row goes Sync=N while the new-email row (sharing the
+                    # NS Contact ID) stays Y. That's a dead ROW, not a
+                    # departed person — unlink the row, touch nothing in NS
+                    # (inactivating would kill the still-active contact and
+                    # remove_contact_ship_to would strip their address,
+                    # since the Ship-To label is the person's name).
+                    if school_name in y_schools_by_cid.get(contact_ns, set()):
+                        print(f"  Stale row (not a departure): {first} {last} "
+                              f"still active at {school_name} under another row "
+                              f"— unlinking only")
+                        pushed_emails[em_key] = ""
+                        c[C_NS_CID] = ""
+                        continue
                     # Does this person still actively serve another school?
                     still_at = (y_schools_by_email.get(em_key, set())
                                 | y_schools_by_cid.get(contact_ns, set())) - {school_name}
