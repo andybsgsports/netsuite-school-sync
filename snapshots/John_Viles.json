@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-08-06T05:00:00.042365Z",
+  "updated": "2026-08-07T04:27:27.391925Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -4412,11 +4412,11 @@
     },
     {
       "school": "Oshkosh North High School",
-      "email": "taylor.obry@oshkosh.k12.wi.us",
+      "email": "taylor.boucher@oshkosh.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Golf",
       "first": "Taylor",
-      "last": "Obry"
+      "last": "Boucher"
     },
     {
       "school": "Oshkosh North High School",
@@ -4500,14 +4500,6 @@
     },
     {
       "school": "Oshkosh West High School",
-      "email": "daniel.weisse@oshkosh.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Daniel",
-      "last": "Weisse"
-    },
-    {
-      "school": "Oshkosh West High School",
       "email": "helmbk26@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Volleyball",
@@ -4521,14 +4513,6 @@
       "sport": "Girls Golf",
       "first": "Jessie",
       "last": "Hansen"
-    },
-    {
-      "school": "Oshkosh West High School",
-      "email": "joseph.ray@oshkosh.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Joseph",
-      "last": "Ray"
     },
     {
       "school": "Oshkosh West High School",
@@ -5293,7 +5277,7 @@
     {
       "school": "Ripon High School",
       "email": "bairdb@ripon.k12.wi.us",
-      "role": "Assistant Athletic Director",
+      "role": "Athletic Director",
       "sport": "",
       "first": "Becki",
       "last": "Baird"
@@ -5401,14 +5385,6 @@
       "sport": "Boys & Girls Cross Country",
       "first": "Sam",
       "last": "Prellwitz"
-    },
-    {
-      "school": "Ripon High School",
-      "email": "propsonv@ripon.k12.wi.us",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Vincent",
-      "last": "Propson"
     },
     {
       "school": "Ripon High School",
@@ -7012,22 +6988,6 @@
     },
     {
       "school": "Wayland Academy High School",
-      "email": "ashepard@wayland.org",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Adrian",
-      "last": "Shepard"
-    },
-    {
-      "school": "Wayland Academy High School",
-      "email": "cschultz@wayland.org",
-      "role": "Head Coach",
-      "sport": "Boys Football 8-Player",
-      "first": "Cody",
-      "last": "Schultz"
-    },
-    {
-      "school": "Wayland Academy High School",
       "email": "cwarnick70@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Tennis",
@@ -7054,17 +7014,17 @@
       "school": "Wayland Academy High School",
       "email": "jcleary@wayland.org",
       "role": "Head Coach",
-      "sport": "Boys & Girls Cross Country",
+      "sport": "Boys & Girls Track and Field",
       "first": "James",
       "last": "Cleary"
     },
     {
       "school": "Wayland Academy High School",
-      "email": "jcleary@wayland.org",
+      "email": "jmccutchin@wayland.org",
       "role": "Head Coach",
-      "sport": "Boys & Girls Track and Field",
-      "first": "James",
-      "last": "Cleary"
+      "sport": "Girls Volleyball",
+      "first": "Jason",
+      "last": "McCutchin"
     },
     {
       "school": "Wayland Academy High School",
@@ -7076,11 +7036,11 @@
     },
     {
       "school": "Wayland Academy High School",
-      "email": "lconde@wayland.org",
-      "role": "Head Coach",
-      "sport": "Girls Tennis",
-      "first": "Lisa",
-      "last": "Conde Fondeur"
+      "email": "kkaamil@wayland.org",
+      "role": "Assistant Athletic Director",
+      "sport": "",
+      "first": "Kyle",
+      "last": "Kaamil"
     },
     {
       "school": "Wayland Academy High School",
@@ -7097,14 +7057,6 @@
       "sport": "Boys Swimming & Diving",
       "first": "Marissa",
       "last": "Hansen"
-    },
-    {
-      "school": "Wayland Academy High School",
-      "email": "owest@wayland.org",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Omri",
-      "last": "West"
     },
     {
       "school": "Wayland Academy High School",
@@ -7132,14 +7084,6 @@
     },
     {
       "school": "Wayland Academy High School",
-      "email": "rebecca.kikkert@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Becky",
-      "last": "Kikkert"
-    },
-    {
-      "school": "Wayland Academy High School",
       "email": "rmaclellan@wayland.org",
       "role": "Head Coach",
       "sport": "Boys Lacrosse-Boys",
@@ -7156,11 +7100,11 @@
     },
     {
       "school": "Wayland Academy High School",
-      "email": "sahlborn@wayland.org",
-      "role": "Principal",
-      "sport": "",
-      "first": "Seth",
-      "last": "Ahlborn"
+      "email": "sboldt@wayland.org",
+      "role": "Head Coach",
+      "sport": "Boys Football 8-Player",
+      "first": "Steven",
+      "last": "Boldt"
     },
     {
       "school": "Wayland Academy High School",

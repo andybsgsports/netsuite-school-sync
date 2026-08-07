@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-08-06T05:00:47.267655Z",
+  "updated": "2026-08-07T04:28:16.989312Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -3036,6 +3036,14 @@
     },
     {
       "school": "Muskego High School",
+      "email": "amanda.karvala@muskegonorway.org",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "Amanda",
+      "last": "Karvala"
+    },
+    {
+      "school": "Muskego High School",
       "email": "andrew.bavlnka@muskegonorway.org",
       "role": "Principal",
       "sport": "",
@@ -3188,19 +3196,19 @@
     },
     {
       "school": "Muskego High School",
-      "email": "madison.calteux@muskegonorway.org",
-      "role": "Head Coach",
-      "sport": "Girls Golf",
-      "first": "Madison",
-      "last": "Calteux"
-    },
-    {
-      "school": "Muskego High School",
       "email": "mary.boge@muskegonorway.org",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
       "first": "Mary",
       "last": "Boge"
+    },
+    {
+      "school": "Muskego High School",
+      "email": "melena.glysch@muskegonorway.org",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Melena",
+      "last": "Glysch"
     },
     {
       "school": "Muskego High School",
@@ -4196,6 +4204,14 @@
     },
     {
       "school": "Slinger High School",
+      "email": "amy.owens@slingerschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Amy",
+      "last": "Owens"
+    },
+    {
+      "school": "Slinger High School",
       "email": "Bconnolly@wbsd-schools.org",
       "role": "Head Coach",
       "sport": "Boys Lacrosse-Boys",
@@ -4353,14 +4369,6 @@
       "sport": "Girls Track and Field",
       "first": "Matt",
       "last": "Hansen"
-    },
-    {
-      "school": "Slinger High School",
-      "email": "mbankston33@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Miles",
-      "last": "Bankston"
     },
     {
       "school": "Slinger High School",

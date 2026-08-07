@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-08-06T04:56:21.223358Z",
+  "updated": "2026-08-07T04:23:43.682645Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -589,7 +589,7 @@
     {
       "school": "Boscobel High School",
       "email": "boneedwi@boscobel.k12.wi.us",
-      "role": "Assistant Principal, Athletic Director",
+      "role": "Assistant Principal",
       "sport": "",
       "first": "Edwin",
       "last": "Boneske"
@@ -669,7 +669,7 @@
     {
       "school": "Boscobel High School",
       "email": "lisa@boscobel.k12.wi.us",
-      "role": "Superintendent",
+      "role": "Athletic Director",
       "sport": "",
       "first": "Lisa",
       "last": "Wallin-Kapinus"
@@ -695,14 +695,6 @@
       "email": "hmaurhoff@now.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
-      "first": "Heidi",
-      "last": "Maurhoff"
-    },
-    {
-      "school": "Brookwood High School",
-      "email": "hmaurhoff@now.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Track and Field",
       "first": "Heidi",
       "last": "Maurhoff"
     },
@@ -6172,14 +6164,6 @@
     },
     {
       "school": "Wisconsin Heights High School",
-      "email": "ahammerschmidt@wisheights.k12.wi.us",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Alex",
-      "last": "Hammerschmidt"
-    },
-    {
-      "school": "Wisconsin Heights High School",
       "email": "bgloudeman@wisheights.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -6233,6 +6217,14 @@
       "sport": "Boys & Girls Cross Country",
       "first": "Bollig",
       "last": "Hunter"
+    },
+    {
+      "school": "Wisconsin Heights High School",
+      "email": "icrowe@wisheights.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Isaiah",
+      "last": "Crowe"
     },
     {
       "school": "Wisconsin Heights High School",
@@ -6337,14 +6329,6 @@
       "sport": "Boys Baseball",
       "first": "Ted",
       "last": "Severson"
-    },
-    {
-      "school": "Wisconsin Heights High School",
-      "email": "zawatkins@wisheights.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Zachary",
-      "last": "Watkins"
     },
     {
       "school": "Wonewoc-Center High School",

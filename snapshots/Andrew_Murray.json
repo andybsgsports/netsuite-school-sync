@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-08-06T04:54:18.758526Z",
+  "updated": "2026-08-07T04:21:39.672196Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -2348,14 +2348,6 @@
     },
     {
       "school": "Brookfield Central High School",
-      "email": "biglerj@elmbrookschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Jeff",
-      "last": "Bigler"
-    },
-    {
-      "school": "Brookfield Central High School",
       "email": "blahar@elmbrookschools.org",
       "role": "Head Coach",
       "sport": "Boys Cross Country",
@@ -2369,14 +2361,6 @@
       "sport": "Boys Hockey",
       "first": "Greg",
       "last": "Copeland"
-    },
-    {
-      "school": "Brookfield Central High School",
-      "email": "coachgranger@tds.net",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Tim",
-      "last": "Granger"
     },
     {
       "school": "Brookfield Central High School",
@@ -9156,6 +9140,14 @@
     },
     {
       "school": "Harvard High School",
+      "email": "ldale@cusd50.org",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Lauren",
+      "last": "Dale"
+    },
+    {
+      "school": "Harvard High School",
       "email": "lmiceli@cusd50.org",
       "role": "Head Coach",
       "sport": "Boys Bowling",
@@ -10417,14 +10409,6 @@
       "sport": "Boys Track and Field",
       "first": "Dick",
       "last": "Schuh"
-    },
-    {
-      "school": "Janesville Parker High School",
-      "email": "samantha.corrigan@janesville.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Samantha",
-      "last": "Corrigan"
     },
     {
       "school": "Janesville Parker High School",

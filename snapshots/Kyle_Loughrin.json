@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-08-06T04:58:05.120308Z",
+  "updated": "2026-08-07T04:25:27.221018Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -2036,22 +2036,6 @@
     },
     {
       "school": "Crivitz High School",
-      "email": "mretza@crivitz.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Michael",
-      "last": "Retza"
-    },
-    {
-      "school": "Crivitz High School",
-      "email": "mtracy@crivitz.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Mike",
-      "last": "Tracy"
-    },
-    {
-      "school": "Crivitz High School",
       "email": "navarretez@wausaukee.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
@@ -2062,7 +2046,7 @@
       "school": "Crivitz High School",
       "email": "scott.doyen@gmail.com",
       "role": "Head Coach",
-      "sport": "Boys Wrestling",
+      "sport": "Girls Wrestling",
       "first": "Scott",
       "last": "Doyen"
     },
@@ -4929,14 +4913,6 @@
       "sport": "",
       "first": "Julie",
       "last": "Stair"
-    },
-    {
-      "school": "Little Chute High School",
-      "email": "jtaylor@littlechute.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Soccer",
-      "first": "James",
-      "last": "Taylor"
     },
     {
       "school": "Little Chute High School",
@@ -8540,19 +8516,19 @@
     },
     {
       "school": "Stevens Point High School",
+      "email": "kstrevel@pointschools.net",
+      "role": "Assistant Athletic Director",
+      "sport": "",
+      "first": "Kevin",
+      "last": "Streveler"
+    },
+    {
+      "school": "Stevens Point High School",
       "email": "kterpstr@pointschools.net",
       "role": "Head Coach",
       "sport": "Boys Baseball",
       "first": "Kraig",
       "last": "Terpstra"
-    },
-    {
-      "school": "Stevens Point High School",
-      "email": "mapohlka@pointschools.net",
-      "role": "Assistant Athletic Director",
-      "sport": "",
-      "first": "Maddi",
-      "last": "Pohlkamp"
     },
     {
       "school": "Stevens Point High School",
@@ -9817,14 +9793,6 @@
       "sport": "Boys Hockey",
       "first": "Clint",
       "last": "Zumer"
-    },
-    {
-      "school": "Weyauwega-Fremont High School",
-      "email": "czimmerman@wfsd.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Colton",
-      "last": "Zimmerman"
     },
     {
       "school": "Weyauwega-Fremont High School",
