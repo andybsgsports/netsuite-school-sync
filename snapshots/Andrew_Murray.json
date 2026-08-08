@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-08-07T04:21:39.672196Z",
+  "updated": "2026-08-08T03:20:24.051081Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -8486,7 +8486,7 @@
       "school": "Hamilton High School",
       "email": "grotbr@hamilton.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Girls Cross Country",
+      "sport": "Boys & Girls Cross Country",
       "first": "Brian",
       "last": "Groth"
     },
@@ -8545,6 +8545,14 @@
       "sport": "Girls Hockey",
       "first": "Jackie",
       "last": "Little"
+    },
+    {
+      "school": "Hamilton High School",
+      "email": "Josh.kopplin@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Josh",
+      "last": "Kopplin"
     },
     {
       "school": "Hamilton High School",
@@ -8657,14 +8665,6 @@
       "sport": "Boys & Girls Tennis",
       "first": "Bill",
       "last": "Dredge"
-    },
-    {
-      "school": "Harlem High School",
-      "email": "brad.sweet@harlem122.org",
-      "role": "Coach",
-      "sport": "Scholastic Bowl",
-      "first": "Brad",
-      "last": "Sweet"
     },
     {
       "school": "Harlem High School",
@@ -15540,14 +15540,6 @@
     },
     {
       "school": "Racine St. Catherine's High School",
-      "email": "mboyd@prairieschool.com",
-      "role": "Head Coach",
-      "sport": "Girls Swimming & Diving",
-      "first": "McCartney",
-      "last": "Boyd"
-    },
-    {
-      "school": "Racine St. Catherine's High School",
       "email": "mrkomorowski@racinelutheran.org",
       "role": "Head Coach",
       "sport": "Boys Tennis",
@@ -15577,6 +15569,14 @@
       "sport": "Boys Basketball",
       "first": "Ryan",
       "last": "Thompson"
+    },
+    {
+      "school": "Racine St. Catherine's High School",
+      "email": "sribordy@prairieschool.com",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Shawn",
+      "last": "Ribordy"
     },
     {
       "school": "Racine St. Catherine's High School",
@@ -17113,6 +17113,14 @@
       "sport": "Boys Track & Field",
       "first": "Matt",
       "last": "Kosecki"
+    },
+    {
+      "school": "Sycamore High School",
+      "email": "nwright@syc427.org",
+      "role": "Head Coach",
+      "sport": "Girls Flag Football",
+      "first": "Nate",
+      "last": "Wright"
     },
     {
       "school": "Sycamore High School",

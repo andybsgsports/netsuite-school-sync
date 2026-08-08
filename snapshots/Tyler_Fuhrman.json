@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-08-07T04:23:43.682645Z",
+  "updated": "2026-08-08T03:22:30.517767Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -2828,6 +2828,14 @@
     },
     {
       "school": "Madison East High School",
+      "email": "mmiota@madison.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Matthew",
+      "last": "Miota"
+    },
+    {
+      "school": "Madison East High School",
       "email": "nathansmith062@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Lacrosse-Boys",
@@ -4017,14 +4025,6 @@
       "sport": "",
       "first": "Tyree",
       "last": "Gamble"
-    },
-    {
-      "school": "Middleton High School",
-      "email": "tlcabalka@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "Tom",
-      "last": "Cabalka"
     },
     {
       "school": "Middleton High School",

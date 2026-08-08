@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-08-07T04:28:16.989312Z",
+  "updated": "2026-08-08T03:27:04.845744Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -1790,7 +1790,7 @@
       "school": "Hamilton High School",
       "email": "grotbr@hamilton.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Girls Cross Country",
+      "sport": "Boys & Girls Cross Country",
       "first": "Brian",
       "last": "Groth"
     },
@@ -1849,6 +1849,14 @@
       "sport": "Girls Hockey",
       "first": "Jackie",
       "last": "Little"
+    },
+    {
+      "school": "Hamilton High School",
+      "email": "Josh.kopplin@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Josh",
+      "last": "Kopplin"
     },
     {
       "school": "Hamilton High School",
@@ -2241,14 +2249,6 @@
       "sport": "Boys Football",
       "first": "Tim",
       "last": "Wagner"
-    },
-    {
-      "school": "Johnson Creek High School",
-      "email": "zachary_hendrickson@yahoo.com",
-      "role": "Head Coach",
-      "sport": "Boys Wrestling",
-      "first": "Zack",
-      "last": "Hendrickson"
     },
     {
       "school": "Kettle Moraine High School",

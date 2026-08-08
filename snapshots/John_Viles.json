@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-08-07T04:27:27.391925Z",
+  "updated": "2026-08-08T03:26:15.440929Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -1041,6 +1041,14 @@
       "sport": "Boys Basketball",
       "first": "Mike",
       "last": "Koeher"
+    },
+    {
+      "school": "Elkhart Lake High School",
+      "email": "gmersberger12@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Golf",
+      "first": "Garrett",
+      "last": "Mersberger"
     },
     {
       "school": "Elkhart Lake High School",
