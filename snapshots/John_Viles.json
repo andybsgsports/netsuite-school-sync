@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-08-09T03:32:06.621105Z",
+  "updated": "2026-08-10T03:46:32.616703Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -5604,14 +5604,6 @@
     },
     {
       "school": "Sheboygan Falls High School",
-      "email": "ctguy@sheboyganfalls.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Christopher",
-      "last": "Guy"
-    },
-    {
-      "school": "Sheboygan Falls High School",
       "email": "dhbryant@sheboyganfalls.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Tennis",
@@ -5649,6 +5641,14 @@
       "sport": "Boys Tennis",
       "first": "Keenan",
       "last": "McKenna"
+    },
+    {
+      "school": "Sheboygan Falls High School",
+      "email": "lewolbers1@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Lucas",
+      "last": "Wolbers"
     },
     {
       "school": "Sheboygan Falls High School",

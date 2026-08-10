@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-08-09T03:28:26.971649Z",
+  "updated": "2026-08-10T03:42:47.540710Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -52,6 +52,14 @@
     },
     {
       "school": "Abundant Life Christian High School",
+      "email": "handziakT@Tmore.Org",
+      "role": "Head Coach",
+      "sport": "Boys Football 8-Player",
+      "first": "Thomas",
+      "last": "Handziak"
+    },
+    {
+      "school": "Abundant Life Christian High School",
       "email": "jrae@alcs.us",
       "role": "Principal",
       "sport": "",
@@ -97,14 +105,6 @@
       "sport": "Boys Golf",
       "first": "Steve",
       "last": "Bohlman"
-    },
-    {
-      "school": "Abundant Life Christian High School",
-      "email": "Thomas.Handziak@JTLC.org",
-      "role": "Head Coach",
-      "sport": "Boys Football 8-Player",
-      "first": "Thomas",
-      "last": "Handziak"
     },
     {
       "school": "Arcadia High School",
@@ -257,6 +257,430 @@
       "sport": "Boys & Girls Track and Field",
       "first": "Jacob",
       "last": "Wendt"
+    },
+    {
+      "school": "Bangor High School",
+      "email": "aolson@bangorsd.net",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Amy",
+      "last": "Olson"
+    },
+    {
+      "school": "Bangor High School",
+      "email": "Brewer.Josh@wsalem.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Wrestling",
+      "first": "Josh",
+      "last": "Brewer"
+    },
+    {
+      "school": "Bangor High School",
+      "email": "bwopat@bangorsd.net",
+      "role": "Principal",
+      "sport": "",
+      "first": "Brian",
+      "last": "Wopat"
+    },
+    {
+      "school": "Bangor High School",
+      "email": "dbrokopp@bangorsd.net",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "David",
+      "last": "Brokopp"
+    },
+    {
+      "school": "Bangor High School",
+      "email": "drampetsreiter@bangorsd.net",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Dan",
+      "last": "Rampetsreiter"
+    },
+    {
+      "school": "Bangor High School",
+      "email": "drampetsreiter@bangorsd.net",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Track and Field",
+      "first": "Dan",
+      "last": "Rampetsreiter"
+    },
+    {
+      "school": "Bangor High School",
+      "email": "frankwj55@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Warren",
+      "last": "Frank"
+    },
+    {
+      "school": "Bangor High School",
+      "email": "Merlinj307@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Merlin",
+      "last": "Jones"
+    },
+    {
+      "school": "Bangor High School",
+      "email": "nmeacham@bangorsd.net",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Nicholas",
+      "last": "Meacham"
+    },
+    {
+      "school": "Bangor High School",
+      "email": "olson.jamie@wsalem.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Jamie",
+      "last": "Olson"
+    },
+    {
+      "school": "Bangor High School",
+      "email": "plaxton@bangorsd.net",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Paul",
+      "last": "Laxton"
+    },
+    {
+      "school": "Bangor High School",
+      "email": "rlbjr18@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Richard",
+      "last": "Brown"
+    },
+    {
+      "school": "Bangor High School",
+      "email": "sschmeling@bangorsd.net",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Shane",
+      "last": "Schmeling"
+    },
+    {
+      "school": "Bangor High School",
+      "email": "tgrant@bangorsd.net",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Todd",
+      "last": "Grant"
+    },
+    {
+      "school": "Bangor High School",
+      "email": "tgrant@bangorsd.net",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Todd",
+      "last": "Grant"
+    },
+    {
+      "school": "Bangor High School",
+      "email": "trishamj45@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Trisha",
+      "last": "Jones"
+    },
+    {
+      "school": "Bangor High School",
+      "email": "wscoopgymnastics@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Girls Gymnastics",
+      "first": "Carrie",
+      "last": "O'Hearn"
+    },
+    {
+      "school": "Black River Falls High School",
+      "email": "brady@on-wi.com",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Brady",
+      "last": "Mathison"
+    },
+    {
+      "school": "Black River Falls High School",
+      "email": "cade.murray@brf.org",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Cade",
+      "last": "Murray"
+    },
+    {
+      "school": "Black River Falls High School",
+      "email": "christine.wall@brf.org",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Christine",
+      "last": "Wall"
+    },
+    {
+      "school": "Black River Falls High School",
+      "email": "david.prell@brf.org",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "David",
+      "last": "Prell"
+    },
+    {
+      "school": "Black River Falls High School",
+      "email": "fivemuirs@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Lance",
+      "last": "Muir"
+    },
+    {
+      "school": "Black River Falls High School",
+      "email": "freddie.rios@brf.org",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Freddie",
+      "last": "Rios"
+    },
+    {
+      "school": "Black River Falls High School",
+      "email": "gina.brown@brf.org",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Gina",
+      "last": "Brown"
+    },
+    {
+      "school": "Black River Falls High School",
+      "email": "isaac.cowles0@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Isaac",
+      "last": "Cowles"
+    },
+    {
+      "school": "Black River Falls High School",
+      "email": "kateeahl@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Cross Country",
+      "first": "Kate",
+      "last": "Ahl"
+    },
+    {
+      "school": "Black River Falls High School",
+      "email": "kayla.kern@brf.org",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Track and Field",
+      "first": "Kayla",
+      "last": "Kern"
+    },
+    {
+      "school": "Black River Falls High School",
+      "email": "kimberly.penza@brf.org",
+      "role": "Principal",
+      "sport": "",
+      "first": "Kimberley",
+      "last": "Penza"
+    },
+    {
+      "school": "Black River Falls High School",
+      "email": "kyle.berra@brf.org",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Kyle",
+      "last": "Berra"
+    },
+    {
+      "school": "Black River Falls High School",
+      "email": "larry.severson@brf.org",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Larry",
+      "last": "Severson"
+    },
+    {
+      "school": "Black River Falls High School",
+      "email": "marc.rukavina@brf.org",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Tennis",
+      "first": "Marc",
+      "last": "Rukavina"
+    },
+    {
+      "school": "Black River Falls High School",
+      "email": "MARY.DANIELSON@BRF.ORG",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "Mary",
+      "last": "Danielson"
+    },
+    {
+      "school": "Black River Falls High School",
+      "email": "mason.wall@flash4.com",
+      "role": "Head Coach",
+      "sport": "Boys Golf",
+      "first": "Mason",
+      "last": "Wall"
+    },
+    {
+      "school": "Black River Falls High School",
+      "email": "meyer.jaro@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Cross Country",
+      "first": "Jarod",
+      "last": "Meyer"
+    },
+    {
+      "school": "Black River Falls High School",
+      "email": "michelle.wood@brf.org",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Michelle",
+      "last": "Wood"
+    },
+    {
+      "school": "Black River Falls High School",
+      "email": "nate.erickson@brf.org",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Nate",
+      "last": "Erickson"
+    },
+    {
+      "school": "Black River Falls High School",
+      "email": "nathan.wildenberg@brf.org",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Nathan",
+      "last": "Wildenberg"
+    },
+    {
+      "school": "Black River Falls High School",
+      "email": "shelly.severson@brf.org",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Shelly",
+      "last": "Severson"
+    },
+    {
+      "school": "Black River Falls High School",
+      "email": "susannah.zblewski@brf.org",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Susannah",
+      "last": "Zblewski"
+    },
+    {
+      "school": "Black River Falls High School",
+      "email": "thomas.epps@brf.org",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Tom",
+      "last": "Epps"
+    },
+    {
+      "school": "Boscobel High School",
+      "email": "blairluk@wauzeka.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Luke",
+      "last": "Blair"
+    },
+    {
+      "school": "Boscobel High School",
+      "email": "boneedwi@boscobel.k12.wi.us",
+      "role": "Assistant Principal",
+      "sport": "",
+      "first": "Edwin",
+      "last": "Boneske"
+    },
+    {
+      "school": "Boscobel High School",
+      "email": "browlori@boscobel.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Lori",
+      "last": "Brown"
+    },
+    {
+      "school": "Boscobel High School",
+      "email": "chiemarc@boscobel.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Marc",
+      "last": "Chiefari"
+    },
+    {
+      "school": "Boscobel High School",
+      "email": "corgmop@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Sandra",
+      "last": "Murray"
+    },
+    {
+      "school": "Boscobel High School",
+      "email": "driftlesswatershed@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Joseph",
+      "last": "Childs"
+    },
+    {
+      "school": "Boscobel High School",
+      "email": "fritmatt@boscobel.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Matthew",
+      "last": "Fritz"
+    },
+    {
+      "school": "Boscobel High School",
+      "email": "fritmatt@boscobel.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Track and Field",
+      "first": "Matthew",
+      "last": "Fritz"
+    },
+    {
+      "school": "Boscobel High School",
+      "email": "jamesmarks710@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "James",
+      "last": "Marks"
+    },
+    {
+      "school": "Boscobel High School",
+      "email": "kinnerik@boscobel.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Erik",
+      "last": "Kinney"
+    },
+    {
+      "school": "Boscobel High School",
+      "email": "lancewetter12@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Lance",
+      "last": "Wetter"
+    },
+    {
+      "school": "Boscobel High School",
+      "email": "lisa@boscobel.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Lisa",
+      "last": "Wallin-Kapinus"
+    },
+    {
+      "school": "Boscobel High School",
+      "email": "nereng.ashl@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Ashley",
+      "last": "Stanek"
     },
     {
       "school": "Brookwood High School",
