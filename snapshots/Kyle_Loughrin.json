@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-08-10T03:44:32.049297Z",
+  "updated": "2026-08-11T03:34:27.359951Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -3092,6 +3092,14 @@
     },
     {
       "school": "Green Bay Preble High School",
+      "email": "cccombs@gbaps.org",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Carzell",
+      "last": "Combs"
+    },
+    {
+      "school": "Green Bay Preble High School",
       "email": "cepetasek@gbaps.org",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -3164,14 +3172,6 @@
     },
     {
       "school": "Green Bay Preble High School",
-      "email": "jmvanooyen@gbaps.org",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Jacob",
-      "last": "VanOoyen"
-    },
-    {
-      "school": "Green Bay Preble High School",
       "email": "jrcallan@gbaps.org",
       "role": "Head Coach",
       "sport": "Girls Soccer",
@@ -3204,14 +3204,6 @@
     },
     {
       "school": "Green Bay Preble High School",
-      "email": "ljseela@gbaps.org",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Lyndsey",
-      "last": "Seela"
-    },
-    {
-      "school": "Green Bay Preble High School",
       "email": "mahernandez@gbaps.org",
       "role": "Superintendent",
       "sport": "",
@@ -3241,14 +3233,6 @@
       "sport": "Boys & Girls Golf",
       "first": "Ray",
       "last": "Johnson"
-    },
-    {
-      "school": "Green Bay Preble High School",
-      "email": "rarosinski@gbaps.org",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Rick",
-      "last": "Rosinski"
     },
     {
       "school": "Green Bay Preble High School",
@@ -3721,14 +3705,6 @@
       "sport": "",
       "first": "Jody",
       "last": "Kalkofen"
-    },
-    {
-      "school": "Hilbert High School",
-      "email": "kmmgolf@hotmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "Kelly",
-      "last": "Moehn"
     },
     {
       "school": "Hilbert High School",
@@ -5108,14 +5084,6 @@
     },
     {
       "school": "Marinette High School",
-      "email": "chrismahlik@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Chris",
-      "last": "Mahlik"
-    },
-    {
-      "school": "Marinette High School",
       "email": "cnelson@marinette.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -5209,6 +5177,14 @@
       "sport": "Boys Football",
       "first": "Nathan",
       "last": "Anderson"
+    },
+    {
+      "school": "Marinette High School",
+      "email": "soto7emmanuel@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Emmanuel",
+      "last": "Soto"
     },
     {
       "school": "Marinette High School",

@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-08-10T03:47:22.214514Z",
+  "updated": "2026-08-11T03:37:14.307052Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -1588,14 +1588,6 @@
     },
     {
       "school": "Grafton High School",
-      "email": "celiashaughnessy@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Cross Country",
-      "first": "Celia",
-      "last": "Shaughnessy"
-    },
-    {
-      "school": "Grafton High School",
       "email": "conrad@conradayala.com",
       "role": "Head Coach",
       "sport": "Girls Tennis",
@@ -1668,14 +1660,6 @@
     },
     {
       "school": "Grafton High School",
-      "email": "jro2014gca@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Swimming & Diving",
-      "first": "Jack",
-      "last": "O'Connor"
-    },
-    {
-      "school": "Grafton High School",
       "email": "jwilde@grafton.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Soccer",
@@ -1697,6 +1681,14 @@
       "sport": "",
       "first": "Kevin",
       "last": "Moore"
+    },
+    {
+      "school": "Grafton High School",
+      "email": "malloryfox262@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Mallory",
+      "last": "Fox"
     },
     {
       "school": "Grafton High School",
@@ -4884,14 +4876,6 @@
     },
     {
       "school": "Whitnall High School",
-      "email": "bschliem@whitnall.com",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Brock",
-      "last": "Schliem"
-    },
-    {
-      "school": "Whitnall High School",
       "email": "bstasiewicz@whitnall.com",
       "role": "Head Coach",
       "sport": "Boys & Girls Soccer",
@@ -4921,6 +4905,14 @@
       "sport": "Girls Swimming & Diving",
       "first": "Ellie",
       "last": "Cole"
+    },
+    {
+      "school": "Whitnall High School",
+      "email": "glucas@whitnall.com",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Greg",
+      "last": "Lucas"
     },
     {
       "school": "Whitnall High School",

@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-08-10T03:46:32.616703Z",
+  "updated": "2026-08-11T03:36:25.207624Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -564,19 +564,19 @@
     },
     {
       "school": "Chilton High School",
-      "email": "callahanb@chiltonsd.org",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Brady",
-      "last": "Callahan"
-    },
-    {
-      "school": "Chilton High School",
       "email": "calliewoelfel@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
       "first": "Callie",
       "last": "Woelfel"
+    },
+    {
+      "school": "Chilton High School",
+      "email": "juhla@chiltonsd.org",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Aaron",
+      "last": "Juhl"
     },
     {
       "school": "Chilton High School",
@@ -593,14 +593,6 @@
       "sport": "",
       "first": "Matt",
       "last": "Kiel"
-    },
-    {
-      "school": "Chilton High School",
-      "email": "kmmgolf@hotmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "Kelly",
-      "last": "Moehn"
     },
     {
       "school": "Chilton High School",
@@ -641,14 +633,6 @@
       "sport": "Boys & Girls Track and Field",
       "first": "Rocky",
       "last": "Gozdziewski"
-    },
-    {
-      "school": "Columbus High School",
-      "email": "agunderson@ofsd.k12.wi.us",
-      "role": "Principal",
-      "sport": "",
-      "first": "Arik",
-      "last": "Gunderson"
     },
     {
       "school": "Columbus High School",
@@ -701,7 +685,7 @@
     {
       "school": "Columbus High School",
       "email": "jfreerking@columbus.k12.wi.us",
-      "role": "Assistant Principal, Athletic Director",
+      "role": "Athletic Director",
       "sport": "",
       "first": "Jay",
       "last": "Freerking"
@@ -729,14 +713,6 @@
       "sport": "",
       "first": "Kristie",
       "last": "Dunbar"
-    },
-    {
-      "school": "Columbus High School",
-      "email": "kmwogahn@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Tennis",
-      "first": "Kyle",
-      "last": "Wogahn"
     },
     {
       "school": "Columbus High School",
@@ -804,6 +780,14 @@
     },
     {
       "school": "Columbus High School",
+      "email": "rcook@columbus.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Tennis",
+      "first": "Robert",
+      "last": "Cook"
+    },
+    {
+      "school": "Columbus High School",
       "email": "smoore@columbus.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -820,27 +804,11 @@
     },
     {
       "school": "Dodgeland High School",
-      "email": "bingenr@dodgeland.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Rachael",
-      "last": "Bingen"
-    },
-    {
-      "school": "Dodgeland High School",
       "email": "biwer@dodgeland.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Softball",
       "first": "Michelle",
       "last": "Biwer"
-    },
-    {
-      "school": "Dodgeland High School",
-      "email": "clash.laine+wiaa@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Laine",
-      "last": "Leitzke"
     },
     {
       "school": "Dodgeland High School",
@@ -921,6 +889,14 @@
       "sport": "Girls Hockey",
       "first": "Mike",
       "last": "Pogorelec"
+    },
+    {
+      "school": "Dodgeland High School",
+      "email": "sarah.mueller@labcorp.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Sarah",
+      "last": "Ledger"
     },
     {
       "school": "Dodgeland High School",
@@ -1748,14 +1724,6 @@
     },
     {
       "school": "Hustisford High School",
-      "email": "bingenr@dodgeland.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Rachael",
-      "last": "Bingen"
-    },
-    {
-      "school": "Hustisford High School",
       "email": "biwer@dodgeland.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -1769,14 +1737,6 @@
       "sport": "",
       "first": "Todd",
       "last": "Bugnacki"
-    },
-    {
-      "school": "Hustisford High School",
-      "email": "clash.laine+wiaa@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Laine",
-      "last": "Leitzke"
     },
     {
       "school": "Hustisford High School",
@@ -1881,6 +1841,14 @@
       "sport": "Boys & Girls Track and Field",
       "first": "Andrew",
       "last": "Powers"
+    },
+    {
+      "school": "Hustisford High School",
+      "email": "sarah.mueller@labcorp.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Sarah",
+      "last": "Ledger"
     },
     {
       "school": "Hustisford High School",
@@ -2900,14 +2868,6 @@
     },
     {
       "school": "Lourdes Academy High School",
-      "email": "jdinegan@lourdes.today",
-      "role": "President",
-      "sport": "",
-      "first": "John",
-      "last": "Dinegan"
-    },
-    {
-      "school": "Lourdes Academy High School",
       "email": "kevin.wopat@lourdes.today",
       "role": "Athletic Director",
       "sport": "",
@@ -2985,6 +2945,14 @@
       "sport": "Boys Baseball",
       "first": "Cole",
       "last": "Boge"
+    },
+    {
+      "school": "Lourdes Academy High School",
+      "email": "zzeckser@lourdes.today",
+      "role": "President",
+      "sport": "",
+      "first": "Zachary",
+      "last": "Zeckser"
     },
     {
       "school": "Manitowoc Lincoln High School",
@@ -3937,14 +3905,6 @@
       "sport": "Boys Baseball",
       "first": "Brad",
       "last": "Behringer"
-    },
-    {
-      "school": "Oakfield High School",
-      "email": "cbargenquast@oakfield.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Cross Country",
-      "first": "Chelsie",
-      "last": "Bargenquast"
     },
     {
       "school": "Oakfield High School",
@@ -6484,14 +6444,6 @@
     },
     {
       "school": "Sun Prairie West High School",
-      "email": "brenna.weber7@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Brenna",
-      "last": "Weber"
-    },
-    {
-      "school": "Sun Prairie West High School",
       "email": "djjohns@sunprairieschools.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -6553,6 +6505,14 @@
       "sport": "Boys Basketball",
       "first": "Jay",
       "last": "Swanson"
+    },
+    {
+      "school": "Sun Prairie West High School",
+      "email": "khstorm@sunprairieschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Kevin",
+      "last": "Stormer"
     },
     {
       "school": "Sun Prairie West High School",

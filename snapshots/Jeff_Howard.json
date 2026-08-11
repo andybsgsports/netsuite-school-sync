@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-08-10T03:41:37.042306Z",
+  "updated": "2026-08-11T03:31:35.733920Z",
   "records": [
     {
       "school": "Albany High School",
@@ -3710,15 +3710,7 @@
       "school": "Sauk Prairie High School",
       "email": "andy.sherman@saukprairieschools.org",
       "role": "Head Coach",
-      "sport": "Boys & Girls Cross Country",
-      "first": "Andy",
-      "last": "Sherman"
-    },
-    {
-      "school": "Sauk Prairie High School",
-      "email": "andy.sherman@saukprairieschools.org",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Track and Field",
+      "sport": "Boys Cross Country",
       "first": "Andy",
       "last": "Sherman"
     },
@@ -4246,7 +4238,7 @@
       "school": "Stoughton High School",
       "email": "heather.solis@stoughton.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys & Girls Swimming Diving",
+      "sport": "Boys Swimming & Diving",
       "first": "Heather",
       "last": "Solis"
     },
@@ -4300,6 +4292,14 @@
     },
     {
       "school": "Stoughton High School",
+      "email": "karley.baumgart@stoughton.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Karley",
+      "last": "Baumgart"
+    },
+    {
+      "school": "Stoughton High School",
       "email": "matthewstrassman31@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Lacrosse-Boys",
@@ -4329,14 +4329,6 @@
       "sport": "Girls Golf",
       "first": "Ryan",
       "last": "Casey"
-    },
-    {
-      "school": "Stoughton High School",
-      "email": "stephen.ketelsen@stoughton.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "Stephen",
-      "last": "Ketelsen"
     },
     {
       "school": "Stoughton High School",
@@ -4385,14 +4377,6 @@
       "sport": "Boys Golf",
       "first": "Betsy",
       "last": "Zadra"
-    },
-    {
-      "school": "Waunakee School District",
-      "email": "brenna.weber7@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Brenna",
-      "last": "Weber"
     },
     {
       "school": "Waunakee School District",
@@ -4481,6 +4465,14 @@
       "sport": "Boys Lacrosse-Boys",
       "first": "John",
       "last": "Gengler"
+    },
+    {
+      "school": "Waunakee School District",
+      "email": "khstorm@sunprairieschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Kevin",
+      "last": "Stormer"
     },
     {
       "school": "Waunakee School District",
