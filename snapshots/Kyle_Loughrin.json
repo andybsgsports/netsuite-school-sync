@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-08-11T03:34:27.359951Z",
+  "updated": "2026-08-12T03:53:04.726032Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -2348,6 +2348,14 @@
     },
     {
       "school": "Fox Valley Lutheran High School",
+      "email": "amelso@fvlhs.org",
+      "role": "Head Coach",
+      "sport": "Girls Cross Country",
+      "first": "Aimee",
+      "last": "Melso"
+    },
+    {
+      "school": "Fox Valley Lutheran High School",
       "email": "anolte@fvlhs.org",
       "role": "Principal",
       "sport": "",
@@ -2380,6 +2388,14 @@
     },
     {
       "school": "Fox Valley Lutheran High School",
+      "email": "cbohl@fvlhs.org",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "Cody",
+      "last": "Bohl"
+    },
+    {
+      "school": "Fox Valley Lutheran High School",
       "email": "coach@aulax.org",
       "role": "Head Coach",
       "sport": "Boys Lacrosse-Boys",
@@ -2391,14 +2407,6 @@
       "email": "dkolander@fvlhs.org",
       "role": "Head Coach",
       "sport": "Boys Tennis",
-      "first": "David",
-      "last": "Kolander"
-    },
-    {
-      "school": "Fox Valley Lutheran High School",
-      "email": "dkolander@fvlhs.org",
-      "role": "Head Coach",
-      "sport": "Girls Golf",
       "first": "David",
       "last": "Kolander"
     },
@@ -2470,7 +2478,7 @@
       "school": "Fox Valley Lutheran High School",
       "email": "psehloff@fvlhs.org",
       "role": "Head Coach",
-      "sport": "Boys & Girls Cross Country",
+      "sport": "Boys Cross Country",
       "first": "Peter",
       "last": "Sehloff"
     },
@@ -5580,14 +5588,6 @@
     },
     {
       "school": "Merrill High School",
-      "email": "alexandra.libby@mapsedu.org",
-      "role": "Assistant Principal",
-      "sport": "",
-      "first": "Alexandra",
-      "last": "Libby"
-    },
-    {
-      "school": "Merrill High School",
       "email": "alison.natzke@mapsedu.org",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -5637,7 +5637,7 @@
     {
       "school": "Merrill High School",
       "email": "christopher.hahn@mapsedu.org",
-      "role": "Athletic Director",
+      "role": "Assistant Principal, Athletic Director",
       "sport": "",
       "first": "Christopher",
       "last": "Hahn"
@@ -5692,11 +5692,11 @@
     },
     {
       "school": "Merrill High School",
-      "email": "potterb@myhatchets.org",
+      "email": "matthew.weberpal@mapsedu.org",
       "role": "Assistant Principal",
       "sport": "",
-      "first": "Brad",
-      "last": "Potter"
+      "first": "Matthew",
+      "last": "Weberpal"
     },
     {
       "school": "Merrill High School",
@@ -6820,6 +6820,14 @@
     },
     {
       "school": "Pacelli High School",
+      "email": "abruscato@pacellicatholicschools.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Angelo",
+      "last": "Bruscato"
+    },
+    {
+      "school": "Pacelli High School",
       "email": "amolski@spacs.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -6841,14 +6849,6 @@
       "sport": "Girls Wrestling",
       "first": "Chris",
       "last": "Stoflet"
-    },
-    {
-      "school": "Pacelli High School",
-      "email": "coachmakenzi@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Makenzi",
-      "last": "Gale"
     },
     {
       "school": "Pacelli High School",

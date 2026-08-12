@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-08-11T03:35:03.411196Z",
+  "updated": "2026-08-12T03:53:40.017506Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -1988,14 +1988,6 @@
     },
     {
       "school": "Portage High School",
-      "email": "carlsone@portage.k12.wi.us",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Ed",
-      "last": "Carlson"
-    },
-    {
-      "school": "Portage High School",
       "email": "danaqualy@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Swimming & Diving",
@@ -2109,7 +2101,7 @@
     {
       "school": "Portage High School",
       "email": "seilert@portage.k12.wi.us",
-      "role": "AD Admin Assistant",
+      "role": "Athletic Director",
       "sport": "",
       "first": "Tara",
       "last": "Seiler"

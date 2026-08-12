@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-08-11T03:36:25.207624Z",
+  "updated": "2026-08-12T03:55:02.531924Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -49,14 +49,6 @@
       "sport": "Boys Baseball",
       "first": "Derek",
       "last": "Drews"
-    },
-    {
-      "school": "Cambria Friesland High School",
-      "email": "emkrivanek@yahoo.com",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
-      "first": "Eric",
-      "last": "Krivanek"
     },
     {
       "school": "Cambria Friesland High School",
@@ -1116,6 +1108,14 @@
     },
     {
       "school": "Fall River High School",
+      "email": "bprieve@fallriver.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Brian",
+      "last": "Prieve"
+    },
+    {
+      "school": "Fall River High School",
       "email": "cowaterworth@fallriver.k12.wi.us",
       "role": "AD Admin Assistant",
       "sport": "",
@@ -1124,43 +1124,11 @@
     },
     {
       "school": "Fall River High School",
-      "email": "dbirr@fallriver.k12.wi.us",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Dennis",
-      "last": "Birr"
-    },
-    {
-      "school": "Fall River High School",
-      "email": "emkrivanek@yahoo.com",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
-      "first": "Eric",
-      "last": "Krivanek"
-    },
-    {
-      "school": "Fall River High School",
       "email": "jdoolittle@fallriver.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Basketball",
       "first": "Jim",
       "last": "Doolittle"
-    },
-    {
-      "school": "Fall River High School",
-      "email": "jhaas@fallriver.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Josh",
-      "last": "Haas"
-    },
-    {
-      "school": "Fall River High School",
-      "email": "joseph.james.marshall@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Joseph",
-      "last": "Marshall"
     },
     {
       "school": "Fall River High School",
@@ -1173,7 +1141,7 @@
     {
       "school": "Fall River High School",
       "email": "jtreptow@fallriver.k12.wi.us",
-      "role": "Principal",
+      "role": "Superintendent",
       "sport": "",
       "first": "Jennifer",
       "last": "Treptow"
@@ -1188,11 +1156,11 @@
     },
     {
       "school": "Fall River High School",
-      "email": "lltrautmann@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Laura",
-      "last": "Trautmann"
+      "email": "mkutzler@fallriver.k12.wi.us",
+      "role": "Principal",
+      "sport": "",
+      "first": "Maria",
+      "last": "Kutzler"
     },
     {
       "school": "Fall River High School",
@@ -4908,14 +4876,6 @@
     },
     {
       "school": "Randolph High School",
-      "email": "emkrivanek@yahoo.com",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
-      "first": "Eric",
-      "last": "Krivanek"
-    },
-    {
-      "school": "Randolph High School",
       "email": "jkohlbeck@sbcglobal.net",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -5148,11 +5108,11 @@
     },
     {
       "school": "Rio High School",
-      "email": "emkrivanek@yahoo.com",
+      "email": "bprieve@fallriver.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
-      "first": "Eric",
-      "last": "Krivanek"
+      "sport": "Boys Football",
+      "first": "Brian",
+      "last": "Prieve"
     },
     {
       "school": "Rio High School",
@@ -5169,22 +5129,6 @@
       "sport": "Girls Basketball",
       "first": "Deb",
       "last": "Hutzler"
-    },
-    {
-      "school": "Rio High School",
-      "email": "jhaas@fallriver.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Josh",
-      "last": "Haas"
-    },
-    {
-      "school": "Rio High School",
-      "email": "joseph.james.marshall@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Joseph",
-      "last": "Marshall"
     },
     {
       "school": "Rio High School",

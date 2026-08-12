@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-08-11T03:30:37.818842Z",
+  "updated": "2026-08-12T03:49:11.062462Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -4252,6 +4252,14 @@
     },
     {
       "school": "Christian Life High School",
+      "email": "madisen.perry9@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Madisen",
+      "last": "Perry"
+    },
+    {
+      "school": "Christian Life High School",
       "email": "megan.kniffen@clschools.org",
       "role": "Head Coach",
       "sport": "Girls Bowling",
@@ -6444,7 +6452,7 @@
     },
     {
       "school": "Forreston High School",
-      "email": "tp.jenkins@yahoo.com",
+      "email": "tpjenkins55@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Track & Field",
       "first": "Terry",
@@ -7748,6 +7756,14 @@
     },
     {
       "school": "Greendale High School",
+      "email": "brice.powell@greendaleschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Brice",
+      "last": "Powell"
+    },
+    {
+      "school": "Greendale High School",
       "email": "chris.muench@greendaleschools.org",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -7873,14 +7889,6 @@
       "sport": "Girls Golf",
       "first": "Sarah",
       "last": "Dominguez"
-    },
-    {
-      "school": "Greendale High School",
-      "email": "stacysinks@yahoo.com",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Stacy",
-      "last": "Sinks"
     },
     {
       "school": "Greendale High School",
@@ -15686,6 +15694,14 @@
       "school": "Richmond-Burton High School",
       "email": "josmanski@rb157.org",
       "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "John",
+      "last": "Osmanski"
+    },
+    {
+      "school": "Richmond-Burton High School",
+      "email": "josmanski@rb157.org",
+      "role": "Head Coach",
       "sport": "Boys Track & Field",
       "first": "John",
       "last": "Osmanski"
@@ -15801,14 +15817,6 @@
       "sport": "Scholastic Bowl",
       "first": "Seth",
       "last": "Herchenbach"
-    },
-    {
-      "school": "Richmond-Burton High School",
-      "email": "tconroy@rb157.org",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Cross Country",
-      "first": "Taylor",
-      "last": "Conroy"
     },
     {
       "school": "Richmond-Burton High School",
