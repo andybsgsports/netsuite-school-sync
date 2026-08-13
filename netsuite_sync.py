@@ -145,18 +145,6 @@ def ns_patch(path, body):
 def ns_delete(path):
     return _ns_call("DELETE", path)
 
-def ns_delete(path):
-    url = f"{BASE_URL}/{path}"
-    return requests.delete(url, headers={
-        "Authorization": make_auth("DELETE", url),
-        "Content-Type": "application/json"})
-
-def ns_delete(path):
-    url = f"{BASE_URL}/{path}"
-    return requests.delete(url, headers={
-        "Authorization": make_auth("DELETE", url),
-        "Content-Type": "application/json"})
-
 SUITEQL_URL = f"https://{NS_ACCOUNT}.suitetalk.api.netsuite.com/services/rest/query/v1/suiteql"
 
 def ns_suiteql(query, limit=1000):
@@ -262,6 +250,47 @@ def ns_restlet_attach(contact_id, customer_id, action="attach"):
         return True  # already in the desired state — fine
     print(f"  [NS] RESTlet {action} failed: {err[:200]}")
     return False
+
+
+def ns_restlet_remove_address(customer_id, label=None, label_prefix=None):
+    """Delete addressBook line(s) from a customer via the RESTlet's
+    removeAddress action (SuiteScript removeLine — the REST record API can't
+    delete a sublist line).
+
+    label        - remove the line whose label matches (a legacy
+                   "(Removed) <name>" line matches "<name>" too).
+    label_prefix - remove every line whose label starts with this, used by the
+                   one-time "(Removed) " purge.
+
+    Returns the number of lines removed, or None when the RESTlet isn't
+    available / the call failed (so callers can fall back)."""
+    if not restlet_available():
+        return None
+    body = {"action": "removeAddress", "customerId": str(customer_id)}
+    if label:
+        body["label"] = label
+    if label_prefix:
+        body["labelPrefix"] = label_prefix
+    try:
+        r = requests.post(RESTLET_URL, headers={
+            "Authorization": make_auth("POST", RESTLET_URL),
+            "Content-Type": "application/json",
+        }, json=body, timeout=60)
+    except Exception as e:
+        print(f"  [NS] RESTlet removeAddress error: {e}")
+        return None
+    if r.status_code != 200:
+        print(f"  [NS] RESTlet removeAddress HTTP {r.status_code}: {r.text[:200]}")
+        return None
+    try:
+        data = r.json()
+    except ValueError:
+        print(f"  [NS] RESTlet removeAddress returned non-JSON: {r.text[:200]}")
+        return None
+    if data.get("success"):
+        return int(data.get("removed", 0))
+    print(f"  [NS] RESTlet removeAddress failed: {str(data.get('error', ''))[:200]}")
+    return None
 
 # ============================================================
 # HELPERS
@@ -601,6 +630,11 @@ def sync_address_book(customer_id, school_info, contacts, school_name="",
             lbl = (line.get("label") or "").strip()
             if lbl:
                 existing_labels.add(lbl.lower())
+            # Legacy "(Removed) <name>" lines are dead weight awaiting the
+            # purge — don't spend PATCHes healing an address nobody should
+            # be shipping to.
+            if lbl.lower().startswith("(removed)"):
+                continue
             if heal_billing or not line.get("defaultBilling"):
                 sub = ns_get(f"customer/{customer_id}/addressBook/{line_id}/addressBookAddress")
                 if sub.status_code == 200:
@@ -1345,11 +1379,20 @@ def inactivate_contact(contact_id, name):
 
 def remove_contact_ship_to(customer_id, contact_name):
     """
-    Remove a specific contact's Ship-To address from the Customer addressbook.
+    Delete a departed contact's Ship-To address from the Customer addressbook.
 
-    NetSuite REST API PATCH always ADDS to addressBook — it cannot delete entries.
-    So we find the matching address line and PATCH it individually to mark it as
-    removed (changing the label so it won't match future contacts).
+    This used to only RELABEL the line "(Removed) <name>" and leave it on the
+    record, because a customer-level PATCH can only ADD to addressBook. But
+    the line still shows in the Ship To dropdown on every quote/order, so the
+    list grew without bound and offered dead addresses as pickable options.
+
+    Three ways to actually delete it, in order:
+      1. REST DELETE on the sublist line.
+      2. The RESTlet's removeAddress action (SuiteScript removeLine).
+      3. Relabel — the old behavior, last resort only, so a deployment that
+         has neither path is no worse off than before.
+    Legacy "(Removed) <name>" lines match too, so the nightly run cleans up
+    its own past output as departed people come back around.
     """
     target = contact_name.strip().lower()
     r = ns_get(f"customer/{customer_id}?expand=addressBook")
@@ -1357,22 +1400,58 @@ def remove_contact_ship_to(customer_id, contact_name):
         return
 
     items = r.json().get("addressBook", {}).get("items", [])
+    matches = []   # (line_id, label)
     for item in items:
         href = item.get("links", [{}])[0].get("href", "")
         line_id = href.rstrip("/").split("/")[-1] if href else None
-        if line_id:
-            r2 = ns_get(f"customer/{customer_id}/addressBook/{line_id}")
-            if r2.status_code == 200:
-                lbl = r2.json().get("label", "").strip()
-                if lbl.lower() == target:
-                    r3 = ns_patch(f"customer/{customer_id}/addressBook/{line_id}", {
-                        "label": f"(Removed) {contact_name}",
-                        "defaultShipping": False,
-                        "defaultBilling": False,
-                    })
-                    if r3.status_code == 204:
-                        print(f"  [NS] Cleared Ship-To for: {contact_name}")
-                    return
+        if not line_id:
+            continue
+        r2 = ns_get(f"customer/{customer_id}/addressBook/{line_id}")
+        if r2.status_code != 200:
+            continue
+        lbl = (r2.json().get("label") or "").strip()
+        bare = re.sub(r"^\(removed\)\s*", "", lbl, flags=re.I)
+        if lbl.lower() == target or bare.lower() == target:
+            matches.append((line_id, lbl))
+    if not matches:
+        return
+
+    deleted = 0
+    rest_delete_ok = True
+    for line_id, _lbl in matches:
+        if not rest_delete_ok:
+            break
+        d = ns_delete(f"customer/{customer_id}/addressBook/{line_id}")
+        if d.status_code in (200, 204):
+            deleted += 1
+        else:
+            # Sublist-line DELETE unsupported on this account — stop trying
+            # and hand the whole job to the RESTlet.
+            rest_delete_ok = False
+
+    if deleted == len(matches):
+        print(f"  [NS] Removed Ship-To for: {contact_name}"
+              + (f" ({deleted} lines)" if deleted > 1 else ""))
+        return
+
+    removed = ns_restlet_remove_address(customer_id, label=contact_name)
+    if removed:
+        print(f"  [NS] Removed Ship-To for: {contact_name} via RESTlet"
+              + (f" ({removed} lines)" if removed > 1 else ""))
+        return
+
+    # Last resort: keep the historical relabel so the line at least stops
+    # matching a future contact of the same name.
+    for line_id, lbl in matches:
+        if lbl.lower().startswith("(removed)"):
+            continue
+        ns_patch(f"customer/{customer_id}/addressBook/{line_id}", {
+            "label": f"(Removed) {contact_name}",
+            "defaultShipping": False,
+            "defaultBilling": False,
+        })
+    print(f"  [NS] WARN: could not delete Ship-To for {contact_name} "
+          f"(REST DELETE rejected and RESTlet unavailable) — relabeled only")
 
 # ============================================================
 # MAIN SYNC FUNCTION
