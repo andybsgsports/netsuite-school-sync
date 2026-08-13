@@ -214,6 +214,27 @@ def ns_restlet_health():
     return False, f"HTTP {r.status_code}: {r.text[:200]}"
 
 
+def ns_restlet_version():
+    """Version of the DEPLOYED RESTlet, from its GET health check, or None.
+
+    The deployed copy can lag this repo — uploading attach_contact_restlet.js
+    is a manual step in NetSuite. v1 has no removeAddress action, so callers
+    that need it can say so plainly instead of surfacing v1's generic
+    'Required fields: action ("attach"|"detach")' error."""
+    if not restlet_available():
+        return None
+    try:
+        r = requests.get(RESTLET_URL, headers={
+            "Authorization": make_auth("GET", RESTLET_URL),
+            "Content-Type": "application/json",
+        }, timeout=30)
+        if r.status_code == 200:
+            return int(r.json().get("version", 1))
+    except (ValueError, TypeError, Exception):
+        pass
+    return None
+
+
 def ns_restlet_attach(contact_id, customer_id, action="attach"):
     """Attach/detach an existing contact to/from a customer via the deployed
     RESTlet (NetSuite's native mechanism — same as the UI's "Attach" button).
@@ -1426,8 +1447,12 @@ def remove_contact_ship_to(customer_id, contact_name):
             deleted += 1
         else:
             # Sublist-line DELETE unsupported on this account — stop trying
-            # and hand the whole job to the RESTlet.
+            # and hand the whole job to the RESTlet. Report why once per
+            # customer: a silent failure here looks identical to "nothing to
+            # do" and cost a full live run to diagnose.
             rest_delete_ok = False
+            print(f"  [NS] addressBook DELETE unsupported "
+                  f"(HTTP {d.status_code}: {d.text[:160]}) — trying RESTlet")
 
     if deleted == len(matches):
         print(f"  [NS] Removed Ship-To for: {contact_name}"
