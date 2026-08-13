@@ -32,6 +32,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from netsuite_sync import (
     ns_get, ns_delete, ns_restlet_remove_address, restlet_available,
+    ns_restlet_version,
 )
 from school_netsuite_sync import (
     get_gspread_client, GOOGLE_SHEET_ID, MASTER_TAB,
@@ -63,7 +64,7 @@ def removed_lines(customer_id):
     return out
 
 
-def purge(customer_id, lines):
+def purge(customer_id, lines, seen_delete_err=[]):
     """Delete the given lines. Returns the number actually removed."""
     deleted = 0
     rest_ok = True
@@ -75,6 +76,12 @@ def purge(customer_id, lines):
             deleted += 1
         else:
             rest_ok = False
+            # Print the reason once for the whole run — a silent DELETE
+            # failure is indistinguishable from "nothing to do".
+            if not seen_delete_err:
+                seen_delete_err.append(True)
+                print(f"      NOTE: addressBook DELETE rejected by NetSuite "
+                      f"(HTTP {d.status_code}: {d.text[:200]})")
     if deleted == len(lines):
         return deleted
     removed = ns_restlet_remove_address(customer_id, label_prefix="(removed)")
@@ -82,12 +89,29 @@ def purge(customer_id, lines):
 
 
 def main():
+    live = LIVE
     print("=" * 60)
-    print(f"  PURGE '(Removed)' Ship-To lines  |  LIVE={LIVE}")
+    print(f"  PURGE '(Removed)' Ship-To lines  |  LIVE={live}")
     if REP_FILTER:
         print(f"  SALES_REP_FILTER: {REP_FILTER}")
-    print(f"  RESTlet available: {restlet_available()}")
+    rl_ver = ns_restlet_version()
+    print(f"  RESTlet available: {restlet_available()} (deployed version: {rl_ver})")
     print("=" * 60)
+
+    # The RESTlet is the only deletion path that reliably works here — REST
+    # DELETE on an addressBook line is rejected by this account. v1 has no
+    # removeAddress action, so a live run against it deletes nothing. Say so
+    # up front rather than after walking every school.
+    if live and (rl_ver is None or rl_ver < 2):
+        print("\n  !! The deployed RESTlet is "
+              + ("unreachable" if rl_ver is None else f"version {rl_ver}")
+              + ", which has no removeAddress action.")
+        print("     Upload suitescript/attach_contact_restlet.js in NetSuite")
+        print("     (Customization > Scripting > Scripts > BSG Attach Contact")
+        print("      > edit the script file), then re-run. The health check")
+        print("     will report version 2 once it's live.")
+        print("     Continuing as a DRY RUN so nothing is half-applied.\n")
+        live = False
 
     gc = get_gspread_client()
     wb = gc.open_by_key(GOOGLE_SHEET_ID)
@@ -126,7 +150,7 @@ def main():
             print(f"      {lbl}")
         if len(lines) > 10:
             print(f"      ... and {len(lines) - 10} more")
-        if LIVE:
+        if live:
             got = purge(ns_id, lines)
             total_removed += got
             print(f"      -> deleted {got}/{len(lines)}")
@@ -135,7 +159,7 @@ def main():
     print("\n" + "=" * 60)
     print(f"  Schools with '(Removed)' lines: {schools_hit}")
     print(f"  Total '(Removed)' lines found:  {total_found}")
-    if LIVE:
+    if live:
         print(f"  Total deleted:                  {total_removed}")
     else:
         print("  DRY RUN — nothing deleted. Set LIVE=1 to apply.")
