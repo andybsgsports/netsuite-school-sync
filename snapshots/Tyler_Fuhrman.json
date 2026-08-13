@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-08-12T03:51:20.053369Z",
+  "updated": "2026-08-13T03:57:29.759742Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -116,14 +116,6 @@
     },
     {
       "school": "Arcadia High School",
-      "email": "andersonn@arcadia.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Natalie",
-      "last": "Anderson"
-    },
-    {
-      "school": "Arcadia High School",
       "email": "andersonw@arcadia.k12.wi.us",
       "role": "Principal",
       "sport": "",
@@ -137,6 +129,14 @@
       "sport": "Boys Golf",
       "first": "Andy",
       "last": "Meinerz"
+    },
+    {
+      "school": "Arcadia High School",
+      "email": "averylarrabee0@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Avery",
+      "last": "Larrabee"
     },
     {
       "school": "Arcadia High School",
@@ -580,19 +580,19 @@
     },
     {
       "school": "Boscobel High School",
-      "email": "blairluk@wauzeka.k12.wi.us",
+      "email": "ahnewill@boscobel.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Luke",
-      "last": "Blair"
+      "sport": "Boys Wrestling",
+      "first": "Will",
+      "last": "Ahnen"
     },
     {
       "school": "Boscobel High School",
-      "email": "boneedwi@boscobel.k12.wi.us",
-      "role": "Assistant Principal",
-      "sport": "",
-      "first": "Edwin",
-      "last": "Boneske"
+      "email": "ashley.stanek@emplifyhealth.org",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Ashley",
+      "last": "Stanek"
     },
     {
       "school": "Boscobel High School",
@@ -609,14 +609,6 @@
       "sport": "Boys Football",
       "first": "Marc",
       "last": "Chiefari"
-    },
-    {
-      "school": "Boscobel High School",
-      "email": "corgmop@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Sandra",
-      "last": "Murray"
     },
     {
       "school": "Boscobel High School",
@@ -660,14 +652,6 @@
     },
     {
       "school": "Boscobel High School",
-      "email": "lancewetter12@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Wrestling",
-      "first": "Lance",
-      "last": "Wetter"
-    },
-    {
-      "school": "Boscobel High School",
       "email": "lisa@boscobel.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
@@ -681,6 +665,14 @@
       "sport": "Girls Volleyball",
       "first": "Ashley",
       "last": "Stanek"
+    },
+    {
+      "school": "Boscobel High School",
+      "email": "randarbell11@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Randa",
+      "last": "Bell"
     },
     {
       "school": "Brookwood High School",

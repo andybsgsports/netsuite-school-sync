@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-08-12T03:53:40.017506Z",
+  "updated": "2026-08-13T03:59:54.906721Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -513,6 +513,14 @@
       "sport": "Boys Baseball",
       "first": "Bill",
       "last": "Held"
+    },
+    {
+      "school": "Amherst High School",
+      "email": "zshulfer@amherst.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Zachary",
+      "last": "Shulfer"
     },
     {
       "school": "DeForest High School",

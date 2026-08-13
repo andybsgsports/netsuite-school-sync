@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-08-12T03:49:11.062462Z",
+  "updated": "2026-08-13T03:55:20.285867Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -2353,6 +2353,14 @@
       "sport": "Boys Cross Country",
       "first": "Ronn",
       "last": "Blaha"
+    },
+    {
+      "school": "Brookfield Central High School",
+      "email": "brennanh@elmbrookschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Heather",
+      "last": "Brennan"
     },
     {
       "school": "Brookfield Central High School",
@@ -7769,6 +7777,14 @@
       "sport": "Boys Golf",
       "first": "Chris",
       "last": "Muench"
+    },
+    {
+      "school": "Greendale High School",
+      "email": "gabrielle.lepine@greendaleschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Gabrielle",
+      "last": "Lepine"
     },
     {
       "school": "Greendale High School",
@@ -13246,6 +13262,14 @@
       "school": "Mount Horeb School District",
       "email": "amrichardson922@gmail.com",
       "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Alexa",
+      "last": "Richardson"
+    },
+    {
+      "school": "Mount Horeb School District",
+      "email": "amrichardson922@gmail.com",
+      "role": "Head Coach",
       "sport": "Girls Track and Field",
       "first": "Alexa",
       "last": "Richardson"
@@ -13273,14 +13297,6 @@
       "sport": "",
       "first": "Talisa",
       "last": "Corcoran"
-    },
-    {
-      "school": "Mount Horeb School District",
-      "email": "enloetala@mounthorebschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Swimming & Diving",
-      "first": "Tala",
-      "last": "Enloe"
     },
     {
       "school": "Mount Horeb School District",
@@ -13369,6 +13385,14 @@
       "sport": "",
       "first": "Cody",
       "last": "Lundquist"
+    },
+    {
+      "school": "Mount Horeb School District",
+      "email": "masseybrittany@mounthorebschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Swimming & Diving",
+      "first": "Brittany",
+      "last": "Massey"
     },
     {
       "school": "Mount Horeb School District",
@@ -16396,6 +16420,22 @@
     },
     {
       "school": "Rockford Lutheran High School",
+      "email": "ashtong1270@gmail.com",
+      "role": "Head Coach",
+      "sport": "Competitive Cheerleading",
+      "first": "Ashton",
+      "last": "Gutierrez"
+    },
+    {
+      "school": "Rockford Lutheran High School",
+      "email": "bradlindsay1@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Brad",
+      "last": "Lindsay"
+    },
+    {
+      "school": "Rockford Lutheran High School",
       "email": "brockg1108@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -16409,6 +16449,14 @@
       "sport": "Girls Golf",
       "first": "Bryan",
       "last": "Bennett"
+    },
+    {
+      "school": "Rockford Lutheran High School",
+      "email": "cary77davis@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Cary",
+      "last": "Davis"
     },
     {
       "school": "Rockford Lutheran High School",
@@ -16532,11 +16580,11 @@
     },
     {
       "school": "Rockford Lutheran High School",
-      "email": "nclreyes@yahoo.com",
+      "email": "mikemather21@yahoo.com",
       "role": "Head Coach",
-      "sport": "Competitive Cheerleading",
-      "first": "Nicole",
-      "last": "Figueroa"
+      "sport": "Boys Baseball",
+      "first": "Mike",
+      "last": "Mather"
     },
     {
       "school": "Rockford Lutheran High School",
@@ -20124,6 +20172,14 @@
     },
     {
       "school": "Winnebago High School",
+      "email": "capriolaa@winnebagoschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Anthony",
+      "last": "Capriola"
+    },
+    {
+      "school": "Winnebago High School",
       "email": "coacha44@frontier.com",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -20249,14 +20305,6 @@
       "sport": "",
       "first": "Jason",
       "last": "Mondello"
-    },
-    {
-      "school": "Winnebago High School",
-      "email": "nino@tcswrestling.org",
-      "role": "Head Coach",
-      "sport": "Boys Wrestling",
-      "first": "Anthony",
-      "last": "Capriola"
     },
     {
       "school": "Winnebago High School",

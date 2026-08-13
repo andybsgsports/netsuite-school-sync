@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-08-12T03:55:02.531924Z",
+  "updated": "2026-08-13T04:01:19.142535Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -1121,6 +1121,14 @@
       "sport": "",
       "first": "Colleen",
       "last": "Waterworth"
+    },
+    {
+      "school": "Fall River High School",
+      "email": "dpickarts@fallriver.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Doug",
+      "last": "Pickarts"
     },
     {
       "school": "Fall River High School",

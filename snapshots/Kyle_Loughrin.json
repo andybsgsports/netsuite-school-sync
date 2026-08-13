@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-08-12T03:53:04.726032Z",
+  "updated": "2026-08-13T03:59:19.270449Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -3529,14 +3529,6 @@
       "sport": "Girls Hockey",
       "first": "Mike",
       "last": "Buchan"
-    },
-    {
-      "school": "Green Bay West High School",
-      "email": "joverstreet@gbaps.org",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Jerry",
-      "last": "Overstreet"
     },
     {
       "school": "Green Bay West High School",
@@ -9028,6 +9020,14 @@
     },
     {
       "school": "Waupaca High School",
+      "email": "captaincam18@hotmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Camryn",
+      "last": "Borland"
+    },
+    {
+      "school": "Waupaca High School",
       "email": "coach@aulax.org",
       "role": "Head Coach",
       "sport": "Boys Lacrosse-Boys",
@@ -9073,14 +9073,6 @@
       "sport": "Girls Track and Field",
       "first": "Joel",
       "last": "Kempfert"
-    },
-    {
-      "school": "Waupaca High School",
-      "email": "jkoehler@waupacaschools.org",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Soccer",
-      "first": "Jeremy",
-      "last": "Koehler"
     },
     {
       "school": "Waupaca High School",
@@ -9143,14 +9135,6 @@
       "email": "rscherrer@waupacaschools.org",
       "role": "Athletic Director",
       "sport": "",
-      "first": "Rob",
-      "last": "Scherrer"
-    },
-    {
-      "school": "Waupaca High School",
-      "email": "rscherrer@waupacaschools.org",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
       "first": "Rob",
       "last": "Scherrer"
     },

@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-08-12T03:50:11.045979Z",
+  "updated": "2026-08-13T03:56:19.397036Z",
   "records": [
     {
       "school": "Albany High School",
@@ -4564,19 +4564,19 @@
     },
     {
       "school": "Wauzeka-Stueben High School",
+      "email": "ahnewill@boscobel.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Will",
+      "last": "Ahnen"
+    },
+    {
+      "school": "Wauzeka-Stueben High School",
       "email": "bcm6@centurytel.net",
       "role": "Head Coach",
       "sport": "Girls Basketball",
       "first": "Benjamin",
       "last": "McCullick"
-    },
-    {
-      "school": "Wauzeka-Stueben High School",
-      "email": "blairluk@wauzeka.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Luke",
-      "last": "Blair"
     },
     {
       "school": "Wauzeka-Stueben High School",
@@ -4644,14 +4644,6 @@
     },
     {
       "school": "Wauzeka-Stueben High School",
-      "email": "lancewetter12@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Wrestling",
-      "first": "Lance",
-      "last": "Wetter"
-    },
-    {
-      "school": "Wauzeka-Stueben High School",
       "email": "mathiesal1@pdc.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Soccer",
@@ -4673,6 +4665,14 @@
       "sport": "",
       "first": "Dan",
       "last": "Olson"
+    },
+    {
+      "school": "Wauzeka-Stueben High School",
+      "email": "randarbell11@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Randa",
+      "last": "Bell"
     },
     {
       "school": "Wauzeka-Stueben High School",
