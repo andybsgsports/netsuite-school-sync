@@ -954,6 +954,15 @@ def main():
     old_rep_names_lower = {r.lower() for r in rep_by_school.values() if r}
     # Re-fetch since we deleted things above
     all_folders_after = list_all_folders_recursive(g)
+    # (parent_display_name_or_None, display_name) for every folder that
+    # exists right now. Used to detect the case where a folder can neither
+    # be deleted (Graph 403s it) nor archived (a ZZZ_OLD_ copy already
+    # exists under the same parent, so the rename would 400 on a name
+    # collision). Those folders are permanently stuck -- we note them
+    # quietly instead of logging an ERROR on every single run.
+    existing_folder_keys = {(f.get("parentDisplayName"), f["displayName"])
+                            for f in all_folders_after}
+    stuck_folders: List[str] = []
     # Sort: children first (they have parentDisplayName), then top-level.
     children_first = sorted(all_folders_after,
                             key=lambda f: 0 if "parentDisplayName" in f else 1)
@@ -1020,37 +1029,41 @@ def main():
                 # sort alphabetically; this groups all dead folders at
                 # the bottom of every rep's hierarchy.
                 new_name = ARCHIVED_PREFIX + fname
+                if (parent, new_name) in existing_folder_keys:
+                    # An archived copy already exists under this parent, so
+                    # the rename would 400 on a name collision. Nothing more
+                    # we can do from the API -- record it and move on.
+                    stuck_folders.append(fld.get("fullPath", fname))
+                    continue
                 try:
                     rename_contact_folder(g, fld, new_name)
+                    existing_folder_keys.add((parent, new_name))
                     print(f"  [FOLDER] archived (delete denied by Graph): "
                           f"{fld.get('fullPath', fname)} -> {new_name}")
                 except Exception as e2:
                     print(f"    ERROR archive folder {fname}: {e2}")
 
-    # 10. Master-category cleanup. Categories live in a master list that
-    #     persists independently of contacts -- old "(Rep Name)"-style
-    #     categories from earlier runs hang around in the People view.
-    print("\n[CLEANUP] Pruning ghost master-categories...")
-    keep_categories: Set[str] = {SYNC_TAG}
-    for people_payloads in desired.values():
-        for payload in people_payloads.values():
-            for c in payload.get("categories") or []:
-                keep_categories.add(c)
-    known_rep_names = {r for r in rep_by_school.values() if r}
-    cat_deleted = cleanup_master_categories(
-        g,
-        keep_categories=keep_categories,
-        known_rep_names=known_rep_names,
-        known_role_names=sheet_role_names,
-    )
-    totals["categories_deleted"] = cat_deleted
+    if stuck_folders:
+        print(f"  [FOLDER] {len(stuck_folders)} folder(s) can't be removed via "
+              f"the API (Graph denies delete, archived copy already exists). "
+              f"Delete manually in Outlook desktop if you want them gone:")
+        for p in sorted(stuck_folders):
+            print(f"           - {p}")
+
+    # NOTE: ghost master-category cleanup (the old "(Rep Name)"-style
+    # categories left over from earlier folder schemes) is NOT attempted.
+    # /me/outlook/masterCategories needs MailboxSettings.ReadWrite, which
+    # requires tenant admin consent this account can't self-grant, so the
+    # call only ever returned 403. cleanup_master_categories() is kept for
+    # reference in case that consent is ever granted -- wire it back in
+    # here if so. Contacts themselves only carry the SYNC_TAG category, so
+    # the leftover names are unused and cosmetic.
 
     print("\n" + "=" * 60)
     print("  SUMMARY")
     print("=" * 60)
     for k in ("added", "updated", "moved", "unchanged",
-              "deleted", "dedup_deleted", "categories_deleted",
-              "skipped"):
+              "deleted", "dedup_deleted", "skipped"):
         print(f"  {k.replace('_', ' ').capitalize():20s}{totals.get(k, 0)}")
     print()
 
