@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-08-13T04:01:19.142535Z",
+  "updated": "2026-08-14T03:58:43.929180Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -332,6 +332,14 @@
     },
     {
       "school": "Cedar Grove Belgium High School",
+      "email": "jdkrechel@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "John",
+      "last": "Krechel"
+    },
+    {
+      "school": "Cedar Grove Belgium High School",
       "email": "jhock@cgbrockets.com",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -353,14 +361,6 @@
       "sport": "",
       "first": "Josh",
       "last": "Ketterhagen"
-    },
-    {
-      "school": "Cedar Grove Belgium High School",
-      "email": "kschultz.coach@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Kyle",
-      "last": "Schultz"
     },
     {
       "school": "Cedar Grove Belgium High School",
@@ -4764,7 +4764,7 @@
     },
     {
       "school": "Princeton High School",
-      "email": "colwate@princeton.k12.wi.us",
+      "email": "coliwate@princeton.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
       "first": "Colin",
@@ -5825,6 +5825,14 @@
       "sport": "Boys Volleyball",
       "first": "Ernesto",
       "last": "Matus"
+    },
+    {
+      "school": "Sheboygan North High School",
+      "email": "emlambrecht@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Emily",
+      "last": "Hemauer"
     },
     {
       "school": "Sheboygan North High School",
@@ -7537,14 +7545,6 @@
       "sport": "Girls Tennis",
       "first": "Jason",
       "last": "Zellner"
-    },
-    {
-      "school": "Winnebago Lutheran High School",
-      "email": "jtsupe@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "John",
-      "last": "Suprenand"
     },
     {
       "school": "Winnebago Lutheran High School",

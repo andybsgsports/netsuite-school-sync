@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-08-13T03:59:19.270449Z",
+  "updated": "2026-08-14T03:56:43.164912Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -4972,14 +4972,6 @@
     },
     {
       "school": "Manawa High School",
-      "email": "bscheller@manawaschools.org",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Cross Country",
-      "first": "Bruce",
-      "last": "Scheller"
-    },
-    {
-      "school": "Manawa High School",
       "email": "davidaug054@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -4993,6 +4985,14 @@
       "sport": "Girls Volleyball",
       "first": "Gen",
       "last": "Gunderson"
+    },
+    {
+      "school": "Manawa High School",
+      "email": "jkscheller@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Bruce",
+      "last": "Scheller"
     },
     {
       "school": "Manawa High School",
@@ -5492,6 +5492,14 @@
     },
     {
       "school": "Menominee Indian High School",
+      "email": "demetriuskaquatosh9@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Cross Country",
+      "first": "Demetrius",
+      "last": "Kaquatosh"
+    },
+    {
+      "school": "Menominee Indian High School",
       "email": "dwynos7@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -5561,14 +5569,6 @@
       "sport": "Boys Golf",
       "first": "Robert",
       "last": "Burr"
-    },
-    {
-      "school": "Menominee Indian High School",
-      "email": "rnacotee@misd.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Cross Country",
-      "first": "Richard",
-      "last": "Nacotee"
     },
     {
       "school": "Merrill High School",
