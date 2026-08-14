@@ -720,6 +720,23 @@ def _norm_text(v) -> str:
             .strip())
 
 
+def describe_text_diff(stored, sending) -> str:
+    """Compact description of where two text values first diverge.
+
+    Used to diagnose fields that look permanently dirty because Exchange
+    rewrites them on save. Windows are short on purpose so contact detail
+    doesn't get dumped into CI logs.
+    """
+    a, b = _norm_text(stored), _norm_text(sending)
+    if a == b:
+        return "identical after normalization"
+    i = 0
+    while i < min(len(a), len(b)) and a[i] == b[i]:
+        i += 1
+    return (f"len stored={len(a)} sending={len(b)}, first differ @{i}: "
+            f"stored={a[i:i + 30]!r} sending={b[i:i + 30]!r}")
+
+
 def contact_diff(existing: dict, desired: dict) -> List[str]:
     """Return the names of fields that actually differ (empty == in sync)."""
     fields = ["givenName", "surname", "displayName", "companyName",
@@ -935,6 +952,11 @@ def main():
                         # Exchange rewrites on save, so it never matches) is
                         # visible instead of just a nonzero Updated count.
                         print(f"    [update] {email}: {', '.join(diffs)}")
+                        for f in diffs:
+                            if f in ("email", "categories"):
+                                continue
+                            print(f"             {f}: "
+                                  f"{describe_text_diff(keep_data.get(f), payload.get(f))}")
                     except Exception as e:
                         print(f"    ERROR update {email}: {e}")
                         totals["skipped"] += 1
