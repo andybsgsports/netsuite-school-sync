@@ -706,20 +706,31 @@ def contact_email(c: dict) -> str:
     return (addrs[0].get("address") or "").strip().lower()
 
 
-def contact_needs_update(existing: dict, desired: dict) -> bool:
-    """Compare the fields we care about."""
+def _norm_text(v) -> str:
+    """Normalize a text field for comparison.
+
+    Exchange rewrites some values on save -- notably it stores multi-line
+    text with CRLF line endings and can trim trailing whitespace. Comparing
+    raw values would then report a difference on every run and re-PATCH the
+    same contact forever. Normalize both sides so only real edits count.
+    """
+    return (str(v or "")
+            .replace("\r\n", "\n")
+            .replace("\r", "\n")
+            .strip())
+
+
+def contact_diff(existing: dict, desired: dict) -> List[str]:
+    """Return the names of fields that actually differ (empty == in sync)."""
     fields = ["givenName", "surname", "displayName", "companyName",
               "jobTitle", "department", "personalNotes"]
-    for f in fields:
-        if (existing.get(f) or "") != (desired.get(f) or ""):
-            return True
-    # Email
+    diffs = [f for f in fields
+             if _norm_text(existing.get(f)) != _norm_text(desired.get(f))]
     if contact_email(existing) != contact_email(desired):
-        return True
-    # Categories (compare as sets)
+        diffs.append("email")
     if set(existing.get("categories") or []) != set(desired.get("categories") or []):
-        return True
-    return False
+        diffs.append("categories")
+    return diffs
 
 
 # -- Main sync ---------------------------------------------------------------
@@ -915,10 +926,15 @@ def main():
                     totals["skipped"] += 1
             else:
                 # Right folder -- update if anything differs
-                if contact_needs_update(keep_data, payload):
+                diffs = contact_diff(keep_data, payload)
+                if diffs:
                     try:
                         g.patch(f"/me/contacts/{keep_cid}", payload)
                         totals["updated"] += 1
+                        # Name the changed fields so recurring churn (a value
+                        # Exchange rewrites on save, so it never matches) is
+                        # visible instead of just a nonzero Updated count.
+                        print(f"    [update] {email}: {', '.join(diffs)}")
                     except Exception as e:
                         print(f"    ERROR update {email}: {e}")
                         totals["skipped"] += 1
