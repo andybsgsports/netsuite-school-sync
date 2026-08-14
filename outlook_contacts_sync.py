@@ -696,7 +696,7 @@ def _build_notes(assignments: List[Tuple[str, str, str]],
                     lines.append(f"{indent}- {role}")
                 elif ctype:
                     lines.append(f"{indent}- {ctype}")
-    return "\n".join(lines)
+    return _fit_notes(lines)
 
 
 def contact_email(c: dict) -> str:
@@ -718,6 +718,34 @@ def _norm_text(v) -> str:
             .replace("\r\n", "\n")
             .replace("\r", "\n")
             .strip())
+
+
+# Exchange truncates a contact's personalNotes around 255 characters. If we
+# send more than that, the stored value never matches what we generated and
+# the contact is re-PATCHed on every run forever. Build notes that already
+# fit, cutting at a line boundary so the text never ends mid-word, and stay
+# comfortably under the limit so we never sit on the truncation boundary.
+NOTES_MAX = 250
+_NOTES_MARKER_RESERVE = 20
+
+
+def _fit_notes(lines: List[str], limit: int = NOTES_MAX) -> str:
+    """Join note lines, dropping whole lines that would exceed the limit."""
+    text = "\n".join(lines)
+    if len(text) <= limit:
+        return text
+    kept: List[str] = []
+    for ln in lines:
+        candidate = "\n".join(kept + [ln])
+        if len(candidate) > limit - _NOTES_MARKER_RESERVE:
+            break
+        kept.append(ln)
+    dropped = len(lines) - len(kept)
+    if dropped:
+        kept.append(f"  (+{dropped} more)")
+    # Final guard: never exceed the limit, and never end on whitespace (the
+    # comparison strips, so a trailing space would reintroduce a mismatch).
+    return "\n".join(kept)[:limit].rstrip()
 
 
 def describe_text_diff(stored, sending) -> str:
