@@ -720,11 +720,18 @@ def _norm_text(v) -> str:
             .strip())
 
 
-# Exchange truncates a contact's personalNotes around 255 characters. If we
-# send more than that, the stored value never matches what we generated and
-# the contact is re-PATCHed on every run forever. Build notes that already
-# fit, cutting at a line boundary so the text never ends mid-word, and stay
-# comfortably under the limit so we never sit on the truncation boundary.
+# Exchange truncates long personalNotes on save. If we send more than it
+# keeps, the stored value never matches what we generated and the contact is
+# re-PATCHed on every run forever.
+#
+# The exact threshold is unclear and does not look like a clean character
+# count: a 371-char value came back stored as 254, yet a 281-char value was
+# stored intact. So don't trust a specific number -- just stay well under
+# the range where truncation was observed. 250 has been verified stable
+# across the full contact set (Updated drops to 0 on a repeat run).
+#
+# Build notes that already fit, cutting at a line boundary so text never
+# ends mid-word.
 NOTES_MAX = 250
 _NOTES_MARKER_RESERVE = 20
 
