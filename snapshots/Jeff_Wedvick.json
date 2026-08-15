@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-08-14T03:59:31.789844Z",
+  "updated": "2026-08-15T02:49:25.578594Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -2404,6 +2404,14 @@
     },
     {
       "school": "Kettle Moraine High School",
+      "email": "stemma@kmsd.edu",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Drew",
+      "last": "Stemm"
+    },
+    {
+      "school": "Kettle Moraine High School",
       "email": "sternerk@kmsd.edu",
       "role": "Head Coach",
       "sport": "Girls Track and Field",
@@ -2417,14 +2425,6 @@
       "sport": "Girls Basketball",
       "first": "Adam",
       "last": "Stranc"
-    },
-    {
-      "school": "Kettle Moraine High School",
-      "email": "tomczykr@kmsd.edu",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Ryan",
-      "last": "Tomczyk"
     },
     {
       "school": "Kettle Moraine High School",
@@ -2916,14 +2916,6 @@
     },
     {
       "school": "Milton High School",
-      "email": "Kinmank@milton.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Katie",
-      "last": "Kinman"
-    },
-    {
-      "school": "Milton High School",
       "email": "kirsti@milton.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -2988,14 +2980,6 @@
     },
     {
       "school": "Milton High School",
-      "email": "prahld@milton.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Daniel",
-      "last": "Prahl"
-    },
-    {
-      "school": "Milton High School",
       "email": "rwagner@fortatkinsonwi.gov",
       "role": "Head Coach",
       "sport": "Girls Soccer",
@@ -3025,6 +3009,22 @@
       "sport": "",
       "first": "Jeff",
       "last": "Spiwak"
+    },
+    {
+      "school": "Milton High School",
+      "email": "spiwakj@milton.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Jeff",
+      "last": "Spiwak"
+    },
+    {
+      "school": "Milton High School",
+      "email": "waltersc@milton.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Courtney",
+      "last": "Walters"
     },
     {
       "school": "Muskego High School",
@@ -3524,6 +3524,14 @@
     },
     {
       "school": "Ozaukee High School",
+      "email": "alexpschroeder@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Alex",
+      "last": "Schroeder"
+    },
+    {
+      "school": "Ozaukee High School",
       "email": "amckee@nosd.edu",
       "role": "Athletic Director",
       "sport": "",
@@ -3593,14 +3601,6 @@
       "sport": "",
       "first": "Matt",
       "last": "Zavada"
-    },
-    {
-      "school": "Ozaukee High School",
-      "email": "ozgirlsbasketball@nosd.edu",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Linda",
-      "last": "Weyker"
     },
     {
       "school": "Ozaukee High School",

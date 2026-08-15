@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-08-14T03:58:43.929180Z",
+  "updated": "2026-08-15T02:48:36.459800Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -156,6 +156,14 @@
     },
     {
       "school": "Campbellsport High School",
+      "email": "jhess@csd.k12.wi.us",
+      "role": "Principal",
+      "sport": "",
+      "first": "Jonathan",
+      "last": "Hess"
+    },
+    {
+      "school": "Campbellsport High School",
       "email": "jkrug@csd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -188,14 +196,6 @@
     },
     {
       "school": "Campbellsport High School",
-      "email": "mwittig@csd.k12.wi.us",
-      "role": "Principal",
-      "sport": "",
-      "first": "Mark",
-      "last": "Wittig"
-    },
-    {
-      "school": "Campbellsport High School",
       "email": "rlabatte@csd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Basketball",
@@ -209,14 +209,6 @@
       "sport": "Boys Hockey",
       "first": "Ryan",
       "last": "Sarazin"
-    },
-    {
-      "school": "Campbellsport High School",
-      "email": "tgriesemer@csd.k12.wi.us",
-      "role": "Assistant Principal, Athletic Director",
-      "sport": "",
-      "first": "Tom",
-      "last": "Griesemer"
     },
     {
       "school": "Campbellsport High School",
@@ -245,7 +237,7 @@
     {
       "school": "Campbellsport High School",
       "email": "wotte@csd.k12.wi.us",
-      "role": "Athletic Director",
+      "role": "Assistant Principal, Athletic Director",
       "sport": "",
       "first": "Bill",
       "last": "Otte"
@@ -6633,6 +6625,14 @@
       "sport": "",
       "first": "Jane",
       "last": "Linzmeier"
+    },
+    {
+      "school": "Valders High School",
+      "email": "jcoulter@valdersschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Golf",
+      "first": "Jack",
+      "last": "Coulter"
     },
     {
       "school": "Valders High School",

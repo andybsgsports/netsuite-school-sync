@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-08-14T03:52:48.916551Z",
+  "updated": "2026-08-15T02:42:52.927976Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -1269,7 +1269,7 @@
     {
       "school": "Belvidere High School",
       "email": "blewis@district100.com",
-      "role": "IHSA Official Representative & Principal",
+      "role": "IHSA Official Representative",
       "sport": "",
       "first": "Billy",
       "last": "Lewis"
@@ -7508,6 +7508,14 @@
     },
     {
       "school": "Grayslake North High School",
+      "email": "avalos.adan2@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Adan",
+      "last": "Avalos"
+    },
+    {
+      "school": "Grayslake North High School",
       "email": "bjohnson@d127.org",
       "role": "Head Coach",
       "sport": "Boys Football",
@@ -11217,14 +11225,6 @@
       "sport": "Boys & Girls Wrestling",
       "first": "Ryley",
       "last": "Harlow"
-    },
-    {
-      "school": "Kenosha Tremper High School",
-      "email": "scornega@kusd.edu",
-      "role": "Head Coach",
-      "sport": "Boys Swimming & Diving",
-      "first": "Ziggy",
-      "last": "Cornegan"
     },
     {
       "school": "Kenosha Tremper High School",

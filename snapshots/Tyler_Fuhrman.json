@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-08-14T03:54:56.119079Z",
+  "updated": "2026-08-15T02:44:58.785887Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -1369,14 +1369,6 @@
       "sport": "Girls Tennis",
       "first": "Sara",
       "last": "Bieneman"
-    },
-    {
-      "school": "Holmen High School",
-      "email": "camjcarey@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Track and Field",
-      "first": "Cameron",
-      "last": "Carey"
     },
     {
       "school": "Holmen High School",
@@ -4113,6 +4105,14 @@
       "sport": "",
       "first": "Scott",
       "last": "Uppena"
+    },
+    {
+      "school": "North Crawford High School",
+      "email": "tvolden@ncrawford.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Tina",
+      "last": "Volden"
     },
     {
       "school": "Onalaska High School",
