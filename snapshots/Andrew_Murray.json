@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-08-16T02:56:10.071379Z",
+  "updated": "2026-08-17T02:55:13.639364Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -18316,14 +18316,6 @@
     },
     {
       "school": "Wauconda High School",
-      "email": "bmuff@d118.org",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Rebecca",
-      "last": "Muff"
-    },
-    {
-      "school": "Wauconda High School",
       "email": "bryan.carr@d118.org",
       "role": "Coach",
       "sport": "Bass Fishing",
@@ -18497,6 +18489,14 @@
       "sport": "",
       "first": "Patrick",
       "last": "White"
+    },
+    {
+      "school": "Wauconda High School",
+      "email": "rmuff@d118.org",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Rebecca",
+      "last": "Muff"
     },
     {
       "school": "Wauconda High School",
