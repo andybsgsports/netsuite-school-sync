@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-08-17T03:01:49.473070Z",
+  "updated": "2026-08-18T02:58:20.420519Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -2356,6 +2356,14 @@
     },
     {
       "school": "Kettle Moraine High School",
+      "email": "klinks@kmsd.edu",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Shannon",
+      "last": "Klink"
+    },
+    {
+      "school": "Kettle Moraine High School",
       "email": "kmgirlslax@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Lacrosse-Girls",
@@ -2686,7 +2694,7 @@
       "school": "Lakeside Lutheran High School",
       "email": "jvanderhoof@llhs.org",
       "role": "Head Coach",
-      "sport": "Boys & Girls Track and Field",
+      "sport": "Boys Track and Field",
       "first": "Justin",
       "last": "Vanderhoof"
     },
@@ -2705,6 +2713,14 @@
       "sport": "Boys & Girls Cross Country",
       "first": "Mike",
       "last": "Minning"
+    },
+    {
+      "school": "Lakeside Lutheran High School",
+      "email": "nmiller@llhs.org",
+      "role": "Head Coach",
+      "sport": "Girls Track and Field",
+      "first": "Nate",
+      "last": "Miller"
     },
     {
       "school": "Lakeside Lutheran High School",

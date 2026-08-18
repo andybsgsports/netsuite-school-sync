@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-08-17T02:55:13.639364Z",
+  "updated": "2026-08-18T02:51:08.852552Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -5820,19 +5820,19 @@
     },
     {
       "school": "East Troy High School",
-      "email": "blacol@easttroy.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Soccer",
-      "first": "Cole",
-      "last": "Blandin"
-    },
-    {
-      "school": "East Troy High School",
       "email": "carlyheine@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Lacrosse-Girls",
       "first": "Carly",
       "last": "Heine"
+    },
+    {
+      "school": "East Troy High School",
+      "email": "coachetfb@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Brian",
+      "last": "Pluess"
     },
     {
       "school": "East Troy High School",
@@ -5844,27 +5844,11 @@
     },
     {
       "school": "East Troy High School",
-      "email": "gjyork58@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Glen",
-      "last": "York"
-    },
-    {
-      "school": "East Troy High School",
       "email": "hibchr@easttroy.k12.wi.us",
       "role": "Superintendent",
       "sport": "",
       "first": "Chris",
       "last": "Hibner"
-    },
-    {
-      "school": "East Troy High School",
-      "email": "hohbri@easttroy.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Track and Field",
-      "first": "Brianna",
-      "last": "Hoheisel"
     },
     {
       "school": "East Troy High School",
@@ -6337,14 +6321,6 @@
       "sport": "",
       "first": "Eric",
       "last": "Katzenberger"
-    },
-    {
-      "school": "Forreston High School",
-      "email": "hkasten@fvdistrict221.org",
-      "role": "Coach",
-      "sport": "Halftime Dance",
-      "first": "Hanna",
-      "last": "Kasten"
     },
     {
       "school": "Forreston High School",
@@ -8300,14 +8276,6 @@
     },
     {
       "school": "Guilford High School",
-      "email": "kdjensen300@gmail.com",
-      "role": "Other Administrator (2)",
-      "sport": "",
-      "first": "Kim",
-      "last": "Jensen"
-    },
-    {
-      "school": "Guilford High School",
       "email": "krhoppe38@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Bowling",
@@ -10132,6 +10100,14 @@
     },
     {
       "school": "Janesville Craig High School",
+      "email": "james.mcclowry@janesville.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Jim",
+      "last": "McClowry, CMAA"
+    },
+    {
+      "school": "Janesville Craig High School",
       "email": "jhess@janesville.k12.wi.us",
       "role": "AD Admin Assistant",
       "sport": "",
@@ -10265,6 +10241,14 @@
       "sport": "Girls Soccer",
       "first": "Andy",
       "last": "Nouansacksy"
+    },
+    {
+      "school": "Janesville Parker High School",
+      "email": "berickson@janesville.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Bruce",
+      "last": "Erickson"
     },
     {
       "school": "Janesville Parker High School",
@@ -10940,14 +10924,6 @@
     },
     {
       "school": "Kenosha St. Joseph Catholic High School",
-      "email": "bbartholomew@sjcawi.org",
-      "role": "Principal",
-      "sport": "",
-      "first": "Bridget",
-      "last": "Bartholomew"
-    },
-    {
-      "school": "Kenosha St. Joseph Catholic High School",
       "email": "clarkk913@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -10993,6 +10969,14 @@
       "sport": "Boys & Girls Track and Field",
       "first": "Jon",
       "last": "Furreness"
+    },
+    {
+      "school": "Kenosha St. Joseph Catholic High School",
+      "email": "jgarin@sjcawi.org",
+      "role": "Principal",
+      "sport": "",
+      "first": "Jen",
+      "last": "Garin"
     },
     {
       "school": "Kenosha St. Joseph Catholic High School",
@@ -15940,6 +15924,14 @@
     },
     {
       "school": "Rochelle High School",
+      "email": "dcartwright@rthsd212.org",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Golf",
+      "first": "David",
+      "last": "Cartwright"
+    },
+    {
+      "school": "Rochelle High School",
       "email": "dobrien@rthsd212.org",
       "role": "Activities Director's Assistant & Boys Athletic Director's Assistant & Girls Athletic Director's Assistant",
       "sport": "",
@@ -15961,14 +15953,6 @@
       "sport": "Girls Bowling",
       "first": "Eric",
       "last": "Widick"
-    },
-    {
-      "school": "Rochelle High School",
-      "email": "gmehrings@rthsd212.org",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Golf",
-      "first": "Glen",
-      "last": "Mehrings"
     },
     {
       "school": "Rochelle High School",

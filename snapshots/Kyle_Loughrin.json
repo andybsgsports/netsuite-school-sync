@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-08-17T02:59:03.554463Z",
+  "updated": "2026-08-18T02:55:09.950691Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -9873,6 +9873,14 @@
       "sport": "Boys Soccer",
       "first": "Jimmy",
       "last": "Amedeo"
+    },
+    {
+      "school": "Winneconne High School",
+      "email": "kringsy@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Ryan",
+      "last": "Krings"
     },
     {
       "school": "Winneconne High School",
