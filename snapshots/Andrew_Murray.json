@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-08-18T02:51:08.852552Z",
+  "updated": "2026-08-19T02:53:16.291228Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -3524,11 +3524,11 @@
     },
     {
       "school": "Cary-Grove High School",
-      "email": "echandler@d155.org",
-      "role": "Other Administrator",
+      "email": "dnicholas@d155.org",
+      "role": "Principal",
       "sport": "",
-      "first": "Eric",
-      "last": "Chandler"
+      "first": "Dan",
+      "last": "Nicholas"
     },
     {
       "school": "Cary-Grove High School",
@@ -3577,6 +3577,14 @@
       "sport": "",
       "first": "Kyle",
       "last": "Williams"
+    },
+    {
+      "school": "Cary-Grove High School",
+      "email": "lmiller@d155.org",
+      "role": "Coach",
+      "sport": "Halftime Dance",
+      "first": "Lara",
+      "last": "Miller"
     },
     {
       "school": "Cary-Grove High School",
@@ -3633,14 +3641,6 @@
       "sport": "",
       "first": "Patrick",
       "last": "Whalen"
-    },
-    {
-      "school": "Cary-Grove High School",
-      "email": "rebsaffert@d155.org",
-      "role": "Principal",
-      "sport": "",
-      "first": "Rebecca",
-      "last": "Saffert"
     },
     {
       "school": "Cary-Grove High School",
@@ -8041,6 +8041,14 @@
       "sport": "",
       "first": "Lisa",
       "last": "Elliott"
+    },
+    {
+      "school": "Greenfield High School",
+      "email": "lthundercould@greenfield.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Lillian",
+      "last": "Thundercloud"
     },
     {
       "school": "Greenfield High School",
@@ -14148,14 +14156,6 @@
     },
     {
       "school": "North Boone High School",
-      "email": "jaanderson@nbcusd.org",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Soccer",
-      "first": "Jacqueline",
-      "last": "Anderson"
-    },
-    {
-      "school": "North Boone High School",
       "email": "jcorn@nbcusd.org",
       "role": "Asst. Principal",
       "sport": "",
@@ -18364,7 +18364,7 @@
     },
     {
       "school": "Wauconda High School",
-      "email": "dnicholas@d118.org",
+      "email": "dnicholas@d155.org",
       "role": "Principal",
       "sport": "",
       "first": "Dan",

@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-08-18T02:53:19.858171Z",
+  "updated": "2026-08-19T02:55:26.875070Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -1227,22 +1227,6 @@
       "last": "Hill"
     },
     {
-      "school": "Highland High School",
-      "email": "Terry.Cool@mp.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Terry",
-      "last": "Cool"
-    },
-    {
-      "school": "Highland High School",
-      "email": "timkosharek64@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Timothy",
-      "last": "Kosharek"
-    },
-    {
       "school": "Hillsboro High School",
       "email": "2814sully@gmail.com",
       "role": "Head Coach",
@@ -1269,7 +1253,7 @@
     {
       "school": "Hillsboro High School",
       "email": "chris.koopman@hillsboroschools.org",
-      "role": "Principal",
+      "role": "Athletic Director",
       "sport": "",
       "first": "Chris",
       "last": "Koopman"
@@ -1317,18 +1301,18 @@
     {
       "school": "Hillsboro High School",
       "email": "rich.moyer@hillsboroschools.org",
-      "role": "Superintendent",
+      "role": "Athletic Director",
       "sport": "",
       "first": "Rich",
       "last": "Moyer"
     },
     {
       "school": "Hillsboro High School",
-      "email": "stanek.hilary@wsalem.k12.wi.us",
+      "email": "todd.salisbury@hillsboroschools.org",
       "role": "Athletic Director",
       "sport": "",
-      "first": "Hilary",
-      "last": "Stanek"
+      "first": "Todd",
+      "last": "Salisbury"
     },
     {
       "school": "Holmen High School",
@@ -2870,7 +2854,7 @@
       "school": "Madison Edgewood High School",
       "email": "girlygirlset@yahoo.com",
       "role": "Head Coach",
-      "sport": "Boys Swimming & Diving",
+      "sport": "Boys & Girls Swimming Diving",
       "first": "Sophia",
       "last": "Thompson"
     },
@@ -2937,6 +2921,14 @@
       "sport": "Girls Swimming & Diving",
       "first": "Joey",
       "last": "Jensen"
+    },
+    {
+      "school": "Madison Edgewood High School",
+      "email": "joseph.lamontagne@edgewoodhs.org",
+      "role": "Head Coach",
+      "sport": "Boys Cross Country",
+      "first": "Joe",
+      "last": "LaMontagne"
     },
     {
       "school": "Madison Edgewood High School",
@@ -6044,19 +6036,19 @@
     },
     {
       "school": "Weston High School",
-      "email": "bormett@weston.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Lauretta",
-      "last": "Bormett"
-    },
-    {
-      "school": "Weston High School",
       "email": "kasten@weston.k12.wi.us",
       "role": "Superintendent, Principal",
       "sport": "",
       "first": "Molly",
       "last": "Kasten"
+    },
+    {
+      "school": "Weston High School",
+      "email": "kdrea@weston.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Keagan",
+      "last": "Drea"
     },
     {
       "school": "Weston High School",
@@ -6102,7 +6094,7 @@
       "school": "Weston High School",
       "email": "mcdonough@weston.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys Cross Country",
+      "sport": "Boys & Girls Cross Country",
       "first": "Jason",
       "last": "McDonough"
     },
@@ -6121,14 +6113,6 @@
       "sport": "Girls Wrestling",
       "first": "Skyla",
       "last": "Wanless"
-    },
-    {
-      "school": "Weston High School",
-      "email": "villiard@weston.k12.wi.us",
-      "role": "Assistant Athletic Director",
-      "sport": "",
-      "first": "Larry",
-      "last": "Villiard"
     },
     {
       "school": "Weston High School",

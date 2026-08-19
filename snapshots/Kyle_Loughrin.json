@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-08-18T02:55:09.950691Z",
+  "updated": "2026-08-19T02:57:15.302996Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -4433,6 +4433,14 @@
       "sport": "Girls Track and Field",
       "first": "Marlene",
       "last": "Hall"
+    },
+    {
+      "school": "Kewaunee High School",
+      "email": "mspranger@kewaunee.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Madelyn",
+      "last": "Spranger"
     },
     {
       "school": "Kewaunee High School",
