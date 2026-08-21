@@ -19,7 +19,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
-    timeout-minutes: 60
+    # The account-wide pass reads every address line on ~330 customers
+    # individually; a 60-minute cap cancelled it mid-sweep. Match the purge
+    # workflow's ceiling so a full run can actually finish.
+    timeout-minutes: 240
 
     steps:
       - name: Checkout code
