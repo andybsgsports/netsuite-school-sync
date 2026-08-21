@@ -114,8 +114,10 @@ def main():
     # --- Real rosters -----------------------------------------------------
     print("\nScraping WIAA (WI roster)...")
     _info, wi_admins, wi_coaches = scrape_wiaa_school_detail(wi_row[1])
-    wi_emails = {str(p.get("Email", "")).strip().lower()
-                 for p in (wi_admins + wi_coaches) if str(p.get("Email", "")).strip()}
+    # scrape_wiaa_school_detail returns lowercase keys ("email"), unlike
+    # rep_digests' scrape_rep records ("Email").
+    wi_emails = {str(p.get("email", "")).strip().lower()
+                 for p in (wi_admins + wi_coaches) if str(p.get("email", "")).strip()}
     print(f"  WI roster: {len(wi_emails)} distinct emails")
 
     print("Scraping IHSA (IL roster)...")
