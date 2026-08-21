@@ -1,0 +1,49 @@
+name: Manual - Fix Pecatonica Split
+
+# One-time: untangle the two schools sharing the name "Pecatonica High
+# School" (Blanchardville WI / NS 2833 vs Pecatonica IL / NS 2885).
+# Renames the IL Schools-tab row to "Pecatonica High School (IL)", splits
+# the blended Contacts rows between the two schools by their real rosters,
+# retires stray cross-school contact records, and detaches the other
+# school's shared cards from each customer. See fix_pecatonica_split.py.
+#
+# DRY RUN by default — run once unchecked to review the plan.
+
+on:
+  workflow_dispatch:
+    inputs:
+      live:
+        description: 'Apply changes (unchecked = dry run, report only)'
+        type: boolean
+        required: false
+        default: false
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+      - name: Run split fix
+        run: python fix_pecatonica_split.py
+        env:
+          LIVE:                    ${{ inputs.live && '1' || '' }}
+          NS_ACCOUNT:              ${{ secrets.NS_ACCOUNT }}
+          NS_CONSUMER_KEY:         ${{ secrets.NS_CONSUMER_KEY }}
+          NS_CONSUMER_SEC:         ${{ secrets.NS_CONSUMER_SEC }}
+          NS_TOKEN_KEY:            ${{ secrets.NS_TOKEN_KEY }}
+          NS_TOKEN_SEC:            ${{ secrets.NS_TOKEN_SEC }}
+          NS_RESTLET_SCRIPT_ID:    ${{ secrets.NS_RESTLET_SCRIPT_ID }}
+          NS_RESTLET_DEPLOY_ID:    ${{ secrets.NS_RESTLET_DEPLOY_ID }}
+          GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}

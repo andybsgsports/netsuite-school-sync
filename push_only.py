@@ -144,6 +144,7 @@ from school_netsuite_sync import (
     get_gspread_client,
     load_contacts, save_contacts,
     canonicalize_contact_school_names,
+    screen_school_name_collisions,
     GOOGLE_SHEET_ID, MASTER_TAB,
     M_NAME, M_URL, M_NS_ID, M_SALES, M_STATE, M_LOCKED, M_SYNCED,
     C_SCHOOL, C_FIRST, C_LAST, C_EMAIL, C_ROLE, C_TYPE,
@@ -179,6 +180,14 @@ def load_schools(gc):
     headers = values[0]
     synced_col = headers.index(M_SYNCED) + 1 if M_SYNCED in headers else None
     ns_id_col  = headers.index(M_NS_ID) + 1 if M_NS_ID in headers else None
+    # Screen the WHOLE tab (before any state/rep filter — collisions cross
+    # both): a School Name mapped to two different customers means two real
+    # schools share one name; pushing either would blend their rosters.
+    all_pairs = [(dict(zip(headers, raw)).get(M_NAME, ""),
+                  dict(zip(headers, raw)).get(M_NS_ID, ""))
+                 for raw in values[1:]]
+    quarantined = screen_school_name_collisions(all_pairs)
+    seen_keys = set()   # (name, ns_id): drop exact-duplicate rows after the first
     out = []
     for i, raw in enumerate(values[1:], start=2):
         rec = dict(zip(headers, raw))
@@ -197,6 +206,14 @@ def load_schools(gc):
         # behavior where adding a school to the list auto-created it in NS.
         if ns_id in ("nan", "None", "0"):
             ns_id = ""
+        if name in quarantined:
+            continue   # name collision — warned above, do not blend
+        key = (name, ns_id)
+        if key in seen_keys:
+            print(f"  [schools] duplicate row for {name!r} (NS {ns_id or '?'}) "
+                  f"— processing once, skipping row {i}")
+            continue
+        seen_keys.add(key)
         if SCHOOL_FILTER and name != SCHOOL_FILTER:
             continue
         if STATE_FILTER and state != STATE_FILTER:
