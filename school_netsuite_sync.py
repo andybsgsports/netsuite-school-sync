@@ -182,6 +182,36 @@ def save_contacts(ws, rows):
     print(f"  [SHEETS] Contacts tab saved ({len(clean)} rows, sorted by School + Role)")
 
 
+# -- Schools-tab screening ----------------------------------------------------
+def screen_school_name_collisions(pairs, log_prefix="[schools]"):
+    """pairs: (school_name, ns_customer_id) for every Schools-tab row.
+
+    Returns the set of School Names carried by 2+ rows with DIFFERENT
+    (non-blank) NS Customer IDs — i.e. two REAL schools sharing one name,
+    like Pecatonica High School in Blanchardville WI (2833) vs Pecatonica
+    IL (2885). Contacts key on School Name everywhere (Contacts tab,
+    snapshots, departure reconcile, co-op detection), so processing either
+    row blends both schools' staff into one roster and each rep's nightly
+    pushes the blend to ITS customer — thrashing contact ids and creating
+    stray cross-school records. Callers must SKIP every row whose name is
+    returned; the fix is renaming one sheet row to a distinct name.
+    """
+    by_name = {}
+    for nm, ns in pairs:
+        nm = str(nm or "").strip()
+        ns = re.sub(r"\.0$", "", str(ns or "").strip())
+        if nm and ns and ns not in ("nan", "None", "0"):
+            by_name.setdefault(nm, set()).add(ns)
+    quarantined = {nm for nm, ids in by_name.items() if len(ids) > 1}
+    for nm in sorted(quarantined):
+        print(f"{log_prefix} !! SCHOOL NAME COLLISION: {nm!r} maps to "
+              f"multiple NS customers {sorted(by_name[nm])} — two different "
+              f"schools share one name. SKIPPING all rows with this name so "
+              f"their rosters don't blend. Fix: rename one Schools-tab row "
+              f"to a distinct name (e.g. '{nm} (IL)').")
+    return quarantined
+
+
 # -- School-rename healing ----------------------------------------------------
 # Hand-curated bridges for renames too drastic for the automatic matchers
 # (normalized-name and NS-Ext-ID). Key = normalized OLD name, value = exact

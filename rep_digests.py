@@ -120,8 +120,16 @@ def load_rep_schools(gc):
         ws = wb.worksheet("Schools")
     except Exception:
         return {}
+    records = ws.get_all_records()
+    # Name collisions (one School Name -> two NS customers, e.g. the two
+    # Pecatonicas) blend two schools' rosters — skip those names entirely.
+    from school_netsuite_sync import screen_school_name_collisions
+    quarantined = screen_school_name_collisions(
+        [(r.get("School Name", ""), r.get("NS Customer ID", ""))
+         for r in records], log_prefix="[digests][schools]")
     by_rep = {}
-    for row in ws.get_all_records():
+    seen = set()
+    for row in records:
         state = str(row.get("State", "")).strip().upper()
         if state != "WI":
             continue
@@ -131,6 +139,9 @@ def load_rep_schools(gc):
         locked = str(row.get("Locked", "")).strip().upper() == "Y"
         if not (school and url and rep) or locked:
             continue
+        if school in quarantined or (school, url) in seen:
+            continue
+        seen.add((school, url))
         by_rep.setdefault(rep, []).append((school, url))
     return by_rep
 
@@ -147,15 +158,23 @@ def load_il_schools(gc):
         ws = wb.worksheet("Schools")
     except Exception:
         return []
+    records = ws.get_all_records()
+    from school_netsuite_sync import screen_school_name_collisions
+    quarantined = screen_school_name_collisions(
+        [(r.get("School Name", ""), r.get("NS Customer ID", ""))
+         for r in records], log_prefix="[digests][schools]")
     out = []
-    for row in ws.get_all_records():
+    seen = set()
+    for row in records:
         state = str(row.get("State", "")).strip().upper()
         if state != "IL":
             continue
         school = str(row.get("School Name", "")).strip()
         url    = str(row.get("School URL", "")).strip()
         locked = str(row.get("Locked", "")).strip().upper() == "Y"
-        if school and url and not locked:
+        if school and url and not locked \
+                and school not in quarantined and (school, url) not in seen:
+            seen.add((school, url))
             out.append((school, url))
     return out
 
