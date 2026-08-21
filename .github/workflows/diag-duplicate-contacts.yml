@@ -1,0 +1,39 @@
+name: Diag - Duplicate Contacts
+
+# Read-only. Explains why a customer's email-recipient / Ship To dropdown
+# shows the same person twice: two contact records, or one record linked
+# both by its company field and an explicit attach. Writes nothing.
+
+on:
+  workflow_dispatch:
+    inputs:
+      customer_id:
+        description: 'NS customer internal id (default 2885 = Pecatonica)'
+        required: false
+        default: '2885'
+
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+      - name: Probe duplicate contacts
+        run: python diag_duplicate_contacts.py
+        env:
+          DIAG_CUSTOMER_ID: ${{ inputs.customer_id || '2885' }}
+          NS_ACCOUNT:       ${{ secrets.NS_ACCOUNT }}
+          NS_CONSUMER_KEY:  ${{ secrets.NS_CONSUMER_KEY }}
+          NS_CONSUMER_SEC:  ${{ secrets.NS_CONSUMER_SEC }}
+          NS_TOKEN_KEY:     ${{ secrets.NS_TOKEN_KEY }}
+          NS_TOKEN_SEC:     ${{ secrets.NS_TOKEN_SEC }}
