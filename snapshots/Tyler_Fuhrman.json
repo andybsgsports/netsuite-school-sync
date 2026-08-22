@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-08-19T02:55:26.875070Z",
+  "updated": "2026-08-22T02:51:46.436284Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -5396,6 +5396,14 @@
     },
     {
       "school": "Tomah High School",
+      "email": "frankredmon@tomah.education",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Frank",
+      "last": "Redmon"
+    },
+    {
+      "school": "Tomah High School",
       "email": "garvinkj@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Soccer",
@@ -5433,14 +5441,6 @@
       "sport": "Boys & Girls Cross Country",
       "first": "Kate",
       "last": "Schanhofer"
-    },
-    {
-      "school": "Tomah High School",
-      "email": "mikehanson@tomah.education",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Mike",
-      "last": "Hanson"
     },
     {
       "school": "Tomah High School",

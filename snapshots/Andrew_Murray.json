@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-08-19T02:53:16.291228Z",
+  "updated": "2026-08-22T02:49:37.089128Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -340,7 +340,7 @@
     },
     {
       "school": "Antioch Community High School",
-      "email": "noorraabdellatif@gmail.com",
+      "email": "noor.abdellatif@chsd117.org",
       "role": "Head Coach",
       "sport": "Girls Cross Country",
       "first": "Noor",
@@ -1093,7 +1093,7 @@
     {
       "school": "Beloit Memorial High School",
       "email": "epelz@sdb.k12.wi.us",
-      "role": "Principal",
+      "role": "Athletic Director",
       "sport": "",
       "first": "Emily",
       "last": "Pelz"
@@ -1268,14 +1268,6 @@
     },
     {
       "school": "Belvidere High School",
-      "email": "blewis@district100.com",
-      "role": "IHSA Official Representative",
-      "sport": "",
-      "first": "Billy",
-      "last": "Lewis"
-    },
-    {
-      "school": "Belvidere High School",
       "email": "cschug@district100.com",
       "role": "Superintendent",
       "sport": "",
@@ -1289,6 +1281,14 @@
       "sport": "Girls Softball",
       "first": "Deon",
       "last": "Dinsmore"
+    },
+    {
+      "school": "Belvidere High School",
+      "email": "dmitchell@district100.com",
+      "role": "IHSA Official Representative & Principal",
+      "sport": "",
+      "first": "Doug",
+      "last": "Mitchell"
     },
     {
       "school": "Belvidere High School",
@@ -3884,6 +3884,14 @@
     },
     {
       "school": "Central High School",
+      "email": "alyssa.karamitsos@central301.net",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "Alyssa",
+      "last": "Karamitsos"
+    },
+    {
+      "school": "Central High School",
       "email": "amy.maccrindle@central301.net",
       "role": "Superintendent",
       "sport": "",
@@ -4132,14 +4140,6 @@
     },
     {
       "school": "Central High School",
-      "email": "sean.meyer@central301.net",
-      "role": "Head Coach",
-      "sport": "Girls Golf",
-      "first": "Sean",
-      "last": "Meyer"
-    },
-    {
-      "school": "Central High School",
       "email": "thomas.davies@central301.net",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -4340,6 +4340,14 @@
     },
     {
       "school": "Clinton High School",
+      "email": "glboldig@clintonwis.com",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Glenda",
+      "last": "Butterfield Boldig"
+    },
+    {
+      "school": "Clinton High School",
       "email": "gretchenfjalstad@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Soccer",
@@ -4361,14 +4369,6 @@
       "sport": "Boys Hockey",
       "first": "James",
       "last": "Hoey"
-    },
-    {
-      "school": "Clinton High School",
-      "email": "jibrewer@clintonwis.com",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Jim",
-      "last": "Brewer"
     },
     {
       "school": "Clinton High School",
@@ -8013,6 +8013,14 @@
     {
       "school": "Greenfield High School",
       "email": "jsabinash@greenfield.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Jim",
+      "last": "Sabinash"
+    },
+    {
+      "school": "Greenfield High School",
+      "email": "jsabinash@greenfield.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
       "first": "Jim",
@@ -10356,7 +10364,7 @@
     },
     {
       "school": "Janesville Parker High School",
-      "email": "Madietimm@gmail.com",
+      "email": "madeline.timm@janesville.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Tennis",
       "first": "Madeline",
@@ -10465,6 +10473,14 @@
       "sport": "Boys Soccer",
       "first": "Austin",
       "last": "Sierakowski"
+    },
+    {
+      "school": "Johnsburg High School",
+      "email": "bradr1975@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Brad",
+      "last": "Richardson"
     },
     {
       "school": "Johnsburg High School",
@@ -10692,7 +10708,7 @@
     },
     {
       "school": "Johnsburg High School",
-      "email": "teggers@johnsburg12.org",
+      "email": "tkraus@johnsburg12.org",
       "role": "Boys Athletic Director's Assistant & Girls Athletic Director's Assistant",
       "sport": "",
       "first": "Taylor",
@@ -14492,14 +14508,6 @@
     },
     {
       "school": "Orangeville High School",
-      "email": "aingram@orangevillecusd.com",
-      "role": "IHSA Official Representative & Principal",
-      "sport": "",
-      "first": "Amanda",
-      "last": "Ingram"
-    },
-    {
-      "school": "Orangeville High School",
       "email": "billshepard23@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Football",
@@ -14545,6 +14553,14 @@
       "sport": "Girls Basketball",
       "first": "Josh",
       "last": "Wallin"
+    },
+    {
+      "school": "Orangeville High School",
+      "email": "kscroggins@organgevillecusd.com",
+      "role": "IHSA Official Representative & Principal",
+      "sport": "",
+      "first": "Krystal",
+      "last": "Wolfe"
     },
     {
       "school": "Orangeville High School",
@@ -14716,6 +14732,14 @@
     },
     {
       "school": "Pearl City High School",
+      "email": "ajgronewold81@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Andrew",
+      "last": "Gronewold"
+    },
+    {
+      "school": "Pearl City High School",
       "email": "amoore@pcwolves.net",
       "role": "Student Council Adviser",
       "sport": "",
@@ -14756,27 +14780,11 @@
     },
     {
       "school": "Pearl City High School",
-      "email": "ilewis@pcwolves.net",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Isaiah",
-      "last": "Lewis"
-    },
-    {
-      "school": "Pearl City High School",
       "email": "jmcnutt@eastland308.com",
       "role": "Head Coach",
       "sport": "Boys Football",
       "first": "Jared",
       "last": "McNutt"
-    },
-    {
-      "school": "Pearl City High School",
-      "email": "jsisler@pcwolves.net",
-      "role": "Head Coach",
-      "sport": "Boys Track & Field",
-      "first": "Miss",
-      "last": "Jaidyn Sisler"
     },
     {
       "school": "Pearl City High School",
@@ -14791,6 +14799,14 @@
       "email": "kmichalsen@pcwolves.net",
       "role": "Coach",
       "sport": "Scholastic Bowl",
+      "first": "Kathryn",
+      "last": "Michalsen"
+    },
+    {
+      "school": "Pearl City High School",
+      "email": "kmichalsen@pcwolves.net",
+      "role": "Head Coach",
+      "sport": "Boys Track & Field",
       "first": "Kathryn",
       "last": "Michalsen"
     },
@@ -15003,6 +15019,150 @@
       "last": "Windnagle"
     },
     {
+      "school": "Pecatonica High School (IL)",
+      "email": "bobbyheisler@pecschools.com",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Bobby",
+      "last": "Heisler"
+    },
+    {
+      "school": "Pecatonica High School (IL)",
+      "email": "brettdunn@pecschools.com",
+      "role": "Coach",
+      "sport": "Bass Fishing",
+      "first": "Brett",
+      "last": "Dunn"
+    },
+    {
+      "school": "Pecatonica High School (IL)",
+      "email": "carlcarlson@pecschools.com",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Carl",
+      "last": "Carlson"
+    },
+    {
+      "school": "Pecatonica High School (IL)",
+      "email": "carriedaly@pecschools.com",
+      "role": "Coach",
+      "sport": "Scholastic Bowl",
+      "first": "Carrie",
+      "last": "Daly"
+    },
+    {
+      "school": "Pecatonica High School (IL)",
+      "email": "christianbitangalo@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Christian",
+      "last": "Bitangalo"
+    },
+    {
+      "school": "Pecatonica High School (IL)",
+      "email": "danielrosenstiel@pecschools.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Daniel",
+      "last": "Rosenstiel"
+    },
+    {
+      "school": "Pecatonica High School (IL)",
+      "email": "dupecfootball@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Kyle",
+      "last": "DeMus"
+    },
+    {
+      "school": "Pecatonica High School (IL)",
+      "email": "gregswi_24@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Greg",
+      "last": "Schweighart"
+    },
+    {
+      "school": "Pecatonica High School (IL)",
+      "email": "j_beck23@icloud.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Golf",
+      "first": "Josh",
+      "last": "Beck"
+    },
+    {
+      "school": "Pecatonica High School (IL)",
+      "email": "jennifersacia@pecschools.com",
+      "role": "Head Coach",
+      "sport": "Girls Soccer",
+      "first": "Jen",
+      "last": "Sacia"
+    },
+    {
+      "school": "Pecatonica High School (IL)",
+      "email": "jessica.rhymer@athletico.com",
+      "role": "Certified Athletic Trainer",
+      "sport": "",
+      "first": "Jessica",
+      "last": "Rhymer"
+    },
+    {
+      "school": "Pecatonica High School (IL)",
+      "email": "jessicaberg@pecschools.com",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Jessica",
+      "last": "Berg"
+    },
+    {
+      "school": "Pecatonica High School (IL)",
+      "email": "jessicaberg@pecschools.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Jessica",
+      "last": "Berg"
+    },
+    {
+      "school": "Pecatonica High School (IL)",
+      "email": "karleedodd@pecschools.com",
+      "role": "Boys Athletic Director's Assistant & Girls Athletic Director's Assistant & Principal's Assistant",
+      "sport": "",
+      "first": "Karlee",
+      "last": "Dodd"
+    },
+    {
+      "school": "Pecatonica High School (IL)",
+      "email": "kevinkunkel@pecschools.com",
+      "role": "Principal",
+      "sport": "",
+      "first": "Kevin",
+      "last": "Kunkel"
+    },
+    {
+      "school": "Pecatonica High School (IL)",
+      "email": "nealshippy@pecschools.com",
+      "role": "Band Director & Marching Band Director",
+      "sport": "",
+      "first": "Neal",
+      "last": "Shippy"
+    },
+    {
+      "school": "Pecatonica High School (IL)",
+      "email": "sabrinamassa@pecschools.com",
+      "role": "Coach",
+      "sport": "Halftime Dance",
+      "first": "Sabrina",
+      "last": "Massa"
+    },
+    {
+      "school": "Pecatonica High School (IL)",
+      "email": "wind2102000@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Wayne",
+      "last": "Windnagle"
+    },
+    {
       "school": "Prairie Ridge High School",
       "email": "aholke@d155.org",
       "role": "Certified Athletic Trainer",
@@ -15095,7 +15255,7 @@
       "email": "jpowell@d155.org",
       "role": "Head Coach",
       "sport": "Boys Golf",
-      "first": "John",
+      "first": "Jonathan",
       "last": "Powell"
     },
     {
@@ -16740,6 +16900,14 @@
     },
     {
       "school": "Stockton High School",
+      "email": "david.mccray@stocktonschools.com",
+      "role": "Band Director & Marching Band Director",
+      "sport": "",
+      "first": "David",
+      "last": "McCray"
+    },
+    {
+      "school": "Stockton High School",
       "email": "deb.sullivan@stocktonschools.com",
       "role": "Boys Athletic Director's Assistant & Girls Athletic Director's Assistant & Principal's Assistant",
       "sport": "",
@@ -16820,27 +16988,11 @@
     },
     {
       "school": "Stockton High School",
-      "email": "mariel.saavedra@stocktonschools.com",
-      "role": "Vocal Director",
-      "sport": "",
-      "first": "Mariel",
-      "last": "Saavedra"
-    },
-    {
-      "school": "Stockton High School",
       "email": "milderk@le-win.net",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
       "first": "Kevin",
       "last": "Milder"
-    },
-    {
-      "school": "Stockton High School",
-      "email": "nicholas.sisson@stocktonschools.com",
-      "role": "Band Director & Marching Band Director",
-      "sport": "",
-      "first": "Nicholas",
-      "last": "Sisson"
     },
     {
       "school": "Stockton High School",
@@ -19676,6 +19828,14 @@
     },
     {
       "school": "Whitewater High School",
+      "email": "maami01@wwusd.org",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Michael",
+      "last": "Maas"
+    },
+    {
+      "school": "Whitewater High School",
       "email": "maaser53@gmail.com",
       "role": "Head Coach",
       "sport": "Boys & Girls Track and Field",
@@ -19697,14 +19857,6 @@
       "sport": "Boys Basketball",
       "first": "Michael",
       "last": "McCabe"
-    },
-    {
-      "school": "Whitewater High School",
-      "email": "mcmaas3@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Michael",
-      "last": "Maas"
     },
     {
       "school": "Whitewater High School",
@@ -20377,6 +20529,14 @@
       "sport": "Girls Wrestling",
       "first": "Eric",
       "last": "Hunt"
+    },
+    {
+      "school": "Woodstock High School",
+      "email": "ewidmayer@johnsburg12.org",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Erin",
+      "last": "Widmayer"
     },
     {
       "school": "Woodstock High School",

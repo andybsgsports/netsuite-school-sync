@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-08-19T03:00:03.710738Z",
+  "updated": "2026-08-22T02:56:20.882396Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -2132,6 +2132,14 @@
     },
     {
       "school": "Johnson Creek High School",
+      "email": "balchk@milton.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Ken",
+      "last": "Balch"
+    },
+    {
+      "school": "Johnson Creek High School",
       "email": "blakeleym@johnsoncreekschools.org",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -2145,6 +2153,14 @@
       "sport": "Girls Soccer",
       "first": "John",
       "last": "Burke"
+    },
+    {
+      "school": "Johnson Creek High School",
+      "email": "castilloj@johnsoncreekschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Julio",
+      "last": "Castillo"
     },
     {
       "school": "Johnson Creek High School",
@@ -2217,14 +2233,6 @@
       "sport": "",
       "first": "Brady",
       "last": "Ramseier"
-    },
-    {
-      "school": "Johnson Creek High School",
-      "email": "schickc@johnsoncreekschools.org",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Chris",
-      "last": "Schick"
     },
     {
       "school": "Johnson Creek High School",
@@ -3644,6 +3652,14 @@
     },
     {
       "school": "Parkview High School",
+      "email": "ahenry@email.parkview.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Allison",
+      "last": "Henry"
+    },
+    {
+      "school": "Parkview High School",
       "email": "alewis@email.parkview.k12.wi.us",
       "role": "Principal",
       "sport": "",
@@ -4468,7 +4484,7 @@
     },
     {
       "school": "Waterloo High School",
-      "email": "deglerj12@gmail.com",
+      "email": "deglero@waterloo.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Football",
       "first": "Otto",

@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-08-19T02:59:15.001746Z",
+  "updated": "2026-08-22T02:55:32.940422Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -349,7 +349,7 @@
     {
       "school": "Cedar Grove Belgium High School",
       "email": "jketterhagen@cgbrockets.com",
-      "role": "Athletic Director",
+      "role": "Principal",
       "sport": "",
       "first": "Josh",
       "last": "Ketterhagen"
@@ -2124,7 +2124,7 @@
     },
     {
       "school": "Kiel High School",
-      "email": "jstnstephany@gmail.com",
+      "email": "jostephany@kiel.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Track and Field",
       "first": "Justin",
@@ -3396,6 +3396,14 @@
     },
     {
       "school": "Mayville High School",
+      "email": "mblaha@mayville.k12.wi.us",
+      "role": "Principal",
+      "sport": "",
+      "first": "Mike",
+      "last": "Blaha"
+    },
+    {
+      "school": "Mayville High School",
       "email": "mdwyer@mayville.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -3457,14 +3465,6 @@
       "sport": "",
       "first": "Scott",
       "last": "Sabol"
-    },
-    {
-      "school": "Mayville High School",
-      "email": "swilliams@mayville.k12.wi.us",
-      "role": "Principal",
-      "sport": "",
-      "first": "Steven",
-      "last": "Williams"
     },
     {
       "school": "Mayville High School",
@@ -4460,11 +4460,11 @@
     },
     {
       "school": "Oshkosh West High School",
-      "email": "kelly.wayne@oshkosh.k12.wi.us",
+      "email": "kelly.vansistine@oshkosh.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Swimming Diving",
       "first": "Kelly",
-      "last": "VanSistine"
+      "last": "Van Sistine"
     },
     {
       "school": "Oshkosh West High School",
@@ -5420,6 +5420,14 @@
     },
     {
       "school": "Sheboygan Christian High School",
+      "email": "keithendricks@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Keith",
+      "last": "Hendricks"
+    },
+    {
+      "school": "Sheboygan Christian High School",
       "email": "melissaneeb@yahoo.com",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -5673,6 +5681,14 @@
       "sport": "Boys & Girls Cross Country",
       "first": "Jeff",
       "last": "Jurss"
+    },
+    {
+      "school": "Sheboygan Lutheran High School",
+      "email": "keithendricks@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Keith",
+      "last": "Hendricks"
     },
     {
       "school": "Sheboygan Lutheran High School",
@@ -6380,14 +6396,6 @@
     },
     {
       "school": "Sun Prairie West High School",
-      "email": "bgsaron@sunprairieschools.org",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Brad",
-      "last": "Saron"
-    },
-    {
-      "school": "Sun Prairie West High School",
       "email": "djjohns@sunprairieschools.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -6441,6 +6449,14 @@
       "sport": "Boys Track and Field",
       "first": "Joshua",
       "last": "O'Connor"
+    },
+    {
+      "school": "Sun Prairie West High School",
+      "email": "jjgarci1@sunprairieschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Joseph",
+      "last": "Garcia"
     },
     {
       "school": "Sun Prairie West High School",
@@ -6724,7 +6740,7 @@
     },
     {
       "school": "Valders High School",
-      "email": "ValdersCrossCountry@gmail.com",
+      "email": "ValdersCrossCountry@valdersschools.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
       "first": "Marci",

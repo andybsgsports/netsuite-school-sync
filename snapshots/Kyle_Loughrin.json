@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-08-19T02:57:15.302996Z",
+  "updated": "2026-08-22T02:53:33.154232Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -773,6 +773,14 @@
     {
       "school": "Appleton West High School",
       "email": "coonenjay@aasd.k12.wi.us",
+      "role": "Assistant Principal, Athletic Director",
+      "sport": "",
+      "first": "Jay",
+      "last": "Coonen"
+    },
+    {
+      "school": "Appleton West High School",
+      "email": "coonenjay@aasd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
       "first": "Jay",
@@ -873,14 +881,6 @@
       "sport": "Boys Hockey",
       "first": "Mike",
       "last": "Brolsma"
-    },
-    {
-      "school": "Appleton West High School",
-      "email": "millerjohnf@aasd.k12.wi.us",
-      "role": "Assistant Principal, Athletic Director",
-      "sport": "",
-      "first": "John",
-      "last": "Miller"
     },
     {
       "school": "Appleton West High School",
@@ -1774,7 +1774,7 @@
       "school": "Clintonville High School",
       "email": "rayneruch28@gmail.com",
       "role": "Head Coach",
-      "sport": "Girls Swimming & Diving",
+      "sport": "Boys & Girls Swimming Diving",
       "first": "Rayne",
       "last": "Ruch"
     },
@@ -1809,14 +1809,6 @@
       "sport": "",
       "first": "Troy",
       "last": "Kuhn"
-    },
-    {
-      "school": "Clintonville High School",
-      "email": "ttaylor@clintonville.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Track and Field",
-      "first": "Todd",
-      "last": "Taylor"
     },
     {
       "school": "Coleman High School",
@@ -1932,11 +1924,11 @@
     },
     {
       "school": "Crivitz High School",
-      "email": "banderson@crivitz.k12.wi.us",
+      "email": "32nchapman@gmail.com",
       "role": "Head Coach",
-      "sport": "Boys & Girls Cross Country",
-      "first": "Bryan",
-      "last": "Anderson"
+      "sport": "Boys Wrestling",
+      "first": "Nicholas",
+      "last": "Chapman"
     },
     {
       "school": "Crivitz High School",
@@ -1969,6 +1961,14 @@
       "sport": "Boys Basketball",
       "first": "Buck",
       "last": "Gehm"
+    },
+    {
+      "school": "Crivitz High School",
+      "email": "davidpleuss@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "David",
+      "last": "Pleuss"
     },
     {
       "school": "Crivitz High School",
@@ -2017,14 +2017,6 @@
       "sport": "Boys Golf",
       "first": "Jesse",
       "last": "Milquet"
-    },
-    {
-      "school": "Crivitz High School",
-      "email": "navarretez@wausaukee.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Wrestling",
-      "first": "Zack",
-      "last": "Navarrete"
     },
     {
       "school": "Crivitz High School",
@@ -2228,6 +2220,14 @@
     },
     {
       "school": "Denmark High School",
+      "email": "binsj@denmark.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Jason",
+      "last": "Bins"
+    },
+    {
+      "school": "Denmark High School",
       "email": "cavilr@denmark.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Soccer",
@@ -2241,14 +2241,6 @@
       "sport": "Boys Basketball",
       "first": "Pete",
       "last": "Dewar"
-    },
-    {
-      "school": "Denmark High School",
-      "email": "dinyr@denmark.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Rick",
-      "last": "Diny"
     },
     {
       "school": "Denmark High School",
@@ -3060,14 +3052,6 @@
     },
     {
       "school": "Green Bay East High School",
-      "email": "teflood@gbaps.org",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Timothy",
-      "last": "Flood"
-    },
-    {
-      "school": "Green Bay East High School",
       "email": "ttnelson@gbaps.org",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -3444,14 +3428,6 @@
     },
     {
       "school": "Green Bay Southwest High School",
-      "email": "teflood@gbaps.org",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Timothy",
-      "last": "Flood"
-    },
-    {
-      "school": "Green Bay Southwest High School",
       "email": "wjtanner@gbaps.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Tennis",
@@ -3636,19 +3612,11 @@
     },
     {
       "school": "Green Bay West High School",
-      "email": "rwlebuhn@gbaps.org",
+      "email": "rjlison@gbaps.org",
       "role": "Head Coach",
       "sport": "Boys Tennis",
-      "first": "Robert",
-      "last": "Lebuhn"
-    },
-    {
-      "school": "Green Bay West High School",
-      "email": "teflood@gbaps.org",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Timothy",
-      "last": "Flood"
+      "first": "Roberta",
+      "last": "Lison"
     },
     {
       "school": "Green Bay West High School",
@@ -7348,6 +7316,14 @@
     },
     {
       "school": "Rosholt High School",
+      "email": "jukanters@rosholt.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Julia",
+      "last": "Kanters"
+    },
+    {
+      "school": "Rosholt High School",
       "email": "luke.hilgers@gmail.com",
       "role": "Head Coach",
       "sport": "Boys & Girls Wrestling",
@@ -7412,14 +7388,6 @@
     },
     {
       "school": "Rosholt High School",
-      "email": "sajohnson@rosholt.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Sam",
-      "last": "Johnson"
-    },
-    {
-      "school": "Rosholt High School",
       "email": "stschoofs@rosholt.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
@@ -7428,11 +7396,11 @@
     },
     {
       "school": "Rosholt High School",
-      "email": "stschoofs@rosholt.k12.wi.us",
+      "email": "travis.scott899@gmail.com",
       "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Steve",
-      "last": "Schoofs"
+      "sport": "Girls Softball",
+      "first": "Travis",
+      "last": "Scott"
     },
     {
       "school": "Seymour High School",
@@ -9148,6 +9116,14 @@
     },
     {
       "school": "Wausau East High School",
+      "email": "agastony@wausauschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Lacrosse-Boys",
+      "first": "Alec",
+      "last": "Gastony"
+    },
+    {
+      "school": "Wausau East High School",
       "email": "ameyer@wausauschools.org",
       "role": "Head Coach",
       "sport": "Girls Basketball",
@@ -9260,6 +9236,14 @@
     },
     {
       "school": "Wausau East High School",
+      "email": "mbeversd@wausauschools.org",
+      "role": "Assistant Athletic Director",
+      "sport": "",
+      "first": "Mark",
+      "last": "Beversdorf"
+    },
+    {
+      "school": "Wausau East High School",
       "email": "mekiss@wausauschools.org",
       "role": "Head Coach",
       "sport": "Boys Track and Field",
@@ -9305,6 +9289,14 @@
       "sport": "Boys Tennis",
       "first": "Timothy",
       "last": "Zahl"
+    },
+    {
+      "school": "Wausau West High School",
+      "email": "agastony@wausauschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Lacrosse-Boys",
+      "first": "Alec",
+      "last": "Gastony"
     },
     {
       "school": "Wausau West High School",
@@ -9364,6 +9356,14 @@
     },
     {
       "school": "Wausau West High School",
+      "email": "dhagedorn@wausauschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Dayne",
+      "last": "Hagedorn"
+    },
+    {
+      "school": "Wausau West High School",
       "email": "dmoe@wausauschools.org",
       "role": "Head Coach",
       "sport": "Girls Wrestling",
@@ -9385,14 +9385,6 @@
       "sport": "Girls Softball",
       "first": "Jaime",
       "last": "Hughes"
-    },
-    {
-      "school": "Wausau West High School",
-      "email": "jalbee@wausauschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Jon",
-      "last": "Albee"
     },
     {
       "school": "Wausau West High School",
@@ -9489,14 +9481,6 @@
       "sport": "Girls Tennis",
       "first": "Steve",
       "last": "Wenninger"
-    },
-    {
-      "school": "Wausau West High School",
-      "email": "tbrow299@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Travis",
-      "last": "Brown"
     },
     {
       "school": "Wausau West High School",

@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-08-19T02:57:49.691972Z",
+  "updated": "2026-08-22T02:54:08.863753Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -500,7 +500,7 @@
     },
     {
       "school": "Amherst High School",
-      "email": "timsharon@wi-net.com",
+      "email": "sbeilke@amherst.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Golf",
       "first": "Sharon",
@@ -2926,6 +2926,14 @@
       "school": "Wild Rose High School",
       "email": "brooksb@wildroseschools.org",
       "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Brett",
+      "last": "Brooks"
+    },
+    {
+      "school": "Wild Rose High School",
+      "email": "brooksb@wildroseschools.org",
+      "role": "Head Coach",
       "sport": "Girls Basketball",
       "first": "Brett",
       "last": "Brooks"
@@ -2972,14 +2980,6 @@
     },
     {
       "school": "Wild Rose High School",
-      "email": "kanea@wildroseschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Adam",
-      "last": "Kane"
-    },
-    {
-      "school": "Wild Rose High School",
       "email": "kasubaskis@wautoma.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
@@ -2993,6 +2993,14 @@
       "sport": "Boys Basketball",
       "first": "Jacob",
       "last": "Lund"
+    },
+    {
+      "school": "Wild Rose High School",
+      "email": "richardj@wildroseschools.org",
+      "role": "Assistant Principal",
+      "sport": "",
+      "first": "Janelle",
+      "last": "Richard"
     },
     {
       "school": "Wild Rose High School",
