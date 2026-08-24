@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-08-22T02:54:08.863753Z",
+  "updated": "2026-08-24T02:59:13.088247Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -1580,6 +1580,14 @@
     },
     {
       "school": "Nekoosa High School",
+      "email": "michael_willman@nekoosa.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Michael",
+      "last": "Willman"
+    },
+    {
+      "school": "Nekoosa High School",
       "email": "mike_schoenfeld@nekoosa.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -1625,14 +1633,6 @@
       "sport": "",
       "first": "Tori",
       "last": "Spice"
-    },
-    {
-      "school": "Nekoosa High School",
-      "email": "treeguy1976@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Denny",
-      "last": "Mullins"
     },
     {
       "school": "New Lisbon High School",
@@ -1953,14 +1953,6 @@
       "sport": "Boys Basketball",
       "first": "Wayne",
       "last": "Swiggum"
-    },
-    {
-      "school": "Port Edwards High School",
-      "email": "treeguy1976@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Denny",
-      "last": "Mullins"
     },
     {
       "school": "Portage High School",

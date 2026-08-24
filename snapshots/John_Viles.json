@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-08-22T02:55:32.940422Z",
+  "updated": "2026-08-24T03:00:35.164843Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -7521,6 +7521,14 @@
       "sport": "Boys Football",
       "first": "Taylor",
       "last": "Ripplinger"
+    },
+    {
+      "school": "Winnebago Lutheran High School",
+      "email": "dena.faust@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Dena",
+      "last": "Faust"
     },
     {
       "school": "Winnebago Lutheran High School",

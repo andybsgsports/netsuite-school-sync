@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-08-22T02:49:37.089128Z",
+  "updated": "2026-08-24T02:54:55.512720Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -1036,14 +1036,6 @@
     },
     {
       "school": "Beloit Memorial High School",
-      "email": "ahereford@sdb.k12.wi.us",
-      "role": "AD Admin Assistant",
-      "sport": "",
-      "first": "Ashley",
-      "last": "Hereford"
-    },
-    {
-      "school": "Beloit Memorial High School",
       "email": "asowicz@sdb.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Volleyball",
@@ -1081,14 +1073,6 @@
       "sport": "Girls Softball",
       "first": "Chad",
       "last": "Davis"
-    },
-    {
-      "school": "Beloit Memorial High School",
-      "email": "dgratz@sdb.k12.wi.us",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Daniel",
-      "last": "Gratz"
     },
     {
       "school": "Beloit Memorial High School",
@@ -1140,11 +1124,27 @@
     },
     {
       "school": "Beloit Memorial High School",
+      "email": "lmalott@sdb.k12.wi.us",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Leah",
+      "last": "Gordon"
+    },
+    {
+      "school": "Beloit Memorial High School",
       "email": "lmoore@sdb.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
       "first": "Lisa",
       "last": "Moore"
+    },
+    {
+      "school": "Beloit Memorial High School",
+      "email": "phunt@sdb.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Paula",
+      "last": "Hunt"
     },
     {
       "school": "Beloit Memorial High School",
@@ -1201,14 +1201,6 @@
       "sport": "Boys Basketball",
       "first": "Todd",
       "last": "Marks"
-    },
-    {
-      "school": "Beloit Memorial High School",
-      "email": "wgarrison@sdb.k12.wi.us",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Willie",
-      "last": "Garrison II"
     },
     {
       "school": "Belvidere High School",
@@ -20780,7 +20772,7 @@
     },
     {
       "school": "Woodstock North High School",
-      "email": "dcrabill@wcusd200.org",
+      "email": "decrabill@wcusd200.org",
       "role": "Athletic Director",
       "sport": "",
       "first": "Derek",
