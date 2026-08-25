@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-08-24T03:00:35.164843Z",
+  "updated": "2026-08-25T02:53:46.458670Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -2204,7 +2204,7 @@
     },
     {
       "school": "Kohler High School",
-      "email": "drautmann@sasd.edu",
+      "email": "drautmann1@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Swimming & Diving",
       "first": "David",
@@ -4492,6 +4492,14 @@
     },
     {
       "school": "Oshkosh West High School",
+      "email": "nathan.wara@oshkosh.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Nate",
+      "last": "Wara"
+    },
+    {
+      "school": "Oshkosh West High School",
       "email": "nelsonabraham2013@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Soccer",
@@ -5524,7 +5532,7 @@
     },
     {
       "school": "Sheboygan Falls High School",
-      "email": "drautmann@sasd.edu",
+      "email": "drautmann1@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Swimming & Diving",
       "first": "David",
@@ -5660,7 +5668,7 @@
     },
     {
       "school": "Sheboygan Lutheran High School",
-      "email": "drautmann@sasd.edu",
+      "email": "drautmann1@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Swimming & Diving",
       "first": "David",

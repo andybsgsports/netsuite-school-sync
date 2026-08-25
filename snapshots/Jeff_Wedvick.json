@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-08-24T03:01:18.529903Z",
+  "updated": "2026-08-25T02:54:32.085246Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -4489,6 +4489,14 @@
       "sport": "Boys Football",
       "first": "Otto",
       "last": "Degler"
+    },
+    {
+      "school": "Waterloo High School",
+      "email": "dingees@waterloo.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Scott",
+      "last": "Dingee"
     },
     {
       "school": "Waterloo High School",
