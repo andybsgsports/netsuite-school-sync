@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-08-25T02:54:32.085246Z",
+  "updated": "2026-08-26T03:08:00.994699Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -2268,14 +2268,6 @@
     },
     {
       "school": "Kettle Moraine High School",
-      "email": "b12richert@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Brian",
-      "last": "Richert"
-    },
-    {
-      "school": "Kettle Moraine High School",
       "email": "bestorj@kmsd.edu",
       "role": "Principal",
       "sport": "",
@@ -3252,6 +3244,14 @@
     },
     {
       "school": "Muskego High School",
+      "email": "ryan.lucchesi@muskegonorway.org",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Ryan",
+      "last": "Lucchesi"
+    },
+    {
+      "school": "Muskego High School",
       "email": "ryan.mcmillen@muskegonorway.org",
       "role": "Athletic Director",
       "sport": "",
@@ -3996,6 +3996,14 @@
     },
     {
       "school": "Port Washington High School",
+      "email": "andrea.barber@pwssd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Gymnastics",
+      "first": "Andrea",
+      "last": "Barber"
+    },
+    {
+      "school": "Port Washington High School",
       "email": "angelo.larosa@pwssd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
@@ -4068,14 +4076,6 @@
     },
     {
       "school": "Port Washington High School",
-      "email": "gale.sigler@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Gymnastics",
-      "first": "Gale",
-      "last": "Sigler"
-    },
-    {
-      "school": "Port Washington High School",
       "email": "garrett.hoffmann@pwssd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -4134,7 +4134,7 @@
       "school": "Port Washington High School",
       "email": "keely.welton@pwssd.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys Tennis",
+      "sport": "Boys & Girls Tennis",
       "first": "Keely",
       "last": "Welton"
     },
@@ -4169,14 +4169,6 @@
       "sport": "",
       "first": "Melissa",
       "last": "Daniels"
-    },
-    {
-      "school": "Port Washington High School",
-      "email": "melonie.zielinski@pwssd.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Tennis",
-      "first": "Melonie",
-      "last": "Zielinski"
     },
     {
       "school": "Port Washington High School",

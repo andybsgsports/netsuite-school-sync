@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-08-25T02:52:25.299110Z",
+  "updated": "2026-08-26T03:05:49.413462Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -236,14 +236,6 @@
     },
     {
       "school": "Adams-Friendship High School",
-      "email": "mpsshaw@live.com",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Marcus",
-      "last": "Shaw"
-    },
-    {
-      "school": "Adams-Friendship High School",
       "email": "norton_m@afasd.net",
       "role": "Head Coach",
       "sport": "Boys Track and Field",
@@ -281,6 +273,14 @@
       "sport": "",
       "first": "Nick",
       "last": "Stormoen"
+    },
+    {
+      "school": "Adams-Friendship High School",
+      "email": "weglarz_k@afasd.net",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Krystian",
+      "last": "Weglarz"
     },
     {
       "school": "Adams-Friendship High School",
@@ -1396,11 +1396,11 @@
     },
     {
       "school": "Necedah High School",
-      "email": "ddecker@necedahschools.org",
-      "role": "Athletic Director",
+      "email": "cdillin@necedahschools.org",
+      "role": "Assistant Athletic Director",
       "sport": "",
-      "first": "David",
-      "last": "Decker"
+      "first": "Cora",
+      "last": "Dillin"
     },
     {
       "school": "Necedah High School",
@@ -1409,6 +1409,14 @@
       "sport": "Girls Basketball",
       "first": "Nick",
       "last": "Murphy"
+    },
+    {
+      "school": "Necedah High School",
+      "email": "iherried@necedahschools.org",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Isaiah",
+      "last": "Herried"
     },
     {
       "school": "Necedah High School",
