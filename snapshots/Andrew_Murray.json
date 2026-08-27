@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-08-26T03:01:19.825296Z",
+  "updated": "2026-08-27T12:02:55.275992Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -49,6 +49,14 @@
       "sport": "Boys Football",
       "first": "John",
       "last": "Lalor"
+    },
+    {
+      "school": "Alden-Hebron High School",
+      "email": "jlesus@ah19.org",
+      "role": "Head Coach",
+      "sport": "Girls Flag Football",
+      "first": "Jacob",
+      "last": "Lesus"
     },
     {
       "school": "Alden-Hebron High School",
@@ -7588,11 +7596,11 @@
     },
     {
       "school": "Grayslake North High School",
-      "email": "kcook@d127.org",
-      "role": "Head Coach",
-      "sport": "Boys Track & Field",
-      "first": "Kyle",
-      "last": "Cook"
+      "email": "kgeary@d127.org",
+      "role": "Certified Athletic Trainer",
+      "sport": "",
+      "first": "Korhyn",
+      "last": "Geary"
     },
     {
       "school": "Grayslake North High School",
@@ -7726,7 +7734,7 @@
       "school": "Grayslake North High School",
       "email": "wborrero@d127.org",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
+      "sport": "Boys Wrestling",
       "first": "Wilbur",
       "last": "Borrero"
     },
@@ -12437,6 +12445,14 @@
     {
       "school": "Marian Central Catholic High School",
       "email": "bsmith@marian.com",
+      "role": "Asst. Boys Athletic Director",
+      "sport": "",
+      "first": "Bryan",
+      "last": "Smith"
+    },
+    {
+      "school": "Marian Central Catholic High School",
+      "email": "bsmith@marian.com",
       "role": "Head Coach",
       "sport": "Girls Golf",
       "first": "Bryan",
@@ -12505,6 +12521,14 @@
       "sport": "Girls Volleyball",
       "first": "Doug",
       "last": "Wilbrandt"
+    },
+    {
+      "school": "Marian Central Catholic High School",
+      "email": "edantonio@marian.com",
+      "role": "Girls Athletic Director's Assistant",
+      "sport": "",
+      "first": "Emily",
+      "last": "D'antonio"
     },
     {
       "school": "Marian Central Catholic High School",
@@ -12588,14 +12612,6 @@
     },
     {
       "school": "Marian Central Catholic High School",
-      "email": "mccam1172@comcast.net",
-      "role": "Head Coach",
-      "sport": "Boys Lacrosse",
-      "first": "Joe",
-      "last": "Mccamant"
-    },
-    {
-      "school": "Marian Central Catholic High School",
       "email": "mjones@bullvalleygolfclub.com",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -12625,6 +12641,14 @@
       "sport": "Girls Wrestling",
       "first": "Ryan",
       "last": "Prater"
+    },
+    {
+      "school": "Marian Central Catholic High School",
+      "email": "shaenorwick@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "Shae",
+      "last": "Norwick"
     },
     {
       "school": "Marian Central Catholic High School",
