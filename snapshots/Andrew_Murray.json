@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-08-27T12:02:55.275992Z",
+  "updated": "2026-08-28T13:23:44.967284Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -7156,19 +7156,19 @@
     },
     {
       "school": "Grayslake Central High School",
+      "email": "dianna.repp@d128.org",
+      "role": "Activities Director",
+      "sport": "",
+      "first": "Dianna",
+      "last": "Repp"
+    },
+    {
+      "school": "Grayslake Central High School",
       "email": "dlandry@d127.org",
       "role": "Principal",
       "sport": "",
       "first": "Dan",
       "last": "Landry"
-    },
-    {
-      "school": "Grayslake Central High School",
-      "email": "drepp@d127.org",
-      "role": "Activities Director",
-      "sport": "",
-      "first": "Dianna",
-      "last": "Repp"
     },
     {
       "school": "Grayslake Central High School",
@@ -11924,6 +11924,14 @@
     },
     {
       "school": "Libertyville High School",
+      "email": "dianna.repp@d128.org",
+      "role": "Activities Director",
+      "sport": "",
+      "first": "Dianna",
+      "last": "Repp"
+    },
+    {
+      "school": "Libertyville High School",
       "email": "dustin.helvie@d128.org",
       "role": "Band Director & Orchestra Director",
       "sport": "",
@@ -11993,14 +12001,6 @@
       "sport": "Boys Volleyball",
       "first": "Jenny",
       "last": "Smith"
-    },
-    {
-      "school": "Libertyville High School",
-      "email": "jennifer.uliks@d128.org",
-      "role": "Activities Director",
-      "sport": "",
-      "first": "Jennifer",
-      "last": "Uliks"
     },
     {
       "school": "Libertyville High School",

@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-08-27T12:03:52.078660Z",
+  "updated": "2026-08-28T13:24:46.637034Z",
   "records": [
     {
       "school": "Albany High School",
@@ -812,6 +812,14 @@
     },
     {
       "school": "Black Hawk High School",
+      "email": "behbra@blackhawk.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Brandon",
+      "last": "Behlke"
+    },
+    {
+      "school": "Black Hawk High School",
       "email": "bredes@blackhawk.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Football",
@@ -849,14 +857,6 @@
       "sport": "Boys & Girls Track and Field",
       "first": "Eric",
       "last": "Erickson"
-    },
-    {
-      "school": "Black Hawk High School",
-      "email": "flamich@blackhawk.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Michael",
-      "last": "Flanagan"
     },
     {
       "school": "Black Hawk High School",

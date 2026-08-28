@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-08-27T12:05:04.428041Z",
+  "updated": "2026-08-28T13:25:59.794969Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -3505,6 +3505,14 @@
       "sport": "Boys Basketball",
       "first": "Billy",
       "last": "Wilson"
+    },
+    {
+      "school": "Madison Memorial High School",
+      "email": "wvegas@madison.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Willy",
+      "last": "Vegas"
     },
     {
       "school": "Madison Memorial High School",

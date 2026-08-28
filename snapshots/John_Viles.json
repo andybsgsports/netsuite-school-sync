@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-08-27T12:08:47.969753Z",
+  "updated": "2026-08-28T13:29:49.330906Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -814,25 +814,9 @@
       "school": "Dodgeland High School",
       "email": "goods@dodgeland.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
-      "first": "Steve",
-      "last": "Good"
-    },
-    {
-      "school": "Dodgeland High School",
-      "email": "goods@dodgeland.k12.wi.us",
-      "role": "Head Coach",
       "sport": "Boys Football",
       "first": "Steve",
       "last": "Good"
-    },
-    {
-      "school": "Dodgeland High School",
-      "email": "gracypeterson28@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Tracy",
-      "last": "Peterson"
     },
     {
       "school": "Dodgeland High School",
@@ -852,14 +836,6 @@
     },
     {
       "school": "Dodgeland High School",
-      "email": "mergena22@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Ashley",
-      "last": "Christian"
-    },
-    {
-      "school": "Dodgeland High School",
       "email": "perkins@dodgeland.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -873,6 +849,14 @@
       "sport": "Girls Hockey",
       "first": "Mike",
       "last": "Pogorelec"
+    },
+    {
+      "school": "Dodgeland High School",
+      "email": "robertgatica10@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Wrestling",
+      "first": "Robert",
+      "last": "Gatica"
     },
     {
       "school": "Dodgeland High School",
@@ -1732,22 +1716,6 @@
     },
     {
       "school": "Hustisford High School",
-      "email": "goods@dodgeland.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
-      "first": "Steve",
-      "last": "Good"
-    },
-    {
-      "school": "Hustisford High School",
-      "email": "gracypeterson28@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Tracy",
-      "last": "Peterson"
-    },
-    {
-      "school": "Hustisford High School",
       "email": "jaxthimm@yahoo.com",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -1769,14 +1737,6 @@
       "sport": "Boys Golf",
       "first": "Landyn",
       "last": "Heimerl"
-    },
-    {
-      "school": "Hustisford High School",
-      "email": "mergena22@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Ashley",
-      "last": "Christian"
     },
     {
       "school": "Hustisford High School",
@@ -1809,6 +1769,14 @@
       "sport": "Boys & Girls Track and Field",
       "first": "Andrew",
       "last": "Powers"
+    },
+    {
+      "school": "Hustisford High School",
+      "email": "robertgatica10@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Wrestling",
+      "first": "Robert",
+      "last": "Gatica"
     },
     {
       "school": "Hustisford High School",

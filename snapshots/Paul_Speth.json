@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-08-27T12:07:24.168643Z",
+  "updated": "2026-08-28T13:28:23.010316Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -2497,6 +2497,14 @@
       "sport": "Boys Basketball",
       "first": "Stephen",
       "last": "Maselter"
+    },
+    {
+      "school": "Sun Prairie East High School",
+      "email": "slbilli@sunprairieschools.org",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Stacy",
+      "last": "Billings-Hughes"
     },
     {
       "school": "Sun Prairie East High School",
