@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-08-31T07:30:48.279892Z",
+  "updated": "2026-09-02T06:26:12.492757Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -476,14 +476,6 @@
     },
     {
       "school": "Auburn High School",
-      "email": "alexgary87@gmail.com",
-      "role": "School Historian",
-      "sport": "",
-      "first": "Alex",
-      "last": "Gary"
-    },
-    {
-      "school": "Auburn High School",
       "email": "arussey07@yahoo.com",
       "role": "Coach",
       "sport": "Halftime Dance",
@@ -556,6 +548,22 @@
     },
     {
       "school": "Auburn High School",
+      "email": "hosea.harris@rps205.com",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Hosea",
+      "last": "Harris"
+    },
+    {
+      "school": "Auburn High School",
+      "email": "jeremy.coleman@rps205.com",
+      "role": "Head Coach",
+      "sport": "Girls Flag Football",
+      "first": "Jeremy",
+      "last": "Coleman"
+    },
+    {
+      "school": "Auburn High School",
       "email": "jessica.palos@rps205.com",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -569,6 +577,14 @@
       "sport": "Chess",
       "first": "Joseph",
       "last": "Guth"
+    },
+    {
+      "school": "Auburn High School",
+      "email": "joshua.jerry@rps205.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Soccer",
+      "first": "Joshua",
+      "last": "Jerry"
     },
     {
       "school": "Auburn High School",
@@ -1016,7 +1032,7 @@
       "role": "Head Coach",
       "sport": "Girls Volleyball",
       "first": "Taylor",
-      "last": "Bloyer"
+      "last": "Rowe"
     },
     {
       "school": "Barneveld High School",
@@ -2844,14 +2860,6 @@
     },
     {
       "school": "Brown Deer High School",
-      "email": "jrossetti@browndeerschools.com",
-      "role": "Head Coach",
-      "sport": "Girls Soccer",
-      "first": "James",
-      "last": "Rossetti"
-    },
-    {
-      "school": "Brown Deer High School",
       "email": "jsims@browndeerschools.com",
       "role": "Principal",
       "sport": "",
@@ -2881,6 +2889,14 @@
       "sport": "Boys & Girls Cross Country",
       "first": "Kevin",
       "last": "Stewart"
+    },
+    {
+      "school": "Brown Deer High School",
+      "email": "lnorwood@browndeerschools.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Soccer",
+      "first": "Larie",
+      "last": "Norwood"
     },
     {
       "school": "Brown Deer High School",
@@ -7060,14 +7076,6 @@
     },
     {
       "school": "Grayslake Central High School",
-      "email": "abakke@d127.org",
-      "role": "Coach",
-      "sport": "Chess",
-      "first": "Ari",
-      "last": "Bakke"
-    },
-    {
-      "school": "Grayslake Central High School",
       "email": "acolton@d127.org",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -7852,14 +7860,6 @@
     },
     {
       "school": "Greendale High School",
-      "email": "nicholas.wycklendt@greendaleschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Nicholas",
-      "last": "Wycklendt"
-    },
-    {
-      "school": "Greendale High School",
       "email": "owen.jarrette@greendaleschools.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Track and Field",
@@ -8013,14 +8013,6 @@
     {
       "school": "Greenfield High School",
       "email": "jsabinash@greenfield.k12.wi.us",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Jim",
-      "last": "Sabinash"
-    },
-    {
-      "school": "Greenfield High School",
-      "email": "jsabinash@greenfield.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
       "first": "Jim",
@@ -8081,6 +8073,14 @@
       "sport": "Boys Golf",
       "first": "Nathan",
       "last": "Penn"
+    },
+    {
+      "school": "Greenfield High School",
+      "email": "nwycklendt@greenfield.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Nicholas",
+      "last": "Wycklendt"
     },
     {
       "school": "Greenfield High School",
@@ -13796,14 +13796,6 @@
     },
     {
       "school": "Mundelein High School",
-      "email": "gandretich@d120.org",
-      "role": "Certified Athletic Trainer",
-      "sport": "",
-      "first": "George",
-      "last": "Andretich"
-    },
-    {
-      "school": "Mundelein High School",
       "email": "greg@reboundfitness.com",
       "role": "Certified Athletic Trainer",
       "sport": "",
@@ -17025,6 +17017,14 @@
       "sport": "Boys Football",
       "first": "Sean",
       "last": "Downey"
+    },
+    {
+      "school": "Stockton High School",
+      "email": "tony.baltierra@ssmhealth.com",
+      "role": "Certified Athletic Trainer",
+      "sport": "",
+      "first": "Tony",
+      "last": "Baltierra"
     },
     {
       "school": "Stockton High School",

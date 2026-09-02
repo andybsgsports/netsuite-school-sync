@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-08-31T07:36:21.064773Z",
+  "updated": "2026-09-02T06:31:58.501024Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -5156,14 +5156,6 @@
     },
     {
       "school": "Ripon High School",
-      "email": "bairdb@ripon.k12.wi.us",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Becki",
-      "last": "Baird"
-    },
-    {
-      "school": "Ripon High School",
       "email": "bairdmuellerh@ripon.k12.wi.us",
       "role": "AD Admin Assistant",
       "sport": "",
@@ -5185,14 +5177,6 @@
       "sport": "Boys & Girls Track and Field",
       "first": "Mark",
       "last": "Bradley"
-    },
-    {
-      "school": "Ripon High School",
-      "email": "brookss@ripon.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Tennis",
-      "first": "Steve",
-      "last": "Brooks"
     },
     {
       "school": "Ripon High School",
@@ -5220,27 +5204,19 @@
     },
     {
       "school": "Ripon High School",
+      "email": "debrouxj@ripon.k12.wi.us",
+      "role": "Principal",
+      "sport": "",
+      "first": "Jim",
+      "last": "DeBroux"
+    },
+    {
+      "school": "Ripon High School",
       "email": "desticheb@ripon.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Baseball",
       "first": "Benjamin",
       "last": "Destiche"
-    },
-    {
-      "school": "Ripon High School",
-      "email": "kasselj@ripon.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Tennis",
-      "first": "Jay",
-      "last": "Kassel"
-    },
-    {
-      "school": "Ripon High School",
-      "email": "kinzigerb@ripon.k12.wi.us",
-      "role": "Principal",
-      "sport": "",
-      "first": "Bill",
-      "last": "Kinziger"
     },
     {
       "school": "Ripon High School",
@@ -5257,6 +5233,14 @@
       "sport": "Boys & Girls Wrestling",
       "first": "Trenton",
       "last": "Mlodzik"
+    },
+    {
+      "school": "Ripon High School",
+      "email": "mooneyc@ripon.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Tennis",
+      "first": "Corey",
+      "last": "Mooney"
     },
     {
       "school": "Ripon High School",
@@ -5305,6 +5289,14 @@
       "sport": "Boys Golf",
       "first": "Paul",
       "last": "Wiegel"
+    },
+    {
+      "school": "Ripon High School",
+      "email": "yoderb@ripon.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Becki",
+      "last": "Yoder"
     },
     {
       "school": "Sheboygan Christian High School",

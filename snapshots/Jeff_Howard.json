@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-08-31T07:31:42.651854Z",
+  "updated": "2026-09-02T06:27:10.577103Z",
   "records": [
     {
       "school": "Albany High School",
@@ -3956,14 +3956,6 @@
     },
     {
       "school": "Shullsburg High School",
-      "email": "mevetovich@shullsburg.k12.wi.us",
-      "role": "Principal",
-      "sport": "",
-      "first": "Mark",
-      "last": "Evetovich"
-    },
-    {
-      "school": "Shullsburg High School",
       "email": "michaelbenson703@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -3985,6 +3977,14 @@
       "sport": "Girls Basketball",
       "first": "Nathan",
       "last": "Russell"
+    },
+    {
+      "school": "Shullsburg High School",
+      "email": "sgraff@shullsburg.k12.wi.us",
+      "role": "Principal",
+      "sport": "",
+      "first": "Stacy",
+      "last": "Graff"
     },
     {
       "school": "Shullsburg High School",
