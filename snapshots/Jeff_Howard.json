@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-09-02T06:27:10.577103Z",
+  "updated": "2026-09-03T06:23:06.348862Z",
   "records": [
     {
       "school": "Albany High School",
@@ -1812,6 +1812,14 @@
     },
     {
       "school": "Juda High School",
+      "email": "baldwin@judaschool.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Rachael",
+      "last": "Baldwin"
+    },
+    {
+      "school": "Juda High School",
       "email": "BDAVIS@MARTINAUTO.COM",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -1829,7 +1837,7 @@
     {
       "school": "Juda High School",
       "email": "davis@judaschool.com",
-      "role": "Superintendent, Principal",
+      "role": "Superintendent",
       "sport": "",
       "first": "Traci",
       "last": "Davis"
@@ -1852,19 +1860,11 @@
     },
     {
       "school": "Juda High School",
-      "email": "mahlkuch@judaschool.com",
-      "role": "Athletic Director",
+      "email": "mansfield@judaschool.com",
+      "role": "Principal",
       "sport": "",
-      "first": "Cole",
-      "last": "M Mahlkuch"
-    },
-    {
-      "school": "Juda High School",
-      "email": "mahlkuch@judaschool.com",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Cole",
-      "last": "M Mahlkuch"
+      "first": "Kurtis",
+      "last": "Mansfield"
     },
     {
       "school": "Juda High School",
@@ -1873,6 +1873,22 @@
       "sport": "Boys Track and Field",
       "first": "Nick",
       "last": "Jarvis"
+    },
+    {
+      "school": "Juda High School",
+      "email": "schliem@judaschool.com",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Barry",
+      "last": "Schliem"
+    },
+    {
+      "school": "Juda High School",
+      "email": "skylers@judaschool.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Skyler",
+      "last": "Stuckey"
     },
     {
       "school": "Juda High School",
