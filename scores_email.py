@@ -16,11 +16,14 @@ One email per sales rep, covering that rep's schools only (rep assignment
 comes from the master sheet's Schools tab; rep email addresses reuse the
 REPS list in rep_digests.py). Sends via Gmail SMTP.
 
-SAFETY: until SCORES_LIVE=1, every rep's email is redirected to GMAIL_USER
-(Andy) with a "[TEST → rep@...]" subject prefix — reps receive nothing.
+SAFETY: until SCORES_LIVE=1, every rep's email is redirected to
+SCORES_RECIPIENT (andy@bsgsports.com) with a "[TEST → rep@...]" subject
+prefix — reps receive nothing. Once live, Andy is BCC'd on every rep email.
 
 Env vars:
-  GMAIL_USER               sender + test-mode recipient
+  GMAIL_USER               Gmail sender account
+  SCORES_RECIPIENT         Andy's address for test-mode delivery + live BCC
+                           (default: GMAIL_USER)
   GMAIL_APP_PASSWORD       Gmail app password (16-char, 2FA required)
   GOOGLE_SHEET_ID          master sheet (Schools tab, for rep assignment)
   GOOGLE_CREDENTIALS_JSON  service account JSON (same as other workflows)
@@ -849,7 +852,7 @@ def main():
           f"(reps: {[rep or 'Andy/unassigned' for rep in by_rep]})")
     if not SCORES_LIVE:
         print("TEST MODE (SCORES_LIVE unset) — every email goes to "
-              f"{GMAIL_USER} instead of the rep\n")
+              f"{SCORES_RECIPIENT} instead of the rep\n")
 
     for rep, results in sorted(by_rep.items()):
         cfg     = rep_config.get(rep, {})
@@ -863,15 +866,17 @@ def main():
             intended_to = cfg["email"]
             intended_cc = cfg.get("cc")
         else:
-            intended_to = GMAIL_USER
+            intended_to = SCORES_RECIPIENT
             intended_cc = None
 
         if SCORES_LIVE:
             to_addr, cc_addr = intended_to, intended_cc
-            bcc_addr = GMAIL_USER  # Andy sees every rep's email
+            bcc_addr = SCORES_RECIPIENT  # Andy sees every rep's email
         else:
-            to_addr, cc_addr, bcc_addr = GMAIL_USER, None, None
-            if intended_to != GMAIL_USER:
+            # Test mode: everything to Andy's address (SCORES_RECIPIENT,
+            # e.g. andy@bsgsports.com), still sent from the Gmail account.
+            to_addr, cc_addr, bcc_addr = SCORES_RECIPIENT, None, None
+            if intended_to != SCORES_RECIPIENT:
                 subject = f"[TEST → {intended_to}] {subject}"
 
         if DRY_RUN:

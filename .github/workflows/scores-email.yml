@@ -61,6 +61,9 @@ jobs:
         env:
           GMAIL_USER:              ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD:      ${{ secrets.GMAIL_APP_PASSWORD }}
+          # Andy's inbox for test-mode delivery and live-mode BCC. Override
+          # with a SCORES_RECIPIENT repo secret if it ever changes.
+          SCORES_RECIPIENT:        ${{ secrets.SCORES_RECIPIENT || 'andy@bsgsports.com' }}
           GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
           GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
           # Reps only receive email when the "live" box is checked (or on the
