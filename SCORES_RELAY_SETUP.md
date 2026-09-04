@@ -21,10 +21,14 @@ The GitHub side stays in test mode forever (all emails to Andy). Never set
 Same folder as the other local scripts:
 `C:\Users\andre\OneDrive - Badger Sporting Goods\Desktop\Illinois Contact List\Netsuite Contacts Sync`
 
-1. Download these two files from GitHub into that folder
-   (open the file → download icon ⤓):
-   - `relay_scores_outlook.py`
-   - `run_scores_relay.bat`
+1. In Command Prompt, paste (one time only):
+   ```
+   cd "C:\Users\andre\OneDrive - Badger Sporting Goods\Desktop\Illinois Contact List\Netsuite Contacts Sync"
+   curl -L -o run_scores_relay.bat https://raw.githubusercontent.com/andybsgsports/netsuite-school-sync/master/run_scores_relay.bat
+   curl -L -o TEST_scores_relay.bat https://raw.githubusercontent.com/andybsgsports/netsuite-school-sync/master/TEST_scores_relay.bat
+   ```
+   Both batch files download the latest `relay_scores_outlook.py` from
+   GitHub every time they run, so the script never needs re-downloading.
 2. Open Command Prompt (Windows key → type `cmd` → Enter) and run:
    ```
    pip install pywin32
@@ -36,21 +40,13 @@ Same folder as the other local scripts:
    toggle off) and leave it running in the background. Andy uses New
    Outlook, so classic Outlook must be signed in once and left open on
    Mondays.
-4. **Tag the old test emails so they are never relayed.** In Command Prompt:
-   ```
-   cd "C:\Users\andre\OneDrive - Badger Sporting Goods\Desktop\Illinois Contact List\Netsuite Contacts Sync"
-   python relay_scores_outlook.py --mark-existing --since-hours 720
-   ```
-   (Marks every tagged scores email from the last 30 days as done.)
-5. **Test the relay on yourself** — after the next Monday email arrives:
-   ```
-   python relay_scores_outlook.py --dry-run
-   python relay_scores_outlook.py --test-to andy@bsgsports.com
-   ```
-   You'll receive clean copies from yourself, exactly as the reps would.
-   (Note: `--test-to` marks them relayed; to relay the same emails to the
-   reps afterwards, remove the "Scores Relayed" category from them in
-   Outlook first.)
+4. **Test on yourself:** double-click `TEST_scores_relay.bat` in that folder.
+   It re-sends the tagged scores emails from the last 48 hours to
+   andy@bsgsports.com (not the reps), from andy@bsgsports.com — clean
+   copies exactly as the reps would get them — and marks the originals
+   "Scores Relayed" so Monday's run never re-sends them.
+   Old test batches are ignored automatically: the Monday run only looks
+   at the last 36 hours.
 
 ## Task Scheduler
 
