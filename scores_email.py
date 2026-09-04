@@ -719,9 +719,9 @@ def build_html(school_results, week_start, week_end):
         </tr>""")
 
         blocks.append(f"""
-      <div style="background:#1a237e;color:#fff;padding:7px 12px;margin:18px 0 0;
-                  border-radius:6px 6px 0 0;font-size:14px;font-weight:700;
-                  letter-spacing:1px">{section}</div>
+      <div style="background:#c62828;color:#fff;padding:10px 14px;margin:22px 0 0;
+                  border-radius:6px 6px 0 0;font-size:18px;font-weight:800;
+                  letter-spacing:1.5px">{section}</div>
       <table width="100%" cellpadding="0" cellspacing="0"
              style="border-collapse:collapse;border:1px solid #eee;border-top:none">
         <tbody>{"".join(rows)}
