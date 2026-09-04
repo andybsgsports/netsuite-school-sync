@@ -37,7 +37,7 @@ CC_FOR = {
     "paul@bsgsports.com": "julie@bsgsports.com",
 }
 
-SCRIPT_VERSION = "2026-09-04c"           # printed at startup so we know which copy is running
+SCRIPT_VERSION = "2026-09-04d"           # printed at startup so we know which copy is running
 SENDER_ADDRESS = "andy@bsgsports.com"     # account to send from
 RELAYED_CATEGORY = "Scores Relayed"
 TAG_RE = re.compile(r"^\[TEST\s*(?:→|->|>)\s*([^\]]+)\]\s*(.+)$")
@@ -95,26 +95,40 @@ def _walk_mail_folders(folder, depth=0, max_depth=4):
         pass
 
 
-def all_mail_folders(ns):
-    """Every mail folder in every account/store of the Outlook profile
-    (inbox, subfolders, other mailboxes) — so rule-filed mail is found."""
+def all_mail_folders(ns, debug=False):
+    """Every mail folder in the Outlook profile — Andy's own mailbox first,
+    then other stores. Public Folders (thousands of shared folders) are
+    skipped: the scores emails are never there and walking them takes ages."""
     out = []
     try:
-        for store in ns.Stores:
-            try:
-                out.extend(_walk_mail_folders(store.GetRootFolder()))
-            except Exception as e:
-                log(f"  (store {getattr(store, 'DisplayName', '?')} skipped: {e})")
+        stores = list(ns.Stores)
     except Exception as e:
         log(f"  (stores unavailable: {e}); falling back to default inbox")
-        out.append(ns.GetDefaultFolder(INBOX))
+        return [ns.GetDefaultFolder(INBOX)]
+    # own mailbox first so it is found quickly
+    stores.sort(key=lambda st: 0 if SENDER_ADDRESS in
+                str(getattr(st, "DisplayName", "")).lower() else 1)
+    for store in stores:
+        name = str(getattr(store, "DisplayName", "?"))
+        if name.lower().startswith("public folders"):
+            if debug:
+                log(f"  store '{name}': skipped")
+            continue
+        try:
+            folders = list(_walk_mail_folders(store.GetRootFolder()))
+        except Exception as e:
+            log(f"  (store {name} skipped: {e})")
+            continue
+        if debug:
+            log(f"  store '{name}': {len(folders)} mail folder(s)")
+        out.extend(folders)
     return out
 
 
 def candidate_items(ns, since_hours, debug=False):
     cutoff = datetime.now() - timedelta(hours=since_hours)
     out, seen_ids = [], set()
-    for folder in all_mail_folders(ns):
+    for folder in all_mail_folders(ns, debug=debug):
         name = folder.Name
         if name.lower() in ("deleted items", "junk email", "junk e-mail",
                             "sent items", "outbox", "drafts", "archive"):
