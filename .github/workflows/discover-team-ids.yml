@@ -1,10 +1,6 @@
 name: Discover Team IDs
 
 on:
-  # TEMPORARY: push trigger to build the initial conferences.json — removed after
-  push:
-    branches: ['claude/wonderful-maxwell-1c6wt0']
-    paths: ['.trigger-discover']
   schedule:
     # 10:00 UTC on the 1st of each month — refresh TeamIDs as seasons roll over
     - cron: '0 10 1 * *'
@@ -78,7 +74,7 @@ jobs:
           if-no-files-found: ignore
 
       - name: Commit generated CSV
-        if: inputs.commit_csv == true || github.event_name == 'schedule' || github.event_name == 'push'
+        if: inputs.commit_csv == true || github.event_name == 'schedule'
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
