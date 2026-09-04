@@ -29,8 +29,13 @@ Same folder as the other local scripts:
    ```
    pip install pywin32
    ```
-3. Classic Outlook (desktop) must be installed and signed in as
-   andy@bsgsports.com. ("New Outlook" does not support this automation.)
+3. **Classic Outlook** must be signed in as andy@bsgsports.com and open when
+   the script runs. "New Outlook" cannot be automated, but the two run side
+   by side on the same mailbox — keep using New Outlook day to day, just
+   open **Outlook (classic)** from the Start menu (or flip the "New Outlook"
+   toggle off) and leave it running in the background. Andy uses New
+   Outlook, so classic Outlook must be signed in once and left open on
+   Mondays.
 4. **Tag the old test emails so they are never relayed.** In Command Prompt:
    ```
    cd "C:\Users\andre\OneDrive - Badger Sporting Goods\Desktop\Illinois Contact List\Netsuite Contacts Sync"
@@ -50,16 +55,19 @@ Same folder as the other local scripts:
 ## Task Scheduler
 
 1. Start → **Task Scheduler** → **Create Task…**
-2. **General:** Name `Scores Relay`; check **Run whether user is logged on or
-   not**; check **Run with highest privileges**
+2. **General:** Name `Scores Relay`; leave **Run only when user is logged on**
+   selected (Outlook automation only works inside the logged-in desktop
+   session — do NOT pick "whether user is logged on or not")
 3. **Triggers → New:** Weekly, **Monday**, **8:00 AM**
 4. **Actions → New:** Program/script:
    `C:\Users\andre\OneDrive - Badger Sporting Goods\Desktop\Illinois Contact List\Netsuite Contacts Sync\run_scores_relay.bat`
 5. **Settings:** check **Run task as soon as possible after a scheduled start
    is missed** (so a PC that was asleep at 8 AM catches up on wake)
-6. OK → enter your Windows password
+6. OK
 
 Everything the script does is written to `relay_log.txt` in that folder.
+The PC must be logged in (screen lock is fine) and classic Outlook open at
+8:00 AM Monday; otherwise the task runs at the next login.
 
 ## Day-to-day
 
