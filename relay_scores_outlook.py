@@ -37,6 +37,7 @@ CC_FOR = {
     "paul@bsgsports.com": "julie@bsgsports.com",
 }
 
+SCRIPT_VERSION = "2026-09-04c"           # printed at startup so we know which copy is running
 SENDER_ADDRESS = "andy@bsgsports.com"     # account to send from
 RELAYED_CATEGORY = "Scores Relayed"
 TAG_RE = re.compile(r"^\[TEST\s*(?:→|->|>)\s*([^\]]+)\]\s*(.+)$")
@@ -200,7 +201,7 @@ def main():
                     help="list accounts, folders and recent subjects scanned")
     args = ap.parse_args()
 
-    log("Scores relay starting")
+    log(f"Scores relay starting (script version {SCRIPT_VERSION})")
     app, ns = outlook_session()
     if args.debug:
         try:
