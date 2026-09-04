@@ -1,7 +1,7 @@
 name: Weekly Scores Email
 
 on:
-  # TEMPORARY: push trigger — production-config test (current week), to Andy
+  # TEMPORARY: push trigger — dedupe verification (Menomonee Falls, dry run)
   push:
     branches: ['claude/wonderful-maxwell-1c6wt0']
     paths: ['.trigger-scores']
@@ -71,10 +71,10 @@ jobs:
           # Otherwise every rep's email is redirected to Andy with a
           # "[TEST -> rep@...]" subject prefix.
           SCORES_LIVE:        ${{ (inputs.live == true || (github.event_name == 'schedule' && vars.SCORES_LIVE_DEFAULT == '1')) && '1' || '0' }}
-          DRY_RUN:            ${{ inputs.dry_run == true && '1' || '0' }}
+          DRY_RUN:            ${{ (inputs.dry_run == true || github.event_name == 'push') && '1' || '0' }}
           SEND_EMPTY:         ${{ (inputs.send_empty == true || github.event_name == 'push') && '1' || '0' }}
-          DUMP_HTML:          ${{ inputs.dump_html == true && '1' || '0' }}
-          SCHOOL_FILTER:      ${{ inputs.school_filter }}
+          DUMP_HTML:          ${{ (inputs.dump_html == true || github.event_name == 'push') && '1' || '0' }}
+          SCHOOL_FILTER:      ${{ github.event_name == 'push' && 'menomonee' || inputs.school_filter }}
           WEEK_OF:            ${{ inputs.week_of }}
 
       - name: Upload HTML dumps (debug)

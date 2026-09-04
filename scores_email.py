@@ -288,6 +288,8 @@ def fetch_wiaa_schedule(team_id, school_name=""):
             "level":        cell(ci_level),
         })
 
+    games = _dedupe_games(games, team_id)
+
     if DUMP_HTML:
         if games:
             print(f"  [PARSE] {len(games)} game(s): "
@@ -335,6 +337,31 @@ def record_through(games, end_date):
     if not (w or l or t):
         return ""
     return f"{w}-{l}-{t}" if t else f"{w}-{l}"
+
+
+def _dedupe_games(games, team_id=""):
+    """Collapse duplicate schedule entries. Schools occasionally enter the
+    same contest twice on WIAA (once per school), which would double-count
+    the game and inflate the record. Two rows are the same contest when
+    date, opponent, home/away, result and score all match AND they don't
+    carry two different start times (a real doubleheader has distinct
+    times; a duplicate entry repeats or omits the time)."""
+    seen = {}
+    out = []
+    for g in games:
+        key = (g["date"], g["opponent"].lower(), g["is_home"],
+               g["result"], g["score"], g["played"])
+        prior = seen.get(key)
+        if prior is not None:
+            t1, t2 = prior["time_min"], g["time_min"]
+            if t1 is None or t2 is None or t1 == t2:
+                if DUMP_HTML:
+                    print(f"  [DEDUPE] TeamID {team_id}: dropped duplicate "
+                          f"{g['date']} vs {g['opponent']} {g['result']} {g['score']}")
+                continue
+        seen.setdefault(key, g)
+        out.append(g)
+    return out
 
 
 def games_in_range(games, start, end):
