@@ -1,7 +1,6 @@
 """
-probe_conference.py — diagnostic round 2. The Conference Listing page has
-Year / Sport / Conference dropdowns (138 conferences). Find the form or
-endpoint it submits to and fetch one conference's member list.
+probe_conference.py — diagnostic round 3. POST the Conference directory's
+ConferenceTeams endpoint (found in round 2) to see the member-team format.
 """
 
 import re
@@ -19,69 +18,44 @@ HEADERS = {
 BASE = "https://schools.wiaawi.org"
 s = requests.Session()
 s.headers.update(HEADERS)
-
-r = s.get(f"{BASE}/Directory/Conference/Listing", timeout=20)
-soup = BeautifulSoup(r.text, "html.parser")
-
-print("=== FORMS on Listing page ===")
-for f in soup.find_all("form"):
-    inputs = [(i.get("name"), i.get("type"), (i.get("value") or "")[:20])
-              for i in f.find_all("input")][:8]
-    print(f"FORM action={f.get('action')} method={f.get('method')} inputs={inputs}")
-
-print("=== JS endpoints mentioning Conference ===")
-for m in sorted(set(re.findall(r"""["'](/Directory/Conference/[A-Za-z0-9_./?=&-]*)["']""", r.text))):
-    print("  ", m)
-for m in sorted(set(re.findall(r"""url\s*:\s*["']([^"']+)["']""", r.text)))[:15]:
-    print("  ajax url:", m)
-
-sel_year = soup.find("select", id="YearSel")
-sel_ssid = soup.find("select", id="SSIDSel")
-sel_conf = soup.find("select", id="ConfSel")
-opts = lambda sel: [(o.get("value"), o.get_text(strip=True)) for o in sel.find_all("option")] if sel else []
-ssids, confs = opts(sel_ssid), opts(sel_conf)
-print(f"=== {len(confs)} conferences ===")
-print([t for _, t in confs][:138])
-soccer = next(((v, t) for v, t in ssids if "Boys Soccer" in t), None)
-badger = [(v, t) for v, t in confs if "Badger" in t or "Rock Valley" in t]
-print("Boys Soccer SSID:", soccer, "| Badger-ish conferences:", badger)
-
-# Try the obvious submissions: POST to Listing, POST to a *List endpoint, GET with params
-year = "2026"
-cid = badger[0][0] if badger else confs[1][0]
-payload = {"SchoolYear": year, "SportSeasonID": soccer[0] if soccer else "0",
-           "Conf.ConferenceID": cid}
-tok = soup.find("input", {"name": "__RequestVerificationToken"})
-if tok:
-    payload["__RequestVerificationToken"] = tok["value"]
+s.get(f"{BASE}/Directory/Conference/Listing", timeout=20)  # cookies
 
 
-def show(label, resp):
+def show(label, resp, max_rows=10):
     print("=" * 70)
     print(f"{label}: HTTP {resp.status_code} bytes={len(resp.text)}")
     sp = BeautifulSoup(resp.text, "html.parser")
     tables = sp.find_all("table")
-    for t in tables[:3]:
+    for t in tables[:4]:
         trs = t.find_all("tr")
         head = [c.get_text(" ", strip=True) for c in trs[0].find_all(["th", "td"])] if trs else []
         print(f"TABLE id={t.get('id')} rows={len(trs)} headers={head}")
-        for tr in trs[1:8]:
-            cells = [c.get_text(" ", strip=True)[:35] for c in tr.find_all(["td", "th"])]
-            links = [a["href"][:80] for a in tr.find_all("a", href=True)][:2]
+        for tr in trs[1:1 + max_rows]:
+            cells = [c.get_text(" ", strip=True)[:32] for c in tr.find_all(["td", "th"])]
+            links = [a["href"][:70] for a in tr.find_all("a", href=True)][:2]
             print(f"    ROW {cells} links={links}")
     if not tables:
-        body = sp.find("main") or sp
-        print("no tables; text:", body.get_text(" ", strip=True)[:500])
+        main = sp.find("main") or sp
+        txt = main.get_text(" ", strip=True)
+        i = txt.find("Team Members")
+        print("no tables; text:", txt[max(0, i):i + 700] if i >= 0 else txt[:700])
+    ids = sorted(set(re.findall(r"TeamID=(\d+)", resp.text)))
+    print(f"TeamID links in response: {len(ids)} e.g. {ids[:8]}")
+    return sp
 
 
-for path in ("/Directory/Conference/Listing", "/Directory/Conference/ListingList",
-             "/Directory/Conference/ConferenceListing", "/Directory/Conference/Schools"):
-    try:
-        show(f"POST {path} {payload}", s.post(BASE + path, data=payload, timeout=20))
-    except Exception as e:
-        print(f"POST {path} failed: {e}")
+EP = f"{BASE}/Directory/Conference/ConferenceTeams"
+# Boys Soccer 2026-27 (SSID 1541) — Badger (5274) and its Large/Small splits
+for cid, name in (("5274", "Badger"), ("5324", "Badger - Large"), ("5325", "Badger - Small")):
+    data = {"SchoolYear": "2026", "SportSeasonID": "1541",
+            "Conf.ConferenceID": cid, "IsAdmin": "False"}
+    show(f"POST ConferenceTeams {name} boys soccer {data}", s.post(EP, data=data, timeout=20))
 
-try:
-    show(f"GET Listing?params", s.get(f"{BASE}/Directory/Conference/Listing", params=payload, timeout=20))
-except Exception as e:
-    print("GET failed:", e)
+# Without a sport: does it list all sports for the conference at once?
+data = {"SchoolYear": "2026", "SportSeasonID": "0", "Conf.ConferenceID": "5274", "IsAdmin": "False"}
+show(f"POST ConferenceTeams Badger, no sport {data}", s.post(EP, data=data, timeout=20), max_rows=16)
+
+# Alternate field spellings, in case the form binds differently
+for alt in ({"Conf.SchoolYear": "2026", "Conf.SportSeasonID": "1541", "Conf.ConferenceID": "5274", "IsAdmin": "False"},
+            {"SchoolYear": "2026", "SSID": "1541", "ConferenceID": "5274"}):
+    show(f"POST ConferenceTeams alt {alt}", s.post(EP, data=alt, timeout=20), max_rows=5)
