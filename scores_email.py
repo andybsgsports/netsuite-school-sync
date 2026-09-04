@@ -859,7 +859,13 @@ def main():
         html    = build_html(results, week_start, week_end)
         # Schools with a blank/unrecognized Sales Rep on the Schools tab
         # land in a clearly-labeled catch-all that only Andy receives.
-        who     = rep or "Unassigned Schools (no Sales Rep on sheet)"
+        # (With SEND_EMPTY and no games at all, it's a plain "no games" notice.)
+        if rep:
+            who = rep
+        elif results:
+            who = "Unassigned Schools (no Sales Rep on sheet)"
+        else:
+            who = "No games last week"
         subject = f"{who} — School Scores — {week_label}"
 
         if rep and cfg.get("email"):
