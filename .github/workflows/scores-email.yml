@@ -73,15 +73,11 @@ jobs:
           # Otherwise every rep's email is redirected to Andy with a
           # "[TEST -> rep@...]" subject prefix.
           SCORES_LIVE:        ${{ (inputs.live == true || (github.event_name == 'schedule' && vars.SCORES_LIVE_DEFAULT == '1')) && '1' || '0' }}
-          DRY_RUN:            ${{ (inputs.dry_run == true || github.event_name == 'push') && '1' || '0' }}
+          DRY_RUN:            ${{ inputs.dry_run == true && '1' || '0' }}
           SEND_EMPTY:         ${{ inputs.send_empty == true && '1' || '0' }}
           DUMP_HTML:          ${{ inputs.dump_html == true && '1' || '0' }}
-          SCHOOL_FILTER:      ${{ github.event_name == 'push' && 'stoughton' || inputs.school_filter }}
+          SCHOOL_FILTER:      ${{ inputs.school_filter }}
           WEEK_OF:            ${{ inputs.week_of }}
-
-      - name: Probe conference directory (diagnostic)
-        if: github.event_name == 'push'
-        run: python probe_conference.py
 
       - name: Upload HTML dumps (debug)
         if: inputs.dump_html == true
