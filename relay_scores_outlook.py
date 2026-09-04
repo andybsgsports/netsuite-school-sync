@@ -37,8 +37,11 @@ CC_FOR = {
     "paul@bsgsports.com": "julie@bsgsports.com",
 }
 
-SCRIPT_VERSION = "2026-09-04e"           # printed at startup so we know which copy is running
+SCRIPT_VERSION = "2026-09-04f"           # printed at startup so we know which copy is running
 SENDER_ADDRESS = "andy@bsgsports.com"     # account to send from
+# TEST MODE: while set, every relay (including the Monday scheduled run) is
+# delivered to this address instead of the reps. Set to None to go live.
+TEST_TO = "andy@bsgsports.com"
 RELAYED_CATEGORY = "Scores Relayed"
 TAG_RE = re.compile(r"^\[TEST\s*(?:→|->|>)\s*([^\]]+)\]\s*(.+)$")
 INBOX = 6  # olFolderInbox
@@ -261,6 +264,11 @@ def main():
                 log(f"  store:   {store.DisplayName}")
         except Exception as e:
             log(f"  (could not list accounts: {e})")
+    test_to = args.test_to or TEST_TO
+    if test_to:
+        log(f"  TEST MODE: copies go to {test_to}, NOT to the reps")
+    else:
+        log("  LIVE: copies go to the sales reps")
     items = candidate_items(ns, args.since_hours, debug=args.debug)
     log(f"{len(items)} tagged scores email(s) received in the last "
         f"{args.since_hours:g}h not yet relayed")
@@ -275,7 +283,7 @@ def main():
     sent = 0
     for item in items:
         try:
-            relay(app, ns, item, test_to=args.test_to, dry_run=args.dry_run)
+            relay(app, ns, item, test_to=test_to, dry_run=args.dry_run)
             sent += 1
         except Exception as e:
             log(f"  ERROR relaying '{item.Subject}': {e}")
