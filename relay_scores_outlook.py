@@ -30,6 +30,7 @@ Usage:
 import argparse
 import re
 import sys
+import time
 from datetime import datetime, timedelta
 
 # Who else is copied on a rep's email (mirrors REPS "cc" in rep_digests.py)
@@ -37,14 +38,15 @@ CC_FOR = {
     "paul@bsgsports.com": "julie@bsgsports.com",
 }
 
-SCRIPT_VERSION = "2026-09-04f"           # printed at startup so we know which copy is running
+SCRIPT_VERSION = "2026-09-04g"           # printed at startup so we know which copy is running
 SENDER_ADDRESS = "andy@bsgsports.com"     # account to send from
 # TEST MODE: while set, every relay (including the Monday scheduled run) is
 # delivered to this address instead of the reps. Set to None to go live.
 TEST_TO = "andy@bsgsports.com"
 RELAYED_CATEGORY = "Scores Relayed"
 TAG_RE = re.compile(r"^\[TEST\s*(?:→|->|>)\s*([^\]]+)\]\s*(.+)$")
-INBOX = 6  # olFolderInbox
+INBOX = 6   # olFolderInbox
+OUTBOX = 4  # olFolderOutbox
 
 
 def log(msg):
@@ -52,14 +54,45 @@ def log(msg):
 
 
 def outlook_session():
+    """Attach to classic Outlook, starting it in the background if needed.
+    Returns (app, ns, started_by_us)."""
     try:
         import win32com.client as win32
     except ImportError:
         log("ERROR: pywin32 not installed. Run:  pip install pywin32")
         sys.exit(1)
-    app = win32.Dispatch("Outlook.Application")
+    try:
+        app = win32.GetActiveObject("Outlook.Application")
+        started = False
+    except Exception:
+        log("  classic Outlook not running — starting it in the background")
+        app = win32.Dispatch("Outlook.Application")
+        started = True
+        time.sleep(15)                      # let the profile load
     ns = app.GetNamespace("MAPI")
-    return app, ns
+    return app, ns, started
+
+
+def sync_mail(ns):
+    try:
+        ns.SendAndReceive(False)
+    except Exception as e:
+        log(f"  (send/receive request failed: {e})")
+
+
+def wait_for_outbox(ns, max_seconds=180):
+    """Block until everything we queued has actually left the Outbox."""
+    deadline = time.time() + max_seconds
+    while time.time() < deadline:
+        try:
+            if ns.GetDefaultFolder(OUTBOX).Items.Count == 0:
+                return True
+        except Exception:
+            return True
+        sync_mail(ns)
+        time.sleep(10)
+    log("  WARNING: Outbox still has items after waiting — leaving Outlook open")
+    return False
 
 
 def sending_account(ns):
@@ -252,10 +285,13 @@ def main():
     ap.add_argument("--since-hours", type=float, default=36)
     ap.add_argument("--debug", action="store_true",
                     help="list accounts, folders and recent subjects scanned")
+    ap.add_argument("--wait-minutes", type=float, default=5,
+                    help="if nothing is found, keep syncing and re-checking "
+                         "for this long (default 5) before giving up")
     args = ap.parse_args()
 
     log(f"Scores relay starting (script version {SCRIPT_VERSION})")
-    app, ns = outlook_session()
+    app, ns, started = outlook_session()
     if args.debug:
         try:
             for acct in ns.Accounts:
@@ -269,7 +305,15 @@ def main():
         log(f"  TEST MODE: copies go to {test_to}, NOT to the reps")
     else:
         log("  LIVE: copies go to the sales reps")
-    items = candidate_items(ns, args.since_hours, debug=args.debug)
+    sync_mail(ns)
+    deadline = time.time() + args.wait_minutes * 60
+    while True:
+        items = candidate_items(ns, args.since_hours, debug=args.debug)
+        if items or time.time() >= deadline:
+            break
+        log("  nothing found yet — syncing mail and re-checking in 60s")
+        sync_mail(ns)
+        time.sleep(60)
     log(f"{len(items)} tagged scores email(s) received in the last "
         f"{args.since_hours:g}h not yet relayed")
 
@@ -278,6 +322,7 @@ def main():
             mark_relayed(item)
             log(f"  marked (not sent): {item.Subject}")
         log("Done (mark-existing)")
+        finish(app, ns, started, False)
         return
 
     sent = 0
@@ -288,6 +333,18 @@ def main():
         except Exception as e:
             log(f"  ERROR relaying '{item.Subject}': {e}")
     log(f"Done — {sent} relayed" + (" (dry run)" if args.dry_run else ""))
+    finish(app, ns, started, sent > 0 and not args.dry_run)
+
+
+def finish(app, ns, started, sent_something):
+    if sent_something:
+        wait_for_outbox(ns)
+    if started:
+        try:
+            app.Quit()
+            log("  closed classic Outlook (we started it)")
+        except Exception:
+            pass
 
 
 if __name__ == "__main__":

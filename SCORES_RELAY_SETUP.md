@@ -16,6 +16,12 @@
 The GitHub side stays in test mode forever (all emails to Andy). Never set
 `SCORES_LIVE_DEFAULT` — the relay *is* the delivery.
 
+**Relay test mode:** `TEST_TO` at the top of `relay_scores_outlook.py` is
+set to andy@bsgsports.com, so even the scheduled Monday run delivers the
+clean copies to Andy, not the reps. To go live, set `TEST_TO = None` on
+GitHub — the batch files download the latest script every run, so nothing
+changes on the PC.
+
 ## One-time setup (~10 minutes)
 
 Same folder as the other local scripts:
@@ -33,13 +39,11 @@ Same folder as the other local scripts:
    ```
    pip install pywin32
    ```
-3. **Classic Outlook** must be signed in as andy@bsgsports.com and open when
-   the script runs. "New Outlook" cannot be automated, but the two run side
-   by side on the same mailbox — keep using New Outlook day to day, just
-   open **Outlook (classic)** from the Start menu (or flip the "New Outlook"
-   toggle off) and leave it running in the background. Andy uses New
-   Outlook, so classic Outlook must be signed in once and left open on
-   Mondays.
+3. **Classic Outlook** must be signed in once as andy@bsgsports.com (done
+   2026-09-04). "New Outlook" cannot be automated, but the two share the
+   same mailbox. The script starts classic Outlook in the background when
+   it runs, syncs mail, sends, waits for the Outbox to empty and closes it
+   again — nothing needs to be open.
 4. **Test on yourself:** double-click `TEST_scores_relay.bat` in that folder.
    It re-sends the tagged scores emails from the last 48 hours to
    andy@bsgsports.com (not the reps), from andy@bsgsports.com — clean
@@ -62,8 +66,8 @@ Same folder as the other local scripts:
 6. OK
 
 Everything the script does is written to `relay_log.txt` in that folder.
-The PC must be logged in (screen lock is fine) and classic Outlook open at
-8:00 AM Monday; otherwise the task runs at the next login.
+The PC must be logged in (screen lock is fine) at 8:00 AM Monday;
+otherwise the task runs at the next login.
 
 ## Day-to-day
 
