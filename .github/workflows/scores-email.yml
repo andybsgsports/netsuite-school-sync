@@ -1,6 +1,10 @@
 name: Weekly Scores Email
 
 on:
+  # TEMPORARY: push trigger — production-config run, to Andy
+  push:
+    branches: ['claude/wonderful-maxwell-1c6wt0']
+    paths: ['.trigger-scores']
   schedule:
     # 12:00 UTC Monday = 7:00 AM CDT — weekly digest of last week's games
     - cron: '0 12 * * 1'
