@@ -343,6 +343,7 @@ def record_through(games, end_date):
 # ── Late-score tracker ────────────────────────────────────────────────────────
 PENDING_PATH = Path(__file__).parent / "snapshots" / "scores_pending.json"
 PENDING_MAX_AGE_DAYS = 35   # stop waiting for a score after ~5 weeks
+MAX_CONFERENCE_SIZE  = 14   # larger inferred "conference" = leaked chain, no standing
 
 
 def load_pending():
@@ -474,6 +475,40 @@ def conf_member_ids(tid, cache):
                         if g["is_conf"]) if m}
 
 
+CONFERENCES_PATH = Path(__file__).parent / "snapshots" / "conferences.json"
+_CONF_MAP = None
+
+
+def load_conference_map():
+    """Authoritative per-sport conference rosters from WIAA's directory
+    (snapshots/conferences.json, built by discover_conferences.py)."""
+    global _CONF_MAP
+    if _CONF_MAP is None:
+        _CONF_MAP = {"conferences": {}, "team_conf": {}}
+        try:
+            if CONFERENCES_PATH.exists():
+                _CONF_MAP = json.loads(CONFERENCES_PATH.read_text(encoding="utf-8"))
+                print(f"Conference directory: {len(_CONF_MAP.get('team_conf', {}))} teams "
+                      f"in {len(_CONF_MAP.get('conferences', {}))} sport-conferences "
+                      f"(built {_CONF_MAP.get('built', '?')[:10]})")
+        except Exception as e:
+            print(f"[WARN] could not read {CONFERENCES_PATH.name}: {e}")
+    return _CONF_MAP
+
+
+def conf_rivals(tid, cache):
+    """Conference rivals of team tid. Prefers WIAA's directory (exact
+    membership, e.g. the 8 'Badger - Small' boys soccer teams); falls back
+    to the inferred (C)-game chain for teams not in the directory, capped
+    so a leaked chain never yields a bogus standing."""
+    cmap = load_conference_map()
+    key = cmap.get("team_conf", {}).get(tid)
+    if key:
+        return {t for t in cmap["conferences"][key]["teams"] if t != tid}
+    rivals = conf_component(tid, cache)
+    return rivals if len(rivals) <= MAX_CONFERENCE_SIZE else set()
+
+
 def conf_component(tid, cache):
     """Full conference membership: transitive closure of (C)-game opponents
     (early in a season a team hasn't played every rival yet, but rivals of
@@ -551,8 +586,9 @@ def game_label(tid, g, cache, store):
 
     place = ""
     if my_pct is not None:
+        rivals = conf_rivals(tid, cache)
         rival_pcts = []
-        for m in conf_component(tid, cache):
+        for m in rivals:
             p = _win_pct([x for x in cache.get(m, []) if x["is_conf"]], g["date"])
             if p is not None:
                 rival_pcts.append(p)
@@ -581,8 +617,9 @@ def team_label_stats(tid, end_date, cache):
     place = ""
     my_pct = _win_pct(conf_games, end_date)
     if my_pct is not None:
+        rivals = conf_rivals(tid, cache)
         rival_pcts = []
-        for m in conf_component(tid, cache):
+        for m in rivals:
             p = _win_pct([g for g in cache.get(m, []) if g["is_conf"]], end_date)
             if p is not None:
                 rival_pcts.append(p)
@@ -880,6 +917,9 @@ def main():
     # with *), then drop off the tracker. Disabled for historical WEEK_OF
     # runs so April previews don't pollute the tracker.
     use_tracker = not WEEK_OF
+    # Only a full, real run may rewrite the tracker — a dry run or a
+    # school-filtered test would otherwise wipe every other school's entries.
+    persist_tracker = use_tracker and not DRY_RUN and not SCHOOL_FILTER
     pending = load_pending() if use_tracker else []
     still_pending, late_by_team = [], {}
     for item in pending:
@@ -914,7 +954,7 @@ def main():
     for round_no in range(1, 4):
         rivals = set()
         for tid in display_ids:
-            rivals |= conf_component(tid, schedule_cache)
+            rivals |= conf_rivals(tid, schedule_cache)
         new = sorted(rivals - set(schedule_cache))
         if not new:
             break
@@ -959,10 +999,13 @@ def main():
         })
 
     # Persist the late-score tracker (skipped for historical WEEK_OF runs)
-    if use_tracker:
+    if persist_tracker:
         saved = save_pending(still_pending)
         print(f"\nLate-score tracker: {len(saved)} game(s) awaiting a reported score "
               f"-> {PENDING_PATH.relative_to(Path(__file__).parent)}")
+    elif use_tracker:
+        print(f"\nLate-score tracker: not saved (dry run / filtered test) — "
+              f"{len(still_pending)} game(s) would be tracked")
 
     print()
     if not school_results and not SEND_EMPTY:

@@ -94,8 +94,9 @@ jobs:
           if-no-files-found: ignore
 
       - name: Commit late-score tracker
-        # Skipped for historical (week_of) runs, which don't touch the tracker.
-        if: inputs.week_of == ''
+        # Only full real runs rewrite the tracker (historical, dry-run and
+        # school-filtered runs never save it).
+        if: inputs.week_of == '' && inputs.dry_run != true && inputs.school_filter == ''
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

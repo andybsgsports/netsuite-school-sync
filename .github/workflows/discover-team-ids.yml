@@ -54,6 +54,9 @@ jobs:
           DUMP_HTML:               ${{ inputs.dump_html == true && '1' || '0' }}
 
 
+      - name: Discover conference rosters
+        run: python discover_conferences.py
+
       - name: Upload CSV as artifact
         uses: actions/upload-artifact@v4
         with:
@@ -75,7 +78,7 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add scores_schools.csv
+          git add scores_schools.csv snapshots/conferences.json
           if git diff --cached --quiet; then
             echo "No CSV changes to commit."
           else
