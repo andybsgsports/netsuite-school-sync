@@ -818,7 +818,79 @@ def load_school_reps():
 
 
 # ── Email sender ──────────────────────────────────────────────────────────────
+# Preferred: Microsoft Graph, sending genuinely from Andy's M365 mailbox
+# (andy@bsgsports.com; lands in Sent Items). Requires the OUTLOOK_* secrets
+# the contacts sync already uses, with a token that has Mail.Send consent.
+# If that's not available the Gmail SMTP path below is used automatically.
+OUTLOOK_CLIENT_ID   = os.environ.get("OUTLOOK_CLIENT_ID", "").strip()
+OUTLOOK_TENANT_ID   = os.environ.get("OUTLOOK_TENANT_ID", "").strip()
+OUTLOOK_TOKEN_CACHE = os.environ.get("OUTLOOK_TOKEN_CACHE", "").strip()
+_GRAPH_TOKEN = None
+_GRAPH_TRIED = False
+
+
+def _graph_token():
+    """Access token with Mail.Send from the saved MSAL cache, or None."""
+    global _GRAPH_TOKEN, _GRAPH_TRIED
+    if _GRAPH_TRIED:
+        return _GRAPH_TOKEN
+    _GRAPH_TRIED = True
+    if not (OUTLOOK_CLIENT_ID and OUTLOOK_TENANT_ID and OUTLOOK_TOKEN_CACHE):
+        print("[MAIL] Graph not configured — using Gmail SMTP")
+        return None
+    try:
+        from msal import PublicClientApplication, SerializableTokenCache
+        cache = SerializableTokenCache()
+        cache.deserialize(OUTLOOK_TOKEN_CACHE)
+        app = PublicClientApplication(
+            OUTLOOK_CLIENT_ID,
+            authority=f"https://login.microsoftonline.com/{OUTLOOK_TENANT_ID}",
+            token_cache=cache,
+        )
+        accounts = app.get_accounts()
+        result = (app.acquire_token_silent(["Mail.Send"], account=accounts[0])
+                  if accounts else None)
+        if result and "access_token" in result:
+            _GRAPH_TOKEN = result["access_token"]
+            print("[MAIL] Sending via Microsoft Graph from the bsgsports mailbox")
+        else:
+            print("[MAIL] Graph token lacks Mail.Send (admin consent / re-auth "
+                  "pending) — using Gmail SMTP")
+    except Exception as e:
+        print(f"[MAIL] Graph auth failed ({e}) — using Gmail SMTP")
+    return _GRAPH_TOKEN
+
+
+def _graph_send(subject, html_body, to_addr, cc_addr, bcc_addr, token):
+    def rcpts(addrs):
+        return [{"emailAddress": {"address": a.strip()}}
+                for a in (addrs or "").split(",") if a.strip()]
+    msg = {"subject": subject,
+           "body": {"contentType": "HTML", "content": html_body},
+           "toRecipients": rcpts(to_addr)}
+    if cc_addr:
+        msg["ccRecipients"] = rcpts(cc_addr)
+    if bcc_addr and bcc_addr != to_addr:
+        msg["bccRecipients"] = rcpts(bcc_addr)
+    r = requests.post("https://graph.microsoft.com/v1.0/me/sendMail",
+                      headers={"Authorization": f"Bearer {token}",
+                               "Content-Type": "application/json"},
+                      json={"message": msg, "saveToSentItems": True}, timeout=30)
+    if r.status_code == 202:
+        return True
+    print(f"  [WARN] Graph sendMail {r.status_code}: {r.text[:200]}")
+    return False
+
+
 def send_email(subject, html_body, to_addr, cc_addr=None, bcc_addr=None):
+    """Send via Graph (from andy@bsgsports.com) when available, else Gmail."""
+    token = _graph_token()
+    if token and _graph_send(subject, html_body, to_addr, cc_addr, bcc_addr, token):
+        return True
+    return _gmail_send(subject, html_body, to_addr, cc_addr, bcc_addr)
+
+
+def _gmail_send(subject, html_body, to_addr, cc_addr=None, bcc_addr=None):
     """Send HTML email via Gmail SMTP (TLS). Returns True on success."""
     if not (GMAIL_USER and GMAIL_APP_PASSWORD):
         print("  [WARN] GMAIL_USER / GMAIL_APP_PASSWORD not set — skipping send")

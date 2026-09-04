@@ -1,10 +1,6 @@
 name: Weekly Scores Email
 
 on:
-  # TEMPORARY: push trigger — full batch with restyled headers, to Andy
-  push:
-    branches: ['claude/wonderful-maxwell-1c6wt0']
-    paths: ['.trigger-scores']
   schedule:
     # 12:00 UTC Monday = 7:00 AM CDT — weekly digest of last week's games
     - cron: '0 12 * * 1'
@@ -56,11 +52,16 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install requests beautifulsoup4 gspread google-auth pandas openpyxl
+        run: pip install requests beautifulsoup4 gspread google-auth pandas openpyxl msal
 
       - name: Run scores email
         run: python scores_email.py
         env:
+          # Preferred sender: Andy's M365 mailbox via Graph (needs Mail.Send
+          # consent on the token); Gmail below is the automatic fallback.
+          OUTLOOK_CLIENT_ID:       ${{ secrets.OUTLOOK_CLIENT_ID }}
+          OUTLOOK_TENANT_ID:       ${{ secrets.OUTLOOK_TENANT_ID }}
+          OUTLOOK_TOKEN_CACHE:     ${{ secrets.OUTLOOK_TOKEN_CACHE }}
           GMAIL_USER:              ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD:      ${{ secrets.GMAIL_APP_PASSWORD }}
           # Andy's inbox for test-mode delivery and live-mode BCC. Override
