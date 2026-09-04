@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-09-03T06:26:48.622435Z",
+  "updated": "2026-09-04T06:33:14.022223Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -833,6 +833,14 @@
       "sport": "Boys Golf",
       "first": "Kurt",
       "last": "Andreasen"
+    },
+    {
+      "school": "Mauston High School",
+      "email": "marthaslyndoinn@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "John",
+      "last": "Hersil"
     },
     {
       "school": "Mauston High School",

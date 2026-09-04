@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-09-03T06:22:04.311674Z",
+  "updated": "2026-09-04T06:28:30.696090Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -348,6 +348,14 @@
     },
     {
       "school": "Antioch Community High School",
+      "email": "mitchell@massinofinancial.com",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Mitchell",
+      "last": "Massino"
+    },
+    {
+      "school": "Antioch Community High School",
       "email": "noor.abdellatif@chsd117.org",
       "role": "Head Coach",
       "sport": "Girls Cross Country",
@@ -380,14 +388,6 @@
     },
     {
       "school": "Antioch Community High School",
-      "email": "ruskchad@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Swimming",
-      "first": "Chad",
-      "last": "Rusk"
-    },
-    {
-      "school": "Antioch Community High School",
       "email": "ryan.naes@chsd117.org",
       "role": "Certified Athletic Trainer",
       "sport": "",
@@ -401,14 +401,6 @@
       "sport": "Competitive Dance",
       "first": "Sarah",
       "last": "Owen"
-    },
-    {
-      "school": "Antioch Community High School",
-      "email": "sean.connor@chsd117.org",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Sean",
-      "last": "Connor"
     },
     {
       "school": "Antioch Community High School",
@@ -3940,6 +3932,14 @@
     },
     {
       "school": "Central High School",
+      "email": "blake.stern@central301.net",
+      "role": "Head Coach",
+      "sport": "Boys Track & Field",
+      "first": "Blake",
+      "last": "Stern"
+    },
+    {
+      "school": "Central High School",
       "email": "brett.bending@d300.org",
       "role": "Principal",
       "sport": "",
@@ -3999,14 +3999,6 @@
       "email": "daniel.morgan@central301.net",
       "role": "Head Coach",
       "sport": "Boys Cross Country",
-      "first": "Daniel",
-      "last": "Morgan"
-    },
-    {
-      "school": "Central High School",
-      "email": "daniel.morgan@central301.net",
-      "role": "Head Coach",
-      "sport": "Boys Track & Field",
       "first": "Daniel",
       "last": "Morgan"
     },
@@ -5268,6 +5260,14 @@
     },
     {
       "school": "Delavan-Darien High School",
+      "email": "Claynelson126@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Tennis",
+      "first": "Clay",
+      "last": "Nelson"
+    },
+    {
+      "school": "Delavan-Darien High School",
       "email": "colewilliams.wi@gmail.com",
       "role": "Head Coach",
       "sport": "Boys & Girls Wrestling",
@@ -5366,7 +5366,7 @@
       "school": "Delavan-Darien High School",
       "email": "matt.nelson@gcj2.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys & Girls Tennis",
+      "sport": "Boys Tennis",
       "first": "Matt",
       "last": "Nelson"
     },
@@ -13732,6 +13732,14 @@
     },
     {
       "school": "Mundelein High School",
+      "email": "clunsford@d120.org",
+      "role": "Head Coach",
+      "sport": "Girls Gymnastics",
+      "first": "Christian",
+      "last": "Lunsford"
+    },
+    {
+      "school": "Mundelein High School",
       "email": "cnewsom@d120.org",
       "role": "Coach",
       "sport": "Sideline Cheer",
@@ -13841,6 +13849,14 @@
       "sport": "Girls Flag Football",
       "first": "Julie",
       "last": "Ellingsen"
+    },
+    {
+      "school": "Mundelein High School",
+      "email": "jhesse@d120.org",
+      "role": "Head Coach",
+      "sport": "Boys Volleyball",
+      "first": "Jarod",
+      "last": "Hesse"
     },
     {
       "school": "Mundelein High School",
@@ -15417,14 +15433,6 @@
       "sport": "Boys Wrestling",
       "first": "Ross",
       "last": "Ryan"
-    },
-    {
-      "school": "Prairie Ridge High School",
-      "email": "sbusam@d155.org",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Scott",
-      "last": "Busam"
     },
     {
       "school": "Prairie Ridge High School",

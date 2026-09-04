@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-09-03T06:24:18.808766Z",
+  "updated": "2026-09-04T06:30:43.859295Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -2228,6 +2228,14 @@
     },
     {
       "school": "Lacrosse Central High School",
+      "email": "mmickels@lacrossesd.org",
+      "role": "Head Coach",
+      "sport": "Boys Golf",
+      "first": "Madeline",
+      "last": "Mickelson"
+    },
+    {
+      "school": "Lacrosse Central High School",
       "email": "mroche@lacrossesd.org",
       "role": "Head Coach",
       "sport": "Girls Wrestling",
@@ -2254,7 +2262,7 @@
       "school": "Lacrosse Central High School",
       "email": "pholman@lacrossesd.org",
       "role": "Head Coach",
-      "sport": "Girls Tennis",
+      "sport": "Boys & Girls Tennis",
       "first": "Paul",
       "last": "Holman"
     },
@@ -2273,6 +2281,14 @@
       "sport": "Boys Basketball",
       "first": "Todd",
       "last": "Fergot"
+    },
+    {
+      "school": "Lacrosse Central High School",
+      "email": "tpaletta@lacrossesd.org",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Tony",
+      "last": "Paletta"
     },
     {
       "school": "Lacrosse Central High School",
@@ -2457,6 +2473,14 @@
       "sport": "Girls Softball",
       "first": "Matt",
       "last": "Marohl"
+    },
+    {
+      "school": "Lacrosse Logan High School",
+      "email": "mmickels@lacrossesd.org",
+      "role": "Head Coach",
+      "sport": "Boys Golf",
+      "first": "Madeline",
+      "last": "Mickelson"
     },
     {
       "school": "Lacrosse Logan High School",
