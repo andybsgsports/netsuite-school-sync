@@ -37,7 +37,7 @@ CC_FOR = {
     "paul@bsgsports.com": "julie@bsgsports.com",
 }
 
-SCRIPT_VERSION = "2026-09-04d"           # printed at startup so we know which copy is running
+SCRIPT_VERSION = "2026-09-04e"           # printed at startup so we know which copy is running
 SENDER_ADDRESS = "andy@bsgsports.com"     # account to send from
 RELAYED_CATEGORY = "Scores Relayed"
 TAG_RE = re.compile(r"^\[TEST\s*(?:→|->|>)\s*([^\]]+)\]\s*(.+)$")
@@ -125,10 +125,29 @@ def all_mail_folders(ns, debug=False):
     return out
 
 
-def candidate_items(ns, since_hours, debug=False):
-    cutoff = datetime.now() - timedelta(hours=since_hours)
-    out, seen_ids = [], set()
-    for folder in all_mail_folders(ns, debug=debug):
+def inbox_folders(ns, debug=False):
+    """Andy's Inbox and its subfolders — where the scores emails land."""
+    inbox = None
+    try:
+        inbox = ns.GetDefaultFolder(INBOX)
+    except Exception:
+        try:
+            for store in ns.Stores:
+                if SENDER_ADDRESS in str(store.DisplayName).lower():
+                    inbox = store.GetDefaultFolder(INBOX)
+                    break
+        except Exception as e:
+            log(f"  (inbox lookup failed: {e})")
+    if inbox is None:
+        return []
+    folders = list(_walk_mail_folders(inbox))
+    if debug:
+        log(f"  inbox '{inbox.Name}': {len(folders)} folder(s) incl. subfolders")
+    return folders
+
+
+def _scan_folders(folders, cutoff, seen_ids, out, debug=False):
+    for folder in folders:
         name = folder.Name
         if name.lower() in ("deleted items", "junk email", "junk e-mail",
                             "sent items", "outbox", "drafts", "archive"):
@@ -163,6 +182,23 @@ def candidate_items(ns, since_hours, debug=False):
                 log(f"  skip (unreadable item in {name}): {e}")
         if debug and checked:
             log(f"  folder '{name}': {checked} recent item(s) scanned")
+
+
+def candidate_items(ns, since_hours, debug=False):
+    cutoff = datetime.now() - timedelta(hours=since_hours)
+    out, seen_ids = [], set()
+    # Fast path: Inbox (+ subfolders). Stop here when the batch is found.
+    first = inbox_folders(ns, debug=debug)
+    _scan_folders(first, cutoff, seen_ids, out, debug=debug)
+    if out:
+        return out
+    # Fallback: every other mail folder in every store (rule-filed elsewhere).
+    if debug:
+        log("  nothing in Inbox — scanning the rest of the mailbox")
+    done = {f.EntryID for f in first}
+    rest = [f for f in all_mail_folders(ns, debug=debug)
+            if f.EntryID not in done]
+    _scan_folders(rest, cutoff, seen_ids, out, debug=debug)
     return out
 
 
