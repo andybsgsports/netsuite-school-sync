@@ -36,6 +36,7 @@ Env vars:
 """
 
 import csv
+import json
 import os
 import re
 import smtplib
@@ -288,7 +289,7 @@ def fetch_wiaa_schedule(team_id, school_name=""):
             "level":        cell(ci_level),
         })
 
-    games = _dedupe_games(games, team_id)
+    games = _dedupe_games(games, team_id, _page_sport(soup))
 
     if DUMP_HTML:
         if games:
@@ -339,13 +340,76 @@ def record_through(games, end_date):
     return f"{w}-{l}-{t}" if t else f"{w}-{l}"
 
 
-def _dedupe_games(games, team_id=""):
+# ── Late-score tracker ────────────────────────────────────────────────────────
+PENDING_PATH = Path(__file__).parent / "snapshots" / "scores_pending.json"
+PENDING_MAX_AGE_DAYS = 35   # stop waiting for a score after ~5 weeks
+
+
+def load_pending():
+    """Games shown as 'no score' in earlier emails, awaiting a result."""
+    try:
+        if PENDING_PATH.exists():
+            return json.loads(PENDING_PATH.read_text(encoding="utf-8"))
+    except Exception as e:
+        print(f"[WARN] could not read {PENDING_PATH.name}: {e}")
+    return []
+
+
+def save_pending(items):
+    """De-duplicate and persist the tracker (committed by the workflow)."""
+    seen, out = set(), []
+    for it in items:
+        key = (it["team_id"], it.get("contest_id") or "",
+               it["date"], it["opponent"].lower())
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(it)
+    PENDING_PATH.parent.mkdir(parents=True, exist_ok=True)
+    PENDING_PATH.write_text(json.dumps(out, indent=2), encoding="utf-8")
+    return out
+
+
+def _find_game(games, item):
+    """Locate a tracked game in a freshly fetched schedule — by ContestID
+    when available, else by date + opponent + home/away."""
+    cid = item.get("contest_id") or ""
+    if cid:
+        for g in games:
+            if g["contest_id"] == cid:
+                return g
+    for g in games:
+        if (str(g["date"]) == item["date"]
+                and g["opponent"].lower() == item["opponent"].lower()
+                and g["is_home"] == item["is_home"]):
+            return g
+    return None
+
+
+# Sports where two games vs the same opponent on one day are legitimate
+# (doubleheaders). Everywhere else a same-day rematch is a duplicate entry.
+_DOUBLEHEADER_SPORTS = ("baseball", "softball")
+
+
+def _page_sport(soup):
+    """Sport of a WIAA team schedule page, from the selected option of the
+    page's sport dropdown (e.g. 'Boys Soccer'). '' if not found."""
+    sel = soup.find("select", id="SchoolSSID")
+    if sel:
+        opt = sel.find("option", selected=True)
+        if opt:
+            return opt.get_text(" ", strip=True)
+    return ""
+
+
+def _dedupe_games(games, team_id="", sport=""):
     """Collapse duplicate schedule entries. Schools occasionally enter the
-    same contest twice on WIAA (once per school), which would double-count
-    the game and inflate the record. Two rows are the same contest when
-    date, opponent, home/away, result and score all match AND they don't
-    carry two different start times (a real doubleheader has distinct
-    times; a duplicate entry repeats or omits the time)."""
+    same contest twice on WIAA (once per school), which double-lists the
+    game and inflates the record. Two rows with the same date, opponent,
+    home/away, result and score are the same contest — except in
+    doubleheader sports (baseball/softball), where they're only merged if
+    they don't carry two different start times."""
+    is_dh_sport = any(s in sport.lower() for s in _DOUBLEHEADER_SPORTS)
     seen = {}
     out = []
     for g in games:
@@ -354,10 +418,13 @@ def _dedupe_games(games, team_id=""):
         prior = seen.get(key)
         if prior is not None:
             t1, t2 = prior["time_min"], g["time_min"]
-            if t1 is None or t2 is None or t1 == t2:
+            distinct_times = (t1 is not None and t2 is not None and t1 != t2)
+            if not (is_dh_sport and distinct_times):
                 if DUMP_HTML:
-                    print(f"  [DEDUPE] TeamID {team_id}: dropped duplicate "
-                          f"{g['date']} vs {g['opponent']} {g['result']} {g['score']}")
+                    print(f"  [DEDUPE] TeamID {team_id} ({sport or 'sport?'}): dropped "
+                          f"duplicate {g['date']} vs {g['opponent']} "
+                          f"{g['result']} {g['score']} (contest {g['contest_id']}, "
+                          f"time {t2} vs kept {t1})")
                 continue
         seen.setdefault(key, g)
         out.append(g)
@@ -607,7 +674,7 @@ def build_html(school_results, week_start, week_end):
                 rows.append(f"""
         <tr>
           <td style="{cell};white-space:nowrap;color:#888;width:62px">
-            {g["date"].strftime("%a %m/%d")}
+            {g["date"].strftime("%a %m/%d")}{'<span style="color:#c62828;font-weight:700" title="score reported after last week&#39;s email">*</span>' if g.get("late") else ""}
           </td>
           <td style="{cell}">{opp}</td>
           <td style="{cell};text-align:center;white-space:nowrap;width:70px">{result_html}</td>
@@ -627,6 +694,14 @@ def build_html(school_results, week_start, week_end):
     body_html = "".join(blocks) if blocks else """
       <p style="padding:20px;text-align:center;color:#999">
         No games found last week.
+      </p>"""
+
+    # Footnote when any row is a late-reported score from an earlier week
+    if any(g.get("late") for item in school_results for g in item["games"]):
+        body_html += """
+      <p style="margin:14px 0 0;font-size:12px;color:#777">
+        <span style="color:#c62828;font-weight:700">*</span>
+        Score reported after last week's email (game from a prior week).
       </p>"""
 
     return f"""<!DOCTYPE html>
@@ -800,6 +875,31 @@ def main():
         for e in schools
     ]
 
+    # Late-reported scores: games shown as "no score" in an earlier email
+    # whose result has since been posted get pulled into THIS email (marked
+    # with *), then drop off the tracker. Disabled for historical WEEK_OF
+    # runs so April previews don't pollute the tracker.
+    use_tracker = not WEEK_OF
+    pending = load_pending() if use_tracker else []
+    still_pending, late_by_team = [], {}
+    for item in pending:
+        g = _find_game(schedule_cache.get(item["team_id"], []), item)
+        if g is None:
+            continue                      # game removed from schedule — drop
+        if g["played"]:
+            g["late"] = True
+            late_by_team.setdefault(item["team_id"], []).append(g)
+        elif (week_end - g["date"]).days <= PENDING_MAX_AGE_DAYS:
+            still_pending.append(item)    # still unreported — keep waiting
+    if late_by_team:
+        print(f"Late-reported scores now available: "
+              f"{sum(len(v) for v in late_by_team.values())}")
+
+    for entry, wg in zip(schools, week_by_entry):
+        for g in late_by_team.get(entry["team_id"], []):
+            if not (week_start <= g["date"] <= week_end):   # not already in week
+                wg.append(g)
+
     # Pass B: week-game opponents (their record + standing appear in rows)
     display_opps = {g["opp_team_id"]
                     for wg in week_by_entry for g in wg if g["opp_team_id"]}
@@ -839,12 +939,30 @@ def main():
             srec = f" ({g['self_record']})" if g["self_record"] else ""
             orec = f" ({g['opp_record']})" if g["opp_record"] else ""
             sc = f"  {g['result']} {g['score']}" if g["played"] else "  (no score)"
-            print(f"       {g['date']}{srec} {ha} {g['opponent']}{orec}{sc}")
+            star = "*" if g.get("late") else ""
+            print(f"       {g['date']}{star}{srec} {ha} {g['opponent']}{orec}{sc}")
+            # Unscored games from THIS week go on the tracker for next time
+            if use_tracker and not g["played"] and not g.get("late"):
+                still_pending.append({
+                    "team_id":    entry["team_id"],
+                    "school":     entry["school"],
+                    "sport":      entry["sport"],
+                    "contest_id": g["contest_id"],
+                    "date":       str(g["date"]),
+                    "opponent":   g["opponent"],
+                    "is_home":    g["is_home"],
+                })
         school_results.append({
             "school": entry["school"],
             "sport":  entry["sport"],
             "games":  week_games,
         })
+
+    # Persist the late-score tracker (skipped for historical WEEK_OF runs)
+    if use_tracker:
+        saved = save_pending(still_pending)
+        print(f"\nLate-score tracker: {len(saved)} game(s) awaiting a reported score "
+              f"-> {PENDING_PATH.relative_to(Path(__file__).parent)}")
 
     print()
     if not school_results and not SEND_EMPTY:

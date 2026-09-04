@@ -43,6 +43,8 @@ jobs:
   scores:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    permissions:
+      contents: write  # commits snapshots/scores_pending.json (late-score tracker)
 
     steps:
       - name: Checkout code
@@ -94,3 +96,21 @@ jobs:
           path: dry_run_email_*.html
           retention-days: 3
           if-no-files-found: ignore
+
+      - name: Commit late-score tracker
+        # Skipped for historical (week_of) runs, which don't touch the tracker.
+        if: inputs.week_of == ''
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add snapshots/scores_pending.json
+          if git diff --cached --quiet; then
+            echo "Tracker unchanged."
+          else
+            git commit -m "chore: update late-score tracker [skip ci]"
+            for i in 1 2 3; do
+              git pull --rebase && git push && break
+              echo "push attempt $i failed, retrying..."
+              sleep 5
+            done
+          fi
