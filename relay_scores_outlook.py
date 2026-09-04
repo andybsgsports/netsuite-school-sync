@@ -69,27 +69,85 @@ def sending_account(ns):
     return None
 
 
-def candidate_items(ns, since_hours):
-    inbox = ns.GetDefaultFolder(INBOX)
-    items = inbox.Items
-    items.Sort("[ReceivedTime]", True)
-    cutoff = datetime.now() - timedelta(hours=since_hours)
-    # Outlook Restrict wants US-style date text
-    restricted = items.Restrict(f"[ReceivedTime] >= '{cutoff:%m/%d/%Y %I:%M %p}'")
+def _received_local(item):
+    """Naive local datetime for item.ReceivedTime (pywin32 gives tz-aware)."""
+    rt = item.ReceivedTime
+    try:
+        return rt.replace(tzinfo=None)
+    except Exception:
+        return datetime(rt.year, rt.month, rt.day, rt.hour, rt.minute, rt.second)
+
+
+def _walk_mail_folders(folder, depth=0, max_depth=4):
+    """Yield this folder and its subfolders (mail folders only)."""
+    try:
+        if folder.DefaultItemType == 0:          # olMailItem folders
+            yield folder
+    except Exception:
+        pass
+    if depth >= max_depth:
+        return
+    try:
+        for sub in folder.Folders:
+            yield from _walk_mail_folders(sub, depth + 1, max_depth)
+    except Exception:
+        pass
+
+
+def all_mail_folders(ns):
+    """Every mail folder in every account/store of the Outlook profile
+    (inbox, subfolders, other mailboxes) — so rule-filed mail is found."""
     out = []
-    for item in restricted:
+    try:
+        for store in ns.Stores:
+            try:
+                out.extend(_walk_mail_folders(store.GetRootFolder()))
+            except Exception as e:
+                log(f"  (store {getattr(store, 'DisplayName', '?')} skipped: {e})")
+    except Exception as e:
+        log(f"  (stores unavailable: {e}); falling back to default inbox")
+        out.append(ns.GetDefaultFolder(INBOX))
+    return out
+
+
+def candidate_items(ns, since_hours, debug=False):
+    cutoff = datetime.now() - timedelta(hours=since_hours)
+    out, seen_ids = [], set()
+    for folder in all_mail_folders(ns):
+        name = folder.Name
+        if name.lower() in ("deleted items", "junk email", "junk e-mail",
+                            "sent items", "outbox", "drafts", "archive"):
+            continue
         try:
-            if getattr(item, "Class", 0) != 43:      # olMail only
-                continue
-            subject = str(item.Subject or "")
-            if not TAG_RE.match(subject):
-                continue
-            cats = str(item.Categories or "")
-            if RELAYED_CATEGORY.lower() in cats.lower():
-                continue
-            out.append(item)
-        except Exception as e:
-            log(f"  skip (unreadable item): {e}")
+            items = folder.Items
+            items.Sort("[ReceivedTime]", True)
+        except Exception:
+            continue
+        checked = 0
+        for item in items:
+            try:
+                if getattr(item, "Class", 0) != 43:      # olMail only
+                    continue
+                received = _received_local(item)
+                if received < cutoff:
+                    break                                # sorted desc: done here
+                checked += 1
+                subject = str(item.Subject or "")
+                if debug and checked <= 5:
+                    log(f"    [{name}] {received:%m/%d %H:%M}  {subject[:90]}")
+                if not TAG_RE.match(subject):
+                    continue
+                cats = str(item.Categories or "")
+                if RELAYED_CATEGORY.lower() in cats.lower():
+                    continue
+                if item.EntryID in seen_ids:
+                    continue
+                seen_ids.add(item.EntryID)
+                out.append(item)
+            except Exception as e:
+                log(f"  skip (unreadable item in {name}): {e}")
+        if debug and checked:
+            log(f"  folder '{name}': {checked} recent item(s) scanned")
     return out
 
 
@@ -138,11 +196,21 @@ def main():
     ap.add_argument("--mark-existing", action="store_true",
                     help="tag all current matches as relayed without sending")
     ap.add_argument("--since-hours", type=float, default=36)
+    ap.add_argument("--debug", action="store_true",
+                    help="list accounts, folders and recent subjects scanned")
     args = ap.parse_args()
 
     log("Scores relay starting")
     app, ns = outlook_session()
-    items = candidate_items(ns, args.since_hours)
+    if args.debug:
+        try:
+            for acct in ns.Accounts:
+                log(f"  account: {acct.SmtpAddress}")
+            for store in ns.Stores:
+                log(f"  store:   {store.DisplayName}")
+        except Exception as e:
+            log(f"  (could not list accounts: {e})")
+    items = candidate_items(ns, args.since_hours, debug=args.debug)
     log(f"{len(items)} tagged scores email(s) received in the last "
         f"{args.since_hours:g}h not yet relayed")
 
