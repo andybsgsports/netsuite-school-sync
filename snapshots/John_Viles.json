@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-09-04T06:34:41.058855Z",
+  "updated": "2026-09-05T06:28:12.569424Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -4348,14 +4348,6 @@
     },
     {
       "school": "Oshkosh West High School",
-      "email": "brad.jodarski@oshkosh.k12.wi.us",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Brad",
-      "last": "Jodarski"
-    },
-    {
-      "school": "Oshkosh West High School",
       "email": "bryan.davis@oshkosh.k12.wi.us",
       "role": "Superintendent",
       "sport": "",
@@ -4513,6 +4505,14 @@
       "sport": "Boys & Girls Cross Country",
       "first": "Stephanie",
       "last": "Polak"
+    },
+    {
+      "school": "Oshkosh West High School",
+      "email": "tanner.schieve@oshkosh.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Tanner",
+      "last": "Schieve"
     },
     {
       "school": "Oshkosh West High School",

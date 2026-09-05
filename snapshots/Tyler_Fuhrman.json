@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-09-04T06:30:43.859295Z",
+  "updated": "2026-09-05T06:24:04.264824Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -657,6 +657,14 @@
       "sport": "",
       "first": "Lisa",
       "last": "Wallin-Kapinus"
+    },
+    {
+      "school": "Boscobel High School",
+      "email": "milltany@boscobel.k12.wi.us",
+      "role": "Assistant Athletic Director",
+      "sport": "",
+      "first": "Tanya",
+      "last": "Miller"
     },
     {
       "school": "Boscobel High School",
@@ -6317,7 +6325,7 @@
     {
       "school": "Wonewoc-Center High School",
       "email": "beramik@wc.k12.wi.us",
-      "role": "Athletic Director",
+      "role": "Superintendent",
       "sport": "",
       "first": "Mike",
       "last": "Beranek"

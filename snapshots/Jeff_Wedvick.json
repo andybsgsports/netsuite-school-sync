@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-09-04T06:35:28.676800Z",
+  "updated": "2026-09-05T06:29:03.284014Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -1617,6 +1617,14 @@
       "sport": "Girls Hockey",
       "first": "Dan",
       "last": "Wade"
+    },
+    {
+      "school": "Grafton High School",
+      "email": "hkunick@grafton.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "Helen",
+      "last": "Kunick"
     },
     {
       "school": "Grafton High School",

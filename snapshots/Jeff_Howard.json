@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-09-04T06:29:29.737316Z",
+  "updated": "2026-09-05T06:22:47.111336Z",
   "records": [
     {
       "school": "Albany High School",
@@ -126,7 +126,7 @@
       "school": "Argyle High School",
       "email": "gsutter89@hotmail.com",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
+      "sport": "Boys Wrestling",
       "first": "Grant",
       "last": "Sutter"
     },
@@ -2982,7 +2982,7 @@
       "school": "Pecatonica High School",
       "email": "gsutter89@hotmail.com",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
+      "sport": "Boys Wrestling",
       "first": "Grant",
       "last": "Sutter"
     },
@@ -4472,7 +4472,7 @@
       "role": "AD Admin Assistant",
       "sport": "",
       "first": "Jared",
-      "last": "Cralam"
+      "last": "Cralam - Athletic Registration"
     },
     {
       "school": "Waunakee School District",
@@ -4485,7 +4485,7 @@
     {
       "school": "Waunakee School District",
       "email": "jenlockman@waunakee.k12.wi.us",
-      "role": "AD Admin Assistant",
+      "role": "Assistant Athletic Director",
       "sport": "",
       "first": "Jen",
       "last": "Lockman"
@@ -4577,6 +4577,14 @@
       "sport": "Boys Soccer",
       "first": "Ross",
       "last": "Nelson"
+    },
+    {
+      "school": "Waunakee School District",
+      "email": "stevenerato@waunakee.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Steve",
+      "last": "Erato - Game Manager"
     },
     {
       "school": "Waunakee School District",

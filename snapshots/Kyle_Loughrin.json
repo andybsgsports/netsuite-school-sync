@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-09-04T06:32:36.448228Z",
+  "updated": "2026-09-05T06:26:02.276478Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -321,14 +321,6 @@
       "sport": "Girls Softball",
       "first": "David",
       "last": "Soda"
-    },
-    {
-      "school": "Appleton East High School",
-      "email": "engellandsamue@aasd.k12.wi.us",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Samuel",
-      "last": "Engelland"
     },
     {
       "school": "Appleton East High School",
@@ -3932,6 +3924,14 @@
     },
     {
       "school": "Hortonville High School",
+      "email": "samuelengelland@hasd.org",
+      "role": "Assistant Principal",
+      "sport": "",
+      "first": "Samuel",
+      "last": "Engelland"
+    },
+    {
+      "school": "Hortonville High School",
       "email": "steph.brunkhorst@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Hockey",
@@ -5100,14 +5100,6 @@
     },
     {
       "school": "Marinette High School",
-      "email": "jmiller2@marinette.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Volleyball",
-      "first": "Jenna",
-      "last": "Miller"
-    },
-    {
-      "school": "Marinette High School",
       "email": "KKacalo@gillettcementproducts.com",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -5145,6 +5137,14 @@
       "sport": "Boys Football",
       "first": "Nathan",
       "last": "Anderson"
+    },
+    {
+      "school": "Marinette High School",
+      "email": "roedcm24@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Cailyn",
+      "last": "Roeder"
     },
     {
       "school": "Marinette High School",
@@ -7977,14 +7977,6 @@
       "sport": "Boys Swimming & Diving",
       "first": "Julie",
       "last": "Collison"
-    },
-    {
-      "school": "Southern Door High School",
-      "email": "pclaflin@sdsd.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Track and Field",
-      "first": "Pete",
-      "last": "Claflin"
     },
     {
       "school": "Southern Door High School",

@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-09-04T06:28:30.696090Z",
+  "updated": "2026-09-05T06:21:42.818201Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -4780,6 +4780,14 @@
     },
     {
       "school": "Crystal Lake South High School",
+      "email": "amoretti@d155.org",
+      "role": "Asst. Boys Athletic Director & Asst. Girls Athletic Director",
+      "sport": "",
+      "first": "Tony",
+      "last": "Moretti"
+    },
+    {
+      "school": "Crystal Lake South High School",
       "email": "ballen@d155.org",
       "role": "Head Coach",
       "sport": "Boys Soccer",
@@ -4918,7 +4926,7 @@
       "school": "Crystal Lake South High School",
       "email": "mscheurich@d155.org",
       "role": "Head Coach",
-      "sport": "Boys & Girls Tennis",
+      "sport": "Girls Tennis",
       "first": "Mark",
       "last": "Scheurich"
     },
@@ -5006,7 +5014,7 @@
       "school": "Crystal Lake South High School",
       "email": "slattyak@d155.org",
       "role": "Head Coach",
-      "sport": "Girls Swimming",
+      "sport": "Boys & Girls Swimming",
       "first": "Scott",
       "last": "Lattyak"
     },
@@ -5049,6 +5057,14 @@
       "sport": "Boys Lacrosse",
       "first": "Tim",
       "last": "Lenckus"
+    },
+    {
+      "school": "Crystal Lake South High School",
+      "email": "trevorjauch@d155.org",
+      "role": "Asst. Boys Athletic Director & Asst. Girls Athletic Director",
+      "sport": "",
+      "first": "Trevor",
+      "last": "Jauch"
     },
     {
       "school": "Crystal Lake South High School",
@@ -5764,22 +5780,6 @@
     },
     {
       "school": "Durand High School",
-      "email": "edgjohnston@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Eddie",
-      "last": "Johnston"
-    },
-    {
-      "school": "Durand High School",
-      "email": "kalberstett@cusd322.org",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Kurt",
-      "last": "Alberstett"
-    },
-    {
-      "school": "Durand High School",
       "email": "masche@cusd322.org",
       "role": "Activities Director's Assistant & Boys Athletic Director's Assistant & Girls Athletic Director's Assistant",
       "sport": "",
@@ -5825,6 +5825,14 @@
       "sport": "",
       "first": "Stacy",
       "last": "Ross"
+    },
+    {
+      "school": "Durand High School",
+      "email": "srufener@cusd322.org",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Shanna",
+      "last": "Rufener"
     },
     {
       "school": "Durand High School",
@@ -10772,14 +10780,6 @@
     },
     {
       "school": "Kenosha Bradford High School",
-      "email": "bmogense@kusd.edu",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Bryan",
-      "last": "Mogensen"
-    },
-    {
-      "school": "Kenosha Bradford High School",
       "email": "broyal@kusd.edu",
       "role": "Head Coach",
       "sport": "Girls Soccer",
@@ -10929,6 +10929,14 @@
       "sport": "Girls Basketball",
       "first": "Nicole",
       "last": "Ferrille"
+    },
+    {
+      "school": "Kenosha Bradford High School",
+      "email": "nmyers@kusd.edu",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Nick",
+      "last": "Myers"
     },
     {
       "school": "Kenosha Bradford High School",
