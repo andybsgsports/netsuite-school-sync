@@ -243,24 +243,6 @@
     "is_home": false
   },
   {
-    "team_id": "143752",
-    "school": "Freedom High School",
-    "sport": "Girls Volleyball",
-    "contest_id": "402329",
-    "date": "2026-08-28",
-    "opponent": "Edgar",
-    "is_home": true
-  },
-  {
-    "team_id": "143752",
-    "school": "Freedom High School",
-    "sport": "Girls Volleyball",
-    "contest_id": "405489",
-    "date": "2026-08-29",
-    "opponent": "Kaukauna",
-    "is_home": true
-  },
-  {
     "team_id": "143645",
     "school": "Hamilton High School",
     "sport": "Girls Volleyball",
@@ -342,15 +324,6 @@
     "is_home": false
   },
   {
-    "team_id": "143653",
-    "school": "Kaukauna High School",
-    "sport": "Girls Volleyball",
-    "contest_id": "405489",
-    "date": "2026-08-29",
-    "opponent": "Freedom",
-    "is_home": false
-  },
-  {
     "team_id": "142862",
     "school": "Kenosha St. Joseph Catholic High School",
     "sport": "Boys Soccer",
@@ -394,15 +367,6 @@
     "date": "2026-08-27",
     "opponent": "Waupun",
     "is_home": true
-  },
-  {
-    "team_id": "143665",
-    "school": "Menasha High School",
-    "sport": "Girls Volleyball",
-    "contest_id": "405618",
-    "date": "2026-08-25",
-    "opponent": "Notre Dame",
-    "is_home": false
   },
   {
     "team_id": "143900",
@@ -486,42 +450,6 @@
     "is_home": false
   },
   {
-    "team_id": "143786",
-    "school": "New London High School",
-    "sport": "Girls Volleyball",
-    "contest_id": "405617",
-    "date": "2026-08-25",
-    "opponent": "Notre Dame",
-    "is_home": false
-  },
-  {
-    "team_id": "143790",
-    "school": "Notre Dame Academy High School",
-    "sport": "Girls Volleyball",
-    "contest_id": "405617",
-    "date": "2026-08-25",
-    "opponent": "New London",
-    "is_home": true
-  },
-  {
-    "team_id": "143790",
-    "school": "Notre Dame Academy High School",
-    "sport": "Girls Volleyball",
-    "contest_id": "405618",
-    "date": "2026-08-25",
-    "opponent": "Menasha",
-    "is_home": true
-  },
-  {
-    "team_id": "143790",
-    "school": "Notre Dame Academy High School",
-    "sport": "Girls Volleyball",
-    "contest_id": "405619",
-    "date": "2026-08-25",
-    "opponent": "Oshkosh North",
-    "is_home": true
-  },
-  {
     "team_id": "142719",
     "school": "Oconomowoc High School",
     "sport": "Boys Soccer",
@@ -538,24 +466,6 @@
     "date": "2026-08-28",
     "opponent": "Brookfield Central",
     "is_home": true
-  },
-  {
-    "team_id": "142764",
-    "school": "Onalaska High School",
-    "sport": "Boys Soccer",
-    "contest_id": "402621",
-    "date": "2026-08-29",
-    "opponent": "Wisconsin Rapids Lincoln",
-    "is_home": false
-  },
-  {
-    "team_id": "143686",
-    "school": "Oshkosh North High School",
-    "sport": "Girls Volleyball",
-    "contest_id": "405619",
-    "date": "2026-08-25",
-    "opponent": "Notre Dame",
-    "is_home": false
   },
   {
     "team_id": "143913",
@@ -882,21 +792,1722 @@
     "is_home": true
   },
   {
-    "team_id": "142733",
-    "school": "Wisconsin Rapids High School",
-    "sport": "Boys Soccer",
-    "contest_id": "402621",
-    "date": "2026-08-29",
-    "opponent": "Onalaska",
-    "is_home": true
-  },
-  {
     "team_id": "142847",
     "school": "Xavier High School",
     "sport": "Boys Soccer",
     "contest_id": "407484",
     "date": "2026-08-29",
     "opponent": "Appleton West",
+    "is_home": false
+  },
+  {
+    "team_id": "153983",
+    "school": "Abundant Life Christian High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "405314",
+    "date": "2026-09-03",
+    "opponent": "Palmyra-Eagle",
+    "is_home": false
+  },
+  {
+    "team_id": "143838",
+    "school": "Algoma High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "403992",
+    "date": "2026-09-03",
+    "opponent": "Green Bay N.E.W. Lutheran",
+    "is_home": true
+  },
+  {
+    "team_id": "142795",
+    "school": "Antigo High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402680",
+    "date": "2026-09-01",
+    "opponent": "Lakeland",
+    "is_home": false
+  },
+  {
+    "team_id": "142894",
+    "school": "Appleton North High School",
+    "sport": "Boys Volleyball",
+    "contest_id": "407324",
+    "date": "2026-09-05",
+    "opponent": "Middleton",
+    "is_home": true
+  },
+  {
+    "team_id": "142894",
+    "school": "Appleton North High School",
+    "sport": "Boys Volleyball",
+    "contest_id": "407325",
+    "date": "2026-09-05",
+    "opponent": "Muskego",
+    "is_home": true
+  },
+  {
+    "team_id": "142683",
+    "school": "Appleton West High School",
+    "sport": "Boys Soccer",
+    "contest_id": "407698",
+    "date": "2026-09-03",
+    "opponent": "New London",
+    "is_home": true
+  },
+  {
+    "team_id": "146079",
+    "school": "Arcadia High School",
+    "sport": "Boys Football",
+    "contest_id": "400283",
+    "date": "2026-09-04",
+    "opponent": "Viroqua",
+    "is_home": false
+  },
+  {
+    "team_id": "142896",
+    "school": "Arrowhead High School",
+    "sport": "Boys Volleyball",
+    "contest_id": "407352",
+    "date": "2026-09-05",
+    "opponent": "Wauwatosa West",
+    "is_home": false
+  },
+  {
+    "team_id": "143961",
+    "school": "Barneveld High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "405002",
+    "date": "2026-09-03",
+    "opponent": "Black Hawk",
+    "is_home": false
+  },
+  {
+    "team_id": "143620",
+    "school": "Bay Port High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "407605",
+    "date": "2026-09-05",
+    "opponent": "Mosinee",
+    "is_home": true
+  },
+  {
+    "team_id": "143622",
+    "school": "Beloit Memorial High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "403932",
+    "date": "2026-09-01",
+    "opponent": "Elkhorn",
+    "is_home": true
+  },
+  {
+    "team_id": "143966",
+    "school": "Black Hawk High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "405002",
+    "date": "2026-09-03",
+    "opponent": "Barneveld",
+    "is_home": true
+  },
+  {
+    "team_id": "143966",
+    "school": "Black Hawk High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "405034",
+    "date": "2026-09-05",
+    "opponent": "Monroe",
+    "is_home": false
+  },
+  {
+    "team_id": "143966",
+    "school": "Black Hawk High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "405035",
+    "date": "2026-09-05",
+    "opponent": "Palmyra-Eagle",
+    "is_home": true
+  },
+  {
+    "team_id": "143846",
+    "school": "Boscobel High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "407121",
+    "date": "2026-09-05",
+    "opponent": "Kickapoo",
+    "is_home": true
+  },
+  {
+    "team_id": "142899",
+    "school": "Brookfield East High School",
+    "sport": "Boys Volleyball",
+    "contest_id": "402155",
+    "date": "2026-09-05",
+    "opponent": "Nicolet",
+    "is_home": true
+  },
+  {
+    "team_id": "142899",
+    "school": "Brookfield East High School",
+    "sport": "Boys Volleyball",
+    "contest_id": "407374",
+    "date": "2026-09-05",
+    "opponent": "Kettle Moraine",
+    "is_home": true
+  },
+  {
+    "team_id": "143624",
+    "school": "Brookfield East High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "403941",
+    "date": "2026-09-01",
+    "opponent": "Wauwatosa East",
+    "is_home": false
+  },
+  {
+    "team_id": "142798",
+    "school": "Brown Deer High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402764",
+    "date": "2026-09-04",
+    "opponent": "Milwaukee School of Languages",
+    "is_home": true
+  },
+  {
+    "team_id": "143398",
+    "school": "Campbellsport High School",
+    "sport": "Boys Cross Country",
+    "contest_id": "402264",
+    "date": "2026-09-03",
+    "opponent": "Kiel",
+    "is_home": false
+  },
+  {
+    "team_id": "143736",
+    "school": "Campbellsport High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "402259",
+    "date": "2026-09-05",
+    "opponent": "New Berlin West",
+    "is_home": false
+  },
+  {
+    "team_id": "169510",
+    "school": "Catholic Central - Burlington High School",
+    "sport": "Boys Football",
+    "contest_id": "405844",
+    "date": "2026-09-03",
+    "opponent": "Kingdom Prep Lutheran *Seeding Only",
+    "is_home": false
+  },
+  {
+    "team_id": "143060",
+    "school": "Cedar Grove Belgium High School",
+    "sport": "Girls Cross Country",
+    "contest_id": "405825",
+    "date": "2026-09-03",
+    "opponent": "Shorewood",
+    "is_home": true
+  },
+  {
+    "team_id": "142855",
+    "school": "Central WI Christian High School",
+    "sport": "Boys Soccer",
+    "contest_id": "407669",
+    "date": "2026-09-04",
+    "opponent": "Wautoma/Wild Rose",
+    "is_home": true
+  },
+  {
+    "team_id": "142800",
+    "school": "Clintonville High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402727",
+    "date": "2026-09-03",
+    "opponent": "Luxemburg-Casco",
+    "is_home": false
+  },
+  {
+    "team_id": "142856",
+    "school": "Columbus High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402633",
+    "date": "2026-08-31",
+    "opponent": "Mayville",
+    "is_home": false
+  },
+  {
+    "team_id": "144670",
+    "school": "Columbus High School",
+    "sport": "Girls Tennis",
+    "contest_id": "407316",
+    "date": "2026-09-03",
+    "opponent": "Wayland Academy",
+    "is_home": true
+  },
+  {
+    "team_id": "143865",
+    "school": "Cuba City High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "406491",
+    "date": "2026-08-31",
+    "opponent": "Galena",
+    "is_home": true
+  },
+  {
+    "team_id": "143521",
+    "school": "Darlington High School",
+    "sport": "Boys Cross Country",
+    "contest_id": "400922",
+    "date": "2026-09-05",
+    "opponent": "Shullsburg/Belmont",
+    "is_home": true
+  },
+  {
+    "team_id": "143179",
+    "school": "Darlington High School",
+    "sport": "Girls Cross Country",
+    "contest_id": "400911",
+    "date": "2026-09-05",
+    "opponent": "Shullsburg/Belmont",
+    "is_home": true
+  },
+  {
+    "team_id": "142691",
+    "school": "De Pere High School",
+    "sport": "Boys Soccer",
+    "contest_id": "407404",
+    "date": "2026-09-03",
+    "opponent": "Wausau West",
+    "is_home": false
+  },
+  {
+    "team_id": "142740",
+    "school": "DeForest High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402770",
+    "date": "2026-09-05",
+    "opponent": "Sun Prairie West",
+    "is_home": true
+  },
+  {
+    "team_id": "150701",
+    "school": "DeForest High School",
+    "sport": "Boys Volleyball",
+    "contest_id": "402356",
+    "date": "2026-09-02",
+    "opponent": "Sun Prairie West/Sun Prairie East",
+    "is_home": true
+  },
+  {
+    "team_id": "150701",
+    "school": "DeForest High School",
+    "sport": "Boys Volleyball",
+    "contest_id": "406230",
+    "date": "2026-09-05",
+    "opponent": "Hartford",
+    "is_home": false
+  },
+  {
+    "team_id": "143630",
+    "school": "DeForest High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "406781",
+    "date": "2026-09-05",
+    "opponent": "Lakeside Lutheran",
+    "is_home": true
+  },
+  {
+    "team_id": "154448",
+    "school": "Deerfield High School",
+    "sport": "Boys Cross Country",
+    "contest_id": "401969",
+    "date": "2026-09-03",
+    "opponent": "St. John's Northwestern",
+    "is_home": true
+  },
+  {
+    "team_id": "154448",
+    "school": "Deerfield High School",
+    "sport": "Boys Cross Country",
+    "contest_id": "406070",
+    "date": "2026-09-03",
+    "opponent": "Lakeside Lutheran",
+    "is_home": true
+  },
+  {
+    "team_id": "154493",
+    "school": "Deerfield High School",
+    "sport": "Girls Cross Country",
+    "contest_id": "406060",
+    "date": "2026-09-03",
+    "opponent": "Lakeside Lutheran",
+    "is_home": true
+  },
+  {
+    "team_id": "142803",
+    "school": "Edgerton High School",
+    "sport": "Boys Soccer",
+    "contest_id": "407468",
+    "date": "2026-09-03",
+    "opponent": "Platteville/Lancaster",
+    "is_home": false
+  },
+  {
+    "team_id": "143528",
+    "school": "Elkhart Lake High School",
+    "sport": "Boys Cross Country",
+    "contest_id": "404913",
+    "date": "2026-09-03",
+    "opponent": "Kiel",
+    "is_home": false
+  },
+  {
+    "team_id": "143187",
+    "school": "Elkhart Lake High School",
+    "sport": "Girls Cross Country",
+    "contest_id": "404903",
+    "date": "2026-09-03",
+    "opponent": "Kiel",
+    "is_home": false
+  },
+  {
+    "team_id": "143634",
+    "school": "Elkhorn High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "403932",
+    "date": "2026-09-01",
+    "opponent": "Beloit Memorial",
+    "is_home": false
+  },
+  {
+    "team_id": "143988",
+    "school": "Fall River High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "405869",
+    "date": "2026-09-05",
+    "opponent": "Jefferson",
+    "is_home": true
+  },
+  {
+    "team_id": "143636",
+    "school": "Fort Atkinson High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "407494",
+    "date": "2026-09-03",
+    "opponent": "Edgewood",
+    "is_home": false
+  },
+  {
+    "team_id": "142904",
+    "school": "Germantown High School",
+    "sport": "Boys Volleyball",
+    "contest_id": "402363",
+    "date": "2026-09-02",
+    "opponent": "Menomonee Falls",
+    "is_home": true
+  },
+  {
+    "team_id": "146856",
+    "school": "Hamilton High School",
+    "sport": "Boys Volleyball",
+    "contest_id": "406279",
+    "date": "2026-09-05",
+    "opponent": "Whitefish Bay",
+    "is_home": true
+  },
+  {
+    "team_id": "146856",
+    "school": "Hamilton High School",
+    "sport": "Boys Volleyball",
+    "contest_id": "406280",
+    "date": "2026-09-05",
+    "opponent": "Augustine Prep South",
+    "is_home": true
+  },
+  {
+    "team_id": "144572",
+    "school": "Holmen High School",
+    "sport": "Girls Tennis",
+    "contest_id": "401443",
+    "date": "2026-09-03",
+    "opponent": "La Crosse Central",
+    "is_home": false
+  },
+  {
+    "team_id": "154561",
+    "school": "Howards Grove High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402654",
+    "date": "2026-09-01",
+    "opponent": "Kohler",
+    "is_home": true
+  },
+  {
+    "team_id": "142699",
+    "school": "Janesville Craig High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402756",
+    "date": "2026-09-04",
+    "opponent": "Catholic Memorial",
+    "is_home": true
+  },
+  {
+    "team_id": "142699",
+    "school": "Janesville Craig High School",
+    "sport": "Boys Soccer",
+    "contest_id": "407651",
+    "date": "2026-09-05",
+    "opponent": "Waukesha South",
+    "is_home": true
+  },
+  {
+    "team_id": "142809",
+    "school": "Jefferson High School",
+    "sport": "Boys Soccer",
+    "contest_id": "406975",
+    "date": "2026-09-01",
+    "opponent": "River Valley",
+    "is_home": true
+  },
+  {
+    "team_id": "143756",
+    "school": "Jefferson High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "405869",
+    "date": "2026-09-05",
+    "opponent": "Fall River",
+    "is_home": false
+  },
+  {
+    "team_id": "143756",
+    "school": "Jefferson High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "407699",
+    "date": "2026-09-05",
+    "opponent": "Kenosha Bradford",
+    "is_home": true
+  },
+  {
+    "team_id": "142907",
+    "school": "Kaukauna High School",
+    "sport": "Boys Volleyball",
+    "contest_id": "405496",
+    "date": "2026-09-05",
+    "opponent": "TBD",
+    "is_home": false
+  },
+  {
+    "team_id": "142907",
+    "school": "Kaukauna High School",
+    "sport": "Boys Volleyball",
+    "contest_id": "407304",
+    "date": "2026-09-05",
+    "opponent": "Waukesha West",
+    "is_home": true
+  },
+  {
+    "team_id": "149659",
+    "school": "Kenosha Bradford High School",
+    "sport": "Girls Golf",
+    "contest_id": "401488",
+    "date": "2026-09-03",
+    "opponent": "Racine Case",
+    "is_home": true
+  },
+  {
+    "team_id": "149665",
+    "school": "Kenosha Bradford High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "407699",
+    "date": "2026-09-05",
+    "opponent": "Jefferson",
+    "is_home": false
+  },
+  {
+    "team_id": "142862",
+    "school": "Kenosha St. Joseph Catholic High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402712",
+    "date": "2026-09-03",
+    "opponent": "Wilmot Union/Catholic Central",
+    "is_home": true
+  },
+  {
+    "team_id": "146193",
+    "school": "Kenosha Tremper High School",
+    "sport": "Boys Football",
+    "contest_id": "398560",
+    "date": "2026-09-04",
+    "opponent": "Racine Horlick",
+    "is_home": false
+  },
+  {
+    "team_id": "143655",
+    "school": "Kenosha Tremper High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "407477",
+    "date": "2026-09-05",
+    "opponent": "Menomonee Falls",
+    "is_home": true
+  },
+  {
+    "team_id": "143655",
+    "school": "Kenosha Tremper High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "407478",
+    "date": "2026-09-05",
+    "opponent": "Waukesha South",
+    "is_home": true
+  },
+  {
+    "team_id": "143655",
+    "school": "Kenosha Tremper High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "407479",
+    "date": "2026-09-05",
+    "opponent": "Slinger",
+    "is_home": true
+  },
+  {
+    "team_id": "142703",
+    "school": "Kettle Moraine High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402733",
+    "date": "2026-09-03",
+    "opponent": "Muskego",
+    "is_home": false
+  },
+  {
+    "team_id": "142910",
+    "school": "Kettle Moraine High School",
+    "sport": "Boys Volleyball",
+    "contest_id": "407374",
+    "date": "2026-09-05",
+    "opponent": "Brookfield East",
+    "is_home": false
+  },
+  {
+    "team_id": "144005",
+    "school": "Kickapoo High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "407120",
+    "date": "2026-09-05",
+    "opponent": "Cochrane-Fountain City",
+    "is_home": false
+  },
+  {
+    "team_id": "144005",
+    "school": "Kickapoo High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "407121",
+    "date": "2026-09-05",
+    "opponent": "Boscobel",
+    "is_home": false
+  },
+  {
+    "team_id": "144005",
+    "school": "Kickapoo High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "407122",
+    "date": "2026-09-05",
+    "opponent": "Alma Center Lincoln",
+    "is_home": false
+  },
+  {
+    "team_id": "143420",
+    "school": "Kiel High School",
+    "sport": "Boys Cross Country",
+    "contest_id": "402264",
+    "date": "2026-09-03",
+    "opponent": "Campbellsport",
+    "is_home": true
+  },
+  {
+    "team_id": "143420",
+    "school": "Kiel High School",
+    "sport": "Boys Cross Country",
+    "contest_id": "404913",
+    "date": "2026-09-03",
+    "opponent": "Elkhart Lake-Glenbeulah",
+    "is_home": true
+  },
+  {
+    "team_id": "143080",
+    "school": "Kiel High School",
+    "sport": "Girls Cross Country",
+    "contest_id": "404903",
+    "date": "2026-09-03",
+    "opponent": "Elkhart Lake-Glenbeulah",
+    "is_home": true
+  },
+  {
+    "team_id": "144681",
+    "school": "Kiel High School",
+    "sport": "Girls Tennis",
+    "contest_id": "405454",
+    "date": "2026-09-03",
+    "opponent": "Saint Mary Catholic",
+    "is_home": true
+  },
+  {
+    "team_id": "143657",
+    "school": "Kimberly High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "403998",
+    "date": "2026-09-03",
+    "opponent": "Oshkosh North",
+    "is_home": true
+  },
+  {
+    "team_id": "143657",
+    "school": "Kimberly High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "407601",
+    "date": "2026-09-05",
+    "opponent": "Notre Dame",
+    "is_home": false
+  },
+  {
+    "team_id": "143657",
+    "school": "Kimberly High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "407604",
+    "date": "2026-09-05",
+    "opponent": "Mosinee",
+    "is_home": true
+  },
+  {
+    "team_id": "142865",
+    "school": "Kohler High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402654",
+    "date": "2026-09-01",
+    "opponent": "Howards Grove/Elkhart Lake-Glenbeulah",
+    "is_home": false
+  },
+  {
+    "team_id": "144582",
+    "school": "Lacrosse Central High School",
+    "sport": "Girls Tennis",
+    "contest_id": "401443",
+    "date": "2026-09-03",
+    "opponent": "Holmen",
+    "is_home": true
+  },
+  {
+    "team_id": "142867",
+    "school": "Lake Mills High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402722",
+    "date": "2026-09-03",
+    "opponent": "Waukesha South",
+    "is_home": false
+  },
+  {
+    "team_id": "144683",
+    "school": "Lake Mills High School",
+    "sport": "Girls Tennis",
+    "contest_id": "407315",
+    "date": "2026-09-01",
+    "opponent": "Wayland Academy",
+    "is_home": true
+  },
+  {
+    "team_id": "143423",
+    "school": "Lakeside Lutheran High School",
+    "sport": "Boys Cross Country",
+    "contest_id": "406070",
+    "date": "2026-09-03",
+    "opponent": "Deerfield/Cambridge",
+    "is_home": false
+  },
+  {
+    "team_id": "143083",
+    "school": "Lakeside Lutheran High School",
+    "sport": "Girls Cross Country",
+    "contest_id": "406060",
+    "date": "2026-09-03",
+    "opponent": "Deerfield/Cambridge",
+    "is_home": false
+  },
+  {
+    "team_id": "143763",
+    "school": "Lakeside Lutheran High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "406781",
+    "date": "2026-09-05",
+    "opponent": "DeForest",
+    "is_home": false
+  },
+  {
+    "team_id": "142869",
+    "school": "Living Word High School",
+    "sport": "Boys Soccer",
+    "contest_id": "407014",
+    "date": "2026-08-31",
+    "opponent": "Kenosha Christian Life",
+    "is_home": true
+  },
+  {
+    "team_id": "144685",
+    "school": "Lodi High School",
+    "sport": "Girls Tennis",
+    "contest_id": "401395",
+    "date": "2026-09-01",
+    "opponent": "Sauk Prairie",
+    "is_home": false
+  },
+  {
+    "team_id": "143765",
+    "school": "Lodi High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "407106",
+    "date": "2026-09-03",
+    "opponent": "Poynette",
+    "is_home": false
+  },
+  {
+    "team_id": "146749",
+    "school": "Madison Country Day High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "407744",
+    "date": "2026-09-03",
+    "opponent": "Williams Bay",
+    "is_home": true
+  },
+  {
+    "team_id": "143748",
+    "school": "Madison Edgewood High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "407494",
+    "date": "2026-09-03",
+    "opponent": "Fort Atkinson",
+    "is_home": true
+  },
+  {
+    "team_id": "142914",
+    "school": "Madison Memorial High School",
+    "sport": "Boys Volleyball",
+    "contest_id": "407715",
+    "date": "2026-09-05",
+    "opponent": "Cedarburg",
+    "is_home": false
+  },
+  {
+    "team_id": "142709",
+    "school": "Manitowoc Lincoln High School",
+    "sport": "Boys Soccer",
+    "contest_id": "407577",
+    "date": "2026-09-03",
+    "opponent": "Menasha",
+    "is_home": true
+  },
+  {
+    "team_id": "143895",
+    "school": "Manitowoc Lutheran High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "403966",
+    "date": "2026-09-03",
+    "opponent": "Mishicot",
+    "is_home": true
+  },
+  {
+    "team_id": "143768",
+    "school": "Marinette High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "404002",
+    "date": "2026-09-03",
+    "opponent": "Waupaca",
+    "is_home": true
+  },
+  {
+    "team_id": "142871",
+    "school": "Mayville High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402633",
+    "date": "2026-08-31",
+    "opponent": "Columbus",
+    "is_home": true
+  },
+  {
+    "team_id": "142871",
+    "school": "Mayville High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402708",
+    "date": "2026-09-03",
+    "opponent": "Saint Lawrence Seminary",
+    "is_home": true
+  },
+  {
+    "team_id": "143771",
+    "school": "Mayville High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "403981",
+    "date": "2026-09-03",
+    "opponent": "Omro",
+    "is_home": true
+  },
+  {
+    "team_id": "144692",
+    "school": "McFarland High School",
+    "sport": "Girls Tennis",
+    "contest_id": "401396",
+    "date": "2026-09-03",
+    "opponent": "Sauk Prairie",
+    "is_home": false
+  },
+  {
+    "team_id": "142755",
+    "school": "Menasha High School",
+    "sport": "Boys Soccer",
+    "contest_id": "407577",
+    "date": "2026-09-03",
+    "opponent": "Manitowoc Lincoln",
+    "is_home": false
+  },
+  {
+    "team_id": "149644",
+    "school": "Menomonee Falls High School",
+    "sport": "Boys Volleyball",
+    "contest_id": "402363",
+    "date": "2026-09-02",
+    "opponent": "Germantown",
+    "is_home": false
+  },
+  {
+    "team_id": "143666",
+    "school": "Menomonee Falls High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "407477",
+    "date": "2026-09-05",
+    "opponent": "Kenosha Tremper",
+    "is_home": false
+  },
+  {
+    "team_id": "142917",
+    "school": "Middleton High School",
+    "sport": "Boys Volleyball",
+    "contest_id": "407324",
+    "date": "2026-09-05",
+    "opponent": "Appleton North",
+    "is_home": false
+  },
+  {
+    "team_id": "143668",
+    "school": "Middleton High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "402140",
+    "date": "2026-09-05",
+    "opponent": "TBA",
+    "is_home": true
+  },
+  {
+    "team_id": "143903",
+    "school": "Mishicot School District",
+    "sport": "Girls Volleyball",
+    "contest_id": "403966",
+    "date": "2026-09-03",
+    "opponent": "Manitowoc Lutheran",
+    "is_home": false
+  },
+  {
+    "team_id": "143436",
+    "school": "Monroe High School",
+    "sport": "Boys Cross Country",
+    "contest_id": "400924",
+    "date": "2026-09-01",
+    "opponent": "Shullsburg/Belmont",
+    "is_home": true
+  },
+  {
+    "team_id": "143095",
+    "school": "Monroe High School",
+    "sport": "Girls Cross Country",
+    "contest_id": "400920",
+    "date": "2026-09-01",
+    "opponent": "Shullsburg/Belmont",
+    "is_home": true
+  },
+  {
+    "team_id": "143779",
+    "school": "Monroe High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "404947",
+    "date": "2026-09-05",
+    "opponent": "Parkview",
+    "is_home": true
+  },
+  {
+    "team_id": "143779",
+    "school": "Monroe High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "405034",
+    "date": "2026-09-05",
+    "opponent": "Black Hawk",
+    "is_home": true
+  },
+  {
+    "team_id": "142715",
+    "school": "Mukwonago High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402731",
+    "date": "2026-09-03",
+    "opponent": "Oconomowoc",
+    "is_home": true
+  },
+  {
+    "team_id": "142716",
+    "school": "Muskego High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402733",
+    "date": "2026-09-03",
+    "opponent": "Kettle Moraine",
+    "is_home": true
+  },
+  {
+    "team_id": "142919",
+    "school": "Muskego High School",
+    "sport": "Boys Volleyball",
+    "contest_id": "407325",
+    "date": "2026-09-05",
+    "opponent": "Appleton North",
+    "is_home": false
+  },
+  {
+    "team_id": "152351",
+    "school": "N.E.W. Lutheran High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "403992",
+    "date": "2026-09-03",
+    "opponent": "Algoma",
+    "is_home": false
+  },
+  {
+    "team_id": "143785",
+    "school": "New Holstein High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "403967",
+    "date": "2026-09-03",
+    "opponent": "Sheboygan Lutheran",
+    "is_home": false
+  },
+  {
+    "team_id": "142826",
+    "school": "New London High School",
+    "sport": "Boys Soccer",
+    "contest_id": "407698",
+    "date": "2026-09-03",
+    "opponent": "Appleton West",
+    "is_home": false
+  },
+  {
+    "team_id": "143790",
+    "school": "Notre Dame Academy High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "407601",
+    "date": "2026-09-05",
+    "opponent": "Kimberly",
+    "is_home": true
+  },
+  {
+    "team_id": "143790",
+    "school": "Notre Dame Academy High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "407602",
+    "date": "2026-09-05",
+    "opponent": "Luxemburg-Casco",
+    "is_home": true
+  },
+  {
+    "team_id": "142719",
+    "school": "Oconomowoc High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402731",
+    "date": "2026-09-03",
+    "opponent": "Mukwonago",
+    "is_home": false
+  },
+  {
+    "team_id": "143684",
+    "school": "Onalaska High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "403978",
+    "date": "2026-09-03",
+    "opponent": "Tomah",
+    "is_home": true
+  },
+  {
+    "team_id": "143686",
+    "school": "Oshkosh North High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "403998",
+    "date": "2026-09-03",
+    "opponent": "Kimberly",
+    "is_home": false
+  },
+  {
+    "team_id": "139137",
+    "school": "Pacelli High School",
+    "sport": "Boys Soccer",
+    "contest_id": "407219",
+    "date": "2026-09-01",
+    "opponent": "Three Lakes/Phelps",
+    "is_home": false
+  },
+  {
+    "team_id": "143913",
+    "school": "Palmyra-Eagle High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "405314",
+    "date": "2026-09-03",
+    "opponent": "Abundant Life Christian",
+    "is_home": true
+  },
+  {
+    "team_id": "143913",
+    "school": "Palmyra-Eagle High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "405035",
+    "date": "2026-09-05",
+    "opponent": "Black Hawk",
+    "is_home": false
+  },
+  {
+    "team_id": "143915",
+    "school": "Parkview High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "404947",
+    "date": "2026-09-05",
+    "opponent": "Monroe",
+    "is_home": false
+  },
+  {
+    "team_id": "142767",
+    "school": "Pewaukee High School",
+    "sport": "Boys Soccer",
+    "contest_id": "407654",
+    "date": "2026-09-04",
+    "opponent": "Rufus King",
+    "is_home": true
+  },
+  {
+    "team_id": "142767",
+    "school": "Pewaukee High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402768",
+    "date": "2026-09-05",
+    "opponent": "Shorewood",
+    "is_home": false
+  },
+  {
+    "team_id": "154571",
+    "school": "Platteville High School",
+    "sport": "Boys Soccer",
+    "contest_id": "407468",
+    "date": "2026-09-03",
+    "opponent": "Edgerton",
+    "is_home": true
+  },
+  {
+    "team_id": "144028",
+    "school": "Port Edwards High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "405022",
+    "date": "2026-09-03",
+    "opponent": "Greenwood",
+    "is_home": false
+  },
+  {
+    "team_id": "153971",
+    "school": "Port Washington High School",
+    "sport": "Boys Volleyball",
+    "contest_id": "402358",
+    "date": "2026-09-02",
+    "opponent": "Whitefish Bay",
+    "is_home": true
+  },
+  {
+    "team_id": "143799",
+    "school": "Port Washington High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "403963",
+    "date": "2026-09-03",
+    "opponent": "West Bend West",
+    "is_home": true
+  },
+  {
+    "team_id": "143800",
+    "school": "Portage High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "405330",
+    "date": "2026-09-03",
+    "opponent": "Stoughton",
+    "is_home": true
+  },
+  {
+    "team_id": "143918",
+    "school": "Poynette High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "407106",
+    "date": "2026-09-03",
+    "opponent": "Lodi",
+    "is_home": true
+  },
+  {
+    "team_id": "142877",
+    "school": "Racine Lutheran High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402763",
+    "date": "2026-09-04",
+    "opponent": "Salam",
+    "is_home": true
+  },
+  {
+    "team_id": "143920",
+    "school": "Racine Lutheran High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "405230",
+    "date": "2026-09-03",
+    "opponent": "Racine Park",
+    "is_home": false
+  },
+  {
+    "team_id": "142878",
+    "school": "Racine St. Catherine's High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402758",
+    "date": "2026-09-04",
+    "opponent": "Union Grove",
+    "is_home": false
+  },
+  {
+    "team_id": "142879",
+    "school": "Richland Center High School",
+    "sport": "Boys Soccer",
+    "contest_id": "407716",
+    "date": "2026-09-05",
+    "opponent": "West Salem",
+    "is_home": true
+  },
+  {
+    "team_id": "143805",
+    "school": "Richland Center High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "407570",
+    "date": "2026-09-05",
+    "opponent": "Royall",
+    "is_home": true
+  },
+  {
+    "team_id": "142880",
+    "school": "River Valley High School",
+    "sport": "Boys Soccer",
+    "contest_id": "406975",
+    "date": "2026-09-01",
+    "opponent": "Jefferson",
+    "is_home": false
+  },
+  {
+    "team_id": "144037",
+    "school": "Royall High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "407570",
+    "date": "2026-09-05",
+    "opponent": "Richland Center",
+    "is_home": false
+  },
+  {
+    "team_id": "142774",
+    "school": "Sauk Prairie High School",
+    "sport": "Boys Soccer",
+    "contest_id": "401356",
+    "date": "2026-09-03",
+    "opponent": "Stoughton",
+    "is_home": false
+  },
+  {
+    "team_id": "144624",
+    "school": "Sauk Prairie High School",
+    "sport": "Girls Tennis",
+    "contest_id": "401395",
+    "date": "2026-09-01",
+    "opponent": "Lodi",
+    "is_home": true
+  },
+  {
+    "team_id": "144624",
+    "school": "Sauk Prairie High School",
+    "sport": "Girls Tennis",
+    "contest_id": "401396",
+    "date": "2026-09-03",
+    "opponent": "McFarland",
+    "is_home": true
+  },
+  {
+    "team_id": "143813",
+    "school": "Seymour High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "404006",
+    "date": "2026-09-03",
+    "opponent": "Shawano",
+    "is_home": false
+  },
+  {
+    "team_id": "146327",
+    "school": "Shawano High School",
+    "sport": "Boys Football",
+    "contest_id": "398539",
+    "date": "2026-09-04",
+    "opponent": "Winneconne",
+    "is_home": true
+  },
+  {
+    "team_id": "143814",
+    "school": "Shawano High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "404006",
+    "date": "2026-09-03",
+    "opponent": "Seymour",
+    "is_home": true
+  },
+  {
+    "team_id": "143930",
+    "school": "Sheboygan Lutheran High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "403967",
+    "date": "2026-09-03",
+    "opponent": "New Holstein",
+    "is_home": true
+  },
+  {
+    "team_id": "154477",
+    "school": "Shullsburg High School",
+    "sport": "Boys Cross Country",
+    "contest_id": "400924",
+    "date": "2026-09-01",
+    "opponent": "Monroe",
+    "is_home": false
+  },
+  {
+    "team_id": "154477",
+    "school": "Shullsburg High School",
+    "sport": "Boys Cross Country",
+    "contest_id": "400922",
+    "date": "2026-09-05",
+    "opponent": "Darlington",
+    "is_home": false
+  },
+  {
+    "team_id": "154522",
+    "school": "Shullsburg High School",
+    "sport": "Girls Cross Country",
+    "contest_id": "400920",
+    "date": "2026-09-01",
+    "opponent": "Monroe",
+    "is_home": false
+  },
+  {
+    "team_id": "154522",
+    "school": "Shullsburg High School",
+    "sport": "Girls Cross Country",
+    "contest_id": "400911",
+    "date": "2026-09-05",
+    "opponent": "Darlington",
+    "is_home": false
+  },
+  {
+    "team_id": "142775",
+    "school": "Slinger High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402739",
+    "date": "2026-09-03",
+    "opponent": "Cedarburg",
+    "is_home": false
+  },
+  {
+    "team_id": "143695",
+    "school": "Slinger High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "407479",
+    "date": "2026-09-05",
+    "opponent": "Kenosha Tremper",
+    "is_home": false
+  },
+  {
+    "team_id": "142839",
+    "school": "Sparta High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402699",
+    "date": "2026-09-03",
+    "opponent": "Tomah",
+    "is_home": false
+  },
+  {
+    "team_id": "142882",
+    "school": "St. Mary Catholic High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402715",
+    "date": "2026-09-03",
+    "opponent": "Roncalli",
+    "is_home": false
+  },
+  {
+    "team_id": "144702",
+    "school": "St. Mary Catholic High School",
+    "sport": "Girls Tennis",
+    "contest_id": "405454",
+    "date": "2026-09-03",
+    "opponent": "Kiel",
+    "is_home": false
+  },
+  {
+    "team_id": "147117",
+    "school": "St. Mary's Springs High School",
+    "sport": "Girls Tennis",
+    "contest_id": "407314",
+    "date": "2026-08-31",
+    "opponent": "Wayland Academy",
+    "is_home": false
+  },
+  {
+    "team_id": "142777",
+    "school": "Stoughton High School",
+    "sport": "Boys Soccer",
+    "contest_id": "401356",
+    "date": "2026-09-03",
+    "opponent": "Sauk Prairie",
+    "is_home": true
+  },
+  {
+    "team_id": "143698",
+    "school": "Stoughton High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "405330",
+    "date": "2026-09-03",
+    "opponent": "Portage",
+    "is_home": false
+  },
+  {
+    "team_id": "147364",
+    "school": "Sun Prairie West High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402770",
+    "date": "2026-09-05",
+    "opponent": "DeForest",
+    "is_home": false
+  },
+  {
+    "team_id": "139236",
+    "school": "Sun Prairie West High School",
+    "sport": "Boys Volleyball",
+    "contest_id": "402356",
+    "date": "2026-09-02",
+    "opponent": "DeForest",
+    "is_home": false
+  },
+  {
+    "team_id": "142778",
+    "school": "Tomah High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402699",
+    "date": "2026-09-03",
+    "opponent": "Sparta",
+    "is_home": true
+  },
+  {
+    "team_id": "143701",
+    "school": "Tomah High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "403978",
+    "date": "2026-09-03",
+    "opponent": "Onalaska",
+    "is_home": false
+  },
+  {
+    "team_id": "142779",
+    "school": "Union Grove High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402758",
+    "date": "2026-09-04",
+    "opponent": "Racine St. Catherine's",
+    "is_home": true
+  },
+  {
+    "team_id": "146357",
+    "school": "Viroqua High School",
+    "sport": "Boys Football",
+    "contest_id": "400283",
+    "date": "2026-09-04",
+    "opponent": "Arcadia",
+    "is_home": true
+  },
+  {
+    "team_id": "142780",
+    "school": "Waterford High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402656",
+    "date": "2026-09-01",
+    "opponent": "Wilmot Union/Catholic Central",
+    "is_home": false
+  },
+  {
+    "team_id": "142889",
+    "school": "Watertown Luther Prep High School",
+    "sport": "Boys Soccer",
+    "contest_id": "407526",
+    "date": "2026-09-01",
+    "opponent": "Winnebago Lutheran",
+    "is_home": false
+  },
+  {
+    "team_id": "142781",
+    "school": "Waukesha North High School",
+    "sport": "Boys Soccer",
+    "contest_id": "407562",
+    "date": "2026-09-03",
+    "opponent": "Cudahy/Saint Francis",
+    "is_home": true
+  },
+  {
+    "team_id": "142731",
+    "school": "Waukesha South High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402722",
+    "date": "2026-09-03",
+    "opponent": "Lake Mills",
+    "is_home": true
+  },
+  {
+    "team_id": "142731",
+    "school": "Waukesha South High School",
+    "sport": "Boys Soccer",
+    "contest_id": "407651",
+    "date": "2026-09-05",
+    "opponent": "Janesville Craig",
+    "is_home": false
+  },
+  {
+    "team_id": "143707",
+    "school": "Waukesha South High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "407478",
+    "date": "2026-09-05",
+    "opponent": "Kenosha Tremper",
+    "is_home": false
+  },
+  {
+    "team_id": "142782",
+    "school": "Waukesha West High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402769",
+    "date": "2026-09-05",
+    "opponent": "Marquette",
+    "is_home": true
+  },
+  {
+    "team_id": "142927",
+    "school": "Waukesha West High School",
+    "sport": "Boys Volleyball",
+    "contest_id": "407304",
+    "date": "2026-09-05",
+    "opponent": "Kaukauna",
+    "is_home": false
+  },
+  {
+    "team_id": "142927",
+    "school": "Waukesha West High School",
+    "sport": "Boys Volleyball",
+    "contest_id": "407305",
+    "date": "2026-09-05",
+    "opponent": "New Berlin Eisenhower/New Berlin West",
+    "is_home": false
+  },
+  {
+    "team_id": "142840",
+    "school": "Waupaca High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402736",
+    "date": "2026-09-03",
+    "opponent": "Wrightstown",
+    "is_home": true
+  },
+  {
+    "team_id": "143826",
+    "school": "Waupaca High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "404002",
+    "date": "2026-09-03",
+    "opponent": "Marinette",
+    "is_home": false
+  },
+  {
+    "team_id": "142732",
+    "school": "Wausau West High School",
+    "sport": "Boys Soccer",
+    "contest_id": "407404",
+    "date": "2026-09-03",
+    "opponent": "De Pere",
+    "is_home": true
+  },
+  {
+    "team_id": "143711",
+    "school": "Wausau West High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "403969",
+    "date": "2026-09-03",
+    "opponent": "Wisconsin Rapids Lincoln",
+    "is_home": true
+  },
+  {
+    "team_id": "154583",
+    "school": "Wautoma High School",
+    "sport": "Boys Soccer",
+    "contest_id": "407669",
+    "date": "2026-09-04",
+    "opponent": "Central WI Christian",
+    "is_home": false
+  },
+  {
+    "team_id": "142786",
+    "school": "Wauwatosa West High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402759",
+    "date": "2026-09-04",
+    "opponent": "Saint Thomas More",
+    "is_home": false
+  },
+  {
+    "team_id": "142929",
+    "school": "Wauwatosa West High School",
+    "sport": "Boys Volleyball",
+    "contest_id": "407352",
+    "date": "2026-09-05",
+    "opponent": "Arrowhead",
+    "is_home": true
+  },
+  {
+    "team_id": "144055",
+    "school": "Wauzeka-Stueben High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "401704",
+    "date": "2026-09-03",
+    "opponent": "Weston",
+    "is_home": false
+  },
+  {
+    "team_id": "144711",
+    "school": "Wayland Academy High School",
+    "sport": "Girls Tennis",
+    "contest_id": "407314",
+    "date": "2026-08-31",
+    "opponent": "Saint Mary's Springs",
+    "is_home": true
+  },
+  {
+    "team_id": "144711",
+    "school": "Wayland Academy High School",
+    "sport": "Girls Tennis",
+    "contest_id": "407315",
+    "date": "2026-09-01",
+    "opponent": "Lake Mills",
+    "is_home": false
+  },
+  {
+    "team_id": "144711",
+    "school": "Wayland Academy High School",
+    "sport": "Girls Tennis",
+    "contest_id": "407316",
+    "date": "2026-09-03",
+    "opponent": "Columbus",
+    "is_home": false
+  },
+  {
+    "team_id": "143717",
+    "school": "West Bend West High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "403963",
+    "date": "2026-09-03",
+    "opponent": "Port Washington",
+    "is_home": false
+  },
+  {
+    "team_id": "142842",
+    "school": "West Salem High School",
+    "sport": "Boys Soccer",
+    "contest_id": "407716",
+    "date": "2026-09-05",
+    "opponent": "Richland Center",
+    "is_home": false
+  },
+  {
+    "team_id": "144057",
+    "school": "Weston High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "401704",
+    "date": "2026-09-03",
+    "opponent": "Wauzeka-Steuben",
+    "is_home": true
+  },
+  {
+    "team_id": "144060",
+    "school": "Williams Bay High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "407744",
+    "date": "2026-09-03",
+    "opponent": "Madison Country Day",
+    "is_home": false
+  },
+  {
+    "team_id": "139149",
+    "school": "Wilmot Union High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402656",
+    "date": "2026-09-01",
+    "opponent": "Waterford",
+    "is_home": true
+  },
+  {
+    "team_id": "139149",
+    "school": "Wilmot Union High School",
+    "sport": "Boys Soccer",
+    "contest_id": "402712",
+    "date": "2026-09-03",
+    "opponent": "Kenosha St. Joseph Catholic",
+    "is_home": false
+  },
+  {
+    "team_id": "143721",
+    "school": "Wilmot Union High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "407111",
+    "date": "2026-09-05",
+    "opponent": "Shoreland Lutheran",
+    "is_home": false
+  },
+  {
+    "team_id": "142891",
+    "school": "Winnebago Lutheran High School",
+    "sport": "Boys Soccer",
+    "contest_id": "407526",
+    "date": "2026-09-01",
+    "opponent": "Watertown Luther Prep",
+    "is_home": true
+  },
+  {
+    "team_id": "146389",
+    "school": "Winneconne High School",
+    "sport": "Boys Football",
+    "contest_id": "398539",
+    "date": "2026-09-04",
+    "opponent": "Shawano",
+    "is_home": false
+  },
+  {
+    "team_id": "143722",
+    "school": "Wisconsin Rapids High School",
+    "sport": "Girls Volleyball",
+    "contest_id": "403969",
+    "date": "2026-09-03",
+    "opponent": "Wausau West",
     "is_home": false
   }
 ]
