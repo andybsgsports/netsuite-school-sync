@@ -1602,30 +1602,12 @@
     "is_home": false
   },
   {
-    "team_id": "142889",
-    "school": "Watertown Luther Prep High School",
-    "sport": "Boys Soccer",
-    "contest_id": "407526",
-    "date": "2026-09-01",
-    "opponent": "Winnebago Lutheran",
-    "is_home": false
-  },
-  {
     "team_id": "142781",
     "school": "Waukesha North High School",
     "sport": "Boys Soccer",
     "contest_id": "407562",
     "date": "2026-09-03",
     "opponent": "Cudahy/Saint Francis",
-    "is_home": true
-  },
-  {
-    "team_id": "142782",
-    "school": "Waukesha West High School",
-    "sport": "Boys Soccer",
-    "contest_id": "402769",
-    "date": "2026-09-05",
-    "opponent": "Marquette",
     "is_home": true
   },
   {
@@ -1771,15 +1753,6 @@
     "date": "2026-09-03",
     "opponent": "Kenosha St. Joseph Catholic",
     "is_home": false
-  },
-  {
-    "team_id": "142891",
-    "school": "Winnebago Lutheran High School",
-    "sport": "Boys Soccer",
-    "contest_id": "407526",
-    "date": "2026-09-01",
-    "opponent": "Watertown Luther Prep",
-    "is_home": true
   },
   {
     "team_id": "143722",
