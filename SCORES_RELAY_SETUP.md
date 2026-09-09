@@ -20,11 +20,15 @@
 The GitHub side stays in test mode forever (all emails to Andy). Never set
 `SCORES_LIVE_DEFAULT` — the relay *is* the delivery.
 
-**Relay test mode:** `TEST_TO` at the top of `relay_scores_outlook.py` is
-set to andy@bsgsports.com, so even the scheduled Monday run delivers the
-clean copies to Andy, not the reps. To go live, set `TEST_TO = None` on
-GitHub — the batch files download the latest script every run, so nothing
-changes on the PC.
+**Delivery design (Andy's choice, 2026-09-09):** `TEST_TO` at the top of
+`relay_scores_outlook.py` stays set to andy@bsgsports.com. The relay sends
+every clean copy (subject "Kyle Loughrin — School Scores — Week of …",
+from andy@bsgsports.com) to Andy, and Andy's own Outlook rules redirect
+each one to its rep. This is the permanent setup, not a test mode.
+Rules must match the clean copy only (e.g. from Andy Murray, or subject
+does not contain "[TEST"), otherwise the GitHub original also matches and
+the rep gets it twice. The relay adds no CC in this mode — Julie's copy of
+Paul's email is handled by the rule.
 
 ## One-time setup (~10 minutes)
 
