@@ -2,13 +2,17 @@
 
 ## How it works
 
-1. Monday 7:00 AM — the GitHub job emails **andy@bsgsports.com** one scores
+1. Monday ~5:20 AM — the GitHub job emails **andy@bsgsports.com** one scores
    digest per sales rep, subject tagged with the rep's address, e.g.
    `[TEST → kylel@bsgsports.com] Kyle Loughrin — School Scores — Week of …`
-2. Monday 8:00 AM — Task Scheduler runs `run_scores_relay.bat` on Andy's PC.
-   `relay_scores_outlook.py` finds those tagged emails in Outlook and sends
-   each one to its rep as a **new message from andy@bsgsports.com** — same
-   body, clean subject (tag removed), no forwarding header block.
+   (GitHub schedules can run hours late — 2026-09-07 it ran at 12:38 PM —
+   which is why the PC task repeats hourly all day, see below.)
+2. Monday 8:00 AM, then every hour until 8:00 PM — Task Scheduler runs
+   `run_scores_relay.bat` on Andy's PC. `relay_scores_outlook.py` finds any
+   tagged emails from the last 36 hours not yet relayed and sends each one
+   to its rep as a **new message from andy@bsgsports.com** — same body,
+   clean subject (tag removed), no forwarding header block. Runs that find
+   nothing new do nothing.
 3. Each original is tagged with the Outlook category **Scores Relayed**, so
    it is never sent twice. Andy keeps the originals; the reps get clean
    copies; Paul's copy CCs Julie.
@@ -45,7 +49,7 @@ Same folder as the other local scripts:
    it runs, syncs mail, sends, waits for the Outbox to empty and closes it
    again — nothing needs to be open.
 4. **Test on yourself:** double-click `TEST_scores_relay.bat` in that folder.
-   It re-sends the tagged scores emails from the last 48 hours to
+   It re-sends the tagged scores emails from the last 7 days to
    andy@bsgsports.com (not the reps), from andy@bsgsports.com — clean
    copies exactly as the reps would get them — and marks the originals
    "Scores Relayed" so Monday's run never re-sends them.
@@ -58,7 +62,9 @@ Same folder as the other local scripts:
 2. **General:** Name `Scores Relay`; leave **Run only when user is logged on**
    selected (Outlook automation only works inside the logged-in desktop
    session — do NOT pick "whether user is logged on or not")
-3. **Triggers → New:** Weekly, **Monday**, **8:00 AM**
+3. **Triggers → New:** Weekly, **Monday**, **8:00 AM**; under *Advanced
+   settings* tick **Repeat task every: 1 hour** — **for a duration of: 12
+   hours** (covers a late GitHub run any time before 8 PM)
 4. **Actions → New:** Program/script:
    `C:\Users\andre\OneDrive - Badger Sporting Goods\Desktop\Illinois Contact List\Netsuite Contacts Sync\run_scores_relay.bat`
 5. **Settings:** check **Run task as soon as possible after a scheduled start

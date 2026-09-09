@@ -2,8 +2,10 @@ name: Weekly Scores Email
 
 on:
   schedule:
-    # 12:00 UTC Monday = 7:00 AM CDT — weekly digest of last week's games
-    - cron: '0 12 * * 1'
+    # 10:17 UTC Monday = 5:17 AM CDT — weekly digest of last week's games.
+    # Deliberately early and off the hour: GitHub runs schedules late
+    # (hours, on a bad day), and the PC relay must find the email by 8 AM.
+    - cron: '17 10 * * 1'
   workflow_dispatch:
     inputs:
       live:
