@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-09-08T06:29:55.854507Z",
+  "updated": "2026-09-09T06:36:50.966813Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -5996,6 +5996,14 @@
     },
     {
       "school": "Westby High School",
+      "email": "mike.weninger@westby-norse.org",
+      "role": "Principal",
+      "sport": "",
+      "first": "Mike",
+      "last": "Weninger"
+    },
+    {
+      "school": "Westby High School",
       "email": "morgan.stenslien@westby-norse.org",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -6017,14 +6025,6 @@
       "sport": "Boys & Girls Wrestling",
       "first": "Rob",
       "last": "Kirner"
-    },
-    {
-      "school": "Westby High School",
-      "email": "robert.bothe@westby-norse.org",
-      "role": "Principal",
-      "sport": "",
-      "first": "Robert",
-      "last": "Bothe"
     },
     {
       "school": "Westby High School",

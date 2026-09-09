@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-09-08T06:27:42.323452Z",
+  "updated": "2026-09-09T06:34:37.189805Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -3873,6 +3873,14 @@
       "sport": "Girls Softball",
       "first": "Michael",
       "last": "Seitz"
+    },
+    {
+      "school": "Catholic Central - Burlington High School",
+      "email": "mirandamechanic@cchsnet.org",
+      "role": "Assistant Athletic Director",
+      "sport": "",
+      "first": "Miranda",
+      "last": "Mechanic"
     },
     {
       "school": "Catholic Central - Burlington High School",
@@ -14108,6 +14116,14 @@
     },
     {
       "school": "North Boone High School",
+      "email": "allan81torres@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Allan",
+      "last": "Medina"
+    },
+    {
+      "school": "North Boone High School",
       "email": "bdill@nbcusd.org",
       "role": "Band Director",
       "sport": "",
@@ -15108,6 +15124,14 @@
     },
     {
       "school": "Pecatonica High School (IL)",
+      "email": "ingadanko@pecschools.com",
+      "role": "Student Council Adviser",
+      "sport": "",
+      "first": "Inga",
+      "last": "Danko"
+    },
+    {
+      "school": "Pecatonica High School (IL)",
       "email": "j_beck23@icloud.com",
       "role": "Head Coach",
       "sport": "Boys & Girls Golf",
@@ -15185,6 +15209,14 @@
       "sport": "Girls Softball",
       "first": "Wayne",
       "last": "Windnagle"
+    },
+    {
+      "school": "Pecatonica High School (IL)",
+      "email": "zoee.gipe05@gmail.com",
+      "role": "Coach",
+      "sport": "Sideline Cheer",
+      "first": "Zoee",
+      "last": "Gipe"
     },
     {
       "school": "Prairie Ridge High School",

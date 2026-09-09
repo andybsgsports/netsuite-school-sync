@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-09-08T06:34:44.936482Z",
+  "updated": "2026-09-09T06:41:43.342197Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -4561,6 +4561,14 @@
       "sport": "Boys Track and Field",
       "first": "Shane",
       "last": "Seefeld"
+    },
+    {
+      "school": "Waterloo High School",
+      "email": "sharmaa@waterloo.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Aleck",
+      "last": "Sharma"
     },
     {
       "school": "Waterloo High School",

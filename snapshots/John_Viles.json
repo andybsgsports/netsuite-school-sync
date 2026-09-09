@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-09-08T06:33:56.568831Z",
+  "updated": "2026-09-09T06:40:53.346992Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -3036,6 +3036,14 @@
     },
     {
       "school": "Manitowoc Lincoln High School",
+      "email": "vandermeusej@mpsd.school",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "James",
+      "last": "Vandermeuse"
+    },
+    {
+      "school": "Manitowoc Lincoln High School",
       "email": "wiesnerj@mpsd.school",
       "role": "Head Coach",
       "sport": "Boys Swimming & Diving",
@@ -4956,14 +4964,6 @@
     },
     {
       "school": "Random Lake High School",
-      "email": "arathke06@outlook.com",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Aaron",
-      "last": "Rathke"
-    },
-    {
-      "school": "Random Lake High School",
       "email": "bmueller@rladvantage.org",
       "role": "Athletic Director",
       "sport": "",
@@ -5052,11 +5052,11 @@
     },
     {
       "school": "Random Lake High School",
-      "email": "ndonahue@rladvantage.org",
+      "email": "nweeks@rladvantage.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
-      "first": "Nicole",
-      "last": "Donahue"
+      "first": "Natalie",
+      "last": "Weeks"
     },
     {
       "school": "Random Lake High School",
@@ -5065,6 +5065,14 @@
       "sport": "",
       "first": "Susan",
       "last": "McDonald"
+    },
+    {
+      "school": "Random Lake High School",
+      "email": "smithdm08@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Dena",
+      "last": "Smith"
     },
     {
       "school": "Random Lake High School",
