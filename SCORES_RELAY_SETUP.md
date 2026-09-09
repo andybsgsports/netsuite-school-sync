@@ -3,13 +3,13 @@
 ## How it works
 
 1. Monday ~5:20 AM — the GitHub job emails **andy@bsgsports.com** one scores
-   digest per sales rep, subject tagged with the rep's address, e.g.
-   `[TEST → kylel@bsgsports.com] Kyle Loughrin — School Scores — Week of …`
+   digest per sales rep, e.g. `Kyle Loughrin — School Scores — Week of …`
+   (from andybsgsports@gmail.com; the rep is worked out from the name)
    (GitHub schedules can run hours late — 2026-09-07 it ran at 12:38 PM —
    which is why the PC task repeats hourly all day, see below.)
 2. Monday 8:00 AM, then every hour until 8:00 PM — Task Scheduler runs
    `run_scores_relay.bat` on Andy's PC. `relay_scores_outlook.py` finds any
-   tagged emails from the last 36 hours not yet relayed and sends each one
+   scores emails from the GitHub sender in the last 36 hours not yet relayed and sends each one
    to its rep as a **new message from andy@bsgsports.com** — same body,
    clean subject (tag removed), no forwarding header block. Runs that find
    nothing new do nothing.
@@ -25,9 +25,9 @@ The GitHub side stays in test mode forever (all emails to Andy). Never set
 every clean copy (subject "Kyle Loughrin — School Scores — Week of …",
 from andy@bsgsports.com) to Andy, and Andy's own Outlook rules redirect
 each one to its rep. This is the permanent setup, not a test mode.
-Rules must match the clean copy only (e.g. from Andy Murray, or subject
-does not contain "[TEST"), otherwise the GitHub original also matches and
-the rep gets it twice. The relay adds no CC in this mode — Julie's copy of
+Rules must match the copy **from Andy Murray** only (the GitHub original
+from andybsgsports@gmail.com has the identical subject), otherwise the rep
+gets it twice. The relay adds no CC in this mode — Julie's copy of
 Paul's email is handled by the rule.
 
 ## One-time setup (~10 minutes)
@@ -82,8 +82,8 @@ otherwise the task runs at the next login.
 ## Day-to-day
 
 - Nothing. Monday morning the reps get their digests from Andy.
-- Reps' addresses come from the subject tag the GitHub job writes; to change
-  who gets what, change the **Sales Rep** column on the master sheet.
+- Reps' addresses come from `REP_EMAILS` in the script (rep name → address);
+  which schools a rep gets comes from the **Sales Rep** column on the sheet.
 - To CC someone on a rep's copy, edit `CC_FOR` at the top of the script.
 - If the PC was off all Monday, the task runs at next startup (within the
   36-hour window). Older than that, run it by hand with `--since-hours 72`.

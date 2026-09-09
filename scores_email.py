@@ -16,9 +16,11 @@ One email per sales rep, covering that rep's schools only (rep assignment
 comes from the master sheet's Schools tab; rep email addresses reuse the
 REPS list in rep_digests.py). Sends via Gmail SMTP.
 
-SAFETY: until SCORES_LIVE=1, every rep's email is redirected to
-SCORES_RECIPIENT (andy@bsgsports.com) with a "[TEST → rep@...]" subject
-prefix — reps receive nothing. Once live, Andy is BCC'd on every rep email.
+SAFETY: until SCORES_LIVE=1, every rep's email is delivered to
+SCORES_RECIPIENT (andy@bsgsports.com) — reps receive nothing from here.
+The subject stays clean ("Kyle Loughrin — School Scores — Week of …");
+the Outlook relay on Andy's PC (relay_scores_outlook.py) maps the rep name
+to the rep's address. Once live, Andy is BCC'd on every rep email.
 
 Env vars:
   GMAIL_USER               Gmail sender account
@@ -1069,9 +1071,9 @@ def main():
         else:
             # Test mode: everything to Andy's address (SCORES_RECIPIENT,
             # e.g. andy@bsgsports.com), still sent from the Gmail account.
+            # Subject is left clean — the Outlook relay on Andy's PC works
+            # out the rep from the name at the front of the subject.
             to_addr, cc_addr, bcc_addr = SCORES_RECIPIENT, None, None
-            if intended_to != SCORES_RECIPIENT:
-                subject = f"[TEST → {intended_to}] {subject}"
 
         if DRY_RUN:
             print(f"[DRY RUN] {subject}  →  {to_addr}"

@@ -3,10 +3,12 @@ relay_scores_outlook.py
 -----------------------
 Runs on Andy's Windows PC (Task Scheduler, Monday mornings). Finds the
 weekly scores emails the GitHub job delivered to andy@bsgsports.com —
-subjects like "[TEST → kylel@bsgsports.com] Kyle Loughrin — School Scores
-— Week of ..." — and re-sends each one to its sales rep as a brand-new
-message FROM andy@bsgsports.com: same HTML body, clean subject, no
-forwarding header block. Each original is tagged with the Outlook category
+subjects like "Kyle Loughrin — School Scores — Week of ..." — and re-sends
+each one as a brand-new message FROM andy@bsgsports.com: same HTML body,
+same subject, no forwarding header block. The rep is worked out from the
+name at the front of the subject (REP_EMAILS below). Only emails from the
+GitHub sender (GITHUB_SENDER) are considered, so the relay never picks up
+its own copies. Each original is tagged with the Outlook category
 "Scores Relayed" so it is never sent twice.
 
 Requires classic Outlook (desktop) signed in as andy@bsgsports.com, and:
@@ -38,13 +40,62 @@ CC_FOR = {
     "paul@bsgsports.com": "julie@bsgsports.com",
 }
 
-SCRIPT_VERSION = "2026-09-04g"           # printed at startup so we know which copy is running
+SCRIPT_VERSION = "2026-09-09h"           # printed at startup so we know which copy is running
 SENDER_ADDRESS = "andy@bsgsports.com"     # account to send from
 # TEST MODE: while set, every relay (including the Monday scheduled run) is
 # delivered to this address instead of the reps. Set to None to go live.
 TEST_TO = "andy@bsgsports.com"
 RELAYED_CATEGORY = "Scores Relayed"
+# Address the GitHub job sends from. Only mail from here is ever relayed.
+GITHUB_SENDER = "andybsgsports@gmail.com"
+
+# Rep name (front of the subject) -> rep address. Mirrors REPS in
+# rep_digests.py. Andy's own digest is not listed, so it is never relayed.
+REP_EMAILS = {
+    "jeff howard":   "howie@bsgsports.com",
+    "tyler fuhrman": "tyler@bsgsports.com",
+    "kyle loughrin": "kylel@bsgsports.com",
+    "paul speth":    "paul@bsgsports.com",
+    "john viles":    "johnv@bsgsports.com",
+    "jeff wedvick":  "wedge@bsgsports.com",
+}
+
+# Old tagged form "[TEST → rep@...] Name — School Scores — ..." (still accepted)
 TAG_RE = re.compile(r"^\[TEST\s*(?:→|->|>)\s*([^\]]+)\]\s*(.+)$")
+# Clean form "Name — School Scores — Week of ..."
+SUBJECT_RE = re.compile(r"^(.+?)\s+(?:—|–|-|--)\s+School Scores\s+(?:—|–|-|--)\s+")
+
+
+def relay_target(subject):
+    """(rep_address, clean_subject) for a scores email subject, else None."""
+    subject = (subject or "").strip()
+    m = TAG_RE.match(subject)
+    if m:
+        return m.group(1).strip(), m.group(2).strip()
+    m = SUBJECT_RE.match(subject)
+    if m:
+        addr = REP_EMAILS.get(m.group(1).strip().lower())
+        if addr:
+            return addr, subject
+    return None
+
+
+def _sender_address(item):
+    for attr in ("SenderEmailAddress",):
+        try:
+            v = str(getattr(item, attr) or "")
+            if v:
+                return v.lower()
+        except Exception:
+            pass
+    try:
+        return str(item.Sender.Address or "").lower()
+    except Exception:
+        return ""
+
+
+def from_github(item):
+    return GITHUB_SENDER in _sender_address(item)
 INBOX = 6   # olFolderInbox
 OUTBOX = 4  # olFolderOutbox
 
@@ -205,8 +256,10 @@ def _scan_folders(folders, cutoff, seen_ids, out, debug=False):
                 subject = str(item.Subject or "")
                 if debug and checked <= 5:
                     log(f"    [{name}] {received:%m/%d %H:%M}  {subject[:90]}")
-                if not TAG_RE.match(subject):
+                if relay_target(subject) is None:
                     continue
+                if not from_github(item):
+                    continue                             # our own relayed copy
                 cats = str(item.Categories or "")
                 if RELAYED_CATEGORY.lower() in cats.lower():
                     continue
@@ -245,8 +298,7 @@ def mark_relayed(item):
 
 
 def relay(app, ns, item, test_to=None, dry_run=False):
-    m = TAG_RE.match(str(item.Subject))
-    rep_addr, clean_subject = m.group(1).strip(), m.group(2).strip()
+    rep_addr, clean_subject = relay_target(str(item.Subject))
     to_addr = test_to or rep_addr
     cc_addr = "" if test_to else CC_FOR.get(rep_addr.lower(), "")
 
