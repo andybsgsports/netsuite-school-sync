@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-09-09T06:38:45.113958Z",
+  "updated": "2026-09-10T06:42:13.394631Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -5092,19 +5092,19 @@
     },
     {
       "school": "Marinette High School",
-      "email": "KKacalo@gillettcementproducts.com",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Ken",
-      "last": "Kacalo"
-    },
-    {
-      "school": "Marinette High School",
       "email": "lmauldin@marinette.k12.wi.us",
       "role": "Principal",
       "sport": "",
       "first": "Lucas",
       "last": "Maulding"
+    },
+    {
+      "school": "Marinette High School",
+      "email": "mahrens@marinette.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Mitchell",
+      "last": "Ahrens"
     },
     {
       "school": "Marinette High School",

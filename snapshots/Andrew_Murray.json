@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-09-09T06:34:37.189805Z",
+  "updated": "2026-09-10T06:37:53.156775Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -2249,6 +2249,14 @@
       "sport": "Girls Basketball",
       "first": "George",
       "last": "Peterson"
+    },
+    {
+      "school": "Brookfield Academy High School",
+      "email": "jacob.wittmershaus@brookfieldacademy.org",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Jacob",
+      "last": "Wittmershaus"
     },
     {
       "school": "Brookfield Academy High School",
