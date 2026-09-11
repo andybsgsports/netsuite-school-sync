@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-09-10T06:45:13.247324Z",
+  "updated": "2026-09-11T06:43:13.512752Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -20,6 +20,14 @@
     },
     {
       "school": "Arrowhead High School",
+      "email": "bechtel@arrowheadschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Dave",
+      "last": "Bechtel"
+    },
+    {
+      "school": "Arrowhead High School",
       "email": "blclark1793@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Track and Field",
@@ -33,14 +41,6 @@
       "sport": "",
       "first": "Jill",
       "last": "Bradley"
-    },
-    {
-      "school": "Arrowhead High School",
-      "email": "brengosz@arrowheadschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Nick",
-      "last": "Brengosz"
     },
     {
       "school": "Arrowhead High School",
@@ -4673,14 +4673,6 @@
       "sport": "Boys & Girls Cross Country",
       "first": "Kirk",
       "last": "Wackett"
-    },
-    {
-      "school": "Watertown High School",
-      "email": "hayesc@watertown.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Chad",
-      "last": "Hayes"
     },
     {
       "school": "Watertown High School",

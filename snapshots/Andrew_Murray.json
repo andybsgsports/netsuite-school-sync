@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-09-10T06:37:53.156775Z",
+  "updated": "2026-09-11T06:36:09.833907Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -2412,6 +2412,14 @@
     },
     {
       "school": "Brookfield Central High School",
+      "email": "estesg@elmbrookschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Geoff",
+      "last": "Estes"
+    },
+    {
+      "school": "Brookfield Central High School",
       "email": "groshekb@elmbrookschools.org",
       "role": "Assistant Principal",
       "sport": "",
@@ -3572,6 +3580,14 @@
     },
     {
       "school": "Cary-Grove High School",
+      "email": "hmartin@d155.org",
+      "role": "Student Council Adviser",
+      "sport": "",
+      "first": "Miss",
+      "last": "Hannah Martin"
+    },
+    {
+      "school": "Cary-Grove High School",
       "email": "khester@d155.org",
       "role": "Activities Director & Vocal Director",
       "sport": "",
@@ -3649,6 +3665,14 @@
       "sport": "Chess",
       "first": "Matt",
       "last": "Berg"
+    },
+    {
+      "school": "Cary-Grove High School",
+      "email": "mbohansen@d155.org",
+      "role": "Student Council Adviser",
+      "sport": "",
+      "first": "Miss",
+      "last": "Molly Bo-Hansen"
     },
     {
       "school": "Cary-Grove High School",
@@ -3737,6 +3761,14 @@
       "sport": "",
       "first": "Sarah",
       "last": "Schwartz"
+    },
+    {
+      "school": "Cary-Grove High School",
+      "email": "ssukow@d155.org",
+      "role": "Coach",
+      "sport": "Speech",
+      "first": "Stephanie",
+      "last": "Sukow"
     },
     {
       "school": "Cary-Grove High School",
@@ -9124,14 +9156,6 @@
     },
     {
       "school": "Harvard High School",
-      "email": "coachyarc@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "Matt",
-      "last": "Yarc"
-    },
-    {
-      "school": "Harvard High School",
       "email": "crozanski@cusd50.org",
       "role": "Athletic Director",
       "sport": "",
@@ -9241,6 +9265,14 @@
       "sport": "Girls Wrestling",
       "first": "Mike",
       "last": "Stumpf"
+    },
+    {
+      "school": "Harvard High School",
+      "email": "myarc@cusd50.org",
+      "role": "Head Coach",
+      "sport": "Boys Golf",
+      "first": "Matt",
+      "last": "Yarc"
     },
     {
       "school": "Harvard High School",

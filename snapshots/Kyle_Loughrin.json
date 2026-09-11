@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-09-10T06:42:13.394631Z",
+  "updated": "2026-09-11T06:40:17.706858Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -132,14 +132,6 @@
     },
     {
       "school": "Antigo High School",
-      "email": "bdecker@antigoschools.org",
-      "role": "AD Admin Assistant",
-      "sport": "",
-      "first": "Beth",
-      "last": "Decker"
-    },
-    {
-      "school": "Antigo High School",
       "email": "Brinna1828@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -153,6 +145,14 @@
       "sport": "Boys Football",
       "first": "Dan",
       "last": "Witman"
+    },
+    {
+      "school": "Antigo High School",
+      "email": "edecker@antigoschools.org",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Beth",
+      "last": "Decker"
     },
     {
       "school": "Antigo High School",

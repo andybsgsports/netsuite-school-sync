@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-09-10T06:42:50.666887Z",
+  "updated": "2026-09-11T06:40:55.911870Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -2609,6 +2609,14 @@
       "sport": "Girls Volleyball",
       "first": "Jessica",
       "last": "Rettler"
+    },
+    {
+      "school": "Tri-County High School",
+      "email": "kevinfenske@tcpenguin.net",
+      "role": "Head Coach",
+      "sport": "Boys Football 8-Player",
+      "first": "Kevin",
+      "last": "Fenske"
     },
     {
       "school": "Tri-County High School",
