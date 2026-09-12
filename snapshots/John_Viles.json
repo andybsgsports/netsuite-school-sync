@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-09-11T06:42:23.258643Z",
+  "updated": "2026-09-12T06:33:01.451162Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -5841,6 +5841,14 @@
       "sport": "Girls Swimming & Diving",
       "first": "Chad",
       "last": "Prisinger"
+    },
+    {
+      "school": "Sheboygan North High School",
+      "email": "jbyczek@sasd.net",
+      "role": "Assistant Athletic Director",
+      "sport": "",
+      "first": "Jeff",
+      "last": "Byczek"
     },
     {
       "school": "Sheboygan North High School",

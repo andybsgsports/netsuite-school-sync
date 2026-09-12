@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-09-11T06:40:55.911870Z",
+  "updated": "2026-09-12T06:31:31.151447Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -1228,14 +1228,6 @@
     },
     {
       "school": "Monona Grove High School",
-      "email": "jackandringa@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Jack",
-      "last": "Andringa"
-    },
-    {
-      "school": "Monona Grove High School",
       "email": "jalen1498@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Basketball",
@@ -1345,6 +1337,14 @@
       "sport": "Boys Lacrosse-Boys",
       "first": "Mike",
       "last": "Reiter"
+    },
+    {
+      "school": "Monona Grove High School",
+      "email": "ralphkalaljr@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Ralph",
+      "last": "Kalal"
     },
     {
       "school": "Monona Grove High School",
