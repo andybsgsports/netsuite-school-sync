@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-09-14T06:59:03.329853Z",
+  "updated": "2026-09-15T06:41:47.095729Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -2985,6 +2985,14 @@
       "sport": "Girls Volleyball",
       "first": "Shayna",
       "last": "Key"
+    },
+    {
+      "school": "Brown Deer High School",
+      "email": "Terence.smith@nicolet.us",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Terence",
+      "last": "Smith"
     },
     {
       "school": "Burlington High School",

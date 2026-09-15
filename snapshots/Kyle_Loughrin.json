@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-09-14T07:03:17.712351Z",
+  "updated": "2026-09-15T06:46:04.373405Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -775,14 +775,6 @@
       "email": "coonenjay@aasd.k12.wi.us",
       "role": "Assistant Principal, Athletic Director",
       "sport": "",
-      "first": "Jay",
-      "last": "Coonen"
-    },
-    {
-      "school": "Appleton West High School",
-      "email": "coonenjay@aasd.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Wrestling",
       "first": "Jay",
       "last": "Coonen"
     },
@@ -6052,6 +6044,14 @@
     },
     {
       "school": "Neenah High School",
+      "email": "jasonkurszewski@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Jason",
+      "last": "Kurszewski"
+    },
+    {
+      "school": "Neenah High School",
       "email": "jlindemann@leebeverage.com",
       "role": "Head Coach",
       "sport": "Boys Hockey",
@@ -6121,6 +6121,14 @@
       "sport": "Girls Volleyball",
       "first": "Nathan",
       "last": "Leitermann"
+    },
+    {
+      "school": "Neenah High School",
+      "email": "nennis123@hotmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Nathan",
+      "last": "Ennis"
     },
     {
       "school": "Neenah High School",
