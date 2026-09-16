@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-09-15T06:46:04.373405Z",
+  "updated": "2026-09-16T06:42:41.200538Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -881,6 +881,14 @@
       "sport": "Boys Soccer",
       "first": "Kevin",
       "last": "Murphy"
+    },
+    {
+      "school": "Appleton West High School",
+      "email": "NUTTJESSICA@aasd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Jessica",
+      "last": "Nutt"
     },
     {
       "school": "Appleton West High School",
@@ -3044,6 +3052,14 @@
     },
     {
       "school": "Green Bay Preble High School",
+      "email": "adlewisbyers@gbaps.org",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Aubrey",
+      "last": "Lewis-Byers"
+    },
+    {
+      "school": "Green Bay Preble High School",
       "email": "amdessart@gbaps.org",
       "role": "Head Coach",
       "sport": "Girls Track and Field",
@@ -3353,6 +3369,14 @@
       "sport": "Boys Swimming & Diving",
       "first": "Terry",
       "last": "Kreuser"
+    },
+    {
+      "school": "Green Bay Southwest High School",
+      "email": "lrarnold@gbaps.org",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Lance",
+      "last": "Arnold"
     },
     {
       "school": "Green Bay Southwest High School",

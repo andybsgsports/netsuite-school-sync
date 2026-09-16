@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-09-15T06:49:00.615816Z",
+  "updated": "2026-09-16T06:45:40.355893Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -2420,6 +2420,14 @@
     },
     {
       "school": "Kettle Moraine High School",
+      "email": "staupec@kmsd.edu",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Christopher",
+      "last": "Staupe"
+    },
+    {
+      "school": "Kettle Moraine High School",
       "email": "stemma@kmsd.edu",
       "role": "Athletic Director",
       "sport": "",
@@ -4252,7 +4260,7 @@
     },
     {
       "school": "Slinger High School",
-      "email": "ceelow233@gmail.com",
+      "email": "carlo.davila@slingerschools.org",
       "role": "Head Coach",
       "sport": "Girls Wrestling",
       "first": "Carlo",

@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-09-15T06:41:47.095729Z",
+  "updated": "2026-09-16T06:38:27.201094Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -15292,6 +15292,14 @@
     },
     {
       "school": "Prairie Ridge High School",
+      "email": "aredmond@d155.org",
+      "role": "Head Coach",
+      "sport": "Girls Gymnastics",
+      "first": "Alexis",
+      "last": "Redmond"
+    },
+    {
+      "school": "Prairie Ridge High School",
       "email": "bfrericks@d155.org",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -15409,14 +15417,6 @@
       "sport": "Girls Cross Country",
       "first": "Kelly",
       "last": "MacDonald"
-    },
-    {
-      "school": "Prairie Ridge High School",
-      "email": "lexi@clgtc.com",
-      "role": "Head Coach",
-      "sport": "Girls Gymnastics",
-      "first": "Alexis",
-      "last": "Redmond"
     },
     {
       "school": "Prairie Ridge High School",
@@ -16844,14 +16844,6 @@
     },
     {
       "school": "South Beloit High School",
-      "email": "abautista@sb320.org",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Alex",
-      "last": "Bautista"
-    },
-    {
-      "school": "South Beloit High School",
       "email": "brnima22@gmail.com",
       "role": "Coach",
       "sport": "Bass Fishing",
@@ -16924,6 +16916,14 @@
     },
     {
       "school": "South Beloit High School",
+      "email": "kgaudette@sb320.org",
+      "role": "Coach",
+      "sport": "Scholastic Bowl",
+      "first": "Kelsey",
+      "last": "Gaudette"
+    },
+    {
+      "school": "South Beloit High School",
       "email": "mostrowski@sb320.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Bowling",
@@ -16985,14 +16985,6 @@
       "sport": "Girls Basketball",
       "first": "Steven",
       "last": "Picavet"
-    },
-    {
-      "school": "South Beloit High School",
-      "email": "sweinberg@sb320.org",
-      "role": "Coach",
-      "sport": "Scholastic Bowl",
-      "first": "Sean",
-      "last": "Weinberg"
     },
     {
       "school": "Stockton High School",
@@ -18548,14 +18540,6 @@
     },
     {
       "school": "Wauconda High School",
-      "email": "adrobnik@d118.org",
-      "role": "Boys Athletic Director's Assistant & Girls Athletic Director's Assistant",
-      "sport": "",
-      "first": "Amy",
-      "last": "Drobnik"
-    },
-    {
-      "school": "Wauconda High School",
       "email": "aplacko@d118.org",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -18756,11 +18740,27 @@
     },
     {
       "school": "Wauconda High School",
+      "email": "rsavage@d118.org",
+      "role": "Boys Athletic Director's Assistant",
+      "sport": "",
+      "first": "Raquel",
+      "last": "Savage"
+    },
+    {
+      "school": "Wauconda High School",
       "email": "sfike@d118.org",
       "role": "Head Coach",
       "sport": "Girls Gymnastics",
       "first": "Stephanie",
       "last": "Fike"
+    },
+    {
+      "school": "Wauconda High School",
+      "email": "sguzman@d118.org",
+      "role": "Activities Director",
+      "sport": "",
+      "first": "Samantha",
+      "last": "Guzman"
     },
     {
       "school": "Wauconda High School",
