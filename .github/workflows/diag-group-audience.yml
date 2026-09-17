@@ -1,0 +1,40 @@
+name: Diag - Group Audience
+
+# Read-only. Inspects a NetSuite CRM Group record (Lists > Relationships >
+# Groups, e.g. "Baseball Coaches") via the REST record API to see whether
+# it's a static member list or a dynamic saved-search audience, and what
+# fields/sublists are exposed. Writes nothing. See diag_group_audience.py.
+
+on:
+  workflow_dispatch:
+    inputs:
+      group_id:
+        description: 'NS group internal id (default 93697 = Baseball Coaches)'
+        required: false
+        default: '93697'
+
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+      - name: Probe group audience
+        run: python diag_group_audience.py
+        env:
+          DIAG_GROUP_ID:    ${{ inputs.group_id || '93697' }}
+          NS_ACCOUNT:       ${{ secrets.NS_ACCOUNT }}
+          NS_CONSUMER_KEY:  ${{ secrets.NS_CONSUMER_KEY }}
+          NS_CONSUMER_SEC:  ${{ secrets.NS_CONSUMER_SEC }}
+          NS_TOKEN_KEY:     ${{ secrets.NS_TOKEN_KEY }}
+          NS_TOKEN_SEC:     ${{ secrets.NS_TOKEN_SEC }}
