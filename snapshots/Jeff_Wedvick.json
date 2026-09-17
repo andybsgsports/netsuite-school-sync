@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-09-16T06:45:40.355893Z",
+  "updated": "2026-09-17T06:48:47.593048Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -580,14 +580,6 @@
     },
     {
       "school": "Cambridge High School",
-      "email": "lunddyla@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
-      "first": "Dlyan",
-      "last": "Lund"
-    },
-    {
-      "school": "Cambridge High School",
       "email": "matt.carlson@carlsonblack.com",
       "role": "Head Coach",
       "sport": "Boys Soccer",
@@ -625,6 +617,14 @@
       "sport": "Girls Track and Field",
       "first": "Justin",
       "last": "Williams"
+    },
+    {
+      "school": "Cambridge High School",
+      "email": "wrestling@cambridge.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Wrestling",
+      "first": "Dylan",
+      "last": "Lund"
     },
     {
       "school": "Deerfield High School",
