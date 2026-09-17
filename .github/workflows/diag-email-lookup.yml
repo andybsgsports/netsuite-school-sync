@@ -1,0 +1,39 @@
+name: Diag - Email Lookup
+
+# Read-only. Looks up every contact record with a given email via
+# SuiteQL to distinguish "one shared card via a company join" from
+# "two genuinely separate duplicate records". Writes nothing. See
+# diag_email_lookup.py.
+
+on:
+  workflow_dispatch:
+    inputs:
+      email:
+        description: 'Email address to look up'
+        required: true
+
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+      - name: Look up email
+        run: python diag_email_lookup.py
+        env:
+          DIAG_EMAIL:       ${{ inputs.email }}
+          NS_ACCOUNT:       ${{ secrets.NS_ACCOUNT }}
+          NS_CONSUMER_KEY:  ${{ secrets.NS_CONSUMER_KEY }}
+          NS_CONSUMER_SEC:  ${{ secrets.NS_CONSUMER_SEC }}
+          NS_TOKEN_KEY:     ${{ secrets.NS_TOKEN_KEY }}
+          NS_TOKEN_SEC:     ${{ secrets.NS_TOKEN_SEC }}
