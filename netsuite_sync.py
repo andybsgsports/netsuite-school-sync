@@ -1240,9 +1240,16 @@ def sync_contact(customer_id, school_name, contact_row, school_info, shared=Fals
         # externalId to this school's slug collides with the slug already
         # held for another school -> HTTP 400. We know the record by its
         # internal ID, so externalId is irrelevant to the update.
-        # isInactive: False reactivates contacts that were previously
-        # inactivated then re-added to Sync=Y; NS returns 400 on PATCH to
-        # an inactive contact if isInactive is omitted.
+        # Do NOT set isInactive here. A stored id that points at an INACTIVE
+        # record is never something to blindly revive: a departure clears
+        # the row's id, so the only ways a Sync=Y row holds an inactive
+        # record's id are a retired co-op duplicate whose sheet repoint
+        # didn't land (a merge cut off mid-run) or a record someone
+        # inactivated by hand. NetSuite rejects a PATCH to an inactive
+        # record when isInactive is omitted, which routes us to the lookup
+        # path below — and that path knows to skip '(dup ' records and to
+        # attach a shared person's live card instead. A genuine returning
+        # person (Sync N->Y) has a blank id and never reaches this branch.
         body_known = {
             "firstName":  first,
             "lastName":   last,
@@ -1250,7 +1257,6 @@ def sync_contact(customer_id, school_name, contact_row, school_info, shared=Fals
             "title":      _safe_title(role),
             "company":    {"id": customer_id},
             "comments":   f"{state} | Auto-synced by School Sync",
-            "isInactive": False,
         }
         if shared and restlet_available():
             # Shared card: never move its primary company — each school's
