@@ -145,6 +145,8 @@ def main():
         print(f"   currently: inactive-filter={r.get('hasInactiveFilter')}  "
               f"sales-rep-filter={r.get('hasSalesRepFilter')}  "
               f"company-column={r.get('hasCompanyColumn')}")
+        if os.environ.get("DEBUG_FILTERS"):
+            print(f"   RAW filters: {json.dumps(r.get('filters'))}")
         print(f"   current members: {r.get('currentResultCount')}   "
               f"members after this run: {r.get('wouldBeResultCount')}")
         wc = r.get("wouldChange", {})

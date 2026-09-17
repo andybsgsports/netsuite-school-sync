@@ -33,6 +33,11 @@ on:
         description: 'NS employee id to scope each search to (default 3 = Andrew Murray). Leave blank to skip sales-rep scoping and only fix the inactive filter.'
         required: false
         default: '3'
+      debug_filters:
+        description: 'Print each search''s raw filters array (debugging only)'
+        type: boolean
+        required: false
+        default: false
 
 jobs:
   fix:
@@ -56,6 +61,7 @@ jobs:
           LIVE:                       ${{ inputs.live && '1' || '' }}
           SEARCH_IDS_JSON:            ${{ inputs.search_ids_json }}
           SALES_REP_ID:               ${{ inputs.sales_rep_id }}
+          DEBUG_FILTERS:              ${{ inputs.debug_filters && '1' || '' }}
           NS_ACCOUNT:                 ${{ secrets.NS_ACCOUNT }}
           NS_CONSUMER_KEY:            ${{ secrets.NS_CONSUMER_KEY }}
           NS_CONSUMER_SEC:            ${{ secrets.NS_CONSUMER_SEC }}
