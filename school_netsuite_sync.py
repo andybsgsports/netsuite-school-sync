@@ -164,7 +164,29 @@ def load_contacts(gc):
     return dedup, ws
 
 
+ALLOW_MASS_ROW_LOSS = os.environ.get("ALLOW_MASS_ROW_LOSS", "").strip() in (
+    "1", "true", "True", "yes")
+
+
 def save_contacts(ws, rows):
+    """Write the Contacts tab in ONE values.update call, and refuse to
+    shrink it by more than half.
+
+    One call, not clear()+update(): on 2026-08-31 the clear() succeeded and
+    the update() got a Google 502, leaving the tab EMPTY. Six more push
+    jobs ran against the empty tab, the next digest rebuilt 7,181 rows from
+    scratch with blank NS Contact IDs, and the push re-linked them to old
+    per-school records — silently undoing the July shared-card migration
+    and doubling co-op people in NetSuite's contact pickers. A single
+    update() lands or it doesn't; there is no window with the tab blank.
+    The write is padded out to the sheet's current grid height so stale
+    trailing rows are blanked in the same call.
+
+    The guard: no legitimate run halves the tab. If we're about to write
+    far fewer rows than it holds (an empty/partial read upstream), refuse
+    and leave it alone. ALLOW_MASS_ROW_LOSS=1 overrides for intentional
+    cleanups. Returns True only if the write happened.
+    """
     headers = CONTACTS_COLUMNS
     clean = [r for r in rows if str(r.get(C_SCHOOL, "")).strip()]
     if len(clean) < len(rows):
@@ -177,9 +199,27 @@ def save_contacts(ws, rows):
         str(r.get(C_FIRST, "")).strip().lower(),
     ))
     vals = [headers] + [[str(r.get(h, "") or "") for h in headers] for r in clean]
-    ws.clear()
-    ws.update(range_name="A1", values=vals)
+
+    try:
+        col_a = ws.col_values(1)
+        current = max(0, len([v for v in col_a if str(v).strip()]) - 1)  # minus header
+    except Exception as e:
+        print(f"  [SHEETS] ABORT save: could not read the tab's current size "
+              f"({type(e).__name__}: {str(e)[:120]}) — leaving it untouched")
+        return False
+    if current >= 100 and len(clean) < current * 0.5 and not ALLOW_MASS_ROW_LOSS:
+        print(f"  [SHEETS] !! REFUSING to save: this would shrink the Contacts tab "
+              f"from {current} to {len(clean)} rows. That's a partial/empty read "
+              f"upstream, not real churn. Set ALLOW_MASS_ROW_LOSS=1 only if intentional.")
+        return False
+
+    if len(vals) > ws.row_count:
+        ws.resize(rows=len(vals))          # grow-only; touches no data
+    width = len(headers)
+    pad = [[""] * width for _ in range(max(0, ws.row_count - len(vals)))]
+    ws.update(range_name="A1", values=vals + pad)
     print(f"  [SHEETS] Contacts tab saved ({len(clean)} rows, sorted by School + Role)")
+    return True
 
 
 # -- Schools-tab screening ----------------------------------------------------
