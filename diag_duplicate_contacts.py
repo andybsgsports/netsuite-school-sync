@@ -17,6 +17,9 @@ then groups by name so duplicates are obvious, and classifies each duplicate:
   COMPANY+ATTACHED   -> one record linked via company AND attached
 
 Nothing is written. Env: DIAG_CUSTOMER_ID (default 2885 = Pecatonica).
+DIAG_CONTACT_IDS (comma-separated) instead prints those contact records —
+name, email, company, isInactive, comments — e.g. to see where a record a
+repair job couldn't retire actually lives.
 """
 from __future__ import annotations
 
@@ -29,6 +32,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from netsuite_sync import ns_get, ns_suiteql
 
 CUSTOMER = os.environ.get("DIAG_CUSTOMER_ID", "2885").strip()
+CONTACT_IDS = [c.strip() for c in os.environ.get("DIAG_CONTACT_IDS", "").split(",")
+               if c.strip().isdigit()]
 
 
 def contact_role_ids(customer_id):
@@ -65,7 +70,30 @@ def contact_role_ids(customer_id):
     return ids
 
 
+def show_contacts(ids):
+    print("=" * 70)
+    print(f"  CONTACT LOOKUP  |  {', '.join(ids)}  (read-only)")
+    print("=" * 70)
+    for cid in ids:
+        r = ns_get(f"contact/{cid}?fields=firstName,lastName,email,company,"
+                   f"isInactive,comments,externalId")
+        if r.status_code != 200:
+            print(f"\n{cid}: HTTP {r.status_code} {r.text[:300]}")
+            continue
+        b = r.json()
+        comp = b.get("company") or {}
+        print(f"\n{cid}: {b.get('firstName', '')} {b.get('lastName', '')}  "
+              f"<{b.get('email', '')}>")
+        print(f"   company:    {comp.get('id', '')}  {comp.get('refName', '')}")
+        print(f"   isInactive: {b.get('isInactive')}")
+        print(f"   externalId: {b.get('externalId', '')}")
+        print(f"   comments:   {(b.get('comments') or '')[:200]}")
+
+
 def main():
+    if CONTACT_IDS:
+        show_contacts(CONTACT_IDS)
+        return
     print("=" * 70)
     print(f"  DUPLICATE-CONTACT DIAGNOSTIC  |  customer {CUSTOMER}  (read-only)")
     print("=" * 70)
