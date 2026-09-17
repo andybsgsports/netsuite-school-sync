@@ -21,6 +21,15 @@ netsuite_sync.SALES_REP_MAP) adds a company.salesrep filter alongside the
 inactive one. Set SALES_REP_ID="" to skip this and only fix the inactive
 filter.
 
+v5 note: N/search's Filter.values comes back null when reading filters
+off an already-loaded search (even the working isinactive filter reports
+it), so an earlier version's value-comparison check for the sales rep
+filter was always false and appended a harmless-but-sloppy duplicate on
+every run. The restlet now does a full rebuild (drop all
+isinactive/salesrep-company filters, re-add exactly one of each) instead
+of incremental add — deterministic and self-healing, cleans up any
+duplicates from earlier runs automatically.
+
 Also adds a `company` results column when missing (unconditionally — not
 only when a `phone` column happens to be present). NOTE: confirmed live
 (2026-09-17, twice) this does NOT change what the Group's own "Members"
@@ -142,18 +151,18 @@ def main():
             errors += 1
             continue
         print(f"   title: {r.get('searchTitle')!r}  type: {r.get('searchType')}")
-        print(f"   currently: inactive-filter={r.get('hasInactiveFilter')}  "
-              f"sales-rep-filter={r.get('hasSalesRepFilter')}  "
+        print(f"   currently: inactive-filter x{r.get('inactiveFilterCount')}  "
+              f"sales-rep-filter x{r.get('salesRepFilterCount')}  "
               f"company-column={r.get('hasCompanyColumn')}")
         if os.environ.get("DEBUG_FILTERS"):
             print(f"   RAW filters: {json.dumps(r.get('filters'))}")
         print(f"   current members: {r.get('currentResultCount')}   "
               f"members after this run: {r.get('wouldBeResultCount')}")
         wc = r.get("wouldChange", {})
-        if wc.get("addInactiveFilter") or wc.get("addSalesRepFilter") or wc.get("addCompanyColumn"):
+        if wc.get("fixInactiveFilter") or wc.get("fixSalesRepFilter") or wc.get("addCompanyColumn"):
             would_change += 1
-            print(f"   would change: addInactiveFilter={wc.get('addInactiveFilter')}  "
-                  f"addSalesRepFilter={wc.get('addSalesRepFilter')}  "
+            print(f"   would change: fixInactiveFilter={wc.get('fixInactiveFilter')}  "
+                  f"fixSalesRepFilter={wc.get('fixSalesRepFilter')}  "
                   f"addCompanyColumn={wc.get('addCompanyColumn')}")
         else:
             print("   already correct — no change needed")
