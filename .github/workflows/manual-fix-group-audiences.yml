@@ -9,8 +9,10 @@ name: Manual - Fix Group Audiences
 # fix_group_audiences.py and suitescript/group_audience_restlet.js.
 #
 # Requires the group_audience_restlet.js RESTlet to be deployed first
-# (see RESTLET_SETUP.md) and NS_GROUP_RESTLET_SCRIPT_ID /
-# NS_GROUP_RESTLET_DEPLOY_ID set as repo secrets.
+# (see GROUP_AUDIENCE_RESTLET_SETUP.md) and NS_GROUP_RESTLET_SCRIPT_ID /
+# NS_GROUP_RESTLET_DEPLOY_ID set as repo secrets, plus search_ids_json —
+# CRM Group records aren't reachable from SuiteScript (or REST) at all,
+# so this needs each saved search's own internal id, not the group's.
 #
 # DRY RUN by default — run unchecked first and review the plan.
 
@@ -22,8 +24,8 @@ on:
         type: boolean
         required: false
         default: false
-      group_ids:
-        description: 'Optional: comma-separated group ids to limit to (default: all 13)'
+      search_ids_json:
+        description: 'Required: {"Baseball Coaches": 12345, ...} — internal ids of the 13 saved searches (Lists > Search > Saved Searches, Type=Contact)'
         required: false
         default: ''
 
@@ -47,7 +49,7 @@ jobs:
         run: python fix_group_audiences.py
         env:
           LIVE:                       ${{ inputs.live && '1' || '' }}
-          GROUP_IDS:                  ${{ inputs.group_ids }}
+          SEARCH_IDS_JSON:            ${{ inputs.search_ids_json }}
           NS_ACCOUNT:                 ${{ secrets.NS_ACCOUNT }}
           NS_CONSUMER_KEY:            ${{ secrets.NS_CONSUMER_KEY }}
           NS_CONSUMER_SEC:            ${{ secrets.NS_CONSUMER_SEC }}

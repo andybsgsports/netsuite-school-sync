@@ -16,14 +16,23 @@ Also swaps a bare `phone` results column for `company` where present,
 since Andy asked for the school name over the phone number in the member
 list (screenshot: Boys Football Coaches member table).
 
+v1 tried to find each search's id by loading the linked Group record via
+SuiteScript — NetSuite rejected that ("The record type [GROUP] is
+invalid": CRM Group isn't a SuiteScript-supported record type, same wall
+REST hit). v2 needs each of the 13 saved searches' own internal ids
+directly instead. Fastest way to get them: NetSuite UI ->
+Lists > Search > Saved Searches, filter Type = Contact, find the 13
+"<Sport> Coaches - Email Audience" / "Athletic Directors - Email
+Audience" rows, read their ID column (a number, or a customsearch_...
+script id — either works). Fill in SEARCH_IDS below or pass SEARCH_IDS_JSON.
+
 This calls suitescript/group_audience_restlet.js — a SEPARATE RESTlet from
 the one the nightly sync depends on (attach_contact_restlet.js), so a bug
 here can never affect attach/detach. See RESTLET_SETUP.md for the deploy
-pattern; use a NEW script record + deployment and set
-NS_GROUP_RESTLET_SCRIPT_ID / NS_GROUP_RESTLET_DEPLOY_ID.
+pattern; NS_GROUP_RESTLET_SCRIPT_ID / NS_GROUP_RESTLET_DEPLOY_ID must be set.
 
 DRY RUN by default (reports what would change, saves nothing).
-LIVE=1 applies it. GROUP_IDS overrides the built-in list (comma-separated).
+LIVE=1 applies it.
 """
 from __future__ import annotations
 
@@ -44,36 +53,36 @@ NS_GROUP_RESTLET_DEPLOY_ID = os.environ.get("NS_GROUP_RESTLET_DEPLOY_ID", "").st
 RESTLET_URL = (f"https://{NS_ACCOUNT}.restlets.api.netsuite.com/app/site/hosting/restlet.nl"
                f"?script={NS_GROUP_RESTLET_SCRIPT_ID}&deploy={NS_GROUP_RESTLET_DEPLOY_ID}")
 
-# The 13 coach/AD "Email Audience" groups, from Lists > Relationships >
-# Groups (2026-09-17). Override with GROUP_IDS=1,2,3 if the account's ids
-# ever change or to test against just one.
-DEFAULT_GROUPS = {
-    "93702": "Athletic Directors",
-    "93697": "Baseball Coaches",
-    "93691": "Boys Basketball Coaches",
-    "93693": "Boys Football Coaches",
-    "93699": "Boys Soccer Coaches",
-    "93694": "Cross Country Coaches",
-    "93692": "Girls Basketball Coaches",
-    "93700": "Girls Soccer Coaches",
-    "93690": "Girls Volleyball Coaches",
-    "93701": "Gymnastics Coaches",
-    "93698": "Softball Coaches",
-    "93695": "Track and Field Coaches",
-    "93696": "Wrestling Coaches",
+# Fill these in from the Saved Searches list (see module docstring), or
+# pass SEARCH_IDS_JSON='{"Baseball Coaches": 12345, ...}' as an env var
+# without editing this file.
+SEARCH_IDS = {
+    "Athletic Directors": None,
+    "Baseball Coaches": None,
+    "Boys Basketball Coaches": None,
+    "Boys Football Coaches": None,
+    "Boys Soccer Coaches": None,
+    "Cross Country Coaches": None,
+    "Girls Basketball Coaches": None,
+    "Girls Soccer Coaches": None,
+    "Girls Volleyball Coaches": None,
+    "Gymnastics Coaches": None,
+    "Softball Coaches": None,
+    "Track and Field Coaches": None,
+    "Wrestling Coaches": None,
 }
 
-_override = os.environ.get("GROUP_IDS", "").strip()
-GROUP_IDS = [g.strip() for g in _override.split(",") if g.strip()] if _override \
-    else list(DEFAULT_GROUPS)
+_override = os.environ.get("SEARCH_IDS_JSON", "").strip()
+if _override:
+    SEARCH_IDS = json.loads(_override)
 
 
-def call_restlet(action, group_ids, dry_run=True):
+def call_restlet(action, searches, dry_run=True):
     if not (NS_ACCOUNT and NS_GROUP_RESTLET_SCRIPT_ID and NS_GROUP_RESTLET_DEPLOY_ID):
         print("ERROR: NS_GROUP_RESTLET_SCRIPT_ID / NS_GROUP_RESTLET_DEPLOY_ID not set — "
               "see RESTLET_SETUP.md for the deploy steps, then add these as GitHub secrets.")
         sys.exit(1)
-    body = {"action": action, "groupIds": [int(g) for g in group_ids]}
+    body = {"action": action, "searches": searches}
     if action == "fix":
         body["dryRun"] = dry_run
     r = requests.post(RESTLET_URL, headers={
@@ -91,22 +100,29 @@ def call_restlet(action, group_ids, dry_run=True):
 
 
 def main():
+    known = {k: v for k, v in SEARCH_IDS.items() if v}
+    missing = [k for k, v in SEARCH_IDS.items() if not v]
+    if missing:
+        print(f"NOTE: no id set for {len(missing)} search(es), skipping: {missing}")
+    if not known:
+        print("ERROR: no search ids configured. Fill in SEARCH_IDS in this file, or set "
+              "SEARCH_IDS_JSON='{\"Baseball Coaches\": 12345, ...}'.")
+        sys.exit(1)
+
     print("=" * 70)
-    print(f"  FIX GROUP AUDIENCES  |  LIVE={LIVE}  |  groups: {len(GROUP_IDS)}")
+    print(f"  FIX GROUP AUDIENCES  |  LIVE={LIVE}  |  searches: {len(known)}")
     print("=" * 70)
 
-    results = call_restlet("fix", GROUP_IDS, dry_run=not LIVE)
+    results = call_restlet("fix", known, dry_run=not LIVE)
 
     changed = would_change = errors = 0
     for r in results:
-        name = DEFAULT_GROUPS.get(str(r.get("groupId")), r.get("groupName", "?"))
-        print(f"\n{r.get('groupId')}  {name}")
+        print(f"\n{r.get('label')}  (search id {r.get('savedSearchId')})")
         if r.get("error"):
             print(f"   ERROR: {r['error']}")
             errors += 1
             continue
-        print(f"   saved search: {r.get('searchTitle')!r} (id {r.get('savedSearchId')}, "
-              f"field {r.get('savedSearchFieldUsed')})")
+        print(f"   title: {r.get('searchTitle')!r}  type: {r.get('searchType')}")
         print(f"   currently: inactive-filter={r.get('hasInactiveFilter')}  "
               f"phone-column={r.get('hasPhoneColumn')}  company-column={r.get('hasCompanyColumn')}")
         wc = r.get("wouldChange", {})

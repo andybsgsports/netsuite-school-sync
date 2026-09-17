@@ -17,22 +17,27 @@
  * each search fixes it for good; NetSuite recomputes the group from the
  * search on every view/send, so there's nothing to keep re-running.
  *
+ * v1 tried to find each search's internal id by loading the linked
+ * Group record (record.load({type:'group', ...})) — NetSuite rejected
+ * that with "The record type [GROUP] is invalid": CRM Group isn't a
+ * record type SuiteScript's record module supports at all (mirrors the
+ * REST record API, which doesn't expose it either). v2 skips the group
+ * record entirely and takes each saved search's internal id directly —
+ * N/search.load() is well-supported and needs nothing else.
+ *
  * Deliberately a SEPARATE script from attach_contact_restlet.js, which
  * the nightly sync depends on every run — a bug here can never take that
- * down. See RESTLET_SETUP.md for the one-time deploy steps; use the same
- * pattern with a NEW script record (name it e.g. "BSG Group Audience")
- * and two NEW GitHub secrets, NS_GROUP_RESTLET_SCRIPT_ID /
- * NS_GROUP_RESTLET_DEPLOY_ID.
+ * down.
  *
  * POST body (JSON):
- *   { "action": "inspect", "groupIds": [93697, ...] }
- *     - read-only. For each group: its name, the linked saved search's
- *       internal id/title, current filters and columns (raw), and
- *       whether an isinactive=F filter and a company-ish column are
- *       already present. Never calls .save().
- *   { "action": "fix", "groupIds": [93697, ...], "dryRun": true }
+ *   { "action": "inspect", "searches": { "Boys Football Coaches": 12345, ... } }
+ *     - read-only. For each label->id pair: the search's title/type,
+ *       current filters and columns (raw), and whether an isinactive=F
+ *       filter and a company-ish column are already present. Never
+ *       calls .save().
+ *   { "action": "fix", "searches": {...}, "dryRun": true }
  *     - dryRun (default true): same report as "inspect" plus a "would
- *       change" field per group — never calls .save().
+ *       change" field per search — never calls .save().
  *     - dryRun: false: adds an isinactive=F filter if missing, and swaps
  *       a "phone" column for a "company" column if phone is present and
  *       company isn't, then .save()s the search. Idempotent — running it
@@ -43,26 +48,7 @@
  *
  * GET (no params) is a health check.
  */
-define(['N/record', 'N/search', 'N/log'], (record, search, log) => {
-
-    // The group record's field holding the linked saved search's internal
-    // id — try a few plausible ids since this isn't documented for the
-    // standard "group" record type; the response reports which one hit so
-    // a mismatch is visible immediately instead of silently no-op'ing.
-    const SAVEDSEARCH_FIELD_CANDIDATES = [
-        'savedsearch', 'contactsavedsearchid', 'savedsearchid', 'searchid',
-    ];
-
-    const loadGroupSavedSearchId = (groupId) => {
-        const rec = record.load({ type: 'group', id: groupId, isDynamic: false });
-        const name = rec.getValue({ fieldId: 'groupname' }) || rec.getValue({ fieldId: 'name' });
-        for (const fld of SAVEDSEARCH_FIELD_CANDIDATES) {
-            let val;
-            try { val = rec.getValue({ fieldId: fld }); } catch (e) { continue; }
-            if (val) return { groupName: name, searchId: val, fieldUsed: fld };
-        }
-        return { groupName: name, searchId: null, fieldUsed: null };
-    };
+define(['N/search', 'N/log'], (search, log) => {
 
     const describeFilter = (f) => ({
         name: f.name, operator: f.operator, join: f.join || null,
@@ -72,26 +58,11 @@ define(['N/record', 'N/search', 'N/log'], (record, search, log) => {
         name: c.name, join: c.join || null, label: c.label || null,
     });
 
-    const inspectOne = (groupId) => {
-        const out = { groupId };
-        let g;
-        try {
-            g = loadGroupSavedSearchId(groupId);
-        } catch (e) {
-            out.error = 'group load failed: ' + ((e && e.message) || String(e));
-            return out;
-        }
-        out.groupName = g.groupName;
-        out.savedSearchFieldUsed = g.fieldUsed;
-        out.savedSearchId = g.searchId;
-        if (!g.searchId) {
-            out.error = 'no savedsearch id found on group record (tried: '
-                + SAVEDSEARCH_FIELD_CANDIDATES.join(', ') + ')';
-            return out;
-        }
+    const inspectOne = (label, searchId) => {
+        const out = { label: label, savedSearchId: searchId };
         let s;
         try {
-            s = search.load({ id: g.searchId });
+            s = search.load({ id: searchId });
         } catch (e) {
             out.error = 'search.load failed: ' + ((e && e.message) || String(e));
             return out;
@@ -107,8 +78,8 @@ define(['N/record', 'N/search', 'N/log'], (record, search, log) => {
         return out;
     };
 
-    const fixOne = (groupId, dryRun) => {
-        const out = inspectOne(groupId);
+    const fixOne = (label, searchId, dryRun) => {
+        const out = inspectOne(label, searchId);
         if (out.error) return out;
         const s = out._searchObj;
         delete out._searchObj;
@@ -145,22 +116,24 @@ define(['N/record', 'N/search', 'N/log'], (record, search, log) => {
     const post = (body) => {
         try {
             const action = String((body && body.action) || '').toLowerCase();
-            const groupIds = Array.isArray(body && body.groupIds) ? body.groupIds : [];
+            const searches = (body && body.searches) || {};
+            const labels = Object.keys(searches);
             const dryRun = !(body && body.dryRun === false); // default true
 
-            if (!groupIds.length || (action !== 'inspect' && action !== 'fix')) {
+            if (!labels.length || (action !== 'inspect' && action !== 'fix')) {
                 return { success: false,
-                    error: 'Required fields: action ("inspect"|"fix"), groupIds: [ids]' };
+                    error: 'Required fields: action ("inspect"|"fix"), searches: {"label": searchId, ...}' };
             }
 
-            const results = groupIds.map((gid) => {
-                const r = action === 'inspect' ? inspectOne(gid) : fixOne(gid, dryRun);
+            const results = labels.map((label) => {
+                const sid = parseInt(searches[label], 10);
+                const r = action === 'inspect' ? inspectOne(label, sid) : fixOne(label, sid, dryRun);
                 if (r._searchObj) delete r._searchObj;
                 return r;
             });
 
             log.audit('group_audience_restlet',
-                `${action} dryRun=${dryRun} groups=${groupIds.join(',')}`);
+                `${action} dryRun=${dryRun} searches=${labels.join(',')}`);
             return { success: true, action: action, dryRun: dryRun, results: results };
 
         } catch (e) {
@@ -170,7 +143,7 @@ define(['N/record', 'N/search', 'N/log'], (record, search, log) => {
         }
     };
 
-    const get = () => ({ success: true, service: 'group_audience_restlet', version: 1 });
+    const get = () => ({ success: true, service: 'group_audience_restlet', version: 2 });
 
     return { post: post, get: get };
 });
