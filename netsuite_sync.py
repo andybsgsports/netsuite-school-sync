@@ -111,9 +111,14 @@ def make_auth(method, full_url):
 
 def _ns_call(method, path, body=None, max_retries=5):
     """Single NS REST call with exponential backoff on 429 (concurrent
-    request limit). NS returns HTTP 429 when too many concurrent requests
-    land on the same account — common when running parallel per-rep
-    jobs. Sleep 2s, 4s, 8s, 16s, 32s and retry up to 5 times."""
+    request limit) AND on transport-level drops. NS returns HTTP 429 when
+    too many concurrent requests land on the same account — common when
+    running parallel per-rep jobs — and it also resets idle keep-alive
+    sockets ('Connection reset by peer'), which surfaces as a requests
+    ConnectionError rather than a status code. Untreated, one such reset
+    killed an entire rep's nightly job twice this week. Sleep 2s, 4s, 8s,
+    16s, 32s and retry up to 5 times for either."""
+    import time as _t
     url = f"{BASE_URL}/{path}"
     delay = 2.0
     for attempt in range(max_retries + 1):
@@ -121,13 +126,23 @@ def _ns_call(method, path, body=None, max_retries=5):
             "Authorization": make_auth(method, url),
             "Content-Type":  "application/json",
         }
-        if body is not None:
-            r = requests.request(method, url, headers=headers, json=body)
-        else:
-            r = requests.request(method, url, headers=headers)
+        try:
+            if body is not None:
+                r = requests.request(method, url, headers=headers, json=body)
+            else:
+                r = requests.request(method, url, headers=headers)
+        except (requests.exceptions.ConnectionError,
+                requests.exceptions.ChunkedEncodingError,
+                requests.exceptions.Timeout) as e:
+            if attempt == max_retries:
+                raise
+            print(f"  [NS] transient network error on {method} {path[:60]} "
+                  f"({type(e).__name__}) — retry {attempt + 1}/{max_retries} in {delay:.0f}s")
+            _t.sleep(delay)
+            delay *= 2
+            continue
         if r.status_code != 429 or attempt == max_retries:
             return r
-        import time as _t
         _t.sleep(delay)
         delay *= 2
     return r  # unreachable but keeps linter happy
@@ -1060,7 +1075,8 @@ def _find_contact_via_suiteql(customer_id, email="", first="", last="", exclude_
     if not conds:
         return None
     rows = ns_suiteql(
-        f"SELECT id, company FROM contact WHERE {' OR '.join(conds)}", limit=50
+        f"SELECT id, company FROM contact WHERE ({' OR '.join(conds)}) "
+        f"AND (isinactive = 'F' OR isinactive IS NULL)", limit=50
     )
     for row in rows:
         cid = str(row.get("id") or "").strip()
@@ -1135,6 +1151,11 @@ def _find_same_name_contact(customer_id, first, last, email="", exclude_id=None)
         if r.status_code != 200:
             continue
         c = r.json()
+        # A retired duplicate ("Lastname (dup 46176)", inactive) must never
+        # be handed back as "the customer's own record" — that resurrects
+        # exactly what the co-op merge put away.
+        if "(dup " in (c.get("lastName") or ""):
+            continue
         name = (f"{(c.get('firstName') or '').strip()} "
                 f"{(c.get('lastName') or '').strip()}").strip().lower()
         if target and name == target:
@@ -1245,6 +1266,17 @@ def sync_contact(customer_id, school_name, contact_row, school_info, shared=Fals
             print(f"  [NS] shared contact {known_id} PATCH failed "
                   f"({r.status_code} {r.text[:200]}); falling back")
             # fall through to the standard path below
+        elif shared:
+            # RESTlet momentarily unavailable: still never move a shared
+            # card's company (that's the thrash that, via a unique-name
+            # collision, used to route into the resurrect-a-retired-dup
+            # path). Update fields only; the attach catches up next night.
+            body_shared = {k: v for k, v in body_known.items() if k != "company"}
+            r = ns_patch(f"contact/{known_id}", body_shared)
+            if r.status_code == 204:
+                print(f"  [NS] Updated shared Contact (RESTlet down — attach deferred): "
+                      f"{first} {last} (ID: {known_id})")
+                return known_id
         r = ns_patch(f"contact/{known_id}", body_known)
         if r.status_code == 204:
             print(f"  [NS] Updated Contact (by stored ID): {first} {last} (ID: {known_id})")
@@ -1280,8 +1312,39 @@ def sync_contact(customer_id, school_name, contact_row, school_info, shared=Fals
                 print(f"  [NS] collision contact {dup_id} PATCH failed: "
                       f"{r2.status_code} {r2.text[:200]}")
 
+    # Shared (co-op) person with no usable stored id: find their card
+    # ANYWHERE and attach it here BEFORE consulting per-school externalIds.
+    # The externalId scheme is per-school ({SCHOOL}__{email}), so for a
+    # co-op person it resolves to the OLD per-school record — the very
+    # duplicate the shared-card model retired. When the Contacts tab was
+    # rebuilt with blank ids on 2026-09-02, the old ordering re-adopted
+    # 1,686 such records and REACTIVATED 89 retired ones in one rep's run
+    # alone (Scott Lattyak 91594), undoing the July migration.
+    if shared and restlet_available():
+        anywhere_id = _find_person_anywhere_via_suiteql(email, first, last)
+        if anywhere_id and ensure_attached(anywhere_id, customer_id):
+            ns_patch(f"contact/{anywhere_id}", {
+                "firstName": first, "lastName": last, "email": email,
+                "title": _safe_title(role),
+                "comments": f"{state} | Auto-synced by School Sync",
+                "isInactive": False,
+            })
+            print(f"  [NS] Shared existing Contact via attach: {first} {last} "
+                  f"(ID: {anywhere_id}) now on customer {customer_id}")
+            return anywhere_id
+
     contact_id, is_inactive, found_via = find_contact_any_format(
         school_name, email, role, customer_id=customer_id)
+
+    if contact_id and is_inactive:
+        # An inactive externalId hit may be a RETIRED DUPLICATE
+        # ("Lastname (dup NNN)") rather than a departed-and-returned person.
+        # Reactivating it re-creates the duplicate; treat it as not found.
+        rc = ns_get(f"contact/{contact_id}?fields=lastName")
+        if rc.status_code == 200 and "(dup " in (rc.json().get("lastName") or ""):
+            print(f"  [NS] {first} {last}: externalId points at retired duplicate "
+                  f"{contact_id} — not reactivating")
+            contact_id, is_inactive, found_via = None, None, None
 
     body_create = {
         "externalId": ext_id,
@@ -1331,24 +1394,9 @@ def sync_contact(customer_id, school_name, contact_row, school_info, shared=Fals
         return contact_id
 
     else:
-        # Shared (co-op) person with no stored id yet: if their card already
-        # exists at ANOTHER school, ATTACH it here instead of creating a
-        # duplicate. NetSuite's unique-name rule is per-customer, so a blind
-        # create at the second school would quietly succeed and duplicate —
-        # this pre-check is what keeps new co-op coaches on one card.
-        if shared and restlet_available():
-            anywhere_id = _find_person_anywhere_via_suiteql(email, first, last)
-            if anywhere_id and ensure_attached(anywhere_id, customer_id):
-                body_shared = {
-                    "firstName": first, "lastName": last, "email": email,
-                    "title": _safe_title(role),
-                    "comments": f"{state} | Auto-synced by School Sync",
-                    "isInactive": False,
-                }
-                ns_patch(f"contact/{anywhere_id}", body_shared)
-                print(f"  [NS] Shared existing Contact via attach: {first} {last} "
-                      f"(ID: {anywhere_id}) now on customer {customer_id}")
-                return anywhere_id
+        # (The shared-person anywhere/attach pre-check now runs above,
+        # before the externalId lookup, so a co-op coach never reaches this
+        # create with an existing card somewhere else.)
 
         # Create fresh — include company as the primary link.
         r = ns_post("contact", body_create)
