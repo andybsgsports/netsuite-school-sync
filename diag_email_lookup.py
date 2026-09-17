@@ -31,14 +31,17 @@ def main():
         print("  ERROR: set DIAG_EMAIL")
         return
     rows = ns_suiteql(
-        "SELECT id, firstname, lastname, company, isinactive FROM contact "
-        f"WHERE email = '{EMAIL}'", limit=50)
+        "SELECT c.id, c.firstname, c.lastname, c.company, c.isinactive, "
+        "cust.companyname FROM contact c "
+        "LEFT JOIN customer cust ON cust.id = c.company "
+        f"WHERE c.email = '{EMAIL}'", limit=50)
     if not rows:
         print("  no contact records found with this email")
         return
     for r in rows:
         print(f"  id={r.get('id'):<8} {r.get('firstname')} {r.get('lastname'):<20} "
-              f"company={r.get('company')}  isinactive={r.get('isinactive')}")
+              f"company={r.get('company')} ({r.get('companyname')})  "
+              f"isinactive={r.get('isinactive')}")
     print(f"\n  {len(rows)} contact id(s) total for this email")
     print(f"  distinct ids: {len(set(r.get('id') for r in rows))}")
 
