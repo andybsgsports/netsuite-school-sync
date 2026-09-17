@@ -120,6 +120,7 @@ def main():
             y_by_school[str(c.get(C_SCHOOL, "")).strip()].append(c)
 
     targets = []
+    seen_ids = set()   # Schools tab lists some schools twice (Oconomowoc, Hamilton)
     for s in schools:
         name = str(s.get(M_NAME, "")).strip()
         ns_id = re.sub(r"\.0$", "", str(s.get(M_NS_ID, "")).strip())
@@ -130,6 +131,9 @@ def main():
             continue
         if SCHOOL_FILTER and name != SCHOOL_FILTER:
             continue
+        if ns_id in seen_ids:
+            continue           # same customer under a second row — visit once
+        seen_ids.add(ns_id)
         targets.append((name, ns_id))
     print(f"\nSchools in scope: {len(targets)}\n")
 
