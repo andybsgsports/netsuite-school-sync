@@ -1,0 +1,57 @@
+name: Manual - Fix Group Audiences
+
+# Adds an "Inactive = No" filter to the saved searches behind the coach
+# Groups (Baseball Coaches, Boys Football Coaches, Athletic Directors,
+# etc.) so retired duplicate contacts stop showing up as members, and
+# swaps a bare Phone column for Company where present. One-time fix —
+# NetSuite recomputes each group from its search on every view, so
+# nothing needs to run again once these are corrected. See
+# fix_group_audiences.py and suitescript/group_audience_restlet.js.
+#
+# Requires the group_audience_restlet.js RESTlet to be deployed first
+# (see RESTLET_SETUP.md) and NS_GROUP_RESTLET_SCRIPT_ID /
+# NS_GROUP_RESTLET_DEPLOY_ID set as repo secrets.
+#
+# DRY RUN by default — run unchecked first and review the plan.
+
+on:
+  workflow_dispatch:
+    inputs:
+      live:
+        description: 'Apply changes (unchecked = dry run, report only)'
+        type: boolean
+        required: false
+        default: false
+      group_ids:
+        description: 'Optional: comma-separated group ids to limit to (default: all 13)'
+        required: false
+        default: ''
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+      - name: Fix group audiences
+        run: python fix_group_audiences.py
+        env:
+          LIVE:                       ${{ inputs.live && '1' || '' }}
+          GROUP_IDS:                  ${{ inputs.group_ids }}
+          NS_ACCOUNT:                 ${{ secrets.NS_ACCOUNT }}
+          NS_CONSUMER_KEY:            ${{ secrets.NS_CONSUMER_KEY }}
+          NS_CONSUMER_SEC:            ${{ secrets.NS_CONSUMER_SEC }}
+          NS_TOKEN_KEY:               ${{ secrets.NS_TOKEN_KEY }}
+          NS_TOKEN_SEC:               ${{ secrets.NS_TOKEN_SEC }}
+          NS_GROUP_RESTLET_SCRIPT_ID: ${{ secrets.NS_GROUP_RESTLET_SCRIPT_ID }}
+          NS_GROUP_RESTLET_DEPLOY_ID: ${{ secrets.NS_GROUP_RESTLET_DEPLOY_ID }}
