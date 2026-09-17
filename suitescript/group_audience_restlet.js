@@ -36,11 +36,22 @@
  * the nightly sync depends on every run — a bug here can never take that
  * down.
  *
+ * Also confirmed live (2026-09-17): the Group's own "Members" tab in the
+ * NetSuite UI is a FIXED display (Name/Phone/Email/Bounced/Inactive/
+ * Subscription Status) that ignores the linked search's own Results
+ * columns entirely — Boys Football Coaches still showed a Phone column
+ * there with zero phone columns in its search definition. Nothing here
+ * (or in the search definition) can change what that specific screen
+ * shows. Adding a Company column to the search DOES show up when the
+ * search itself is opened directly (Lists > Search > Saved Searches) or
+ * exported to CSV — that's the real workaround for "which school is
+ * this contact at".
+ *
  * POST body (JSON):
  *   { "action": "inspect", "searches": { "Boys Football Coaches": 12345, ... } }
  *     - read-only. For each label->id pair: the search's title/type,
  *       current filters/columns, current result count, and whether an
- *       isinactive=F filter / sales rep filter / company-ish column are
+ *       isinactive=F filter / sales rep filter / company column are
  *       already present. Never calls .save().
  *   { "action": "fix", "searches": {...}, "dryRun": true, "salesRepId": "3" }
  *     - salesRepId optional — omit to only fix the inactive filter.
@@ -50,9 +61,9 @@
  *       any .save()). Never calls .save().
  *     - dryRun: false: adds an isinactive=F filter if missing, adds a
  *       company.salesrep=salesRepId filter if provided and missing, and
- *       swaps a "phone" column for a "company" column if phone is
- *       present and company isn't, then .save()s the search. Idempotent
- *       — running it again on an already-fixed search changes nothing.
+ *       adds a "company" column if not already present, then .save()s
+ *       the search. Idempotent — running it again on an already-fixed
+ *       search changes nothing.
  *
  * Response: { "success": true, "action": ..., "results": [ {...} ] }
  *        or { "success": false, "error": "..." }
@@ -113,12 +124,20 @@ define(['N/search', 'N/log'], (search, log) => {
 
         const willAddInactiveFilter = !out.hasInactiveFilter;
         const willAddSalesRepFilter = !!salesRepId && !out.hasSalesRepFilter;
-        const willSwapColumn = out.hasPhoneColumn && !out.hasCompanyColumn;
+        // Unconditional — not just when a phone column happens to be
+        // present. The Group's own "Members" tab is a fixed NetSuite
+        // display (Name/Phone/Email/Bounced/Inactive/Subscription) that
+        // ignores the search's columns entirely (confirmed live,
+        // 2026-09-17: Boys Football Coaches still shows Phone with zero
+        // phone columns in the search def) — this can't fix that screen.
+        // It DOES make Company show up when the search is opened
+        // directly (Lists > Search > Saved Searches) or exported to CSV.
+        const willAddCompanyColumn = !out.hasCompanyColumn;
         out.wouldChange = { addInactiveFilter: willAddInactiveFilter,
                              addSalesRepFilter: willAddSalesRepFilter,
-                             swapPhoneForCompanyColumn: willSwapColumn };
+                             addCompanyColumn: willAddCompanyColumn };
 
-        const nothingToDo = !willAddInactiveFilter && !willAddSalesRepFilter && !willSwapColumn;
+        const nothingToDo = !willAddInactiveFilter && !willAddSalesRepFilter && !willAddCompanyColumn;
         if (nothingToDo) {
             out.applied = false;
             out.wouldBeResultCount = out.currentResultCount;
@@ -137,10 +156,8 @@ define(['N/search', 'N/log'], (search, log) => {
                 search.createFilter({ name: 'salesrep', join: 'company',
                                        operator: search.Operator.ANYOF, values: [salesRepId] }));
         }
-        if (willSwapColumn) {
-            s.columns = (s.columns || [])
-                .filter(c => c.name !== 'phone')
-                .concat(search.createColumn({ name: 'company' }));
+        if (willAddCompanyColumn) {
+            s.columns = (s.columns || []).concat(search.createColumn({ name: 'company' }));
         }
         out.wouldBeResultCount = resultCount(s);
 
@@ -191,7 +208,7 @@ define(['N/search', 'N/log'], (search, log) => {
         }
     };
 
-    const get = () => ({ success: true, service: 'group_audience_restlet', version: 3 });
+    const get = () => ({ success: true, service: 'group_audience_restlet', version: 4 });
 
     return { post: post, get: get };
 });

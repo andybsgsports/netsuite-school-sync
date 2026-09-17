@@ -21,11 +21,15 @@ netsuite_sync.SALES_REP_MAP) adds a company.salesrep filter alongside the
 inactive one. Set SALES_REP_ID="" to skip this and only fix the inactive
 filter.
 
-Also swaps a bare `phone` results column for `company` where present —
-NOTE: confirmed live (2026-09-17) this does NOT change what the Group's
-own "Members" tab displays; that table uses a fixed system layout
-unrelated to the search's own Results columns. It only affects the
-search's own view when run directly (Lists > Search > Saved Searches).
+Also adds a `company` results column when missing (unconditionally — not
+only when a `phone` column happens to be present). NOTE: confirmed live
+(2026-09-17, twice) this does NOT change what the Group's own "Members"
+tab displays; that table is a FIXED NetSuite layout
+(Name/Phone/Email/Bounced/Inactive/Subscription Status) unrelated to the
+search's own Results columns — nothing can change what that specific
+screen shows. It only affects the search's own view when run directly
+(Lists > Search > Saved Searches) or exported to CSV — the real
+workaround for "which school is this contact at".
 
 v1 tried to find each search's id by loading the linked Group record via
 SuiteScript — NetSuite rejected that ("The record type [GROUP] is
@@ -140,15 +144,15 @@ def main():
         print(f"   title: {r.get('searchTitle')!r}  type: {r.get('searchType')}")
         print(f"   currently: inactive-filter={r.get('hasInactiveFilter')}  "
               f"sales-rep-filter={r.get('hasSalesRepFilter')}  "
-              f"phone-column={r.get('hasPhoneColumn')}  company-column={r.get('hasCompanyColumn')}")
+              f"company-column={r.get('hasCompanyColumn')}")
         print(f"   current members: {r.get('currentResultCount')}   "
               f"members after this run: {r.get('wouldBeResultCount')}")
         wc = r.get("wouldChange", {})
-        if wc.get("addInactiveFilter") or wc.get("addSalesRepFilter") or wc.get("swapPhoneForCompanyColumn"):
+        if wc.get("addInactiveFilter") or wc.get("addSalesRepFilter") or wc.get("addCompanyColumn"):
             would_change += 1
             print(f"   would change: addInactiveFilter={wc.get('addInactiveFilter')}  "
                   f"addSalesRepFilter={wc.get('addSalesRepFilter')}  "
-                  f"swapPhoneForCompanyColumn={wc.get('swapPhoneForCompanyColumn')}")
+                  f"addCompanyColumn={wc.get('addCompanyColumn')}")
         else:
             print("   already correct — no change needed")
         if r.get("applied"):
