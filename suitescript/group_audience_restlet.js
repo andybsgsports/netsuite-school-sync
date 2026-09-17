@@ -72,6 +72,13 @@
  */
 define(['N/search', 'N/log'], (search, log) => {
 
+    // NOTE: N/search's Filter.values comes back null when reading filters
+    // off a LOADED (already-saved) search — confirmed live, 2026-09-17:
+    // even the working isinactive filter reports values:null. Detection
+    // below matches on name+join only, never values, for exactly that
+    // reason (an earlier version compared values here, which made
+    // hasSalesRepFilter always false and appended a harmless-but-sloppy
+    // duplicate filter on every run).
     const describeFilter = (f) => ({
         name: f.name, operator: f.operator, join: f.join || null,
         values: f.values !== undefined ? f.values : null,
@@ -80,11 +87,8 @@ define(['N/search', 'N/log'], (search, log) => {
         name: c.name, join: c.join || null, label: c.label || null,
     });
 
-    const hasSalesRepFilter = (filters, salesRepId) => filters.some((f) => {
-        if (f.name !== 'salesrep' || f.join !== 'company') return false;
-        const vals = Array.isArray(f.values) ? f.values : [f.values];
-        return vals.map(String).includes(String(salesRepId));
-    });
+    const isInactiveFilter = (f) => f.name === 'isinactive';
+    const isSalesRepFilter = (f) => f.name === 'salesrep' && f.join === 'company';
 
     const resultCount = (s) => {
         try {
@@ -107,9 +111,10 @@ define(['N/search', 'N/log'], (search, log) => {
         out.searchType = s.searchType;
         out.filters = (s.filters || []).map(describeFilter);
         out.columns = (s.columns || []).map(describeColumn);
-        out.hasInactiveFilter = out.filters.some(f => f.name === 'isinactive');
-        out.hasSalesRepFilter = salesRepId ? hasSalesRepFilter(out.filters, salesRepId) : null;
-        out.hasPhoneColumn = out.columns.some(c => c.name === 'phone');
+        out.inactiveFilterCount = out.filters.filter(isInactiveFilter).length;
+        out.salesRepFilterCount = out.filters.filter(isSalesRepFilter).length;
+        out.hasInactiveFilter = out.inactiveFilterCount > 0;
+        out.hasSalesRepFilter = salesRepId ? out.salesRepFilterCount > 0 : null;
         out.hasCompanyColumn = out.columns.some(c => c.name === 'company');
         out.currentResultCount = resultCount(s);
         out._searchObj = s; // stripped before response; used by fixOne
@@ -122,8 +127,13 @@ define(['N/search', 'N/log'], (search, log) => {
         const s = out._searchObj;
         delete out._searchObj;
 
-        const willAddInactiveFilter = !out.hasInactiveFilter;
-        const willAddSalesRepFilter = !!salesRepId && !out.hasSalesRepFilter;
+        // Full rebuild, not incremental concat — deterministic and
+        // self-healing: ends up with EXACTLY one isinactive filter and
+        // (if salesRepId given) exactly one company.salesrep filter,
+        // whether the search currently has zero, one, or (as a couple
+        // did, from the values:null bug above) two of them.
+        const willFixInactiveFilter = out.inactiveFilterCount !== 1;
+        const willFixSalesRepFilter = !!salesRepId && out.salesRepFilterCount !== 1;
         // Unconditional — not just when a phone column happens to be
         // present. The Group's own "Members" tab is a fixed NetSuite
         // display (Name/Phone/Email/Bounced/Inactive/Subscription) that
@@ -133,11 +143,11 @@ define(['N/search', 'N/log'], (search, log) => {
         // It DOES make Company show up when the search is opened
         // directly (Lists > Search > Saved Searches) or exported to CSV.
         const willAddCompanyColumn = !out.hasCompanyColumn;
-        out.wouldChange = { addInactiveFilter: willAddInactiveFilter,
-                             addSalesRepFilter: willAddSalesRepFilter,
+        out.wouldChange = { fixInactiveFilter: willFixInactiveFilter,
+                             fixSalesRepFilter: willFixSalesRepFilter,
                              addCompanyColumn: willAddCompanyColumn };
 
-        const nothingToDo = !willAddInactiveFilter && !willAddSalesRepFilter && !willAddCompanyColumn;
+        const nothingToDo = !willFixInactiveFilter && !willFixSalesRepFilter && !willAddCompanyColumn;
         if (nothingToDo) {
             out.applied = false;
             out.wouldBeResultCount = out.currentResultCount;
@@ -147,12 +157,12 @@ define(['N/search', 'N/log'], (search, log) => {
         // Apply candidate changes to the in-memory search object first —
         // running it (no .save() yet) shows the real before/after impact,
         // in dry run too, without persisting anything.
-        if (willAddInactiveFilter) {
-            s.filters = (s.filters || []).concat(
+        if (willFixInactiveFilter) {
+            s.filters = (s.filters || []).filter(f => !isInactiveFilter(f)).concat(
                 search.createFilter({ name: 'isinactive', operator: search.Operator.IS, values: 'F' }));
         }
-        if (willAddSalesRepFilter) {
-            s.filters = (s.filters || []).concat(
+        if (willFixSalesRepFilter) {
+            s.filters = (s.filters || []).filter(f => !isSalesRepFilter(f)).concat(
                 search.createFilter({ name: 'salesrep', join: 'company',
                                        operator: search.Operator.ANYOF, values: [salesRepId] }));
         }
@@ -208,7 +218,7 @@ define(['N/search', 'N/log'], (search, log) => {
         }
     };
 
-    const get = () => ({ success: true, service: 'group_audience_restlet', version: 4 });
+    const get = () => ({ success: true, service: 'group_audience_restlet', version: 5 });
 
     return { post: post, get: get };
 });
