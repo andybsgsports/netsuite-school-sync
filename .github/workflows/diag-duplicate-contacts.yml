@@ -11,6 +11,10 @@ on:
         description: 'NS customer internal id (default 2885 = Pecatonica)'
         required: false
         default: '2885'
+      contact_ids:
+        description: 'Optional: comma-separated contact ids to print instead (company, isInactive, comments)'
+        required: false
+        default: ''
 
 jobs:
   diag:
@@ -32,6 +36,7 @@ jobs:
         run: python diag_duplicate_contacts.py
         env:
           DIAG_CUSTOMER_ID: ${{ inputs.customer_id || '2885' }}
+          DIAG_CONTACT_IDS: ${{ inputs.contact_ids }}
           NS_ACCOUNT:       ${{ secrets.NS_ACCOUNT }}
           NS_CONSUMER_KEY:  ${{ secrets.NS_CONSUMER_KEY }}
           NS_CONSUMER_SEC:  ${{ secrets.NS_CONSUMER_SEC }}
