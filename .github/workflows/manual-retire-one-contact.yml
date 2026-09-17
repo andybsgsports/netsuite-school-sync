@@ -1,0 +1,46 @@
+name: Manual - Retire One Contact
+
+# Retires a single named NS contact record by id — for orphans the
+# per-school sweep can't reach (e.g. sitting on a PARENT customer like a
+# school district rather than the school itself). Only ever touches a
+# record stamped "Auto-synced by School Sync". DRY RUN by default. See
+# retire_one_contact.py.
+
+on:
+  workflow_dispatch:
+    inputs:
+      contact_id:
+        description: 'NS contact internal id to retire'
+        required: true
+      live:
+        description: 'Apply (unchecked = dry run, report only)'
+        type: boolean
+        required: false
+        default: false
+
+jobs:
+  retire:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+      - name: Retire one contact
+        run: python retire_one_contact.py
+        env:
+          CONTACT_ID:              ${{ inputs.contact_id }}
+          LIVE:                    ${{ inputs.live && '1' || '' }}
+          NS_ACCOUNT:              ${{ secrets.NS_ACCOUNT }}
+          NS_CONSUMER_KEY:         ${{ secrets.NS_CONSUMER_KEY }}
+          NS_CONSUMER_SEC:         ${{ secrets.NS_CONSUMER_SEC }}
+          NS_TOKEN_KEY:            ${{ secrets.NS_TOKEN_KEY }}
+          NS_TOKEN_SEC:            ${{ secrets.NS_TOKEN_SEC }}
