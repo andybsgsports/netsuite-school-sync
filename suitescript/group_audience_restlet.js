@@ -17,6 +17,13 @@
  * each search fixes it for good; NetSuite recomputes the group from the
  * search on every view/send, so there's nothing to keep re-running.
  *
+ * Same day, Andy also asked each of the 13 searches be scoped to only
+ * contacts at schools where HE is the Sales Rep (NetSuite employee id 3
+ * — see diag_salesrep_field.py, confirmed Customer.salesrep mirrors the
+ * salesTeam sublist netsuite_sync.py sets). Adds a
+ * company.salesrep = <salesRepId> filter alongside the inactive one,
+ * same idempotent add-if-missing pattern.
+ *
  * v1 tried to find each search's internal id by loading the linked
  * Group record (record.load({type:'group', ...})) — NetSuite rejected
  * that with "The record type [GROUP] is invalid": CRM Group isn't a
@@ -32,16 +39,20 @@
  * POST body (JSON):
  *   { "action": "inspect", "searches": { "Boys Football Coaches": 12345, ... } }
  *     - read-only. For each label->id pair: the search's title/type,
- *       current filters and columns (raw), and whether an isinactive=F
- *       filter and a company-ish column are already present. Never
- *       calls .save().
- *   { "action": "fix", "searches": {...}, "dryRun": true }
+ *       current filters/columns, current result count, and whether an
+ *       isinactive=F filter / sales rep filter / company-ish column are
+ *       already present. Never calls .save().
+ *   { "action": "fix", "searches": {...}, "dryRun": true, "salesRepId": "3" }
+ *     - salesRepId optional — omit to only fix the inactive filter.
  *     - dryRun (default true): same report as "inspect" plus a "would
- *       change" field per search — never calls .save().
- *     - dryRun: false: adds an isinactive=F filter if missing, and swaps
- *       a "phone" column for a "company" column if phone is present and
- *       company isn't, then .save()s the search. Idempotent — running it
- *       again on an already-fixed search changes nothing.
+ *       change" field and a "wouldBeResultCount" (computed by running
+ *       the search with the candidate filters applied in-memory, before
+ *       any .save()). Never calls .save().
+ *     - dryRun: false: adds an isinactive=F filter if missing, adds a
+ *       company.salesrep=salesRepId filter if provided and missing, and
+ *       swaps a "phone" column for a "company" column if phone is
+ *       present and company isn't, then .save()s the search. Idempotent
+ *       — running it again on an already-fixed search changes nothing.
  *
  * Response: { "success": true, "action": ..., "results": [ {...} ] }
  *        or { "success": false, "error": "..." }
@@ -58,7 +69,21 @@ define(['N/search', 'N/log'], (search, log) => {
         name: c.name, join: c.join || null, label: c.label || null,
     });
 
-    const inspectOne = (label, searchId) => {
+    const hasSalesRepFilter = (filters, salesRepId) => filters.some((f) => {
+        if (f.name !== 'salesrep' || f.join !== 'company') return false;
+        const vals = Array.isArray(f.values) ? f.values : [f.values];
+        return vals.map(String).includes(String(salesRepId));
+    });
+
+    const resultCount = (s) => {
+        try {
+            return s.runPaged({ pageSize: 1000 }).count;
+        } catch (e) {
+            return null; // don't let a count failure block the real report
+        }
+    };
+
+    const inspectOne = (label, searchId, salesRepId) => {
         const out = { label: label, savedSearchId: searchId };
         let s;
         try {
@@ -72,38 +97,59 @@ define(['N/search', 'N/log'], (search, log) => {
         out.filters = (s.filters || []).map(describeFilter);
         out.columns = (s.columns || []).map(describeColumn);
         out.hasInactiveFilter = out.filters.some(f => f.name === 'isinactive');
+        out.hasSalesRepFilter = salesRepId ? hasSalesRepFilter(out.filters, salesRepId) : null;
         out.hasPhoneColumn = out.columns.some(c => c.name === 'phone');
         out.hasCompanyColumn = out.columns.some(c => c.name === 'company');
+        out.currentResultCount = resultCount(s);
         out._searchObj = s; // stripped before response; used by fixOne
         return out;
     };
 
-    const fixOne = (label, searchId, dryRun) => {
-        const out = inspectOne(label, searchId);
+    const fixOne = (label, searchId, salesRepId, dryRun) => {
+        const out = inspectOne(label, searchId, salesRepId);
         if (out.error) return out;
         const s = out._searchObj;
         delete out._searchObj;
 
         const willAddInactiveFilter = !out.hasInactiveFilter;
+        const willAddSalesRepFilter = !!salesRepId && !out.hasSalesRepFilter;
         const willSwapColumn = out.hasPhoneColumn && !out.hasCompanyColumn;
         out.wouldChange = { addInactiveFilter: willAddInactiveFilter,
+                             addSalesRepFilter: willAddSalesRepFilter,
                              swapPhoneForCompanyColumn: willSwapColumn };
 
-        if (dryRun || (!willAddInactiveFilter && !willSwapColumn)) {
+        const nothingToDo = !willAddInactiveFilter && !willAddSalesRepFilter && !willSwapColumn;
+        if (nothingToDo) {
+            out.applied = false;
+            out.wouldBeResultCount = out.currentResultCount;
+            return out;
+        }
+
+        // Apply candidate changes to the in-memory search object first —
+        // running it (no .save() yet) shows the real before/after impact,
+        // in dry run too, without persisting anything.
+        if (willAddInactiveFilter) {
+            s.filters = (s.filters || []).concat(
+                search.createFilter({ name: 'isinactive', operator: search.Operator.IS, values: 'F' }));
+        }
+        if (willAddSalesRepFilter) {
+            s.filters = (s.filters || []).concat(
+                search.createFilter({ name: 'salesrep', join: 'company',
+                                       operator: search.Operator.ANYOF, values: [salesRepId] }));
+        }
+        if (willSwapColumn) {
+            s.columns = (s.columns || [])
+                .filter(c => c.name !== 'phone')
+                .concat(search.createColumn({ name: 'company' }));
+        }
+        out.wouldBeResultCount = resultCount(s);
+
+        if (dryRun) {
             out.applied = false;
             return out;
         }
 
         try {
-            if (willAddInactiveFilter) {
-                s.filters = (s.filters || []).concat(
-                    search.createFilter({ name: 'isinactive', operator: search.Operator.IS, values: 'F' }));
-            }
-            if (willSwapColumn) {
-                s.columns = (s.columns || [])
-                    .filter(c => c.name !== 'phone')
-                    .concat(search.createColumn({ name: 'company' }));
-            }
             s.save();
             out.applied = true;
         } catch (e) {
@@ -119,6 +165,7 @@ define(['N/search', 'N/log'], (search, log) => {
             const searches = (body && body.searches) || {};
             const labels = Object.keys(searches);
             const dryRun = !(body && body.dryRun === false); // default true
+            const salesRepId = (body && body.salesRepId) ? String(body.salesRepId) : null;
 
             if (!labels.length || (action !== 'inspect' && action !== 'fix')) {
                 return { success: false,
@@ -127,13 +174,14 @@ define(['N/search', 'N/log'], (search, log) => {
 
             const results = labels.map((label) => {
                 const sid = parseInt(searches[label], 10);
-                const r = action === 'inspect' ? inspectOne(label, sid) : fixOne(label, sid, dryRun);
+                const r = action === 'inspect' ? inspectOne(label, sid, salesRepId)
+                                                : fixOne(label, sid, salesRepId, dryRun);
                 if (r._searchObj) delete r._searchObj;
                 return r;
             });
 
             log.audit('group_audience_restlet',
-                `${action} dryRun=${dryRun} searches=${labels.join(',')}`);
+                `${action} dryRun=${dryRun} salesRepId=${salesRepId} searches=${labels.join(',')}`);
             return { success: true, action: action, dryRun: dryRun, results: results };
 
         } catch (e) {
@@ -143,7 +191,7 @@ define(['N/search', 'N/log'], (search, log) => {
         }
     };
 
-    const get = () => ({ success: true, service: 'group_audience_restlet', version: 2 });
+    const get = () => ({ success: true, service: 'group_audience_restlet', version: 3 });
 
     return { post: post, get: get };
 });

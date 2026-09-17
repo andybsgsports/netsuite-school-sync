@@ -73,10 +73,14 @@ GitHub → **Actions > "Manual - Fix Group Audiences"** → Run workflow:
    ```json
    {"Athletic Directors": 12340, "Baseball Coaches": 12341, "Boys Basketball Coaches": 12342, "Boys Football Coaches": 12343, "Boys Soccer Coaches": 12344, "Cross Country Coaches": 12345, "Girls Basketball Coaches": 12346, "Girls Soccer Coaches": 12347, "Girls Volleyball Coaches": 12348, "Gymnastics Coaches": 12349, "Softball Coaches": 12350, "Track and Field Coaches": 12351, "Wrestling Coaches": 12352}
    ```
-2. First run: leave **live** unchecked — this prints, per search, its
-   title/type, current filters/columns, and what it *would* change.
+2. **sales_rep_id** — NetSuite employee id to scope every search to
+   (defaults to `3` = Andrew Murray). Leave blank to skip scoping and
+   only fix the inactive filter.
+3. First run: leave **live** unchecked — this prints, per search, its
+   title/type, current filters/columns, current member count, and what
+   it *would* change (including the member count after the change).
    Nothing is written.
-3. **Read the plan.** If any entry shows an error, stop and share the
+4. **Read the plan.** If any entry shows an error, stop and share the
    output rather than running blind against a live marketing search.
-4. Once the dry-run plan looks right for all 13: run again with **live**
-   checked, same `search_ids_json`. It's idempotent — safe to re-run.
+5. Once the dry-run plan looks right for all 13: run again with **live**
+   checked, same inputs. It's idempotent — safe to re-run.
