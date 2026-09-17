@@ -27,9 +27,78 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from netsuite_sync import ns_get
+import requests
+
+from netsuite_sync import ns_get, make_auth, NS_ACCOUNT
 
 GROUP_ID = os.environ.get("DIAG_GROUP_ID", "93697").strip()
+
+# Table/view names to try via SuiteQL — the REST Record API v1 doesn't
+# support 'group' at all (confirmed: 404 NONEXISTENT_ID), so this is the
+# fallback for seeing the group's own fields (name, dynamic vs static,
+# linked saved search) and, if exposed, its computed membership.
+SUITEQL_CANDIDATES = [
+    f"SELECT * FROM group WHERE id = {GROUP_ID}",
+    f"SELECT * FROM contactgroup WHERE id = {GROUP_ID}",
+    f"SELECT * FROM groupmember WHERE group = {GROUP_ID}",
+    f"SELECT * FROM contactGroupMember WHERE grouped = {GROUP_ID}",
+]
+
+
+SUITEQL_URL = f"https://{NS_ACCOUNT}.suitetalk.api.netsuite.com/services/rest/query/v1/suiteql"
+
+
+def raw_suiteql(query):
+    """Like netsuite_sync.ns_suiteql, but surfaces the HTTP status and error
+    body instead of swallowing a failure into [] — this script needs to
+    tell 'table doesn't exist' apart from 'genuinely 0 rows'."""
+    url = f"{SUITEQL_URL}?limit=10"
+    r = requests.post(url, headers={
+        "Authorization": make_auth("POST", url),
+        "Content-Type": "application/json",
+        "Prefer": "transient",
+    }, json={"q": query})
+    return r.status_code, (r.json().get("items", []) if r.status_code == 200 else r.text)
+
+
+def try_suiteql():
+    print("\n" + "-" * 70)
+    print("SuiteQL fallback (REST Record API has no 'group' record type)")
+    print("-" * 70)
+    for q in SUITEQL_CANDIDATES:
+        status, result = raw_suiteql(q)
+        print(f"\n  {q}")
+        if status == 200:
+            print(f"    -> 200, {len(result)} row(s)"
+                  + (f": {json.dumps(result[:3])}" if result else ""))
+        else:
+            print(f"    -> {status}: {str(result)[:300]}")
+
+
+def try_metadata_catalog():
+    """List every record type the REST Record API actually supports, so we
+    can see whether anything group/audience-shaped exists under another
+    name instead of guessing endpoint spellings one at a time."""
+    print("\n" + "-" * 70)
+    print("Metadata catalog — record types matching group/audience/contact")
+    print("-" * 70)
+    r = requests.get(
+        f"https://{NS_ACCOUNT}.suitetalk.api.netsuite.com/services/rest/record/v1/metadata-catalog",
+        headers={"Authorization": make_auth("GET", f"https://{NS_ACCOUNT}"
+                  ".suitetalk.api.netsuite.com/services/rest/record/v1/metadata-catalog"),
+                  "Accept": "application/swagger+json"})
+    print(f"GET metadata-catalog -> HTTP {r.status_code}")
+    if r.status_code != 200:
+        print(r.text[:500])
+        return
+    try:
+        names = [i.get("name", "") for i in r.json().get("items", [])]
+    except Exception:
+        print("(couldn't parse catalog body)")
+        return
+    hits = sorted(n for n in names if any(k in n.lower()
+                  for k in ("group", "audience", "contact", "campaign")))
+    print(f"{len(names)} record types total; matches: {hits}")
 
 
 def main():
@@ -41,6 +110,8 @@ def main():
     print(f"\nGET group/{GROUP_ID} -> HTTP {r.status_code}")
     if r.status_code != 200:
         print(r.text[:1500])
+        try_suiteql()
+        try_metadata_catalog()
         return
     body = r.json()
     print(json.dumps(body, indent=2)[:4000])
