@@ -1,0 +1,39 @@
+name: Diag - Sales Rep Field
+
+# Read-only. Confirms NetSuite's Customer.salesrep field reflects what
+# sync_customer() sets via the salesTeam sublist, before it's used as a
+# saved-search filter join. Writes nothing. See diag_salesrep_field.py.
+
+on:
+  workflow_dispatch:
+    inputs:
+      customer_name:
+        description: 'Substring to match against Customer companyname (default: McHenry)'
+        required: false
+        default: 'McHenry'
+
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+      - name: Probe sales rep field
+        run: python diag_salesrep_field.py
+        env:
+          DIAG_CUSTOMER_NAME: ${{ inputs.customer_name || 'McHenry' }}
+          NS_ACCOUNT:         ${{ secrets.NS_ACCOUNT }}
+          NS_CONSUMER_KEY:    ${{ secrets.NS_CONSUMER_KEY }}
+          NS_CONSUMER_SEC:    ${{ secrets.NS_CONSUMER_SEC }}
+          NS_TOKEN_KEY:       ${{ secrets.NS_TOKEN_KEY }}
+          NS_TOKEN_SEC:       ${{ secrets.NS_TOKEN_SEC }}
