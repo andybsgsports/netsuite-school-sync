@@ -52,18 +52,31 @@ and variables > Actions** → add:
 | `NS_GROUP_RESTLET_SCRIPT_ID` | the `script=` value |
 | `NS_GROUP_RESTLET_DEPLOY_ID` | the `deploy=` value |
 
-## Step 5 — Run it
+## Step 5 — Get the 13 saved searches' internal ids
+
+CRM Group records aren't reachable from SuiteScript at all (same wall as
+the REST API — confirmed live: `record.load({type:'group'...})` fails
+with "The record type [GROUP] is invalid"), so this needs each **saved
+search's own** internal id, not the group's.
+
+1. NetSuite: **Lists > Search > Saved Searches**
+2. Filter **Type = Contact**
+3. Find the 13 rows named `<Sport> Coaches - Email Audience` (and
+   `Athletic Directors - Email Audience`) and note each one's **ID**
+   column value (a number, or a `customsearch_...` id — either works)
+
+## Step 6 — Run it
 
 GitHub → **Actions > "Manual - Fix Group Audiences"** → Run workflow:
 
-1. First run: leave **live** unchecked — this prints, per group, the
-   saved search it found, its current filters/columns, and what it
-   *would* change. Nothing is written.
-2. **Read the plan.** If a group shows an error (e.g. "no savedsearch id
-   found on group record") instead of a clean report, stop and share the
-   output — the group record's field id for the linked search may differ
-   from what the script guesses, and it needs a small tweak rather than
-   running blind against a live marketing search.
-3. Once the dry-run plan looks right for all 13: run again with **live**
-   checked. It's idempotent — safe to re-run if a group errors out and
-   needs a second pass after a fix.
+1. **search_ids_json** — paste all 13, e.g.:
+   ```json
+   {"Athletic Directors": 12340, "Baseball Coaches": 12341, "Boys Basketball Coaches": 12342, "Boys Football Coaches": 12343, "Boys Soccer Coaches": 12344, "Cross Country Coaches": 12345, "Girls Basketball Coaches": 12346, "Girls Soccer Coaches": 12347, "Girls Volleyball Coaches": 12348, "Gymnastics Coaches": 12349, "Softball Coaches": 12350, "Track and Field Coaches": 12351, "Wrestling Coaches": 12352}
+   ```
+2. First run: leave **live** unchecked — this prints, per search, its
+   title/type, current filters/columns, and what it *would* change.
+   Nothing is written.
+3. **Read the plan.** If any entry shows an error, stop and share the
+   output rather than running blind against a live marketing search.
+4. Once the dry-run plan looks right for all 13: run again with **live**
+   checked, same `search_ids_json`. It's idempotent — safe to re-run.
