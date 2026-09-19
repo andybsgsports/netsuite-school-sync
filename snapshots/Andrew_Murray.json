@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-09-18T06:30:06.512181Z",
+  "updated": "2026-09-19T06:29:59.870366Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -3972,11 +3972,11 @@
     },
     {
       "school": "Central High School",
-      "email": "alyssa.karamitsos@central301.net",
+      "email": "alyssa.hart@central301.net",
       "role": "Head Coach",
       "sport": "Girls Golf",
       "first": "Alyssa",
-      "last": "Karamitsos"
+      "last": "Hart"
     },
     {
       "school": "Central High School",
@@ -13788,6 +13788,14 @@
     },
     {
       "school": "Mundelein High School",
+      "email": "bholly@d120.org",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "Benton",
+      "last": "Holly"
+    },
+    {
+      "school": "Mundelein High School",
       "email": "bmayerson@d120.org",
       "role": "Certified Athletic Trainer",
       "sport": "",
@@ -14137,14 +14145,6 @@
       "sport": "Chess",
       "first": "Tom",
       "last": "Buenik"
-    },
-    {
-      "school": "Mundelein High School",
-      "email": "tkuhn@d120.org",
-      "role": "Head Coach",
-      "sport": "Girls Golf",
-      "first": "Thomas",
-      "last": "Kuhn"
     },
     {
       "school": "Mundelein High School",
