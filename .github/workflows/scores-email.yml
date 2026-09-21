@@ -2,10 +2,17 @@ name: Weekly Scores Email
 
 on:
   schedule:
-    # 10:17 UTC Monday = 5:17 AM CDT — weekly digest of last week's games.
-    # Deliberately early and off the hour: GitHub runs schedules late
-    # (hours, on a bad day), and the PC relay must find the email by 8 AM.
+    # Monday 5:17 AM CDT (10:17 UTC) — weekly digest of last week's games.
+    # GitHub runs schedules late or skips them (09-07: 5.5h late, 09-14: 6h
+    # late, 09-21: not run by 8:30 AM), so the same job is scheduled hourly
+    # until 10:17 AM CDT as insurance. Only the first run that gets through
+    # sends: SKIP_IF_SENT makes later ones exit once the week is marked sent.
     - cron: '17 10 * * 1'
+    - cron: '17 11 * * 1'
+    - cron: '17 12 * * 1'
+    - cron: '17 13 * * 1'
+    - cron: '17 14 * * 1'
+    - cron: '17 15 * * 1'
   workflow_dispatch:
     inputs:
       live:
@@ -76,6 +83,9 @@ jobs:
           DUMP_HTML:          ${{ inputs.dump_html == true && '1' || '0' }}
           SCHOOL_FILTER:      ${{ inputs.school_filter }}
           WEEK_OF:            ${{ inputs.week_of }}
+          # Scheduled runs skip if this week's batch already went out
+          # (manual runs always send).
+          SKIP_IF_SENT:       ${{ github.event_name == 'schedule' && '1' || '0' }}
 
       - name: Upload HTML dumps (debug)
         if: inputs.dump_html == true
@@ -102,7 +112,7 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add snapshots/scores_pending.json
+          git add snapshots/scores_pending.json snapshots/scores_last_sent.txt
           if git diff --cached --quiet; then
             echo "Tracker unchanged."
           else

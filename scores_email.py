@@ -344,6 +344,12 @@ def record_through(games, end_date):
 
 # ── Late-score tracker ────────────────────────────────────────────────────────
 PENDING_PATH = Path(__file__).parent / "snapshots" / "scores_pending.json"
+# Week (Monday date) of the last batch actually sent. With SKIP_IF_SENT=1
+# (the Monday schedule) a run exits early if this week's batch already went
+# out — lets the workflow schedule several Monday crons as insurance against
+# GitHub's late/missed schedule runs without ever double-sending.
+SENT_MARKER_PATH = Path(__file__).parent / "snapshots" / "scores_last_sent.txt"
+SKIP_IF_SENT     = os.environ.get("SKIP_IF_SENT", "0") == "1"
 PENDING_MAX_AGE_DAYS = 35   # stop waiting for a score after ~5 weeks
 MAX_CONFERENCE_SIZE  = 14   # larger inferred "conference" = leaked chain, no standing
 
@@ -878,6 +884,15 @@ def main():
     print(f"\n{'='*60}")
     print(f"  scores_email  |  week {week_start} – {week_end}  |  DRY_RUN={DRY_RUN}")
     print(f"{'='*60}\n")
+    if SKIP_IF_SENT and not WEEK_OF:
+        try:
+            last = SENT_MARKER_PATH.read_text(encoding="utf-8").strip()
+        except FileNotFoundError:
+            last = ""
+        if last == str(week_start):
+            print(f"Batch for week of {week_start} already sent (marker "
+                  f"{SENT_MARKER_PATH.name}) — nothing to do.")
+            return
 
     schools = load_csv(SCORES_CSV)
     if SCHOOL_FILTER:
@@ -1044,6 +1059,7 @@ def main():
         print("TEST MODE (SCORES_LIVE unset) — every email goes to "
               f"{SCORES_RECIPIENT} instead of the rep\n")
 
+    sent_ok = 0
     for rep, results in sorted(by_rep.items()):
         cfg     = rep_config.get(rep, {})
         html    = build_html(results, week_start, week_end)
@@ -1085,7 +1101,12 @@ def main():
             print(f"[DRY RUN] wrote {fname}")
         else:
             ok = send_email(subject, html, to_addr, cc_addr, bcc_addr)
+            sent_ok += 1 if ok else 0
             print(f"[{'OK' if ok else 'WARN'}] {subject}  →  {to_addr}")
+
+    if sent_ok and persist_tracker:
+        SENT_MARKER_PATH.write_text(f"{week_start}\n", encoding="utf-8")
+        print(f"\nMarked week of {week_start} as sent -> {SENT_MARKER_PATH.name}")
 
 
 if __name__ == "__main__":

@@ -4,9 +4,11 @@
 
 1. Monday ~5:20 AM — the GitHub job emails **andy@bsgsports.com** one scores
    digest per sales rep, e.g. `Kyle Loughrin — School Scores — Week of …`
-   (from andybsgsports@gmail.com; the rep is worked out from the name)
-   (GitHub schedules can run hours late — 2026-09-07 it ran at 12:38 PM —
-   which is why the PC task repeats hourly all day, see below.)
+   (from andybsgsports@gmail.com; the rep is worked out from the name).
+   GitHub runs schedules hours late or skips them, so the job is scheduled
+   hourly 5:17–10:17 AM; `snapshots/scores_last_sent.txt` records the week
+   already sent and later runs exit without sending. The PC task also
+   repeats hourly all day (below) so a late batch is still relayed.
 2. Monday 8:00 AM, then every hour until 8:00 PM — Task Scheduler runs
    `run_scores_relay.bat` on Andy's PC. `relay_scores_outlook.py` finds any
    scores emails from the GitHub sender in the last 36 hours not yet relayed and sends each one
