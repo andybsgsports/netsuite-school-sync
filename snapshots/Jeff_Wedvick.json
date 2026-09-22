@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-09-21T07:05:30.723222Z",
+  "updated": "2026-09-22T06:51:02.967879Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -2377,6 +2377,14 @@
       "sport": "Girls Lacrosse-Girls",
       "first": "Mike",
       "last": "Magill"
+    },
+    {
+      "school": "Kettle Moraine High School",
+      "email": "ksobiecha@kmsd.edu",
+      "role": "Assistant Athletic Director",
+      "sport": "",
+      "first": "Andrew",
+      "last": "Ksobiech"
     },
     {
       "school": "Kettle Moraine High School",
