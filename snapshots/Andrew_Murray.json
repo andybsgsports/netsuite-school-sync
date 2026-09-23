@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-09-22T06:44:06.287039Z",
+  "updated": "2026-09-23T06:31:31.586276Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -10916,14 +10916,6 @@
     },
     {
       "school": "Kenosha Bradford High School",
-      "email": "jtrifone@kusd.edu",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Joe",
-      "last": "Trifone"
-    },
-    {
-      "school": "Kenosha Bradford High School",
       "email": "jweiss@kusd.edu",
       "role": "Superintendent",
       "sport": "",
@@ -10993,6 +10985,14 @@
       "sport": "",
       "first": "Nick",
       "last": "Myers"
+    },
+    {
+      "school": "Kenosha Bradford High School",
+      "email": "rcsmith@kusd.edu",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Rob",
+      "last": "Smith"
     },
     {
       "school": "Kenosha Bradford High School",
@@ -11244,14 +11244,6 @@
     },
     {
       "school": "Kenosha Tremper High School",
-      "email": "jtrifone@kusd.edu",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Joe",
-      "last": "Trifone"
-    },
-    {
-      "school": "Kenosha Tremper High School",
       "email": "jweiss@kusd.edu",
       "role": "Superintendent",
       "sport": "",
@@ -11297,6 +11289,14 @@
       "sport": "Boys Soccer",
       "first": "Rob",
       "last": "Blascoe"
+    },
+    {
+      "school": "Kenosha Tremper High School",
+      "email": "rcsmith@kusd.edu",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Rob",
+      "last": "Smith"
     },
     {
       "school": "Kenosha Tremper High School",
@@ -19732,14 +19732,6 @@
     },
     {
       "school": "Westosha Central High School",
-      "email": "jtrifone@kusd.edu",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Joe",
-      "last": "Trifone"
-    },
-    {
-      "school": "Westosha Central High School",
       "email": "kaoj@westosha.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Soccer",
@@ -19817,6 +19809,14 @@
       "sport": "",
       "first": "Stacey",
       "last": "Nutting"
+    },
+    {
+      "school": "Westosha Central High School",
+      "email": "rcsmith@kusd.edu",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Rob",
+      "last": "Smith"
     },
     {
       "school": "Westosha Central High School",
@@ -20244,14 +20244,6 @@
     },
     {
       "school": "Wilmot Union High School",
-      "email": "jtrifone@kusd.edu",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Joe",
-      "last": "Trifone"
-    },
-    {
-      "school": "Wilmot Union High School",
       "email": "kreilr@wilmoths.k12.wi.us",
       "role": "Principal",
       "sport": "",
@@ -20289,6 +20281,14 @@
       "sport": "Girls Volleyball",
       "first": "Logan",
       "last": "Piktel"
+    },
+    {
+      "school": "Wilmot Union High School",
+      "email": "rcsmith@kusd.edu",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Rob",
+      "last": "Smith"
     },
     {
       "school": "Wilmot Union High School",

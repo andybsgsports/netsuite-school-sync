@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-09-22T06:45:05.128142Z",
+  "updated": "2026-09-23T06:32:33.166822Z",
   "records": [
     {
       "school": "Albany High School",
@@ -1897,6 +1897,14 @@
       "sport": "Boys Football",
       "first": "Timothy",
       "last": "Cerjak"
+    },
+    {
+      "school": "Lancaster High School",
+      "email": "arrowtruckingllc@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Chris",
+      "last": "Martin"
     },
     {
       "school": "Lancaster High School",
