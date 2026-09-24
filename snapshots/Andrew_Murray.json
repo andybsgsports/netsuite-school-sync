@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-09-23T06:31:31.586276Z",
+  "updated": "2026-09-24T06:39:54.255826Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -10684,6 +10684,14 @@
     },
     {
       "school": "Johnsburg High School",
+      "email": "jrung@johnsburg12.org",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Tennis",
+      "first": "John",
+      "last": "Rung"
+    },
+    {
+      "school": "Johnsburg High School",
       "email": "jsylvanus@johnsburg12.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Wrestling",
@@ -10753,14 +10761,6 @@
       "sport": "Girls Soccer",
       "first": "Rob",
       "last": "Eastland"
-    },
-    {
-      "school": "Johnsburg High School",
-      "email": "rrung@johnsburg12.org",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Tennis",
-      "first": "Rachel",
-      "last": "Rung"
     },
     {
       "school": "Johnsburg High School",
