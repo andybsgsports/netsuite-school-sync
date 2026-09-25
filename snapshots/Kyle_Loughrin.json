@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-09-24T06:44:06.308228Z",
+  "updated": "2026-09-25T06:53:26.408282Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -321,6 +321,14 @@
       "sport": "Girls Softball",
       "first": "David",
       "last": "Soda"
+    },
+    {
+      "school": "Appleton East High School",
+      "email": "fridaythomas@aasd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Track and Field",
+      "first": "Thomas",
+      "last": "Friday"
     },
     {
       "school": "Appleton East High School",
@@ -10102,7 +10110,7 @@
       "school": "Wisconsin Rapids High School",
       "email": "kit12mac@yahoo.com",
       "role": "Head Coach",
-      "sport": "Boys Tennis",
+      "sport": "Boys & Girls Tennis",
       "first": "Paula",
       "last": "West"
     },

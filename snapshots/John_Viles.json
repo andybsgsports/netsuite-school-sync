@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-09-24T06:46:13.265920Z",
+  "updated": "2026-09-25T06:55:40.501598Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -6959,6 +6959,14 @@
       "email": "kwhitley@wayland.org",
       "role": "Assistant Athletic Director",
       "sport": "",
+      "first": "Kaelib",
+      "last": "Whitley"
+    },
+    {
+      "school": "Wayland Academy High School",
+      "email": "kwhitley@wayland.org",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
       "first": "Kaelib",
       "last": "Whitley"
     },

@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-09-24T06:44:44.132104Z",
+  "updated": "2026-09-25T06:54:06.746246Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -1788,14 +1788,6 @@
     },
     {
       "school": "Pardeeville High School",
-      "email": "Beckmi@pasdwi.org",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "Mitch",
-      "last": "Beckett"
-    },
-    {
-      "school": "Pardeeville High School",
       "email": "bellda@pasdwi.org",
       "role": "Head Coach",
       "sport": "Girls Basketball",
@@ -1873,6 +1865,14 @@
       "sport": "Boys & Girls Track and Field",
       "first": "Christine",
       "last": "Neeb"
+    },
+    {
+      "school": "Pardeeville High School",
+      "email": "rhiannonkuske@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Golf",
+      "first": "Rhiannon",
+      "last": "Kuske"
     },
     {
       "school": "Pardeeville High School",
@@ -1988,14 +1988,6 @@
     },
     {
       "school": "Portage High School",
-      "email": "Beckmi@pasdwi.org",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Mitch",
-      "last": "Beckett"
-    },
-    {
-      "school": "Portage High School",
       "email": "bobbylafd50@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Hockey",
@@ -2009,6 +2001,14 @@
       "sport": "Girls Swimming & Diving",
       "first": "Dana",
       "last": "Qualy"
+    },
+    {
+      "school": "Portage High School",
+      "email": "DHarkins@fairwaymc.com",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Daniel",
+      "last": "Harkins"
     },
     {
       "school": "Portage High School",
@@ -2108,6 +2108,14 @@
     },
     {
       "school": "Portage High School",
+      "email": "rhiannonkuske@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Rhiannon",
+      "last": "Kuske"
+    },
+    {
+      "school": "Portage High School",
       "email": "ricec@portage.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Football",
@@ -2137,14 +2145,6 @@
       "sport": "Boys & Girls Soccer",
       "first": "Alex",
       "last": "Taft"
-    },
-    {
-      "school": "Portage High School",
-      "email": "trevor.hoff73@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Wrestling",
-      "first": "Trevor",
-      "last": "Hoff"
     },
     {
       "school": "Portage High School",

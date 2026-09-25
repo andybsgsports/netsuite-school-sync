@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-09-24T06:42:09.940109Z",
+  "updated": "2026-09-25T06:51:26.862633Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -2108,6 +2108,14 @@
     },
     {
       "school": "Lacrosse Central High School",
+      "email": "blair3843@uwlax.edu",
+      "role": "Head Coach",
+      "sport": "Girls Soccer",
+      "first": "Robin",
+      "last": "Blair"
+    },
+    {
+      "school": "Lacrosse Central High School",
       "email": "bmasche@lacrossesd.org",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
@@ -2169,14 +2177,6 @@
       "sport": "Girls Golf",
       "first": "Josh",
       "last": "Buxton"
-    },
-    {
-      "school": "Lacrosse Central High School",
-      "email": "jczernia@lacrossesd.org",
-      "role": "Head Coach",
-      "sport": "Girls Soccer",
-      "first": "Joe",
-      "last": "Czerniak"
     },
     {
       "school": "Lacrosse Central High School",

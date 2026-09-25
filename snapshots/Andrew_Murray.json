@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-09-24T06:39:54.255826Z",
+  "updated": "2026-09-25T06:49:04.720683Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -12140,14 +12140,6 @@
     },
     {
       "school": "Libertyville High School",
-      "email": "laura.guiard@d128.org",
-      "role": "Coach",
-      "sport": "Scholastic Bowl",
-      "first": "Laura",
-      "last": "Guiard"
-    },
-    {
-      "school": "Libertyville High School",
       "email": "lindsey.siegel@d128.org",
       "role": "Head Coach",
       "sport": "Girls Bowling",
@@ -14073,6 +14065,14 @@
       "sport": "Boys Baseball",
       "first": "Randy",
       "last": "Lerner"
+    },
+    {
+      "school": "Mundelein High School",
+      "email": "rrehich@d120.org",
+      "role": "Certified Athletic Trainer",
+      "sport": "",
+      "first": "Rey",
+      "last": "Rehich"
     },
     {
       "school": "Mundelein High School",
