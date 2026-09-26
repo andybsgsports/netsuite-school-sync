@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-09-25T06:49:04.720683Z",
+  "updated": "2026-09-26T06:36:05.806547Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -12140,6 +12140,14 @@
     },
     {
       "school": "Libertyville High School",
+      "email": "laura.guiard@d128.org",
+      "role": "Coach",
+      "sport": "Scholastic Bowl",
+      "first": "Laura",
+      "last": "Guiard"
+    },
+    {
+      "school": "Libertyville High School",
       "email": "lindsey.siegel@d128.org",
       "role": "Head Coach",
       "sport": "Girls Bowling",
@@ -13348,14 +13356,6 @@
     },
     {
       "school": "Mount Horeb School District",
-      "email": "corcorantalisa@mounthorebschools.org",
-      "role": "Assistant Principal",
-      "sport": "",
-      "first": "Talisa",
-      "last": "Corcoran"
-    },
-    {
-      "school": "Mount Horeb School District",
       "email": "faustmartha@mhasd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Gymnastics",
@@ -13436,22 +13436,6 @@
     },
     {
       "school": "Mount Horeb School District",
-      "email": "lundquistcody@mounthorebschools.org",
-      "role": "Principal",
-      "sport": "",
-      "first": "Cody",
-      "last": "Lundquist"
-    },
-    {
-      "school": "Mount Horeb School District",
-      "email": "masseybrittany@mounthorebschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Swimming & Diving",
-      "first": "Brittany",
-      "last": "Massey"
-    },
-    {
-      "school": "Mount Horeb School District",
       "email": "mcgivernkevin@mounthorebschools.org",
       "role": "Head Coach",
       "sport": "Boys Track and Field",
@@ -13505,6 +13489,14 @@
       "sport": "Boys Football",
       "first": "Bret",
       "last": "St Arnauld"
+    },
+    {
+      "school": "Mount Horeb School District",
+      "email": "steelshelby@mounthorebschools.org",
+      "role": "Assistant Principal",
+      "sport": "",
+      "first": "Shelby",
+      "last": "Steel"
     },
     {
       "school": "Mount Horeb School District",
@@ -13633,14 +13625,6 @@
       "sport": "Girls Gymnastics",
       "first": "Lori",
       "last": "Nettesheim"
-    },
-    {
-      "school": "Mukwonago High School",
-      "email": "nick.hfacademy@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Nick",
-      "last": "Szalacinski"
     },
     {
       "school": "Mukwonago High School",
@@ -14545,14 +14529,6 @@
       "sport": "Boys Wrestling",
       "first": "Adam",
       "last": "Nichols"
-    },
-    {
-      "school": "Oconomowoc High School",
-      "email": "nick.hfacademy@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Nick",
-      "last": "Szalacinski"
     },
     {
       "school": "Oconomowoc High School",
