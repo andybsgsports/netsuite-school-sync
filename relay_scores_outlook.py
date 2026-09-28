@@ -40,7 +40,7 @@ CC_FOR = {
     "paul@bsgsports.com": "julie@bsgsports.com",
 }
 
-SCRIPT_VERSION = "2026-09-09h"           # printed at startup so we know which copy is running
+SCRIPT_VERSION = "2026-09-28i"           # printed at startup so we know which copy is running
 SENDER_ADDRESS = "andy@bsgsports.com"     # account to send from
 # TEST MODE: while set, every relay (including the Monday scheduled run) is
 # delivered to this address instead of the reps. Set to None to go live.
@@ -104,24 +104,65 @@ def log(msg):
     print(f"[{datetime.now():%Y-%m-%d %H:%M:%S}] {msg}", flush=True)
 
 
-def outlook_session():
+# COM errors that mean "the Outlook process we talked to is gone or not
+# ready" (still starting, shutting down from the previous run, or hung).
+RPC_ERRORS = {
+    -2147023174,   # 0x800706BA The RPC server is unavailable
+    -2147023170,   # 0x800706BE The remote procedure call failed
+    -2147417848,   # 0x80010108 The object invoked has disconnected
+    -2147418111,   # 0x80010001 Call was rejected by callee (busy)
+    -2146959355,   # 0x80080005 Server execution failed
+}
+
+
+def is_rpc_error(e):
+    code = getattr(e, "hresult", None)
+    if code is None and getattr(e, "args", None):
+        code = e.args[0]
+    return code in RPC_ERRORS
+
+
+def kill_classic_outlook():
+    """End a stuck classic Outlook (OUTLOOK.EXE). New Outlook runs as
+    olk.exe and is not touched."""
+    import subprocess
+    log("  ending stuck classic Outlook process (OUTLOOK.EXE)")
+    subprocess.run(["taskkill", "/IM", "OUTLOOK.EXE", "/F"],
+                   capture_output=True, text=True)
+    time.sleep(10)
+
+
+def outlook_session(attempts=4):
     """Attach to classic Outlook, starting it in the background if needed.
+    Retries when Outlook is still starting/closing or stuck.
     Returns (app, ns, started_by_us)."""
     try:
         import win32com.client as win32
     except ImportError:
         log("ERROR: pywin32 not installed. Run:  pip install pywin32")
         sys.exit(1)
-    try:
-        app = win32.GetActiveObject("Outlook.Application")
-        started = False
-    except Exception:
-        log("  classic Outlook not running — starting it in the background")
-        app = win32.Dispatch("Outlook.Application")
-        started = True
-        time.sleep(15)                      # let the profile load
-    ns = app.GetNamespace("MAPI")
-    return app, ns, started
+    last = None
+    for attempt in range(1, attempts + 1):
+        try:
+            try:
+                app = win32.GetActiveObject("Outlook.Application")
+                started = False
+            except Exception:
+                log("  classic Outlook not running — starting it in the background")
+                app = win32.Dispatch("Outlook.Application")
+                started = True
+                time.sleep(15)                  # let the profile load
+            ns = app.GetNamespace("MAPI")
+            ns.Folders.Count                    # prove the connection works
+            return app, ns, started
+        except Exception as e:
+            last = e
+            log(f"  Outlook not responding (attempt {attempt}/{attempts}): {e}")
+            if attempt == attempts - 1:
+                kill_classic_outlook()
+            else:
+                time.sleep(30)
+    raise last
 
 
 def sync_mail(ns):
@@ -400,4 +441,15 @@ def finish(app, ns, started, sent_something):
 
 
 if __name__ == "__main__":
-    main()
+    for run in (1, 2):
+        try:
+            main()
+            break
+        except Exception as e:
+            # Outlook dropped the connection mid-run: start over once.
+            # Already-relayed emails are tagged, so nothing is sent twice.
+            if run == 1 and is_rpc_error(e):
+                log(f"Outlook connection lost ({e}) — restarting in 60s")
+                time.sleep(60)
+                continue
+            raise
