@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-09-28T07:36:37.298100Z",
+  "updated": "2026-09-29T07:33:50.075537Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -2140,14 +2140,6 @@
     },
     {
       "school": "Johnson Creek High School",
-      "email": "balchk@milton.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Wrestling",
-      "first": "Ken",
-      "last": "Balch"
-    },
-    {
-      "school": "Johnson Creek High School",
       "email": "blakeleym@johnsoncreekschools.org",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -2185,14 +2177,6 @@
       "sport": "Boys & Girls Cross Country",
       "first": "Beth",
       "last": "Hanna"
-    },
-    {
-      "school": "Johnson Creek High School",
-      "email": "kgende@stjohnbaptist.net",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Katie",
-      "last": "Gende"
     },
     {
       "school": "Johnson Creek High School",
@@ -2257,6 +2241,14 @@
       "sport": "Boys Football",
       "first": "Tim",
       "last": "Wagner"
+    },
+    {
+      "school": "Johnson Creek High School",
+      "email": "wrestling@johnsoncreekschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Ken",
+      "last": "Balch"
     },
     {
       "school": "Kettle Moraine High School",
@@ -2853,7 +2845,7 @@
     {
       "school": "Milton High School",
       "email": "bilhornj@milton.k12.wi.us",
-      "role": "Principal",
+      "role": "Superintendent",
       "sport": "",
       "first": "Jeremy",
       "last": "Bilhorn"
@@ -2868,11 +2860,11 @@
     },
     {
       "school": "Milton High School",
-      "email": "dahmanr@milton.k12.wi.us",
-      "role": "Superintendent",
+      "email": "dyej@milton.k12.wi.us",
+      "role": "Assistant Principal",
       "sport": "",
-      "first": "Richard",
-      "last": "Dahman"
+      "first": "Jeff",
+      "last": "Dye"
     },
     {
       "school": "Milton High School",
@@ -2921,14 +2913,6 @@
       "sport": "Boys & Girls Swimming Diving",
       "first": "Lindsey",
       "last": "Hassenfelt"
-    },
-    {
-      "school": "Milton High School",
-      "email": "hubert@milton.k12.wi.us",
-      "role": "Assistant Principal",
-      "sport": "",
-      "first": "Tara",
-      "last": "Huber"
     },
     {
       "school": "Milton High School",
@@ -2993,6 +2977,14 @@
       "sport": "Boys Lacrosse-Boys",
       "first": "Matthew",
       "last": "Combs"
+    },
+    {
+      "school": "Milton High School",
+      "email": "nerbyk@milton.k12.wi.us",
+      "role": "Principal",
+      "sport": "",
+      "first": "Keith",
+      "last": "Nerby"
     },
     {
       "school": "Milton High School",
@@ -3217,14 +3209,6 @@
       "sport": "Girls Volleyball",
       "first": "Mary",
       "last": "Boge"
-    },
-    {
-      "school": "Muskego High School",
-      "email": "melena.glysch@muskegonorway.org",
-      "role": "AD Admin Assistant",
-      "sport": "",
-      "first": "Melena",
-      "last": "Glysch"
     },
     {
       "school": "Muskego High School",

@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-09-28T07:33:48.315581Z",
+  "updated": "2026-09-29T07:30:55.634331Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -10052,19 +10052,19 @@
     },
     {
       "school": "Wisconsin Rapids High School",
+      "email": "emmie.cibrario@wrps.net",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Emmie",
+      "last": "Cibrario"
+    },
+    {
+      "school": "Wisconsin Rapids High School",
       "email": "faith.buzelli@wrps.net",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
       "first": "Faith",
       "last": "Buzelli"
-    },
-    {
-      "school": "Wisconsin Rapids High School",
-      "email": "isaac.holberg@wrps.net",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Isaac",
-      "last": "Holberg"
     },
     {
       "school": "Wisconsin Rapids High School",

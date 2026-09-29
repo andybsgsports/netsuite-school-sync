@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-09-28T07:30:46.314653Z",
+  "updated": "2026-09-29T07:27:46.471105Z",
   "records": [
     {
       "school": "Albany High School",
@@ -1316,6 +1316,14 @@
     },
     {
       "school": "Darlington High School",
+      "email": "horneb@darlington.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Wrestling",
+      "first": "Brady",
+      "last": "Horne"
+    },
+    {
+      "school": "Darlington High School",
       "email": "jacksonc@darlington.k12.wi.us",
       "role": "Superintendent",
       "sport": "",
@@ -1329,6 +1337,14 @@
       "sport": "Girls Gymnastics",
       "first": "Karen",
       "last": "Wiederholt"
+    },
+    {
+      "school": "Darlington High School",
+      "email": "logant51616161@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Wrestling",
+      "first": "Logan",
+      "last": "Taylor"
     },
     {
       "school": "Darlington High School",
@@ -1393,14 +1409,6 @@
       "sport": "Boys Football",
       "first": "Travis",
       "last": "Winkers"
-    },
-    {
-      "school": "Darlington High School",
-      "email": "wolfj@darlington.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
-      "first": "Jim",
-      "last": "Wolf"
     },
     {
       "school": "Dodgeville High School",
