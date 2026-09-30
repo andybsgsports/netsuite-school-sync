@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-09-29T07:26:44.674619Z",
+  "updated": "2026-09-30T07:16:07.766326Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -6428,6 +6428,14 @@
     },
     {
       "school": "Forreston High School",
+      "email": "htodd@fvdistrict221.org",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Hunter",
+      "last": "Todd"
+    },
+    {
+      "school": "Forreston High School",
       "email": "jstauffer@fvdistrict221.org",
       "role": "Coach",
       "sport": "Scholastic Bowl",
@@ -12406,7 +12414,7 @@
       "school": "Marengo High School",
       "email": "millerc@mchs154.org",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
+      "sport": "Boys Wrestling",
       "first": "Chad",
       "last": "Miller"
     },
@@ -12481,6 +12489,14 @@
       "sport": "Girls Tennis",
       "first": "Ryan",
       "last": "Frederick"
+    },
+    {
+      "school": "Marengo High School",
+      "email": "rsswanson70@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Robb",
+      "last": "Swanson"
     },
     {
       "school": "Marengo High School",

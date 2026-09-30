@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-09-29T07:32:59.714027Z",
+  "updated": "2026-09-30T07:22:08.201222Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -5873,6 +5873,14 @@
       "sport": "Boys & Girls Wrestling",
       "first": "Joseph",
       "last": "Duesterbeck"
+    },
+    {
+      "school": "Sheboygan North High School",
+      "email": "jsteinhaus@sasd.net",
+      "role": "Head Coach",
+      "sport": "Girls Cross Country",
+      "first": "Jennifer",
+      "last": "Steinhaus"
     },
     {
       "school": "Sheboygan North High School",
