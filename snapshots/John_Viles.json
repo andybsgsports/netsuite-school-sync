@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-09-30T07:22:08.201222Z",
+  "updated": "2026-10-01T07:47:02.655081Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -564,14 +564,6 @@
     },
     {
       "school": "Chilton High School",
-      "email": "kaphingsts@chilton.k12.wi.us",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Susan",
-      "last": "Kaphingst"
-    },
-    {
-      "school": "Chilton High School",
       "email": "kielm@chiltonsd.org",
       "role": "Principal",
       "sport": "",
@@ -593,6 +585,14 @@
       "sport": "Boys Swimming & Diving",
       "first": "Glen",
       "last": "McBride"
+    },
+    {
+      "school": "Chilton High School",
+      "email": "mariend@chiltonsd.org",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Dan",
+      "last": "Marien"
     },
     {
       "school": "Chilton High School",
@@ -3337,14 +3337,6 @@
       "sport": "Boys Basketball",
       "first": "Emmitt",
       "last": "Hurtienne"
-    },
-    {
-      "school": "Mayville High School",
-      "email": "jspudich@mayville.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Wrestling",
-      "first": "Joe",
-      "last": "Spudich"
     },
     {
       "school": "Mayville High School",

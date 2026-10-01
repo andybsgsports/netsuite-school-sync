@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-09-30T07:16:07.766326Z",
+  "updated": "2026-10-01T07:40:57.289219Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -5981,18 +5981,10 @@
     {
       "school": "East Troy High School",
       "email": "judaar@easttroy.k12.wi.us",
-      "role": "Assistant Principal",
+      "role": "Principal",
       "sport": "",
       "first": "Aaron",
       "last": "Judd"
-    },
-    {
-      "school": "East Troy High School",
-      "email": "kuesta@easttroy.k12.wi.us",
-      "role": "Principal",
-      "sport": "",
-      "first": "Stacey",
-      "last": "Kuehn"
     },
     {
       "school": "East Troy High School",
@@ -6057,6 +6049,14 @@
       "sport": "Boys Lacrosse-Boys",
       "first": "Billy",
       "last": "Spingola"
+    },
+    {
+      "school": "East Troy High School",
+      "email": "triada@easttroy.k12.wi.us",
+      "role": "Assistant Principal",
+      "sport": "",
+      "first": "Adam",
+      "last": "Trindl"
     },
     {
       "school": "East Troy High School",
@@ -11888,14 +11888,6 @@
       "role": "Head Coach",
       "sport": "Girls Softball",
       "first": "Joel",
-      "last": "Wild"
-    },
-    {
-      "school": "Lena-Winslow High School",
-      "email": "wildr@le-win.net",
-      "role": "Boys Athletic Director's Assistant & Girls Athletic Director's Assistant & Principal's Assistant",
-      "sport": "",
-      "first": "Becky",
       "last": "Wild"
     },
     {

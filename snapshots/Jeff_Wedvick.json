@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-09-30T07:22:55.490978Z",
+  "updated": "2026-10-01T07:47:51.549191Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -1644,6 +1644,14 @@
     },
     {
       "school": "Grafton High School",
+      "email": "jjohnson@grafton.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "James",
+      "last": "Johnson"
+    },
+    {
+      "school": "Grafton High School",
       "email": "jmeinen@grafton.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Track and Field",
@@ -1665,14 +1673,6 @@
       "sport": "Boys Football",
       "first": "Jim",
       "last": "Norris"
-    },
-    {
-      "school": "Grafton High School",
-      "email": "jwilde@grafton.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Jacob",
-      "last": "Wilde"
     },
     {
       "school": "Grafton High School",
