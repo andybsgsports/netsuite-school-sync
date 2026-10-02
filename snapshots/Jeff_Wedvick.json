@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-10-01T07:47:51.549191Z",
+  "updated": "2026-10-02T07:35:38.658158Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -684,19 +684,19 @@
     },
     {
       "school": "Deerfield High School",
+      "email": "krampers@deerfield.k12.wi.us",
+      "role": "Principal",
+      "sport": "",
+      "first": "Scott",
+      "last": "Kramper"
+    },
+    {
+      "school": "Deerfield High School",
       "email": "matt.carlson@carlsonblack.com",
       "role": "Head Coach",
       "sport": "Boys Soccer",
       "first": "Matt",
       "last": "Carlson"
-    },
-    {
-      "school": "Deerfield High School",
-      "email": "mcdonoughs@deerfield.k12.wi.us",
-      "role": "Principal",
-      "sport": "",
-      "first": "Shannon",
-      "last": "McDonough"
     },
     {
       "school": "Deerfield High School",
@@ -2169,6 +2169,14 @@
       "sport": "Girls Volleyball",
       "first": "Morgan",
       "last": "Dunton"
+    },
+    {
+      "school": "Johnson Creek High School",
+      "email": "girlswrestling@johnsoncreekschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Brian",
+      "last": "Wagner"
     },
     {
       "school": "Johnson Creek High School",

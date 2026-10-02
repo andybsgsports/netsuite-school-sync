@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-10-01T07:47:02.655081Z",
+  "updated": "2026-10-02T07:34:47.241737Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -4588,6 +4588,14 @@
     },
     {
       "school": "Plymouth High School",
+      "email": "epichette@plymouth.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Erika",
+      "last": "Pichette"
+    },
+    {
+      "school": "Plymouth High School",
       "email": "ewest@plymouth.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Basketball",
@@ -4641,14 +4649,6 @@
       "sport": "Boys Football",
       "first": "Mark",
       "last": "Vollbrecht"
-    },
-    {
-      "school": "Plymouth High School",
-      "email": "rsiegel@plymouth.k12.wi.us",
-      "role": "AD Admin Assistant",
-      "sport": "",
-      "first": "Raechel",
-      "last": "Siegel"
     },
     {
       "school": "Plymouth High School",
