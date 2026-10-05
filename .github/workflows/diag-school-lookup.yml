@@ -1,0 +1,36 @@
+name: Diag - School Lookup
+
+# Read-only. For a school name substring, shows its Schools-tab row(s)
+# (Sync status, NS Customer ID, Sales Rep) and every Sync=Y Contacts-tab
+# row at that school — "why does this school have no contacts" starts
+# here before looking at NetSuite itself. See diag_school_lookup.py.
+
+on:
+  workflow_dispatch:
+    inputs:
+      school_name:
+        description: 'Substring to match against the Schools tab School Name (case-insensitive)'
+        required: true
+
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+      - name: Look up school
+        run: python diag_school_lookup.py
+        env:
+          DIAG_SCHOOL_NAME:       ${{ inputs.school_name }}
+          GOOGLE_SHEET_ID:        ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
