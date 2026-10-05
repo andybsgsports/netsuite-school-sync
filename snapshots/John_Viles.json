@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-10-04T07:30:01.808454Z",
+  "updated": "2026-10-05T07:42:14.953170Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -356,6 +356,14 @@
     },
     {
       "school": "Cedar Grove Belgium High School",
+      "email": "jtestroete6@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Josh",
+      "last": "TeStroete"
+    },
+    {
+      "school": "Cedar Grove Belgium High School",
       "email": "mkautzer@cgbrockets.com",
       "role": "Athletic Director",
       "sport": "",
@@ -374,7 +382,7 @@
       "school": "Cedar Grove Belgium High School",
       "email": "qhoopman@cgbrockets.com",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
+      "sport": "Boys Wrestling",
       "first": "Quinn",
       "last": "Hoopman"
     },
