@@ -1,0 +1,31 @@
+name: Diag - IHSA Roster
+
+# Read-only. Calls IHSA's public staff2 API directly for one school id
+# and prints everyone it currently returns. No NetSuite or Google Sheets
+# credentials involved. See diag_ihsa_roster.py.
+
+on:
+  workflow_dispatch:
+    inputs:
+      school_id:
+        description: 'IHSA school id (the number at the end of ihsa.org/schools/details/<id>)'
+        required: true
+
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install requests
+      - name: Check IHSA roster
+        run: python diag_ihsa_roster.py
+        env:
+          DIAG_SCHOOL_ID: ${{ inputs.school_id }}
