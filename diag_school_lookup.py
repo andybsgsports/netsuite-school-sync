@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from school_netsuite_sync import (
     get_gspread_client, load_contacts, GOOGLE_SHEET_ID, MASTER_TAB,
-    M_NAME, M_NS_ID, M_SALES, C_SCHOOL, C_FIRST, C_LAST, C_EMAIL,
+    M_NAME, M_URL, M_NS_ID, M_SALES, C_SCHOOL, C_FIRST, C_LAST, C_EMAIL,
     C_SYNC, C_NS_CID,
 )
 
@@ -42,6 +42,7 @@ def main():
     for s in matches:
         print(f"  {s.get(M_NAME)!r:45} NS ID={s.get(M_NS_ID)!r:10} "
               f"Sales Rep={s.get(M_SALES)!r}")
+        print(f"    URL: {s.get(M_URL)!r}")
 
     contacts, _ws = load_contacts(gc)
     school_names = {str(s.get(M_NAME, "")).strip() for s in matches}
