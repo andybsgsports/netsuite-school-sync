@@ -295,16 +295,50 @@ class IHSAFetchError(Exception):
 # HTTP statuses worth retrying; any other 4xx is a definitive answer.
 _IHSA_RETRY_STATUS = {408, 425, 429}
 
+# IHSA rate-limits bursts (about 6-8 requests/s) with HTTP 429, "try again in
+# a minute", Retry-After: 60 (probed 2026-10-06). Every IHSA call goes through
+# a shared throttle, and a 429 is waited out for the time IHSA asks for
+# instead of the few seconds the generic backoff gives.
+IHSA_MIN_INTERVAL = 0.4          # seconds between any two IHSA calls
+IHSA_MAX_INTERVAL = 2.0          # throttle never slows past this
+IHSA_RATE_LIMIT_WAIT = 60        # used when a 429 carries no Retry-After
+IHSA_RATE_LIMIT_CAP = 120        # never sleep longer than this for one 429
+IHSA_RATE_LIMIT_BUDGET = 1200    # total seconds a run may spend waiting out 429s
+_throttle = {"last": 0.0, "interval": IHSA_MIN_INTERVAL, "waited": 0.0}
 
-def _ihsa_get_json(url, attempts=4):
-    """GET url, retrying transient failures with backoff. Returns
+
+def _throttle_wait():
+    gap = _throttle["last"] + _throttle["interval"] - time.monotonic()
+    if gap > 0:
+        time.sleep(gap)
+    _throttle["last"] = time.monotonic()
+
+
+def _retry_after_seconds(resp):
+    try:
+        secs = float(resp.headers.get("Retry-After", ""))
+    except (TypeError, ValueError):
+        secs = IHSA_RATE_LIMIT_WAIT
+    return max(1.0, min(secs, IHSA_RATE_LIMIT_CAP))
+
+
+def _ihsa_get_json(url, attempts=5):
+    """GET url, retrying transient failures. Returns
     (status_code, parsed_json_or_None). status_code is None when every
     attempt failed at the transport level; a non-retryable HTTP status
     (404/403/...) is returned immediately so the caller can treat it as a
-    definitive answer rather than an outage."""
+    definitive answer rather than an outage.
+
+    A 429 waits out Retry-After (the generic 1.5s/3s/6s backoff is shorter
+    than IHSA's one-minute window, which is how a rate limit used to look
+    like people leaving) and slows the shared throttle for the rest of the
+    run. Once IHSA_RATE_LIMIT_BUDGET seconds have been spent waiting, a 429
+    fails fast so a hard ban can't stall the job."""
     last_status = None
     for attempt in range(attempts):
+        wait = 1.5 * (2 ** attempt)  # 1.5s, 3s, 6s, 12s
         try:
+            _throttle_wait()
             r = requests.get(url, headers=IHSA_HEADERS, timeout=15)
             last_status = r.status_code
             if r.status_code == 200:
@@ -312,12 +346,18 @@ def _ihsa_get_json(url, attempts=4):
                     return 200, r.json()
                 except ValueError:
                     pass  # truncated/garbled body — retry like a transient fault
+            elif r.status_code == 429:
+                _throttle["interval"] = min(_throttle["interval"] * 1.5, IHSA_MAX_INTERVAL)
+                wait = _retry_after_seconds(r)
+                if _throttle["waited"] + wait > IHSA_RATE_LIMIT_BUDGET:
+                    return 429, None
+                _throttle["waited"] += wait
             elif r.status_code not in _IHSA_RETRY_STATUS and r.status_code < 500:
                 return r.status_code, None
         except requests.RequestException:
             last_status = None
         if attempt < attempts - 1:
-            time.sleep(1.5 * (2 ** attempt))  # 1.5s, 3s, 6s
+            time.sleep(wait)
     return last_status, None
 
 
