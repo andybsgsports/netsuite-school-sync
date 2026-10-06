@@ -1,0 +1,62 @@
+name: Manual - Repair IHSA Orphans
+
+# Finds Illinois contacts that were wrongly flipped Sync=N although IHSA still
+# lists them today (a throttled email lookup used to look like a mass
+# departure — Lena-Winslow, Durand 2026-10) and sets them back to Sync=Y so
+# the next push re-links them in NetSuite. See repair_ihsa_orphans.py.
+#
+# DRY RUN by default — run unchecked first and review the plan.
+# Does not touch NetSuite; only the Contacts tab's Sync column.
+
+on:
+  workflow_dispatch:
+    inputs:
+      live:
+        description: 'Apply changes (unchecked = dry run, report only)'
+        type: boolean
+        required: false
+        default: false
+      school:
+        description: 'Optional: only this School Name (exact match)'
+        required: false
+        default: ''
+      sales_rep:
+        description: 'Optional: only this Sales Rep (exact match)'
+        required: false
+        default: ''
+      mass_min:
+        description: 'A school counts as a mass flip at this many wrongly-N people'
+        required: false
+        default: '3'
+      include_singles:
+        description: 'Also repair schools below mass_min (may undo a deliberate N)'
+        type: boolean
+        required: false
+        default: false
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+    timeout-minutes: 240
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth google-api-python-client openpyxl pandas
+      - name: Repair IHSA orphans
+        run: python repair_ihsa_orphans.py
+        env:
+          LIVE:                    ${{ inputs.live && '1' || '' }}
+          SCHOOL_FILTER:           ${{ inputs.school }}
+          SALES_REP_FILTER:        ${{ inputs.sales_rep }}
+          MASS_MIN:                ${{ inputs.mass_min }}
+          INCLUDE_SINGLES:         ${{ inputs.include_singles && '1' || '' }}
+          GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
