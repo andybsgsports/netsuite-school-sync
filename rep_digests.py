@@ -43,7 +43,7 @@ from openpyxl.worksheet.table import Table, TableStyleInfo
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from netsuite_sync import scrape_wiaa_school_detail
-from ihsa_sync import fetch_school_staff, fetch_email, extract_school_id
+from ihsa_sync import fetch_school_staff, fetch_email_checked, extract_school_id
 
 # -- Config -------------------------------------------------------------------
 GOOGLE_SCOPES = [
@@ -244,17 +244,32 @@ def scrape_il_schools(il_schools):
         try:
             people = fetch_school_staff(school_id)
         except Exception as exc:
+            # IHSAFetchError (roster unreadable after retries) or transport error.
+            # Not added to scraped_schools => nobody here is treated as departed.
             print(f"    ERROR staff2: {exc}")
             continue
-        scraped_schools.add(smart_title(school))
-        # Resolve emails
+        # Resolve emails. A person whose lookup FAILS (even after retries) drops
+        # out of the results below just like someone with no email — so a
+        # throttled run used to look like a mass departure and flip a whole
+        # school's Sync flags to N (Lena-Winslow 25/26, Durand; 2026-10).
+        # Only a school where every lookup got a definite answer counts as
+        # "scraped successfully" for departure scoping.
+        email_failures = 0
         for p in people:
             if p.get("has_email") and p.get("person_id"):
                 try:
-                    p["email"] = fetch_email(school_id, p["person_id"])
+                    p["email"], failed = fetch_email_checked(school_id, p["person_id"])
                 except Exception:
-                    p["email"] = ""
+                    p["email"], failed = "", True
+                if failed:
+                    email_failures += 1
                 time.sleep(0.15)
+        if email_failures:
+            print(f"    [GUARD] {email_failures} email lookup(s) failed at {school} "
+                  f"— school NOT counted as scraped this run (no departures, "
+                  f"snapshot kept)")
+        else:
+            scraped_schools.add(smart_title(school))
         for p in people:
             if not p.get("email"):
                 continue

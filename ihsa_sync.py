@@ -283,13 +283,52 @@ def split_first_last(name, fallback_last=""):
     return "", fallback_last or ""
 
 
+class IHSAFetchError(Exception):
+    """IHSA's API couldn't be read after retries (timeout, 429, 5xx, bad JSON).
+
+    Distinct from "the school really has no staff": callers must treat this
+    as "unknown" and leave the school's existing contacts alone. Returning an
+    empty roster here used to make a transient hiccup look like everyone at
+    the school had quit (2026-10: Lena-Winslow 25 of 26, Durand)."""
+
+
+# HTTP statuses worth retrying; any other 4xx is a definitive answer.
+_IHSA_RETRY_STATUS = {408, 425, 429}
+
+
+def _ihsa_get_json(url, attempts=4):
+    """GET url, retrying transient failures with backoff. Returns
+    (status_code, parsed_json_or_None). status_code is None when every
+    attempt failed at the transport level; a non-retryable HTTP status
+    (404/403/...) is returned immediately so the caller can treat it as a
+    definitive answer rather than an outage."""
+    last_status = None
+    for attempt in range(attempts):
+        try:
+            r = requests.get(url, headers=IHSA_HEADERS, timeout=15)
+            last_status = r.status_code
+            if r.status_code == 200:
+                try:
+                    return 200, r.json()
+                except ValueError:
+                    pass  # truncated/garbled body — retry like a transient fault
+            elif r.status_code not in _IHSA_RETRY_STATUS and r.status_code < 500:
+                return r.status_code, None
+        except requests.RequestException:
+            last_status = None
+        if attempt < attempts - 1:
+            time.sleep(1.5 * (2 ** attempt))  # 1.5s, 3s, 6s
+    return last_status, None
+
+
 def fetch_school_staff(school_id):
-    """Fetch full roster from IHSA. Returns list of normalized contact dicts."""
-    r = requests.get(f"{IHSA_API}/schools/{school_id}/staff2", headers=IHSA_HEADERS, timeout=15)
-    if r.status_code != 200:
-        print(f"    [IHSA] staff2 failed: {r.status_code}")
-        return []
-    data = r.json().get("data", {})
+    """Fetch full roster from IHSA. Returns list of normalized contact dicts.
+    Raises IHSAFetchError if the roster can't be read — never returns []
+    for an outage (an empty list means IHSA really lists nobody)."""
+    status, body = _ihsa_get_json(f"{IHSA_API}/schools/{school_id}/staff2")
+    if status != 200 or body is None:
+        raise IHSAFetchError(f"staff2 for school {school_id} failed (HTTP {status})")
+    data = body.get("data", {})
     people = []
     for section, members in data.items():
         for m in members:
@@ -319,29 +358,52 @@ def fetch_school_staff(school_id):
     return people
 
 
+def fetch_email_checked(school_id, person_id):
+    """Resolve an email via the gated reveal endpoint, retrying transient
+    failures. Returns (email, failed).
+
+    failed=True means we could NOT find out (timeout / 429 / 5xx after all
+    retries) — an empty email then means "unknown", not "has none". A clean
+    403/404 is a definitive "no email" (failed=False)."""
+    status, body = _ihsa_get_json(
+        f"{IHSA_API}/schools/{school_id}/staff/{person_id}/email")
+    if status == 200 and body is not None:
+        return str(body.get("email", "")).strip(), False
+    if status is not None and status != 200 and status not in _IHSA_RETRY_STATUS \
+            and status < 500:
+        return "", False
+    return "", True
+
+
 def fetch_email(school_id, person_id):
-    """Resolve an email via the gated reveal endpoint."""
-    r = requests.get(
-        f"{IHSA_API}/schools/{school_id}/staff/{person_id}/email",
-        headers=IHSA_HEADERS, timeout=15,
-    )
-    if r.status_code != 200:
-        return ""
-    try:
-        return str(r.json().get("email", "")).strip()
-    except ValueError:
-        return ""
+    """Resolve an email via the gated reveal endpoint ("" if unavailable).
+    Callers that decide anything from a MISSING email should use
+    fetch_email_checked() so an outage isn't mistaken for 'no email'."""
+    return fetch_email_checked(school_id, person_id)[0]
+
+
+def scrape_school_checked(school_id):
+    """Scrape one school: roster + emails.
+
+    Returns (contacts, unreliable). `unreliable` is True when at least one
+    person's email lookup failed even after retries — absence of such a
+    person from `contacts` is then NOT evidence they left, so departure
+    logic must not run for this school this time. Raises IHSAFetchError if
+    the roster itself couldn't be read."""
+    people = fetch_school_staff(school_id)
+    unreliable = False
+    for p in people:
+        if p["has_email"] and p["person_id"]:
+            p["email"], failed = fetch_email_checked(school_id, p["person_id"])
+            unreliable = unreliable or failed
+            time.sleep(DELAY_BETWEEN_EMAILS)
+    # Drop anyone we couldn't get an email for — the sheet's key is (school, email, role)
+    return [p for p in people if p["email"]], unreliable
 
 
 def scrape_school(school_id):
     """Scrape one school: roster + emails. Returns list of contact dicts."""
-    people = fetch_school_staff(school_id)
-    for p in people:
-        if p["has_email"] and p["person_id"]:
-            p["email"] = fetch_email(school_id, p["person_id"])
-            time.sleep(DELAY_BETWEEN_EMAILS)
-    # Drop anyone we couldn't get an email for — the sheet's key is (school, email, role)
-    return [p for p in people if p["email"]]
+    return scrape_school_checked(school_id)[0]
 
 
 # -- Main --------------------------------------------------------------------
@@ -406,8 +468,15 @@ def main():
         # The IHSA API does not expose any of this, so the sheet is authoritative.
         sheet_info = school_info_from_row(school_row, state)
 
-        site_contacts = scrape_school(school_id)
+        try:
+            site_contacts, scrape_unreliable = scrape_school_checked(school_id)
+        except IHSAFetchError as exc:
+            print(f"  [GUARD] {exc} — leaving {school_name}'s contacts untouched")
+            continue
         print(f"  Scraped: {len(site_contacts)} contacts (with email)")
+        if scrape_unreliable:
+            print("  [GUARD] some email lookups failed after retries — adding new "
+                  "people only; NOT treating anyone as departed this run")
 
         if ns_id in ("", "nan", "None", "0"):
             # No NS link — still record found contacts as Sync=N so Andy sees them.
@@ -488,7 +557,8 @@ def main():
             if not email:
                 continue
             c[C_NS_CUS] = ns_id
-            departed = site_contacts and (email.lower() not in site_emails)
+            departed = (site_contacts and not scrape_unreliable
+                        and (email.lower() not in site_emails))
 
             if sync_flag == "Y" and not departed:
                 if contact_ns == "UNLINKED":
