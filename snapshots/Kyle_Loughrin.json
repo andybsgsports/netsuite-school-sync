@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-10-05T07:40:09.245556Z",
+  "updated": "2026-10-06T08:07:48.514574Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -310,7 +310,7 @@
       "school": "Appleton East High School",
       "email": "dave.novickis@pipingsystems.com",
       "role": "Head Coach",
-      "sport": "Boys Wrestling",
+      "sport": "Boys & Girls Wrestling",
       "first": "Dave",
       "last": "Novickis"
     },
@@ -385,6 +385,22 @@
       "sport": "Boys Football",
       "first": "Jarrius",
       "last": "James"
+    },
+    {
+      "school": "Appleton East High School",
+      "email": "jgreuel18@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Wrestling",
+      "first": "Jeff",
+      "last": "Greuel"
+    },
+    {
+      "school": "Appleton East High School",
+      "email": "justinmerritt21@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Justin",
+      "last": "Merritt"
     },
     {
       "school": "Appleton East High School",
@@ -481,14 +497,6 @@
       "sport": "Girls Volleyball",
       "first": "Sam",
       "last": "Moua"
-    },
-    {
-      "school": "Appleton East High School",
-      "email": "steph.brunkhorst@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Stephanie",
-      "last": "Brunkhorst"
     },
     {
       "school": "Appleton East High School",
@@ -612,6 +620,14 @@
     },
     {
       "school": "Appleton North High School",
+      "email": "justinmerritt21@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Justin",
+      "last": "Merritt"
+    },
+    {
+      "school": "Appleton North High School",
       "email": "klukas1724@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Lacrosse-Girls",
@@ -705,14 +721,6 @@
       "sport": "Girls Volleyball",
       "first": "Steve",
       "last": "Scheuerell"
-    },
-    {
-      "school": "Appleton North High School",
-      "email": "steph.brunkhorst@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Stephanie",
-      "last": "Brunkhorst"
     },
     {
       "school": "Appleton North High School",
@@ -860,6 +868,14 @@
     },
     {
       "school": "Appleton West High School",
+      "email": "justinmerritt21@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Justin",
+      "last": "Merritt"
+    },
+    {
+      "school": "Appleton West High School",
       "email": "klukas1724@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Lacrosse-Girls",
@@ -921,14 +937,6 @@
       "sport": "Boys Golf",
       "first": "Shayne",
       "last": "Porter"
-    },
-    {
-      "school": "Appleton West High School",
-      "email": "steph.brunkhorst@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Stephanie",
-      "last": "Brunkhorst"
     },
     {
       "school": "Appleton West High School",
@@ -1620,6 +1628,14 @@
     },
     {
       "school": "Brillion High School",
+      "email": "justinmerritt21@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Justin",
+      "last": "Merritt"
+    },
+    {
+      "school": "Brillion High School",
       "email": "lluchterhand@brillionsd.org",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -1665,14 +1681,6 @@
       "sport": "Girls Wrestling",
       "first": "Patrick",
       "last": "Schomaker"
-    },
-    {
-      "school": "Brillion High School",
-      "email": "steph.brunkhorst@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Stephanie",
-      "last": "Brunkhorst"
     },
     {
       "school": "Brillion High School",
@@ -2452,6 +2460,14 @@
     },
     {
       "school": "Fox Valley Lutheran High School",
+      "email": "justinmerritt21@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Justin",
+      "last": "Merritt"
+    },
+    {
+      "school": "Fox Valley Lutheran High School",
       "email": "klukas1724@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Lacrosse-Girls",
@@ -2505,14 +2521,6 @@
       "sport": "Boys Track and Field",
       "first": "Stephen",
       "last": "Lehmann"
-    },
-    {
-      "school": "Fox Valley Lutheran High School",
-      "email": "steph.brunkhorst@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Stephanie",
-      "last": "Brunkhorst"
     },
     {
       "school": "Fox Valley Lutheran High School",
@@ -2652,6 +2660,14 @@
     },
     {
       "school": "Freedom High School",
+      "email": "justinmerritt21@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Justin",
+      "last": "Merritt"
+    },
+    {
+      "school": "Freedom High School",
       "email": "klukas1724@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Lacrosse-Girls",
@@ -2697,14 +2713,6 @@
       "sport": "Girls Volleyball",
       "first": "Samantha",
       "last": "Puckett"
-    },
-    {
-      "school": "Freedom High School",
-      "email": "steph.brunkhorst@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Stephanie",
-      "last": "Brunkhorst"
     },
     {
       "school": "Freedom High School",
@@ -3860,6 +3868,14 @@
     },
     {
       "school": "Hortonville High School",
+      "email": "justinmerritt21@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Justin",
+      "last": "Merritt"
+    },
+    {
+      "school": "Hortonville High School",
       "email": "kevinsours77@gmail.com",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -3945,14 +3961,6 @@
       "sport": "Boys Soccer",
       "first": "Paul",
       "last": "Everett"
-    },
-    {
-      "school": "Hortonville High School",
-      "email": "steph.brunkhorst@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Stephanie",
-      "last": "Brunkhorst"
     },
     {
       "school": "Hortonville High School",
@@ -4212,6 +4220,14 @@
     },
     {
       "school": "Kaukauna High School",
+      "email": "justinmerritt21@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Justin",
+      "last": "Merritt"
+    },
+    {
+      "school": "Kaukauna High School",
       "email": "kinasfamily7@yahoo.com",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -4305,14 +4321,6 @@
       "sport": "",
       "first": "Kasey",
       "last": "Smith"
-    },
-    {
-      "school": "Kaukauna High School",
-      "email": "steph.brunkhorst@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Stephanie",
-      "last": "Brunkhorst"
     },
     {
       "school": "Kaukauna High School",
@@ -4548,6 +4556,14 @@
     },
     {
       "school": "Kimberly High School",
+      "email": "justinmerritt21@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Justin",
+      "last": "Merritt"
+    },
+    {
+      "school": "Kimberly High School",
       "email": "kcerroni@kimberly.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -4673,14 +4689,6 @@
       "sport": "Boys Track and Field",
       "first": "Steve",
       "last": "Paske"
-    },
-    {
-      "school": "Kimberly High School",
-      "email": "steph.brunkhorst@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Stephanie",
-      "last": "Brunkhorst"
     },
     {
       "school": "Kimberly High School",
@@ -5372,6 +5380,14 @@
     },
     {
       "school": "Menasha High School",
+      "email": "justinmerritt21@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Justin",
+      "last": "Merritt"
+    },
+    {
+      "school": "Menasha High School",
       "email": "klukas1724@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Lacrosse-Girls",
@@ -5417,14 +5433,6 @@
       "sport": "",
       "first": "Jodi",
       "last": "Sackett"
-    },
-    {
-      "school": "Menasha High School",
-      "email": "steph.brunkhorst@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Stephanie",
-      "last": "Brunkhorst"
     },
     {
       "school": "Menasha High School",
@@ -6092,6 +6100,14 @@
     },
     {
       "school": "Neenah High School",
+      "email": "justinmerritt21@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Justin",
+      "last": "Merritt"
+    },
+    {
+      "school": "Neenah High School",
       "email": "kevin.baetke@neenah.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Soccer",
@@ -6169,14 +6185,6 @@
       "sport": "Boys Football",
       "first": "Steve",
       "last": "Jung"
-    },
-    {
-      "school": "Neenah High School",
-      "email": "steph.brunkhorst@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Stephanie",
-      "last": "Brunkhorst"
     },
     {
       "school": "Neenah High School",
@@ -7228,14 +7236,6 @@
     },
     {
       "school": "Pulaski High School",
-      "email": "kaplaashton@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Ashton",
-      "last": "Kapla"
-    },
-    {
-      "school": "Pulaski High School",
       "email": "kaskarban@pulaskischools.org",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -7297,6 +7297,14 @@
       "sport": "Girls Soccer",
       "first": "Tyler",
       "last": "Perrault"
+    },
+    {
+      "school": "Pulaski High School",
+      "email": "tjrusch@pulaskischools.org",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Tyler",
+      "last": "Rusch"
     },
     {
       "school": "Pulaski High School",
@@ -8252,6 +8260,14 @@
     },
     {
       "school": "St. Mary Catholic High School",
+      "email": "justinmerritt21@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Justin",
+      "last": "Merritt"
+    },
+    {
+      "school": "St. Mary Catholic High School",
       "email": "kbweiss@smcatholicschools.org",
       "role": "Principal",
       "sport": "",
@@ -8297,14 +8313,6 @@
       "sport": "Boys Football",
       "first": "Rob",
       "last": "Detterman"
-    },
-    {
-      "school": "St. Mary Catholic High School",
-      "email": "steph.brunkhorst@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Stephanie",
-      "last": "Brunkhorst"
     },
     {
       "school": "St. Mary Catholic High School",
@@ -8921,14 +8929,6 @@
       "sport": "Girls Softball",
       "first": "Kirk",
       "last": "Shillcox"
-    },
-    {
-      "school": "Two Rivers High School",
-      "email": "kristinlamers@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Tennis",
-      "first": "Kristin",
-      "last": "Lamers"
     },
     {
       "school": "Two Rivers High School",
@@ -9892,6 +9892,14 @@
     },
     {
       "school": "Winneconne High School",
+      "email": "justinmerritt21@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Justin",
+      "last": "Merritt"
+    },
+    {
+      "school": "Winneconne High School",
       "email": "kringsy@yahoo.com",
       "role": "Head Coach",
       "sport": "Boys Football",
@@ -9961,14 +9969,6 @@
       "sport": "Boys Wrestling",
       "first": "Boone",
       "last": "Roycraft"
-    },
-    {
-      "school": "Winneconne High School",
-      "email": "steph.brunkhorst@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Stephanie",
-      "last": "Brunkhorst"
     },
     {
       "school": "Winneconne High School",
@@ -10268,6 +10268,14 @@
     },
     {
       "school": "Xavier High School",
+      "email": "justinmerritt21@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Justin",
+      "last": "Merritt"
+    },
+    {
+      "school": "Xavier High School",
       "email": "jwmeyer@mortonsafety.com",
       "role": "Head Coach",
       "sport": "Girls Soccer",
@@ -10361,14 +10369,6 @@
       "sport": "Girls Track and Field",
       "first": "Sarah",
       "last": "Nortman"
-    },
-    {
-      "school": "Xavier High School",
-      "email": "steph.brunkhorst@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Hockey",
-      "first": "Stephanie",
-      "last": "Brunkhorst"
     },
     {
       "school": "Xavier High School",
