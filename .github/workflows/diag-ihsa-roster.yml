@@ -10,6 +10,10 @@ on:
       school_id:
         description: 'IHSA school id (the number at the end of ihsa.org/schools/details/<id>)'
         required: true
+      probe_emails:
+        description: 'Optional: comma-separated school ids to probe the email-reveal endpoint for (status codes + retry-after-wait)'
+        required: false
+        default: ''
 
 jobs:
   diag:
@@ -29,3 +33,4 @@ jobs:
         run: python diag_ihsa_roster.py
         env:
           DIAG_SCHOOL_ID: ${{ inputs.school_id }}
+          DIAG_PROBE_EMAILS: ${{ inputs.probe_emails }}
