@@ -33,14 +33,24 @@ re-links each person (reactivating the contact NetSuite inactivated; records
 renamed "(dup NNN)" are still never reactivated). Writes the Contacts tab in
 one guarded save_contacts call. Does not touch NetSuite.
 
+Schools are scraped ONE AT A TIME with a pause between them (IHSA's email
+endpoint cuts a long single run off after ~17 schools: a 50-school scan
+verified only 17, while single-school runs verify cleanly). Schools whose
+lookups still fail are retried in later rounds after a longer pause. With
+LIVE=1 each school's repair is saved as soon as it is verified, so a
+timeout or crash keeps the progress made.
+
 DRY RUN by default: prints the plan, writes nothing. LIVE=1 applies.
-Env: LIVE, SCHOOL_FILTER (exact School Name), SALES_REP_FILTER (exact),
-     MASS_MIN (default 3), INCLUDE_SINGLES.
+Env: LIVE, SCHOOL_FILTER (exact School Name; comma-separated list OK),
+     SALES_REP_FILTER (exact), MASS_MIN (default 3), INCLUDE_SINGLES,
+     PAUSE_SECONDS (between schools, default 45), RETRY_ROUNDS (default 2),
+     RETRY_PAUSE_SECONDS (before each retry round, default 180).
 """
 from __future__ import annotations
 
 import os
 import sys
+import time
 from collections import defaultdict
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -57,6 +67,9 @@ SCHOOL_FILTER = os.environ.get("SCHOOL_FILTER", "").strip()
 REP_FILTER = os.environ.get("SALES_REP_FILTER", "").strip()
 MASS_MIN = int(os.environ.get("MASS_MIN", "3") or "3")
 INCLUDE_SINGLES = os.environ.get("INCLUDE_SINGLES", "").strip() in ("1", "true", "True", "yes")
+PAUSE_SECONDS = float(os.environ.get("PAUSE_SECONDS", "45") or "45")
+RETRY_ROUNDS = int(os.environ.get("RETRY_ROUNDS", "2") or "2")
+RETRY_PAUSE_SECONDS = float(os.environ.get("RETRY_PAUSE_SECONDS", "180") or "180")
 
 
 def norm(s):
@@ -126,7 +139,7 @@ def main():
         url = str(r.get(M_URL, "")).strip()
         if not (name and url) or name in quarantined or (name, url) in seen:
             continue
-        if SCHOOL_FILTER and name != SCHOOL_FILTER:
+        if SCHOOL_FILTER and name not in {x.strip() for x in SCHOOL_FILTER.split(",")}:
             continue
         if REP_FILTER and str(r.get(M_SALES, "")).strip() != REP_FILTER:
             continue
@@ -136,14 +149,53 @@ def main():
         il.append((name, url))
     print(f"\nIL schools to re-scrape (have >=1 Sync=N row): {len(il)}\n")
 
-    admins, coaches, scraped = scrape_il_schools(il)
-    reliable = {norm(s) for s in scraped}
-    unreliable = sorted(n for n, _ in il if norm(n) not in reliable)
-    live = live_keys(admins, coaches)
-
-    cands, y_live = find_candidates(contacts, live, reliable)
-    mass = {s: rows for s, rows in cands.items() if len(rows) >= MASS_MIN}
-    singles = {s: rows for s, rows in cands.items() if len(rows) < MASS_MIN}
+    flush = lambda: sys.stdout.flush()
+    mass, singles, y_live = {}, {}, {}
+    applied = 0
+    reliable = set()
+    pending = list(il)
+    for rnd in range(RETRY_ROUNDS + 1):
+        if not pending:
+            break
+        if rnd:
+            print(f"\n--- retry round {rnd}: {len(pending)} school(s) after a "
+                  f"{RETRY_PAUSE_SECONDS:.0f}s pause ---"); flush()
+            time.sleep(RETRY_PAUSE_SECONDS)
+        still = []
+        for i, (name, url) in enumerate(pending):
+            if i:
+                time.sleep(PAUSE_SECONDS)
+            admins, coaches, scraped = scrape_il_schools([(name, url)])
+            if norm(name) not in {norm(x) for x in scraped}:
+                still.append((name, url)); flush()
+                continue
+            reliable.add(norm(name))
+            cands, yl = find_candidates(contacts, live_keys(admins, coaches), {norm(name)})
+            y_live.update(yl)
+            rows = cands.get(norm(name), [])
+            if not rows:
+                flush(); continue
+            is_mass = len(rows) >= MASS_MIN
+            (mass if is_mass else singles)[norm(name)] = rows
+            print(f"    -> {name}: {len(rows)} wrongly-N, {yl.get(norm(name), 0)} already Y "
+                  f"({'mass flip' if is_mass else 'single'})")
+            if LIVE and (is_mass or INCLUDE_SINGLES):
+                # Re-read the tab right before writing: this run lasts a while
+                # and the nightly jobs edit the same sheet — never save a stale copy.
+                fresh, fresh_ws = load_contacts(gc)
+                frows = find_candidates(fresh, live_keys(admins, coaches), {norm(name)})[0] \
+                    .get(norm(name), [])
+                for c in frows:
+                    c[C_SYNC] = "Y"
+                if frows and save_contacts(fresh_ws, fresh):
+                    applied += len(frows)
+                    contacts = fresh
+                    print(f"    APPLIED {len(frows)} row(s) -> Sync=Y at {name}")
+                elif frows:
+                    print(f"    NOT SAVED at {name} — save_contacts refused")
+            flush()
+        pending = still
+    unreliable = sorted(n for n, _ in pending)
 
     def show(title, groups):
         print(f"\n{title}")
@@ -161,35 +213,20 @@ def main():
          f"{len(singles)} school(s), {sum(len(v) for v in singles.values())} row(s):", singles)
 
     if unreliable:
-        print(f"\nSkipped (scrape not fully reliable right now — re-run later): "
-              f"{len(unreliable)}")
-        for n in unreliable[:40]:
+        print(f"\nSkipped (scrape still not reliable after {RETRY_ROUNDS} retry "
+              f"round(s) — re-run later): {len(unreliable)}")
+        for n in unreliable:
             print(f"   {n}")
 
-    to_flip = [c for rows in mass.values() for c in rows]
-    if INCLUDE_SINGLES:
-        to_flip += [c for rows in singles.values() for c in rows]
-
+    n_target = sum(len(v) for v in mass.values()) + \
+        (sum(len(v) for v in singles.values()) if INCLUDE_SINGLES else 0)
     print("\n" + "=" * 70)
-    print(f"  schools re-scraped: {len(il)}   reliable: {len(reliable)}   "
+    print(f"  schools: {len(il)}   verified: {len(reliable)}   "
           f"unreliable/skipped: {len(unreliable)}")
-    print(f"  mass-flip schools: {len(mass)}   rows to set Sync=Y: {len(to_flip)}")
-    if not to_flip:
-        print("  nothing to repair.")
-        print("=" * 70)
-        return
+    print(f"  mass-flip schools: {len(mass)}   rows needing Sync=Y: {n_target}   "
+          f"applied: {applied}")
     if not LIVE:
         print("  DRY RUN — nothing changed. Set LIVE=1 to apply.")
-        print("=" * 70)
-        return
-
-    for c in to_flip:
-        c[C_SYNC] = "Y"
-    if save_contacts(ws, contacts):
-        print(f"  APPLIED: {len(to_flip)} row(s) set to Sync=Y. The next push "
-              f"re-links them in NetSuite.")
-    else:
-        print("  NOT SAVED — save_contacts refused (see message above). Nothing changed.")
     print("=" * 70)
 
 
