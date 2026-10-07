@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-10-06T08:07:48.514574Z",
+  "updated": "2026-10-07T09:04:59.974506Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -9225,6 +9225,14 @@
       "sport": "",
       "first": "Elissa",
       "last": "Steinke"
+    },
+    {
+      "school": "Wausau East High School",
+      "email": "jbeal@wausauschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Tennis",
+      "first": "Jason",
+      "last": "Beal"
     },
     {
       "school": "Wausau East High School",

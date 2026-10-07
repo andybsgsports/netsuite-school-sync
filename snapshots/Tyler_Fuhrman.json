@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-10-06T08:05:46.690446Z",
+  "updated": "2026-10-07T09:02:59.606990Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -1308,6 +1308,14 @@
     },
     {
       "school": "Hillsboro High School",
+      "email": "rick@heding.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Rick",
+      "last": "Field"
+    },
+    {
+      "school": "Hillsboro High School",
       "email": "todd.salisbury@hillsboroschools.org",
       "role": "Athletic Director",
       "sport": "",
@@ -1777,6 +1785,14 @@
       "sport": "Boys Basketball",
       "first": "Mathew",
       "last": "Wood"
+    },
+    {
+      "school": "LaFarge High School",
+      "email": "bensona@lafarge.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Alison",
+      "last": "Benson"
     },
     {
       "school": "LaFarge High School",
