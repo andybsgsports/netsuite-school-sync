@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-10-07T09:07:10.345286Z",
+  "updated": "2026-10-08T09:23:36.343353Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -1572,6 +1572,14 @@
     },
     {
       "school": "Howards Grove High School",
+      "email": "clund51m@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Cory",
+      "last": "Lund"
+    },
+    {
+      "school": "Howards Grove High School",
       "email": "dgreen@hgtigers.com",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -1596,14 +1604,6 @@
     },
     {
       "school": "Howards Grove High School",
-      "email": "fbwagnera@hgtigers.com",
-      "role": "Head Coach",
-      "sport": "Boys Football",
-      "first": "Andrew",
-      "last": "Wagner"
-    },
-    {
-      "school": "Howards Grove High School",
       "email": "hgeorgeff@hgsd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Basketball",
@@ -1625,6 +1625,14 @@
       "sport": "Boys & Girls Track and Field",
       "first": "Heidi",
       "last": "Georgeff"
+    },
+    {
+      "school": "Howards Grove High School",
+      "email": "horst.jake@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Jake",
+      "last": "Horst"
     },
     {
       "school": "Howards Grove High School",
@@ -1657,6 +1665,14 @@
       "sport": "Boys Wrestling",
       "first": "Ryan",
       "last": "Henschel"
+    },
+    {
+      "school": "Howards Grove High School",
+      "email": "ricky.lee.canon@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Ricky",
+      "last": "Canon"
     },
     {
       "school": "Howards Grove High School",
@@ -4980,6 +4996,14 @@
     },
     {
       "school": "Random Lake High School",
+      "email": "dsmith@rladvantage.org",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Dena",
+      "last": "Smith"
+    },
+    {
+      "school": "Random Lake High School",
       "email": "georgeschroeder53@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -4999,6 +5023,14 @@
       "email": "JLAST@RLADVANTAGE.ORG",
       "role": "Head Coach",
       "sport": "Boys & Girls Track and Field",
+      "first": "Jason",
+      "last": "Last"
+    },
+    {
+      "school": "Random Lake High School",
+      "email": "JLAST@RLADVANTAGE.ORG",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
       "first": "Jason",
       "last": "Last"
     },
@@ -5065,14 +5097,6 @@
       "sport": "",
       "first": "Susan",
       "last": "McDonald"
-    },
-    {
-      "school": "Random Lake High School",
-      "email": "smithdm08@yahoo.com",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Dena",
-      "last": "Smith"
     },
     {
       "school": "Random Lake High School",
@@ -6849,14 +6873,6 @@
       "sport": "",
       "first": "Julie",
       "last": "Schmidt"
-    },
-    {
-      "school": "Waupun High School",
-      "email": "kbille@waupun.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Kyle",
-      "last": "Bille"
     },
     {
       "school": "Waupun High School",
