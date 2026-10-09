@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-10-08T09:17:14.665335Z",
+  "updated": "2026-10-09T09:13:55.186584Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -509,6 +509,14 @@
     {
       "school": "Auburn High School",
       "email": "cedric.jones@rps205.com",
+      "role": "Activities Director & Girls Athletic Director & IHSA Official Representative",
+      "sport": "",
+      "first": "Cedric",
+      "last": "Jones"
+    },
+    {
+      "school": "Auburn High School",
+      "email": "cedric.jones@rps205.com",
       "role": "Athletic Director",
       "sport": "",
       "first": "Cedric",
@@ -687,6 +695,14 @@
       "email": "patrick.mertes@rps205.com",
       "role": "Head Coach",
       "sport": "Boys Cross Country",
+      "first": "Patrick",
+      "last": "Mertes"
+    },
+    {
+      "school": "Auburn High School",
+      "email": "patrick.mertes@rps205.com",
+      "role": "Head Coach",
+      "sport": "Girls Cross Country",
       "first": "Patrick",
       "last": "Mertes"
     },
@@ -2052,6 +2068,22 @@
     },
     {
       "school": "Boylan Catholic High School",
+      "email": "amcoyle@boylan.org",
+      "role": "Head Coach",
+      "sport": "Boys Track & Field",
+      "first": "Ann",
+      "last": "Marie Coyle"
+    },
+    {
+      "school": "Boylan Catholic High School",
+      "email": "awestlund@boylan.org",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Aaron",
+      "last": "Westlund"
+    },
+    {
+      "school": "Boylan Catholic High School",
       "email": "bmcgui@hononegah.org",
       "role": "Head Coach",
       "sport": "Boys Swimming",
@@ -2132,6 +2164,14 @@
     },
     {
       "school": "Boylan Catholic High School",
+      "email": "jmeersman@boylan.org",
+      "role": "Head Coach",
+      "sport": "Girls Flag Football",
+      "first": "Joe",
+      "last": "Meersman"
+    },
+    {
+      "school": "Boylan Catholic High School",
       "email": "john.canova@trucordia.com",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -2153,6 +2193,14 @@
       "sport": "Boys Basketball",
       "first": "Luke",
       "last": "Weber"
+    },
+    {
+      "school": "Boylan Catholic High School",
+      "email": "munozedwin1107@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Edwin",
+      "last": "Munoz"
     },
     {
       "school": "Boylan Catholic High School",
@@ -2182,6 +2230,14 @@
       "school": "Boylan Catholic High School",
       "email": "natenette@gmail.com",
       "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Nathan",
+      "last": "Kohnle"
+    },
+    {
+      "school": "Boylan Catholic High School",
+      "email": "natenette@gmail.com",
+      "role": "Head Coach",
       "sport": "Girls Cross Country",
       "first": "Nathan",
       "last": "Kohnle"
@@ -2198,6 +2254,14 @@
       "school": "Boylan Catholic High School",
       "email": "pheitkamp@boylan.org",
       "role": "Boys Athletic Director & IHSA Official Representative",
+      "sport": "",
+      "first": "Paul",
+      "last": "Heitkamp"
+    },
+    {
+      "school": "Boylan Catholic High School",
+      "email": "pheitkamp@boylan.org",
+      "role": "Girls Athletic Director & IHSA Official Representative",
       "sport": "",
       "first": "Paul",
       "last": "Heitkamp"
@@ -4359,6 +4423,22 @@
       "email": "levi.myers@clschools.org",
       "role": "Athletic Director",
       "sport": "",
+      "first": "Levi",
+      "last": "Myers"
+    },
+    {
+      "school": "Christian Life High School",
+      "email": "levi.myers@clschools.org",
+      "role": "Boys Athletic Director & IHSA Official Representative",
+      "sport": "",
+      "first": "Levi",
+      "last": "Myers"
+    },
+    {
+      "school": "Christian Life High School",
+      "email": "levi.myers@clschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
       "first": "Levi",
       "last": "Myers"
     },
@@ -9980,11 +10060,11 @@
     },
     {
       "school": "Huntley High School",
-      "email": "gmarchand@district158.org",
-      "role": "Coach",
-      "sport": "Chess",
-      "first": "Gerry",
-      "last": "Marchand"
+      "email": "emiller@district158.org",
+      "role": "Marching Band Director",
+      "sport": "",
+      "first": "Evan",
+      "last": "Miller"
     },
     {
       "school": "Huntley High School",
@@ -10129,6 +10209,14 @@
       "sport": "",
       "first": "Mason",
       "last": "Sargent"
+    },
+    {
+      "school": "Huntley High School",
+      "email": "mtipton@district158.org",
+      "role": "Marching Band Director",
+      "sport": "",
+      "first": "Morgan",
+      "last": "Tipton"
     },
     {
       "school": "Huntley High School",
@@ -11628,6 +11716,14 @@
     },
     {
       "school": "Lakes Community High School",
+      "email": "kevin.kullby@chsd117.org",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Kevin",
+      "last": "Kullby"
+    },
+    {
+      "school": "Lakes Community High School",
       "email": "klrettig79@icloud.com",
       "role": "Head Coach",
       "sport": "Boys Volleyball",
@@ -11718,6 +11814,14 @@
       "school": "Lakes Community High School",
       "email": "matthew.kastor@chsd117.org",
       "role": "Band Director & Marching Band Director & Orchestra Director",
+      "sport": "",
+      "first": "Matt",
+      "last": "Kastor"
+    },
+    {
+      "school": "Lakes Community High School",
+      "email": "matthew.kastor@chsd117.org",
+      "role": "Marching Band Director & Orchestra Director",
       "sport": "",
       "first": "Matt",
       "last": "Kastor"
@@ -11838,6 +11942,14 @@
       "school": "Lena-Winslow High School",
       "email": "bensonk@le-win.net",
       "role": "Asst. Boys Athletic Director & Asst. Girls Athletic Director",
+      "sport": "",
+      "first": "Kyle",
+      "last": "Benson"
+    },
+    {
+      "school": "Lena-Winslow High School",
+      "email": "bensonk@le-win.net",
+      "role": "Asst. Girls Athletic Director",
       "sport": "",
       "first": "Kyle",
       "last": "Benson"
@@ -12076,6 +12188,14 @@
     },
     {
       "school": "Libertyville High School",
+      "email": "dan.kiernan@club-net.com",
+      "role": "Head Coach",
+      "sport": "Girls Tennis",
+      "first": "Dan",
+      "last": "Kiernan"
+    },
+    {
+      "school": "Libertyville High School",
       "email": "darwin.townsend@d128.org",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -12102,6 +12222,14 @@
       "school": "Libertyville High School",
       "email": "dustin.helvie@d128.org",
       "role": "Band Director & Orchestra Director",
+      "sport": "",
+      "first": "Dustin",
+      "last": "Helvie"
+    },
+    {
+      "school": "Libertyville High School",
+      "email": "dustin.helvie@d128.org",
+      "role": "Orchestra Director",
       "sport": "",
       "first": "Dustin",
       "last": "Helvie"
@@ -12356,6 +12484,14 @@
     },
     {
       "school": "Marengo High School",
+      "email": "ackleyl@mchs154.org",
+      "role": "Boys Athletic Director's Assistant & Girls Athletic Director's Assistant",
+      "sport": "",
+      "first": "Lisa",
+      "last": "Ackley"
+    },
+    {
+      "school": "Marengo High School",
       "email": "burky11@yahoo.com",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -12517,6 +12653,14 @@
     {
       "school": "Marengo High School",
       "email": "nanced@mchs154.org",
+      "role": "Activities Director & Boys Athletic Director & IHSA Official Representative",
+      "sport": "",
+      "first": "Dwain",
+      "last": "Nance"
+    },
+    {
+      "school": "Marengo High School",
+      "email": "nanced@mchs154.org",
       "role": "Athletic Director",
       "sport": "",
       "first": "Dwain",
@@ -12580,6 +12724,14 @@
     },
     {
       "school": "Marengo High School",
+      "email": "orozcos@mchs154.org",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Sergio",
+      "last": "Orozco"
+    },
+    {
+      "school": "Marengo High School",
       "email": "rfrederick@district158.org",
       "role": "Head Coach",
       "sport": "Girls Tennis",
@@ -12598,6 +12750,14 @@
       "school": "Marengo High School",
       "email": "stellmacht@mchs154.org",
       "role": "Band Director & Marching Band Director",
+      "sport": "",
+      "first": "Todd",
+      "last": "Stellmach"
+    },
+    {
+      "school": "Marengo High School",
+      "email": "stellmacht@mchs154.org",
+      "role": "Band Director & Vocal Director",
       "sport": "",
       "first": "Todd",
       "last": "Stellmach"
@@ -12653,6 +12813,14 @@
     {
       "school": "Marian Central Catholic High School",
       "email": "aossler@marian.com",
+      "role": "Band Director",
+      "sport": "",
+      "first": "Andrew",
+      "last": "Ossler"
+    },
+    {
+      "school": "Marian Central Catholic High School",
+      "email": "aossler@marian.com",
       "role": "Band Director & Vocal Director",
       "sport": "",
       "first": "Andrew",
@@ -12676,6 +12844,14 @@
     },
     {
       "school": "Marian Central Catholic High School",
+      "email": "bwilliams@marian.com",
+      "role": "Student Council Adviser",
+      "sport": "",
+      "first": "Brad",
+      "last": "Williams"
+    },
+    {
+      "school": "Marian Central Catholic High School",
       "email": "bwinkelman@marian.com",
       "role": "Activities Director",
       "sport": "",
@@ -12686,6 +12862,14 @@
       "school": "Marian Central Catholic High School",
       "email": "bwinkelman@marian.com",
       "role": "Activities Director & Asst. Principal",
+      "sport": "",
+      "first": "Benji",
+      "last": "Winkelman"
+    },
+    {
+      "school": "Marian Central Catholic High School",
+      "email": "bwinkelman@marian.com",
+      "role": "Asst. Principal",
       "sport": "",
       "first": "Benji",
       "last": "Winkelman"
@@ -12801,6 +12985,14 @@
       "sport": "",
       "first": "Kelsey",
       "last": "Wedwick"
+    },
+    {
+      "school": "Marian Central Catholic High School",
+      "email": "lbell@marian.com",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Lafeyette",
+      "last": "Bell"
     },
     {
       "school": "Marian Central Catholic High School",
@@ -13148,6 +13340,14 @@
     },
     {
       "school": "McHenry Community High School",
+      "email": "lesniaksharon@dist156.org",
+      "role": "Head Coach",
+      "sport": "Girls Swimming",
+      "first": "Sharon",
+      "last": "Lesniak"
+    },
+    {
+      "school": "McHenry Community High School",
       "email": "maciasvicente@dist156.org",
       "role": "Coach",
       "sport": "Chess",
@@ -13158,6 +13358,14 @@
       "school": "McHenry Community High School",
       "email": "madsonchris@dist156.org",
       "role": "Athletic Director",
+      "sport": "",
+      "first": "Chris",
+      "last": "Madson"
+    },
+    {
+      "school": "McHenry Community High School",
+      "email": "madsonchris@dist156.org",
+      "role": "Girls Athletic Director",
       "sport": "",
       "first": "Chris",
       "last": "Madson"
@@ -15596,6 +15804,14 @@
     },
     {
       "school": "Pecatonica High School (IL)",
+      "email": "nealshippy@pecschools.com",
+      "role": "Marching Band Director",
+      "sport": "",
+      "first": "Neal",
+      "last": "Shippy"
+    },
+    {
+      "school": "Pecatonica High School (IL)",
       "email": "sabrinamassa@pecschools.com",
       "role": "Coach",
       "sport": "Halftime Dance",
@@ -16229,6 +16445,14 @@
     {
       "school": "Richmond-Burton High School",
       "email": "bmollet@rb157.org",
+      "role": "Band Director & Marching Band Director",
+      "sport": "",
+      "first": "Blaise",
+      "last": "Mollet"
+    },
+    {
+      "school": "Richmond-Burton High School",
+      "email": "bmollet@rb157.org",
       "role": "Marching Band Director",
       "sport": "",
       "first": "Blaise",
@@ -16257,6 +16481,14 @@
       "sport": "Girls Gymnastics",
       "first": "Brad",
       "last": "Tichenor"
+    },
+    {
+      "school": "Richmond-Burton High School",
+      "email": "cdecaluwe@rb157.org",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Soccer",
+      "first": "Casey",
+      "last": "Decaluwe"
     },
     {
       "school": "Richmond-Burton High School",
@@ -16317,6 +16549,14 @@
     {
       "school": "Richmond-Burton High School",
       "email": "hjohnson@rb157.org",
+      "role": "Activities Director's Assistant & Girls Athletic Director's Assistant",
+      "sport": "",
+      "first": "Heidi",
+      "last": "Johnson"
+    },
+    {
+      "school": "Richmond-Burton High School",
+      "email": "hjohnson@rb157.org",
       "role": "Boys Athletic Director's Assistant & Girls Athletic Director's Assistant",
       "sport": "",
       "first": "Heidi",
@@ -16327,6 +16567,14 @@
       "email": "josmanski@rb157.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
+      "first": "John",
+      "last": "Osmanski"
+    },
+    {
+      "school": "Richmond-Burton High School",
+      "email": "josmanski@rb157.org",
+      "role": "Head Coach",
+      "sport": "Boys Cross Country",
       "first": "John",
       "last": "Osmanski"
     },
@@ -16492,6 +16740,14 @@
     },
     {
       "school": "Richmond-Burton High School",
+      "email": "tjackson@rb157.org",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Tim",
+      "last": "Jackson"
+    },
+    {
+      "school": "Richmond-Burton High School",
       "email": "tlind@rbchs.com",
       "role": "Superintendent",
       "sport": "",
@@ -16548,6 +16804,14 @@
     },
     {
       "school": "Rochelle High School",
+      "email": "avruno@rthsd212.org",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Alphonso",
+      "last": "Vruno"
+    },
+    {
+      "school": "Rochelle High School",
       "email": "bmale1@kish.edu",
       "role": "Head Coach",
       "sport": "Boys Soccer",
@@ -16598,9 +16862,25 @@
       "school": "Rochelle High School",
       "email": "dcartwright@rthsd212.org",
       "role": "Head Coach",
+      "sport": "Boys Golf",
+      "first": "David",
+      "last": "Cartwright"
+    },
+    {
+      "school": "Rochelle High School",
+      "email": "dcartwright@rthsd212.org",
+      "role": "Head Coach",
       "sport": "Girls Golf",
       "first": "David",
       "last": "Cartwright"
+    },
+    {
+      "school": "Rochelle High School",
+      "email": "dobrien@rthsd212.org",
+      "role": "Activities Director's Assistant & Boys Athletic Director's Assistant",
+      "sport": "",
+      "first": "Debbie",
+      "last": "O'Brien"
     },
     {
       "school": "Rochelle High School",
@@ -16693,6 +16973,14 @@
     {
       "school": "Rochelle High School",
       "email": "kshumard@rthsd212.org",
+      "role": "Band Director & Marching Band Director",
+      "sport": "",
+      "first": "Keaton",
+      "last": "Shumard"
+    },
+    {
+      "school": "Rochelle High School",
+      "email": "kshumard@rthsd212.org",
       "role": "Marching Band Director",
       "sport": "",
       "first": "Keaton",
@@ -16742,6 +17030,14 @@
       "school": "Rochelle High School",
       "email": "rharvey@rthsd212.org",
       "role": "Activities Director & Boys Athletic Director & IHSA Official Representative",
+      "sport": "",
+      "first": "Richard",
+      "last": "Harvey"
+    },
+    {
+      "school": "Rochelle High School",
+      "email": "rharvey@rthsd212.org",
+      "role": "Activities Director & Girls Athletic Director & IHSA Official Representative",
       "sport": "",
       "first": "Richard",
       "last": "Harvey"
@@ -17452,8 +17748,24 @@
     },
     {
       "school": "South Beloit High School",
+      "email": "mostrowski@sb320.org",
+      "role": "Head Coach",
+      "sport": "Girls Bowling",
+      "first": "Michael",
+      "last": "Ostrowski"
+    },
+    {
+      "school": "South Beloit High School",
       "email": "mpackett@sb320.org",
       "role": "Band Director",
+      "sport": "",
+      "first": "Maggie",
+      "last": "Packett"
+    },
+    {
+      "school": "South Beloit High School",
+      "email": "mpackett@sb320.org",
+      "role": "Band Director & Marching Band Director",
       "sport": "",
       "first": "Maggie",
       "last": "Packett"
@@ -17481,6 +17793,14 @@
       "sport": "",
       "first": "Nik",
       "last": "Butenhoff"
+    },
+    {
+      "school": "South Beloit High School",
+      "email": "pwilson@sb320.org",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Track Field",
+      "first": "Paul",
+      "last": "Wilson"
     },
     {
       "school": "South Beloit High School",
@@ -17534,6 +17854,14 @@
       "school": "Stockton High School",
       "email": "casey.kenna@stocktonschools.com",
       "role": "Head Coach",
+      "sport": "Boys & Girls Golf",
+      "first": "Casey",
+      "last": "Kenna"
+    },
+    {
+      "school": "Stockton High School",
+      "email": "casey.kenna@stocktonschools.com",
+      "role": "Head Coach",
       "sport": "Boys Golf",
       "first": "Casey",
       "last": "Kenna"
@@ -17557,10 +17885,26 @@
     {
       "school": "Stockton High School",
       "email": "david.mccray@stocktonschools.com",
+      "role": "Band Director & Marching Band Director",
+      "sport": "",
+      "first": "David",
+      "last": "McCray"
+    },
+    {
+      "school": "Stockton High School",
+      "email": "david.mccray@stocktonschools.com",
       "role": "Marching Band Director",
       "sport": "",
       "first": "David",
       "last": "McCray"
+    },
+    {
+      "school": "Stockton High School",
+      "email": "deb.sullivan@stocktonschools.com",
+      "role": "Boys Athletic Director's Assistant & Girls Athletic Director's Assistant",
+      "sport": "",
+      "first": "Deb",
+      "last": "Sullivan"
     },
     {
       "school": "Stockton High School",
@@ -17646,6 +17990,14 @@
       "school": "Stockton High School",
       "email": "john.hammann@stocktonschools.com",
       "role": "Athletic Director",
+      "sport": "",
+      "first": "John",
+      "last": "Hammann"
+    },
+    {
+      "school": "Stockton High School",
+      "email": "john.hammann@stocktonschools.com",
+      "role": "Boys Athletic Director & IHSA Official Representative",
       "sport": "",
       "first": "John",
       "last": "Hammann"
@@ -17748,6 +18100,14 @@
     },
     {
       "school": "Sycamore High School",
+      "email": "acrawford@medalliancegrop.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Michael",
+      "last": "A. Crawford"
+    },
+    {
+      "school": "Sycamore High School",
       "email": "akeca@syc427.org",
       "role": "Coach",
       "sport": "Esports",
@@ -17798,6 +18158,14 @@
       "school": "Sycamore High School",
       "email": "ccarrick@syc427.org",
       "role": "Activities Director & Boys Athletic Director & IHSA Official Representative",
+      "sport": "",
+      "first": "Chauncey",
+      "last": "Carrick"
+    },
+    {
+      "school": "Sycamore High School",
+      "email": "ccarrick@syc427.org",
+      "role": "Activities Director & Girls Athletic Director & IHSA Official Representative",
       "sport": "",
       "first": "Chauncey",
       "last": "Carrick"
@@ -17973,6 +18341,14 @@
     {
       "school": "Sycamore High School",
       "email": "kgoodman@syc427.org",
+      "role": "Band Director & Marching Band Director",
+      "sport": "",
+      "first": "Ken",
+      "last": "Goodman"
+    },
+    {
+      "school": "Sycamore High School",
+      "email": "kgoodman@syc427.org",
       "role": "Marching Band Director",
       "sport": "",
       "first": "Ken",
@@ -18061,6 +18437,14 @@
     {
       "school": "Sycamore High School",
       "email": "sbierman@syc427.org",
+      "role": "Activities Director's Assistant & Boys Athletic Director's Assistant",
+      "sport": "",
+      "first": "Shannon",
+      "last": "Bierman"
+    },
+    {
+      "school": "Sycamore High School",
+      "email": "sbierman@syc427.org",
       "role": "Activities Director's Assistant & Girls Athletic Director's Assistant & Yearbook Adviser",
       "sport": "",
       "first": "Shannon",
@@ -18073,6 +18457,14 @@
       "sport": "",
       "first": "Shannon",
       "last": "Bierman"
+    },
+    {
+      "school": "Sycamore High School",
+      "email": "smertens@syc427.org",
+      "role": "Band Director",
+      "sport": "",
+      "first": "Scott",
+      "last": "Mertens"
     },
     {
       "school": "Sycamore High School",
@@ -19197,6 +19589,14 @@
     {
       "school": "Wauconda High School",
       "email": "aspringer@d118.org",
+      "role": "Boys Athletic Director & IHSA Official Representative",
+      "sport": "",
+      "first": "Andrew",
+      "last": "Springer"
+    },
+    {
+      "school": "Wauconda High School",
+      "email": "aspringer@d118.org",
       "role": "Girls Athletic Director & IHSA Official Representative",
       "sport": "",
       "first": "Andrew",
@@ -19222,6 +19622,14 @@
       "school": "Wauconda High School",
       "email": "bvolheim@d118.org",
       "role": "Head Coach",
+      "sport": "Boys Tennis",
+      "first": "Benjamin",
+      "last": "Volheim"
+    },
+    {
+      "school": "Wauconda High School",
+      "email": "bvolheim@d118.org",
+      "role": "Head Coach",
       "sport": "Girls Tennis",
       "first": "Benjamin",
       "last": "Volheim"
@@ -19238,6 +19646,14 @@
       "school": "Wauconda High School",
       "email": "cdortwegt@d118.org",
       "role": "Band Director",
+      "sport": "",
+      "first": "Chris",
+      "last": "Dortwegt"
+    },
+    {
+      "school": "Wauconda High School",
+      "email": "cdortwegt@d118.org",
+      "role": "Band Director & Marching Band Director",
       "sport": "",
       "first": "Chris",
       "last": "Dortwegt"
@@ -19334,6 +19750,14 @@
       "school": "Wauconda High School",
       "email": "jmikrut@d118.org",
       "role": "Head Coach",
+      "sport": "Boys & Girls Bowling",
+      "first": "Jennifer",
+      "last": "Mikrut"
+    },
+    {
+      "school": "Wauconda High School",
+      "email": "jmikrut@d118.org",
+      "role": "Head Coach",
       "sport": "Boys Bowling",
       "first": "Jennifer",
       "last": "Mikrut"
@@ -19351,6 +19775,14 @@
       "email": "johara@d118.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
+      "first": "Jacob",
+      "last": "O'Hara"
+    },
+    {
+      "school": "Wauconda High School",
+      "email": "johara@d118.org",
+      "role": "Head Coach",
+      "sport": "Boys Cross Country",
       "first": "Jacob",
       "last": "O'Hara"
     },
@@ -19449,6 +19881,14 @@
       "sport": "",
       "first": "Samantha",
       "last": "Guzman"
+    },
+    {
+      "school": "Wauconda High School",
+      "email": "smetzger@d118.org",
+      "role": "Drama Director",
+      "sport": "",
+      "first": "Scott",
+      "last": "Metzger"
     },
     {
       "school": "Wauconda High School",
@@ -21109,6 +21549,14 @@
     {
       "school": "Winnebago High School",
       "email": "bronkemak@winnebagoschools.org",
+      "role": "Boys Athletic Director's Assistant",
+      "sport": "",
+      "first": "Kim",
+      "last": "Bronkema"
+    },
+    {
+      "school": "Winnebago High School",
+      "email": "bronkemak@winnebagoschools.org",
       "role": "Girls Athletic Director's Assistant",
       "sport": "",
       "first": "Kim",
@@ -21132,11 +21580,43 @@
     },
     {
       "school": "Winnebago High School",
+      "email": "brulep@winnebagoschools.org",
+      "role": "Girls Athletic Director",
+      "sport": "",
+      "first": "Patrick",
+      "last": "Brule"
+    },
+    {
+      "school": "Winnebago High School",
+      "email": "capriolaa@winnebagoschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Anthony",
+      "last": "Capriola"
+    },
+    {
+      "school": "Winnebago High School",
+      "email": "coacha44@frontier.com",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Ron",
+      "last": "Adams Sr."
+    },
+    {
+      "school": "Winnebago High School",
       "email": "coachxtreme26@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Softball",
       "first": "Mike",
       "last": "Intravaia"
+    },
+    {
+      "school": "Winnebago High School",
+      "email": "derekjmelin@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Derek",
+      "last": "Melin"
     },
     {
       "school": "Winnebago High School",
@@ -21166,6 +21646,14 @@
       "school": "Winnebago High School",
       "email": "erbjt@winnebagoschools.org",
       "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Joe",
+      "last": "Erb"
+    },
+    {
+      "school": "Winnebago High School",
+      "email": "erbjt@winnebagoschools.org",
+      "role": "Head Coach",
       "sport": "Boys & Girls Track Field",
       "first": "Joe",
       "last": "Erb"
@@ -21175,6 +21663,14 @@
       "email": "erbjt@winnebagoschools.org",
       "role": "Head Coach",
       "sport": "Boys Track & Field",
+      "first": "Joe",
+      "last": "Erb"
+    },
+    {
+      "school": "Winnebago High School",
+      "email": "erbjt@winnebagoschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Track & Field",
       "first": "Joe",
       "last": "Erb"
     },
