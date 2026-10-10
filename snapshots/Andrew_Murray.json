@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-10-09T09:13:55.186584Z",
+  "updated": "2026-10-10T09:00:31.691242Z",
   "records": [
     {
       "school": "Alden-Hebron High School",
@@ -11716,14 +11716,6 @@
     },
     {
       "school": "Lakes Community High School",
-      "email": "kevin.kullby@chsd117.org",
-      "role": "Head Coach",
-      "sport": "Boys Soccer",
-      "first": "Kevin",
-      "last": "Kullby"
-    },
-    {
-      "school": "Lakes Community High School",
       "email": "klrettig79@icloud.com",
       "role": "Head Coach",
       "sport": "Boys Volleyball",
@@ -11814,14 +11806,6 @@
       "school": "Lakes Community High School",
       "email": "matthew.kastor@chsd117.org",
       "role": "Band Director & Marching Band Director & Orchestra Director",
-      "sport": "",
-      "first": "Matt",
-      "last": "Kastor"
-    },
-    {
-      "school": "Lakes Community High School",
-      "email": "matthew.kastor@chsd117.org",
-      "role": "Marching Band Director & Orchestra Director",
       "sport": "",
       "first": "Matt",
       "last": "Kastor"
@@ -11942,14 +11926,6 @@
       "school": "Lena-Winslow High School",
       "email": "bensonk@le-win.net",
       "role": "Asst. Boys Athletic Director & Asst. Girls Athletic Director",
-      "sport": "",
-      "first": "Kyle",
-      "last": "Benson"
-    },
-    {
-      "school": "Lena-Winslow High School",
-      "email": "bensonk@le-win.net",
-      "role": "Asst. Girls Athletic Director",
       "sport": "",
       "first": "Kyle",
       "last": "Benson"
@@ -12188,14 +12164,6 @@
     },
     {
       "school": "Libertyville High School",
-      "email": "dan.kiernan@club-net.com",
-      "role": "Head Coach",
-      "sport": "Girls Tennis",
-      "first": "Dan",
-      "last": "Kiernan"
-    },
-    {
-      "school": "Libertyville High School",
       "email": "darwin.townsend@d128.org",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -12222,14 +12190,6 @@
       "school": "Libertyville High School",
       "email": "dustin.helvie@d128.org",
       "role": "Band Director & Orchestra Director",
-      "sport": "",
-      "first": "Dustin",
-      "last": "Helvie"
-    },
-    {
-      "school": "Libertyville High School",
-      "email": "dustin.helvie@d128.org",
-      "role": "Orchestra Director",
       "sport": "",
       "first": "Dustin",
       "last": "Helvie"
@@ -14334,6 +14294,14 @@
       "school": "Mundelein High School",
       "email": "jscheuers@d120.org",
       "role": "Activities Director",
+      "sport": "",
+      "first": "Joe",
+      "last": "Scheuers"
+    },
+    {
+      "school": "Mundelein High School",
+      "email": "jscheuers@d120.org",
+      "role": "Activities Director & Asst. Boys Athletic Director",
       "sport": "",
       "first": "Joe",
       "last": "Scheuers"
@@ -21943,6 +21911,14 @@
       "email": "joliveira@wcusd200.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Tennis",
+      "first": "John",
+      "last": "Oliveira"
+    },
+    {
+      "school": "Woodstock High School",
+      "email": "joliveira@wcusd200.org",
+      "role": "Head Coach",
+      "sport": "Boys Tennis",
       "first": "John",
       "last": "Oliveira"
     },
