@@ -19,7 +19,7 @@ concurrency:
 
 jobs:
   sync:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: write  # commit the rotated (encrypted) token cache
     env:
