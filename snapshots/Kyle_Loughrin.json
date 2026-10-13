@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-10-12T09:21:29.251892Z",
+  "updated": "2026-10-13T09:41:55.747668Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -8484,6 +8484,14 @@
     },
     {
       "school": "Stevens Point High School",
+      "email": "ldehnel@pointschools.net",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Landon",
+      "last": "Dehnel"
+    },
+    {
+      "school": "Stevens Point High School",
       "email": "mkyle@pointschools.net",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -8513,14 +8521,6 @@
       "sport": "Girls Tennis",
       "first": "Michele",
       "last": "O Donnell"
-    },
-    {
-      "school": "Stevens Point High School",
-      "email": "mpohlkam@pointschools.net",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Matt",
-      "last": "Pohlkamp"
     },
     {
       "school": "Stevens Point High School",

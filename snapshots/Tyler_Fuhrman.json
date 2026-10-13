@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-10-12T09:19:27.403428Z",
+  "updated": "2026-10-13T09:39:57.172392Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -1804,6 +1804,14 @@
     },
     {
       "school": "LaFarge High School",
+      "email": "campbell.jori31@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Jori",
+      "last": "Campbell"
+    },
+    {
+      "school": "LaFarge High School",
       "email": "dclements@kickapoo.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
@@ -1881,14 +1889,6 @@
       "sport": "Boys Baseball",
       "first": "Stacy",
       "last": "Myers"
-    },
-    {
-      "school": "LaFarge High School",
-      "email": "thoward@mwt.net",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Tom",
-      "last": "Howard"
     },
     {
       "school": "Lacrosse Aquinas High School",
@@ -4676,14 +4676,6 @@
     },
     {
       "school": "River Valley High School",
-      "email": "amberseffrood@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Gymnastics",
-      "first": "Amber",
-      "last": "Seffrood"
-    },
-    {
-      "school": "River Valley High School",
       "email": "bjohnson1@rvschools.org",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -4713,6 +4705,14 @@
       "sport": "",
       "first": "Darby",
       "last": "Blakley"
+    },
+    {
+      "school": "River Valley High School",
+      "email": "ebutteris@rvschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Gymnastics",
+      "first": "Emily",
+      "last": "Butteris"
     },
     {
       "school": "River Valley High School",
