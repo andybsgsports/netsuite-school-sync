@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-10-13T09:44:04.422678Z",
+  "updated": "2026-10-14T08:06:44.890926Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -857,6 +857,14 @@
       "sport": "Boys & Girls Track and Field",
       "first": "Kevin",
       "last": "Klueger"
+    },
+    {
+      "school": "Dodgeland High School",
+      "email": "peplinskij@dodgeland.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Jen",
+      "last": "Peplinski"
     },
     {
       "school": "Dodgeland High School",

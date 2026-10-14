@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-10-13T09:42:32.657861Z",
+  "updated": "2026-10-14T08:05:13.692457Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -1070,7 +1070,7 @@
       "school": "McFarland High School",
       "email": "Kvoeck@gmail.com",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
+      "sport": "Boys Wrestling",
       "first": "Karl",
       "last": "Voeck"
     },
@@ -1121,6 +1121,14 @@
       "sport": "",
       "first": "Leah",
       "last": "Poulos"
+    },
+    {
+      "school": "McFarland High School",
+      "email": "rasmussen.nate@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Nate",
+      "last": "Rasmussen"
     },
     {
       "school": "McFarland High School",
@@ -1270,7 +1278,7 @@
       "school": "Monona Grove High School",
       "email": "Kvoeck@gmail.com",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
+      "sport": "Boys Wrestling",
       "first": "Karl",
       "last": "Voeck"
     },
@@ -1361,6 +1369,14 @@
       "sport": "Boys Soccer",
       "first": "Randy",
       "last": "Becker"
+    },
+    {
+      "school": "Monona Grove High School",
+      "email": "rasmussen.nate@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Nate",
+      "last": "Rasmussen"
     },
     {
       "school": "Monona Grove High School",
