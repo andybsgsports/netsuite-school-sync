@@ -30,6 +30,7 @@ import re
 import smtplib
 import sys
 import time
+from collections import Counter
 from datetime import datetime
 from email.message import EmailMessage
 from pathlib import Path
@@ -51,6 +52,10 @@ GOOGLE_SCOPES = [
     "https://www.googleapis.com/auth/drive",
 ]
 DELAY_BETWEEN_SCHOOLS = 1.2  # seconds
+# A school losing this share of its people (and at least this many) in one
+# run is a scrape failure, not churn -- see the per-school guard in main().
+SCHOOL_MASS_LOSS_FRAC = 0.5
+SCHOOL_MASS_LOSS_MIN = 5
 
 SNAPSHOT_DIR = Path(__file__).parent / "snapshots"
 
@@ -520,6 +525,19 @@ def contacts_to_records(admins, coaches):
                      "email": c.get("Email", ""), "role": c.get("Role", ""),
                      "sport": c.get("Sport", "")}
     return recs
+
+
+def collapsed_schools(previous_keys, removed, scraped_schools):
+    """Schools that 'scraped OK' but lost >= SCHOOL_MASS_LOSS_FRAC of their
+    snapshot people (and >= SCHOOL_MASS_LOSS_MIN) in one run. Keys are
+    (school, email, role, sport). Returns (set, prev_counts, gone_counts)."""
+    prev_by_school = Counter(k[0] for k in (previous_keys or ()))
+    gone_by_school = Counter(k[0] for k in removed)
+    collapsed = {sch for sch, n in gone_by_school.items()
+                 if sch in scraped_schools
+                 and n >= SCHOOL_MASS_LOSS_MIN
+                 and n >= prev_by_school[sch] * SCHOOL_MASS_LOSS_FRAC}
+    return collapsed, prev_by_school, gone_by_school
 
 
 def load_snapshot(rep_name):
@@ -1004,6 +1022,23 @@ def main():
         # school quit. Keys from failed-scrape schools are left untouched —
         # they'll be re-checked (and reported/acted on) the next time that
         # school's page loads successfully.
+        # Per-school mass-loss guard. The rep-level guard above only fires when
+        # nothing was added, so one school (or 24, on 2026-10-13) can collapse
+        # while a couple of genuine adds elsewhere keep the run "trusted".
+        # A school that loses half or more of its people (and at least
+        # SCHOOL_MASS_LOSS_MIN) in a single run is treated as a failed scrape:
+        # no departures, snapshot carried forward, re-checked next run.
+        collapsed, prev_by_school, gone_by_school = collapsed_schools(
+            previous_keys, removed, scraped_schools_this_run)
+        if collapsed:
+            print(f"  [GUARD] {len(collapsed)} school(s) lost >= "
+                  f"{SCHOOL_MASS_LOSS_FRAC:.0%} of their people in one run -- "
+                  f"treated as a failed scrape, not departures: "
+                  + ", ".join(f"{sch} (-{gone_by_school[sch]}/{prev_by_school[sch]})"
+                              for sch in sorted(collapsed)[:10])
+                  + (" ..." if len(collapsed) > 10 else ""))
+            scraped_schools_this_run = scraped_schools_this_run - collapsed
+
         removed_scoped = {k for k in removed if k[0] in scraped_schools_this_run}
         removed_skipped = removed - removed_scoped
         # Past the suspect-failure guard: these schools' scrapes are trusted,
