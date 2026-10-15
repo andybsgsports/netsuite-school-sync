@@ -1,0 +1,61 @@
+name: Manual - Restore Flipped Contacts
+
+# Undo a bad digest run's Sync=N flips using the committed snapshots as the
+# record of who was there (2026-10-13: IHSA's 401 human-verification gate was
+# read as "no email" -> 834 Illinois contacts flipped). See
+# restore_flipped_contacts.py. DRY RUN by default. Only touches the Contacts
+# tab's Sync column; the next push reactivates the contacts in NetSuite.
+
+on:
+  workflow_dispatch:
+    inputs:
+      live:
+        description: 'Apply changes (unchecked = dry run, report only)'
+        type: boolean
+        required: false
+        default: false
+      good_rev:
+        description: 'Git revision of the last GOOD snapshot commit'
+        required: true
+        default: '6f6bd6f'
+      bad_rev:
+        description: 'Git revision of the BAD digest run snapshot commit'
+        required: true
+        default: '698f6b1'
+      rep:
+        description: 'Sales rep whose snapshot to compare'
+        required: false
+        default: 'Andrew Murray'
+      state:
+        description: 'Only restore schools in this state'
+        required: false
+        default: 'IL'
+
+jobs:
+  restore:
+    runs-on: ubuntu-24.04
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth google-api-python-client openpyxl pandas
+      - name: Restore flipped contacts
+        run: python restore_flipped_contacts.py
+        env:
+          LIVE:                    ${{ inputs.live && '1' || '' }}
+          GOOD_REV:                ${{ inputs.good_rev }}
+          BAD_REV:                 ${{ inputs.bad_rev }}
+          REP:                     ${{ inputs.rep }}
+          STATE:                   ${{ inputs.state }}
+          GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}

@@ -398,20 +398,35 @@ def fetch_school_staff(school_id):
     return people
 
 
+# Set once IHSA answers an email lookup with 401 ("Please verify to see more
+# emails", code turnstile-required -- a human-verification CAPTCHA added in
+# Oct 2026). Every later lookup in the run is then reported as failed without
+# calling IHSA again: we don't hammer a gate meant for humans, and every school
+# after it is treated as unverifiable (no departures) instead of empty.
+_email_gate = {"blocked": False}
+
+
 def fetch_email_checked(school_id, person_id):
     """Resolve an email via the gated reveal endpoint, retrying transient
     failures. Returns (email, failed).
 
-    failed=True means we could NOT find out (timeout / 429 / 5xx after all
-    retries) — an empty email then means "unknown", not "has none". A clean
-    403/404 is a definitive "no email" (failed=False)."""
+    Only a 200 is an answer. Anything else -- 401 human-verification gate,
+    403, 404, 429 or 5xx after retries, a transport error -- is failed=True:
+    the email is unknown, NOT absent. Treating a 401 as "no email" is what
+    flipped 834 Illinois contacts to Sync=N on 2026-10-13 (Grant, Freeport
+    and 22 more schools)."""
+    if _email_gate["blocked"]:
+        return "", True
     status, body = _ihsa_get_json(
         f"{IHSA_API}/schools/{school_id}/staff/{person_id}/email")
     if status == 200 and body is not None:
         return str(body.get("email", "")).strip(), False
-    if status is not None and status != 200 and status not in _IHSA_RETRY_STATUS \
-            and status < 500:
-        return "", False
+    if status == 401:
+        if not _email_gate["blocked"]:
+            print("    [IHSA] email lookups are behind a human-verification gate "
+                  "(HTTP 401) -- skipping the rest; affected schools keep their "
+                  "contacts unchanged this run")
+        _email_gate["blocked"] = True
     return "", True
 
 
