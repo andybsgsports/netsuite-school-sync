@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-10-14T08:04:35.404140Z",
+  "updated": "2026-10-15T07:47:47.111264Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -177,6 +177,14 @@
       "sport": "Boys Basketball",
       "first": "Ivan",
       "last": "Flannery"
+    },
+    {
+      "school": "Antigo High School",
+      "email": "jbrandt@antigoschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Track and Field",
+      "first": "Jessica",
+      "last": "Brandt"
     },
     {
       "school": "Antigo High School",
@@ -10025,6 +10033,14 @@
       "sport": "Girls Gymnastics",
       "first": "Abbigail",
       "last": "Kawczynski"
+    },
+    {
+      "school": "Wisconsin Rapids High School",
+      "email": "aschiessl02@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Gymnastics",
+      "first": "Alyssa",
+      "last": "Schiessl"
     },
     {
       "school": "Wisconsin Rapids High School",

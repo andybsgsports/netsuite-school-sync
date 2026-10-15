@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-10-14T08:02:41.250531Z",
+  "updated": "2026-10-15T07:44:55.012209Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -1380,14 +1380,6 @@
     },
     {
       "school": "Holmen High School",
-      "email": "joneslionel789@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Lionel",
-      "last": "Jones"
-    },
-    {
-      "school": "Holmen High School",
       "email": "joshvandeberg01@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Lacrosse-Boys",
@@ -1473,6 +1465,14 @@
       "sport": "Girls Hockey",
       "first": "Jamie",
       "last": "Olson"
+    },
+    {
+      "school": "Holmen High School",
+      "email": "ottlis@holmen.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Lisa",
+      "last": "Ottum"
     },
     {
       "school": "Holmen High School",
@@ -4188,7 +4188,7 @@
     },
     {
       "school": "Onalaska High School",
-      "email": "cowth@onalaskaschools.com",
+      "email": "cowley.thomas@onalaskaschools.com",
       "role": "Head Coach",
       "sport": "Girls Basketball",
       "first": "Tom",
