@@ -138,7 +138,7 @@ def clean_titles(labels):
 from netsuite_sync import (
     sync_school, sync_customer, sync_contact, inactivate_contact,
     remove_contact_ship_to, sync_address_book, compute_school_domain,
-    restlet_available, ns_restlet_attach,
+    restlet_available, ns_restlet_attach, inactive_contact_ids,
 )
 from school_netsuite_sync import (
     get_gspread_client,
@@ -534,8 +534,11 @@ def main():
                 # or dropping a role re-pushes the contact.
                 current_hash = row_hash(first, last, email, title)
                 stored_hash  = str(c.get(C_HASH, "")).strip()
-                if contact_ns and contact_ns not in ("nan", "None") and stored_hash == current_hash:
-                    # No change since last push — skip the NS PATCH
+                if contact_ns and contact_ns not in ("nan", "None") and stored_hash == current_hash \
+                        and contact_ns not in inactive_contact_ids():
+                    # No change since last push — skip the NS PATCH. (A row
+                    # whose record is INACTIVE in NetSuite is never skipped:
+                    # sync_contact revives it, or relinks a retired duplicate.)
                     pushed_emails[em_key] = contact_ns
                     continue
 
@@ -563,11 +566,19 @@ def main():
                     # (inactivating would kill the still-active contact and
                     # remove_contact_ship_to would strip their address,
                     # since the Ship-To label is the person's name).
-                    if school_name in y_schools_by_cid.get(contact_ns, set()):
+                    # Also by EMAIL: when IHSA/WIAA renames a role, the old-
+                    # role row goes N and the new-role row arrives Y with a
+                    # BLANK id, so the id check above can't see it. Treating
+                    # that as a departure inactivated David Granatelli
+                    # (Appleton North, 2026-10-16) and -- via pushed_emails --
+                    # then skipped his new Y row, so he was never re-linked.
+                    if (school_name in y_schools_by_cid.get(contact_ns, set())
+                            or school_name in y_schools_by_email.get(em_key, set())):
                         print(f"  Stale row (not a departure): {first} {last} "
                               f"still active at {school_name} under another row "
                               f"— unlinking only")
-                        pushed_emails[em_key] = ""
+                        # Do NOT mark the email handled: the live Y row (if it
+                        # comes later in this school's loop) must still sync.
                         c[C_NS_CID] = ""
                         continue
                     # Does this person still actively serve another school?
