@@ -501,6 +501,12 @@ def scrape_wiaa_school_detail(wiaa_url):
             info["zip"]        = h5(15)
             info["phone"]      = h5(16)
 
+        # A WIAA page that omits a header shifts the positional h5 parse
+        # (Sun Prairie West's phone came back as "Sun Prairie West"). Never
+        # store a non-phone in the phone field.
+        if info.get("phone") and not re.search(r"\d{3}\D*\d{4}", info["phone"]):
+            info["phone"] = ""
+
         # Enrollment
         full_text = soup.get_text(" ")
         m = re.search(r"School:\s*(\d+)", full_text)
