@@ -1,0 +1,31 @@
+name: Diag - School Details vs Source
+
+# Read-only: compare Schools-tab fields with the live WIAA/IHSA source.
+# See diag_school_details.py.
+
+on:
+  workflow_dispatch:
+    inputs:
+      schools:
+        description: 'Comma-separated School Names (exact, as on the Schools tab)'
+        required: true
+
+jobs:
+  diag:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gspread google-auth
+      - name: Compare
+        run: python diag_school_details.py
+        env:
+          DIAG_SCHOOLS:            ${{ inputs.schools }}
+          GOOGLE_SHEET_ID:         ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
