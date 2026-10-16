@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-10-15T07:49:50.050616Z",
+  "updated": "2026-10-16T06:21:53.521525Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -150,7 +150,7 @@
       "school": "Campbellsport High School",
       "email": "dheisdorf@csd.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
+      "sport": "Girls Softball",
       "first": "Dan",
       "last": "Heisdorf"
     },
@@ -158,7 +158,7 @@
       "school": "Campbellsport High School",
       "email": "dheisdorf@csd.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Girls Softball",
+      "sport": "Girls Wrestling",
       "first": "Dan",
       "last": "Heisdorf"
     },
@@ -1324,6 +1324,14 @@
     },
     {
       "school": "Fond Du Lac High School",
+      "email": "koledavis61@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Swimming & Diving",
+      "first": "Kole",
+      "last": "Davis"
+    },
+    {
+      "school": "Fond Du Lac High School",
       "email": "moehnd@fonddulac.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Soccer",
@@ -1360,14 +1368,6 @@
       "role": "Head Coach",
       "sport": "Boys Baseball",
       "first": "Jason",
-      "last": "Schneider"
-    },
-    {
-      "school": "Fond Du Lac High School",
-      "email": "schneidern@fonddulac.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Swimming & Diving",
-      "first": "Nikki",
       "last": "Schneider"
     },
     {

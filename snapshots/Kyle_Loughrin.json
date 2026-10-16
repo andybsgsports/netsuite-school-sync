@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-10-15T07:47:47.111264Z",
+  "updated": "2026-10-16T06:19:42.098775Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -590,7 +590,7 @@
       "school": "Appleton North High School",
       "email": "granatellidavi@aasd.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
+      "sport": "Boys Wrestling",
       "first": "David",
       "last": "Granatelli"
     },
@@ -641,6 +641,14 @@
       "sport": "Girls Lacrosse-Girls",
       "first": "Kate",
       "last": "Lukashewich"
+    },
+    {
+      "school": "Appleton North High School",
+      "email": "lhoff285@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Luke",
+      "last": "Hoffmann"
     },
     {
       "school": "Appleton North High School",
@@ -3265,6 +3273,14 @@
       "sport": "Boys & Girls Tennis",
       "first": "Sara",
       "last": "Schubring"
+    },
+    {
+      "school": "Green Bay Preble High School",
+      "email": "slbaker@gbaps.org",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Steve",
+      "last": "Baker"
     },
     {
       "school": "Green Bay Preble High School",
@@ -10052,6 +10068,14 @@
     },
     {
       "school": "Wisconsin Rapids High School",
+      "email": "benjamin.rahlf@wrps.net",
+      "role": "Head Coach",
+      "sport": "Boys Swimming & Diving",
+      "first": "Benjamin",
+      "last": "Rahlf"
+    },
+    {
+      "school": "Wisconsin Rapids High School",
       "email": "cale.benitz@wrps.net",
       "role": "Assistant Athletic Director",
       "sport": "",
@@ -10081,14 +10105,6 @@
       "sport": "",
       "first": "Chris",
       "last": "Calteux"
-    },
-    {
-      "school": "Wisconsin Rapids High School",
-      "email": "david.wittenberg@wrps.net",
-      "role": "Head Coach",
-      "sport": "Boys Swimming & Diving",
-      "first": "David",
-      "last": "Wittenberg"
     },
     {
       "school": "Wisconsin Rapids High School",

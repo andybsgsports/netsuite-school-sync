@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-10-15T07:43:40.933855Z",
+  "updated": "2026-10-16T06:16:28.627820Z",
   "records": [
     {
       "school": "Albany High School",
@@ -2596,6 +2596,14 @@
     },
     {
       "school": "Monticello High School",
+      "email": "mouchcar@monticello.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Carolyn",
+      "last": "Mouchon"
+    },
+    {
+      "school": "Monticello High School",
       "email": "olsonma@monticello.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -2625,14 +2633,6 @@
       "sport": "Girls Softball",
       "first": "Rick",
       "last": "Monson"
-    },
-    {
-      "school": "Monticello High School",
-      "email": "schwacar@monticello.k12.wi.us",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Carolyn",
-      "last": "Schwartzlow"
     },
     {
       "school": "Monticello High School",
