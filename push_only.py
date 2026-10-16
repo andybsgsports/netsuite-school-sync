@@ -153,7 +153,7 @@ from school_netsuite_sync import (
 # Reuse the IL row -> school_info shaper. Single source of truth so the
 # manual IL workflow and this nightly push read the sheet identically.
 from ihsa_sync import (
-    school_info_from_row, M_FULL,
+    school_info_from_row, fetch_school_details, extract_school_id, M_FULL,
     M_CLASS, M_LEVEL, M_NICKNAME, M_COLORS, M_CONFERENCE,
     M_DISTRICT, M_ENROLLMENT, M_SIZE, M_PHONE,
     M_ADDR1, M_ADDR2, M_CITY, M_ZIP, M_WEBSITE,
@@ -224,6 +224,61 @@ def load_schools(gc):
                     "state": state, "rep": rep, "raw": rec,
                     "parent": str(rec.get(M_PARENT, "")).strip()})
     return out, ws, synced_col, ns_id_col
+
+
+# Schools-tab columns kept in step with the live source (WIAA for WI, IHSA's
+# public school record for IL) -> key in the school_info dict.
+HEAL_FIELDS = [
+    (M_ADDR1,      "address1"),
+    (M_ADDR2,      "address2"),
+    (M_CITY,       "city"),
+    (M_STATE,      "state"),
+    (M_ZIP,        "zip"),
+    (M_CLASS,      "school_class"),
+    (M_LEVEL,      "level"),
+    (M_NICKNAME,   "nickname"),
+    (M_COLORS,     "colors"),
+    (M_CONFERENCE, "conference"),
+    (M_DISTRICT,   "wiaa_district"),
+    (M_ENROLLMENT, "enrollment"),
+    (M_SIZE,       "school_size"),
+    (M_PHONE,      "phone"),
+    (M_WEBSITE,    "website"),
+]
+
+
+def heal_updates(sch, live):
+    """Pure. Cell updates that bring a Schools-tab row in line with `live`
+    (the fresh WIAA scrape / IHSA record). Every field the source returned
+    is overwritten when it differs, even if the cell already has a value --
+    the same values go to NetSuite each night, so the sheet must not drift
+    (Adams-Friendship's address did, indefinitely). A field the source left
+    blank is never cleared."""
+    headers = list(sch["raw"].keys())
+    updates = []
+    for col_name, info_key in HEAL_FIELDS:
+        live_val = live.get(info_key)
+        if live_val in (None, "") or col_name not in headers:
+            continue
+        existing = str(sch["raw"].get(col_name, "")).strip()
+        if existing.lower() == str(live_val).strip().lower():
+            continue
+        updates.append({
+            "range": gspread.utils.rowcol_to_a1(sch["row"], headers.index(col_name) + 1),
+            "values": [[str(live_val)]],
+        })
+    return updates
+
+
+def heal_schools_tab(master_ws, sch, live, source):
+    updates = heal_updates(sch, live or {})
+    if not updates:
+        return
+    try:
+        master_ws.batch_update(updates)
+        print(f"  Healed {len(updates)} field(s) on Schools tab to match live {source}")
+    except Exception as e:
+        print(f"  WARN could not heal Schools tab from {source}: {e!r}")
 
 
 def main():
@@ -362,6 +417,19 @@ def main():
         # produces. Mirrors what ihsa_sync.py does for the manual workflow.
         if state == "IL":
             school_info_out = school_info_from_row(sch["raw"], "IL")
+            # Refresh from IHSA's public school record (enrollment, colors,
+            # address, ...) the way WI is refreshed from WIAA every night --
+            # without this, IL fields were typed in once and went stale
+            # (Pecatonica enrollment 299 in NetSuite vs 295 on IHSA). Live
+            # values win; anything IHSA doesn't return keeps the sheet value.
+            ihsa_live = {}
+            ihsa_id = extract_school_id(sch["url"]) if sch.get("url") else None
+            if ihsa_id:
+                try:
+                    ihsa_live = fetch_school_details(ihsa_id)
+                except Exception as e:
+                    print(f"  IHSA school details unavailable ({e!r}) — using Schools tab")
+            school_info_out.update(ihsa_live)
             try:
                 result_id, created = sync_customer(
                     display_name, "IL", school_info_out,
@@ -376,6 +444,7 @@ def main():
                 print(f"  Could not sync IL Customer — skipping contacts")
                 errors += 1
                 continue
+            heal_schools_tab(master_ws, sch, ihsa_live, "IHSA")
         else:
             try:
                 # Pass display_name (from Full Name column) — sync_school
@@ -399,49 +468,8 @@ def main():
                 continue
 
             # Write scraped WIAA fields back to the Schools tab so it stays in
-            # sync with the live source: every field here is overwritten
-            # whenever it differs from the fresh WIAA scrape, even if the
-            # cell already has a value. This mirrors what already happens in
-            # NetSuite (build_customer_body syncs the same scraped fields to
-            # the customer record every night) — the sheet should never be
-            # allowed to drift from WIAA the way Adams-Friendship's address
-            # did indefinitely with nothing to correct it.
-            # No "county" here — WIAA's school detail page doesn't publish one.
-            # IL schools are sheet-sourced so no write-back needed there.
-            HEAL_FIELDS = [
-                (M_ADDR1,      "address1"),
-                (M_ADDR2,      "address2"),
-                (M_CITY,       "city"),
-                (M_STATE,      "state"),
-                (M_ZIP,        "zip"),
-                (M_CLASS,      "school_class"),
-                (M_LEVEL,      "level"),
-                (M_NICKNAME,   "nickname"),
-                (M_COLORS,     "colors"),
-                (M_CONFERENCE, "conference"),
-                (M_DISTRICT,   "wiaa_district"),
-                (M_ENROLLMENT, "enrollment"),
-                (M_SIZE,       "school_size"),
-                (M_PHONE,      "phone"),
-                (M_WEBSITE,    "website"),
-            ]
-            headers = list(sch["raw"].keys())
-            wiaa_updates = []
-            for col_name, info_key in HEAL_FIELDS:
-                scraped_val = school_info_out.get(info_key)
-                if not scraped_val or col_name not in headers:
-                    continue
-                existing = str(sch["raw"].get(col_name, "")).strip()
-                if existing.lower() == str(scraped_val).strip().lower():
-                    continue  # already matches — no-op
-                col_idx = headers.index(col_name) + 1
-                wiaa_updates.append({
-                    "range": gspread.utils.rowcol_to_a1(sch["row"], col_idx),
-                    "values": [[str(scraped_val)]],
-                })
-            if wiaa_updates:
-                master_ws.batch_update(wiaa_updates)
-                print(f"  Healed {len(wiaa_updates)} field(s) on Schools tab to match live WIAA")
+            # sync with the live source (see heal_schools_tab).
+            heal_schools_tab(master_ws, sch, school_info_out, "WIAA")
 
         synced_schools += 1
         synced_updates.append((sch["row"], datetime.now().strftime("%Y-%m-%d %H:%M")))

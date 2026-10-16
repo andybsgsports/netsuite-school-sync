@@ -242,6 +242,16 @@ def save_contacts(ws, rows):
 
 
 # -- IHSA API ----------------------------------------------------------------
+def _po_box(v):
+    """IHSA's POBox is sometimes a bare number ("419") and sometimes already
+    labelled ("P.O. Box 419"); prefixing blindly produced "PO BOX P.O. Box
+    419" on five IL schools."""
+    v = (v or "").strip()
+    if not v:
+        return ""
+    return v if re.match(r"(?i)p\.?\s*o\.?\s*box", v) else f"PO BOX {v}"
+
+
 def fetch_school_details(school_id):
     """School attributes from IHSA's public school endpoint, in the same
     shape scrape_wiaa_school_detail / school_info_from_row produce, so the
@@ -284,7 +294,7 @@ def fetch_school_details(school_id):
         ("colors",       txt("Colors")),
         ("phone",        txt("Phone")),
         ("address1",     txt("Address")),
-        ("address2",     f"PO BOX {txt('POBox')}" if txt("POBox") else ""),
+        ("address2",     _po_box(txt("POBox"))),
         ("city",         txt("City")),
         ("zip",          txt("Zip")),
         ("website",      website),
