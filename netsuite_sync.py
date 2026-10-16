@@ -175,6 +175,34 @@ def ns_suiteql(query, limit=1000):
     return []
 
 
+_inactive_contacts = {"by_id": None}
+
+
+def inactive_contact_ids():
+    """{contact id: lastName} for every INACTIVE contact, loaded once per run
+    (keyset-paged SuiteQL; ns_suiteql caps a page at 1000 rows). Lets the
+    stored-ID fast path in sync_contact see that a Sync=Y row points at an
+    inactive record -- a PATCH to an inactive contact succeeds (204) and
+    leaves it inactive, so without this such rows stayed inactive forever
+    (14 Wisconsin contacts since the 2026-09 duplicate cleanup). If SuiteQL
+    is unavailable this returns {} and behavior is unchanged."""
+    if _inactive_contacts["by_id"] is None:
+        out, last = {}, 0
+        while True:
+            rows = ns_suiteql("SELECT id, lastname FROM contact WHERE isinactive = 'T' "
+                              f"AND id > {int(last)} ORDER BY id")
+            for row in rows:
+                out[str(row.get("id"))] = row.get("lastname") or ""
+            if len(rows) < 1000:
+                break
+            nxt = rows[-1].get("id")
+            if nxt is None or int(nxt) <= int(last):
+                break
+            last = nxt
+        _inactive_contacts["by_id"] = out
+    return _inactive_contacts["by_id"]
+
+
 # ============================================================
 # RESTLET — native contact attach/detach (shared contacts)
 # ============================================================
@@ -1234,22 +1262,32 @@ def sync_contact(customer_id, school_name, contact_row, school_info, shared=Fals
     # nothing and we'd wrongly try to create a duplicate ("exists but
     # could not find ID"). The stored internal ID is rename-proof.
     known_id = str(contact_row.get("ns_id", "")).strip()
+    revive = False
+    if known_id and known_id.isdigit() and known_id in inactive_contact_ids():
+        if "(dup " in inactive_contact_ids()[known_id]:
+            # A retired co-op duplicate whose sheet repoint didn't land: never
+            # revive it. Skip the fast path so the lookup below finds the
+            # person's live card (shared attach / externalId / create).
+            print(f"  [NS] {first} {last}: stored ID {known_id} is a retired "
+                  f"duplicate -- looking up the live record instead")
+            known_id = ""
+        else:
+            # Sync=Y means this person is current: reactivate the record the
+            # row already points at (a departure clears the id, so this is a
+            # wrongly-inactivated contact, not a departed one).
+            revive = True
     if known_id and known_id.isdigit():
         # Do NOT set externalId here. For co-op coaches (one shared NS
         # contact referenced from several schools) trying to migrate the
         # externalId to this school's slug collides with the slug already
         # held for another school -> HTTP 400. We know the record by its
         # internal ID, so externalId is irrelevant to the update.
-        # Do NOT set isInactive here. A stored id that points at an INACTIVE
-        # record is never something to blindly revive: a departure clears
-        # the row's id, so the only ways a Sync=Y row holds an inactive
-        # record's id are a retired co-op duplicate whose sheet repoint
-        # didn't land (a merge cut off mid-run) or a record someone
-        # inactivated by hand. NetSuite rejects a PATCH to an inactive
-        # record when isInactive is omitted, which routes us to the lookup
-        # path below — and that path knows to skip '(dup ' records and to
-        # attach a shared person's live card instead. A genuine returning
-        # person (Sync N->Y) has a blank id and never reaches this branch.
+        # Inactive stored ids are resolved above: a retired "(dup " record
+        # is skipped (lookup path finds the live card) and any other one is
+        # revived (isInactive=False), because a Sync=Y row is a current
+        # person -- a departure clears the row's id. NetSuite accepts a PATCH
+        # to an inactive record WITHOUT reactivating it, so leaving
+        # isInactive out used to strand such rows inactive forever.
         body_known = {
             "firstName":  first,
             "lastName":   last,
@@ -1258,6 +1296,8 @@ def sync_contact(customer_id, school_name, contact_row, school_info, shared=Fals
             "company":    {"id": customer_id},
             "comments":   f"{state} | Auto-synced by School Sync",
         }
+        if revive:
+            body_known["isInactive"] = False
         if shared and restlet_available():
             # Shared card: never move its primary company — each school's
             # nightly job would otherwise re-point it in turn. Update the
@@ -1285,7 +1325,11 @@ def sync_contact(customer_id, school_name, contact_row, school_info, shared=Fals
                 return known_id
         r = ns_patch(f"contact/{known_id}", body_known)
         if r.status_code == 204:
-            print(f"  [NS] Updated Contact (by stored ID): {first} {last} (ID: {known_id})")
+            if revive:
+                inactive_contact_ids().pop(known_id, None)
+                print(f"  [NS] Reactivated Contact (by stored ID): {first} {last} (ID: {known_id})")
+            else:
+                print(f"  [NS] Updated Contact (by stored ID): {first} {last} (ID: {known_id})")
             return known_id
         # Stored ID stale/invalid — fall through to lookup below.
         print(f"  [NS] stored ID {known_id} for {first} {last} didn't PATCH "

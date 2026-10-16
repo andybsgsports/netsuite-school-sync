@@ -983,9 +983,15 @@ def main():
         # "removed everything" digest. The sheet merge is add-only and the NS
         # push keys off the Sync column, so nothing is ever deleted regardless;
         # this just stops the false alarm and the next-day phantom "+N added".
+        # Judge only schools that actually scraped this run: removals at
+        # schools that failed (e.g. every IL school behind IHSA's 401
+        # human-verification gate) are already ignored below, and counting
+        # them here skipped Andrew Murray's whole WI+IL digest every day.
+        prev_scraped = {k for k in (previous_keys or ()) if k[0] in scraped_schools_this_run}
+        removed_trusted = removed & prev_scraped
         suspect_failure = wi_empty or (
-            not first_run and not added and len(removed) >= 50
-            and len(current_keys) < len(previous_keys) * 0.5
+            not first_run and not added and len(removed_trusted) >= 50
+            and len(removed_trusted) > len(prev_scraped) * 0.5
         )
         if suspect_failure:
             print(f"  [GUARD] Suspected scrape failure for {rep['name']}: "
