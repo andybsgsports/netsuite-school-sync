@@ -242,6 +242,58 @@ def save_contacts(ws, rows):
 
 
 # -- IHSA API ----------------------------------------------------------------
+def fetch_school_details(school_id):
+    """School attributes from IHSA's public school endpoint, in the same
+    shape scrape_wiaa_school_detail / school_info_from_row produce, so the
+    nightly push can refresh IL schools from the live source the way WI is
+    refreshed from WIAA. Only keys IHSA actually returned are included; {}
+    if the school can't be read (callers then keep the Schools-tab values)."""
+    status, body = _ihsa_get_json(f"{IHSA_API}/schools/{school_id}")
+    if status != 200 or not body:
+        return {}
+    d = body.get("data") or {}
+    if not isinstance(d, dict):
+        return {}
+
+    def txt(*keys):
+        for k in keys:
+            v = d.get(k)
+            if v is not None and str(v).strip():
+                return str(v).strip()
+        return ""
+
+    out = {}
+    enroll = txt("EnrollmentString", "Enrollment")
+    digits = re.sub(r"[^\d]", "", enroll.split(".")[0]) if enroll else ""
+    if digits:
+        out["enrollment"] = int(digits)
+    conferences = d.get("Conferences") or []
+    if isinstance(conferences, list) and conferences:
+        conf = str((conferences[0] or {}).get("ConferenceName") or "").strip()
+        if conf:
+            out["conference"] = conf
+    division, district = d.get("Division"), d.get("District")
+    if division is not None and district is not None:
+        out["wiaa_district"] = f"Division {division}, Legislative District {district}"
+    website = txt("URL")
+    if website and not website.lower().startswith(("http://", "https://")):
+        website = "https://" + website
+    for key, val in (
+        ("school_class", txt("PublicPrivate")),
+        ("nickname",     txt("NicknameBoys", "NicknameGirls")),
+        ("colors",       txt("Colors")),
+        ("phone",        txt("Phone")),
+        ("address1",     txt("Address")),
+        ("address2",     f"PO BOX {txt('POBox')}" if txt("POBox") else ""),
+        ("city",         txt("City")),
+        ("zip",          txt("Zip")),
+        ("website",      website),
+    ):
+        if val:
+            out[key] = val
+    return out
+
+
 def extract_school_id(url_or_id):
     """Accept either the full URL or bare ID; return zero-padded ID string."""
     s = str(url_or_id).strip()
