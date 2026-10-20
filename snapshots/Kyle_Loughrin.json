@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-10-19T06:44:02.838126Z",
+  "updated": "2026-10-20T06:31:25.150892Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -4849,6 +4849,14 @@
       "sport": "Girls Basketball",
       "first": "Tim",
       "last": "Goldschmidt"
+    },
+    {
+      "school": "Little Chute High School",
+      "email": "abouchard@littlechute.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Amber",
+      "last": "Bouchard"
     },
     {
       "school": "Little Chute High School",

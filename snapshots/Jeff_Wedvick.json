@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-10-19T06:46:56.398244Z",
+  "updated": "2026-10-20T06:34:20.367187Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -204,6 +204,14 @@
     },
     {
       "school": "Arrowhead High School",
+      "email": "rockoncitykrew@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Boys Swimming & Diving",
+      "first": "Ziggy",
+      "last": "Cornegan"
+    },
+    {
+      "school": "Arrowhead High School",
       "email": "runrazor@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Cross Country",
@@ -217,14 +225,6 @@
       "sport": "Boys Golf",
       "first": "Ryan",
       "last": "Andrews"
-    },
-    {
-      "school": "Arrowhead High School",
-      "email": "rzavaros@icloud.com",
-      "role": "Head Coach",
-      "sport": "Boys Swimming & Diving",
-      "first": "Rosie",
-      "last": "Balogh"
     },
     {
       "school": "Arrowhead High School",
@@ -5060,7 +5060,7 @@
     },
     {
       "school": "Whitnall High School",
-      "email": "tthennell@whitnall.com",
+      "email": "tthenell@whitnall.com",
       "role": "Head Coach",
       "sport": "Boys Volleyball",
       "first": "Tyler",
