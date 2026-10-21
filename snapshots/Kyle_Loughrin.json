@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-10-20T06:31:25.150892Z",
+  "updated": "2026-10-21T06:30:56.321885Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -2596,14 +2596,6 @@
     },
     {
       "school": "Freedom High School",
-      "email": "barnabyt30@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Track and Field",
-      "first": "Barnaby",
-      "last": "Tomazevic"
-    },
-    {
-      "school": "Freedom High School",
       "email": "bradmbaker82@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
@@ -2689,6 +2681,14 @@
       "sport": "Girls Lacrosse-Girls",
       "first": "Kate",
       "last": "Lukashewich"
+    },
+    {
+      "school": "Freedom High School",
+      "email": "luke.pingel22@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Track and Field",
+      "first": "Luke",
+      "last": "Pingel"
     },
     {
       "school": "Freedom High School",
@@ -5769,6 +5769,14 @@
       "sport": "Boys Basketball",
       "first": "Troy",
       "last": "Pieper"
+    },
+    {
+      "school": "Mishicot School District",
+      "email": "brandonbartels23@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Brandon",
+      "last": "Bartels"
     },
     {
       "school": "Mishicot School District",
@@ -8913,6 +8921,14 @@
       "sport": "Boys Baseball",
       "first": "Blake",
       "last": "Van Vooren"
+    },
+    {
+      "school": "Two Rivers High School",
+      "email": "brandonbartels23@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Brandon",
+      "last": "Bartels"
     },
     {
       "school": "Two Rivers High School",

@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-10-20T06:32:01.769067Z",
+  "updated": "2026-10-21T06:31:36.027850Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -1676,7 +1676,15 @@
     },
     {
       "school": "New Lisbon High School",
-      "email": "abigalke@mwt.net",
+      "email": "Baileyk34@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Natasha",
+      "last": "Ragan"
+    },
+    {
+      "school": "New Lisbon High School",
+      "email": "bigalkeenterprises@gmail.com",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
       "first": "Aaron",
@@ -1684,19 +1692,11 @@
     },
     {
       "school": "New Lisbon High School",
-      "email": "abigalke@mwt.net",
+      "email": "bigalkeenterprises@gmail.com",
       "role": "Head Coach",
       "sport": "Boys & Girls Track and Field",
       "first": "Aaron",
       "last": "Bigalke"
-    },
-    {
-      "school": "New Lisbon High School",
-      "email": "Baileyk34@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Natasha",
-      "last": "Ragan"
     },
     {
       "school": "New Lisbon High School",

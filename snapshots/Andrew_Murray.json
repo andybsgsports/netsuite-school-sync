@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-10-20T06:27:15.318618Z",
+  "updated": "2026-10-21T06:26:38.933650Z",
   "records": [
     {
       "school": "Auburn High School",
@@ -761,6 +761,14 @@
       "sport": "",
       "first": "Paula",
       "last": "Hunt"
+    },
+    {
+      "school": "Beloit Memorial High School",
+      "email": "rdouglas@sdb.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Robert",
+      "last": "Douglas"
     },
     {
       "school": "Beloit Memorial High School",

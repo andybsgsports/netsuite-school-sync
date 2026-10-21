@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-10-20T06:33:30.615079Z",
+  "updated": "2026-10-21T06:33:08.639094Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -1316,7 +1316,7 @@
     },
     {
       "school": "Fond Du Lac High School",
-      "email": "johnsonj@fonddulac.k12.wi.us",
+      "email": "johnsonje@fonddulac.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Basketball",
       "first": "Jenna",
@@ -2948,6 +2948,14 @@
     },
     {
       "school": "Manitowoc Lincoln High School",
+      "email": "brandonbartels23@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Brandon",
+      "last": "Bartels"
+    },
+    {
+      "school": "Manitowoc Lincoln High School",
       "email": "Cottonp@mpsd.school",
       "role": "Head Coach",
       "sport": "Boys & Girls Tennis",
@@ -3137,6 +3145,14 @@
       "sport": "Boys Basketball",
       "first": "Brandon",
       "last": "Ott"
+    },
+    {
+      "school": "Manitowoc Lutheran High School",
+      "email": "brandonbartels23@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Brandon",
+      "last": "Bartels"
     },
     {
       "school": "Manitowoc Lutheran High School",
@@ -3377,6 +3393,14 @@
       "sport": "Girls Tennis",
       "first": "Brad",
       "last": "Seegert"
+    },
+    {
+      "school": "Mayville High School",
+      "email": "dadams@mayville.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Donald",
+      "last": "Adams"
     },
     {
       "school": "Mayville High School",
@@ -3929,6 +3953,14 @@
       "sport": "Boys Football 8-Player",
       "first": "Corey",
       "last": "Rickert"
+    },
+    {
+      "school": "Oakfield High School",
+      "email": "dadams@mayville.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Donald",
+      "last": "Adams"
     },
     {
       "school": "Oakfield High School",
@@ -6673,6 +6705,14 @@
       "sport": "Girls Swimming & Diving",
       "first": "Brett",
       "last": "Newberg"
+    },
+    {
+      "school": "Valders High School",
+      "email": "brandonbartels23@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Brandon",
+      "last": "Bartels"
     },
     {
       "school": "Valders High School",
