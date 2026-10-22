@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-10-21T06:30:56.321885Z",
+  "updated": "2026-10-22T06:34:51.857313Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -1553,6 +1553,14 @@
       "sport": "Girls Track and Field",
       "first": "Matt",
       "last": "Willett"
+    },
+    {
+      "school": "Berlin High School",
+      "email": "pitchblackrepair@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Wrestling",
+      "first": "Jared",
+      "last": "Elendt"
     },
     {
       "school": "Berlin High School",
@@ -4428,6 +4436,14 @@
     },
     {
       "school": "Kewaunee High School",
+      "email": "jaseverin@kewaunee.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Jack",
+      "last": "Severin"
+    },
+    {
+      "school": "Kewaunee High School",
       "email": "lhudson@kewaunee.k12.wi.us",
       "role": "Principal",
       "sport": "",
@@ -5041,6 +5057,14 @@
       "sport": "Girls Wrestling",
       "first": "Kory",
       "last": "Klemm"
+    },
+    {
+      "school": "Manawa High School",
+      "email": "mbmvcc@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Matthew",
+      "last": "Timm"
     },
     {
       "school": "Manawa High School",

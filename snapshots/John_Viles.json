@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-10-21T06:33:08.639094Z",
+  "updated": "2026-10-22T06:37:01.844769Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -489,6 +489,14 @@
       "sport": "Boys Basketball",
       "first": "Josh",
       "last": "Gibbons"
+    },
+    {
+      "school": "Central WI Christian High School",
+      "email": "lmedema@wearecwc.org",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Lexy",
+      "last": "Medema"
     },
     {
       "school": "Central WI Christian High School",

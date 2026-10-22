@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-10-21T06:28:57.528803Z",
+  "updated": "2026-10-22T06:32:52.945698Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -2892,9 +2892,17 @@
     },
     {
       "school": "Madison Edgewood High School",
+      "email": "chasek@chtapartments.com",
+      "role": "Head Coach",
+      "sport": "Boys Swimming & Diving",
+      "first": "Chase",
+      "last": "Korb"
+    },
+    {
+      "school": "Madison Edgewood High School",
       "email": "girlygirlset@yahoo.com",
       "role": "Head Coach",
-      "sport": "Boys & Girls Swimming Diving",
+      "sport": "Girls Swimming & Diving",
       "first": "Sophia",
       "last": "Thompson"
     },
@@ -2981,10 +2989,10 @@
     {
       "school": "Madison Edgewood High School",
       "email": "Kevin.rea@edgewoodhs.org",
-      "role": "Superintendent",
+      "role": "President",
       "sport": "",
       "first": "Kevin",
-      "last": "Rhea"
+      "last": "Rea"
     },
     {
       "school": "Madison Edgewood High School",
@@ -3001,6 +3009,14 @@
       "sport": "Boys & Girls Soccer",
       "first": "Chris",
       "last": "Martinelli"
+    },
+    {
+      "school": "Madison Edgewood High School",
+      "email": "mjakorb@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Swimming & Diving",
+      "first": "Margaret",
+      "last": "Korb"
     },
     {
       "school": "Madison Edgewood High School",
@@ -3039,14 +3055,6 @@
       "email": "ryan.sandler@edgewoodhs.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
-      "first": "Ryan",
-      "last": "Sandler"
-    },
-    {
-      "school": "Madison Edgewood High School",
-      "email": "ryan.sandler@edgewoodhs.org",
-      "role": "Head Coach",
-      "sport": "Boys Swimming & Diving",
       "first": "Ryan",
       "last": "Sandler"
     },
@@ -3564,14 +3572,6 @@
     },
     {
       "school": "Madison West High School",
-      "email": "amanda.ellmaker@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Swimming & Diving",
-      "first": "Amanda",
-      "last": "Ellmaker"
-    },
-    {
-      "school": "Madison West High School",
       "email": "amnoriega@madison.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -3665,14 +3665,6 @@
       "sport": "Boys Swimming & Diving",
       "first": "David",
       "last": "Kirkland"
-    },
-    {
-      "school": "Madison West High School",
-      "email": "emrolf@outlook.com",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Emma",
-      "last": "Rolf"
     },
     {
       "school": "Madison West High School",
@@ -3785,14 +3777,6 @@
       "sport": "Girls Soccer",
       "first": "Sagan",
       "last": "Pizzingrilli"
-    },
-    {
-      "school": "Madison West High School",
-      "email": "theafrosamurai92@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
-      "first": "Jamey",
-      "last": "Simmons"
     },
     {
       "school": "Middleton High School",
