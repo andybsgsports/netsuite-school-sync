@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-10-22T06:34:51.857313Z",
+  "updated": "2026-10-23T06:28:35.638633Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -4201,6 +4201,14 @@
       "sport": "Girls Softball",
       "first": "Kyle",
       "last": "Dunphy"
+    },
+    {
+      "school": "Kaukauna High School",
+      "email": "galarnod@kaukaunasd.org",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "David",
+      "last": "Galarno"
     },
     {
       "school": "Kaukauna High School",

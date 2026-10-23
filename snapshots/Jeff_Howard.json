@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-10-22T06:31:35.866624Z",
+  "updated": "2026-10-23T06:25:24.117118Z",
   "records": [
     {
       "school": "Albany High School",
@@ -3881,6 +3881,14 @@
       "sport": "Boys Football",
       "first": "Randy",
       "last": "Wallace"
+    },
+    {
+      "school": "Sauk Prairie High School",
+      "email": "regin.suchla@saukprairieschools.org",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Regin",
+      "last": "Suchla"
     },
     {
       "school": "Sauk Prairie High School",

@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-10-22T06:37:01.844769Z",
+  "updated": "2026-10-23T06:30:42.598180Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -2201,6 +2201,14 @@
       "sport": "Boys Basketball",
       "first": "Marcus",
       "last": "Rumpff"
+    },
+    {
+      "school": "Kiel High School",
+      "email": "mtschwarz@kiel.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Golf",
+      "first": "Mike",
+      "last": "Schwarz"
     },
     {
       "school": "Kiel High School",
