@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-10-26T06:54:22.390325Z",
+  "updated": "2026-10-27T06:48:31.500819Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -204,14 +204,6 @@
     },
     {
       "school": "Adams-Friendship High School",
-      "email": "jordandolata@outlook.com",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Jordan",
-      "last": "Dolata"
-    },
-    {
-      "school": "Adams-Friendship High School",
       "email": "krystianweglarz@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Soccer",
@@ -236,6 +228,14 @@
     },
     {
       "school": "Adams-Friendship High School",
+      "email": "mufflehim@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Justin",
+      "last": "Hutter"
+    },
+    {
+      "school": "Adams-Friendship High School",
       "email": "norton_m@afasd.net",
       "role": "Head Coach",
       "sport": "Boys Track and Field",
@@ -257,14 +257,6 @@
       "sport": "Girls Golf",
       "first": "Dominic",
       "last": "Schneider"
-    },
-    {
-      "school": "Adams-Friendship High School",
-      "email": "seevers_m@afasd.net",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "Marcus",
-      "last": "Seevers"
     },
     {
       "school": "Adams-Friendship High School",

@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-10-26T06:50:35.901771Z",
+  "updated": "2026-10-27T06:44:39.981982Z",
   "records": [
     {
       "school": "Albany High School",
@@ -1940,6 +1940,14 @@
     },
     {
       "school": "Lancaster High School",
+      "email": "elwolf@chorus.net",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Eric",
+      "last": "Wolf"
+    },
+    {
+      "school": "Lancaster High School",
       "email": "emily.michelle.pedley@gmail.com",
       "role": "Head Coach",
       "sport": "Boys & Girls Swimming Diving",
@@ -3332,6 +3340,14 @@
     },
     {
       "school": "Prairie du Chien High School",
+      "email": "acampbell@pdc.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Adam",
+      "last": "Campbell"
+    },
+    {
+      "school": "Prairie du Chien High School",
       "email": "banan@pdc.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
@@ -3353,14 +3369,6 @@
       "sport": "Boys Football",
       "first": "Kevin",
       "last": "Campbell"
-    },
-    {
-      "school": "Prairie du Chien High School",
-      "email": "CarpenJa@pdc.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
-      "first": "Jake",
-      "last": "Carpenter"
     },
     {
       "school": "Prairie du Chien High School",
