@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-10-27T06:43:35.492358Z",
+  "updated": "2026-10-28T07:14:19.978815Z",
   "records": [
     {
       "school": "Auburn High School",
@@ -5441,6 +5441,14 @@
       "sport": "Girls Softball",
       "first": "Emma",
       "last": "Dummer"
+    },
+    {
+      "school": "Kenosha Tremper High School",
+      "email": "edward.susmilch@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Swimming & Diving",
+      "first": "Ed",
+      "last": "Susmilch"
     },
     {
       "school": "Kenosha Tremper High School",
@@ -13593,6 +13601,14 @@
       "sport": "Boys & Girls Wrestling",
       "first": "Jacob",
       "last": "Forystek"
+    },
+    {
+      "school": "Waukesha North High School",
+      "email": "jjimenez@waukesha.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Javier",
+      "last": "Jimenez"
     },
     {
       "school": "Waukesha North High School",

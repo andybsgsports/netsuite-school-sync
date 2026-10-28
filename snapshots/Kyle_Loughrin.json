@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-10-27T06:47:51.658684Z",
+  "updated": "2026-10-28T07:18:35.792348Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -140,6 +140,14 @@
     },
     {
       "school": "Antigo High School",
+      "email": "cschnell@antigoschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Swimming & Diving",
+      "first": "Conrad",
+      "last": "Schnell"
+    },
+    {
+      "school": "Antigo High School",
       "email": "dawitman@antigoschools.org",
       "role": "Head Coach",
       "sport": "Boys Football",
@@ -196,7 +204,7 @@
     },
     {
       "school": "Antigo High School",
-      "email": "jolynn09@hotmail.com",
+      "email": "jjones@antigoschools.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Soccer",
       "first": "Jerome",
@@ -1742,7 +1750,7 @@
       "school": "Clintonville High School",
       "email": "cebert@clintonville.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
+      "sport": "Girls Wrestling",
       "first": "Casey",
       "last": "Ebert"
     },
@@ -1777,6 +1785,14 @@
       "sport": "",
       "first": "Justin",
       "last": "Oshefsky"
+    },
+    {
+      "school": "Clintonville High School",
+      "email": "Mlamberg4@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Mike",
+      "last": "Lamberg"
     },
     {
       "school": "Clintonville High School",
@@ -4252,6 +4268,14 @@
     },
     {
       "school": "Kaukauna High School",
+      "email": "klueverkeaton@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Keaton",
+      "last": "Kluever"
+    },
+    {
+      "school": "Kaukauna High School",
       "email": "klukas1724@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Lacrosse-Girls",
@@ -4276,14 +4300,6 @@
     },
     {
       "school": "Kaukauna High School",
-      "email": "matczakj@kaukaunasd.org",
-      "role": "Head Coach",
-      "sport": "Boys Wrestling",
-      "first": "Jeff",
-      "last": "Matczak"
-    },
-    {
-      "school": "Kaukauna High School",
       "email": "maxjsalscheider@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Lacrosse-Boys",
@@ -4305,6 +4321,14 @@
       "sport": "Boys Golf",
       "first": "Pete",
       "last": "Benson"
+    },
+    {
+      "school": "Kaukauna High School",
+      "email": "peterse@kaukaunasd.org",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Eric",
+      "last": "Peters"
     },
     {
       "school": "Kaukauna High School",
@@ -8924,14 +8948,6 @@
     },
     {
       "school": "Two Rivers High School",
-      "email": "blake.vanvooren@trschools.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Blake",
-      "last": "Van Vooren"
-    },
-    {
-      "school": "Two Rivers High School",
       "email": "brandonbartels23@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Hockey",
@@ -8961,6 +8977,14 @@
       "sport": "Boys Wrestling",
       "first": "Dylon",
       "last": "Becker"
+    },
+    {
+      "school": "Two Rivers High School",
+      "email": "jacob.meyers@trschools.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Jacob",
+      "last": "Meyers"
     },
     {
       "school": "Two Rivers High School",
