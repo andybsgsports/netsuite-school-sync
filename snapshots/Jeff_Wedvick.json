@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-10-28T07:21:35.824324Z",
+  "updated": "2026-10-29T07:43:07.825900Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -47,14 +47,6 @@
       "email": "coachmjharris28@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Football",
-      "first": "Matt",
-      "last": "Harris"
-    },
-    {
-      "school": "Arrowhead High School",
-      "email": "coachmjharris28@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Track and Field",
       "first": "Matt",
       "last": "Harris"
     },
@@ -644,6 +636,14 @@
     },
     {
       "school": "Deerfield High School",
+      "email": "coachmallegni@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Sara",
+      "last": "Mallegni"
+    },
+    {
+      "school": "Deerfield High School",
       "email": "deerfieldgirlsvolleyball@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -745,14 +745,6 @@
       "sport": "Girls Track and Field",
       "first": "Matt",
       "last": "Polzin"
-    },
-    {
-      "school": "Deerfield High School",
-      "email": "schindlerdon@yahoo.com",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Don",
-      "last": "Schindler"
     },
     {
       "school": "Deerfield High School",
@@ -4737,14 +4729,6 @@
       "sport": "Girls Lacrosse-Girls",
       "first": "Toni",
       "last": "Wizner"
-    },
-    {
-      "school": "Watertown High School",
-      "email": "wedigj@mywusd.org",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Jake",
-      "last": "Wedig"
     },
     {
       "school": "Watertown High School",

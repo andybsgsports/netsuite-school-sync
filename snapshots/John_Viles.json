@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-10-28T07:20:45.604136Z",
+  "updated": "2026-10-29T07:42:18.983244Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -444,14 +444,6 @@
     },
     {
       "school": "Central WI Christian High School",
-      "email": "bwellach@wearecwc.org",
-      "role": "AD Admin Assistant",
-      "sport": "",
-      "first": "Bethany",
-      "last": "Wellach"
-    },
-    {
-      "school": "Central WI Christian High School",
       "email": "cgann@WeAreCWC.org",
       "role": "Superintendent",
       "sport": "",
@@ -461,7 +453,7 @@
     {
       "school": "Central WI Christian High School",
       "email": "chatcher@wearecwc.org",
-      "role": "Athletic Director",
+      "role": "Assistant Athletic Director",
       "sport": "",
       "first": "Cameron",
       "last": "Hatcher"
@@ -5700,14 +5692,6 @@
     },
     {
       "school": "Sheboygan Falls High School",
-      "email": "ptoutenhoofd@sasd.net",
-      "role": "Head Coach",
-      "sport": "Boys Swimming & Diving",
-      "first": "Peter",
-      "last": "Toutenhoofd"
-    },
-    {
-      "school": "Sheboygan Falls High School",
       "email": "rjfladvid@sheboyganfalls.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -6265,14 +6249,6 @@
       "sport": "Boys Football",
       "first": "MIke",
       "last": "Rank"
-    },
-    {
-      "school": "Sheboygan South High School",
-      "email": "ptoutenhoofd@sasd.net",
-      "role": "Head Coach",
-      "sport": "Boys Swimming & Diving",
-      "first": "Peter",
-      "last": "Toutenhoofd"
     },
     {
       "school": "Sheboygan South High School",

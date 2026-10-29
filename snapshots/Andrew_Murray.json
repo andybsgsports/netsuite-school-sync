@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-10-28T07:14:19.978815Z",
+  "updated": "2026-10-29T07:36:14.293032Z",
   "records": [
     {
       "school": "Auburn High School",
@@ -4116,6 +4116,14 @@
     },
     {
       "school": "Hamilton High School",
+      "email": "hackbarthke@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Kaitlin",
+      "last": "Hackbarth"
+    },
+    {
+      "school": "Hamilton High School",
       "email": "heckda@hamilton.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Golf",
@@ -4233,14 +4241,6 @@
       "sport": "Boys Baseball",
       "first": "Mike",
       "last": "Schramek"
-    },
-    {
-      "school": "Hamilton High School",
-      "email": "sophia.smith2522@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Sophia",
-      "last": "Smith"
     },
     {
       "school": "Hamilton High School",
