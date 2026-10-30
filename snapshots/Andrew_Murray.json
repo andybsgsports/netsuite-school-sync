@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-10-29T07:36:14.293032Z",
+  "updated": "2026-10-30T07:38:37.584147Z",
   "records": [
     {
       "school": "Auburn High School",
@@ -14697,6 +14697,14 @@
       "sport": "",
       "first": "Samuel",
       "last": "Karns"
+    },
+    {
+      "school": "Williams Bay High School",
+      "email": "adamlechelt10@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Adam",
+      "last": "Lechelt"
     },
     {
       "school": "Williams Bay High School",

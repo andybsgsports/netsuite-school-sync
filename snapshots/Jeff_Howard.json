@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-10-29T07:37:13.296245Z",
+  "updated": "2026-10-30T07:39:41.543959Z",
   "records": [
     {
       "school": "Albany High School",
@@ -1564,7 +1564,7 @@
     },
     {
       "school": "Dodgeville High School",
-      "email": "stolzman@draschools.org",
+      "email": "scotttolzman62@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Wrestling",
       "first": "Scott",
@@ -1636,6 +1636,14 @@
     },
     {
       "school": "Fennimore High School",
+      "email": "payner@fennimore.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Rachel",
+      "last": "Payne"
+    },
+    {
+      "school": "Fennimore High School",
       "email": "prattj@fennimore.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
@@ -1672,14 +1680,6 @@
       "role": "Principal",
       "sport": "",
       "first": "Boone",
-      "last": "Tollefson"
-    },
-    {
-      "school": "Fennimore High School",
-      "email": "tollefsonj@fennimore.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Justin",
       "last": "Tollefson"
     },
     {

@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-10-29T07:38:24.621780Z",
+  "updated": "2026-10-30T07:40:58.988502Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -206,7 +206,7 @@
       "school": "Arcadia High School",
       "email": "murtyt@arcadia.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
+      "sport": "Boys Wrestling",
       "first": "Tate",
       "last": "Murty"
     },
@@ -257,6 +257,14 @@
       "sport": "Boys & Girls Track and Field",
       "first": "Jacob",
       "last": "Wendt"
+    },
+    {
+      "school": "Arcadia High School",
+      "email": "zellerc@arcadia.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Cameron",
+      "last": "Zeller"
     },
     {
       "school": "Bangor High School",
@@ -3822,7 +3830,7 @@
       "school": "Middleton High School",
       "email": "beckywhite326@gmail.com",
       "role": "Head Coach",
-      "sport": "Girls Golf",
+      "sport": "Boys & Girls Golf",
       "first": "Becky",
       "last": "Halverson"
     },
@@ -6372,6 +6380,14 @@
     },
     {
       "school": "Wonewoc-Center High School",
+      "email": "midwife2be@hotmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Track and Field",
+      "first": "Theresa",
+      "last": "Field"
+    },
+    {
+      "school": "Wonewoc-Center High School",
       "email": "milljac@wc.k12.wi.us",
       "role": "Principal",
       "sport": "",
@@ -6409,14 +6425,6 @@
       "sport": "Boys Baseball",
       "first": "Jeff",
       "last": "Wafle"
-    },
-    {
-      "school": "Wonewoc-Center High School",
-      "email": "wincjas@wc.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Track and Field",
-      "first": "Jason",
-      "last": "Winchel"
     },
     {
       "school": "Wonewoc-Center High School",
