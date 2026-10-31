@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-10-30T07:45:00.420829Z",
+  "updated": "2026-10-31T07:32:19.585636Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -5116,14 +5116,6 @@
     },
     {
       "school": "Random Lake High School",
-      "email": "JLAST@RLADVANTAGE.ORG",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Jason",
-      "last": "Last"
-    },
-    {
-      "school": "Random Lake High School",
       "email": "jmudlaff@rladvantage.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Wrestling",
@@ -7196,6 +7188,14 @@
     },
     {
       "school": "West Bend East High School",
+      "email": "bjansen@wbsd-schools.org",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Bryce",
+      "last": "Jansen"
+    },
+    {
+      "school": "West Bend East High School",
       "email": "bmurraymckelvey@wbsd-schools.org",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
@@ -7337,14 +7337,6 @@
       "sport": "Girls Soccer",
       "first": "Oscar",
       "last": "Serrano"
-    },
-    {
-      "school": "West Bend East High School",
-      "email": "rgordon@wbsd-schools.org",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Ralphael",
-      "last": "Gordon"
     },
     {
       "school": "West Bend East High School",

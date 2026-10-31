@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-10-30T07:42:52.696887Z",
+  "updated": "2026-10-31T07:30:13.909645Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -956,6 +956,22 @@
     },
     {
       "school": "Appleton West High School",
+      "email": "STRATTONCHRIST@aasd.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Chris",
+      "last": "Stratton"
+    },
+    {
+      "school": "Appleton West High School",
+      "email": "tcocking45@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Tom",
+      "last": "Cocking"
+    },
+    {
+      "school": "Appleton West High School",
       "email": "THOMPSONDOMINI@aasd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Football",
@@ -1852,6 +1868,14 @@
     },
     {
       "school": "Coleman High School",
+      "email": "ajensa12@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "April",
+      "last": "Jensen"
+    },
+    {
+      "school": "Coleman High School",
       "email": "bronson@coleman.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
@@ -1884,9 +1908,17 @@
     },
     {
       "school": "Coleman High School",
+      "email": "gouldt80@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Tim",
+      "last": "Gould"
+    },
+    {
+      "school": "Coleman High School",
       "email": "jasonchampagne44@gmail.com",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
+      "sport": "Boys Wrestling",
       "first": "Jason",
       "last": "Champagne"
     },
@@ -1953,14 +1985,6 @@
       "sport": "",
       "first": "Douglas",
       "last": "Polomis"
-    },
-    {
-      "school": "Coleman High School",
-      "email": "tolsenbaseball@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Todd",
-      "last": "Olsen"
     },
     {
       "school": "Crivitz High School",

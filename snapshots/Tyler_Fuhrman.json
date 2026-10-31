@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-10-30T07:40:58.988502Z",
+  "updated": "2026-10-31T07:28:19.663253Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -1140,19 +1140,19 @@
     },
     {
       "school": "Highland High School",
-      "email": "aultmanchr@gmial.com",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Chris",
-      "last": "Aultman"
-    },
-    {
-      "school": "Highland High School",
       "email": "bholman@igs.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Baseball",
       "first": "Brent",
       "last": "Holman"
+    },
+    {
+      "school": "Highland High School",
+      "email": "caultman@igs.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Chris",
+      "last": "Aultman"
     },
     {
       "school": "Highland High School",

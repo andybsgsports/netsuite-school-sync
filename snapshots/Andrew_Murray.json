@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-10-30T07:38:37.584147Z",
+  "updated": "2026-10-31T07:26:04.041486Z",
   "records": [
     {
       "school": "Auburn High School",
@@ -677,7 +677,7 @@
     {
       "school": "Beloit Memorial High School",
       "email": "epelz@sdb.k12.wi.us",
-      "role": "Principal",
+      "role": "Principal, AD Admin Assistant",
       "sport": "",
       "first": "Emily",
       "last": "Pelz"
@@ -990,7 +990,7 @@
       "school": "Big Foot High School",
       "email": "tmheck@bigfoot.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
+      "sport": "Boys Wrestling",
       "first": "Tyler",
       "last": "Heck"
     },
@@ -1001,6 +1001,14 @@
       "sport": "Girls Softball",
       "first": "Troy",
       "last": "Hummel"
+    },
+    {
+      "school": "Big Foot High School",
+      "email": "will.utesch92@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Will",
+      "last": "Utesch"
     },
     {
       "school": "Boylan Catholic High School",
@@ -14862,9 +14870,17 @@
       "school": "Williams Bay High School",
       "email": "tmheck@bigfoot.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
+      "sport": "Boys Wrestling",
       "first": "Tyler",
       "last": "Heck"
+    },
+    {
+      "school": "Williams Bay High School",
+      "email": "will.utesch92@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Will",
+      "last": "Utesch"
     },
     {
       "school": "Williams Bay High School",

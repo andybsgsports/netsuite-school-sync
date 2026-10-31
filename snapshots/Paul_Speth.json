@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-10-30T07:43:31.687495Z",
+  "updated": "2026-10-31T07:30:51.158651Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -188,6 +188,14 @@
     },
     {
       "school": "Adams-Friendship High School",
+      "email": "friendshipislandresort@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Justin",
+      "last": "Hutter"
+    },
+    {
+      "school": "Adams-Friendship High School",
       "email": "groshek_s@afasd.net",
       "role": "Athletic Director",
       "sport": "",
@@ -225,14 +233,6 @@
       "sport": "",
       "first": "Kevin",
       "last": "Moore"
-    },
-    {
-      "school": "Adams-Friendship High School",
-      "email": "mufflehim@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Justin",
-      "last": "Hutter"
     },
     {
       "school": "Adams-Friendship High School",

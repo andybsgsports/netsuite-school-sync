@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-10-30T07:39:41.543959Z",
+  "updated": "2026-10-31T07:27:06.239578Z",
   "records": [
     {
       "school": "Albany High School",
@@ -1700,19 +1700,19 @@
     },
     {
       "school": "Iowa Grant High School",
-      "email": "aultmanchr@gmial.com",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Chris",
-      "last": "Aultman"
-    },
-    {
-      "school": "Iowa Grant High School",
       "email": "bholman@igs.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Baseball",
       "first": "Brent",
       "last": "Holman"
+    },
+    {
+      "school": "Iowa Grant High School",
+      "email": "caultman@igs.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Chris",
+      "last": "Aultman"
     },
     {
       "school": "Iowa Grant High School",
@@ -1905,6 +1905,14 @@
       "sport": "Boys Football",
       "first": "Timothy",
       "last": "Cerjak"
+    },
+    {
+      "school": "Juda High School",
+      "email": "wittmann@judaschool.com",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Dylan",
+      "last": "Wittmann"
     },
     {
       "school": "Lancaster High School",
@@ -3521,6 +3529,14 @@
       "sport": "Girls Hockey",
       "first": "Bobby",
       "last": "Annen"
+    },
+    {
+      "school": "Reedsburg High School",
+      "email": "BRENNA_LIANN@YAHOO.COM",
+      "role": "Head Coach",
+      "sport": "Girls Gymnastics",
+      "first": "Brenna",
+      "last": "Lutter"
     },
     {
       "school": "Reedsburg High School",
