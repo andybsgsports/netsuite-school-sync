@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-11-01T08:03:34.499086Z",
+  "updated": "2026-11-02T08:09:01.189913Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -7068,6 +7068,14 @@
     },
     {
       "school": "Peshtigo High School",
+      "email": "baxterp@peshtigo.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Patrick",
+      "last": "Baxter"
+    },
+    {
+      "school": "Peshtigo High School",
       "email": "beyerk@peshtigo.k12.wi.us",
       "role": "AD Admin Assistant",
       "sport": "",
@@ -7217,14 +7225,6 @@
       "sport": "Boys Wrestling",
       "first": "Kory",
       "last": "Weed"
-    },
-    {
-      "school": "Peshtigo High School",
-      "email": "yankoc@peshtigo.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Courtney",
-      "last": "Young"
     },
     {
       "school": "Pulaski High School",

@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-11-01T08:06:30.750565Z",
+  "updated": "2026-11-02T08:12:01.745535Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -636,14 +636,6 @@
     },
     {
       "school": "Deerfield High School",
-      "email": "coachmallegni@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Sara",
-      "last": "Mallegni"
-    },
-    {
-      "school": "Deerfield High School",
       "email": "deerfieldgirlsvolleyball@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -689,6 +681,14 @@
       "sport": "",
       "first": "Scott",
       "last": "Kramper"
+    },
+    {
+      "school": "Deerfield High School",
+      "email": "mallegnis@deerfield.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Sara",
+      "last": "Mallegni"
     },
     {
       "school": "Deerfield High School",
