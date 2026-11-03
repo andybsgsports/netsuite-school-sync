@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-11-02T08:09:01.189913Z",
+  "updated": "2026-11-03T08:29:55.125626Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -5876,6 +5876,14 @@
     },
     {
       "school": "Mishicot School District",
+      "email": "justin.kuss@icloud.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Justin",
+      "last": "Kuss"
+    },
+    {
+      "school": "Mishicot School District",
       "email": "knovack@mishicot.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Track and Field",
@@ -5894,7 +5902,7 @@
       "school": "Mishicot School District",
       "email": "mloberger@mishicot.k12.wi.us",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
+      "sport": "Boys Wrestling",
       "first": "Max",
       "last": "Loberger"
     },

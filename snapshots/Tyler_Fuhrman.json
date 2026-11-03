@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-11-02T08:07:01.628673Z",
+  "updated": "2026-11-03T08:28:00.517684Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -5684,6 +5684,14 @@
     },
     {
       "school": "West Salem High School",
+      "email": "anderson.jolene@wsalem.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Jolene",
+      "last": "Anderson"
+    },
+    {
+      "school": "West Salem High School",
       "email": "autumnschuster23@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Soccer",
@@ -5788,27 +5796,11 @@
     },
     {
       "school": "West Salem High School",
-      "email": "malott.mike@wsalem.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Mike",
-      "last": "Malott"
-    },
-    {
-      "school": "West Salem High School",
       "email": "mitchklos@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Track and Field",
       "first": "Stacy",
       "last": "Mitchell"
-    },
-    {
-      "school": "West Salem High School",
-      "email": "olson.jamie@wsalem.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Jamie",
-      "last": "Olson"
     },
     {
       "school": "West Salem High School",

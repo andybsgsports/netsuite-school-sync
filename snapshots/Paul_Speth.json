@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-11-02T08:09:38.949474Z",
+  "updated": "2026-11-03T08:30:33.246576Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -1932,6 +1932,14 @@
     },
     {
       "school": "Port Edwards High School",
+      "email": "jgriff50@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Jordan",
+      "last": "Griffith"
+    },
+    {
+      "school": "Port Edwards High School",
       "email": "joshjensen77@hotmail.com",
       "role": "Head Coach",
       "sport": "Boys Wrestling",
@@ -1977,6 +1985,14 @@
       "sport": "Boys Basketball",
       "first": "Wayne",
       "last": "Swiggum"
+    },
+    {
+      "school": "Port Edwards High School",
+      "email": "tntschumer@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Thomas",
+      "last": "Schumer"
     },
     {
       "school": "Portage High School",

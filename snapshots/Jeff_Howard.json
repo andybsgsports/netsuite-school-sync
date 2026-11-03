@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-11-02T08:05:46.310637Z",
+  "updated": "2026-11-03T08:26:45.894275Z",
   "records": [
     {
       "school": "Albany High School",
@@ -4433,6 +4433,14 @@
       "sport": "Boys Volleyball",
       "first": "Alex",
       "last": "Jelacic"
+    },
+    {
+      "school": "Waunakee School District",
+      "email": "amyvogel@waunakee.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Amy",
+      "last": "Vogel - Registration"
     },
     {
       "school": "Waunakee School District",

@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-11-02T08:11:10.129472Z",
+  "updated": "2026-11-03T08:32:02.448806Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -4052,7 +4052,7 @@
     },
     {
       "school": "Oakfield High School",
-      "email": "williamst1964@gmail.com",
+      "email": "williamst1694@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Basketball",
       "first": "Tyler",
@@ -4489,6 +4489,14 @@
       "sport": "Boys Volleyball",
       "first": "Kj",
       "last": "Helmbrecht"
+    },
+    {
+      "school": "Oshkosh West High School",
+      "email": "jacob.durmis@oshkosh.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Swimming Diving",
+      "first": "Jacob",
+      "last": "Durmis"
     },
     {
       "school": "Oshkosh West High School",
@@ -6636,14 +6644,6 @@
     },
     {
       "school": "Sun Prairie West High School",
-      "email": "pfilandrinos@hotmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Peter",
-      "last": "Filandrinos"
-    },
-    {
-      "school": "Sun Prairie West High School",
       "email": "pjshoem@sunprairieschools.org",
       "role": "Principal",
       "sport": "",
@@ -6662,7 +6662,7 @@
       "school": "Sun Prairie West High School",
       "email": "sortiz@sunprairieschools.org",
       "role": "Head Coach",
-      "sport": "Boys & Girls Tennis",
+      "sport": "Boys Tennis",
       "first": "Sandee",
       "last": "Ortiz"
     },

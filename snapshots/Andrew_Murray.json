@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-11-02T08:04:43.653678Z",
+  "updated": "2026-11-03T08:25:44.308942Z",
   "records": [
     {
       "school": "Auburn High School",
@@ -433,14 +433,6 @@
       "sport": "Girls Tennis",
       "first": "Matt",
       "last": "Nelson"
-    },
-    {
-      "school": "Badger High School",
-      "email": "millerj@wilmoths.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Gymnastics",
-      "first": "Jordin",
-      "last": "Miller"
     },
     {
       "school": "Badger High School",
@@ -2148,14 +2140,6 @@
     },
     {
       "school": "Burlington High School",
-      "email": "millerj@wilmoths.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Gymnastics",
-      "first": "Jordin",
-      "last": "Miller"
-    },
-    {
-      "school": "Burlington High School",
       "email": "mjones@basd.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Volleyball",
@@ -2865,6 +2849,14 @@
       "sport": "Boys Football",
       "first": "Brian",
       "last": "Pluess"
+    },
+    {
+      "school": "East Troy High School",
+      "email": "edwjon@easttroy.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Jonah",
+      "last": "Edwards"
     },
     {
       "school": "East Troy High School",
@@ -7924,6 +7916,14 @@
     },
     {
       "school": "Mount Horeb School District",
+      "email": "nkrozeboom20@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Swimming & Diving",
+      "first": "Nathan",
+      "last": "Rozeboom"
+    },
+    {
+      "school": "Mount Horeb School District",
       "email": "orourkekaitlin@mounthorebschools.org",
       "role": "Head Coach",
       "sport": "Girls Swimming & Diving",
@@ -10076,19 +10076,19 @@
     },
     {
       "school": "Racine Lutheran High School",
+      "email": "hughes.tyler15@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Tyler",
+      "last": "Hughes"
+    },
+    {
+      "school": "Racine Lutheran High School",
       "email": "jblock@racinelutheran.org",
       "role": "Principal",
       "sport": "",
       "first": "Jason",
       "last": "Block"
-    },
-    {
-      "school": "Racine Lutheran High School",
-      "email": "jhullum@racinelutheran.org",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Justin",
-      "last": "Hullum"
     },
     {
       "school": "Racine Lutheran High School",
@@ -12604,14 +12604,6 @@
     },
     {
       "school": "Union Grove High School",
-      "email": "millerj@wilmoths.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Gymnastics",
-      "first": "Jordin",
-      "last": "Miller"
-    },
-    {
-      "school": "Union Grove High School",
       "email": "murdbry@ug.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Tennis",
@@ -14828,14 +14820,6 @@
     },
     {
       "school": "Williams Bay High School",
-      "email": "millerj@wilmoths.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Gymnastics",
-      "first": "Jordin",
-      "last": "Miller"
-    },
-    {
-      "school": "Williams Bay High School",
       "email": "PWeigel@midwestmsp.com",
       "role": "Head Coach",
       "sport": "Boys Football 8-Player",
@@ -14977,14 +14961,6 @@
       "sport": "",
       "first": "Rob",
       "last": "Kreil"
-    },
-    {
-      "school": "Wilmot Union High School",
-      "email": "millerj@wilmoths.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Gymnastics",
-      "first": "Jordin",
-      "last": "Miller"
     },
     {
       "school": "Wilmot Union High School",
