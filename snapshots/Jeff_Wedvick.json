@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-11-03T08:32:51.606154Z",
+  "updated": "2026-11-04T08:01:36.238736Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -1553,14 +1553,6 @@
       "sport": "Girls Volleyball",
       "first": "Ashley",
       "last": "Wilson"
-    },
-    {
-      "school": "Grafton High School",
-      "email": "Bconnolly@wbsd-schools.org",
-      "role": "Head Coach",
-      "sport": "Boys Lacrosse-Boys",
-      "first": "Brendon",
-      "last": "Connolly"
     },
     {
       "school": "Grafton High School",
@@ -4220,14 +4212,6 @@
     },
     {
       "school": "Slinger High School",
-      "email": "Bconnolly@wbsd-schools.org",
-      "role": "Head Coach",
-      "sport": "Boys Lacrosse-Boys",
-      "first": "Brendon",
-      "last": "Connolly"
-    },
-    {
-      "school": "Slinger High School",
       "email": "bnelson@kiel.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -4265,14 +4249,6 @@
       "sport": "Girls Tennis",
       "first": "Betsy",
       "last": "O'Hearn"
-    },
-    {
-      "school": "Slinger High School",
-      "email": "esoccodato@wbsd-schools.org",
-      "role": "Head Coach",
-      "sport": "Girls Lacrosse-Girls",
-      "first": "Emma",
-      "last": "Soccodato"
     },
     {
       "school": "Slinger High School",
@@ -4604,6 +4580,14 @@
     },
     {
       "school": "Watertown High School",
+      "email": "b12richert@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Brian",
+      "last": "Richert"
+    },
+    {
+      "school": "Watertown High School",
       "email": "burkej@mywusd.org",
       "role": "Superintendent",
       "sport": "",
@@ -4697,6 +4681,14 @@
       "sport": "Boys & Girls Golf",
       "first": "Noah",
       "last": "Gibson"
+    },
+    {
+      "school": "Watertown High School",
+      "email": "nsalas@maasbros.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Nate",
+      "last": "Salas"
     },
     {
       "school": "Watertown High School",

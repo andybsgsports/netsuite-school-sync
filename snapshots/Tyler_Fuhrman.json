@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-11-03T08:28:00.517684Z",
+  "updated": "2026-11-04T07:56:48.234349Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -801,6 +801,14 @@
       "sport": "Girls Softball",
       "first": "Clint",
       "last": "Kramer"
+    },
+    {
+      "school": "Cashton High School",
+      "email": "drewmjohnson14@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Drew",
+      "last": "Johnson"
     },
     {
       "school": "Cashton High School",
@@ -3132,6 +3140,14 @@
     },
     {
       "school": "Madison Lafollette High School",
+      "email": "cmikos@madison.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Christopher",
+      "last": "Mikos"
+    },
+    {
+      "school": "Madison Lafollette High School",
       "email": "coachnoahtt@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Track and Field",
@@ -3177,14 +3193,6 @@
       "sport": "Girls Gymnastics",
       "first": "Jasmin",
       "last": "Bough"
-    },
-    {
-      "school": "Madison Lafollette High School",
-      "email": "jdmatcha@madison.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Wrestling",
-      "first": "Jeff",
-      "last": "Matcha"
     },
     {
       "school": "Madison Lafollette High School",

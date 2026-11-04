@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-11-03T08:32:02.448806Z",
+  "updated": "2026-11-04T08:00:46.685871Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -2508,14 +2508,6 @@
     },
     {
       "school": "Living Word High School",
-      "email": "Bconnolly@wbsd-schools.org",
-      "role": "Head Coach",
-      "sport": "Boys Lacrosse-Boys",
-      "first": "Brendon",
-      "last": "Connolly"
-    },
-    {
-      "school": "Living Word High School",
       "email": "bdunn@lwlhs.com",
       "role": "Head Coach",
       "sport": "Boys Golf",
@@ -2553,14 +2545,6 @@
       "sport": "Boys & Girls Cross Country",
       "first": "Emily",
       "last": "Deschaine"
-    },
-    {
-      "school": "Living Word High School",
-      "email": "esoccodato@wbsd-schools.org",
-      "role": "Head Coach",
-      "sport": "Girls Lacrosse-Girls",
-      "first": "Emma",
-      "last": "Soccodato"
     },
     {
       "school": "Living Word High School",
@@ -2876,14 +2860,6 @@
     },
     {
       "school": "Lourdes Academy High School",
-      "email": "ksaladin@lourdes.today",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Kadence",
-      "last": "Saladin"
-    },
-    {
-      "school": "Lourdes Academy High School",
       "email": "mooretim@qrpartner.com",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -2905,14 +2881,6 @@
       "sport": "Girls Volleyball",
       "first": "Rachel",
       "last": "Laehn"
-    },
-    {
-      "school": "Lourdes Academy High School",
-      "email": "rverdette@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Tennis",
-      "first": "Randy",
-      "last": "Verdette"
     },
     {
       "school": "Lourdes Academy High School",
@@ -7172,14 +7140,6 @@
     },
     {
       "school": "West Bend East High School",
-      "email": "Bconnolly@wbsd-schools.org",
-      "role": "Head Coach",
-      "sport": "Boys Lacrosse-Boys",
-      "first": "Brendon",
-      "last": "Connolly"
-    },
-    {
-      "school": "West Bend East High School",
       "email": "bhartman@wbsd-schools.org",
       "role": "Head Coach",
       "sport": "Girls Track and Field",
@@ -7193,14 +7153,6 @@
       "sport": "Girls Basketball",
       "first": "Bryce",
       "last": "Jansen"
-    },
-    {
-      "school": "West Bend East High School",
-      "email": "bmurraymckelvey@wbsd-schools.org",
-      "role": "Head Coach",
-      "sport": "Boys Wrestling",
-      "first": "Brant",
-      "last": "Murray-McKelvey"
     },
     {
       "school": "West Bend East High School",
@@ -7225,14 +7177,6 @@
       "sport": "Girls Hockey",
       "first": "Dan",
       "last": "Wade"
-    },
-    {
-      "school": "West Bend East High School",
-      "email": "esoccodato@wbsd-schools.org",
-      "role": "Head Coach",
-      "sport": "Girls Lacrosse-Girls",
-      "first": "Emma",
-      "last": "Soccodato"
     },
     {
       "school": "West Bend East High School",
@@ -7289,6 +7233,14 @@
       "sport": "",
       "first": "Jennifer",
       "last": "Wimmer"
+    },
+    {
+      "school": "West Bend East High School",
+      "email": "kremillard@wbsd-schools.org",
+      "role": "Head Coach",
+      "sport": "Girls Gymnastics",
+      "first": "Kym",
+      "last": "Remillard"
     },
     {
       "school": "West Bend East High School",
@@ -7356,27 +7308,11 @@
     },
     {
       "school": "West Bend East High School",
-      "email": "sgostisha@wbsd-schools.org",
-      "role": "Head Coach",
-      "sport": "Girls Gymnastics",
-      "first": "Samantha",
-      "last": "Gostisha"
-    },
-    {
-      "school": "West Bend East High School",
       "email": "Shammer@wbsd-schools.org",
       "role": "Head Coach",
       "sport": "Girls Golf",
       "first": "Scott",
       "last": "Hammer"
-    },
-    {
-      "school": "West Bend East High School",
-      "email": "sroeming@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Gymnastics",
-      "first": "Samantha",
-      "last": "Gostisha"
     },
     {
       "school": "West Bend East High School",
@@ -7412,30 +7348,6 @@
     },
     {
       "school": "West Bend West High School",
-      "email": "Bconnolly@wbsd-schools.org",
-      "role": "Head Coach",
-      "sport": "Boys Lacrosse-Boys",
-      "first": "Brendon",
-      "last": "Connolly"
-    },
-    {
-      "school": "West Bend West High School",
-      "email": "bmurraymckelvey@wbsd-schools.org",
-      "role": "Head Coach",
-      "sport": "Boys Wrestling",
-      "first": "Brant",
-      "last": "Murray-McKelvey"
-    },
-    {
-      "school": "West Bend West High School",
-      "email": "broach@wbsd-schools.org",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Blake",
-      "last": "Roach"
-    },
-    {
-      "school": "West Bend West High School",
       "email": "dshaw@wbsd-schools.org",
       "role": "Head Coach",
       "sport": "Boys Tennis",
@@ -7457,14 +7369,6 @@
       "sport": "",
       "first": "Erin",
       "last": "Felber"
-    },
-    {
-      "school": "West Bend West High School",
-      "email": "esoccodato@wbsd-schools.org",
-      "role": "Head Coach",
-      "sport": "Girls Lacrosse-Girls",
-      "first": "Emma",
-      "last": "Soccodato"
     },
     {
       "school": "West Bend West High School",
@@ -7513,6 +7417,14 @@
       "sport": "Girls Softball",
       "first": "Ken",
       "last": "Dischler"
+    },
+    {
+      "school": "West Bend West High School",
+      "email": "kremillard@wbsd-schools.org",
+      "role": "Head Coach",
+      "sport": "Girls Gymnastics",
+      "first": "Kym",
+      "last": "Remillard"
     },
     {
       "school": "West Bend West High School",
@@ -7588,27 +7500,11 @@
     },
     {
       "school": "West Bend West High School",
-      "email": "sgostisha@wbsd-schools.org",
-      "role": "Head Coach",
-      "sport": "Girls Gymnastics",
-      "first": "Samantha",
-      "last": "Gostisha"
-    },
-    {
-      "school": "West Bend West High School",
       "email": "Shammer@wbsd-schools.org",
       "role": "Head Coach",
       "sport": "Girls Golf",
       "first": "Scott",
       "last": "Hammer"
-    },
-    {
-      "school": "West Bend West High School",
-      "email": "sroeming@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Gymnastics",
-      "first": "Samantha",
-      "last": "Gostisha"
     },
     {
       "school": "West Bend West High School",
@@ -7721,6 +7617,14 @@
       "sport": "Boys Baseball",
       "first": "Mike",
       "last": "Seibel"
+    },
+    {
+      "school": "Winnebago Lutheran High School",
+      "email": "Pmetzger08@alumni.uwosh.edu",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Paul",
+      "last": "Metzger"
     },
     {
       "school": "Winnebago Lutheran High School",

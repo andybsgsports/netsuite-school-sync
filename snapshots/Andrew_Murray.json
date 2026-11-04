@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-11-03T08:25:44.308942Z",
+  "updated": "2026-11-04T07:54:34.118714Z",
   "records": [
     {
       "school": "Auburn High School",
@@ -5300,14 +5300,6 @@
     },
     {
       "school": "Kenosha St. Joseph Catholic High School",
-      "email": "jcoker@sjcawi.org",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Jason",
-      "last": "Coker"
-    },
-    {
-      "school": "Kenosha St. Joseph Catholic High School",
       "email": "jfurreness@sjcawi.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -5377,6 +5369,14 @@
       "sport": "Boys Baseball",
       "first": "Ryan",
       "last": "Gavinski"
+    },
+    {
+      "school": "Kenosha St. Joseph Catholic High School",
+      "email": "rockyt10@hotmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Rocky",
+      "last": "Tirabassi"
     },
     {
       "school": "Kenosha St. Joseph Catholic High School",
@@ -7684,7 +7684,7 @@
     },
     {
       "school": "Menomonee Falls High School",
-      "email": "mckeke@sdmfschools.org",
+      "email": "mckekev@sdmfschools.org",
       "role": "Head Coach",
       "sport": "Boys Basketball",
       "first": "Kevin",
@@ -14148,6 +14148,14 @@
     },
     {
       "school": "Wauwatosa West High School",
+      "email": "averyandsplash@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Avery",
+      "last": "Anderson"
+    },
+    {
+      "school": "Wauwatosa West High School",
       "email": "brookfieldstarshockey@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Hockey",
@@ -14169,6 +14177,14 @@
       "sport": "Girls Volleyball",
       "first": "Kelly",
       "last": "Dwyer"
+    },
+    {
+      "school": "Wauwatosa West High School",
+      "email": "gabby24green@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Gabby",
+      "last": "Green"
     },
     {
       "school": "Wauwatosa West High School",
@@ -14321,14 +14337,6 @@
       "sport": "Boys Lacrosse-Boys",
       "first": "Thomas",
       "last": "Calhoun"
-    },
-    {
-      "school": "Wauwatosa West High School",
-      "email": "wendlega@wauwatosa.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Gary",
-      "last": "Wendler"
     },
     {
       "school": "Wauwatosa West High School",

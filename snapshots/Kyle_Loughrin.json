@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-11-03T08:29:55.125626Z",
+  "updated": "2026-11-04T07:58:42.037491Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -2534,7 +2534,7 @@
       "school": "Fox Valley Lutheran High School",
       "email": "kschwerin@fvlhs.org",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
+      "sport": "Boys Wrestling",
       "first": "Karl",
       "last": "Schwerin"
     },
@@ -2545,6 +2545,14 @@
       "sport": "Boys Cross Country",
       "first": "Peter",
       "last": "Sehloff"
+    },
+    {
+      "school": "Fox Valley Lutheran High School",
+      "email": "pstern@fvlhs.org",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Phil",
+      "last": "Stern"
     },
     {
       "school": "Fox Valley Lutheran High School",
@@ -7908,6 +7916,14 @@
     },
     {
       "school": "Shawano High School",
+      "email": "rrosinski@shawanoschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Rick",
+      "last": "Rosinski"
+    },
+    {
+      "school": "Shawano High School",
       "email": "sstomberg@shawanoschools.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -9324,6 +9340,14 @@
     },
     {
       "school": "Wausau East High School",
+      "email": "daveviterbo21@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Track and Field",
+      "first": "Dave",
+      "last": "Hale"
+    },
+    {
+      "school": "Wausau East High School",
       "email": "dmick@wausauschools.org",
       "role": "Athletic Director",
       "sport": "",
@@ -10129,14 +10153,6 @@
       "sport": "Boys & Girls Cross Country",
       "first": "Dan",
       "last": "Sullivan"
-    },
-    {
-      "school": "Wisconsin Rapids High School",
-      "email": "abbigail.kawczynski@wrps.net",
-      "role": "Head Coach",
-      "sport": "Girls Gymnastics",
-      "first": "Abbigail",
-      "last": "Kawczynski"
     },
     {
       "school": "Wisconsin Rapids High School",
