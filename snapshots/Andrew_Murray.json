@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-11-04T07:54:34.118714Z",
+  "updated": "2026-11-05T08:20:29.777043Z",
   "records": [
     {
       "school": "Auburn High School",
@@ -780,14 +780,6 @@
     },
     {
       "school": "Beloit Memorial High School",
-      "email": "sinkorrswim6@aol.com",
-      "role": "Head Coach",
-      "sport": "Girls Swimming & Diving",
-      "first": "Kim",
-      "last": "Waite"
-    },
-    {
-      "school": "Beloit Memorial High School",
       "email": "smichels@sdb.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Tennis",
@@ -801,6 +793,14 @@
       "sport": "Boys & Girls Wrestling",
       "first": "Ryan",
       "last": "Steuck"
+    },
+    {
+      "school": "Beloit Memorial High School",
+      "email": "swimorr18@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Kim",
+      "last": "Waite"
     },
     {
       "school": "Beloit Memorial High School",
@@ -2734,14 +2734,6 @@
       "school": "Delavan-Darien High School",
       "email": "jhanson1961@gmail.com",
       "role": "Head Coach",
-      "sport": "Boys Wrestling",
-      "first": "James",
-      "last": "Hanson"
-    },
-    {
-      "school": "Delavan-Darien High School",
-      "email": "jhanson1961@gmail.com",
-      "role": "Head Coach",
       "sport": "Girls Tennis",
       "first": "James",
       "last": "Hanson"
@@ -2785,14 +2777,6 @@
       "sport": "Boys Baseball",
       "first": "Kyle",
       "last": "Polzin"
-    },
-    {
-      "school": "Delavan-Darien High School",
-      "email": "matt.nelson@gcj2.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Tennis",
-      "first": "Matt",
-      "last": "Nelson"
     },
     {
       "school": "Delavan-Darien High School",
@@ -5265,14 +5249,6 @@
       "sport": "Boys Football",
       "first": "Steve",
       "last": "Morris"
-    },
-    {
-      "school": "Kenosha Bradford High School",
-      "email": "steelered82@yahoo.com",
-      "role": "Head Coach",
-      "sport": "Boys Wrestling",
-      "first": "Ed",
-      "last": "Foster"
     },
     {
       "school": "Kenosha St. Joseph Catholic High School",
