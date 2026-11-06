@@ -1199,6 +1199,36 @@ def _find_same_name_contact(customer_id, first, last, email="", exclude_id=None)
             fallback = str(cid)
     return fallback
 
+def _find_inactive_on_customer(customer_id, email="", first="", last=""):
+    """This customer's own INACTIVE contact for the person (email or
+    first+last match), never a retired '(dup ' record. Used only to resolve a
+    create collision for a Sync=Y row, where reviving it is correct."""
+    def esc(v):
+        return str(v or "").replace("'", "''").lower()
+    try:
+        cust = int(str(customer_id))
+    except (TypeError, ValueError):
+        return None
+    conds = []
+    if email:
+        conds.append(f"LOWER(email) = '{esc(email)}'")
+    if first and last:
+        conds.append(f"(LOWER(firstname) = '{esc(first)}' AND LOWER(lastname) = '{esc(last)}')")
+    if not conds:
+        return None
+    rows = ns_suiteql(
+        f"SELECT id, lastname FROM contact WHERE company = {cust} AND isinactive = 'T' "
+        f"AND ({' OR '.join(conds)}) ORDER BY id DESC", limit=20)
+    for row in rows:
+        if "(dup " in (row.get("lastname") or ""):
+            continue
+        cid = str(row.get("id") or "").strip()
+        if cid:
+            print(f"  [NS] SuiteQL located INACTIVE contact {cid} on customer {cust}")
+            return cid
+    return None
+
+
 def _find_contact_for_customer(customer_id, email, first="", last="", exclude_id=None):
     """Search for a contact under a customer by email — or, when first/last
     are given, by contact name — using the contacts sublist.
@@ -1468,10 +1498,24 @@ def sync_contact(customer_id, school_name, contact_row, school_info, shared=Fals
             found_id = (_find_contact_via_suiteql(customer_id, email, first, last)
                         or _find_contact_for_customer(customer_id, email, first, last)
                         or _find_same_name_contact(customer_id, first, last, email))
+            revived = False
+            if not found_id:
+                # The colliding record can be this person's own INACTIVE card
+                # on this school -- typically inactivated earlier in the same
+                # run under their old email. The finders above skip inactive
+                # records, so this used to end in UNLINKED (Eric Hacker,
+                # Berlin, 2026-11-06; ~30 people by then).
+                found_id = _find_inactive_on_customer(customer_id, email, first, last)
+                revived = bool(found_id)
             if found_id:
-                r2 = ns_patch(f"contact/{found_id}", body)
+                # Sync=Y: the person is current, so the record must be active.
+                body2 = {k: v for k, v in body.items() if k != "externalId"} if revived else dict(body)
+                body2["isInactive"] = False
+                r2 = ns_patch(f"contact/{found_id}", body2)
                 if r2.status_code == 204:
-                    print(f"  [NS] Updated Contact (recovered): {first} {last} (ID: {found_id})")
+                    inactive_contact_ids().pop(str(found_id), None)
+                    print(f"  [NS] {'Reactivated' if revived else 'Updated'} Contact (recovered): "
+                          f"{first} {last} (ID: {found_id})")
                 return found_id
             # Not on this customer at all — the person's record lives at
             # ANOTHER school (co-op coach). With the RESTlet available,

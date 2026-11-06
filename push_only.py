@@ -281,6 +281,43 @@ def heal_schools_tab(master_ws, sch, live, source):
         print(f"  WARN could not heal Schools tab from {source}: {e!r}")
 
 
+def handoff_ids_on_email_change(school_contacts):
+    """Pure. Within ONE school's rows: when a Sync=Y row has no NetSuite id
+    (blank or UNLINKED) and a Sync=N row for the same first+last name holds
+    one, move that id onto the Y row (and clear it from the N row, so the
+    departure branch has nothing to inactivate). Returns how many moved."""
+    def name(c):
+        return (str(c.get(C_FIRST, "")).strip().lower(),
+                str(c.get(C_LAST, "")).strip().lower())
+
+    def cid(c):
+        v = str(c.get(C_NS_CID, "")).strip()
+        return v if v.isdigit() else ""
+
+    donors = {}
+    for c in school_contacts:
+        if str(c.get(C_SYNC, "N")).strip().upper() != "Y" and cid(c) and all(name(c)):
+            donors.setdefault(name(c), c)
+    moved = 0
+    for c in school_contacts:
+        if str(c.get(C_SYNC, "N")).strip().upper() != "Y" or cid(c):
+            continue
+        d = donors.get(name(c))
+        if d is None or not cid(d):
+            continue
+        the_id = cid(d)
+        c[C_NS_CID] = the_id
+        c[C_HASH] = ""          # force a push: the email (at least) changed
+        # Clear EVERY old row for this person holding that id (one per role),
+        # or the departure branch would still inactivate it from another.
+        for o in school_contacts:
+            if (o is not c and str(o.get(C_SYNC, "N")).strip().upper() != "Y"
+                    and name(o) == name(c) and cid(o) == the_id):
+                o[C_NS_CID] = ""
+        moved += 1
+    return moved
+
+
 def main():
     print("=" * 60)
     print(f"  PUSH ONLY  |  {datetime.now().strftime('%Y-%m-%d %H:%M')}")
@@ -526,6 +563,18 @@ def main():
         # one NS PATCH. Key by email; carry the NS Contact ID forward so we
         # don't re-PATCH the same record.
         pushed_emails = {}    # email_lower -> ns_contact_id (after sync)
+
+        # Email changed at the source: the old-email row goes N (still holding
+        # the NetSuite id) while the new-email row arrives Y with no id. Hand
+        # the id to the live row so tonight's push UPDATES that contact with
+        # the new email (reviving it if needed) instead of inactivating it
+        # and then failing to create a same-named duplicate (Eric Hacker,
+        # Berlin, 2026-11-06).
+        handed = handoff_ids_on_email_change(school_contacts)
+        if handed:
+            print(f"  Email change: carried {handed} NetSuite contact id(s) "
+                  f"from old-email row(s) to the current row")
+
         for c in school_contacts:
             sync_flag  = str(c.get(C_SYNC, "N")).strip().upper()
             first      = str(c.get(C_FIRST, "")).strip()
@@ -549,7 +598,12 @@ def main():
 
             if sync_flag == "Y":
                 if contact_ns == "UNLINKED":
-                    continue
+                    # Retried every run: UNLINKED used to be permanent, so a
+                    # one-off failure (most often an email change colliding
+                    # with the person's own just-inactivated record) kept
+                    # ~30 current people out of NetSuite for weeks. A row
+                    # that still can't link is simply marked again.
+                    contact_ns = ""
                 if em_key in pushed_emails:
                     # Same person, another role row — reuse the known NS ID
                     if pushed_emails[em_key]:
