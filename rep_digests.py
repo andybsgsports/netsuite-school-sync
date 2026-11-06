@@ -801,6 +801,44 @@ def reconcile_absent_contacts(contacts_data, scraped, scraped_schools):
     return flipped
 
 
+def _scraped_role_col(rec):
+    sport = str(rec.get("Sport", "")).strip()
+    return sport if sport else str(rec.get("Role", "")).strip()
+
+
+def reactivate_returned_contacts(contacts_data, scraped, scraped_schools):
+    """Set Sync=N rows back to Y when the person is on THIS run's roster for
+    a school that scraped successfully (scraped_schools only -- a school
+    behind a gate or mid-outage is never trusted). The departure flip used
+    to be one-way: a one-day source failure (Oshkosh North/West, 2026-10-09:
+    54 people) left everyone N for good even though every later scrape
+    listed them. A row marked UNLINKED is left alone. Returns the count."""
+    from school_netsuite_sync import C_SCHOOL, C_EMAIL, C_ROLE, C_SYNC, C_NS_CID
+    trusted = {str(s).strip() for s in (scraped_schools or ())}
+    if not trusted:
+        return 0
+    live = set()
+    for _state, rec in scraped or ():
+        school = str(rec.get("School", "")).strip()
+        email = str(rec.get("Email", "")).strip().lower()
+        role_col = _scraped_role_col(rec).lower()
+        if school in trusted and email and role_col:
+            live.add((school, email, role_col))
+    n = 0
+    for c in contacts_data:
+        if str(c.get(C_SYNC, "N")).strip().upper() == "Y":
+            continue
+        if str(c.get(C_NS_CID, "")).strip().upper() == "UNLINKED":
+            continue
+        key = (str(c.get(C_SCHOOL, "")).strip(),
+               str(c.get(C_EMAIL, "")).strip().lower(),
+               str(c.get(C_ROLE, "")).strip().lower())
+        if key in live:
+            c[C_SYNC] = "Y"
+            n += 1
+    return n
+
+
 def merge_scraped_into_master_sheet(gc, scraped, departed_triples=None,
                                     scraped_schools=None):
     """Merge today's scraped admins+coaches into the main master sheet's
@@ -895,6 +933,8 @@ def merge_scraped_into_master_sheet(gc, scraped, departed_triples=None,
                 c[C_SYNC] = "N"
                 departed += 1
 
+    reactivated = reactivate_returned_contacts(contacts_data, scraped, scraped_schools)
+
     reconciled = reconcile_absent_contacts(contacts_data, scraped, scraped_schools)
 
     save_contacts(contacts_ws, contacts_data)
@@ -902,6 +942,9 @@ def merge_scraped_into_master_sheet(gc, scraped, departed_triples=None,
     if departed_triples:
         print(f"[merge] {departed} row(s) flipped to Sync=N (no longer on WIAA/IHSA) "
               f"— push_only.py will inactivate them in NetSuite tonight")
+    if reactivated:
+        print(f"[merge] {reactivated} row(s) set back to Sync=Y (on this run's verified "
+              f"WIAA/IHSA roster again) — push_only.py will re-link them tonight")
     if reconciled:
         print(f"[merge] {reconciled} additional stale row(s) reconciled to Sync=N "
               f"(absent from the current scrape) — NS inactivation + Ship-To "
