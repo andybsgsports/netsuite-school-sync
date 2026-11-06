@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-11-05T08:22:45.648371Z",
+  "updated": "2026-11-06T08:26:05.870913Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -3692,6 +3692,14 @@
     },
     {
       "school": "Madison West High School",
+      "email": "jamorgan@madison.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Jack",
+      "last": "Morgan"
+    },
+    {
+      "school": "Madison West High School",
       "email": "jedalheim@madison.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Volleyball",
@@ -3713,6 +3721,14 @@
       "sport": "",
       "first": "Jeremy",
       "last": "Schlitz"
+    },
+    {
+      "school": "Madison West High School",
+      "email": "ldberebitsky@madison.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Wrestling",
+      "first": "Louis",
+      "last": "Berebitsky"
     },
     {
       "school": "Madison West High School",
@@ -3745,6 +3761,14 @@
       "sport": "Boys Football",
       "first": "Mike",
       "last": "Wolfgram"
+    },
+    {
+      "school": "Madison West High School",
+      "email": "mwvorlander@madison.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Michael",
+      "last": "Vorlander"
     },
     {
       "school": "Madison West High School",

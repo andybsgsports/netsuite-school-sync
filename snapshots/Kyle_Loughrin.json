@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-11-05T08:24:42.932207Z",
+  "updated": "2026-11-06T08:27:58.684250Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -1476,6 +1476,14 @@
     },
     {
       "school": "Berlin High School",
+      "email": "ehacker@berlin.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Eric",
+      "last": "Hacker"
+    },
+    {
+      "school": "Berlin High School",
       "email": "ereiser@berlin.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -1489,14 +1497,6 @@
       "sport": "",
       "first": "Emily",
       "last": "Schubert"
-    },
-    {
-      "school": "Berlin High School",
-      "email": "hacker.eric@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Eric",
-      "last": "Hacker"
     },
     {
       "school": "Berlin High School",
@@ -7956,14 +7956,6 @@
     },
     {
       "school": "Shiocton High School",
-      "email": "dawnkanaman@yahoo.com",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Dawn",
-      "last": "Kanaman"
-    },
-    {
-      "school": "Shiocton High School",
       "email": "dgunderson@shiocton.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
@@ -9356,6 +9348,14 @@
     },
     {
       "school": "Wausau East High School",
+      "email": "dnilles@wausauschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Sarah",
+      "last": "Nilles"
+    },
+    {
+      "school": "Wausau East High School",
       "email": "dsteinke@wausauschools.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Swimming Diving",
@@ -9438,7 +9438,7 @@
       "school": "Wausau East High School",
       "email": "mnatzke@wausauschools.org",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
+      "sport": "Boys Wrestling",
       "first": "Matt",
       "last": "Natzke"
     },

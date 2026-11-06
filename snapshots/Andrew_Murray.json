@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-11-05T08:20:29.777043Z",
+  "updated": "2026-11-06T08:23:53.077858Z",
   "records": [
     {
       "school": "Auburn High School",
@@ -2876,6 +2876,14 @@
     },
     {
       "school": "East Troy High School",
+      "email": "j.schleusner@stonebank.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Jon",
+      "last": "Schleusner"
+    },
+    {
+      "school": "East Troy High School",
       "email": "jheimos@campedwards.org",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -2929,14 +2937,6 @@
       "sport": "Boys & Girls Tennis",
       "first": "David",
       "last": "Lindow"
-    },
-    {
-      "school": "East Troy High School",
-      "email": "schday@easttroy.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Dayne",
-      "last": "Schleusner"
     },
     {
       "school": "East Troy High School",

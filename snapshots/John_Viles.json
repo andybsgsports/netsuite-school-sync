@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-11-05T08:26:48.897499Z",
+  "updated": "2026-11-06T08:30:04.449877Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -1326,7 +1326,7 @@
       "school": "Fond Du Lac High School",
       "email": "koledavis61@gmail.com",
       "role": "Head Coach",
-      "sport": "Boys Swimming & Diving",
+      "sport": "Boys & Girls Swimming Diving",
       "first": "Kole",
       "last": "Davis"
     },
@@ -6809,6 +6809,78 @@
       "sport": "Boys & Girls Cross Country",
       "first": "Marci",
       "last": "Skaletski"
+    },
+    {
+      "school": "Valley Christian School",
+      "email": "abrajuangyg@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Soccer",
+      "first": "Abrahan",
+      "last": "Gutierrez"
+    },
+    {
+      "school": "Valley Christian School",
+      "email": "chevee2@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Track and Field",
+      "first": "Trevor",
+      "last": "Kehoe"
+    },
+    {
+      "school": "Valley Christian School",
+      "email": "dbirr@vcoshkosh.com",
+      "role": "Head Coach",
+      "sport": "Boys Football 8-Player",
+      "first": "Dan",
+      "last": "Birr"
+    },
+    {
+      "school": "Valley Christian School",
+      "email": "dclayton@vcoshkosh.com",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Daniel",
+      "last": "Clayton"
+    },
+    {
+      "school": "Valley Christian School",
+      "email": "empotratz5992@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Lizzy",
+      "last": "Potratz"
+    },
+    {
+      "school": "Valley Christian School",
+      "email": "ian.sewell@oshkosh.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Swimming Diving",
+      "first": "Ian",
+      "last": "Sewell"
+    },
+    {
+      "school": "Valley Christian School",
+      "email": "luke.menet@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Luke",
+      "last": "Menet"
+    },
+    {
+      "school": "Valley Christian School",
+      "email": "sfreund@vcoshkosh.com",
+      "role": "Principal",
+      "sport": "",
+      "first": "Sean",
+      "last": "Freund"
+    },
+    {
+      "school": "Valley Christian School",
+      "email": "speers@uwosh.edu",
+      "role": "Head Coach",
+      "sport": "Boys Tennis",
+      "first": "Breck",
+      "last": "Speers"
     },
     {
       "school": "Waupun High School",
