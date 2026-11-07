@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-11-06T08:23:53.077858Z",
+  "updated": "2026-11-07T07:40:37.404692Z",
   "records": [
     {
       "school": "Auburn High School",
@@ -2153,6 +2153,14 @@
       "sport": "Boys & Girls Cross Country",
       "first": "Matt",
       "last": "Nie"
+    },
+    {
+      "school": "Burlington High School",
+      "email": "moeam17@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Adam",
+      "last": "Moe"
     },
     {
       "school": "Burlington High School",
@@ -10012,11 +10020,11 @@
     },
     {
       "school": "Racine Lutheran High School",
-      "email": "benm20@att.net",
+      "email": "bonczkowskinick34@gmail.com",
       "role": "Head Coach",
-      "sport": "Boys Wrestling",
-      "first": "Ben",
-      "last": "Mieloszyk"
+      "sport": "Boys & Girls Wrestling",
+      "first": "Nicholas",
+      "last": "Bonczkowski"
     },
     {
       "school": "Racine Lutheran High School",
@@ -10092,14 +10100,6 @@
     },
     {
       "school": "Racine Lutheran High School",
-      "email": "mbouterse11@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Marcus",
-      "last": "Bouterse"
-    },
-    {
-      "school": "Racine Lutheran High School",
       "email": "mrkomorowski@racinelutheran.org",
       "role": "Head Coach",
       "sport": "Boys Tennis",
@@ -10164,11 +10164,11 @@
     },
     {
       "school": "Racine St. Catherine's High School",
-      "email": "benm20@att.net",
+      "email": "bonczkowskinick34@gmail.com",
       "role": "Head Coach",
-      "sport": "Boys Wrestling",
-      "first": "Ben",
-      "last": "Mieloszyk"
+      "sport": "Boys & Girls Wrestling",
+      "first": "Nicholas",
+      "last": "Bonczkowski"
     },
     {
       "school": "Racine St. Catherine's High School",
@@ -10233,14 +10233,6 @@
       "sport": "Girls Basketball",
       "first": "Jerome",
       "last": "King"
-    },
-    {
-      "school": "Racine St. Catherine's High School",
-      "email": "mbouterse11@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Marcus",
-      "last": "Bouterse"
     },
     {
       "school": "Racine St. Catherine's High School",
