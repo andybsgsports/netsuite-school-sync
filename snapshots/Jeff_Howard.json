@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-11-07T07:41:36.752802Z",
+  "updated": "2026-11-08T07:52:14.949318Z",
   "records": [
     {
       "school": "Albany High School",
@@ -3404,6 +3404,14 @@
     },
     {
       "school": "Prairie du Chien High School",
+      "email": "maraje@pdc.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Jeff",
+      "last": "Mara"
+    },
+    {
+      "school": "Prairie du Chien High School",
       "email": "marshja@pdc.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -3428,19 +3436,19 @@
     },
     {
       "school": "Prairie du Chien High School",
-      "email": "pedrettry@pdc.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "Ryan",
-      "last": "Pedretti"
-    },
-    {
-      "school": "Prairie du Chien High School",
       "email": "rabbittjo@pdc.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys & Girls Track and Field",
       "first": "Josh",
       "last": "Rabbitt"
+    },
+    {
+      "school": "Prairie du Chien High School",
+      "email": "reidpa@pdc.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Paul",
+      "last": "Reid"
     },
     {
       "school": "Prairie du Chien High School",
