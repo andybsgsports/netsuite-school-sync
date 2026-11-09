@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-11-08T07:57:34.124973Z",
+  "updated": "2026-11-09T08:38:57.329314Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -6476,14 +6476,6 @@
     },
     {
       "school": "Sun Prairie West High School",
-      "email": "eiradem@sunprairieschools.org",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Ellie",
-      "last": "Rademacher"
-    },
-    {
-      "school": "Sun Prairie West High School",
       "email": "ethughe@sunprairieschools.org",
       "role": "Head Coach",
       "sport": "Boys Volleyball",
@@ -6503,14 +6495,6 @@
       "email": "jeoconn@sunprairieschools.org",
       "role": "Head Coach",
       "sport": "Boys Football",
-      "first": "Joshua",
-      "last": "O'Connor"
-    },
-    {
-      "school": "Sun Prairie West High School",
-      "email": "jeoconn@sunprairieschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Track and Field",
       "first": "Joshua",
       "last": "O'Connor"
     },
