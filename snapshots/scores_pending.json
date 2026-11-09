@@ -1,122 +1,5 @@
 [
   {
-    "team_id": "154616",
-    "school": "Green Bay Southwest High School",
-    "sport": "Girls Swimming & Diving",
-    "contest_id": "410758",
-    "date": "2026-09-29",
-    "opponent": "Sheboygan North Co-op",
-    "is_home": false
-  },
-  {
-    "team_id": "143417",
-    "school": "Jefferson High School",
-    "sport": "Boys Cross Country",
-    "contest_id": "401972",
-    "date": "2026-09-29",
-    "opponent": "St. John's Northwestern",
-    "is_home": true
-  },
-  {
-    "team_id": "143423",
-    "school": "Lakeside Lutheran High School",
-    "sport": "Boys Cross Country",
-    "contest_id": "406074",
-    "date": "2026-10-02",
-    "opponent": "Princeton/Green Lake",
-    "is_home": false
-  },
-  {
-    "team_id": "143083",
-    "school": "Lakeside Lutheran High School",
-    "sport": "Girls Cross Country",
-    "contest_id": "406065",
-    "date": "2026-10-02",
-    "opponent": "Princeton/Green Lake",
-    "is_home": false
-  },
-  {
-    "team_id": "143449",
-    "school": "Platteville High School",
-    "sport": "Boys Cross Country",
-    "contest_id": "400929",
-    "date": "2026-10-03",
-    "opponent": "Shullsburg/Belmont",
-    "is_home": true
-  },
-  {
-    "team_id": "143108",
-    "school": "Platteville High School",
-    "sport": "Girls Cross Country",
-    "contest_id": "400916",
-    "date": "2026-10-03",
-    "opponent": "Shullsburg/Belmont",
-    "is_home": true
-  },
-  {
-    "team_id": "154465",
-    "school": "Princeton High School",
-    "sport": "Boys Cross Country",
-    "contest_id": "406074",
-    "date": "2026-10-02",
-    "opponent": "Lakeside Lutheran",
-    "is_home": true
-  },
-  {
-    "team_id": "154512",
-    "school": "Princeton High School",
-    "sport": "Girls Cross Country",
-    "contest_id": "406065",
-    "date": "2026-10-02",
-    "opponent": "Lakeside Lutheran",
-    "is_home": true
-  },
-  {
-    "team_id": "154639",
-    "school": "Sheboygan North High School",
-    "sport": "Girls Swimming & Diving",
-    "contest_id": "410758",
-    "date": "2026-09-29",
-    "opponent": "Green Bay Southwest Co-op",
-    "is_home": true
-  },
-  {
-    "team_id": "154477",
-    "school": "Shullsburg High School",
-    "sport": "Boys Cross Country",
-    "contest_id": "400929",
-    "date": "2026-10-03",
-    "opponent": "Platteville",
-    "is_home": false
-  },
-  {
-    "team_id": "154522",
-    "school": "Shullsburg High School",
-    "sport": "Girls Cross Country",
-    "contest_id": "400916",
-    "date": "2026-10-03",
-    "opponent": "Platteville",
-    "is_home": false
-  },
-  {
-    "team_id": "142780",
-    "school": "Waterford High School",
-    "sport": "Boys Soccer",
-    "contest_id": "403376",
-    "date": "2026-10-01",
-    "opponent": "Waukesha North",
-    "is_home": true
-  },
-  {
-    "team_id": "142781",
-    "school": "Waukesha North High School",
-    "sport": "Boys Soccer",
-    "contest_id": "403376",
-    "date": "2026-10-01",
-    "opponent": "Waterford",
-    "is_home": false
-  },
-  {
     "team_id": "143490",
     "school": "Albany High School",
     "sport": "Boys Cross Country",
@@ -225,15 +108,6 @@
     "is_home": true
   },
   {
-    "team_id": "142824",
-    "school": "Mount Horeb School District",
-    "sport": "Boys Soccer",
-    "contest_id": "404829",
-    "date": "2026-10-08",
-    "opponent": "Reedsburg",
-    "is_home": true
-  },
-  {
     "team_id": "143915",
     "school": "Parkview High School",
     "sport": "Girls Volleyball",
@@ -250,15 +124,6 @@
     "date": "2026-10-10",
     "opponent": "Parkview",
     "is_home": true
-  },
-  {
-    "team_id": "142771",
-    "school": "Reedsburg High School",
-    "sport": "Boys Soccer",
-    "contest_id": "404829",
-    "date": "2026-10-08",
-    "opponent": "Mount Horeb",
-    "is_home": false
   },
   {
     "team_id": "146493",
@@ -582,15 +447,6 @@
     "contest_id": "401473",
     "date": "2026-10-12",
     "opponent": "Racine Horlick",
-    "is_home": false
-  },
-  {
-    "team_id": "142703",
-    "school": "Kettle Moraine High School",
-    "sport": "Boys Soccer",
-    "contest_id": "403636",
-    "date": "2026-10-13",
-    "opponent": "Oak Creek",
     "is_home": false
   },
   {
@@ -1105,5 +961,14 @@
     "date": "2026-10-23",
     "opponent": "Lakeside Lutheran",
     "is_home": true
+  },
+  {
+    "team_id": "142770",
+    "school": "Pulaski High School",
+    "sport": "Boys Soccer",
+    "contest_id": "414812",
+    "date": "2026-11-05",
+    "opponent": "Wauwatosa East",
+    "is_home": false
   }
 ]
