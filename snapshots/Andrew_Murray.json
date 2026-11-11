@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-11-10T08:47:52.527047Z",
+  "updated": "2026-11-11T08:08:50.590526Z",
   "records": [
     {
       "school": "Auburn High School",
@@ -10014,7 +10014,7 @@
       "school": "Racine Lutheran High School",
       "email": "bonczkowskinick34@gmail.com",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
+      "sport": "Boys Wrestling",
       "first": "Nicholas",
       "last": "Bonczkowski"
     },
@@ -10041,6 +10041,14 @@
       "sport": "Girls Golf",
       "first": "Mike",
       "last": "Hyduke"
+    },
+    {
+      "school": "Racine Lutheran High School",
+      "email": "evelyntahmazian@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Evelyn",
+      "last": "Tahmazian"
     },
     {
       "school": "Racine Lutheran High School",
@@ -10158,7 +10166,7 @@
       "school": "Racine St. Catherine's High School",
       "email": "bonczkowskinick34@gmail.com",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
+      "sport": "Boys Wrestling",
       "first": "Nicholas",
       "last": "Bonczkowski"
     },
@@ -10209,6 +10217,14 @@
       "sport": "Girls Golf",
       "first": "Mike",
       "last": "Hyduke"
+    },
+    {
+      "school": "Racine St. Catherine's High School",
+      "email": "evelyntahmazian@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Evelyn",
+      "last": "Tahmazian"
     },
     {
       "school": "Racine St. Catherine's High School",
