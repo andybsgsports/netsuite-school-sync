@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-11-11T08:11:08.590724Z",
+  "updated": "2026-11-12T08:49:38.157759Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -3396,14 +3396,6 @@
     },
     {
       "school": "Madison Memorial High School",
-      "email": "cspatton@madison.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Soccer",
-      "first": "Cathy",
-      "last": "Patton"
-    },
-    {
-      "school": "Madison Memorial High School",
       "email": "eppeterson2@madison.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Volleyball",
@@ -3545,6 +3537,14 @@
       "sport": "Boys Cross Country",
       "first": "Ryan",
       "last": "Pewowaruk"
+    },
+    {
+      "school": "Madison Memorial High School",
+      "email": "rscolegial@madison.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Soccer",
+      "first": "Becca",
+      "last": "Colegial"
     },
     {
       "school": "Madison Memorial High School",

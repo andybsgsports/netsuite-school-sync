@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-11-11T08:15:17.872303Z",
+  "updated": "2026-11-12T08:53:45.012803Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -249,6 +249,14 @@
       "sport": "Boys Golf",
       "first": "Mike",
       "last": "Wettstein"
+    },
+    {
+      "school": "Campbellsport High School",
+      "email": "wilsonz@fonddulac.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Zach",
+      "last": "Wilson"
     },
     {
       "school": "Campbellsport High School",
@@ -1388,6 +1396,14 @@
     },
     {
       "school": "Fond Du Lac High School",
+      "email": "wilsonz@fonddulac.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Zach",
+      "last": "Wilson"
+    },
+    {
+      "school": "Fond Du Lac High School",
       "email": "zahradnikg@fonddulac.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Wrestling",
@@ -2019,6 +2035,14 @@
       "last": "Enright"
     },
     {
+      "school": "Kewaskum High School",
+      "email": "wilsonz@fonddulac.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Zach",
+      "last": "Wilson"
+    },
+    {
       "school": "Kiel High School",
       "email": "ategen@kiel.k12.wi.us",
       "role": "Head Coach",
@@ -2353,6 +2377,14 @@
       "sport": "",
       "first": "Tanya",
       "last": "Wick"
+    },
+    {
+      "school": "Kohler High School",
+      "email": "wilsonz@fonddulac.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Zach",
+      "last": "Wilson"
     },
     {
       "school": "Laconia High School",
@@ -4379,6 +4411,14 @@
       "last": "Schlies"
     },
     {
+      "school": "Oshkosh North High School",
+      "email": "wilsonz@fonddulac.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Zach",
+      "last": "Wilson"
+    },
+    {
       "school": "Oshkosh West High School",
       "email": "adam.stuiber@oshkosh.k12.wi.us",
       "role": "Head Coach",
@@ -4603,6 +4643,14 @@
       "last": "Brydon"
     },
     {
+      "school": "Oshkosh West High School",
+      "email": "wilsonz@fonddulac.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Zach",
+      "last": "Wilson"
+    },
+    {
       "school": "Plymouth High School",
       "email": "acrivellone@plymouth.k12.wi.us",
       "role": "Head Coach",
@@ -4617,6 +4665,14 @@
       "sport": "Boys Hockey",
       "first": "Avery",
       "last": "Huibregtse"
+    },
+    {
+      "school": "Plymouth High School",
+      "email": "bfeick@plymouth.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Soccer",
+      "first": "Brad",
+      "last": "Feick"
     },
     {
       "school": "Plymouth High School",
@@ -4641,14 +4697,6 @@
       "sport": "Girls Swimming & Diving",
       "first": "David",
       "last": "Coley"
-    },
-    {
-      "school": "Plymouth High School",
-      "email": "dillon.maass@pwssd.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Soccer",
-      "first": "Dillon",
-      "last": "Maass"
     },
     {
       "school": "Plymouth High School",
@@ -4777,6 +4825,14 @@
       "sport": "Girls Tennis",
       "first": "Tyler",
       "last": "Heilberger"
+    },
+    {
+      "school": "Plymouth High School",
+      "email": "wilsonz@fonddulac.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Zach",
+      "last": "Wilson"
     },
     {
       "school": "Princeton High School",
@@ -5676,6 +5732,14 @@
     },
     {
       "school": "Sheboygan Falls High School",
+      "email": "wilsonz@fonddulac.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Zach",
+      "last": "Wilson"
+    },
+    {
+      "school": "Sheboygan Falls High School",
       "email": "ztpethan@sheboyganfalls.k12.wi.us",
       "role": "Superintendent",
       "sport": "",
@@ -6043,6 +6107,14 @@
       "last": "Schermetzler"
     },
     {
+      "school": "Sheboygan North High School",
+      "email": "wilsonz@fonddulac.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Zach",
+      "last": "Wilson"
+    },
+    {
       "school": "Sheboygan South High School",
       "email": "abbydsigler@gmail.com",
       "role": "Head Coach",
@@ -6259,6 +6331,14 @@
       "last": "Pitsch"
     },
     {
+      "school": "Sheboygan South High School",
+      "email": "wilsonz@fonddulac.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Zach",
+      "last": "Wilson"
+    },
+    {
       "school": "St. Mary's Springs High School",
       "email": "aramirez1@nfdlschools.org",
       "role": "Head Coach",
@@ -6409,6 +6489,14 @@
       "sport": "Girls Softball",
       "first": "Tom",
       "last": "Walentoski"
+    },
+    {
+      "school": "St. Mary's Springs High School",
+      "email": "wilsonz@fonddulac.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Zach",
+      "last": "Wilson"
     },
     {
       "school": "St. Mary's Springs High School",
@@ -6787,6 +6875,14 @@
       "last": "Skaletski"
     },
     {
+      "school": "Valders High School",
+      "email": "wilsonz@fonddulac.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Zach",
+      "last": "Wilson"
+    },
+    {
       "school": "Valley Christian School",
       "email": "abrajuangyg@gmail.com",
       "role": "Head Coach",
@@ -7009,6 +7105,14 @@
       "sport": "Boys Baseball",
       "first": "Travis",
       "last": "Hull"
+    },
+    {
+      "school": "Waupun High School",
+      "email": "wilsonz@fonddulac.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Zach",
+      "last": "Wilson"
     },
     {
       "school": "Wayland Academy High School",
@@ -7697,6 +7801,14 @@
       "sport": "Boys & Girls Cross Country",
       "first": "Tammi",
       "last": "Kohlman"
+    },
+    {
+      "school": "Winnebago Lutheran High School",
+      "email": "wilsonz@fonddulac.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Zach",
+      "last": "Wilson"
     }
   ]
 }

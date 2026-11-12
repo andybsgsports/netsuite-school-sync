@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-11-11T08:08:50.590526Z",
+  "updated": "2026-11-12T08:47:19.708045Z",
   "records": [
     {
       "school": "Auburn High School",
@@ -708,14 +708,6 @@
     },
     {
       "school": "Beloit Memorial High School",
-      "email": "john.klobucar96@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "John",
-      "last": "Klobucar"
-    },
-    {
-      "school": "Beloit Memorial High School",
       "email": "jthomas2@sdb.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Volleyball",
@@ -759,6 +751,14 @@
       "email": "rdouglas@sdb.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
+      "first": "Robert",
+      "last": "Douglas"
+    },
+    {
+      "school": "Beloit Memorial High School",
+      "email": "rdouglas@sdb.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
       "first": "Robert",
       "last": "Douglas"
     },
@@ -1361,6 +1361,14 @@
       "sport": "Boys Basketball",
       "first": "Pat",
       "last": "Clarey"
+    },
+    {
+      "school": "Brookfield Academy High School",
+      "email": "rockoncitykrew@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Ziggy",
+      "last": "Cornegan"
     },
     {
       "school": "Brookfield Academy High School",

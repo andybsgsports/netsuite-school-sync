@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-11-11T08:13:06.490820Z",
+  "updated": "2026-11-12T08:51:36.181737Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -5044,14 +5044,6 @@
     },
     {
       "school": "Manawa High School",
-      "email": "davidaug054@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Baseball",
-      "first": "David",
-      "last": "Augustine"
-    },
-    {
-      "school": "Manawa High School",
       "email": "ggunderson@manawaschools.org",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -6356,19 +6348,27 @@
     },
     {
       "school": "New London High School",
-      "email": "clarkc2021@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Cody",
-      "last": "Clark"
-    },
-    {
-      "school": "New London High School",
       "email": "coach@aulax.org",
       "role": "Head Coach",
       "sport": "Boys Lacrosse-Boys",
       "first": "Matthew",
       "last": "Puskarich"
+    },
+    {
+      "school": "New London High School",
+      "email": "garrettjruck@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Garrett",
+      "last": "Ruckdashel"
+    },
+    {
+      "school": "New London High School",
+      "email": "jasminelitt25@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Jasmine",
+      "last": "Litt"
     },
     {
       "school": "New London High School",
