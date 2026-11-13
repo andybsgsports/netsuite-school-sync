@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-11-12T08:51:36.181737Z",
+  "updated": "2026-11-13T08:41:30.517873Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -9348,14 +9348,6 @@
     },
     {
       "school": "Wausau East High School",
-      "email": "dnilles@wausauschools.org",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Sarah",
-      "last": "Nilles"
-    },
-    {
-      "school": "Wausau East High School",
       "email": "dsteinke@wausauschools.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Swimming Diving",
@@ -9441,6 +9433,14 @@
       "sport": "Boys Wrestling",
       "first": "Matt",
       "last": "Natzke"
+    },
+    {
+      "school": "Wausau East High School",
+      "email": "snilles@wausauschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Sara",
+      "last": "Nilles"
     },
     {
       "school": "Wausau East High School",

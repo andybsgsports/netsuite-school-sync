@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-11-12T08:54:33.761469Z",
+  "updated": "2026-11-13T08:44:32.823988Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -108,19 +108,19 @@
     },
     {
       "school": "Arrowhead High School",
+      "email": "jbschaefer1@sbcglobal.net",
+      "role": "Head Coach",
+      "sport": "Boys Tennis",
+      "first": "Joseph",
+      "last": "Schaefer"
+    },
+    {
+      "school": "Arrowhead High School",
       "email": "jjlittle19@yahoo.com",
       "role": "Head Coach",
       "sport": "Girls Hockey",
       "first": "Jackie",
       "last": "Little"
-    },
-    {
-      "school": "Arrowhead High School",
-      "email": "john@360five.com",
-      "role": "Head Coach",
-      "sport": "Boys Tennis",
-      "first": "John",
-      "last": "Stuart"
     },
     {
       "school": "Arrowhead High School",
@@ -2276,6 +2276,14 @@
     },
     {
       "school": "Kettle Moraine High School",
+      "email": "brymerj@kmsd.edu",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "John",
+      "last": "Brymer"
+    },
+    {
+      "school": "Kettle Moraine High School",
       "email": "crockerk@kmsd.edu",
       "role": "Head Coach",
       "sport": "Boys & Girls Tennis",
@@ -2289,6 +2297,14 @@
       "sport": "Boys Lacrosse-Boys",
       "first": "Ryan",
       "last": "Cynkar"
+    },
+    {
+      "school": "Kettle Moraine High School",
+      "email": "fordnicholas@kmsd.edu",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Nick",
+      "last": "Ford"
     },
     {
       "school": "Kettle Moraine High School",
@@ -2390,7 +2406,7 @@
       "school": "Kettle Moraine High School",
       "email": "patenauden@kmsd.edu",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
+      "sport": "Boys Wrestling",
       "first": "Nick",
       "last": "Patenaude"
     },
@@ -2406,7 +2422,7 @@
       "school": "Kettle Moraine High School",
       "email": "staupec@kmsd.edu",
       "role": "Head Coach",
-      "sport": "Boys Wrestling",
+      "sport": "Girls Wrestling",
       "first": "Christopher",
       "last": "Staupe"
     },

@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-11-12T08:47:19.708045Z",
+  "updated": "2026-11-13T08:37:08.074606Z",
   "records": [
     {
       "school": "Auburn High School",
@@ -4132,27 +4132,11 @@
     },
     {
       "school": "Hamilton High School",
-      "email": "howatra@sdmfschools.org",
-      "role": "Head Coach",
-      "sport": "Girls Gymnastics",
-      "first": "Tracy",
-      "last": "Howard"
-    },
-    {
-      "school": "Hamilton High School",
       "email": "imbberg@hotmail.com",
       "role": "Head Coach",
       "sport": "Boys Swimming & Diving",
       "first": "Brian",
       "last": "Berg"
-    },
-    {
-      "school": "Hamilton High School",
-      "email": "j.ducsay95@gmail.com",
-      "role": "Head Coach",
-      "sport": "Girls Gymnastics",
-      "first": "Julia",
-      "last": "Knapp"
     },
     {
       "school": "Hamilton High School",
@@ -4217,14 +4201,6 @@
       "sport": "",
       "first": "Paul",
       "last": "Mielke"
-    },
-    {
-      "school": "Hamilton High School",
-      "email": "mooseblock@yahoo.com",
-      "role": "Head Coach",
-      "sport": "Girls Gymnastics",
-      "first": "Julie",
-      "last": "Hibelink"
     },
     {
       "school": "Hamilton High School",
@@ -8004,6 +7980,14 @@
     },
     {
       "school": "Mukwonago High School",
+      "email": "brymerj@kmsd.edu",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "John",
+      "last": "Brymer"
+    },
+    {
+      "school": "Mukwonago High School",
       "email": "carlyheine@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Lacrosse-Girls",
@@ -8993,6 +8977,14 @@
       "sport": "",
       "first": "Bridget",
       "last": "Brown"
+    },
+    {
+      "school": "Oconomowoc High School",
+      "email": "brymerj@kmsd.edu",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "John",
+      "last": "Brymer"
     },
     {
       "school": "Oconomowoc High School",
@@ -10081,6 +10073,14 @@
       "sport": "",
       "first": "Jason",
       "last": "Block"
+    },
+    {
+      "school": "Racine Lutheran High School",
+      "email": "jhullum@racinelutheran.org",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Justin",
+      "last": "Hullum"
     },
     {
       "school": "Racine Lutheran High School",
