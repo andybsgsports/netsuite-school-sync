@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-11-13T08:41:30.517873Z",
+  "updated": "2026-11-14T08:02:05.373299Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -4812,14 +4812,6 @@
     },
     {
       "school": "Lena High School",
-      "email": "hansonm@lenak12.org",
-      "role": "Principal",
-      "sport": "",
-      "first": "Matt",
-      "last": "Hanson"
-    },
-    {
-      "school": "Lena High School",
       "email": "heimkej@lenak12.org",
       "role": "Athletic Director",
       "sport": "",
@@ -4885,7 +4877,7 @@
     {
       "school": "Lena High School",
       "email": "pytleskib@lenak12.org",
-      "role": "Superintendent",
+      "role": "Superintendent, Principal",
       "sport": "",
       "first": "Ben",
       "last": "Pytleski"
@@ -7393,14 +7385,6 @@
       "sport": "Boys & Girls Swimming Diving",
       "first": "Nick",
       "last": "Haydon"
-    },
-    {
-      "school": "Pulaski High School",
-      "email": "rfthomson@pulaskischools.org",
-      "role": "Head Coach",
-      "sport": "Boys Lacrosse-Boys",
-      "first": "Rich",
-      "last": "Thomson"
     },
     {
       "school": "Pulaski High School",

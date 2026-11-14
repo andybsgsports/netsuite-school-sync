@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-11-13T08:39:29.089065Z",
+  "updated": "2026-11-14T08:00:08.590271Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -908,14 +908,6 @@
     },
     {
       "school": "DeSoto High School",
-      "email": "ajohnson@desoto.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Cross Country",
-      "first": "Andrew",
-      "last": "Johnson"
-    },
-    {
-      "school": "DeSoto High School",
       "email": "cgianoli@desoto.k12.wi.us",
       "role": "Assistant Athletic Director",
       "sport": "",
@@ -1001,6 +993,14 @@
       "sport": "",
       "first": "Merranda",
       "last": "Boardman"
+    },
+    {
+      "school": "DeSoto High School",
+      "email": "millersw75@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Cross Country",
+      "first": "Shannon",
+      "last": "Miller"
     },
     {
       "school": "DeSoto High School",
@@ -1596,6 +1596,14 @@
     },
     {
       "school": "Ithaca High School",
+      "email": "brooke.hackl@ithaca.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Brooke",
+      "last": "Hackl"
+    },
+    {
+      "school": "Ithaca High School",
       "email": "dwaine.dailey@ithaca.k12.wi.us",
       "role": "Principal",
       "sport": "",
@@ -1673,14 +1681,6 @@
       "sport": "Girls Wrestling",
       "first": "Skyla",
       "last": "Wanless"
-    },
-    {
-      "school": "Ithaca High School",
-      "email": "trent.urban@ithaca.k12.wi.us",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Trent",
-      "last": "Urban"
     },
     {
       "school": "Ithaca High School",
