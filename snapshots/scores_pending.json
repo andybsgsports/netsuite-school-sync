@@ -1,239 +1,5 @@
 [
   {
-    "team_id": "143490",
-    "school": "Albany High School",
-    "sport": "Boys Cross Country",
-    "contest_id": "400931",
-    "date": "2026-10-10",
-    "opponent": "Shullsburg/Belmont",
-    "is_home": true
-  },
-  {
-    "team_id": "143148",
-    "school": "Albany High School",
-    "sport": "Girls Cross Country",
-    "contest_id": "400918",
-    "date": "2026-10-10",
-    "opponent": "Shullsburg/Belmont",
-    "is_home": true
-  },
-  {
-    "team_id": "153981",
-    "school": "Beaver Dam High School",
-    "sport": "Girls Golf",
-    "contest_id": "406269",
-    "date": "2026-10-05",
-    "opponent": "Beaver Dam",
-    "is_home": true
-  },
-  {
-    "team_id": "143293",
-    "school": "Fort Atkinson High School",
-    "sport": "Boys Cross Country",
-    "contest_id": "406075",
-    "date": "2026-10-08",
-    "opponent": "Lakeside Lutheran",
-    "is_home": true
-  },
-  {
-    "team_id": "142955",
-    "school": "Fort Atkinson High School",
-    "sport": "Girls Cross Country",
-    "contest_id": "406066",
-    "date": "2026-10-08",
-    "opponent": "Lakeside Lutheran",
-    "is_home": true
-  },
-  {
-    "team_id": "142862",
-    "school": "Kenosha St. Joseph Catholic High School",
-    "sport": "Boys Soccer",
-    "contest_id": "403552",
-    "date": "2026-10-08",
-    "opponent": "Westosha Central",
-    "is_home": false
-  },
-  {
-    "team_id": "143423",
-    "school": "Lakeside Lutheran High School",
-    "sport": "Boys Cross Country",
-    "contest_id": "406075",
-    "date": "2026-10-08",
-    "opponent": "Fort Atkinson",
-    "is_home": false
-  },
-  {
-    "team_id": "143083",
-    "school": "Lakeside Lutheran High School",
-    "sport": "Girls Cross Country",
-    "contest_id": "406066",
-    "date": "2026-10-08",
-    "opponent": "Fort Atkinson",
-    "is_home": false
-  },
-  {
-    "team_id": "142705",
-    "school": "Madison East High School",
-    "sport": "Boys Soccer",
-    "contest_id": "403558",
-    "date": "2026-10-08",
-    "opponent": "Madison La Follette",
-    "is_home": true
-  },
-  {
-    "team_id": "142804",
-    "school": "Madison Edgewood High School",
-    "sport": "Boys Soccer",
-    "contest_id": "411064",
-    "date": "2026-10-08",
-    "opponent": "Stoughton",
-    "is_home": true
-  },
-  {
-    "team_id": "142706",
-    "school": "Madison Lafollette High School",
-    "sport": "Boys Soccer",
-    "contest_id": "403558",
-    "date": "2026-10-08",
-    "opponent": "Madison East",
-    "is_home": false
-  },
-  {
-    "team_id": "146992",
-    "school": "Menomonee Falls High School",
-    "sport": "Boys Soccer",
-    "contest_id": "403573",
-    "date": "2026-10-08",
-    "opponent": "Waterford",
-    "is_home": true
-  },
-  {
-    "team_id": "143915",
-    "school": "Parkview High School",
-    "sport": "Girls Volleyball",
-    "contest_id": "413073",
-    "date": "2026-10-10",
-    "opponent": "Princeton/Green Lake",
-    "is_home": false
-  },
-  {
-    "team_id": "154691",
-    "school": "Princeton High School",
-    "sport": "Girls Volleyball",
-    "contest_id": "413073",
-    "date": "2026-10-10",
-    "opponent": "Parkview",
-    "is_home": true
-  },
-  {
-    "team_id": "146493",
-    "school": "River Ridge High School",
-    "sport": "Boys Cross Country",
-    "contest_id": "400930",
-    "date": "2026-10-06",
-    "opponent": "Shullsburg/Belmont",
-    "is_home": true
-  },
-  {
-    "team_id": "146494",
-    "school": "River Ridge High School",
-    "sport": "Girls Cross Country",
-    "contest_id": "400917",
-    "date": "2026-10-06",
-    "opponent": "Shullsburg/Belmont",
-    "is_home": true
-  },
-  {
-    "team_id": "154477",
-    "school": "Shullsburg High School",
-    "sport": "Boys Cross Country",
-    "contest_id": "400930",
-    "date": "2026-10-06",
-    "opponent": "River Ridge",
-    "is_home": false
-  },
-  {
-    "team_id": "154477",
-    "school": "Shullsburg High School",
-    "sport": "Boys Cross Country",
-    "contest_id": "400931",
-    "date": "2026-10-10",
-    "opponent": "Albany",
-    "is_home": false
-  },
-  {
-    "team_id": "154522",
-    "school": "Shullsburg High School",
-    "sport": "Girls Cross Country",
-    "contest_id": "400917",
-    "date": "2026-10-06",
-    "opponent": "River Ridge",
-    "is_home": false
-  },
-  {
-    "team_id": "154522",
-    "school": "Shullsburg High School",
-    "sport": "Girls Cross Country",
-    "contest_id": "400918",
-    "date": "2026-10-10",
-    "opponent": "Albany",
-    "is_home": false
-  },
-  {
-    "team_id": "142777",
-    "school": "Stoughton High School",
-    "sport": "Boys Soccer",
-    "contest_id": "411064",
-    "date": "2026-10-08",
-    "opponent": "Edgewood",
-    "is_home": false
-  },
-  {
-    "team_id": "142780",
-    "school": "Waterford High School",
-    "sport": "Boys Soccer",
-    "contest_id": "403488",
-    "date": "2026-10-06",
-    "opponent": "Westosha Central",
-    "is_home": false
-  },
-  {
-    "team_id": "142780",
-    "school": "Waterford High School",
-    "sport": "Boys Soccer",
-    "contest_id": "403573",
-    "date": "2026-10-08",
-    "opponent": "Menomonee Falls",
-    "is_home": false
-  },
-  {
-    "team_id": "142782",
-    "school": "Waukesha West High School",
-    "sport": "Boys Soccer",
-    "contest_id": "403470",
-    "date": "2026-10-06",
-    "opponent": "Catholic Memorial",
-    "is_home": false
-  },
-  {
-    "team_id": "142790",
-    "school": "Westosha Central High School",
-    "sport": "Boys Soccer",
-    "contest_id": "403488",
-    "date": "2026-10-06",
-    "opponent": "Waterford",
-    "is_home": true
-  },
-  {
-    "team_id": "142790",
-    "school": "Westosha Central High School",
-    "sport": "Boys Soccer",
-    "contest_id": "403552",
-    "date": "2026-10-08",
-    "opponent": "Kenosha St. Joseph Catholic",
-    "is_home": true
-  },
-  {
     "team_id": "142893",
     "school": "Appleton East High School",
     "sport": "Boys Volleyball",
@@ -303,15 +69,6 @@
     "contest_id": "412898",
     "date": "2026-10-15",
     "opponent": "Jefferson",
-    "is_home": false
-  },
-  {
-    "team_id": "143974",
-    "school": "Catholic Central - Burlington High School",
-    "sport": "Girls Volleyball",
-    "contest_id": "412433",
-    "date": "2026-10-13",
-    "opponent": "Williams Bay",
     "is_home": false
   },
   {
@@ -882,15 +639,6 @@
     "is_home": true
   },
   {
-    "team_id": "144060",
-    "school": "Williams Bay High School",
-    "sport": "Girls Volleyball",
-    "contest_id": "412433",
-    "date": "2026-10-13",
-    "opponent": "Catholic Central",
-    "is_home": true
-  },
-  {
     "team_id": "144505",
     "school": "Ashwaubenon High School",
     "sport": "Girls Swimming & Diving",
@@ -969,6 +717,24 @@
     "contest_id": "414812",
     "date": "2026-11-05",
     "opponent": "Wauwatosa East",
+    "is_home": false
+  },
+  {
+    "team_id": "141742",
+    "school": "Appleton North High School",
+    "sport": "Girls Basketball",
+    "contest_id": "415129",
+    "date": "2026-11-14",
+    "opponent": "Beaver Dam",
+    "is_home": true
+  },
+  {
+    "team_id": "141812",
+    "school": "Beaver Dam High School",
+    "sport": "Girls Basketball",
+    "contest_id": "415129",
+    "date": "2026-11-14",
+    "opponent": "Appleton North",
     "is_home": false
   }
 ]
