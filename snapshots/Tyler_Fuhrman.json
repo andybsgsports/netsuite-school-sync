@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-11-16T08:28:19.355253Z",
+  "updated": "2026-11-17T09:42:11.802846Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -348,14 +348,6 @@
     },
     {
       "school": "Bangor High School",
-      "email": "rlbjr18@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Richard",
-      "last": "Brown"
-    },
-    {
-      "school": "Bangor High School",
       "email": "sschmeling@bangorsd.net",
       "role": "Athletic Director",
       "sport": "",
@@ -385,6 +377,14 @@
       "sport": "Girls Softball",
       "first": "Trisha",
       "last": "Jones"
+    },
+    {
+      "school": "Bangor High School",
+      "email": "westongerke03@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Weston",
+      "last": "Gerke"
     },
     {
       "school": "Bangor High School",
@@ -5852,14 +5852,6 @@
     },
     {
       "school": "West Salem High School",
-      "email": "rlbjr18@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Richard",
-      "last": "Brown"
-    },
-    {
-      "school": "West Salem High School",
       "email": "sammyt425@icloud.com",
       "role": "Head Coach",
       "sport": "Boys Soccer",
@@ -5913,6 +5905,14 @@
       "sport": "",
       "first": "Michaela",
       "last": "Webb"
+    },
+    {
+      "school": "West Salem High School",
+      "email": "westongerke03@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Weston",
+      "last": "Gerke"
     },
     {
       "school": "West Salem High School",

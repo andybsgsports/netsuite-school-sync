@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-11-16T08:32:17.512588Z",
+  "updated": "2026-11-17T09:46:13.353882Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -2044,6 +2044,14 @@
     },
     {
       "school": "Kiel High School",
+      "email": "1295sjrodriguez@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Jena",
+      "last": "Williams"
+    },
+    {
+      "school": "Kiel High School",
       "email": "ategen@kiel.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Tennis",
@@ -2953,22 +2961,6 @@
       "sport": "Boys & Girls Tennis",
       "first": "Paige",
       "last": "Cotton"
-    },
-    {
-      "school": "Manitowoc Lincoln High School",
-      "email": "deublermj@mpsd.school",
-      "role": "AD Admin Assistant",
-      "sport": "",
-      "first": "Mary",
-      "last": "Jo Deubler"
-    },
-    {
-      "school": "Manitowoc Lincoln High School",
-      "email": "diedrichst@mpsd.school",
-      "role": "Athletic Director",
-      "sport": "",
-      "first": "Stan",
-      "last": "Diedrich"
     },
     {
       "school": "Manitowoc Lincoln High School",

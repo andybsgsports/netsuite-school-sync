@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-11-16T08:33:05.783446Z",
+  "updated": "2026-11-17T09:47:03.474020Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -1342,7 +1342,7 @@
       "school": "Germantown High School",
       "email": "dromens@gsdwi.org",
       "role": "Head Coach",
-      "sport": "Girls Golf",
+      "sport": "Boys & Girls Golf",
       "first": "Dave",
       "last": "Romens"
     },
@@ -1505,14 +1505,6 @@
       "sport": "",
       "first": "Sara",
       "last": "Unertl"
-    },
-    {
-      "school": "Germantown High School",
-      "email": "tschmidt@gsdwi.org",
-      "role": "Head Coach",
-      "sport": "Boys Golf",
-      "first": "Troy",
-      "last": "Schmidt"
     },
     {
       "school": "Germantown High School",
