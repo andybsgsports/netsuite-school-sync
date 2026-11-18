@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-11-17T09:47:03.474020Z",
+  "updated": "2026-11-18T09:07:09.128643Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -1065,6 +1065,14 @@
       "sport": "Girls Basketball",
       "first": "Jennifer",
       "last": "Johnson"
+    },
+    {
+      "school": "Evansville High School",
+      "email": "madseng@evansville.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Gayla",
+      "last": "Madsen"
     },
     {
       "school": "Evansville High School",
@@ -4596,14 +4604,6 @@
     },
     {
       "school": "Watertown High School",
-      "email": "burkej@mywusd.org",
-      "role": "Superintendent",
-      "sport": "",
-      "first": "Dr.",
-      "last": "Jarred Burke"
-    },
-    {
-      "school": "Watertown High School",
       "email": "calliaris@mywusd.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Swimming Diving",
@@ -4641,6 +4641,14 @@
       "sport": "Boys & Girls Tennis",
       "first": "Andy",
       "last": "Dobbins"
+    },
+    {
+      "school": "Watertown High School",
+      "email": "feilj@mywusd.org",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "James",
+      "last": "Feil"
     },
     {
       "school": "Watertown High School",

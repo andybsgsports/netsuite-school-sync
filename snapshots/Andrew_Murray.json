@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-11-17T09:39:56.623887Z",
+  "updated": "2026-11-18T08:59:52.523048Z",
   "records": [
     {
       "school": "Auburn High School",
@@ -2286,14 +2286,6 @@
       "school": "Catholic Central - Burlington High School",
       "email": "james.friend@millerpipeline.com",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
-      "first": "James",
-      "last": "Friend"
-    },
-    {
-      "school": "Catholic Central - Burlington High School",
-      "email": "james.friend@millerpipeline.com",
-      "role": "Head Coach",
       "sport": "Boys Baseball",
       "first": "James",
       "last": "Friend"
@@ -2337,6 +2329,14 @@
       "sport": "Girls Volleyball",
       "first": "Megan",
       "last": "Swederski"
+    },
+    {
+      "school": "Catholic Central - Burlington High School",
+      "email": "michaelseitz@cchsnet.org",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Wrestling",
+      "first": "Michael",
+      "last": "Seitz"
     },
     {
       "school": "Catholic Central - Burlington High School",
@@ -12460,14 +12460,6 @@
     },
     {
       "school": "Union Grove High School",
-      "email": "Andrew.weis@wcspk8.org",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
-      "first": "Andy",
-      "last": "Weis"
-    },
-    {
-      "school": "Union Grove High School",
       "email": "bbelongia1@gmail.com",
       "role": "Head Coach",
       "sport": "Boys Volleyball",
@@ -13500,14 +13492,6 @@
     },
     {
       "school": "Waukesha North High School",
-      "email": "abouchard@waukesha.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Volleyball",
-      "first": "Arabella",
-      "last": "Bouchard"
-    },
-    {
-      "school": "Waukesha North High School",
       "email": "aj@thejamiesonhouse.com",
       "role": "Head Coach",
       "sport": "Boys Lacrosse-Boys",
@@ -13697,14 +13681,6 @@
       "sport": "",
       "first": "Tom",
       "last": "Schalmo"
-    },
-    {
-      "school": "Waukesha South High School",
-      "email": "abouchard@waukesha.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Volleyball",
-      "first": "Arabella",
-      "last": "Bouchard"
     },
     {
       "school": "Waukesha South High School",

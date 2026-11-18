@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-11-17T09:44:05.700598Z",
+  "updated": "2026-11-18T09:04:08.746784Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -3212,6 +3212,14 @@
     },
     {
       "school": "Green Bay Preble High School",
+      "email": "drmentzel@gbaps.org",
+      "role": "Assistant Athletic Director",
+      "sport": "",
+      "first": "Dylan",
+      "last": "Mentzel"
+    },
+    {
+      "school": "Green Bay Preble High School",
       "email": "handerson@notredameacademy.com",
       "role": "Head Coach",
       "sport": "Girls Lacrosse-Girls",
@@ -3220,19 +3228,19 @@
     },
     {
       "school": "Green Bay Preble High School",
+      "email": "hlcappelle@gbaps.org",
+      "role": "Assistant Athletic Director",
+      "sport": "",
+      "first": "Holly",
+      "last": "Cappelle"
+    },
+    {
+      "school": "Green Bay Preble High School",
       "email": "hockeymb@hotmail.com",
       "role": "Head Coach",
       "sport": "Girls Hockey",
       "first": "Mike",
       "last": "Buchan"
-    },
-    {
-      "school": "Green Bay Preble High School",
-      "email": "jjdemerath@gbaps.org",
-      "role": "Assistant Athletic Director",
-      "sport": "",
-      "first": "Joee",
-      "last": "Demerath"
     },
     {
       "school": "Green Bay Preble High School",
@@ -6350,7 +6358,7 @@
       "school": "New London High School",
       "email": "garrettjruck@gmail.com",
       "role": "Head Coach",
-      "sport": "Boys Wrestling",
+      "sport": "Girls Wrestling",
       "first": "Garrett",
       "last": "Ruckdashel"
     },
@@ -7441,6 +7449,14 @@
       "sport": "",
       "first": "Dennis",
       "last": "Kaczor"
+    },
+    {
+      "school": "Rosholt High School",
+      "email": "dekoback@rosholt.k12.wi.us",
+      "role": "Assistant Athletic Director",
+      "sport": "",
+      "first": "Devin",
+      "last": "Koback"
     },
     {
       "school": "Rosholt High School",

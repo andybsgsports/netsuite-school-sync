@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-11-17T09:44:42.789956Z",
+  "updated": "2026-11-18T09:04:46.915370Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -569,6 +569,14 @@
       "sport": "",
       "first": "Danette",
       "last": "Seboe"
+    },
+    {
+      "school": "DeForest High School",
+      "email": "erikasoderling@waunakee.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Gymnastics",
+      "first": "Erika",
+      "last": "Soderling"
     },
     {
       "school": "DeForest High School",

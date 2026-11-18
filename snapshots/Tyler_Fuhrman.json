@@ -1,6 +1,6 @@
 {
   "rep": "Tyler Fuhrman",
-  "updated": "2026-11-17T09:42:11.802846Z",
+  "updated": "2026-11-18T09:02:11.955880Z",
   "records": [
     {
       "school": "Abundant Life Christian High School",
@@ -2601,6 +2601,14 @@
       "sport": "Boys Tennis",
       "first": "Brad",
       "last": "Pagnucci"
+    },
+    {
+      "school": "Madison Country Day High School",
+      "email": "cthomas@madisoncountryday.org",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Chandon",
+      "last": "Thomas"
     },
     {
       "school": "Madison Country Day High School",

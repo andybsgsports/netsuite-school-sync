@@ -1,6 +1,6 @@
 {
   "rep": "John Viles",
-  "updated": "2026-11-17T09:46:13.353882Z",
+  "updated": "2026-11-18T09:06:18.772272Z",
   "records": [
     {
       "school": "Cambria Friesland High School",
@@ -1057,14 +1057,6 @@
       "sport": "Boys & Girls Cross Country",
       "first": "Jana",
       "last": "Fogarty"
-    },
-    {
-      "school": "Elkhart Lake High School",
-      "email": "Jtegen1@yahoo.com",
-      "role": "Head Coach",
-      "sport": "Girls Softball",
-      "first": "Josh",
-      "last": "Tegen"
     },
     {
       "school": "Elkhart Lake High School",
@@ -6500,6 +6492,14 @@
     },
     {
       "school": "Sun Prairie West High School",
+      "email": "abfluet@sunprairieschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Avery",
+      "last": "Fluet"
+    },
+    {
+      "school": "Sun Prairie West High School",
       "email": "ajschan@sunprairieschools.org",
       "role": "Head Coach",
       "sport": "Boys Lacrosse-Boys",
@@ -6924,11 +6924,27 @@
     },
     {
       "school": "Valley Christian School",
+      "email": "lisa@blaze365.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Lisa",
+      "last": "Van Wyk"
+    },
+    {
+      "school": "Valley Christian School",
       "email": "luke.menet@gmail.com",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
       "first": "Luke",
       "last": "Menet"
+    },
+    {
+      "school": "Valley Christian School",
+      "email": "muchad77@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Chad",
+      "last": "Urban"
     },
     {
       "school": "Valley Christian School",
