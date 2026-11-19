@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-11-18T09:07:09.128643Z",
+  "updated": "2026-11-19T09:23:05.335247Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -2156,14 +2156,6 @@
     },
     {
       "school": "Johnson Creek High School",
-      "email": "girlswrestling@johnsoncreekschools.org",
-      "role": "Head Coach",
-      "sport": "Girls Wrestling",
-      "first": "Brian",
-      "last": "Wagner"
-    },
-    {
-      "school": "Johnson Creek High School",
       "email": "hannae@johnsoncreekschools.org",
       "role": "Head Coach",
       "sport": "Boys & Girls Cross Country",
@@ -2638,7 +2630,7 @@
       "school": "Lakeside Lutheran High School",
       "email": "cgrow@llhs.org",
       "role": "Head Coach",
-      "sport": "Boys & Girls Wrestling",
+      "sport": "Boys Wrestling",
       "first": "Clayton",
       "last": "Grow"
     },
@@ -2668,6 +2660,14 @@
     },
     {
       "school": "Lakeside Lutheran High School",
+      "email": "dschultz@llhs.org",
+      "role": "Principal",
+      "sport": "",
+      "first": "Don",
+      "last": "Schultz"
+    },
+    {
+      "school": "Lakeside Lutheran High School",
       "email": "edorn@llhs.org",
       "role": "Head Coach",
       "sport": "Boys Soccer",
@@ -2676,11 +2676,27 @@
     },
     {
       "school": "Lakeside Lutheran High School",
+      "email": "ehaley@llhs.org",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Eric",
+      "last": "Haley"
+    },
+    {
+      "school": "Lakeside Lutheran High School",
       "email": "emuir@llhs.org",
       "role": "Head Coach",
       "sport": "Girls Soccer",
       "first": "Emily",
       "last": "Muir"
+    },
+    {
+      "school": "Lakeside Lutheran High School",
+      "email": "jdorn@llhs.org",
+      "role": "Assistant Principal",
+      "sport": "",
+      "first": "John",
+      "last": "Dorn"
     },
     {
       "school": "Lakeside Lutheran High School",
@@ -4524,6 +4540,14 @@
     },
     {
       "school": "Waterloo High School",
+      "email": "roser@waterloo.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Bobby",
+      "last": "Rose"
+    },
+    {
+      "school": "Waterloo High School",
       "email": "schaumanna@waterloo.k12.wi.us",
       "role": "Head Coach",
       "sport": "Girls Softball",
@@ -4561,14 +4585,6 @@
       "sport": "",
       "first": "Eugene",
       "last": "Syvrud"
-    },
-    {
-      "school": "Waterloo High School",
-      "email": "trumane@waterloo.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
-      "first": "Emilee",
-      "last": "Truman"
     },
     {
       "school": "Waterloo High School",

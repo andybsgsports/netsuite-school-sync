@@ -1,6 +1,6 @@
 {
   "rep": "Paul Speth",
-  "updated": "2026-11-18T09:04:46.915370Z",
+  "updated": "2026-11-19T09:20:46.272803Z",
   "records": [
     {
       "school": "Adams Friendship High School",
@@ -2740,6 +2740,14 @@
     },
     {
       "school": "Wautoma High School",
+      "email": "picam@wautoma.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Michael",
+      "last": "Pica"
+    },
+    {
+      "school": "Wautoma High School",
       "email": "richardm@wautoma.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Baseball",
@@ -2761,14 +2769,6 @@
       "sport": "Girls Soccer",
       "first": "Stephanie",
       "last": "Coppens"
-    },
-    {
-      "school": "Wautoma High School",
-      "email": "thompsonk@wautoma.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Boys Basketball",
-      "first": "Mike",
-      "last": "Pica"
     },
     {
       "school": "Wautoma High School",
