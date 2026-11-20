@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-11-19T09:23:05.335247Z",
+  "updated": "2026-11-20T09:07:42.771727Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -3228,6 +3228,14 @@
     },
     {
       "school": "Muskego High School",
+      "email": "maguire.delagrave@muskegonorway.org",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Maguire",
+      "last": "Delagrave"
+    },
+    {
+      "school": "Muskego High School",
       "email": "mary.boge@muskegonorway.org",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -4905,6 +4913,14 @@
       "sport": "Girls Basketball",
       "first": "Anthoni",
       "last": "Parr"
+    },
+    {
+      "school": "Whitnall High School",
+      "email": "blepine@whitnall.com",
+      "role": "Head Coach",
+      "sport": "Boys Swimming & Diving",
+      "first": "Brody",
+      "last": "LePine"
     },
     {
       "school": "Whitnall High School",
