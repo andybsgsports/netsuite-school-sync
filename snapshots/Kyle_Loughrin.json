@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-11-20T09:04:43.084196Z",
+  "updated": "2026-11-21T08:46:14.383670Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -4916,14 +4916,6 @@
     },
     {
       "school": "Little Chute High School",
-      "email": "dmfoley50@gmail.com",
-      "role": "Head Coach",
-      "sport": "Boys & Girls Cross Country",
-      "first": "Don",
-      "last": "Foley"
-    },
-    {
-      "school": "Little Chute High School",
       "email": "GUIDO.ONTANEDA@KCC.COM",
       "role": "Head Coach",
       "sport": "Boys Soccer",
@@ -5676,19 +5668,19 @@
     },
     {
       "school": "Merrill High School",
-      "email": "bbednarczyk@wausauschools.org",
-      "role": "Head Coach",
-      "sport": "Boys Hockey",
-      "first": "Brian",
-      "last": "Bednarczyk"
-    },
-    {
-      "school": "Merrill High School",
       "email": "breanne.semling@mapsedu.org",
       "role": "AD Admin Assistant",
       "sport": "",
       "first": "Bre",
       "last": "Semling"
+    },
+    {
+      "school": "Merrill High School",
+      "email": "brian.bednarczyk@mapsedu.org",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Brian",
+      "last": "Bednarczyk"
     },
     {
       "school": "Merrill High School",

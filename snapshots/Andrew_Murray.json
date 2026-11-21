@@ -1,6 +1,6 @@
 {
   "rep": "Andrew Murray",
-  "updated": "2026-11-20T09:00:26.497684Z",
+  "updated": "2026-11-21T08:42:05.644440Z",
   "records": [
     {
       "school": "Auburn High School",
@@ -708,6 +708,14 @@
     },
     {
       "school": "Beloit Memorial High School",
+      "email": "john.klobucar96@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "John",
+      "last": "Klobucar"
+    },
+    {
+      "school": "Beloit Memorial High School",
       "email": "jthomas2@sdb.k12.wi.us",
       "role": "Head Coach",
       "sport": "Boys Volleyball",
@@ -751,14 +759,6 @@
       "email": "rdouglas@sdb.k12.wi.us",
       "role": "Athletic Director",
       "sport": "",
-      "first": "Robert",
-      "last": "Douglas"
-    },
-    {
-      "school": "Beloit Memorial High School",
-      "email": "rdouglas@sdb.k12.wi.us",
-      "role": "Head Coach",
-      "sport": "Girls Basketball",
       "first": "Robert",
       "last": "Douglas"
     },
