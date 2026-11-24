@@ -1,6 +1,6 @@
 {
   "rep": "Kyle Loughrin",
-  "updated": "2026-11-23T09:41:06.034191Z",
+  "updated": "2026-11-24T11:36:22.343558Z",
   "records": [
     {
       "school": "Algoma High School",
@@ -1587,6 +1587,150 @@
       "last": "Schultz"
     },
     {
+      "school": "Bonduel High School",
+      "email": "abbycreinke@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Abby",
+      "last": "Krull"
+    },
+    {
+      "school": "Bonduel High School",
+      "email": "Adam.frost82@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Adam",
+      "last": "Frost"
+    },
+    {
+      "school": "Bonduel High School",
+      "email": "agafner@shawanoschools.org",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Adam",
+      "last": "Gafner"
+    },
+    {
+      "school": "Bonduel High School",
+      "email": "bogaczflooring@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Chad",
+      "last": "Bogacz"
+    },
+    {
+      "school": "Bonduel High School",
+      "email": "cap@wallrich.com",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "Cap",
+      "last": "Wallrich"
+    },
+    {
+      "school": "Bonduel High School",
+      "email": "cbedroske@shawanoschools.org",
+      "role": "Head Coach",
+      "sport": "Girls Swimming & Diving",
+      "first": "Caroline",
+      "last": "Bedroske"
+    },
+    {
+      "school": "Bonduel High School",
+      "email": "coppduk@bonduel.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Duke",
+      "last": "Copp"
+    },
+    {
+      "school": "Bonduel High School",
+      "email": "dawidjoe@bonduel.k12.wi.us",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Joe",
+      "last": "Dawidziak"
+    },
+    {
+      "school": "Bonduel High School",
+      "email": "dobrabri@bonduel.k12.wi.us",
+      "role": "Principal",
+      "sport": "",
+      "first": "Britney",
+      "last": "Dobratz"
+    },
+    {
+      "school": "Bonduel High School",
+      "email": "gundebe98@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Wrestling",
+      "first": "Bennett",
+      "last": "Gunderson"
+    },
+    {
+      "school": "Bonduel High School",
+      "email": "hintzkai@bonduel.k12.wi.us",
+      "role": "Assistant Principal",
+      "sport": "",
+      "first": "Kaitlyn",
+      "last": "Hintz"
+    },
+    {
+      "school": "Bonduel High School",
+      "email": "jaakkee86@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Jacob",
+      "last": "Grenke"
+    },
+    {
+      "school": "Bonduel High School",
+      "email": "jerry.reinke@me.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Jerry",
+      "last": "Reinke"
+    },
+    {
+      "school": "Bonduel High School",
+      "email": "krullben@bonduel.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Track and Field",
+      "first": "Ben",
+      "last": "Krull"
+    },
+    {
+      "school": "Bonduel High School",
+      "email": "laberdav@bonduel.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Golf",
+      "first": "Dave",
+      "last": "LaBerge"
+    },
+    {
+      "school": "Bonduel High School",
+      "email": "margemar@bonduel.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Mark",
+      "last": "Margelofsky"
+    },
+    {
+      "school": "Bonduel High School",
+      "email": "rankchr@bonduel.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Chris",
+      "last": "Rank"
+    },
+    {
+      "school": "Bonduel High School",
+      "email": "westrjam@bonduel.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "James",
+      "last": "Westrich"
+    },
+    {
       "school": "Brillion High School",
       "email": "2241harvey@gmail.com",
       "role": "Head Coach",
@@ -2401,6 +2545,110 @@
       "sport": "Girls Basketball",
       "first": "Garett",
       "last": "Vander Loop"
+    },
+    {
+      "school": "Edgar High School",
+      "email": "adecker@gapps.edgar.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Adam",
+      "last": "Decker"
+    },
+    {
+      "school": "Edgar High School",
+      "email": "andrew@edgar.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Wrestling",
+      "first": "Andrew",
+      "last": "Lukasko"
+    },
+    {
+      "school": "Edgar High School",
+      "email": "aschilling@gapps.edgar.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Ashley",
+      "last": "Schilling"
+    },
+    {
+      "school": "Edgar High School",
+      "email": "cguden@gapps.edgar.k12.wi.us",
+      "role": "Superintendent",
+      "sport": "",
+      "first": "Cari",
+      "last": "Guden"
+    },
+    {
+      "school": "Edgar High School",
+      "email": "chandrick@gapps.edgar.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Connor",
+      "last": "Handrick"
+    },
+    {
+      "school": "Edgar High School",
+      "email": "dennisw@edgar.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Dennis",
+      "last": "Webb"
+    },
+    {
+      "school": "Edgar High School",
+      "email": "evankrebsbach@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Evan",
+      "last": "Krebsbach"
+    },
+    {
+      "school": "Edgar High School",
+      "email": "greg@edgar.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Track and Field",
+      "first": "Greg",
+      "last": "Streit"
+    },
+    {
+      "school": "Edgar High School",
+      "email": "jerry@edgar.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Jerry",
+      "last": "Sinz"
+    },
+    {
+      "school": "Edgar High School",
+      "email": "kdbrown31@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Kevin",
+      "last": "Brown"
+    },
+    {
+      "school": "Edgar High School",
+      "email": "kreekl@medford.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Klayton",
+      "last": "Kree"
+    },
+    {
+      "school": "Edgar High School",
+      "email": "mwilhelm@gapps.edgar.k12.wi.us",
+      "role": "Principal",
+      "sport": "",
+      "first": "Mike",
+      "last": "Wilhelm"
+    },
+    {
+      "school": "Edgar High School",
+      "email": "zrpaul6@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Zach",
+      "last": "Paul"
     },
     {
       "school": "Fox Valley Lutheran High School",
@@ -4993,6 +5241,14 @@
       "sport": "Girls Softball",
       "first": "Travis",
       "last": "Pfrang"
+    },
+    {
+      "school": "Little Chute High School",
+      "email": "riesed89@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Soccer",
+      "first": "Dustin",
+      "last": "Riese"
     },
     {
       "school": "Little Chute High School",
@@ -10345,6 +10601,150 @@
       "sport": "Boys Golf",
       "first": "Zach",
       "last": "Toelle"
+    },
+    {
+      "school": "Wrightstown High School",
+      "email": "allysonvz21@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Soccer",
+      "first": "Allyson",
+      "last": "VanZeeland"
+    },
+    {
+      "school": "Wrightstown High School",
+      "email": "Blauert@wrightstown.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Golf",
+      "first": "Justin",
+      "last": "Blauert"
+    },
+    {
+      "school": "Wrightstown High School",
+      "email": "cverbeten152@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Softball",
+      "first": "Patrick",
+      "last": "Verbeten"
+    },
+    {
+      "school": "Wrightstown High School",
+      "email": "ddonohue24@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Hockey",
+      "first": "Derek",
+      "last": "Donohue"
+    },
+    {
+      "school": "Wrightstown High School",
+      "email": "ebeard@vtindustries.com",
+      "role": "Head Coach",
+      "sport": "Boys Baseball",
+      "first": "Eric",
+      "last": "Beard"
+    },
+    {
+      "school": "Wrightstown High School",
+      "email": "eward@wrightstown.k12.wi.us",
+      "role": "Principal",
+      "sport": "",
+      "first": "Eric",
+      "last": "Ward"
+    },
+    {
+      "school": "Wrightstown High School",
+      "email": "haese@wrightstown.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Basketball",
+      "first": "Cory",
+      "last": "Haese"
+    },
+    {
+      "school": "Wrightstown High School",
+      "email": "haesec@wrightstown.k12.wi.us",
+      "role": "Assistant Principal, Athletic Director",
+      "sport": "",
+      "first": "Craig",
+      "last": "Haese"
+    },
+    {
+      "school": "Wrightstown High School",
+      "email": "justinmerritt21@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Hockey",
+      "first": "Justin",
+      "last": "Merritt"
+    },
+    {
+      "school": "Wrightstown High School",
+      "email": "KLISTER@wrightstown.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Football",
+      "first": "Steve",
+      "last": "Klister"
+    },
+    {
+      "school": "Wrightstown High School",
+      "email": "littlebomber424@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Girls Basketball",
+      "first": "Eric",
+      "last": "Bombinski"
+    },
+    {
+      "school": "Wrightstown High School",
+      "email": "mikked12@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys Soccer",
+      "first": "Derek",
+      "last": "Mikkelson"
+    },
+    {
+      "school": "Wrightstown High School",
+      "email": "mmverbeten@gmail.com",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Wrestling",
+      "first": "Matt",
+      "last": "Verbeten"
+    },
+    {
+      "school": "Wrightstown High School",
+      "email": "nawrot@wrightstown.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Cross Country",
+      "first": "Dawn",
+      "last": "Nawrot"
+    },
+    {
+      "school": "Wrightstown High School",
+      "email": "PULKASCHUH@wrightstown.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Girls Volleyball",
+      "first": "Kristine",
+      "last": "Pulka-Schuh"
+    },
+    {
+      "school": "Wrightstown High School",
+      "email": "recob@wrightstown.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys & Girls Track and Field",
+      "first": "Amy",
+      "last": "Recob"
+    },
+    {
+      "school": "Wrightstown High School",
+      "email": "SUKOW@wrightstown.k12.wi.us",
+      "role": "Head Coach",
+      "sport": "Boys Golf",
+      "first": "Otto",
+      "last": "Sukow"
+    },
+    {
+      "school": "Wrightstown High School",
+      "email": "tvandehey@wrightstown.k12.wi.us",
+      "role": "AD Admin Assistant",
+      "sport": "",
+      "first": "Trisha",
+      "last": "Vande Hey"
     },
     {
       "school": "Xavier High School",
