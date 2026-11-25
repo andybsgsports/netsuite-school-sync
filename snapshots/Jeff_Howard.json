@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Howard",
-  "updated": "2026-11-24T11:32:59.593638Z",
+  "updated": "2026-11-25T10:17:59.185561Z",
   "records": [
     {
       "school": "Albany High School",
@@ -716,6 +716,14 @@
     },
     {
       "school": "Benton High School",
+      "email": "curtisconstruction.tc@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Terry",
+      "last": "Curtis"
+    },
+    {
+      "school": "Benton High School",
       "email": "emmalawrence2018@gmail.com",
       "role": "Head Coach",
       "sport": "Girls Volleyball",
@@ -1164,6 +1172,14 @@
     },
     {
       "school": "Cuba City High School",
+      "email": "curtisconstruction.tc@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Terry",
+      "last": "Curtis"
+    },
+    {
+      "school": "Cuba City High School",
       "email": "david.bartsch@hotmail.com",
       "role": "Head Coach",
       "sport": "Boys Basketball",
@@ -1345,6 +1361,14 @@
       "sport": "Boys & Girls Wrestling",
       "first": "Logan",
       "last": "Taylor"
+    },
+    {
+      "school": "Darlington High School",
+      "email": "mcgranahanr@darlington.k12.wi.us",
+      "role": "Athletic Director",
+      "sport": "",
+      "first": "Ryan",
+      "last": "McGranahan"
     },
     {
       "school": "Darlington High School",
@@ -4089,6 +4113,14 @@
       "sport": "Boys Wrestling",
       "first": "Craig",
       "last": "Donar"
+    },
+    {
+      "school": "Southwestern High School",
+      "email": "curtisconstruction.tc@gmail.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Terry",
+      "last": "Curtis"
     },
     {
       "school": "Southwestern High School",

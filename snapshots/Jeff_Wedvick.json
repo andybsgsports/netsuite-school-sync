@@ -1,6 +1,6 @@
 {
   "rep": "Jeff Wedvick",
-  "updated": "2026-11-24T11:39:20.445717Z",
+  "updated": "2026-11-25T10:24:07.507040Z",
   "records": [
     {
       "school": "Arrowhead High School",
@@ -2121,6 +2121,14 @@
       "sport": "",
       "first": "Charles",
       "last": "Urness"
+    },
+    {
+      "school": "Johnson Creek High School",
+      "email": "baneck8@yahoo.com",
+      "role": "Head Coach",
+      "sport": "Girls Wrestling",
+      "first": "Jim",
+      "last": "Baneck"
     },
     {
       "school": "Johnson Creek High School",
